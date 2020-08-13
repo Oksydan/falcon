@@ -1,0 +1,50 @@
+.color,
+.custom-checkbox input[type="checkbox"] + span.color {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-block;
+  margin: 0.3125rem;
+  border: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  background-size: contain;
+  &.active,
+  &:hover {
+    border: 2px solid $gray-darker;
+  }
+}
+
+.custom-checkbox {
+  position: relative;
+  input[type="checkbox"] {
+    margin-top: 0.25rem;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    + span {
+      margin-right: 3px;
+      display: inline-block;
+      width: 0.9375rem;
+      height: 0.9375rem;
+      vertical-align: middle;
+      cursor: pointer;
+      border: 2px $gray-darker solid;
+      .checkbox-checked {
+        display: none;
+        margin: -0.25rem -0.125rem;
+        font-size: 1.1rem;
+        color: $gray-darker;
+      }
+    }
+    &:checked + span {
+      .checkbox-checked {
+        display: block;
+      }
+    }
+    &:focus + span {
+      border-color: $gray;
+    }
+  }
+  label {
+    text-align: left;
+  }
+}

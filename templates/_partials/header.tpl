@@ -62,16 +62,16 @@
             {if $page.page_name == 'index'}
               <h1>
                 <a href="{$urls.base_url}">
-                  <img class="logo img-responsive" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
+                  <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
                 </a>
               </h1>
             {else}
                 <a href="{$urls.base_url}">
-                  <img class="logo img-responsive" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
+                  <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
                 </a>
             {/if}
         </div>
-        <div class="col-md-10 col-sm-12 position-static">
+        <div class="col-md-10 col-sm-12">
           {hook h='displayTop'}
           <div class="clearfix"></div>
         </div>

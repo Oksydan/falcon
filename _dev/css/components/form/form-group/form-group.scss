@@ -1,0 +1,14 @@
+.form-group {
+  &.has-error {
+    input,
+    select {
+      outline: 0.1875rem solid $brand-danger;
+    }
+    .help-block {
+      color: $brand-danger;
+    }
+  }
+  .help-block {
+    margin-top: $small-space;
+  }
+}

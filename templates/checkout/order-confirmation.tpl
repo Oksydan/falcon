@@ -75,7 +75,7 @@
 
   {block name='hook_payment_return'}
     {if ! empty($HOOK_PAYMENT_RETURN)}
-    <section id="content-hook_payment_return" class="card definition-list">
+    <section id="content-hook_payment_return" class="card">
       <div class="card-block">
         <div class="row">
           <div class="col-md-12">

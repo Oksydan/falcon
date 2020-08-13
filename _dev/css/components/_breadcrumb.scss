@@ -1,0 +1,30 @@
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  &[data-depth="1"] {
+    display: none;
+  }
+  ol {
+    padding-left: 0;
+    margin-bottom: 0;
+  }
+  li {
+    display: inline;
+    &::after {
+      content: "/";
+      color: $gray;
+      margin: 0.3125rem;
+    }
+    &:last-child {
+      content: "/";
+      color: $gray;
+      margin: 0;
+      &::after {
+        content: "";
+      }
+    }
+    a {
+      color: $gray-darker;
+    }
+  }
+}

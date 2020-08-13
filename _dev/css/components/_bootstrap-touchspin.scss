@@ -1,0 +1,35 @@
+.bootstrap-touchspin {
+  width: auto;
+  display: inline-block;
+  input {
+    &:focus {
+      outline: none;
+    }
+    &.form-control,
+    &.input-group {
+      color: $gray-darker;
+      background-color: white;
+      height: $input-height;
+      padding: 0.175rem 0.5rem;
+      width: 3rem;
+      border: $input-btn-border-width solid $input-border-color;
+      float: left;
+    }
+  }
+  .input-group-btn-vertical {
+    color: $gray-darker;
+    width: auto;
+    float: left;
+    .bootstrap-touchspin-up {
+      border-radius: 0;
+    }
+    .bootstrap-touchspin-down {
+      border-radius: 0;
+    }
+    i {
+      top: 0.0625rem;
+      left: 0.1875rem;
+      font-size: 0.9375rem;
+    }
+  }
+}

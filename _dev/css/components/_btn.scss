@@ -1,0 +1,41 @@
+
+.btn-primary,
+.btn-secondary {
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+}
+
+.btn-unstyle {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-align: inherit;
+  &:focus {
+    outline: 0;
+    .expand-more {
+      color: $brand-primary;
+    }
+  }
+}
+
+.btn.disabled,
+.btn.disabled:hover {
+  background: $gray;
+}
+
+.btn-warning {
+  @include transition(all .4s ease-in-out);
+}
+.btn-tertiary-outline {
+  color: $btn-tertiary-color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $btn-tertiary-color;
+  border: 0.15rem solid $btn-tertiary-color;
+  @include transition(all .4s ease-in-out);
+  &:hover {
+    border-color: $btn-tertiary-hover;
+    color: $btn-tertiary-hover;
+  }
+}
