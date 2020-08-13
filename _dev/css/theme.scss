@@ -1,7 +1,17 @@
-@import "partials/_variables";
-@import "~bootstrap/scss/bootstrap";
-// @import "~bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css";
-@import "partials/_mixins";
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+
+@import "vendors/bootstrap";
+
+@import "base/base";
+@import "base/typography";
+
+
+
+
+
+
 @import "partials/_fonts";
 @import "partials/_commons";
 @import "components/alert";

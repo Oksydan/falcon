@@ -1,0 +1,48 @@
+body,
+html {
+  height: 100%;
+}
+
+body {
+  direction: ltr;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $gray-darker;
+  line-height: 1.35;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+input, textarea {
+  &::-webkit-input-placeholder {
+    color: $gray;
+  }
+  &::-moz-placeholder {
+    color: $gray;
+  }
+  &:-ms-input-placeholder {
+    color: $gray;
+  }
+  &:-moz-placeholder {
+    color: $gray;
+  }
+  &:active {
+    &::-webkit-input-placeholder {
+      color: $gray-darker;
+    }
+    &::-moz-placeholder {
+      color: $gray-darker;
+    }
+    &:-ms-input-placeholder {
+      color: $gray-darker;
+    }
+    &:-moz-placeholder {
+      color: $gray-darker;
+    }
+  }
+}

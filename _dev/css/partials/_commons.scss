@@ -1,40 +1,10 @@
-body,
-html {
-  height: 100%;
-}
-body {
-  direction: ltr;
-  font-family: 'Noto Sans', sans-serif;
-  font-size: $base-font-size;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: $gray-darker;
-  line-height: 1.25em;
-}
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-a:hover {
-  color: $brand-primary;
-  text-decoration: none;
-}
-p {
-  font-size: 0.9375rem;
-  color: $gray;
-  font-weight: 400;
-}
-.dropdown-item:focus,
-.dropdown-item:hover {
-  background: none;
-}
+
 .color,
 .custom-checkbox input[type="checkbox"] + span.color {
   width: 1.25rem;
   height: 1.25rem;
   display: inline-block;
   margin: 0.3125rem;
-  @include box-shadow-light;
   border: 1px solid rgba(0,0,0,0.05);
   cursor: pointer;
   background-size: contain;
@@ -51,19 +21,9 @@ p {
     }
   }
 }
-.h1,
-.h2,
-.h3 {
-  text-transform: uppercase;
-  color: $gray-darker;
-}
-.h4 {
-  font-weight: $headings-font-weight;
-  color: $gray-darker;
-}
+
 .btn-primary,
 .btn-secondary {
-  @include box-shadow-light;
   text-transform: uppercase;
   font-weight: 600;
   padding: 0.5rem 1.25rem;
@@ -71,24 +31,7 @@ p {
     margin-right: $small-space;
   }
 }
-.btn-tertiary {
-  @extend .btn-secondary;
-  background-color: #F7F7F7;
-  text-transform: lowercase;
-  color: $gray;
-  box-shadow: 0.0625rem 0.0625rem 0.0625rem 0 rgba(0, 0, 0, 0.1);
-  padding: 0.25rem;
-  margin: 0.25rem 0;
-  font-weight: 400;
-  font-size: $font-size-sm;
-  .material-icons {
-    font-size: $base-font-size;
-  }
-  &:hover {
-    box-shadow: 0.0625rem 0.0625rem 0.0625rem 0 rgba(0, 0, 0, 0.2);
-    border: $input-btn-border-width solid rgba(35, 35, 35, 0.2);
-  }
-}
+
 .btn-unstyle {
   background-color: transparent;
   border: none;
@@ -101,17 +44,8 @@ p {
     }
   }
 }
-.card {
-  @include box-shadow;
-}
-label ,.label {
-  color: $gray-darker;
-  text-align: right;
-  font-size: 0.875rem;
-}
-small.label, small.value {
-  font-size: 0.8125rem;
-}
+
+
 .form-control-label {
   padding-top: 0.625rem;
 }
@@ -151,34 +85,7 @@ small.label, small.value {
     }
   }
 }
-input, textarea {
-  &::-webkit-input-placeholder {
-    color: $gray;
-  }
-  &::-moz-placeholder {
-    color: $gray;
-  }
-  &:-ms-input-placeholder {
-    color: $gray;
-  }
-  &:-moz-placeholder {
-    color: $gray;
-  }
-  &:active {
-    &::-webkit-input-placeholder {
-      color: $gray-darker;
-    }
-    &::-moz-placeholder {
-      color: $gray-darker;
-    }
-    &:-ms-input-placeholder {
-      color: $gray-darker;
-    }
-    &:-moz-placeholder {
-      color: $gray-darker;
-    }
-  }
-}
+
 .form-control-select {
   height: 2.625rem;
   -moz-appearance: none;
@@ -226,9 +133,7 @@ input, textarea {
 }
 .bootstrap-touchspin {
   width: auto;
-  float: left;
   display: inline-block;
-  @include box-shadow-light;
   input {
     &:focus {
       outline: none;
@@ -262,16 +167,6 @@ input, textarea {
     }
     .bootstrap-touchspin-down {
       border-radius: 0;
-    }
-    .touchspin-up {
-      &:after {
-        content: "\E5CE";
-      }
-    }
-    .touchspin-down {
-      &:after {
-        content: "\E5CF";
-      }
     }
     i {
       top: 0.0625rem;
@@ -346,15 +241,8 @@ input, textarea {
     text-align: left;
   }
 }
-.text-muted {
-  font-size: 0.875rem;
-}
-.done {
-  color: $brand-success;
-  display: inline-block;
-  padding: 0 0.8125rem;
-  margin-right: 1.563rem;
-}
+
+
 .thumb-mask {
   > .mask {
     position: relative;
@@ -453,11 +341,4 @@ input, textarea {
 .separator {
   margin: 0;
   border-color: rgba(0, 0, 0, 0.25);
-}
-
-// modal-dialog-centered class added from bootstrap 4.0.0, adapted for bootstrap 4.0.0-alpha.5
-.modal-dialog-centered {
-  display: flex;
-  align-items: center;
-  min-height: calc(100% - (30px * 2)); // 30px correspond to the default margin size from bootstrap 4.0.0-alpha.5 for modal-dialog class
 }
