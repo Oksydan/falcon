@@ -32,7 +32,7 @@
               {foreach from=$cart.vouchers.added item=voucher}
                 <li class="cart-summary-line">
                   <span class="label">{$voucher.name}</span>
-                  <div class="float-xs-right">
+                  <div class="float-right">
                     <span>{$voucher.reduction_formatted}</span>
                       {if isset($voucher.code) && $voucher.code !== ''}
                         <a href="{$voucher.delete_url}" data-link-action="remove-voucher"><i>DELETE</i></a>
