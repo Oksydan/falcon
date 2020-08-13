@@ -33,7 +33,7 @@
     <div class="container">
       <div class="row">
         <div class="hidden-sm-down">
-          <div class="col-md-5 col-xs-12">
+          <div class="col-md-5 col-12">
             {hook h='displayNav1'}
           </div>
           <div class="col-md-7 right-nav">
@@ -41,11 +41,11 @@
           </div>
         </div>
         <div class="hidden-md-up text-sm-center mobile">
-          <div class="float-xs-left" id="menu-icon">
+          <div class="float-left" id="menu-icon">
             MENU
           </div>
-          <div class="float-xs-right" id="_mobile_cart"></div>
-          <div class="float-xs-right" id="_mobile_user_info"></div>
+          <div class="float-right" id="_mobile_cart"></div>
+          <div class="float-right" id="_mobile_user_info"></div>
           <div class="top-logo" id="_mobile_logo"></div>
           <div class="clearfix"></div>
         </div>
@@ -62,16 +62,16 @@
             {if $page.page_name == 'index'}
               <h1>
                 <a href="{$urls.base_url}">
-                  <img class="logo img-responsive" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
+                  <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
                 </a>
               </h1>
             {else}
                 <a href="{$urls.base_url}">
-                  <img class="logo img-responsive" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
+                  <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
                 </a>
             {/if}
         </div>
-        <div class="col-md-10 col-sm-12 position-static">
+        <div class="col-md-10 col-sm-12">
           {hook h='displayTop'}
           <div class="clearfix"></div>
         </div>

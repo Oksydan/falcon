@@ -24,7 +24,7 @@
  *}
 
 <span class="col-sm-3 col-md-3 hidden-sm-down sort-by">{l s='Sort by:' d='Shop.Theme.Global'}</span>
-<div class="{if !empty($listing.rendered_facets)}col-sm-9 col-xs-8{else}col-sm-12 col-xs-12{/if} col-md-9 products-sort-order dropdown">
+<div class="{if !empty($listing.rendered_facets)}col-sm-9 col-8{else}col-sm-12 col-12{/if} col-md-9 products-sort-order dropdown">
   <button
     class="btn-unstyle select-title"
     rel="nofollow"
@@ -32,7 +32,7 @@
     aria-haspopup="true"
     aria-expanded="false">
     {if $listing.sort_selected}{$listing.sort_selected}{else}{l s='Select' d='Shop.Theme.Actions'}{/if}
-    <i class="float-xs-right">EXPAND</i>
+    <i class="float-right">EXPAND</i>
   </button>
   <div class="dropdown-menu">
     {foreach from=$listing.sort_orders item=sort_order}

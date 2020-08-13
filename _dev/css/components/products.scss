@@ -79,9 +79,6 @@
     height: 2.75rem;
     line-height: inherit;
     padding-top: 0.625rem;
-    .material-icons {
-      line-height: inherit;
-    }
   }
 }
 .product-quantity {
@@ -329,9 +326,6 @@
     background: white;
     .close {
       opacity: 1;
-      .material-icons {
-        color: $gray-dark;
-      }
     }
   }
   .modal-body {
@@ -361,10 +355,6 @@
     color: #353943;
     font-size: 1rem;
     font-weight: 400;
-    i.material-icons {
-      margin-right: $large-space;
-      color: $brand-success;
-    }
   }
   .product-name {
     color: $brand-primary;
@@ -473,9 +463,6 @@
   margin-top: 0.625rem;
   display: inline-block;
   font-weight: 700;
-  .material-icons {
-    line-height: inherit;
-  }
   .product-available {
     color: $brand-success;
   }
@@ -524,7 +511,6 @@
       background-color: white;
       width: auto;
       padding-right: 1.875rem;
-      @include box-shadow-light;
     }
     ul li {
       margin-right: $small-space;
@@ -556,7 +542,6 @@
     margin-top: $small-space;
     font-size: $base-font-size;
 
-    @include box-shadow-light;
     &.online-only {
       position: absolute;
       top: 25rem;
@@ -673,7 +658,6 @@
     margin-bottom: 0;
   }
   li {
-    @include box-shadow-light;
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 50%;

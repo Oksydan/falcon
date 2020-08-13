@@ -45,14 +45,14 @@
               {/if}
             >
           </div>
-          <div class="col-md-5 col-sm-7 col-xs-12 store-description">
+          <div class="col-md-5 col-sm-7 col-12 store-description">
             <p class="h3 card-title">{$store.name}</p>
             <address>{$store.address.formatted nofilter}</address>
             {if $store.note || $store.phone || $store.fax || $store.email}
               <a data-toggle="collapse" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}"><strong>{l s='About and Contact' d='Shop.Theme.Global'}</strong></a>
             {/if}
           </div>
-          <div class="col-md-4 col-sm-5 col-xs-12 divide-left">
+          <div class="col-md-4 col-sm-5 col-12 divide-left">
             <table>
               {foreach $store.business_hours as $day}
               <tr>

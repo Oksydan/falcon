@@ -27,7 +27,7 @@
     {l s='Popular Products' d='Shop.Theme.Catalog'}
   </h2>
   {include file="catalog/_partials/productlist.tpl" products=$products cssClass="row"}
-  <a class="all-product-link float-xs-left float-md-right h4" href="{$allProductsLink}">
+  <a class="all-product-link float-left float-md-right h4" href="{$allProductsLink}">
     {l s='All products' d='Shop.Theme.Catalog'}
   </a>
 </section>

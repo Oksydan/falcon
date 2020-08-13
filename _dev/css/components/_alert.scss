@@ -1,3 +1,32 @@
+
+.alert {
+  font-size: 0.8125rem;
+}
+
+.alert-warning {
+  .alert-text {
+    font-size: 0.9375rem;
+    padding-top: $small-space;
+  }
+  .alert-link {
+    border-radius: 2px;
+    border-width: 2px;
+    margin-left: $small-space;
+    padding: $extra-small-space $medium-space;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: $btn-tertiary-color;
+  }
+  ul li:last-child .alert-link {
+    color: white;
+  }
+  .warning-buttons {
+    margin-top: $extra-small-space;
+  }
+}
+
+
+
 .ps-alert-error {
   margin-bottom: 0;
 }

@@ -31,7 +31,7 @@
     {block name='facets_clearall_button'}
       {if $activeFilters|count}
         <div id="_desktop_search_filters_clear_all" class="hidden-sm-down clear-all-wrapper">
-          <button data-search-url="{$clear_all_link}" class="btn btn-tertiary js-search-filters-clear-all">
+          <button data-search-url="{$clear_all_link}" class="btn btn-secondary js-search-filters-clear-all">
             {l s='Clear all' d='Shop.Theme.Actions'}
           </button>
         </div>
@@ -53,7 +53,7 @@
 
         <div class="title hidden-md-up" data-target="#facet_{$_expand_id}" data-toggle="collapse"{if !$_collapse} aria-expanded="true"{/if}>
           <p class="h6 facet-title">{$facet.label}</p>
-          <span class="float-xs-right">
+          <span class="float-right">
             <span class="navbar-toggler collapse-icons">
               <i class="add">add</i>
               <i class="remove">remove</i>
@@ -121,7 +121,7 @@
           {block name='facet_item_dropdown'}
             <ul id="facet_{$_expand_id}" class="collapse{if !$_collapse} in{/if}">
               <li>
-                <div class="col-sm-12 col-xs-12 col-md-12 facet-dropdown dropdown">
+                <div class="col-sm-12 col-12 col-md-12 facet-dropdown dropdown">
                   <a class="select-title" rel="nofollow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {$active_found = false}
                     <span>
