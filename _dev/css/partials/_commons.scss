@@ -27,9 +27,6 @@
   text-transform: uppercase;
   font-weight: 600;
   padding: 0.5rem 1.25rem;
-  .material-icons {
-    margin-right: $small-space;
-  }
 }
 
 .btn-unstyle {
@@ -284,12 +281,6 @@
   background: $gray;
 }
 .alert-warning {
-  .material-icons {
-    color: $warning;
-    font-size: 2rem;
-    margin-right: $small-space;
-    padding-top: $extra-small-space;
-  }
   .alert-text {
     font-size: 0.9375rem;
     padding-top: $small-space;

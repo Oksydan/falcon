@@ -79,9 +79,6 @@
     height: 2.75rem;
     line-height: inherit;
     padding-top: 0.625rem;
-    .material-icons {
-      line-height: inherit;
-    }
   }
 }
 .product-quantity {
@@ -329,9 +326,6 @@
     background: white;
     .close {
       opacity: 1;
-      .material-icons {
-        color: $gray-dark;
-      }
     }
   }
   .modal-body {
@@ -361,10 +355,6 @@
     color: #353943;
     font-size: 1rem;
     font-weight: 400;
-    i.material-icons {
-      margin-right: $large-space;
-      color: $brand-success;
-    }
   }
   .product-name {
     color: $brand-primary;
@@ -473,9 +463,6 @@
   margin-top: 0.625rem;
   display: inline-block;
   font-weight: 700;
-  .material-icons {
-    line-height: inherit;
-  }
   .product-available {
     color: $brand-success;
   }
