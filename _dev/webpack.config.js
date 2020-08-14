@@ -78,9 +78,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2,
-              sourceMap: true,
-              url: false
+              importLoaders: 2
             },
           },
           { 
@@ -97,7 +95,6 @@ module.exports = {
           { 
             loader: 'sass-loader', 
             options: {
-              sourceMap: true, 
               implementation: require('sass')
             } 
           },
@@ -113,12 +110,12 @@ module.exports = {
         },
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff|woff2)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'fonts/',
           publicPath: config.publicPath + '/fonts/',
-          name: '[name].[ext]',
+          name: '[name].[ext]'
         },
       }
     ]
