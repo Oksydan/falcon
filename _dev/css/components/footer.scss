@@ -63,53 +63,53 @@
   }
 }
 .facebook {
-  background-image: url(./img/facebook.svg);
+  background-image: url('../img/facebook.svg');
   &::before {
     content: "";
-    background-image: url(./img/facebook-blue.svg);
+    background-image: url('../img/facebook-blue.svg');
   }
   &.icon-gray {
-    background-image: url(./img/facebook-gray.svg);
+    background-image: url('../img/facebook-gray.svg');
     &:hover {
-      background-image: url(./img/facebook-blue.svg);
+      background-image: url('../img/facebook-blue.svg');
     }
   }
 }
 .twitter {
-  background-image: url(./img/twitter.svg);
+  background-image: url('../img/twitter.svg');
   &::before {
     content: "";
-    background-image: url(./img/twitter-blue.svg);
+    background-image: url('../img/twitter-blue.svg');
   }
   &.icon-gray {
-    background-image: url(./img/twitter-gray.svg);
+    background-image: url('../img/twitter-gray.svg');
     &:hover {
-      background-image: url(./img/twitter-blue.svg);
+      background-image: url('../img/twitter-blue.svg');
     }
   }
 }
 
 .linkedin {
-  background-image: url(./img/linkedin.svg);
+  background-image: url('../img/linkedin.svg');
   background-position: center center;
 }
 
 .rss {
-  background-image: url(./img/rss.svg);
+  background-image: url('../img/rss.svg');
 }
 .youtube {
-  background-image: url(./img/youtube.svg);
+  background-image: url('../img/youtube.svg');
 }
 .googleplus {
-  background-image: url(./img/gplus.svg);
+  background-image: url('../img/gplus.svg');
   &::before {
     content: "";
-    background-image: url(./img/gplus-blue.svg);
+    background-image: url('../img/gplus-blue.svg');
   }
   &.icon-gray {
-    background-image: url(./img/gplus-gray.svg);
+    background-image: url('../img/gplus-gray.svg');
     &:hover {
-      background-image: url(./img/gplus-blue.svg);
+      background-image: url('../img/gplus-blue.svg');
     }
   }
 }
@@ -119,23 +119,23 @@
   }
 }
 .pinterest {
-  background-image: url(./img/pinterest.svg);
+  background-image: url('../img/pinterest.svg');
   &::before {
     content: "";
-    background-image: url(./img/pinterest-blue.svg);
+    background-image: url('../img/pinterest-blue.svg');
   }
   &.icon-gray {
-    background-image: url(./img/pinterest-gray.svg);
+    background-image: url('../img/pinterest-gray.svg');
     &:hover {
-      background-image: url(./img/pinterest-blue.svg);
+      background-image: url('../img/pinterest-blue.svg');
     }
   }
 }
 .vimeo {
-  background-image: url(./img/vimeo.svg);
+  background-image: url('../img/vimeo.svg');
 }
 .instagram {
-  background-image: url(./img/instagram.svg);
+  background-image: url('../img/instagram.svg');
 }
 .footer-container {
   margin-top: $medium-space;
