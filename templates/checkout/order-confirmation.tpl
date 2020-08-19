@@ -38,7 +38,7 @@
 {/block}
 
 {block name='page_content_container'}
-  <section id="content" class="page-content page-order-confirmation card">
+  <section id="content" class="page-content page-order-confirmation">
     <div class="card-block">
       <div class="row">
 
