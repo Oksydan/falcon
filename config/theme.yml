@@ -64,11 +64,11 @@ global_settings:
       displayNav2:
         - ps_languageselector
         - ps_currencyselector
+      displayTop:
+        - ps_searchbar
         - ps_customersignin
         - ps_shoppingcart
-      displayTop:
         - ps_mainmenu
-        - ps_searchbar
       displayHome:
         - ps_imageslider
         - ps_featuredproducts

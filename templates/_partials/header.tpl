@@ -46,8 +46,6 @@
           </div>
           <div class="float-right" id="_mobile_cart"></div>
           <div class="float-right" id="_mobile_user_info"></div>
-          <div class="top-logo" id="_mobile_logo"></div>
-          <div class="clearfix"></div>
         </div>
       </div>
     </div>
@@ -57,25 +55,24 @@
 {block name='header_top'}
   <div class="header-top">
     <div class="container">
-       <div class="row">
-        <div class="col-md-2 hidden-sm-down" id="_desktop_logo">
-            {if $page.page_name == 'index'}
-              <h1>
-                <a href="{$urls.base_url}">
-                  <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
-                </a>
-              </h1>
-            {else}
-                <a href="{$urls.base_url}">
-                  <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name}" loading="lazy">
-                </a>
-            {/if}
+
+       <div class="row header-top__row">
+
+        <div class="header-top__block header-top__block--logo">
+          {if $page.page_name == 'index'}
+            <h1 class="mb-0">
+          {/if}
+            <a href="{$urls.base_url}">
+              <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name}" loading="lazy">
+            </a>
+          {if $page.page_name == 'index'}
+            </h1>
+          {/if}
         </div>
-        <div class="col-md-10 col-sm-12">
-          {hook h='displayTop'}
-          <div class="clearfix"></div>
-        </div>
+
+        {hook h='displayTop'}
       </div>
+
       <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
         <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
         <div class="js-top-menu-bottom">
@@ -84,6 +81,7 @@
           <div id="_mobile_contact_link"></div>
         </div>
       </div>
+
     </div>
   </div>
   {hook h='displayNavFullWidth'}

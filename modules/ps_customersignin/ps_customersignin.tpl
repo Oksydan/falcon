@@ -22,16 +22,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_user_info">
+<div class="header-top__block header-top__block--user">
   <div class="user-info">
     {if $logged}
-      <a
-        class="logout hidden-sm-down"
-        href="{$logout_url}"
-        rel="nofollow"
-      >
-        {l s='Sign out' d='Shop.Theme.Actions'}
-      </a>
       <a
         class="account"
         href="{$my_account_url}"
