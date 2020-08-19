@@ -1,3 +1,7 @@
+html {
+  font-size: 62.5%;
+}
+
 body,
 html {
   height: 100%;
@@ -6,7 +10,7 @@ html {
 body {
   direction: ltr;
   font-family: 'Roboto', sans-serif;
-  font-size: 62.5%;
+  font-size: $base-font-size;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $gray-darker;
