@@ -25,16 +25,18 @@ $btn-primary-border: transparent;
 $btn-secondary-color: $gray-darker;
 $btn-secondary-bg: $gray-lighter;
 $btn-secondary-border: transparent;
-$btn-border-radius: 0;
-$input-border-color: rgba(0, 0, 0, 0.25);
-$headings-font-weight: 700;
 $tooltip-bg: $brand-danger;
-$border-radius: 0;
-$extra-small-space: 0.3125rem;
-$small-space: 0.625rem;
-$medium-space: 1.25rem;
-$large-space: 1.875rem;
-$extra-large-space: 2.5rem;
+
+
+$extra-small-space: map-get($spacers,1);
+$small-space: map-get($spacers,2);
+$medium-space: map-get($spacers,3);
+$large-space: map-get($spacers,4);
+$extra-large-space: map-get($spacers,5);
+$exxtra-large-space: map-get($spacers,6);
+
+
+
 $warning: #FF9A52;
 $warning-second: #F49D6E;
 $warning-hover: #FDE7BB;

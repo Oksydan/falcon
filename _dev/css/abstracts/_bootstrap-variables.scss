@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
-
+@import "~bootstrap/scss/mixins";
 
 // Variables
 //
@@ -202,15 +202,40 @@ $input-btn-focus-width:       .1rem;
 
 $input-btn-padding-y-sm:      .4rem;
 $input-btn-padding-x-sm:      map-get($spacers,1);
+$input-btn-font-size-sm:      $font-size-sm;
+$input-btn-line-height-sm:    $line-height-sm;
 
 $input-btn-padding-y-lg:      map-get($spacers,2);
 $input-btn-padding-x-lg:      map-get($spacers,3);
+$input-btn-font-size-lg:      $font-size-lg;
+$input-btn-line-height-lg:    $line-height-lg;
 
-$input-btn-border-width:      $border-width !default;
+$input-btn-border-width:      $border-width;
 
 
 // Buttons
 //
 // For each of Bootstrap's buttons, define text, background, and border color.
 
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$btn-padding-y:               $input-btn-padding-y;
+$btn-padding-x:               $input-btn-padding-x;
+$btn-font-family:             $input-btn-font-family;
+$btn-font-size:               $input-btn-font-size;
+$btn-line-height:             $input-btn-line-height;
 $btn-white-space:             normal;
+
+$btn-padding-y-sm:            $input-btn-padding-y-sm;
+$btn-padding-x-sm:            $input-btn-padding-x-sm;
+$btn-font-size-sm:            $input-btn-font-size-sm;
+$btn-line-height-sm:          $input-btn-line-height-sm;
+
+$btn-padding-y-lg:            $input-btn-padding-y-lg;
+$btn-padding-x-lg:            $input-btn-padding-x-lg;
+$btn-font-size-lg:            $input-btn-font-size-lg;
+$btn-line-height-lg:          $input-btn-line-height-lg;

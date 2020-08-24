@@ -1,10 +1,11 @@
-
 @import "abstracts/bootstrap-variables";
-@import "abstracts/variables";
 @import "vendors/bootstrap";
 @import "vendors/bootstrap-backwards-compatibility";
 
+
+@import "abstracts/variables";
 @import "abstracts/mixins";
+
 
 @import "base/base";
 @import "base/typography";
