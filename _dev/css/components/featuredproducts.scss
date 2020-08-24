@@ -98,7 +98,7 @@ $product-description-height: 70px;
     transition: bottom .3s;
     .quick-view {
       color: $gray;
-      font-size: $base-font-size;
+      font-size: $font-size-base;
       &:hover {
         color: $brand-primary;
       }

@@ -55,7 +55,7 @@ body#checkout {
       text-transform: lowercase;
       font-weight: normal;
       .edit {
-        font-size: $base-font-size;
+        font-size: $font-size-base;
       }
     }
     .not-allowed {
@@ -204,7 +204,7 @@ body#checkout {
       margin: 0 0.3125rem;
       .delete,
       .edit {
-        font-size: $base-font-size;
+        font-size: $font-size-base;
       }
     }
     hr {

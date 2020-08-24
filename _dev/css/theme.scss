@@ -1,6 +1,9 @@
 
-@import "abstracts/bootstrap-variables"; // FILE INCLUDES '../vendors/bootstrap' AND '../vendors/bootstrap-backwards-compatibility' FILE STRUCTURE REQUIRED TO OVERRIDE BOOTSTRAP VARIABLES
+@import "abstracts/bootstrap-variables";
 @import "abstracts/variables";
+@import "vendors/bootstrap";
+@import "vendors/bootstrap-backwards-compatibility";
+
 @import "abstracts/mixins";
 
 @import "base/base";
