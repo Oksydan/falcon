@@ -121,6 +121,12 @@ module.exports = {
     ]
   },
 
+  externals: {
+    prestashop: 'prestashop',
+    $: '$',
+    jquery : 'jQuery'
+  },
+
   optimization: {
     removeAvailableModules: false,
     removeEmptyChunks: false,

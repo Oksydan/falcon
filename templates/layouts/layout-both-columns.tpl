@@ -104,6 +104,8 @@
       {include file="_partials/javascript.tpl" javascript=$javascript.bottom}
     {/block}
 
+    <script type="text/javascript" src="http://starter.test:3505/themes/starter/assets/theme.js"></script>
+
     {block name='hook_before_body_closing_tag'}
       {hook h='displayBeforeBodyClosingTag'}
     {/block}

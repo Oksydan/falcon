@@ -22,6 +22,7 @@ $(document).ready(function () {
   var showModal = prestashop.blockcart.showModal || function (modal) {
     var $body = $('body');
     $body.append(modal);
+    $('#blockcart-modal').modal('show');
     $body.one('click', '#blockcart-modal', function (event) {
       if (event.target.id === 'blockcart-modal') {
         $(event.target).remove();
