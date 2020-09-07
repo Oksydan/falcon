@@ -25,7 +25,7 @@
 
 
 import './selectors';
-import './boostrap/boostrapImports';
+import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 
 import './responsive';
