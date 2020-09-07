@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+
 
 const config  = {
   "port" : "3505",
@@ -18,6 +20,7 @@ const configureDevServer = () => {
   overlay: true,
   port: config.port,
   publicPath: config.publicPath,
+  writeToDisk: true,
   proxy: {
     '**': {
       target: config.siteURL,
@@ -50,6 +53,7 @@ module.exports = {
 
   output: {
     filename: "js/[name].js",
+    path: path.resolve(__dirname, '../assets'),
     publicPath: config.siteURL + ':' + config.port + config.publicPath,
     pathinfo: false,
   },
@@ -101,7 +105,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'img/',
@@ -137,6 +141,16 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
+    }),
+    new SVGSpritemapPlugin('img/**/*.svg', {
+      output: {
+        filename: 'img/sprite.svg',
+      },
+      sprite: {
+        generate: {
+          use: true
+        }
+      },
     })
   ]
 }
