@@ -49,7 +49,7 @@ module.exports = {
   mode: 'development',
 
   output: {
-    filename: "[name].js",
+    filename: "js/[name].js",
     publicPath: config.siteURL + ':' + config.port + config.publicPath,
     pathinfo: false,
   },
@@ -136,7 +136,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: "[name].css"
+      filename: "css/[name].css"
     })
   ]
 }

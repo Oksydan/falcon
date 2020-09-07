@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="{$stylesheet.uri}" type="text/css" media="{$stylesheet.media}">
 {/foreach}
 
-<link rel="stylesheet" href="http://starter.test:3505/themes/starter/assets/theme.css" type="text/css" media="all">
+<link rel="stylesheet" href="{$urls.base_url|substr:0:-1}:3505/themes/starter/assets/css/theme.css" type="text/css" media="all">
 
 {foreach $stylesheets.inline as $stylesheet}
   <style>
