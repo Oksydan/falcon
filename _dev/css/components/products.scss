@@ -75,11 +75,6 @@
     display: block;
     width: 100%;
   }
-  .add-to-cart {
-    height: 2.75rem;
-    line-height: inherit;
-    padding-top: 0.625rem;
-  }
 }
 .product-quantity {
   display: flex;
@@ -148,7 +143,6 @@
   }
 
   .tax-shipping-delivery-label {
-    font-size: 0.8125rem;
     color: $gray;
 
     .delivery-information {
@@ -540,7 +534,7 @@
     text-transform: uppercase;
     color: white;
     margin-top: $small-space;
-    font-size: $base-font-size;
+    font-size: $font-size-base;
 
     &.online-only {
       position: absolute;

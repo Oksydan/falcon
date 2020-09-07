@@ -10,11 +10,9 @@ html {
 body {
   direction: ltr;
   font-family: 'Roboto', sans-serif;
-  font-size: $base-font-size;
+  font-size: $font-size-base;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $gray-darker;
-  line-height: 1.35;
 }
 
 ul {

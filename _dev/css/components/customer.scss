@@ -85,7 +85,7 @@
     }
     .no-account {
       text-align: center;
-      font-size: $base-font-size;
+      font-size: $font-size-base;
     }
   }
 }
@@ -108,7 +108,7 @@
     .address-body {
       padding: 1rem;
       h4 {
-        font-size: $base-font-size;
+        font-size: $font-size-base;
         font-weight: 700;
       }
       address {
@@ -125,7 +125,7 @@
           color: $gray-darker;
         }
         i {
-          font-size: $base-font-size;
+          font-size: $font-size-base;
         }
         span {
           font-size: $font-size-lg;
@@ -142,10 +142,10 @@
         color: $gray-darker;
       }
       i {
-        font-size: $base-font-size;
+        font-size: $font-size-base;
       }
       span {
-        font-size: $base-font-size;
+        font-size: $font-size-base;
         vertical-align: middle;
         margin-top: $small-space;
       }
@@ -161,7 +161,7 @@
     margin-bottom: 1rem;
   }
   h3 {
-    font-size: $base-font-size;
+    font-size: $font-size-base;
     font-weight: 700;
     text-transform: uppercase;
     color: $gray-darker;
@@ -193,7 +193,7 @@
   .addresses {
     margin: 0 -0.9375rem;
     h4 {
-      font-size: $base-font-size;
+      font-size: $font-size-base;
       font-weight: 700;
     }
   }
@@ -295,7 +295,7 @@
       a {
         text-align: center;
         display: inline-block;
-        font-size: $base-font-size;
+        font-size: $font-size-base;
         font-weight: 700;
         text-transform: uppercase;
         color: $gray;
@@ -354,7 +354,7 @@
   .account-link {
     margin-right: 1rem;
     i {
-      font-size: $base-font-size;
+      font-size: $font-size-base;
     }
     span {
       font-size: $font-size-sm;
