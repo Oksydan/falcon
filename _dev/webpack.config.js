@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const chokidar = require('chokidar');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 
 const config  = {
@@ -14,25 +16,43 @@ const config  = {
 
 const configureDevServer = () => {
   return {
-  host: config.serverAddress,
-  hot: true,
-  open: true,
-  overlay: true,
-  port: config.port,
-  publicPath: config.publicPath,
-  writeToDisk: true,
-  proxy: {
-    '**': {
-      target: config.siteURL,
-      secure: false,
-      changeOrigin: true,
-    }
-  },
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-  },
+    host: config.serverAddress,
+    hot: true,
+    open: true,
+    overlay: true,
+    port: config.port,
+    publicPath: config.publicPath,
+    writeToDisk: true,
+    proxy: {
+      '**': {
+        target: config.siteURL,
+        secure: false,
+        changeOrigin: true,
+      }
+    },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
+    before(app, server) {
+      const files = [
+        "../**/*.tpl"
+      ];
+
+      chokidar
+        .watch(files, {
+          alwaysStat: true,
+          atomic: false,
+          followSymlinks: false,
+          ignoreInitial: true,
+          ignorePermissionErrors: true,
+          persistent: true
+        })
+        .on("all", () => {
+          server.sockWrite(server.sockets, "content-changed");
+        });
+    },
   };
 };
 
@@ -142,6 +162,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
     }),
+    new StylelintPlugin(),
     new SVGSpritemapPlugin('img/**/*.svg', {
       output: {
         filename: 'img/sprite.svg',
