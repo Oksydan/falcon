@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-const chokidar = require( 'chokidar' );
+const chokidar = require('chokidar');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 
 const config  = {
@@ -161,6 +162,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
     }),
+    new StylelintPlugin(),
     new SVGSpritemapPlugin('img/**/*.svg', {
       output: {
         filename: 'img/sprite.svg',
