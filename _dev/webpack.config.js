@@ -37,7 +37,9 @@ const configureDevServer = () => {
     },
     before(app, server) {
       const files = [
-        "../**/*.tpl"
+        '../**/*.tpl',
+        '../modules/**/*.js',
+        '../modules/**/*.css'
       ];
 
       chokidar
