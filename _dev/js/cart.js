@@ -246,46 +246,66 @@ $(document).ready(() => {
     sendUpdateQuantityInCartRequest(updateQuantityInCartUrl, getRequestData(qty), $target);
   }
 
-  $body.on('focusout keyup', productLineInCartSelector, (event) => {
-    if (event.type === 'keyup') {
-      if (event.keyCode === 13) {
-        updateProductQuantityInCart(event);
+  $body.on(
+    'focusout keyup',
+    productLineInCartSelector,
+    (event) => {
+      if (event.type === 'keyup') {
+        if (event.keyCode === 13) {
+          updateProductQuantityInCart(event);
+        }
+        return false;
       }
-      return false;
-    }
 
-    updateProductQuantityInCart(event);
-  });
+      updateProductQuantityInCart(event);
+    }
+  );
 
   const $timeoutEffect = 400;
 
-  $body.on('hidden.bs.collapse', '#promo-code', () => {
-    $('.display-promo').show($timeoutEffect);
-  });
+  $body.on(
+    'hidden.bs.collapse',
+    '#promo-code',
+    () => {
+      $('.display-promo').show($timeoutEffect);
+    }
+  );
 
-  $body.on('click', '.promo-code-button', (event) => {
-    event.preventDefault();
+  $body.on(
+    'click',
+    '.promo-code-button',
+    (event) => {
+      event.preventDefault();
 
-    $('#promo-code').collapse('toggle');
-  });
+      $('#promo-code').collapse('toggle');
+    }
+  );
 
-  $body.on('click', '.display-promo', (event) => {
-    $(event.currentTarget).hide($timeoutEffect);
-  });
+  $body.on(
+    'click',
+    '.display-promo',
+    (event) => {
+      $(event.currentTarget).hide($timeoutEffect);
+    }
+  );
 
-  $body.on('click', '.js-discount .code', (event) => {
-    event.stopPropagation();
+  $body.on(
+    'click',
+    '.js-discount .code',
+    (event) => {
+      event.stopPropagation();
 
-    const $code = $(event.currentTarget);
-    const $discountInput = $('[name=discount_name]');
+      const $code = $(event.currentTarget);
+      const $discountInput = $('[name=discount_name]');
 
-    $discountInput.val($code.text());
-    // Show promo code field
-    $('#promo-code').collapse('show');
-    $('.display-promo').hide($timeoutEffect);
+      $discountInput.val($code.text());
+      // Show promo code field
+      $('#promo-code').collapse('show');
+      $('.display-promo').hide($timeoutEffect);
 
-    return false;
-  });
+      return false;
+    }
+  )
 });
 
 const CheckUpdateQuantityOperations = {
@@ -300,10 +320,7 @@ const CheckUpdateQuantityOperations = {
     }
 
     if ('' !== errorMsg) {
-      let strError =
-        ' <article class="alert alert-danger" role="alert" data-alert="danger"><ul><li>' +
-        errorMsg +
-        '</li></ul></article>';
+      let strError = ' <article class="alert alert-danger" role="alert" data-alert="danger"><ul><li>' + errorMsg + '</li></ul></article>';
       $('#notifications .container').html(strError);
       errorMsg = '';
       isUpdateOperation = false;

@@ -43,23 +43,27 @@ $(document).ready(function () {
         min: minimalProductQuantity,
       });
     }
+    $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
+    $('.js-product-images-modal').replaceWith(event.product_images_modal);
 
-    $($(prestashop.themeSelectors.product.activeTabs).attr('href')).addClass('active').removeClass('fade');
-    $(prestashop.themeSelectors.product.imagesModal).replaceWith(event.product_images_modal);
 
   });
 
   function coverImage() {
-    $(prestashop.themeSelectors.product.thumb).on('click', (event) => {
-      $(prestashop.themeSelectors.product.modalProductCover).attr('src', $(event.target).data('image-large-src'));
-      $(prestashop.themeSelectors.product.selected).removeClass('selected');
-      $(event.target).addClass('selected');
-      $(prestashop.themeSelectors.product.cover).prop('src', $(event.currentTarget).data('image-large-src'));
-    });
+    $('.js-thumb').on(
+      'click',
+      (event) => {
+        $('.js-modal-product-cover').attr('src',$(event.target).data('image-large-src'));
+        $('.selected').removeClass('selected');
+        $(event.target).addClass('selected');
+        $('.js-qv-product-cover').prop('src', $(event.currentTarget).data('image-large-src'));
+      }
+    );
   }
 
-  function createInputFile() {
-    $(prestashop.themeSelectors.fileInput).on('change', (event) => {
+  function createInputFile()
+  {
+    $('.js-file-input').on('change', (event) => {
       let target, file;
 
       if ((target = $(event.currentTarget)[0]) && (file = target.files[0])) {
@@ -68,10 +72,9 @@ $(document).ready(function () {
     });
   }
 
-  function createProductSpin() {
-    const $quantityInput = $(prestashop.selectors.quantityWanted);
-
-    console.log($quantityInput);
+  function createProductSpin()
+  {
+    const $quantityInput = $('#quantity_wanted');
 
     $quantityInput.TouchSpin({
       verticalbuttons: true,
@@ -89,15 +92,12 @@ $(document).ready(function () {
         $quantityInput.trigger('change');
       }
     });
-
-    $('body').on('change keyup', prestashop.selectors.quantityWanted, (e) => {
-      if ($quantityInput.val() !== '') {
-        $(e.currentTarget).trigger('touchspin.stopspin');
-        prestashop.emit('updateProduct', {
+    $('body').on('change keyup', '#quantity_wanted', (e) => {
+      $(e.currentTarget).trigger('touchspin.stopspin');
+      prestashop.emit('updateProduct', {
           eventType: 'updatedProductQuantity',
-          event: e,
-        });
-      }
+          event: e
+      });
     });
   }
 });

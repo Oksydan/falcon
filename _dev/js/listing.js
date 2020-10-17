@@ -56,14 +56,14 @@ $(document).ready(() => {
 
   var productConfig = (qv) => {
     const MAX_THUMBS = 4;
-    var $arrows = $(prestashop.themeSelectors.product.arrows);
+    var $arrows = $('.js-arrows');
     var $thumbnails = qv.find('.js-qv-product-images');
-    $(prestashop.themeSelectors.product.thumb).on('click', (event) => {
-      if ($(prestashop.themeSelectors.product.thumb).hasClass('selected')) {
-        $(prestashop.themeSelectors.product.thumb).removeClass('selected');
+    $('.js-thumb').on('click', (event) => {
+      if ($('.js-thumb').hasClass('selected')) {
+        $('.js-thumb').removeClass('selected');
       }
       $(event.currentTarget).addClass('selected');
-      $(prestashop.themeSelectors.product.cover).attr('src', $(event.target).data('image-large-src'));
+      $('.js-qv-product-cover').attr('src', $(event.target).data('image-large-src'));
     });
     if ($thumbnails.find('li').length <= MAX_THUMBS) {
       $arrows.hide();
@@ -71,17 +71,14 @@ $(document).ready(() => {
       $arrows.on('click', (event) => {
         if ($(event.target).hasClass('arrow-up') && $('.js-qv-product-images').position().top < 0) {
           move('up');
-          $(prestashop.themeSelectors.arrowDown).css('opacity', '1');
-        } else if (
-          $(event.target).hasClass('arrow-down') &&
-          $thumbnails.position().top + $thumbnails.height() > $('.js-qv-mask').height()
-        ) {
+          $('.arrow-down').css('opacity', '1');
+        } else if ($(event.target).hasClass('arrow-down') && $thumbnails.position().top + $thumbnails.height() > $('.js-qv-mask').height()) {
           move('down');
-          $(prestashop.themeSelectors.arrowUp).css('opacity', '1');
+          $('.arrow-up').css('opacity', '1');
         }
       });
     }
-    qv.find(prestashop.selectors.quantityWanted).TouchSpin({
+    qv.find('#quantity_wanted').TouchSpin({
       verticalbuttons: true,
       verticalupclass: 'material-icons touchspin-up',
       verticaldownclass: 'material-icons touchspin-down',
@@ -91,23 +88,20 @@ $(document).ready(() => {
       max: 1000000,
     });
   };
-  $('body').on('click', prestashop.themeSelectors.listing.searchFilterToggler, function () {
-    $(prestashop.themeSelectors.listing.searchFiltersWrapper).removeClass('hidden-sm-down');
-    $(prestashop.themeSelectors.contentWrapper).addClass('hidden-sm-down');
-    $(prestashop.themeSelectors.footer).addClass('hidden-sm-down');
+  $('body').on('click', '#search_filter_toggler', function () {
+    $('#search_filters_wrapper').removeClass('hidden-sm-down');
+    $('#content-wrapper').addClass('hidden-sm-down');
+    $('#footer').addClass('hidden-sm-down');
   });
-  $(prestashop.themeSelectors.listing.searchFilterControls + ' ' + prestashop.themeSelectors.clear).on(
-    'click',
-    function () {
-      $(prestashop.themeSelectors.listing.searchFiltersWrapper).addClass('hidden-sm-down');
-      $(prestashop.themeSelectors.contentWrapper).removeClass('hidden-sm-down');
-      $(prestashop.themeSelectors.footer).removeClass('hidden-sm-down');
-    }
-  );
-  $(prestashop.themeSelectors.listing.searchFilterControls + ' .ok').on('click', function () {
-    $(prestashop.themeSelectors.listing.searchFiltersWrapper).addClass('hidden-sm-down');
-    $(prestashop.themeSelectors.contentWrapper).removeClass('hidden-sm-down');
-    $(prestashop.themeSelectors.footer).removeClass('hidden-sm-down');
+  $('#search_filter_controls .clear').on('click', function () {
+    $('#search_filters_wrapper').addClass('hidden-sm-down');
+    $('#content-wrapper').removeClass('hidden-sm-down');
+    $('#footer').removeClass('hidden-sm-down');
+  });
+  $('#search_filter_controls .ok').on('click', function () {
+    $('#search_filters_wrapper').addClass('hidden-sm-down');
+    $('#content-wrapper').removeClass('hidden-sm-down');
+    $('#footer').removeClass('hidden-sm-down');
   });
 
   const parseSearchUrl = function (event) {
@@ -122,25 +116,20 @@ $(document).ready(() => {
     return $(event.target).parent()[0].dataset.searchUrl;
   };
 
-  $('body').on('change', prestashop.themeSelectors.listing.searchFilters + ' input[data-search-url]', function (event) {
+  $('body').on('change', '#search_filters input[data-search-url]', function (event) {
     prestashop.emit('updateFacets', parseSearchUrl(event));
   });
 
-  $('body').on('click', prestashop.themeSelectors.listing.searchFiltersClearAll, function (event) {
+  $('body').on('click', '.js-search-filters-clear-all', function (event) {
     prestashop.emit('updateFacets', parseSearchUrl(event));
   });
 
-  $('body').on('click', prestashop.themeSelectors.listing.searchLink, function (event) {
+  $('body').on('click', '.js-search-link', function (event) {
     event.preventDefault();
     prestashop.emit('updateFacets', $(event.target).closest('a').get(0).href);
   });
 
-  window.addEventListener('popstate', function (e) {
-    var state = e.state;
-    window.location.href = state && state.current_url ? state.current_url : history;
-  });
-
-  $('body').on('change', prestashop.themeSelectors.listing.searchFilters + ' select', function (event) {
+  $('body').on('change', '#search_filters select', function (event) {
     const form = $(event.target).closest('form');
     prestashop.emit('updateFacets', '?' + form.serialize());
   });
@@ -151,14 +140,14 @@ $(document).ready(() => {
   });
 });
 
-function updateProductListDOM(data) {
-  $(prestashop.themeSelectors.listing.searchFilters).replaceWith(data.rendered_facets);
-  $(prestashop.themeSelectors.listing.activeSearchFilters).replaceWith(data.rendered_active_filters);
-  $(prestashop.themeSelectors.listing.listTop).replaceWith(data.rendered_products_top);
-  $(prestashop.themeSelectors.listing.list).replaceWith(data.rendered_products);
-  $(prestashop.themeSelectors.listing.listBottom).replaceWith(data.rendered_products_bottom);
+function updateProductListDOM (data) {
+  $('#search_filters').replaceWith(data.rendered_facets);
+  $('#js-active-search-filters').replaceWith(data.rendered_active_filters);
+  $('#js-product-list-top').replaceWith(data.rendered_products_top);
+  $('#js-product-list').replaceWith(data.rendered_products);
+  $('#js-product-list-bottom').replaceWith(data.rendered_products_bottom);
   if (data.rendered_products_header) {
-    $(prestashop.themeSelectors.listing.listHeader).replaceWith(data.rendered_products_header);
+      $('#js-product-list-header').replaceWith(data.rendered_products_header);
   }
 
   let productMinitature = new ProductMinitature();
