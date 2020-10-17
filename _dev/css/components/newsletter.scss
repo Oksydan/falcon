@@ -1,8 +1,8 @@
 
 #left-column {
   .block_newsletter {
-    @include box-shadow;
-    margin-bottom: 1.563rem;
+    @include box-shadow ();
     padding: 1.563rem 1.25rem;
+    margin-bottom: 1.563rem;
   }
 }

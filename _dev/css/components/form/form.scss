@@ -1,10 +1,10 @@
-@import 'input-group/input-group';
-@import 'form-control/form-control';
-@import 'form-group/form-group';
+@import "input-group/input-group";
+@import "form-control/form-control";
+@import "form-group/form-group";
 
 .form-control-submit {
   &.disabled {
+    color: #fff;
     background: $brand-info;
-    color: white;
   }
 }

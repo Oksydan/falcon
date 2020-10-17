@@ -26,34 +26,32 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 
 function setUpCheckout() {
-  $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
+  $('.js-terms a').on('click', (event) => {
+    let url = $(event.target).attr('href');
     event.preventDefault();
-    var url = $(event.target).attr('href');
     if (url) {
       // TODO: Handle request if no pretty URL
-      url += `?content_only=1`;
+      url += '?content_only=1';
       $.get(url, (content) => {
-        $(prestashop.themeSelectors.modal)
-          .find(prestashop.themeSelectors.modalContent)
+        $('#modal')
+          .find('.js-modal-content')
           .html($(content).find('.page-cms').contents());
-      }).fail((resp) => {
-        prestashop.emit('handleError', {eventType: 'clickTerms', resp: resp});
-      });
+      }).fail((resp) => prestashop.emit('handleError', {eventType: 'clickTerms', resp}));
     }
 
-    $(prestashop.themeSelectors.modal).modal('show');
+    $('#modal').modal('show');
   });
 
-  $(prestashop.themeSelectors.checkout.giftCheckbox).on('click', (event) => {
+  $('.js-gift-checkbox').on('click', () => {
     $('#gift').collapse('toggle');
   });
 }
 
 function toggleImage() {
   // Arrow show/hide details Checkout page
-  $(prestashop.themeSelectors.checkout.imagesLink).on('click', function (icon) {
-    icon = $(this).find('i.material-icons');
-    if (icon.text() == 'expand_more') {
+  $('.card-block .cart-summary-products p a').on('click', () => {
+    const icon = $(this).find('i.material-icons');
+    if (icon.text() === 'expand_more') {
       icon.text('expand_less');
     } else {
       icon.text('expand_more');
@@ -61,19 +59,19 @@ function toggleImage() {
   });
 }
 
-$(document).ready(() => {
+$(() => {
   if ($('body#checkout').length === 1) {
     setUpCheckout();
     toggleImage();
   }
 
   prestashop.on('updatedDeliveryForm', (params) => {
-    if (typeof params.deliveryOption === 'undefined' || 0 === params.deliveryOption.length) {
+    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
       return;
     }
     // Hide all carrier extra content ...
-    $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
+    $('.carrier-extra-content').hide();
     // and show the one related to the selected carrier
-    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).slideDown();
+    params.deliveryOption.next('.carrier-extra-content').slideDown();
   });
 });

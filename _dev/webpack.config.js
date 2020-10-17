@@ -4,6 +4,7 @@ const path = require('path');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const chokidar = require('chokidar');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 
 const config  = {
@@ -109,7 +110,7 @@ module.exports = {
               importLoaders: 2
             },
           },
-          { 
+          {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
@@ -120,11 +121,11 @@ module.exports = {
               ]
             }
           },
-          { 
-            loader: 'sass-loader', 
+          {
+            loader: 'sass-loader',
             options: {
               implementation: require('sass')
-            } 
+            }
           },
         ]
       },
@@ -166,6 +167,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
     }),
+    new ESLintPlugin(),
     new StylelintPlugin(),
     new SVGSpritemapPlugin('img/**/*.svg', {
       output: {

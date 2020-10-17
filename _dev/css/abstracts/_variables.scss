@@ -1,11 +1,10 @@
 $gray-dark: #444;
 $gray-darker: #111;
-$gray: #7A7A7A;
-$gray-light: #F1F1F1;
-$gray-light-second: #DBDBDB;
+$gray: #7a7a7a;
+$gray-light: #f1f1f1;
+$gray-light-second: #dbdbdb;
 $gray-lighter: #f6f6f6;
-$gray-lighter-second: #F7F7F7;
-
+$gray-lighter-second: #f7f7f7;
 
 
 $brand-primary: #2fb5d2;
@@ -14,7 +13,7 @@ $brand-secondary: #f39d72;
 
 $brand-success: #4cbb6c;
 $brand-warning: #ff9a52;
-$brand-info: blue;
+$brand-info: #00f;
 $brand-danger: #ff4c4c;
 
 
@@ -28,22 +27,21 @@ $btn-secondary-border: transparent;
 $tooltip-bg: $brand-danger;
 
 
-$extra-small-space: map-get($spacers,1);
-$small-space: map-get($spacers,2);
-$medium-space: map-get($spacers,3);
-$large-space: map-get($spacers,4);
-$extra-large-space: map-get($spacers,5);
-$exxtra-large-space: map-get($spacers,6);
+$extra-small-space: map-get($spacers, 1);
+$small-space: map-get($spacers, 2);
+$medium-space: map-get($spacers, 3);
+$large-space: map-get($spacers, 4);
+$extra-large-space: map-get($spacers, 5);
+$exxtra-large-space: map-get($spacers, 6);
 
 
-
-$warning: #FF9A52;
-$warning-second: #F49D6E;
-$warning-hover: #FDE7BB;
-$alert-warning-bg: rgba(255,154,82,0.3);
+$warning: #ff9a52;
+$warning-second: #f49d6e;
+$warning-hover: #fde7bb;
+$alert-warning-bg: rgba(255, 154, 82, 0.3);
 $alert-warning-border: $warning;
 $alert-warning-text: $gray-darker;
 $btn-warning-bg: $warning;
-$btn-warning-color: white;
-$btn-tertiary-color: #6C868E;
-$btn-tertiary-hover: #BBCDD2;
+$btn-warning-color: #fff;
+$btn-tertiary-color: #6c868e;
+$btn-tertiary-hover: #bbcdd2;

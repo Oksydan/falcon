@@ -38,7 +38,7 @@
 {/block}
 
 {block name='page_content_container'}
-  <section id="content" class="page-content page-order-confirmation">
+  <section id="content" class="page-content page-order-confirmation card">
     <div class="card-block">
       <div class="row">
 
@@ -75,7 +75,7 @@
 
   {block name='hook_payment_return'}
     {if ! empty($HOOK_PAYMENT_RETURN)}
-    <section id="content-hook_payment_return" class="card">
+    <section id="content-hook_payment_return" class="card definition-list">
       <div class="card-block">
         <div class="row">
           <div class="col-md-12">

@@ -1,6 +1,6 @@
 .breadcrumb {
-  background: transparent;
   padding: 0;
+  background: transparent;
   &[data-depth="1"] {
     display: none;
   }
@@ -11,14 +11,14 @@
   li {
     display: inline;
     &::after {
-      content: "/";
-      color: $gray;
       margin: 0.3125rem;
+      color: $gray;
+      content: "/";
     }
     &:last-child {
-      content: "/";
-      color: $gray;
       margin: 0;
+      color: $gray;
+      content: "/";
       &::after {
         content: "";
       }

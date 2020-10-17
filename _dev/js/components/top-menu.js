@@ -23,52 +23,51 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
 import $ from 'jquery';
-import DropDown from './drop-down';
 import prestashop from 'prestashop';
+import DropDown from './drop-down';
 
 export default class TopMenu extends DropDown {
   init() {
     let elmtClass;
-    const self = this;
-    this.el.find('li').on('hover', e => {
+
+    this.el.find('li').on('hover', (e) => {
       if (this.el.parent().hasClass('mobile')) {
         return;
       }
       const currentTargetClass = $(e.currentTarget).attr('class');
       if (elmtClass !== currentTargetClass) {
-        const classesSelected = Array.prototype.slice.call(e.currentTarget.classList).map(e => (typeof e === 'string' ? `.${e}` : false));
+        const classesSelected = Array.prototype.slice.call(e.currentTarget.classList).map((tarClass) => (typeof tarClass === 'string' ? `.${tarClass}` : false));
 
         elmtClass = classesSelected.join('');
 
         if (elmtClass && $(e.target).data('depth') === 0) {
           $(`${elmtClass} .js-sub-menu`).css({
-            top: $(`${elmtClass}`).height() + $(`${elmtClass}`).position().top
+            top: $(`${elmtClass}`).height() + $(`${elmtClass}`).position().top,
           });
         }
       }
     });
+
     $('#menu-icon').on('click', () => {
       $('#mobile_top_menu_wrapper').toggle();
-      self.toggleMobileMenu();
+      this.toggleMobileMenu();
     });
-    $('.js-top-menu .category').on('mouseleave', () => {
-      if (this.el.parent().hasClass('mobile')) {
-      }
-    });
-    this.el.on('click', e => {
+
+    this.el.on('click', (e) => {
       if (this.el.parent().hasClass('mobile')) {
         return;
       }
       e.stopPropagation();
     });
-    prestashop.on('responsive update', event => {
+
+    prestashop.on('responsive update', () => {
       $('.js-sub-menu').removeAttr('style');
-      self.toggleMobileMenu();
+      this.toggleMobileMenu();
     });
     super.init();
   }
 
-  toggleMobileMenu() {
+  static toggleMobileMenu() {
     $('#header').toggleClass('is-open');
     if ($('#mobile_top_menu_wrapper').is(':visible')) {
       $('#notifications, #wrapper, #footer').hide();

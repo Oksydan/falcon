@@ -25,18 +25,19 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
 
-$(document).ready(function () {
+$(() => {
   createProductSpin();
   createInputFile();
   coverImage();
 
-  prestashop.on('updatedProduct', function (event) {
+  prestashop.on('updatedProduct', (event) => {
     createInputFile();
     coverImage();
+
     if (event && event.product_minimal_quantity) {
       const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
       const quantityInputSelector = prestashop.selectors.quantityWanted;
-      let quantityInput = $(quantityInputSelector);
+      const quantityInput = $(quantityInputSelector);
 
       // @see http://www.virtuosoft.eu/code/bootstrap-touchspin/ about Bootstrap TouchSpin
       quantityInput.trigger('touchspin.updatesettings', {
@@ -44,34 +45,35 @@ $(document).ready(function () {
       });
     }
 
-    $($(prestashop.themeSelectors.product.activeTabs).attr('href')).addClass('active').removeClass('fade');
-    $(prestashop.themeSelectors.product.imagesModal).replaceWith(event.product_images_modal);
-
+    $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
+    $('.js-product-images-modal').replaceWith(event.product_images_modal);
   });
 
   function coverImage() {
-    $(prestashop.themeSelectors.product.thumb).on('click', (event) => {
-      $(prestashop.themeSelectors.product.modalProductCover).attr('src', $(event.target).data('image-large-src'));
-      $(prestashop.themeSelectors.product.selected).removeClass('selected');
-      $(event.target).addClass('selected');
-      $(prestashop.themeSelectors.product.cover).prop('src', $(event.currentTarget).data('image-large-src'));
-    });
+    $('.js-thumb').on(
+      'click',
+      ({target, currentTarget}) => {
+        $('.js-modal-product-cover').attr('src', $(target).data('image-large-src'));
+        $('.selected').removeClass('selected');
+        $(target).addClass('selected');
+        $('.js-qv-product-cover').prop('src', $(currentTarget).data('image-large-src'));
+      },
+    );
   }
 
   function createInputFile() {
-    $(prestashop.themeSelectors.fileInput).on('change', (event) => {
-      let target, file;
+    $('.js-file-input').on('change', (event) => {
+      const target = event.currentTarget;
+      const file = target.files[0];
 
-      if ((target = $(event.currentTarget)[0]) && (file = target.files[0])) {
+      if (target && file) {
         $(target).prev().text(file.name);
       }
     });
   }
 
   function createProductSpin() {
-    const $quantityInput = $(prestashop.selectors.quantityWanted);
-
-    console.log($quantityInput);
+    const $quantityInput = $('#quantity_wanted');
 
     $quantityInput.TouchSpin({
       verticalbuttons: true,
@@ -90,14 +92,12 @@ $(document).ready(function () {
       }
     });
 
-    $('body').on('change keyup', prestashop.selectors.quantityWanted, (e) => {
-      if ($quantityInput.val() !== '') {
-        $(e.currentTarget).trigger('touchspin.stopspin');
-        prestashop.emit('updateProduct', {
-          eventType: 'updatedProductQuantity',
-          event: e,
-        });
-      }
+    $('body').on('change keyup', '#quantity_wanted', (event) => {
+      $(event.currentTarget).trigger('touchspin.stopspin');
+      prestashop.emit('updateProduct', {
+        eventType: 'updatedProductQuantity',
+        event,
+      });
     });
   }
 });

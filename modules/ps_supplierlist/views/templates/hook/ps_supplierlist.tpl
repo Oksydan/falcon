@@ -25,16 +25,11 @@
 
 <div id="search_filters_suppliers">
   <section class="facet">
-    {if $display_link_supplier}
-      <a href="{$page_link}" class="h6 text-uppercase facet-label" title="{l s='Suppliers' d='Shop.Theme.Catalog'}">
+    <p class="h6 text-uppercase facet-label">
+      {if $display_link_supplier}<a href="{$page_link}" title="{l s='Suppliers' d='Shop.Theme.Catalog'}">{/if}
         {l s='Suppliers' d='Shop.Theme.Catalog'}
-      </a>
-    {else}
-      <p class="h6 text-uppercase facet-label">
-        {l s='Suppliers' d='Shop.Theme.Catalog'}
-      </p>
-    {/if}
-
+      {if $display_link_supplier}</a>{/if}
+    </p>
     <div>
       {if $suppliers}
         {include file="module:ps_supplierlist/views/templates/_partials/$supplier_display_type.tpl" suppliers=$suppliers}
