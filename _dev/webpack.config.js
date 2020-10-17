@@ -22,7 +22,9 @@ const configureDevServer = () => {
     overlay: true,
     port: config.port,
     publicPath: config.publicPath,
-    writeToDisk: true,
+    writeToDisk: (filePath) => {
+      return !(/hot-update/.test(filePath));
+    },
     proxy: {
       '**': {
         target: config.siteURL,
@@ -37,7 +39,9 @@ const configureDevServer = () => {
     },
     before(app, server) {
       const files = [
-        "../**/*.tpl"
+        '../**/*.tpl',
+        '../modules/**/*.js',
+        '../modules/**/*.css'
       ];
 
       chokidar
