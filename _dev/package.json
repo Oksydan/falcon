@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --colors --debug --display-chunks",
-    "watch": "webpack-dev-server --progress --colors --debug --display-chunks --watch"
+    "watch": "webpack-dev-server --progress --colors --debug --display-chunks --watch",
+    "scss-fix": "stylelint \"**/*.scss\" --fix"
   },
   "author": "Igor Stępień",
   "license": "AFL-3.0",
