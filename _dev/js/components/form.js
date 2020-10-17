@@ -24,31 +24,31 @@
  */
 import $ from 'jquery';
 
+const parentFocus = () => {
+  $('.js-child-focus').on('focus', ({target}) => {
+    $(target).closest('.js-parent-focus').addClass('focus');
+  });
+  $('.js-child-focus').on('focusout', ({target}) => {
+    $(target).closest('.js-parent-focus').removeClass('focus');
+  });
+};
+
+const togglePasswordVisibility = () => {
+  $('button[data-action="show-password"]').on('click', () => {
+    const elm = $(this).closest('.input-group').children('input.js-visible-password');
+    if (elm.attr('type') === 'password') {
+      elm.attr('type', 'text');
+      $(this).text($(this).data('textHide'));
+    } else {
+      elm.attr('type', 'password');
+      $(this).text($(this).data('textShow'));
+    }
+  });
+};
+
 export default class Form {
-  init() {
-    this.parentFocus();
-    this.togglePasswordVisibility();
-  }
-
-  static parentFocus() {
-    $('.js-child-focus').on('focus', ({target}) => {
-      $(target).closest('.js-parent-focus').addClass('focus');
-    });
-    $('.js-child-focus').on('focusout', ({target}) => {
-      $(target).closest('.js-parent-focus').removeClass('focus');
-    });
-  }
-
-  static togglePasswordVisibility() {
-    $('button[data-action="show-password"]').on('click', () => {
-      const elm = $(this).closest('.input-group').children('input.js-visible-password');
-      if (elm.attr('type') === 'password') {
-        elm.attr('type', 'text');
-        $(this).text($(this).data('textHide'));
-      } else {
-        elm.attr('type', 'password');
-        $(this).text($(this).data('textShow'));
-      }
-    });
+  static init() {
+    parentFocus();
+    togglePasswordVisibility();
   }
 }

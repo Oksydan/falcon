@@ -25,13 +25,13 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
 
+const isMobile = () => prestashop.responsive.current_width < prestashop.responsive.min_width;
+
 prestashop.responsive = prestashop.responsive || {};
 
 prestashop.responsive.current_width = window.innerWidth;
 prestashop.responsive.min_width = 768;
 prestashop.responsive.mobile = isMobile();
-
-const isMobile = () => prestashop.responsive.current_width < prestashop.responsive.min_width;
 
 function swapChildren(obj1, obj2) {
   const temp = obj2.children().detach();

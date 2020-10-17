@@ -53,12 +53,11 @@ for (const i in EventEmitter.prototype) {
 
 $(document).ready(() => {
   const dropDownEl = $('.js-dropdown');
-  const form = new Form();
   const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
   const dropDown = new DropDown(dropDownEl);
   const topMenu = new TopMenu(topMenuEl);
   dropDown.init();
-  form.init();
+  Form.init();
   topMenu.init();
   ProductMinitature.init();
 });
