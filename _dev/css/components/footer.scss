@@ -19,8 +19,8 @@
 .myaccount-title,
 .myaccount-title a,
 .block-contact-title {
-  font-weight: 700;
   font-size: $font-size-base;
+  font-weight: 700;
 }
 
 #block_myaccount_infos {
@@ -30,17 +30,17 @@
 }
 
 .footer-container {
-  margin-top: $medium-space;
   padding-top: $medium-space;
+  margin-top: $medium-space;
   overflow: hidden;
-  box-shadow: 2px 2px 11px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 11px 0 rgba(0, 0, 0, 0.3);
   li {
     margin-bottom: 0.3125rem;
   }
   li a {
+    font-size: $font-size-sm;
     color: $gray;
     cursor: pointer;
-    font-size: $font-size-sm;
     &:hover {
       color: $brand-primary;
     }
@@ -58,24 +58,20 @@
     border-bottom: 1px solid $gray-lighter;
   }
   .footer-container {
-    box-shadow: none;
     margin-top: 0;
-    .wrapper {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
+    box-shadow: none;
     .links {
       .h3 {
-        line-height: 1.5;
         font-size: 1rem;
+        line-height: 1.5;
       }
       ul {
-        background-color: $gray-lighter;
         margin-bottom: 0;
+        background-color: $gray-lighter;
         > li {
           padding: 0.625rem;
-          border-bottom: 1px solid white;
-          font-weight: bold;
+          font-weight: 700;
+          border-bottom: 1px solid #fff;
           a {
             color: $gray-darker;
           }
@@ -92,8 +88,8 @@
     }
     .title {
       padding: 0.625rem;
-      border-bottom: 1px solid $gray-lighter;
       cursor: pointer;
+      border-bottom: 1px solid $gray-lighter;
       .collapse-icons .remove {
         display: none;
       }

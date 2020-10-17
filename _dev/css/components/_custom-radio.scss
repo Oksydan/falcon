@@ -1,28 +1,26 @@
 .custom-radio {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: 20px;
   height: 20px;
+  margin-right: 1.25rem;
   vertical-align: middle;
   cursor: pointer;
-  border-radius: 50%;
+  background: #fff;
   border: $gray 2px solid;
-  background: white;
-  margin-right: 1.25rem;
+  border-radius: 50%;
   input[type="radio"] {
-    opacity: 0;
     cursor: pointer;
-  }
-  input[type="radio"] {
+    opacity: 0;
     &:checked + span {
+      position: absolute;
+      top: 0.125rem;
+      left: 0.125rem;
       display: block;
-      background-color: $brand-primary;
       width: 12px;
       height: 12px;
+      background-color: $brand-primary;
       border-radius: 50%;
-      position: absolute;
-      left: 0.125rem;
-      top: 0.125rem;
     }
     &:focus + span {
       border-color: $gray;

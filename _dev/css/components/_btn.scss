@@ -1,16 +1,16 @@
 
 .btn-primary,
 .btn-secondary {
-  text-transform: uppercase;
-  font-weight: 600;
   padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .btn-unstyle {
-  background-color: transparent;
-  border: none;
   padding: 0;
   text-align: inherit;
+  background-color: transparent;
+  border: none;
   &:focus {
     outline: 0;
     .expand-more {
@@ -29,13 +29,13 @@
 }
 .btn-tertiary-outline {
   color: $btn-tertiary-color;
-  background-image: none;
   background-color: transparent;
-  border-color: $btn-tertiary-color;
+  background-image: none;
   border: 0.15rem solid $btn-tertiary-color;
+  border-color: $btn-tertiary-color;
   @include transition(all .4s ease-in-out);
   &:hover {
-    border-color: $btn-tertiary-hover;
     color: $btn-tertiary-hover;
+    border-color: $btn-tertiary-hover;
   }
 }

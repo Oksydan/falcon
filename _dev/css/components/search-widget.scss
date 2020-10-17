@@ -5,8 +5,8 @@
   .search-widget {
     form {
       input[type="text"] {
-        min-width: inherit;
         width: 100%;
+        min-width: inherit;
       }
     }
   }
@@ -42,7 +42,7 @@
         margin: 0 auto;
         input[type="text"] {
           min-width: inherit;
-          background: white;
+          background: #fff;
         }
       }
     }

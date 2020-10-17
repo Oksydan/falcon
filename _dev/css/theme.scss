@@ -2,20 +2,15 @@
 @import "vendors/bootstrap";
 @import "vendors/bootstrap-backwards-compatibility";
 
-
 @import "abstracts/variables";
 @import "abstracts/mixins";
-
 
 @import "base/base";
 @import "base/typography";
 @import "base/fonts";
 
-
 @import "layout/header";
 @import "layout/footer";
-
-
 
 @import "components/breadcrumb";
 @import "components/block-social";
@@ -23,7 +18,6 @@
 @import "components/custom-radio";
 @import "components/bootstrap-touchspin";
 @import "components/form/form";
-
 
 @import "components/alert";
 @import "components/drop-down";

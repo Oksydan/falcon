@@ -8,57 +8,39 @@ html {
 }
 
 body {
-  direction: ltr;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: $font-size-base;
+  direction: ltr;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
-  list-style: none;
   padding-left: 0;
+  list-style: none;
 }
 
-input, textarea {
-  &::-webkit-input-placeholder {
-    color: $gray;
-  }
-  &::-moz-placeholder {
-    color: $gray;
-  }
-  &:-ms-input-placeholder {
-    color: $gray;
-  }
-  &:-moz-placeholder {
+input,
+textarea {
+  &::placeholder {
     color: $gray;
   }
   &:active {
-    &::-webkit-input-placeholder {
-      color: $gray-darker;
-    }
-    &::-moz-placeholder {
-      color: $gray-darker;
-    }
-    &:-ms-input-placeholder {
-      color: $gray-darker;
-    }
-    &:-moz-placeholder {
+    &::placeholder {
       color: $gray-darker;
     }
   }
 }
 
 
-input[type=number] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  appearance: textfield;
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
     margin: 0;
+    appearance: none;
   }
 }
-
 
 
 @include media-breakpoint-down(md) {

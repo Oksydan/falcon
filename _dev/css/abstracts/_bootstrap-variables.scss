@@ -21,7 +21,6 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black:    #000;
 
-
 $blue:    #007bff;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
@@ -86,15 +85,14 @@ $spacer: 1rem;
 
 // stylelint-disable-next-line scss/dollar-variable-default
 $spacers: (
-    0: 0,
-    1: ($spacer * .5),
-    2: $spacer,
-    3: ($spacer * 2),
-    4: ($spacer * 3),
-    5: ($spacer * 4),
-    6: ($spacer * 5),
-  )
-;
+  0: 0,
+  1: ($spacer * .5),
+  2: $spacer,
+  3: ($spacer * 2),
+  4: ($spacer * 3),
+  5: ($spacer * 4),
+  6: ($spacer * 5),
+);
 
 // Body
 //
@@ -121,7 +119,6 @@ $link-hover-decoration:                   none;
 $paragraph-margin-bottom:   2rem;
 
 
-
 // Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
@@ -130,14 +127,12 @@ $grid-columns:                12;
 $grid-gutter-width:           3rem;
 $grid-row-columns:            6;
 
-
 $border-width:                2px;
-$border-color:                gray('300');
+$border-color:                gray("300");
 
 $border-radius:               .4rem;
 $border-radius-lg:            .4rem;
 $border-radius-sm:            .4rem;
-
 
 
 // Typography
@@ -186,27 +181,27 @@ $text-muted:                  $gray-600;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:          map-get($spacers,2);
-$table-cell-padding-sm:       map-get($spacers,1);
+$table-cell-padding:          map-get($spacers, 2);
+$table-cell-padding-sm:       map-get($spacers, 1);
 
 
 // Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y:         map-get($spacers,1);
-$input-btn-padding-x:         map-get($spacers,2);
+$input-btn-padding-y:         map-get($spacers, 1);
+$input-btn-padding-x:         map-get($spacers, 2);
 $input-btn-font-size:         $font-size-base;
 
 $input-btn-focus-width:       .1rem;
 
 $input-btn-padding-y-sm:      .4rem;
-$input-btn-padding-x-sm:      map-get($spacers,1);
+$input-btn-padding-x-sm:      map-get($spacers, 1);
 $input-btn-font-size-sm:      $font-size-sm;
 $input-btn-line-height-sm:    $line-height-sm;
 
-$input-btn-padding-y-lg:      map-get($spacers,2);
-$input-btn-padding-x-lg:      map-get($spacers,3);
+$input-btn-padding-y-lg:      map-get($spacers, 2);
+$input-btn-padding-x-lg:      map-get($spacers, 3);
 $input-btn-font-size-lg:      $font-size-lg;
 $input-btn-line-height-lg:    $line-height-lg;
 
@@ -216,7 +211,6 @@ $input-btn-border-width:      $border-width;
 // Buttons
 //
 // For each of Bootstrap's buttons, define text, background, and border color.
-
 
 
 // Buttons

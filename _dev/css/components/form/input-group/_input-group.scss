@@ -8,17 +8,17 @@
   .input-group-btn {
     height: 100%;
     > .btn {
+      padding: 0.625rem 1rem;
+      margin-left: 0;
+      font-size: 0.6875rem;
+      font-weight: 400;
+      color: #fff;
+      text-transform: uppercase;
       border: 0;
       box-shadow: none;
-      color: #ffffff;
-      font-size: 0.6875rem;
-      font-weight: normal;
-      margin-left: 0;
-      padding: 0.625rem 1rem;
-      text-transform: uppercase;
       &[data-action="show-password"]{
-        background: $gray;
         padding: .78rem 1rem;
+        background: $gray;
       }
     }
   }

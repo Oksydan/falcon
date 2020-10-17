@@ -1,25 +1,27 @@
 p {
-    color: $gray;
-    font-weight: 400;
+  font-weight: 400;
+  color: $gray;
 }
 
 .h1,
 .h2,
 .h3 {
-    text-transform: uppercase;
-    color: $gray-darker;
+  color: $gray-darker;
+  text-transform: uppercase;
 }
 
 .h4 {
-    font-weight: $headings-font-weight;
-    color: $gray-darker;
+  font-weight: $headings-font-weight;
+  color: $gray-darker;
 }
 
-label ,.label {
-    color: $gray-darker;
-    text-align: right;
+label,
+.label {
+  color: $gray-darker;
+  text-align: right;
 }
 
-small.label, small.value {
-    font-size: $font-size-sm;
+small.label,
+small.value {
+  font-size: $font-size-sm;
 }

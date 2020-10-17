@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important */
 @each $bp in map-keys($grid-breakpoints) {
   .hidden-#{$bp}-up {
     @include media-breakpoint-up($bp) {
@@ -10,6 +11,7 @@
     }
   }
 }
+/* stylelint-enable declaration-no-important */
 
 .float-xs-left  { @extend .float-left; }
 .float-xs-right { @extend .float-right; }

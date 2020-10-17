@@ -1,29 +1,28 @@
 .form-control {
-  background: $gray-light;
-  color: $gray;
-  border: $input-btn-border-width solid $input-border-color;
   padding: 0.5rem 1rem;
+  color: $gray;
+  background: $gray-light;
+  border: $input-btn-border-width solid $input-border-color;
   &:focus {
-    background-color: white;
-    outline: 0.1875rem solid $brand-primary;
     color: $gray-darker;
+    background-color: #fff;
+    outline: 0.1875rem solid $brand-primary;
   }
 }
 
 
 .form-control-select {
   height: 2.625rem;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background: $gray-light url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAPklEQVR4Ae3TwREAEBQD0V/6do4SXPZg7EsBhsQ8IEmSMOsiuEfg3gL3oXC7wK0bd1G4o8X9F4yIkyQfSrIByQBjp7QuND8AAAAASUVORK5CYII=") no-repeat scroll right 0.5rem center / 1.25rem 1.25rem;
   padding: 0 0.5rem;
+  background: $gray-light url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAPklEQVR4Ae3TwREAEBQD0V/6do4SXPZg7EsBhsQ8IEmSMOsiuEfg3gL3oXC7wK0bd1G4o8X9F4yIkyQfSrIByQBjp7QuND8AAAAASUVORK5CYII=") no-repeat scroll right 0.5rem center / 1.25rem 1.25rem;
+  appearance: none;
 }
 
 .form-control-valign {
   padding-top: 0.5rem;
 }
 .form-control-comment {
-  font-size: 0.875rem;
   padding-top: 0.5rem;
+  font-size: 0.875rem;
   color: $gray;
 }
