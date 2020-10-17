@@ -35,6 +35,8 @@ import './listing';
 import './product';
 import './cart';
 
+import '../css/theme.scss';
+
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import DropDown from './components/drop-down';

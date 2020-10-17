@@ -5,7 +5,7 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const chokidar = require('chokidar');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-
+const MediaQueryPlugin = require('media-query-plugin');
 
 const config  = {
   "port" : "3505",
@@ -68,10 +68,7 @@ module.exports = {
   devtool: "cheap-source-map",
 
  entry: {
-    theme: [
-      './js/theme.js',
-      './css/theme.scss'
-    ]
+    theme: './js/theme.js',
   },
 
   mode: 'development',
@@ -110,6 +107,7 @@ module.exports = {
               importLoaders: 2
             },
           },
+          MediaQueryPlugin.loader,
           {
             loader: 'postcss-loader',
             options: {
@@ -167,8 +165,17 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
     }),
+    new MediaQueryPlugin({
+      include: true,
+      queries: {
+        '(min-width: 1200px)': 'desktop',
+        '(min-width: 992px)': 'desktop',
+        '(min-width: 768px)': 'tablet',
+        '(min-width: 576px)': 'tablet'
+      },
+    }),
     new ESLintPlugin(),
-    new StylelintPlugin(),
+    // new StylelintPlugin(),
     new SVGSpritemapPlugin('img/**/*.svg', {
       output: {
         filename: 'img/sprite.svg',
