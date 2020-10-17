@@ -35,6 +35,7 @@
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
     "stylelint": "^13.7.0",
+    "stylelint-config-prestashop": "^1.0.3",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.18.0",
     "stylelint-webpack-plugin": "^2.1.0",
