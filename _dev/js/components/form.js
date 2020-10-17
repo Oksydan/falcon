@@ -25,23 +25,23 @@
 import $ from 'jquery';
 
 export default class Form {
-  init(){
+  init() {
     this.parentFocus();
     this.togglePasswordVisibility();
   }
 
-  parentFocus() {
-    $('.js-child-focus').on('focus', function () {
-      $(this).closest('.js-parent-focus').addClass('focus');
+  static parentFocus() {
+    $('.js-child-focus').on('focus', ({target}) => {
+      $(target).closest('.js-parent-focus').addClass('focus');
     });
-    $('.js-child-focus').on('focusout', function () {
-      $(this).closest('.js-parent-focus').removeClass('focus');
+    $('.js-child-focus').on('focusout', ({target}) => {
+      $(target).closest('.js-parent-focus').removeClass('focus');
     });
   }
 
-  togglePasswordVisibility() {
-    $('button[data-action="show-password"]').on('click', function () {
-      var elm = $(this).closest('.input-group').children('input.js-visible-password');
+  static togglePasswordVisibility() {
+    $('button[data-action="show-password"]').on('click', () => {
+      const elm = $(this).closest('.input-group').children('input.js-visible-password');
       if (elm.attr('type') === 'password') {
         elm.attr('type', 'text');
         $(this).text($(this).data('textHide'));
@@ -49,7 +49,6 @@ export default class Form {
         elm.attr('type', 'password');
         $(this).text($(this).data('textShow'));
       }
-
     });
   }
 }

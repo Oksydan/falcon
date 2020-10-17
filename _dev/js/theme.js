@@ -23,18 +23,18 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
 
-
-import './selectors';
+import $ from 'jquery';
+import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 
 import './responsive';
 import './checkout';
-import './customer'; 
+import './customer';
 import './listing';
 import './product';
 import './cart';
- 
+
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import DropDown from './components/drop-down';
@@ -42,16 +42,14 @@ import Form from './components/form';
 import ProductMinitature from './components/product-miniature';
 import TopMenu from './components/top-menu';
 
-// import './lib/bootstrap-filestyle.min';
-
 import './components/block-cart';
-import $ from 'jquery';
-import 'jquery-migrate';
 
+/* eslint-disable */
 // "inherit" EventEmitter
 for (const i in EventEmitter.prototype) {
   prestashop[i] = EventEmitter.prototype[i];
 }
+/* eslint-enable */
 
 $(document).ready(() => {
   const dropDownEl = $('.js-dropdown');
@@ -59,9 +57,8 @@ $(document).ready(() => {
   const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
   const dropDown = new DropDown(dropDownEl);
   const topMenu = new TopMenu(topMenuEl);
-  const productMinitature = new ProductMinitature();
   dropDown.init();
   form.init();
   topMenu.init();
-  productMinitature.init();
+  ProductMinitature.init();
 });

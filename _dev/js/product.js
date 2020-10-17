@@ -25,55 +25,54 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
 
-$(document).ready(function () {
+$(() => {
   createProductSpin();
   createInputFile();
   coverImage();
 
-  prestashop.on('updatedProduct', function (event) {
+  prestashop.on('updatedProduct', (event) => {
     createInputFile();
     coverImage();
+
     if (event && event.product_minimal_quantity) {
       const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
       const quantityInputSelector = prestashop.selectors.quantityWanted;
-      let quantityInput = $(quantityInputSelector);
+      const quantityInput = $(quantityInputSelector);
 
       // @see http://www.virtuosoft.eu/code/bootstrap-touchspin/ about Bootstrap TouchSpin
       quantityInput.trigger('touchspin.updatesettings', {
         min: minimalProductQuantity,
       });
     }
+
     $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
     $('.js-product-images-modal').replaceWith(event.product_images_modal);
-
-
   });
 
   function coverImage() {
     $('.js-thumb').on(
       'click',
-      (event) => {
-        $('.js-modal-product-cover').attr('src',$(event.target).data('image-large-src'));
+      ({target, currentTarget}) => {
+        $('.js-modal-product-cover').attr('src', $(target).data('image-large-src'));
         $('.selected').removeClass('selected');
-        $(event.target).addClass('selected');
-        $('.js-qv-product-cover').prop('src', $(event.currentTarget).data('image-large-src'));
-      }
+        $(target).addClass('selected');
+        $('.js-qv-product-cover').prop('src', $(currentTarget).data('image-large-src'));
+      },
     );
   }
 
-  function createInputFile()
-  {
+  function createInputFile() {
     $('.js-file-input').on('change', (event) => {
-      let target, file;
+      const target = event.currentTarget;
+      const file = target.files[0];
 
-      if ((target = $(event.currentTarget)[0]) && (file = target.files[0])) {
+      if (target && file) {
         $(target).prev().text(file.name);
       }
     });
   }
 
-  function createProductSpin()
-  {
+  function createProductSpin() {
     const $quantityInput = $('#quantity_wanted');
 
     $quantityInput.TouchSpin({
@@ -92,11 +91,12 @@ $(document).ready(function () {
         $quantityInput.trigger('change');
       }
     });
-    $('body').on('change keyup', '#quantity_wanted', (e) => {
-      $(e.currentTarget).trigger('touchspin.stopspin');
+
+    $('body').on('change keyup', '#quantity_wanted', (event) => {
+      $(event.currentTarget).trigger('touchspin.stopspin');
       prestashop.emit('updateProduct', {
-          eventType: 'updatedProductQuantity',
-          event: e
+        eventType: 'updatedProductQuantity',
+        event,
       });
     });
   }
