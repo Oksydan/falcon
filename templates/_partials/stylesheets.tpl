@@ -22,6 +22,10 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+
+<link rel="stylesheet" href="{$urls.css_url}theme-tablet.css" type="text/css" media="(min-width: 576px)">
+<link rel="stylesheet" href="{$urls.css_url}theme-desktop.css" type="text/css" media="(min-width: 992px)">
+
 {foreach $stylesheets.external as $stylesheet}
   <link rel="stylesheet" href="{$stylesheet.uri}" type="text/css" media="{$stylesheet.media}">
 {/foreach}
