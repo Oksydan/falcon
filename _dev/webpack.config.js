@@ -7,28 +7,30 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const MediaQueryPlugin = require('media-query-plugin');
 
-const config  = {
-  "port" : "3505",
-  "publicPath": "/themes/starter/assets",
-  "serverAddress" : "starter.test",
-  "siteURL": "http://starter.test"
-};
+require('dotenv').config()
+
+const {
+  PORT: port,
+  PUBLIC_PATH: publicPath,
+  SERVER_ADDRESS: serverAddress,
+  SITE_URL: siteURL
+} = process.env;
 
 
 const configureDevServer = () => {
   return {
-    host: config.serverAddress,
+    host: serverAddress,
     hot: true,
     open: true,
     overlay: true,
-    port: config.port,
-    publicPath: config.publicPath,
+    port,
+    publicPath,
     writeToDisk: (filePath) => {
       return !(/hot-update/.test(filePath));
     },
     proxy: {
       '**': {
-        target: config.siteURL,
+        target: siteURL,
         secure: false,
         changeOrigin: true,
       }
@@ -76,7 +78,7 @@ module.exports = {
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, '../assets'),
-    publicPath: config.siteURL + ':' + config.port + config.publicPath,
+    publicPath: siteURL + ':' + port + publicPath,
     pathinfo: false,
   },
 
@@ -132,7 +134,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'img/',
-          publicPath: config.publicPath + '/img/',
+          publicPath: publicPath + '/img/',
           name: '[name].[ext]',
         },
       },
@@ -141,7 +143,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'fonts/',
-          publicPath: config.publicPath + '/fonts/',
+          publicPath: publicPath + '/fonts/',
           name: '[name].[ext]'
         },
       }
