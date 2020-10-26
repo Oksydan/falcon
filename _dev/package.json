@@ -4,23 +4,24 @@
   "description": "Modern tools that help you develop your theme.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --colors --debug --display-chunks",
-    "watch": "webpack-dev-server --progress --colors --debug --display-chunks --watch",
+    "build": "webpack --progress --colors --debug --display-chunks --mode=production",
+    "watch": "webpack-dev-server --progress --colors --debug --display-chunks --watch --mode=development",
     "scss-fix": "stylelint \"**/*.scss\" --fix",
     "eslint-fix": "eslint \"**/*.js\" --fix"
   },
   "author": "Igor Stępień",
   "license": "AFL-3.0",
   "dependencies": {
+    "@prestashop-core/jquery.live-polyfill": "^1.1.1",
     "bootstrap": "^4.5.0",
     "bootstrap-touchspin": "^4.3.0",
-    "popper.js": "^1.16.1",
+    "emitter": "0.0.5",
     "jquery": "^3.4.1",
     "jquery-migrate": "^3.1.0",
     "jquery.browser": "^0.1.0",
+    "popper.js": "^1.16.1",
     "prestashop": "0.0.1",
-    "@prestashop-core/jquery.live-polyfill": "^1.1.1",
-    "emitter": "0.0.5"
+    "webpack-merge": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -51,6 +52,7 @@
     "stylelint-scss": "^3.18.0",
     "stylelint-webpack-plugin": "^2.1.0",
     "svg-spritemap-webpack-plugin": "^3.5.9",
+    "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

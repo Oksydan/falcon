@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
@@ -6,6 +7,8 @@ const chokidar = require('chokidar');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const MediaQueryPlugin = require('media-query-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 
 require('dotenv').config()
 
@@ -17,63 +20,57 @@ const {
 } = process.env;
 
 
-const configureDevServer = () => {
-  return {
-    host: serverAddress,
-    hot: true,
-    open: true,
-    overlay: true,
-    port,
-    publicPath,
-    writeToDisk: (filePath) => {
-      return !(/hot-update/.test(filePath));
-    },
-    proxy: {
-      '**': {
-        target: siteURL,
-        secure: false,
-        changeOrigin: true,
-      }
-    },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-    },
-    before(app, server) {
-      const files = [
-        '../**/*.tpl',
-        '../modules/**/*.js',
-        '../modules/**/*.css'
-      ];
+const configureDevServer = () => ({
+  host: serverAddress,
+  hot: true,
+  open: true,
+  overlay: true,
+  port,
+  publicPath,
+  writeToDisk: (filePath) => {
+    return !(/hot-update/.test(filePath));
+  },
+  proxy: {
+    '**': {
+      target: siteURL,
+      secure: false,
+      changeOrigin: true,
+    }
+  },
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+  },
+  before(app, server) {
+    const files = [
+      '../**/*.tpl',
+      '../modules/**/*.js',
+      '../modules/**/*.css'
+    ];
 
-      chokidar
-        .watch(files, {
-          alwaysStat: true,
-          atomic: false,
-          followSymlinks: false,
-          ignoreInitial: true,
-          ignorePermissionErrors: true,
-          persistent: true
-        })
-        .on("all", () => {
-          server.sockWrite(server.sockets, "content-changed");
-        });
-    },
-  };
-};
+    chokidar
+      .watch(files, {
+        alwaysStat: true,
+        atomic: false,
+        followSymlinks: false,
+        ignoreInitial: true,
+        ignorePermissionErrors: true,
+        persistent: true
+      })
+      .on("all", () => {
+        server.sockWrite(server.sockets, "content-changed");
+      });
+  }
+});
 
 
-module.exports = {
+const getCommonConfig = (mode) => ({
   context: path.resolve(__dirname, '../_dev'),
-  devServer: configureDevServer(),
-  devtool: "cheap-source-map",
 
- entry: {
+  entry: {
     theme: './js/theme.js',
   },
-
-  mode: 'development',
 
   output: {
     filename: "js/[name].js",
@@ -81,6 +78,7 @@ module.exports = {
     publicPath: siteURL + ':' + port + publicPath,
     pathinfo: false,
   },
+
 
   module: {
     rules: [
@@ -150,20 +148,15 @@ module.exports = {
     ]
   },
 
+
   externals: {
     prestashop: 'prestashop',
     $: '$',
     jquery : 'jQuery'
   },
 
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-  },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].css"
     }),
@@ -189,4 +182,46 @@ module.exports = {
       },
     })
   ]
-}
+
+});
+
+const productionConfig = {
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      terserOptions: {
+        mangle: false,
+        keep_classnames: false,
+        keep_fnames: false
+      },
+    })],
+  },
+};
+
+const developmentConfig = {
+  devtool: "cheap-source-map",
+  devServer: configureDevServer(),
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ]
+};
+
+
+const getConfig = (mode) => {
+  switch (mode) {
+    case "production":
+      return merge(getCommonConfig(mode), productionConfig, { mode });
+    case "development":
+      return merge(getCommonConfig(mode), developmentConfig, { mode });
+    default:
+      throw new Error(`Trying to use an unknown mode, ${mode}`);
+  }
+};
+
+module.exports = (env, options) => getConfig(options.mode);
+
