@@ -41,10 +41,3 @@ input[type="number"] {
     appearance: none;
   }
 }
-
-
-@include media-breakpoint-down(md) {
-  .container {
-    max-width: 100%;
-  }
-}

@@ -46,15 +46,3 @@
   }
 }
 
-@include media-breakpoint-down(md) {
-  #manufacturer {
-    #main {
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: center;
-      }
-    }
-  }
-}

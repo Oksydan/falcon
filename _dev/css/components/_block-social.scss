@@ -2,9 +2,6 @@
   text-align: right;
   ul {
     display: flex;
-    @include media-breakpoint-down(sm) {
-      flex-flow: wrap;
-    }
     li {
       display: inline-block;
       width: 2.5rem;
@@ -13,14 +10,6 @@
       cursor: pointer;
       background-color: $gray-light;
       background-repeat: no-repeat;
-
-      @include media-breakpoint-down(sm) {
-        width: 2rem;
-        height: 2rem;
-        margin-right: 1.3rem;
-        margin-bottom: 1.3rem;
-        background-size: contain;
-      }
 
       &:hover {
         background-color: $brand-primary;

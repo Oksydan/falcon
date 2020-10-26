@@ -1,33 +1,3 @@
-.block-contact {
-  color: $gray;
-  .block-contact-title {
-    color: $gray-darker;
-  }
-}
-.linklist {
-  .blockcms-title a {
-    color: $gray-darker;
-  }
-}
-.account-list a {
-  color: $gray;
-  &:hover {
-    color: $brand-primary;
-  }
-}
-.blockcms-title,
-.myaccount-title,
-.myaccount-title a,
-.block-contact-title {
-  font-size: $font-size-base;
-  font-weight: 700;
-}
-
-#block_myaccount_infos {
-  .myaccount-title a {
-    color: $gray-darker;
-  }
-}
 
 .footer-container {
   padding-top: $medium-space;
