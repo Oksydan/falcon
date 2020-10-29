@@ -7,5 +7,4 @@ import 'bootstrap/js/dist/popover.js';
 import 'bootstrap/js/dist/scrollspy.js';
 import 'bootstrap/js/dist/tab.js';
 import 'bootstrap/js/dist/toast.js';
-import 'bootstrap/js/dist/tooltip.js';
 import 'bootstrap/js/dist/util.js';

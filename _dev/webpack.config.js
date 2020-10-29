@@ -74,6 +74,7 @@ const getCommonConfig = (mode) => ({
 
   output: {
     filename: "js/[name].js",
+    chunkFilename: mode === 'production' ? "js/[hash].js" : "js/[id].js",
     path: path.resolve(__dirname, '../assets'),
     publicPath: siteURL + ':' + port + publicPath,
     pathinfo: false,
@@ -158,7 +159,8 @@ const getCommonConfig = (mode) => ({
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css"
+      filename: "css/[name].css",
+      chunkFilename: mode === 'production' ? "css/[hash].css" : "css/[id].css",
     }),
     new MediaQueryPlugin({
       include: true,
@@ -187,6 +189,9 @@ const getCommonConfig = (mode) => ({
 
 const productionConfig = {
   optimization: {
+    splitChunks: {
+      chunks: 'all'
+    },
     minimize: true,
     minimizer: [new TerserPlugin({
       terserOptions: {
@@ -201,11 +206,6 @@ const productionConfig = {
 const developmentConfig = {
   devtool: "cheap-source-map",
   devServer: configureDevServer(),
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ]
