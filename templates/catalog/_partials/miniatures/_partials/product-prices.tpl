@@ -17,11 +17,6 @@
 
       <span class="price" aria-label="{l s='Price' d='Shop.Theme.Catalog'}">{$product.price}</span>
 
-      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="invisible">
-        <meta itemprop="priceCurrency" content="{$currency.iso_code}" />
-        <meta itemprop="price" content="{$product.price_amount}" />
-      </div>
-
       {hook h='displayProductPriceBlock' product=$product type='unit_price'}
 
       {hook h='displayProductPriceBlock' product=$product type='weight'}

@@ -28,6 +28,8 @@
     <article class="product-miniature js-product-miniature" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
       <div class="product-miniature__container">
 
+        {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
+
         {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl'}
 
         {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
