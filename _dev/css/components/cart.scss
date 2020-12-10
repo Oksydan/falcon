@@ -55,7 +55,7 @@
   .label {
     padding-left: 0;
     font-weight: 400;
-    color: $gray-dark;
+    color: $gray-darker;
     white-space: inherit;
   }
   .value {
@@ -180,7 +180,7 @@
     .cart-summary-line {
       .label {
         font-weight: 400;
-        color: $gray-dark;
+        color: $gray-darker;
       }
       span {
         color: $warning-second;

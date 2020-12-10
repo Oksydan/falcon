@@ -1,0 +1,17 @@
+
+.product-miniature {
+  &__quick-view {
+    position: absolute;
+    right: $small-space;
+    bottom: $small-space;
+  }
+
+  &__title {
+    $number-of-lines: 2;
+    $line-height: 1.3;
+
+    line-height: $line-height;
+    height: #{$number-of-lines * $line-height}em;
+    overflow: hidden;
+  }
+}

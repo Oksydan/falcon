@@ -1,0 +1,18 @@
+.price {
+  font-size: $font-size-lg;
+  font-weight: 700;
+  color: $brand-primary;
+
+  &--regular {
+    text-decoration: line-through;
+    color: $text-muted;
+    font-weight: 500;
+  }
+
+  &--lg {
+    font-size: $h3-font-size;
+    @include media-breakpoint-up(md) {
+      font-size: $h2-font-size;
+    }
+  }
+}

@@ -361,7 +361,7 @@
   }
   .product-price {
     display: block;
-    color: $gray-dark;
+    color: $gray-darker;
     @include media-breakpoint-down(sm) {
       padding: 0 .5rem;
     }
@@ -376,7 +376,7 @@
       display: flex;
       justify-content: space-between;
       padding: 0 .5rem;
-      color: $gray-dark;
+      color: $gray-darker;
       &.product-total {
         padding: .5rem;
         background-color: $gray-light;
@@ -516,48 +516,6 @@
     .color {
       margin-top: 0;
       margin-left: 0;
-    }
-  }
-}
-.product-flags {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  pointer-events: none;
-
-  li.product-flag {
-    width: fit-content;
-    padding: 0.3125rem 0.4375rem;
-    margin-top: $small-space;
-    font-size: $font-size-base;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    pointer-events: auto;
-    background: $brand-primary;
-
-    &.online-only {
-      position: absolute;
-      top: 25rem;
-      right: 0;
-      z-index: 1;
-      margin-top: 0;
-      font-size: $font-size-xs;
-    }
-    &.discount-percentage,
-    &.discount-amount,
-    &.discount {
-      background-color: $brand-secondary;
-    }
-    &.on-sale {
-      order: -1;
-      width: 100%;
-      text-align: center;
-      background: $brand-secondary;
     }
   }
 }

@@ -128,7 +128,7 @@ $border-radius-sm:            .4rem;
 
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem;
+$font-size-base:              rem(14px);
 $font-size-lg:                $font-size-base * 1.25;
 $font-size-sm:                $font-size-base * .875;
 $font-size-xs:                $font-size-base * .6875;
@@ -160,5 +160,9 @@ $display2-weight:             400;
 $display3-weight:             400;
 $display4-weight:             400;
 
+$text-muted:                  $gray-500;
 
-$text-muted:                  $gray-600;
+// Cards
+
+$card-border-radius:                $border-radius;
+$card-inner-border-radius:          subtract($card-border-radius, $card-border-width);
