@@ -30,7 +30,7 @@ const getCommonConfig = ({ mode, port, publicPath, siteURL }) => (
         filename: "js/[name].js",
         chunkFilename: mode === 'production' ? "js/[hash][id].js" : "js/[id].js",
         path: path.resolve(__dirname, '../assets'),
-        publicPath: siteURL + ':' + port + publicPath,
+        publicPath: mode === 'production' ? publicPath : siteURL + ':' + port + publicPath,
         pathinfo: false,
       },
 
