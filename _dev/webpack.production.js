@@ -1,4 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 exports.productionConfig = () => ({
   optimization: {
@@ -10,7 +11,8 @@ exports.productionConfig = () => ({
           keep_classnames: false,
           keep_fnames: false
         },
-      })
+      }),
+      new CssMinimizerPlugin(),
     ],
   },
 });
