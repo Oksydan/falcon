@@ -3,7 +3,6 @@ const { developmentConfig } = require('./webpack.development');
 const { productionConfig } = require('./webpack.production');
 const { merge } = require("webpack-merge");
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const StylelintPlugin = require('stylelint-webpack-plugin');
 
 
@@ -40,9 +39,6 @@ const getCommonConfig = ({ mode, port, publicPath, siteURL }) => (
         }
       },
 
-      plugins: [
-        new BundleAnalyzerPlugin()
-      ]
     },
     extractExternals(),
     extractScss({ mode }),
