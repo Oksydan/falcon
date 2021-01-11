@@ -53,10 +53,10 @@ const getCommonConfig = ({ mode, port, publicPath, siteURL }) => (
 );
 
 
-const getConfig = (mode) => {
+const getConfig = ({ mode, purge }) => {
   switch (mode) {
     case "production":
-      return merge(getCommonConfig({ mode, port, publicPath, serverAddress, siteURL }), productionConfig(), { mode });
+      return merge(getCommonConfig({ mode, port, publicPath, serverAddress, siteURL }), productionConfig({ purge }), { mode });
     case "development":
       return merge(getCommonConfig({ mode, port, publicPath, serverAddress, siteURL }), developmentConfig({ port, publicPath, serverAddress, siteURL }), { mode });
     default:
@@ -64,5 +64,9 @@ const getConfig = (mode) => {
   }
 };
 
-module.exports = (env, options) => getConfig(options.mode);
+
+module.exports = (env, options) => getConfig({
+  mode: options.mode,
+  purge: options?.purge ? options.purge : false
+});
 
