@@ -47,6 +47,7 @@
                 name="email"
                 type="email"
                 value="{$value}"
+                class="form-control"
                 placeholder="{l s='Your email address' d='Shop.Forms.Labels'}"
                 aria-labelledby="block-newsletter-label"
                 required

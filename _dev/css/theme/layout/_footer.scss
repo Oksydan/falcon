@@ -3,10 +3,10 @@
 }
 
 .footer-container {
-  padding-top: $medium-space;
-  margin-top: $medium-space;
+  padding-top: $extra-large-space;
+  margin-top: $extra-large-space;
   overflow: hidden;
-  box-shadow: 2px 2px 11px 0 rgba(0, 0, 0, 0.3);
+  background: $gray-100;
   li {
     margin-bottom: 0.3125rem;
   }
