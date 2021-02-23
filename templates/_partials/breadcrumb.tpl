@@ -24,19 +24,21 @@
  *}
 
 {block name='breadcrumb'}
-  <nav aria-label="breadcrumb" data-depth="{$breadcrumb.count}">
-    {block name='breadcrumb_list'}
-      <ol class="breadcrumb">
-        {foreach from=$breadcrumb.links item=path name=breadcrumb}
-          {block name='breadcrumb_item'}
-            <li {if $smarty.foreach.breadcrumb.last}class="breadcrumb-item active" aria-current="page"{else}class="breadcrumb-item"{/if}>
-              <a href="{$path.url}">
-                {$path.title}
-              </a>
-            </li>
-          {/block}
-        {/foreach}
-      </ol>
-    {/block}
-  </nav>
+  {if $breadcrumb.links|count > 1}
+    <nav aria-label="breadcrumb" data-depth="{$breadcrumb.count}">
+      {block name='breadcrumb_list'}
+        <ol class="breadcrumb">
+          {foreach from=$breadcrumb.links item=path name=breadcrumb}
+            {block name='breadcrumb_item'}
+              <li {if $smarty.foreach.breadcrumb.last}class="breadcrumb-item active" aria-current="page"{else}class="breadcrumb-item"{/if}>
+                <a href="{$path.url}">
+                  {$path.title}
+                </a>
+              </li>
+            {/block}
+          {/foreach}
+        </ol>
+      {/block}
+    </nav>
+  {/if}
 {/block}
