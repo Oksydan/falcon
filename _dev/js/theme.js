@@ -43,7 +43,7 @@ import DropDown from './components/drop-down';
 import Form from './components/form';
 import ProductMinitature from './components/product-miniature';
 import TopMenu from './components/top-menu';
-import DynamicImportHandler from './utils/DynamicImportHandler';
+// import DynamicImportHandler from './utils/DynamicImportHandler';
 
 import './components/block-cart';
 
@@ -59,15 +59,6 @@ $(document).ready(() => {
   const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
   const dropDown = new DropDown(dropDownEl);
   const topMenu = new TopMenu(topMenuEl);
-  const importTooltip = new DynamicImportHandler({
-    jqueryPluginCover: 'tooltip',
-    files: () => [
-      import('bootstrap/js/src/tooltip.js'),
-      import('../css/components/_tooltip.scss'),
-    ],
-  });
-
-  importTooltip.init();
 
   dropDown.init();
   Form.init();

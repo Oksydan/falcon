@@ -1,0 +1,27 @@
+p {
+  font-weight: 400;
+  color: $gray-600;
+}
+
+.h1,
+.h2,
+.h3 {
+  color: $gray-900;
+  text-transform: uppercase;
+}
+
+.h4 {
+  font-weight: $headings-font-weight;
+  color: $gray-900;
+}
+
+label,
+.label {
+  color: $gray-900;
+  text-align: right;
+}
+
+small.label,
+small.value {
+  font-size: $font-size-sm;
+}

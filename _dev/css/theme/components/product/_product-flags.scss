@@ -1,0 +1,39 @@
+.product-flags {
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+
+  &__flag {
+    width: fit-content;
+    padding: $extra-small-space $small-space;
+    margin-bottom: $small-space;
+    font-size: $font-size-sm;
+    line-height: 1.35;
+    font-weight: 700;
+    color: #fff;
+    pointer-events: auto;
+    background: $primary;
+
+    &--online-only {
+      position: absolute;
+      right: 0;
+      z-index: 1;
+      margin-top: 0;
+    }
+
+    &--discount-percentage,
+    &--discount-amount,
+    &--discount {
+      background-color: $secondary;
+    }
+
+    &--on-sale {
+      order: -1;
+      width: 100%;
+      text-align: center;
+      background: $secondary;
+    }
+  }
+}
