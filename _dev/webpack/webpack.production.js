@@ -1,4 +1,4 @@
-const TerserPlugin = require('terser-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const safeList = require('./purge-safelist');
@@ -22,17 +22,14 @@ const plugins = (purge) => ([
 ].filter(el => el && el));
 
 exports.productionConfig = ({ purge }) => ({
+  devtool: '(none)',
   optimization: {
     minimize: true,
     minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          mangle: false,
-          keep_classnames: false,
-          keep_fnames: false
-        },
+      new ESBuildMinifyPlugin({
+        target: 'es2015' // Syntax to compile to (see options below for possible values)
       }),
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin()
     ],
   },
   plugins: plugins(purge)

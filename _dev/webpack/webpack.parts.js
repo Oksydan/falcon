@@ -1,10 +1,10 @@
 const chokidar = require('chokidar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const MediaQueryPlugin = require('media-query-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const { ESBuildPlugin } = require('esbuild-loader');
+const path = require('path');
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
+  inline: true,
   host: serverAddress,
   hot: true,
   open: true,
@@ -28,9 +28,9 @@ exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
   },
   before(app, server) {
     const files = [
-      '../**/*.tpl',
-      '../modules/**/*.js',
-      '../modules/**/*.css'
+      '../../**/*.tpl',
+      '../../modules/**/*.js',
+      '../../modules/**/*.css'
     ];
 
     chokidar
@@ -48,60 +48,29 @@ exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
   }
 });
 
-
-const autoprefixer = () => ({
-  loader: 'postcss-loader',
-  options: {
-    sourceMap: true,
-    ident: 'postcss',
-    plugins: (loader) => [
-      require('postcss-import')({ root: loader.resourcePath }),
-      require('postcss-preset-env')(),
-    ]
-  }
-});
-
 exports.extractScss = ({mode = 'production'}) => ({
   module: {
     rules: [{
       test: /\.scss$/,
       use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
         {
-          loader: MiniCssExtractPlugin.loader,
+          loader: 'postcss-loader',
           options: {
-            hmr: true
+            postcssOptions: {
+              config: path.resolve(__dirname, 'postcss.config.js'),
+            },
           }
         },
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 2
-          },
-        },
-        MediaQueryPlugin.loader,
-        autoprefixer(),
-        {
-          loader: 'sass-loader',
-          options: {
-            implementation: require('sass')
-          }
-        },
+        'sass-loader'
       ]
     }]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
-      chunkFilename: mode === 'production' ? "css/[hash].css" : "css/[id].css",
-    }),
-    new MediaQueryPlugin({
-      include: true,
-      queries: {
-        '(min-width: 1200px)': 'desktop',
-        '(min-width: 992px)': 'desktop',
-        '(min-width: 768px)': 'tablet',
-        '(min-width: 576px)': 'tablet'
-      },
+      filename: 'css/[name].css',
+      chunkFilename: mode === 'production' ? 'css/[chunkhash].css' : 'css/[id].css',
     }),
   ],
 });
@@ -113,16 +82,16 @@ exports.extractJs = () => ({
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: 'esbuild-loader',
           options: {
-            presets: ['@babel/preset-env']
+            target: 'es2015'
           }
         }
       },
     ]
   },
   plugins: [
-    new ESLintPlugin(),
+    new ESBuildPlugin()
   ]
 });
 
@@ -139,26 +108,14 @@ exports.extractImages = ({ publicPath }) => ({
         },
       },
     ]
-  },
-  plugins: [
-    new SVGSpritemapPlugin('img/**/*.svg', {
-      output: {
-        filename: 'img/sprite.svg',
-      },
-      sprite: {
-        generate: {
-          use: true
-        }
-      },
-    })
-  ]
+  }
 })
 
 exports.extractFonts = ({ publicPath }) => ({
   module: {
     rules: [
       {
-        test: /\.(woff|woff2)$/,
+        test: /\.(woff|woff2|ttf|eot)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'fonts/',
@@ -170,7 +127,7 @@ exports.extractFonts = ({ publicPath }) => ({
   }
 })
 
-exports.extractExternals = () => ({
+exports.externals = () => ({
   externals: {
     prestashop: 'prestashop',
     $: '$',

@@ -28,12 +28,12 @@ import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 
-import './responsive';
-import './checkout';
-import './customer';
-import './listing';
-import './product';
-import './cart';
+import './components/responsive';
+import './components/checkout';
+import './components/customer';
+import './components/listing';
+import './components/product';
+import './components/cart';
 
 import '../css/theme.scss';
 
