@@ -4,7 +4,6 @@ const { ESBuildPlugin } = require('esbuild-loader');
 const path = require('path');
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
-  inline: true,
   host: serverAddress,
   hot: true,
   open: true,
@@ -53,7 +52,12 @@ exports.extractScss = ({mode = 'production'}) => ({
     rules: [{
       test: /\.scss$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: true
+          }
+        },
         'css-loader',
         {
           loader: 'postcss-loader',
