@@ -22,7 +22,7 @@
   * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
   * International Registered Trademark & Property of PrestaShop SA
   *}
-{if $displayedFacets|count}
+{if isset($displayedFacets) && $displayedFacets|count}
   <div id="search_filters" class="search-filters card mb-lg-3">
     <div class="card-header">
       {block name='facets_title'}
