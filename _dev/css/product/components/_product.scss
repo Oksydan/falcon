@@ -61,7 +61,6 @@
   }
 }
 .radio-label {
-  @include box-shadow ();
   display: inline-block;
   padding: 0.125rem $small-space;
   font-weight: 600;
@@ -184,7 +183,6 @@
   font-size: $font-size-xs;
 }
 .tabs {
-  @include box-shadow ();
   padding: $medium-space $large-space;
   margin-top: 2rem;
   background: #fff;
@@ -217,7 +215,6 @@
   position: relative;
   margin-bottom: $medium-space;
   img {
-    @include box-shadow ();
     background: #fff;
   }
   .layer {
@@ -411,7 +408,6 @@
   > li.thumb-container {
     display: inline;
     > .thumb {
-      @include box-shadow ();
       margin-bottom: $small-space;
       cursor: pointer;
       .images-container & {

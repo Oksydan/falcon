@@ -112,6 +112,10 @@ $(() => {
     prestashop.emit('updateFacets', $(event.target).closest('a').get(0).href);
   });
 
+  $('body').on('change', '[data-action="search-select"]', ({target}) => {
+    prestashop.emit('updateFacets', $(target).find('option:selected').data('href'));
+  });
+
   $('body').on('change', '#search_filters select', ({target}) => {
     const form = $(target).closest('form');
     prestashop.emit('updateFacets', `?${form.serialize()}`);
@@ -133,5 +137,6 @@ function updateProductListDOM(data) {
     $('#js-product-list-header').replaceWith(data.rendered_products_header);
   }
 
+  prestashop.BSSelect.init();
   ProductMinitature.init();
 }

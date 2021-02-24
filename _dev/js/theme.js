@@ -23,10 +23,16 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
 
+
+
 import $ from 'jquery';
 import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
+
+import 'bootstrap-select';
+//Selectpicker bootstrap instance set
+$.fn.selectpicker.Constructor.BootstrapVersion = '4';
 
 import './components/responsive';
 import './components/checkout';
@@ -41,6 +47,7 @@ import DropDown from './components/drop-down';
 import Form from './components/form';
 import ProductMinitature from './components/product-miniature';
 import TopMenu from './components/top-menu';
+import CustomSelect from './components/custom-select';
 // import DynamicImportHandler from './utils/DynamicImportHandler';
 
 import './components/block-cart';
@@ -52,7 +59,14 @@ for (const i in EventEmitter.prototype) {
 }
 /* eslint-enable */
 
+prestashop.BSSelect = new CustomSelect({
+  selector: 'select',
+  excludeSelector: '.normal-select'
+})
+
 $(document).ready(() => {
+  prestashop.BSSelect.init();
+
   const dropDownEl = $('.js-dropdown');
   const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
   const dropDown = new DropDown(dropDownEl);

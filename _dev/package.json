@@ -15,6 +15,7 @@
   "dependencies": {
     "@prestashop-core/jquery.live-polyfill": "^1.1.2",
     "bootstrap": "^4.5.3",
+    "bootstrap-select": "^1.13.18",
     "bootstrap-touchspin": "^4.3.0",
     "emitter": "0.0.5",
     "jquery": "^3.4.1",
