@@ -1,4 +1,8 @@
 
+import 'bootstrap-select';
+//Selectpicker bootstrap instance set
+$.fn.selectpicker.Constructor.BootstrapVersion = '4';
+
 export default class CustomSelect {
   constructor({
     selector = 'select',
@@ -37,12 +41,18 @@ export default class CustomSelect {
     const $target = $(target);
     const prefix = $target.data('prefix');
 
-
     if(prefix) {
       const $selectValueText = $target.parent('.bootstrap-select').find('.filter-option-inner-inner');
+      const $prevPrefix = $selectValueText.find('.bootstrap-select-prefix');
+
+      if($prevPrefix.length > 0) {
+        $prevPrefix.remove();
+      }
+
       const selectText = $selectValueText.text();
-      $selectValueText.text(`${prefix} ${selectText}`);
-      console.log(prefix);
+      const $prefix = $('<span>').addClass('bootstrap-select-prefix').text(prefix).wrap('<div>').parent();
+
+      $selectValueText.html(`${$prefix.html()} ${selectText}`);
     }
   }
 }

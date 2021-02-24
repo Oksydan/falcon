@@ -23,16 +23,10 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
 
-
-
 import $ from 'jquery';
 import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
-
-import 'bootstrap-select';
-//Selectpicker bootstrap instance set
-$.fn.selectpicker.Constructor.BootstrapVersion = '4';
 
 import './components/responsive';
 import './components/checkout';
