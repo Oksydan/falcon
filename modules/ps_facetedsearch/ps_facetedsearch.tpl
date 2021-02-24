@@ -50,9 +50,9 @@
           {if $filter.active}{assign var=_collapse value=false}{/if}
         {/foreach}
         <section class="search-filters__block">
-          <div class="search-filters__header">
-            <p class="search-filters__title">{$facet.label}</p>
-            <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link" data-toggle="collapse" {if !$_collapse}
+          <div class="search-filters__header h5">
+            <p class="search-filters__title mb-0">{$facet.label}</p>
+            <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset" data-toggle="collapse" {if !$_collapse}
               aria-expanded="true" {/if}>
               <i class="material-icons">&#xE313;</i>
             </a>
