@@ -49,15 +49,14 @@
         {foreach from=$facet.filters item="filter"}
           {if $filter.active}{assign var=_collapse value=false}{/if}
         {/foreach}
-        <section class="search-filters__block">
-          <div class="search-filters__header h5">
-            <p class="search-filters__title mb-0">{$facet.label}</p>
+        <section class="search-filters__block {if !$facet@last} mb-3{/if}">
+          <div class="search-filters__header d-flex justify-content-between mb-0 h5 position-relative pb-1">
+            <span class="search-filters__title mb-0">{$facet.label}</span>
             <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset" data-toggle="collapse" {if !$_collapse}
               aria-expanded="true" {/if}>
               <i class="material-icons">&#xE313;</i>
             </a>
           </div>
-
 
           {if in_array($facet.widgetType, ['radio', 'checkbox'])}
             {block name='facet_item_other'}
@@ -66,23 +65,25 @@
                   {if !$filter.displayed}
                     {continue}
                   {/if}
-                  <div
-                    class="custom-control custom-{if $facet.multipleSelectionAllowed}checkbox{else}radio{/if}{if isset($filter.properties.color) || isset($filter.properties.texture)} custom-color{/if}{if $filter.active} custom-control--active{/if}">
-                    <input id="facet_input_{$_expand_id}_{$filter_key}" data-search-url="{$filter.nextEncodedFacetsURL}"
-                      type="{if $facet.multipleSelectionAllowed}checkbox{else}radio{/if}" class="custom-control-input"
-                      {if $filter.active } checked{/if}>
-                    <label class="custom-control-label" for="facet_input_{$_expand_id}_{$filter_key}">
-                      {if isset($filter.properties.color)}
-                        <span class="color" style="background-color:{$filter.properties.color}"></span>
-                      {elseif isset($filter.properties.texture)}
-                        <span class="color texture" style="background-image:url({$filter.properties.texture})"></span>
-                      {/if}
-                      <span class="color__label">{$filter.label}
-                        {*{if $filter.magnitude and $show_quantities}*}
-                          {*<span class="magnitude">({$filter.magnitude})</span>*}
-                        {*{/if}*}
-                      </span>
-                    </label>
+                  <div class="py-1">
+                    <div
+                      class="custom-control custom-{if $facet.multipleSelectionAllowed}checkbox{else}radio{/if}{if isset($filter.properties.color) || isset($filter.properties.texture)} custom-color{/if}{if $filter.active} custom-control--active{/if}">
+                      <input id="facet_input_{$_expand_id}_{$filter_key}" data-search-url="{$filter.nextEncodedFacetsURL}"
+                        type="{if $facet.multipleSelectionAllowed}checkbox{else}radio{/if}" class="custom-control-input"
+                        {if $filter.active } checked{/if}>
+                      <label class="custom-control-label" for="facet_input_{$_expand_id}_{$filter_key}">
+                        {if isset($filter.properties.color)}
+                          <span class="color" style="background-color:{$filter.properties.color}"></span>
+                        {elseif isset($filter.properties.texture)}
+                          <span class="color texture" style="background-image:url({$filter.properties.texture})"></span>
+                        {/if}
+                        <span class="color__label">{$filter.label}
+                          {*{if $filter.magnitude and $show_quantities}*}
+                            {*<span class="magnitude">({$filter.magnitude})</span>*}
+                          {*{/if}*}
+                        </span>
+                      </label>
+                    </div>
                   </div>
                 {/foreach}
               </div>
