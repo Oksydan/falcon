@@ -26,42 +26,47 @@
 {function name="categories" nodes=[] depth=0}
   {strip}
     {if $nodes|count}
-      <ul class="category-sub-menu">
+      <div class="list-group list-group-flush list-group-collapse">
         {foreach from=$nodes item=node}
-          <li data-depth="{$depth}">
-            {if $depth===0}
-              <a href="{$node.link}">{$node.name}</a>
-              {if $node.children}
-                <div class="navbar-toggler collapse-icons" data-toggle="collapse" data-target="#exCollapsingNavbar{$node.id}">
-                  <i class="add">add</i>
-                  <i class="remove">remove</i>
-                </div>
-                <div class="collapse" id="exCollapsingNavbar{$node.id}">
-                  {categories nodes=$node.children depth=$depth+1}
-                </div>
-              {/if}
-            {else}
-              <a class="category-sub-link" href="{$node.link}">{$node.name}</a>
-              {if $node.children}
-                <span class="arrows" data-toggle="collapse" data-target="#exCollapsingNavbar{$node.id}">
-                  <i class="arrow-right">add</i>
-                  <i class="arrow-down">remove</i>
-                </span>
-                <div class="collapse" id="exCollapsingNavbar{$node.id}">
-                  {categories nodes=$node.children depth=$depth+1}
-                </div>
-              {/if}
-            {/if}
-          </li>
+
+          {if $node.children}
+            <div class="list-group-item list-group-item-action-dropdown">
+              <a href="{$node.link}" class="stretched-link text-reset list-group-item-action-dropdown-link">
+                {$node.name}
+              </a>
+              <a href="#exCollapsingNavbar{$node.id}" class="icon-collapse list-group-item-collapse text-reset" data-toggle="collapse">
+                <i class="material-icons d-block">&#xE313;</i>
+              </a>
+            </div>
+          {else}
+            <a href="{$node.link}" class="list-group-item list-group-item-action">
+              {$node.name}
+            </a>
+          {/if}
+          {if $node.children}
+            <div class="collapse" id="exCollapsingNavbar{$node.id}">
+              {categories nodes=$node.children depth=$depth+1}
+            </div>
+          {/if}
         {/foreach}
-      </ul>
+      </div>
     {/if}
   {/strip}
 {/function}
 
-<div class="block-categories hidden-sm-down">
-  <ul class="category-top-menu">
-    <li><a class="text-uppercase h6" href="{$categories.link nofilter}">{$categories.name}</a></li>
-    <li>{categories nodes=$categories.children}</li>
-  </ul>
-</div>
+{extends file="components/left-column-list-group.tpl"}
+{if $categories.children}
+  {block name='list_group_extra_class'}mb-lg-3{/block}
+
+  {block name='list_group_title'}
+    {l s='Categories' d='Shop.Theme.Catalog'}
+  {/block}
+
+  {block name='list_group_body'}
+    {categories nodes=$categories.children}
+  {/block}
+
+{else}
+  {block name='list_group'}{/block}
+{/if}
+

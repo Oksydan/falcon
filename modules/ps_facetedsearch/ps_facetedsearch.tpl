@@ -30,7 +30,7 @@
       {/block}
     </div>
 
-    <div class="card-body">
+    <div class="list-group list-group-flush">
       {block name='facets_clearall_button'}
         {if $activeFilters|count}
           <div class="clear-all-wrapper mb-3">
@@ -49,8 +49,8 @@
         {foreach from=$facet.filters item="filter"}
           {if $filter.active}{assign var=_collapse value=false}{/if}
         {/foreach}
-        <section class="search-filters__block {if !$facet@last} mb-3{/if}">
-          <div class="search-filters__header d-flex justify-content-between mb-0 h5 position-relative pb-1">
+        <section class="search-filters__block list-group-item">
+          <div class="search-filters__header d-flex justify-content-between align-items-center mb-0 h5 position-relative">
             <span class="search-filters__title mb-0">{$facet.label}</span>
             <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset" data-toggle="collapse" {if !$_collapse}
               aria-expanded="true" {/if}>
@@ -65,7 +65,7 @@
                   {if !$filter.displayed}
                     {continue}
                   {/if}
-                  <div class="py-1">
+                  <div class="py-1 {if $filter@first}pt-2{/if}">
                     <div
                       class="custom-control custom-{if $facet.multipleSelectionAllowed}checkbox{else}radio{/if}{if isset($filter.properties.color) || isset($filter.properties.texture)} custom-color{/if}{if $filter.active} custom-control--active{/if}">
                       <input id="facet_input_{$_expand_id}_{$filter_key}" data-search-url="{$filter.nextEncodedFacetsURL}"
@@ -91,38 +91,42 @@
 
           {elseif $facet.widgetType == 'dropdown'}
             {block name='facet_item_dropdown'}
-              <div id="facet_{$_expand_id}" class="search-filters__collapse  collapse{if !$_collapse} show{/if}">
-                <select class="custom-select">
-                  <option value="">---</option>
-                  {foreach from=$facet.filters item="filter"}
-                    <option value="{$filter.nextEncodedFacetsURL}" {if $filter.active} selected="selected" {/if}>
-                      {$filter.label}
-                      {if $filter.magnitude and $show_quantities}
-                        ({$filter.magnitude})
-                      {/if}
-                    </option>
-                  {/foreach}
-                </select>
+              <div class="py-1 {if $filter@first}pt-2{/if}">
+                <div id="facet_{$_expand_id}" class="search-filters__collapse  collapse{if !$_collapse} show{/if}">
+                  <select class="custom-select">
+                    <option value="">---</option>
+                    {foreach from=$facet.filters item="filter"}
+                      <option value="{$filter.nextEncodedFacetsURL}" {if $filter.active} selected="selected" {/if}>
+                        {$filter.label}
+                        {if $filter.magnitude and $show_quantities}
+                          ({$filter.magnitude})
+                        {/if}
+                      </option>
+                    {/foreach}
+                  </select>
 
+                </div>
               </div>
             {/block}
 
           {elseif $facet.widgetType == 'slider'}
             {block name='facet_item_slider'}
               {foreach from=$facet.filters item="filter"}
-                <ul id="facet_{$_expand_id}" class="search-filters__slider" data-slider-min="{$facet.properties.min}"
-                  data-slider-max="{$facet.properties.max}" data-slider-id="{$_expand_id}"
-                  data-slider-values="{$filter.value|@json_encode}" data-slider-unit="{$facet.properties.unit}"
-                  data-slider-label="{$facet.label}" data-slider-specifications="{$facet.properties.specifications|@json_encode}"
-                  data-slider-encoded-url="{$filter.nextEncodedFacetsURL}">
-                  <li>
-                    <p id="facet_label_{$_expand_id}">
-                      {$filter.label}
-                    </p>
+                <div class="py-1 {if $filter@first}pt-2{/if}">
+                  <ul id="facet_{$_expand_id}" class="search-filters__slider" data-slider-min="{$facet.properties.min}"
+                    data-slider-max="{$facet.properties.max}" data-slider-id="{$_expand_id}"
+                    data-slider-values="{$filter.value|@json_encode}" data-slider-unit="{$facet.properties.unit}"
+                    data-slider-label="{$facet.label}" data-slider-specifications="{$facet.properties.specifications|@json_encode}"
+                    data-slider-encoded-url="{$filter.nextEncodedFacetsURL}">
+                    <li>
+                      <p id="facet_label_{$_expand_id}">
+                        {$filter.label}
+                      </p>
 
-                    <div id="slider-range_{$_expand_id}"></div>
-                  </li>
-                </ul>
+                      <div id="slider-range_{$_expand_id}"></div>
+                    </li>
+                  </ul>
+                </div>
               {/foreach}
             {/block}
           {/if}
