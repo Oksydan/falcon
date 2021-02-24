@@ -22,38 +22,35 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-{block name='product_miniature_item'}
+ {block name='product_miniature_item'}
   {$listingType = $type|default:'listing'}
   <div
     itemprop="itemListElement"
     itemscope
     itemtype="http://schema.org/ListItem"
-    {if $listingType === 'listing'}
-      {if $layout|default:'layouts/layout-left-column.tpl' === 'layouts/layout-full-width.tpl'}
-        class="col-lg-3 col-md-4 col-6 mb-3"
-      {else}
-        class="col-lg-4 col-6 mb-3"
-      {/if}
-    {else if $listingType === 'slider'}
-
-    {/if}
+    class="col-12 mb-3"
     >
     {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
     <article class="product-miniature card border-0 shadow js-product-miniature p-2" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
 
       {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
 
-      {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl'}
+      <div class="row">
+        <div class="col-md-4">
+          {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl'}
+        </div>
+        <div class="col-md-8">
+          {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
 
-      {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
+          {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
 
-      {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
+          {block name='product_reviews'}
+            {hook h='displayProductListReviews' product=$product}
+          {/block}
 
-      {block name='product_reviews'}
-        {hook h='displayProductListReviews' product=$product}
-      {/block}
-
-      {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
+          {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
+        </div>
+      </div>
 
     </article>
   </div>
