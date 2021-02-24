@@ -23,7 +23,7 @@
   * International Registered Trademark & Property of PrestaShop SA
   *}
 {if $displayedFacets|count}
-  <div id="search_filters" class="search-filters card">
+  <div id="search_filters" class="search-filters card mb-lg-3">
     <div class="card-header">
       {block name='facets_title'}
         <p class="card-title h5 mb-0">{l s='Filter By' d='Shop.Theme.Actions'}</p>
