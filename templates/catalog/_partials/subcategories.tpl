@@ -24,25 +24,21 @@
  *}
 {if !empty($subcategories)}
   {if (isset($display_subcategories) && $display_subcategories eq 1) || !isset($display_subcategories) }
-    <div id="subcategories" class="card card-block">
-      <h2 class="subcategory-heading">{l s='Subcategories' d='Shop.Theme.Category'}</h2>
+    <div id="subcategories" class="my-4">
+      <p class="subcategory-heading h3">{l s='Subcategories' d='Shop.Theme.Category'}</p>
 
-      <ul class="subcategories-list">
+      <ul class="row">
         {foreach from=$subcategories item=subcategory}
-          <li>
-            <div class="subcategory-image">
-              <a href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                {if $subcategory.image.large.url}
-                  <img class="replace-2x" src="{$subcategory.image.large.url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy"/>
-                {/if}
-              </a>
+          <div class="col-xl-3 col-lg-4 col-6 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                <a class="stretched-link d-block text-center mb-3 pb-3 border-bottom" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
+                  <img height="{$subcategory.image.bySize.category_default.height}" width="{$subcategory.image.bySize.category_default.width}" src="{$subcategory.image.bySize.category_default.url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy">
+                </a>
+                <h5 class="card-title mb-0">{$subcategory.name|truncate:45:'...'|escape:'html':'UTF-8'}</h5>
+              </div>
             </div>
-
-            <h5><a class="subcategory-name" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}">{$subcategory.name|truncate:25:'...'|escape:'html':'UTF-8'}</a></h5>
-              {if $subcategory.description}
-                <div class="cat_desc">{$subcategory.description|unescape:'html' nofilter}</div>
-              {/if}
-          </li>
+          </div>
         {/foreach}
       </ul>
     </div>
