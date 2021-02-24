@@ -1,0 +1,12 @@
+
+.search-filters {
+  &__block {
+    &:not(:last-child) {
+      margin-bottom: $large-space;
+    }
+  }
+
+  &__header {
+    position: relative;
+  }
+}

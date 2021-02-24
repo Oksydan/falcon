@@ -4,6 +4,17 @@
     position: absolute;
     right: $small-space;
     bottom: $small-space;
+    font-size: rem-calc(20px);
+    width: 1.7em;
+    height: 1.7em;
+    line-height: 1.7em;
+    padding: 0;
+    border: 0;
+  }
+
+  &__quick-view-icon {
+    font-size: inherit;
+    line-height: inherit;
   }
 
   &__title {

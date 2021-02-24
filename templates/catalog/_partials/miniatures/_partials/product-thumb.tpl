@@ -18,7 +18,7 @@
 
     {block name='quick_view'}
       <a class="quick-view product-miniature__quick-view btn btn-light shadow rounded-circle" href="#" data-link-action="quickview">
-        qucik
+        <i class="material-icons product-miniature__quick-view-icon">visibility</i>
       </a>
     {/block}
   </div>

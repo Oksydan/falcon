@@ -20,6 +20,7 @@
     "jquery": "^3.4.1",
     "jquery-migrate": "^3.1.0",
     "jquery.browser": "^0.1.0",
+    "material-design-icons": "^3.0.1",
     "popper.js": "^1.16.1",
     "prestashop": "0.0.1"
   },

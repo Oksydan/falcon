@@ -44,21 +44,6 @@
     }
   }
 }
-#authentication {
-  .tooltip.tooltip-bottom {
-    padding: 0;
-    margin: 0;
-  }
-  .custom-checkbox {
-    display: flex;
-    span {
-      flex: 0 0 0.9375rem;
-    }
-    label {
-      padding-left: 0.625rem;
-    }
-  }
-}
 #identity,
 #authentication {
   .radio-inline {
