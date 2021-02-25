@@ -32,9 +32,11 @@
     {/block}
 
     {block name='subcategory_list'}
+      {*
+      SUBCATEGORIES DISABLED
       {if isset($subcategories) && $subcategories|@count > 0}
         {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
-      {/if}
+      {/if} *}
     {/block}
 
     <section id="products">
