@@ -159,10 +159,10 @@
             name="{$field.name}" id="f-{$field.name}_{$uniqId}" type="password" value=""
             pattern=".{literal}{{/literal}5,{literal}}{/literal}" {if isset($autocomplete[$field.name])}
             autocomplete="{$autocomplete[$field.name]}" {/if} {if $field.required}required{/if}>
-          <span class="input-group-btn">
-            <button class="btn btn-light" type="button" data-action="show-password"
-              data-text-show="{l s='Show' d='Shop.Theme.Actions'}" data-text-hide="{l s='Hide' d='Shop.Theme.Actions'}">
-              {l s='Show' d='Shop.Theme.Actions'}
+          <span class="input-group-append">
+            <button class="btn btn-primary" type="button" data-action="show-password"
+              data-text-show="<span class='material-icons d-block'>visibility</span>" data-text-hide="<span class='material-icons d-block'>visibility_off</span>">
+              <span class="material-icons d-block">visibility</span>
             </button>
           </span>
           {include file='_partials/form-errors.tpl' errors=$field.errors required=$field.required label=$field.label}

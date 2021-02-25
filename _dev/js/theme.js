@@ -61,6 +61,7 @@ prestashop.BSSelect = new CustomSelect({
 
 $(document).ready(() => {
   prestashop.BSSelect.init();
+  const form = new Form();
 
   const dropDownEl = $('.js-dropdown');
   const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
@@ -68,7 +69,7 @@ $(document).ready(() => {
   const topMenu = new TopMenu(topMenuEl);
 
   dropDown.init();
-  Form.init();
+  form.init();
   topMenu.init();
   ProductMinitature.init();
 });
