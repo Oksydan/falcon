@@ -32,9 +32,3 @@
     {l s='%s other products in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
   {/if}
 {/block}
-
-{block name='featured_products_footer'}
-  <a class="btn btn-secondary" href="{$allProductsLink}">
-    {l s='All products' d='Shop.Theme.Catalog'}
-  </a>
-{/block}

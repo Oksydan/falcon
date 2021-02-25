@@ -29,9 +29,3 @@
   {l s='Customers who bought this product also bought:' d='Shop.Theme.Catalog'}
 {/block}
 
-{block name='featured_products_footer'}
-  <a class="btn btn-secondary" href="{$allProductsLink}">
-    {l s='All products' d='Shop.Theme.Catalog'}
-  </a>
-{/block}
-

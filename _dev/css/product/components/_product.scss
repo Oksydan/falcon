@@ -182,35 +182,7 @@
   margin-bottom: 0;
   font-size: $font-size-xs;
 }
-.tabs {
-  padding: $medium-space $large-space;
-  margin-top: 2rem;
-  background: #fff;
-  .tab-pane {
-    padding-top: $medium-space;
-  }
-  .nav-tabs {
-    border: none;
-    border-bottom: $gray-200 2px solid;
-    .nav-link {
-      color: $gray-600;
-      border: 0 solid transparent;
-      &.active {
-        color: $primary;
-        border: none;
-        border-bottom: $primary 3px solid;
-      }
-      &:hover {
-        border: none;
-        border-bottom: $primary 3px solid;
-      }
-    }
-    .nav-item {
-      float: left;
-      margin-bottom: -0.125rem;
-    }
-  }
-}
+
 .product-cover {
   position: relative;
   margin-bottom: $medium-space;
