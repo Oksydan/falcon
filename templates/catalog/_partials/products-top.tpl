@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="js-product-list-top" class="row products-selection">
+<div id="js-product-list-top" class="row products-selection align-items-center mb-4">
   <div class="col flex-grow-0">
     {block name='sort_by'}
       {include file='catalog/_partials/sort-orders.tpl' sort_orders=$listing.sort_orders}
@@ -39,16 +39,16 @@
     {/if}
   </div>
 
-  <div class="col flex-grow-0 d-none d-lg-block">
-    <ul class="display-toggle">
-      <li class="display-toggle__elem">
-        <a href="#" data-toggle-listing data-display-type="grid" class="display-toggle__link {if $listingDisplayType == 'grid'}active{/if}">
-          grid
+  <div class="col flex-grow-0 d-none d-lg-block ml-auto">
+    <ul class="display-toggle d-flex align-items-center mx-n1 m-0">
+      <li class="display-toggle__elem px-1">
+        <a href="#" data-toggle-listing data-display-type="grid" class="display-toggle__link d-inline-block {if $listingDisplayType == 'grid'}active{/if}">
+          <span class="material-icons display-toggle__icon">view_module</span>
         </a>
       </li>
-      <li class="display-toggle__elem">
-        <a href="#" data-toggle-listing data-display-type="list" class="display-toggle__link {if $listingDisplayType == 'list'}active{/if}">
-          list
+      <li class="display-toggle__elem px-1">
+        <a href="#" data-toggle-listing data-display-type="list" class="display-toggle__link d-inline-block {if $listingDisplayType == 'list'}active{/if}">
+          <span class="material-icons display-toggle__icon">view_list</span>
         </a>
       </li>
     </ul>

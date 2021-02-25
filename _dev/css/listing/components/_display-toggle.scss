@@ -1,0 +1,29 @@
+
+.display-toggle {
+
+  &__link {
+    font-size: rem-calc(18px);
+    width: 1.7em;
+    height: 1.7em;
+    line-height: 1.7em;
+    text-align: center;
+    border-radius: 50%;
+    background: $gray-100;
+    color: $gray-900;
+
+    @include hf {
+      background: $gray-200;
+      color: $gray-900;
+    }
+
+    &.active {
+      background: $primary;
+      color: $white;
+    }
+  }
+
+  &__icon {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
