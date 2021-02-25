@@ -34,7 +34,7 @@
     </div>
 
     {block name='featured_products_footer' hide}
-      <div class="featured-products__footer mt-4 d-flex justify-content-center">
+      <div class="featured-products__footer mt-4 text-right">
         {$smarty.block.child}
       </div>
     {/block}
