@@ -22,13 +22,19 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<section class="featured-products clearfix mt-3">
-  <h2>
-    {if $products|@count == 1}
-      {l s='%s other product in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
-    {else}
-      {l s='%s other products in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
-    {/if}
-  </h2>
-  {include file="catalog/_partials/productlist.tpl" products=$products}
-</section>
+
+{extends file="components/featured-products.tpl"}
+
+{block name='featured_products_title'}
+  {if $products|@count == 1}
+    {l s='%s other product in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
+  {else}
+    {l s='%s other products in the same category:' sprintf=[$products|@count] d='Shop.Theme.Catalog'}
+  {/if}
+{/block}
+
+{block name='featured_products_footer'}
+  <a class="btn btn-secondary" href="{$allProductsLink}">
+    {l s='All products' d='Shop.Theme.Catalog'}
+  </a>
+{/block}

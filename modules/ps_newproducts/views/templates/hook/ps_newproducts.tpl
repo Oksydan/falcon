@@ -23,13 +23,14 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<section class="featured-products clearfix mt-3">
-  <h2 class="h2 products-section-title text-uppercase">
-    {l s='New products' d='Shop.Theme.Catalog'}
-  </h2>
-  {include file="catalog/_partials/productlist.tpl" products=$products}
-  <a class="all-product-link float-left float-md-right h4" href="{$allNewProductsLink}">
-    {l s='All new products' d='Shop.Theme.Catalog'}
-  </a>
-</section>
+{extends file="components/featured-products.tpl"}
 
+{block name='featured_products_title'}
+  {l s='New products' d='Shop.Theme.Catalog'}
+{/block}
+
+{block name='featured_products_footer'}
+  <a class="btn btn-secondary" href="{$allNewProductsLink}">
+    {l s='All products' d='Shop.Theme.Catalog'}
+  </a>
+{/block}

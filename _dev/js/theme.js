@@ -28,6 +28,7 @@ import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 
+import './components/page-slider';
 import './components/responsive';
 import './components/checkout';
 import './components/customer';

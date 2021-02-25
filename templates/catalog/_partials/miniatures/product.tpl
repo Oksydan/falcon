@@ -25,21 +25,21 @@
 {block name='product_miniature_item'}
   {$listingType = $type|default:'listing'}
   <div
-    itemprop="itemListElement"
-    itemscope
-    itemtype="http://schema.org/ListItem"
     {if $listingType === 'listing'}
+      itemprop="itemListElement"
+      itemscope
+      itemtype="http://schema.org/ListItem"
       {if $layout|default:'layouts/layout-left-column.tpl' === 'layouts/layout-full-width.tpl'}
         class="col-lg-3 col-md-4 col-6 mb-3"
       {else}
         class="col-lg-4 col-6 mb-3"
       {/if}
-    {else if $listingType === 'slider'}
-
+    {elseif $listingType === 'slider'}
+      class="swiper-slide"
     {/if}
     >
     {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
-    <article class="product-miniature card border-0 shadow js-product-miniature p-2" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
+    <article class="product-miniature card js-product-miniature p-2" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
 
       {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
 

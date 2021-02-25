@@ -25,9 +25,9 @@
 <div class="products row {if !empty($cssClass)} {$cssClass}{/if}" itemscope itemtype="http://schema.org/ItemList">
     {foreach from=$products item="product" key="position"}
         {if $listingDisplayType == 'grid'}
-            {include file="catalog/_partials/miniatures/product.tpl" product=$product type='listing' position=$position}
+            {include file="catalog/_partials/miniatures/product.tpl" product=$product type='listing' position=$position layout=$layout}
         {elseif $listingDisplayType == 'list'}
-            {include file="catalog/_partials/miniatures/product-list.tpl" product=$product type='listing' position=$position}
+            {include file="catalog/_partials/miniatures/product-list.tpl" product=$product type='listing' position=$position layout=$layout}
         {/if}
     {/foreach}
 </div>
