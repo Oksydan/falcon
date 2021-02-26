@@ -29,11 +29,7 @@
       itemprop="itemListElement"
       itemscope
       itemtype="http://schema.org/ListItem"
-      {if $layout|default:'layouts/layout-left-column.tpl' === 'layouts/layout-full-width.tpl'}
-        class="col-lg-3 col-md-4 col-6 mb-3"
-      {else}
-        class="col-lg-4 col-6 mb-3"
-      {/if}
+      class="products-list__block products-list__block--grid"
     {elseif $listingType === 'slider'}
       class="swiper-slide"
     {/if}

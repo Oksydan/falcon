@@ -1,0 +1,29 @@
+
+.products-list {
+  &__block {
+    padding: 0 #{$grid-gutter-width/2};
+    margin-bottom: $grid-gutter-width;
+    &--grid {
+      @include make-col(6);
+
+      .layout-left-column & {
+        @include media-breakpoint-up(lg) {
+          @include make-col(4);
+        }
+      }
+
+      .layout-full-width & {
+        @include media-breakpoint-up(md) {
+          @include make-col(4);
+        }
+        @include media-breakpoint-up(xl) {
+          @include make-col(3);
+        }
+      }
+    }
+
+    &--list {
+      @include make-col(12);
+    }
+  }
+}

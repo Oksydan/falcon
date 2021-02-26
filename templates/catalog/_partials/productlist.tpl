@@ -22,12 +22,13 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="products row {if !empty($cssClass)} {$cssClass}{/if}" itemscope itemtype="http://schema.org/ItemList">
+
+<div class="products-list row {if !empty($cssClass)}{$cssClass}{/if}" itemscope itemtype="http://schema.org/ItemList">
     {foreach from=$products item="product" key="position"}
         {if $listingDisplayType == 'grid'}
-            {include file="catalog/_partials/miniatures/product.tpl" product=$product type='listing' position=$position layout=$layout}
+            {include file="catalog/_partials/miniatures/product.tpl" product=$product type='listing' position=$position}
         {elseif $listingDisplayType == 'list'}
-            {include file="catalog/_partials/miniatures/product-list.tpl" product=$product type='listing' position=$position layout=$layout}
+            {include file="catalog/_partials/miniatures/product-list.tpl" product=$product type='listing' position=$position}
         {/if}
     {/foreach}
 </div>

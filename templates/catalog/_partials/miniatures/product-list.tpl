@@ -28,7 +28,7 @@
     itemprop="itemListElement"
     itemscope
     itemtype="http://schema.org/ListItem"
-    class="col-12 mb-3"
+    class="products-list__block products-list__block--list"
     >
     {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
     <article class="product-miniature card border-0 shadow js-product-miniature p-2" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
@@ -36,19 +36,36 @@
       {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-lg-3">
           {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl'}
         </div>
-        <div class="col-md-8">
-          {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
+        <div class="col-md-8 col-lg-9">
 
-          {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
+          <div class="d-flex flex-column h-100">
+            {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
 
-          {block name='product_reviews'}
-            {hook h='displayProductListReviews' product=$product}
-          {/block}
+            {block name='product_reviews'}
+              {hook h='displayProductListReviews' product=$product}
+            {/block}
 
-          {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
+            {block name='product_desc'}
+              {if $product.description_short}
+                <div class="product-miniature__desc">
+                  {$product.description_short nofilter}
+                </div>
+              {/if}
+            {/block}
+
+            <div class="row mt-auto">
+              <div class="col">
+                {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
+              </div>
+              <div class="col">
+                {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 

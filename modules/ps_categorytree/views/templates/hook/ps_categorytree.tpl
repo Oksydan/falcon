@@ -56,7 +56,7 @@
 
 {extends file="components/left-column-list-group.tpl"}
 {if $categories.children}
-  {block name='list_group_extra_class'}mb-lg-3{/block}
+  {block name='list_group_extra_class'}mb-md-3 d-none d-md-block{/block}
 
   {block name='list_group_title'}
     {l s='Categories' d='Shop.Theme.Catalog'}
