@@ -1,5 +1,5 @@
 {block name='product_thumbnail'}
-  <div class="product-miniature__thumb position-relative mb-2">
+  <div class="product-miniature__thumb position-relative {$thumbExtraClass|default:''}">
     <a href="{$product.url}" class="product-miniature__thumb-link">
       <img
         {if $product.cover}

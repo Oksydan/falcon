@@ -39,7 +39,7 @@
 
       {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
 
-      {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl'}
+      {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
       {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
 

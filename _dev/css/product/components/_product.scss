@@ -127,54 +127,6 @@
     }
   }
 }
-.product-prices {
-  margin-top: $medium-space;
-
-  div {
-    margin-bottom: 0.625rem;
-  }
-
-  .tax-shipping-delivery-label {
-    color: $gray-600;
-
-    .delivery-information {
-      padding: 0 0 0 2px;
-
-      &::before {
-        padding: 0 2px 0 0;
-        content: "-";
-      }
-    }
-  }
-}
-.product-discount {
-  color: $gray-600;
-  .regular-price {
-    margin-right: $small-space;
-    font-weight: 400;
-    text-decoration: line-through;
-  }
-}
-.has-discount {
-  &.product-price,
-  p {
-    color: $secondary;
-  }
-  .discount {
-    display: inline-block;
-    padding: 0.3125rem $small-space;
-    margin-left: $small-space;
-    font-size: $font-size-base;
-    font-weight: 600;
-    color: #fff;
-    text-transform: uppercase;
-    background: $secondary;
-  }
-}
-.product-unit-price {
-  margin-bottom: 0;
-  font-size: $font-size-xs;
-}
 
 .product-cover {
   position: relative;
