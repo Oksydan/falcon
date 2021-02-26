@@ -26,7 +26,7 @@
 {extends file="components/left-column-list-group.tpl"}
 
 {if $brands}
-  {block name='list_group_extra_class'}mb-md-3{/block}
+  {block name='list_group_extra_class'}mb-md-3 d-none d-md-block{/block}
 
   {block name='list_group_title'}
     {if $display_link_brand}<a href="{$page_link}" class="text-reset" title="{l s='Brands' d='Shop.Theme.Catalog'}">{/if}

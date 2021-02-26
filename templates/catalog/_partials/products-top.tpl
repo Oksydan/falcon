@@ -29,13 +29,11 @@
     {/block}
   </div>
 
-  <div class="col flex-grow-0">
+  <div class="col flex-grow-0 hidden-md-up ml-auto">
     {if !empty($listing.rendered_facets)}
-      <div class="col-sm-3 col-4 hidden-md-up filter-button">
-        <button id="search_filter_toggler" class="btn btn-secondary">
-          {l s='Filter' d='Shop.Theme.Actions'}
-        </button>
-      </div>
+      <button id="search_filter_toggler" class="btn btn-secondary">
+        {l s='Filter' d='Shop.Theme.Actions'}
+      </button>
     {/if}
   </div>
 
