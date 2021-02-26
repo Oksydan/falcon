@@ -22,22 +22,26 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<section id="js-active-search-filters" class="{if $activeFilters|count}active_filters{else}hide{/if}">
-  {block name='active_filters_title'}
-    <h1 class="h6 {if $activeFilters|count}active-filter-title{else}hidden-xs-up{/if}">{l s='Active filters' d='Shop.Theme.Global'}</h1>
-  {/block}
+{if $activeFilters|count}
+  <section id="js-active-search-filters" class="card mb-3">
+    <div class="card-header">
+      {block name='active_filters_title'}
+        <p class="h5 card-title mb-0">{l s='Active filters' d='Shop.Theme.Global'}</p>
+      {/block}
+    </div>
+    <div class="card-body">
+      <ul class="row m-n1">
+        {foreach from=$activeFilters item="filter"}
+          {block name='active_filters_item'}
+            <li class="col flex-grow-0 flex-shrink-0 p-1">
+              <a class="btn btn-outline-secondary btn-sm js-search-link d-flex align-items-center" href="{$filter.nextEncodedFacetsURL}" rel="nofollow">
+                {l s='%1$s:' d='Shop.Theme.Catalog' sprintf=[$filter.facetLabel]}{$filter.label} <i class="material-icons font-reset ml-1 align-middle">&#xE14C;</i>
+              </a>
+            </li>
+          {/block}
+        {/foreach}
+      </ul>
+    </div>
 
-  {if $activeFilters|count}
-    <ul>
-      {foreach from=$activeFilters item="filter"}
-        {block name='active_filters_item'}
-          <li class="filter-block">
-            {l s='%1$s:' d='Shop.Theme.Catalog' sprintf=[$filter.facetLabel]}
-            {$filter.label}
-            <a class="js-search-link" href="{$filter.nextEncodedFacetsURL}"></a>
-          </li>
-        {/block}
-      {/foreach}
-    </ul>
-  {/if}
-</section>
+  </section>
+{/if}

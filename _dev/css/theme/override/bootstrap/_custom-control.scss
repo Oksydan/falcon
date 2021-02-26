@@ -1,0 +1,21 @@
+
+.custom-checkbox-color {
+  @extend .custom-checkbox;
+
+  .custom-control-input-color {
+    @extend .custom-control-label::before;
+
+  }
+
+  .custom-control-label {
+    &:before {
+      display: none !important;
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label-dark {
+    &::after {
+      background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
+    }
+  }
+}
