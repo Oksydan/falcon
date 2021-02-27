@@ -26,8 +26,8 @@
   {if !$configuration.is_catalog}
 
     {block name='product_quantity'}
-      <div class="product-quantity clearfix">
-        <div class="qty">
+      <div class="product-quantity d-flex mb-1">
+        <div class="qty mr-1 mb-1">
           <input
             type="number"
             name="qty"
@@ -44,7 +44,7 @@
           >
         </div>
 
-        <div class="add">
+        <div class="add mr-1 mb-1">
           <button
             class="btn btn-primary add-to-cart"
             data-button-action="add-to-cart"
