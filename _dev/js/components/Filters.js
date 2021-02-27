@@ -37,11 +37,11 @@ class Filters {
     });
 
     this.$body.on('click', '.js-search-filters-clear-all', (event) => {
-      prestashop.emit('updateFacets', this.parseSearchUrl(event));
+      prestashop.emit('updateFacets', this.constructor.parseSearchUrl(event));
     });
 
     this.$body.on('change', '#search_filters input[data-search-url]', (event) => {
-      prestashop.emit('updateFacets', this.parseSearchUrl(event));
+      prestashop.emit('updateFacets', this.constructor.parseSearchUrl(event));
     });
   }
 
