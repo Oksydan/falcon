@@ -45,6 +45,7 @@ import CustomSelect from './components/custom-select';
 // import DynamicImportHandler from './utils/DynamicImportHandler';
 
 import './components/block-cart';
+import PageLoader from './components/page-loader';
 
 /* eslint-disable */
 // "inherit" EventEmitter
@@ -57,6 +58,8 @@ prestashop.BSSelect = new CustomSelect({
   selector: 'select',
   excludeSelector: '.normal-select'
 })
+
+prestashop.pageLoader = new PageLoader();
 
 $(document).ready(() => {
   prestashop.BSSelect.init();

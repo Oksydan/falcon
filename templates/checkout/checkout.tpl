@@ -89,6 +89,9 @@
       {hook h='displayBeforeBodyClosingTag'}
     {/block}
 
+    {block name='page-loader'}
+      {include file="_partials/page-loader.tpl"}
+    {/block}
   </body>
 
 </html>

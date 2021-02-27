@@ -109,6 +109,11 @@
     {block name='hook_before_body_closing_tag'}
       {hook h='displayBeforeBodyClosingTag'}
     {/block}
+
+    {block name='page-loader'}
+      {include file="_partials/page-loader.tpl"}
+    {/block}
+
   </body>
 
 </html>
