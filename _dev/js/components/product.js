@@ -36,7 +36,7 @@ $(() => {
 
     if (event && event.product_minimal_quantity) {
       const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
-      const quantityInputSelector = prestashop.selectors.quantityWanted;
+      const quantityInputSelector = '#quantity_wanted';
       const quantityInput = $(quantityInputSelector);
 
       // @see http://www.virtuosoft.eu/code/bootstrap-touchspin/ about Bootstrap TouchSpin
@@ -76,7 +76,6 @@ $(() => {
     const $quantityInput = $('#quantity_wanted');
 
     $quantityInput.TouchSpin({
-      verticalbuttons: true,
       verticalupclass: 'material-icons touchspin-up',
       verticaldownclass: 'material-icons touchspin-down',
       buttondown_class: 'btn btn-touchspin js-touchspin',
