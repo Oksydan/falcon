@@ -32,7 +32,7 @@ import './components/page-slider';
 import './components/responsive';
 import './components/checkout';
 import './components/customer';
-import './components/listing';
+import './components/quickview';
 import './components/product';
 import './components/cart';
 
@@ -40,7 +40,6 @@ import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import DropDown from './components/drop-down';
 import Form from './components/form';
-import ProductMinitature from './components/product-miniature';
 import TopMenu from './components/top-menu';
 import CustomSelect from './components/custom-select';
 // import DynamicImportHandler from './utils/DynamicImportHandler';
@@ -71,5 +70,4 @@ $(document).ready(() => {
   dropDown.init();
   form.init();
   topMenu.init();
-  ProductMinitature.init();
 });

@@ -121,19 +121,19 @@
             {block name='facet_item_slider'}
               {foreach from=$facet.filters item="filter"}
                 <div class="py-1 {if $filter@first}pt-2{/if}">
-                  <ul id="facet_{$_expand_id}" class="search-filters__slider" data-slider-min="{$facet.properties.min}"
-                    data-slider-max="{$facet.properties.max}" data-slider-id="{$_expand_id}"
-                    data-slider-values="{$filter.value|@json_encode}" data-slider-unit="{$facet.properties.unit}"
-                    data-slider-label="{$facet.label}" data-slider-specifications="{$facet.properties.specifications|@json_encode}"
-                    data-slider-encoded-url="{$filter.nextEncodedFacetsURL}">
-                    <li>
-                      <p id="facet_label_{$_expand_id}">
+                  <div id="facet_{$_expand_id}" class="search-filters__slider">
+                    <div>
+                      {* <p id="facet_label_{$_expand_id}">
                         {$filter.label}
-                      </p>
+                      </p> *}
 
-                      <div id="slider-range_{$_expand_id}"></div>
-                    </li>
-                  </ul>
+                      <div class="mt-4 js-range-slider" data-slider-min="{$facet.properties.min}"
+                      data-slider-max="{$facet.properties.max}" data-slider-id="{$_expand_id}"
+                      data-slider-values="{$filter.value|@json_encode}" data-slider-unit="{$facet.properties.unit}"
+                      data-slider-label="{$facet.label}" data-slider-specifications="{$facet.properties.specifications|@json_encode}"
+                      data-slider-encoded-url="{$filter.nextEncodedFacetsURL}" id="slider-range_{$_expand_id}"></div>
+                    </div>
+                  </div>
                 </div>
               {/foreach}
             {/block}
