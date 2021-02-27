@@ -34,7 +34,8 @@ import './components/checkout';
 import './components/customer';
 import './components/quickview';
 import './components/product';
-import './components/cart';
+import './components/cart/cart';
+import './components/cart/block-cart';
 
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
@@ -44,7 +45,6 @@ import TopMenu from './components/top-menu';
 import CustomSelect from './components/custom-select';
 // import DynamicImportHandler from './utils/DynamicImportHandler';
 
-import './components/block-cart';
 import PageLoader from './components/page-loader';
 
 /* eslint-disable */

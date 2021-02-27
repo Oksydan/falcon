@@ -48,11 +48,6 @@ export default class TopMenu extends DropDown {
       }
     });
 
-    $('#menu-icon').on('click', () => {
-      $('#mobile_top_menu_wrapper').toggle();
-      this.toggleMobileMenu();
-    });
-
     this.el.on('click', (e) => {
       if (this.el.parent().hasClass('mobile')) {
         return;
@@ -60,19 +55,6 @@ export default class TopMenu extends DropDown {
       e.stopPropagation();
     });
 
-    prestashop.on('responsive update', () => {
-      $('.js-sub-menu').removeAttr('style');
-      this.toggleMobileMenu();
-    });
     super.init();
-  }
-
-  static toggleMobileMenu() {
-    $('#header').toggleClass('is-open');
-    if ($('#mobile_top_menu_wrapper').is(':visible')) {
-      $('#notifications, #wrapper, #footer').hide();
-    } else {
-      $('#notifications, #wrapper, #footer').show();
-    }
   }
 }
