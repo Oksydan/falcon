@@ -84,27 +84,28 @@ class Filters {
 
     $rangeSliders.each((i, slider) => {
       const $slider = $(slider);
-      const min = $slider.data("slider-min");
-      const max = $slider.data("slider-max");
+      const min = $slider.data('slider-min');
+      const max = $slider.data('slider-max');
       const {
         maxFractionDigits,
         currencySymbol,
         positivePattern,
-      } = $slider.data("slider-specifications");
-      let values = $slider.data("slider-values");
+      } = $slider.data('slider-specifications');
+      let values = $slider.data('slider-values');
 
       const signPosition =
-        positivePattern.indexOf("¤") == 0 ? "prefix" : "suffix";
+        positivePattern.indexOf('¤') == 0 ? 'prefix' : 'suffix';
 
       if (!Array.isArray(values)) {
         values = [min, max];
       }
 
       const format = wNumb({
-        thousand: ",",
+        mark: ',',
+        thousand: ' ',
         decimals: maxFractionDigits,
         [signPosition]:
-          signPosition === "prefix" ? currencySymbol : ` ${currencySymbol}`,
+          signPosition === 'prefix' ? currencySymbol : ` ${currencySymbol}`,
       });
 
       const sliderHandler = noUiSlider.create($slider.get(0), {
@@ -118,10 +119,10 @@ class Filters {
         format,
       });
 
-      this.constructor.mergeTooltips($slider.get(0), 35, " - ");
+      this.constructor.mergeTooltips($slider.get(0), 35, ' - ');
 
-      sliderHandler.off("set", handlerSliderChange);
-      sliderHandler.on("set", handlerSliderChange);
+      sliderHandler.off('set', handlerSliderChange);
+      sliderHandler.on('set', handlerSliderChange);
     });
   }
 
@@ -131,9 +132,9 @@ class Filters {
    * @param separator String joining tooltips
    */
   static mergeTooltips (slider, threshold, separator) {
-    const textIsRtl = getComputedStyle(slider).direction === "rtl";
-    const isRtl = slider.noUiSlider.options.direction === "rtl";
-    const isVertical = slider.noUiSlider.options.orientation === "vertical";
+    const textIsRtl = getComputedStyle(slider).direction === 'rtl';
+    const isRtl = slider.noUiSlider.options.direction === 'rtl';
+    const isVertical = slider.noUiSlider.options.orientation === 'vertical';
     const tooltips = slider.noUiSlider.getTooltips();
     const origins = slider.noUiSlider.getOrigins();
 
@@ -145,7 +146,7 @@ class Filters {
     });
 
     slider.noUiSlider.on(
-      "update",
+      'update',
       function (values, handle, unencoded, tap, positions) {
         const pools = [[]];
         const poolPositions = [[]];
