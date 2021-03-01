@@ -1,0 +1,16 @@
+
+.cart-loader {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba($white, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  .cart-loading & {
+    display: flex;
+  }
+}

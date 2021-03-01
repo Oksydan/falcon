@@ -1,0 +1,20 @@
+
+.cart-dropdown {
+  &__content {
+    padding: map-get($spacers, 3) map-get($spacers, 3) 0;
+  }
+
+  &__products {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__close {
+    font-size: rem-calc(22px);
+    color: $gray-600;
+    &:hover,
+    &:focus {
+      color: $black;
+    }
+  }
+}

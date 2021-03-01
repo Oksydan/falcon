@@ -10,9 +10,10 @@
   }
 
   &--lg {
-    font-size: $h3-font-size;
-    @include media-breakpoint-up(md) {
-      font-size: $h2-font-size;
-    }
+    @include font-size($h2-font-size);
+  }
+
+  &--sm {
+    @include font-size($font-size-base);
   }
 }

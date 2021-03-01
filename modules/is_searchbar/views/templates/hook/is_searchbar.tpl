@@ -23,7 +23,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<div class="header-top__col header-top__col--search col">
+<div class="header-top__block header-top__block--search col">
 
 	<div id="_desktop_search_from" class="d-none d-lg-block">
 		<form class="search-form js-search-form" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">

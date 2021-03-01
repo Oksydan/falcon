@@ -1,0 +1,23 @@
+
+.cart-products {
+  display: flex;
+  padding: map-get($spacers, 3) 0;
+  &:not(:first-child) {
+    border-top: 1px solid $border-color;
+  }
+
+  &__thumb {
+    @include customCol(rem-calc(60px));
+    padding-right: map-get($spacers, 2);
+  }
+
+  &__desc {
+    flex: 1 1;
+    padding-right: map-get($spacers, 2);
+  }
+
+  &__remove {
+    flex: 0 0;
+  }
+
+}

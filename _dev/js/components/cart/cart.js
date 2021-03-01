@@ -34,10 +34,12 @@ $(() => {
 
   prestashop.on('updateCart', () => {
     $('.quickview').modal('hide');
+    $('body').addClass('cart-loading');
   });
 
   prestashop.on('updatedCart', () => {
     createSpin();
+    $('body').removeClass('cart-loading');
   });
 
   createSpin();
