@@ -1,26 +1,26 @@
 {block name='product_tabs'}
-  <div class="card">
+  <div class="card product-tabs">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs" role="tablist">
         {if $product.description}
           <li class="nav-item">
             <a
-              class="nav-link{if $product.description} active{/if}"
+              class="nav-link"
               data-toggle="tab"
               href="#description"
               role="tab"
               aria-controls="description"
-              {if $product.description} aria-selected="true"{/if}>{l s='Description' d='Shop.Theme.Catalog'}</a>
+              >{l s='Description' d='Shop.Theme.Catalog'}</a>
           </li>
         {/if}
         <li class="nav-item">
           <a
-            class="nav-link{if !$product.description} active{/if}"
+            class="nav-link"
             data-toggle="tab"
             href="#product-details"
             role="tab"
             aria-controls="product-details"
-            {if !$product.description} aria-selected="true"{/if}>{l s='Product Details' d='Shop.Theme.Catalog'}</a>
+            >{l s='Product Details' d='Shop.Theme.Catalog'}</a>
         </li>
         {if $product.attachments}
           <li class="nav-item">
@@ -47,7 +47,7 @@
 
     <div class="card-body">
       <div class="tab-content" id="tab-content">
-        <div class="tab-pane fade in{if $product.description} active{/if}" id="description" role="tabpanel">
+        <div class="tab-pane fade in" id="description" role="tabpanel">
           {block name='product_description'}
             <div class="product-description">{$product.description nofilter}</div>
           {/block}

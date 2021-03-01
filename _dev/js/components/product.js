@@ -48,8 +48,6 @@ $(() => {
       });
     }
 
-    $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
-
     if(updateEvenType === 'updatedProductCombination') {
       $('.js-product-images').replaceWith(event.product_cover_thumbnails);
       $('.js-product-images-modal').replaceWith(event.product_images_modal);
