@@ -1,0 +1,17 @@
+
+.product-thumbs {
+  &__elem {
+    opacity: .3;
+    cursor: pointer;
+    transition: .3s ease;
+
+    &:focus,
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &.swiper-slide-thumb-active {
+      opacity: 1;
+    }
+  }
+}

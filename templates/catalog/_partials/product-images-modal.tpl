@@ -23,54 +23,43 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <div class="modal fade js-product-images-modal" id="product-modal">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        {assign var=imagesCount value=$product.images|count}
-        <figure>
-          <img
-            class="js-modal-product-cover product-cover-modal"
-            width="{$product.cover.large.width}"
-            src="{$product.cover.large.url}"
-            {if !empty($product.cover.legend)}
-              alt="{$product.cover.legend}"
-              title="{$product.cover.legend}"
-            {else}
-              alt="{$product.name}"
-            {/if}
-            itemprop="image"
-          >
-          <figcaption class="image-caption">
-          {block name='product_description_short'}
-            <div id="product-description-short" itemprop="description">{$product.description_short nofilter}</div>
-          {/block}
-        </figcaption>
-        </figure>
-        <aside id="thumbnails" class="thumbnails js-thumbnails text-sm-center">
-          {block name='product_images'}
-            <div class="js-modal-mask mask {if $imagesCount <= 5} nomargin {/if}">
-              <ul class="product-images js-modal-product-images">
-                {foreach from=$product.images item=image}
-                  <li class="thumb-container">
-                    <img
-                      data-image-large-src="{$image.large.url}"
-                      class="thumb js-modal-thumb"
-                      src="{$image.medium.url}"
-                      {if !empty($image.legend)}
-                        alt="{$image.legend}"
-                        title="{$image.legend}"
-                      {else}
-                        alt="{$product.name}"
-                      {/if}
-                      width="{$image.medium.width}"
-                      itemprop="image"
-                    >
-                  </li>
-                {/foreach}
-              </ul>
-            </div>
-          {/block}
-        </aside>
+        <div class="js-modal-gallery modal-gallery swiper-container">
+
+          <div class="modal-gallery__list swiper-wrapper">
+            {foreach from=$product.images item=image}
+              <div class="swiper-slide modal-gallery__elem">
+                <img
+                  class="rounded img-fluid"
+                  src="{$image.bySize.large_default.url}"
+                  width="{$image.bySize.large_default.width}"
+                  height="{$image.bySize.large_default.height}"
+                  {if !empty($product.default_image.legend)}
+                    alt="{$image.legend}"
+                    title="{$image.legend}"
+                  {else}
+                    alt="{$product.name}"
+                  {/if}
+                  itemprop="image"
+                  loading="lazy"
+                >
+              </div>
+            {/foreach}
+          </div>
+
+          <div class="swiper-button-prev swiper-button-prev-custom">
+            <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
+            <span class="material-icons">keyboard_arrow_left</span>
+          </div>
+          <div class="swiper-button-next swiper-button-prev-custom">
+            <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
+            <span class="material-icons">keyboard_arrow_right</span>
+          </div>
+
+        </div>
+
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

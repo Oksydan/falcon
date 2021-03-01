@@ -28,11 +28,14 @@ import prestashop from 'prestashop';
 $(() => {
   createProductSpin();
   createInputFile();
-  coverImage();
+  let updateEvenType = false;
+
+  prestashop.on('updateProduct', ({ eventType }) => {
+    updateEvenType = eventType;
+  });
 
   prestashop.on('updatedProduct', (event) => {
     createInputFile();
-    coverImage();
 
     if (event && event.product_minimal_quantity) {
       const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
@@ -46,20 +49,15 @@ $(() => {
     }
 
     $($('.tabs .nav-link.active').attr('href')).addClass('active').removeClass('fade');
-    $('.js-product-images-modal').replaceWith(event.product_images_modal);
-  });
 
-  function coverImage() {
-    $('.js-thumb').on(
-      'click',
-      ({target, currentTarget}) => {
-        $('.js-modal-product-cover').attr('src', $(target).data('image-large-src'));
-        $('.selected').removeClass('selected');
-        $(target).addClass('selected');
-        $('.js-qv-product-cover').prop('src', $(currentTarget).data('image-large-src'));
-      },
-    );
-  }
+    if(updateEvenType === 'updatedProductCombination') {
+      $('.js-product-images').replaceWith(event.product_cover_thumbnails);
+      $('.js-product-images-modal').replaceWith(event.product_images_modal);
+      prestashop.emit('updatedProductCombination', event);
+    }
+
+    updateEvenType = false;
+  });
 
   function createInputFile() {
     $('.js-file-input').on('change', (event) => {

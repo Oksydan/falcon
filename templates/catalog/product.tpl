@@ -53,23 +53,25 @@
     <meta itemprop="url" content="{$product.url}">
 
     <div class="row product-container">
-      <div class="col-md-5">
+      <div class="col-md-5 mb-4">
         {block name='page_content_container'}
             {block name='page_content'}
               <div class="card">
                 <div class="card-body">
-                  {include file='catalog/_partials/product-flags.tpl'}
+                  <div class="position-relative">
+                    {include file='catalog/_partials/product-flags.tpl'}
 
-                  {block name='product_cover_thumbnails'}
-                    {include file='catalog/_partials/product-cover-thumbnails.tpl'}
-                  {/block}
+                    {block name='product_cover_thumbnails'}
+                      {include file='catalog/_partials/product-cover-thumbnails.tpl'}
+                    {/block}
+                  </div>
                 </div>
               </div>
 
             {/block}
         {/block}
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 mb-4">
           {block name='page_header_container'}
             {block name='page_header'}
               <h1 class="h1" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
