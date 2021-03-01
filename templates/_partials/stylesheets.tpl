@@ -28,25 +28,6 @@
   <link rel="stylesheet" href="{$stylesheet.uri}" type="text/css" media="{$stylesheet.media}">
 {/foreach}
 
-{$additionStylessheets = [
-  [
-    'fileName' => 'theme-tablet.css',
-    'media' => '(min-width: 576px)',
-    'allowedPages' => []
-  ],
-  [
-    'fileName' => 'theme-desktop.css',
-    'media' => '(min-width: 992px)',
-    'allowedPages' => []
-  ]
-]}
-
-{foreach $additionStylessheets as $stylesheet}
-  {if isset($stylesheet.allowedPages) && in_array($page.page_name, $stylesheet.allowedPages) || empty($stylesheet.allowedPages)}
-    <link rel="stylesheet" href="{$urls.css_url}{$stylesheet.fileName}" type="text/css" media="{$stylesheet.media}">
-  {/if}
-{/foreach}
-
 {foreach $stylesheets.inline as $stylesheet}
   <style>
     {$stylesheet.content}
