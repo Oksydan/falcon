@@ -34,7 +34,7 @@ export default class TopMenu {
       over: self.toggleClassSubMenu,
       out: self.toggleClassSubMenu,
       selector: " > li",
-      timeout: 100,
+      timeout: 300,
     });
   }
 

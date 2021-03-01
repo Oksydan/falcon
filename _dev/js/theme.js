@@ -66,7 +66,6 @@ $(document).ready(() => {
   const form = new Form();
   let topMenu = new TopMenu('#_desktop_top_menu #top-menu');
 
-  dropDown.init();
   form.init();
   topMenu.init();
 });
