@@ -7,8 +7,8 @@
 
   &__flag {
     width: fit-content;
-    padding: $extra-small-space $small-space;
-    margin-bottom: $small-space;
+    padding: map-get($spacers, 1) map-get($spacers, 2);
+    margin-bottom: map-get($spacers, 2);
     font-size: $font-size-sm;
     line-height: 1.35;
     font-weight: 700;

@@ -4,8 +4,8 @@
   &__modal-trigger-layer {
     position: absolute;
     z-index: 2;
-    bottom: $small-space;
-    right: $small-space;
+    bottom: map-get($spacers, 2);
+    right: map-get($spacers, 2);
 
     @include font-size(20px);
 

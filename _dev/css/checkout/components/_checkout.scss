@@ -140,7 +140,7 @@ body#checkout {
         display: table-cell;
       }
       .custom-radio {
-        margin-right: $medium-space;
+        margin-right: map-get($spacers, 3);
       }
       .payment-option {
         margin-bottom: 0.5rem;
@@ -158,7 +158,7 @@ body#checkout {
     }
     .address-item {
       flex: 0 0 49%;
-      margin-bottom: $small-space;
+      margin-bottom: map-get($spacers, 2);
       background: $gray-200;
       border: 3px solid transparent;
       &.selected {
@@ -299,7 +299,7 @@ body#checkout {
     text-decoration: underline;
   }
   .modal-content {
-    padding: $medium-space;
+    padding: map-get($spacers, 3);
     background-color: $gray-100;
   }
   #cart-summary-product-list {
@@ -419,12 +419,12 @@ body#checkout {
   padding-left: 1.3rem;
   margin-top: 1.25rem;
   > .card-title {
-    margin-bottom: $large-space;
+    margin-bottom: map-get($spacers, 4);
   }
   ul {
-    margin-bottom: $medium-space;
+    margin-bottom: map-get($spacers, 3);
     li {
-      margin-bottom: $small-space;
+      margin-bottom: map-get($spacers, 2);
     }
   }
 }
@@ -444,7 +444,7 @@ body#checkout {
   table {
     width: 100%;
     tr {
-      height: $large-space;
+      height: map-get($spacers, 4);
       td {
         padding: .5rem;
         font-size: .875rem;
@@ -532,7 +532,7 @@ body#checkout {
   body#checkout section.checkout-step.-reachable.-complete h1 .step-edit {
     float: none;
     margin-top: 0.25rem;
-    margin-left: $medium-space;
+    margin-left: map-get($spacers, 3);
   }
   body#checkout {
     #header .header-nav {

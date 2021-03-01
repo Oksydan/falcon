@@ -1,0 +1,43 @@
+
+.js-search-result {
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: -#{$search_input-height/2};
+    padding: #{$search_input-height/2 + #{map-get($spacers, 2)}} map-get($spacers, 3) map-get($spacers, 3);
+    background: $white;
+    border-radius: 0 0 $border-radius $border-radius;
+    border: 1px solid $border-color;
+  }
+}
+
+.search-result {
+  &__products {
+    margin: map-get($spacers, 3) -#{map-get($spacers, 2)} 0;
+    .products-list__block {
+      margin: 0 0 map-get($spacers, 3);
+      padding: 0 map-get($spacers, 2);
+      @include make-col(6);
+      @include media-breakpoint-up(md) {
+        @include make-col(4);
+      }
+    }
+  }
+
+  &__bottom {
+    position: sticky;
+    bottom: -#{rem-calc(16px)};
+    left: 0;
+    right: 0;
+    background: #fff;
+    margin: 0 -#{rem-calc(20px)};
+    padding: rem-calc(10px) rem-calc(20px);
+    z-index: 1;
+    @include media-breakpoint-up(lg) {
+      padding: 0 rem-calc(20px);
+    }
+  }
+}

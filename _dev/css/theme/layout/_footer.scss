@@ -3,8 +3,8 @@
 }
 
 .footer-container {
-  padding-top: $extra-large-space;
-  margin-top: $extra-large-space;
+  padding-top: map-get($spacers, 5);
+  margin-top: map-get($spacers, 5);
   overflow: hidden;
   background: $gray-100;
   li {

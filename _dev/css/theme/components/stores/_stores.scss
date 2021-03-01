@@ -15,7 +15,7 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      padding: $large-space 0;
+      padding: map-get($spacers, 4) 0;
       ul {
         margin-bottom: 0;
         font-size: $font-size-lg;
@@ -48,7 +48,7 @@
         flex: 0 0 65%;
       }
       li{
-        margin-bottom: $small-space;
+        margin-bottom: map-get($spacers, 2);
       }
     }
   }
@@ -88,7 +88,7 @@
           border-top: $gray-200 1px solid;
         }
         li{
-          margin-bottom: $small-space;
+          margin-bottom: map-get($spacers, 2);
         }
         .card-block {
           padding: 0.75rem 0.75rem 0;

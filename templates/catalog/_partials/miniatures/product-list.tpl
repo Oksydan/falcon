@@ -31,7 +31,7 @@
     class="products-list__block products-list__block--list"
     >
     {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
-    <article class="product-miniature card border-0 shadow js-product-miniature p-2" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
+    <article class="product-miniature card border-0 shadow js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
 
       {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
 

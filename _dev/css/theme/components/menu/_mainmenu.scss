@@ -9,7 +9,7 @@
     color: $gray-700;
     font-weight: 600;
     display: block;
-    padding: $small-space $medium-space;
+    padding: map-get($spacers, 2) map-get($spacers, 3);
   }
 
   &__collapseicon {
@@ -61,7 +61,7 @@
 @include media-breakpoint-down(sm) {
   .menu-top {
     flex-direction: column;
-    margin-bottom: $medium-space;
+    margin-bottom: map-get($spacers, 3);
   }
   .menu-sub {
     width: 100%;

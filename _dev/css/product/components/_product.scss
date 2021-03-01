@@ -24,7 +24,7 @@
   > .table-product-discounts {
     thead tr th {
       width: 33%;
-      padding: $small-space $medium-space;
+      padding: map-get($spacers, 2) map-get($spacers, 3);
       text-align: center;
       background: #fff;
       border: 0.3125rem $gray-200 solid;
@@ -35,7 +35,7 @@
         background: #fff;
       }
       td {
-        padding: $small-space $medium-space;
+        padding: map-get($spacers, 2) map-get($spacers, 3);
         text-align: center;
         border: 0.3125rem $gray-200 solid;
       }
@@ -51,7 +51,7 @@
   }
 }
 .product-features {
-  margin-top: $medium-space;
+  margin-top: map-get($spacers, 3);
   margin-left: 0.3125rem;
   > dl.data-sheet {
     display: flex;
@@ -61,8 +61,8 @@
     dt.name {
       flex: 1 0 40%;
       min-height: 2.5rem;
-      padding: $small-space;
-      margin-right: $small-space;
+      padding: map-get($spacers, 2);
+      margin-right: map-get($spacers, 2);
       margin-bottom: .5rem;
       font-weight: 400;
       text-transform: capitalize;
@@ -76,9 +76,9 @@
 }
 
 .product-customization {
-  margin: $extra-large-space 0;
+  margin: map-get($spacers, 5) 0;
   .product-customization-item {
-    margin: $medium-space 0;
+    margin: map-get($spacers, 3) 0;
   }
   .product-message {
     width: 100%;
@@ -111,7 +111,7 @@
     display: block;
     width: 100%;
     height: 2.625rem;
-    margin-top: $medium-space;
+    margin-top: map-get($spacers, 3);
     line-height: 2.625rem;
     color: $gray-600;
     text-indent: 0.625rem;
@@ -128,7 +128,7 @@
   }
 }
 .product-pack {
-  margin-top: $extra-large-space;
+  margin-top: map-get($spacers, 5);
   .pack-product-container {
     display: flex;
     justify-content: space-around;
@@ -138,7 +138,7 @@
       color: $gray-600;
     }
     .pack-product-quantity {
-      padding-left: $small-space;
+      padding-left: map-get($spacers, 2);
       border-left: $gray-200 2px solid;
     }
     .pack-product-name,
@@ -151,7 +151,7 @@
 }
 
 .products-selection {
-  margin-bottom: $medium-space;
+  margin-bottom: map-get($spacers, 3);
   .title {
     color: $gray-600;
   }

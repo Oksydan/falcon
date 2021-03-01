@@ -111,6 +111,10 @@
     {/block}
 
     {block name='page-loader'}
+      {include file="_partials/mobile-modals.tpl"}
+    {/block}
+
+    {block name='page-loader'}
       {include file="_partials/page-loader.tpl"}
     {/block}
 

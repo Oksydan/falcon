@@ -131,7 +131,7 @@
         font-size: $font-size-base;
       }
       span {
-        margin-top: $small-space;
+        margin-top: map-get($spacers, 2);
         font-size: $font-size-base;
         vertical-align: middle;
       }
