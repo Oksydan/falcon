@@ -27,6 +27,7 @@ import $ from 'jquery';
 import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
+import 'jquery-hoverintent';
 
 import './components/page-slider';
 import './components/responsive';
@@ -39,7 +40,6 @@ import './components/cart/block-cart';
 
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
-import DropDown from './components/drop-down';
 import Form from './components/form';
 import TopMenu from './components/top-menu';
 import CustomSelect from './components/custom-select';
@@ -64,11 +64,7 @@ prestashop.pageLoader = new PageLoader();
 $(document).ready(() => {
   prestashop.BSSelect.init();
   const form = new Form();
-
-  const dropDownEl = $('.js-dropdown');
-  const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
-  const dropDown = new DropDown(dropDownEl);
-  const topMenu = new TopMenu(topMenuEl);
+  let topMenu = new TopMenu('#_desktop_top_menu #top-menu');
 
   dropDown.init();
   form.init();

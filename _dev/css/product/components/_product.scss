@@ -74,24 +74,6 @@
     }
   }
 }
-.product-variants {
-  > .product-variants-item {
-    margin: $medium-space 0;
-    select {
-      width: auto;
-      padding-right: 1.875rem;
-      background-color: #fff;
-    }
-    ul li {
-      margin-right: $small-space;
-    }
-    .color {
-      margin-top: 0;
-      margin-left: 0;
-    }
-  }
-}
-
 
 .product-customization {
   margin: $extra-large-space 0;
