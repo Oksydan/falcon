@@ -3,7 +3,7 @@
   &__elem {
     opacity: .3;
     cursor: pointer;
-    transition: .3s ease;
+    transition: .3s ease opacity;
 
     &:focus,
     &:hover {
