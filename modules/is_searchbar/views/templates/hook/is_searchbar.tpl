@@ -37,7 +37,7 @@
 		</form>
 	</div>
 
-	<a role="button" class="p-0 search-toggler header-top__link d-flex d-lg-none" data-toggle="modal" data-target="#saerchModal">
+	<a role="button" class="search-toggler header-top__link d-block d-lg-none" data-toggle="modal" data-target="#saerchModal">
 		<div class="header-top__icon-container">
 			<span class="header-top__icon material-icons">search</span>
 		</div>
