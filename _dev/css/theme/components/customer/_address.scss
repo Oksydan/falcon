@@ -1,0 +1,32 @@
+.address {
+  &__header {
+    background-color: transparent;
+  }
+
+  &__body {
+    line-height: 1.75;
+    address {
+      margin: 0;
+    }
+  }
+
+  &__footer {
+    padding: 0;
+    display: flex;
+
+    a {
+      @include make-col(6);
+      text-align: center;
+      color: $gray-900;
+      padding: map-get($spacers, 2);
+      &:first-child {
+        border-right: 1px solid $card-border-color;
+      }
+
+      @include hf() {
+        background: $gray-200;
+        text-decoration: none;
+      }
+    }
+  }
+}

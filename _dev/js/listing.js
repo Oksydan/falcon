@@ -39,6 +39,6 @@ function updateProductListDOM(data) {
     $('#js-product-list-header').replaceWith(data.rendered_products_header);
   }
 
-  prestashop.BSSelect.init();
+  prestashop.customSelect.init();
   prestashop.emit('updatedProductList', data);
 }

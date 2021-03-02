@@ -1,11 +1,10 @@
 {**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
+ * 2007-2017 PrestaShop
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
+ * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * https://opensource.org/licenses/AFL-3.0
  * If you did not receive a copy of the license and are unable to
@@ -16,27 +15,28 @@
  *
  * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
  * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
+ * needs please refer to http://www.prestashop.com for more information.
  *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
+ * @author    PrestaShop SA <contact@prestashop.com>
+ * @copyright 2007-2017 PrestaShop SA
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
+ * International Registered Trademark & Property of PrestaShop SA
  *}
-{block name='address_block_item'}
-  <article id="address-{$address.id}" class="address" data-id-address="{$address.id}">
-    <div class="address-body">
-      <h4>{$address.alias}</h4>
+ {block name='address_block_item'}
+  <article id="address-{$address.id}" class="address card h-100" data-id-address="{$address.id}">
+    <p class="address__header card-header h5">{$address.alias}</p>
+    <div class="address__body card-body">
       <address>{$address.formatted nofilter}</address>
-      {* Display the extra field values added in an address from using hook 'additionalCustomerAddressFields' *}
-      {hook h='displayAdditionalCustomerAddressFields' address=$address}
     </div>
 
     {block name='address_block_item_actions'}
-      <div class="address-footer">
-        <a href="{url entity=address id=$address.id}" data-link-action="edit-address">
+      <div class="address__footer small card-footer">
+        <a class="d-flex align-items-center justify-content-center" href="{url entity=address id=$address.id}" data-link-action="edit-address">
+          <i class="material-icons mr-1 font-reset">&#xE254;</i>
           <span>{l s='Update' d='Shop.Theme.Actions'}</span>
         </a>
-        <a href="{url entity=address id=$address.id params=['delete' => 1, 'token' => $token]}" data-link-action="delete-address">
+        <a class="d-flex align-items-center justify-content-center" href="{url entity=address id=$address.id params=['delete' => 1, 'token' => $token]}" data-link-action="delete-address">
+          <i class="material-icons mr-1 font-reset">&#xE872;</i>
           <span>{l s='Delete' d='Shop.Theme.Actions'}</span>
         </a>
       </div>

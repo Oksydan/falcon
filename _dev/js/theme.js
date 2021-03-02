@@ -53,7 +53,7 @@ for (const i in EventEmitter.prototype) {
 }
 /* eslint-enable */
 
-prestashop.BSSelect = new CustomSelect({
+prestashop.customSelect = new CustomSelect({
   selector: 'select',
   excludeSelector: '.normal-select'
 })
@@ -61,10 +61,14 @@ prestashop.BSSelect = new CustomSelect({
 prestashop.pageLoader = new PageLoader();
 
 $(document).ready(() => {
-  prestashop.BSSelect.init();
+  prestashop.customSelect.init();
   accLinksTriggerActive();
   const form = new Form();
   let topMenu = new TopMenu('#_desktop_top_menu #top-menu');
+
+  prestashop.on('updatedAddressForm', () => {
+    prestashop.customSelect.init();
+  });
 
   form.init();
   topMenu.init();

@@ -77,7 +77,7 @@
     {elseif $field.type === 'countrySelect'}
 
       {block name='form_field_item_country'}
-        <select class="custom-select js-country{if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
+        <select class="js-country{if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
           id="f-{$field.name}_{$uniqId}" {if $field.required}required{/if}>
           <option value disabled selected>{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
           {foreach from=$field.availableValues item="label" key="value"}
