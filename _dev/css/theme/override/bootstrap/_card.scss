@@ -3,3 +3,8 @@
     border: 0;
   }
 }
+
+
+.card-body + .card-body {
+  border-top: $card-border-width solid $card-border-color;
+}

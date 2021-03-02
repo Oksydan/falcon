@@ -23,22 +23,12 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
- <div class="cart-summary-products">
-  <p>{$cart.summary_string}</p>
-
-  <p>
-    <a href="#" data-toggle="collapse" data-target="#cart-summary-product-list">
-      {l s='show details' d='Shop.Theme.Actions'}
-    </a>
-  </p>
-
+<div class="cart-summary-products">
   {block name='cart_summary_product_list'}
-    <div class="collapse" id="cart-summary-product-list">
-      <ul class="media-list">
-        {foreach from=$cart.products item=product}
-          <li class="media">{include file='checkout/_partials/cart-summary-product-line.tpl' product=$product}</li>
-        {/foreach}
-      </ul>
+    <div id="cart-summary-product-list">
+      {foreach from=$cart.products item=product}
+        {include file='checkout/_partials/cart-summary-product-line.tpl' product=$product}
+      {/foreach}
     </div>
   {/block}
 </div>

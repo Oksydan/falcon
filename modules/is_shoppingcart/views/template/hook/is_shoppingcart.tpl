@@ -46,25 +46,27 @@
           </span>
         </div>
         {if $cart.products_count > 0}
-          <div class="cart-dropdown__products mb-3">
+          <div class="cart-dropdown__products pt-3 mb-3">
             {foreach from=$cart.products item=product}
               {include 'module:is_shoppingcart/views/template/front/is_shoppingcart-product-line.tpl' product=$product}
             {/foreach}
           </div>
-          {* <div class="cart-subtotals">
-            {foreach from=$cart.subtotals item="subtotal"}
-              <div class="{$subtotal.type}">
+
+          {* {foreach from=$cart.subtotals item="subtotal"}
+            {if $subtotal.value}
+              <div class="cart-summary-line cart-summary-line-{$subtotal.type}">
                 <span class="label">{$subtotal.label}</span>
-                <span class="value">{$subtotal.value}</span>
+                <span class="value">{if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}</span>
               </div>
-            {/foreach}
-          </div> *}
+            {/if}
+          {/foreach} *}
+
           <div class="cart-summary-line cart-total">
             <span class="label">{$cart.totals.total.label}</span>
             <span class="value">{$cart.totals.total.value}</span>
           </div>
 
-          <div class="mb-4">
+          <div class="mt-3">
             <a href="{$cart_url}" class="btn btn-sm btn-primary btn-block dropdown-close">
               {l s='Proceed to checkout' d='Shop.Theme.Actions'}
             </a>

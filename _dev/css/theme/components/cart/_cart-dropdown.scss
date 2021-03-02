@@ -1,7 +1,7 @@
 
 .cart-dropdown {
   &__content {
-    padding: map-get($spacers, 3) map-get($spacers, 3) 0;
+    padding: map-get($spacers, 2) map-get($spacers, 3) map-get($spacers, 3);
   }
 
   &__products {
