@@ -47,6 +47,8 @@
   {/if}
 {/function}
 
-<div class="menu d-none d-md-block col-12" id="_desktop_top_menu">
-  {menu nodes=$menu.children}
+<div class="d-none d-md-block col-12 header-top__block header-top__block--menu mt-3">
+  <div class="menu" id="_desktop_top_menu">
+    {menu nodes=$menu.children}
+  </div>
 </div>

@@ -1,1 +1,45 @@
 /* HEADER STYLES */
+
+.header-top {
+
+  &__row {
+    align-items: center;
+  }
+
+  &__link {
+    padding: map-get($spacers, 2);
+    color: $gray-700;
+    display: block;
+    border-radius: $border-radius;
+    text-decoration: none;
+
+    @include hf() {
+      text-decoration: none;
+      background: $gray-100;
+      color: $black;
+    }
+  }
+
+  &__icon-container {
+    position: relative;
+  }
+
+  &__icon {
+    font-size: rem-calc(32px);
+    display: block;
+  }
+
+  &__badge {
+    font-size: rem-calc(8px);
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 50%;
+    background: $primary;
+    color: $white;
+    text-align: center;
+    position: absolute;
+    right: -0.2em;
+    top: -0.5em;
+  }
+}
