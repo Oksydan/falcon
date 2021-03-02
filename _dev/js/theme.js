@@ -68,4 +68,8 @@ $(document).ready(() => {
 
   form.init();
   topMenu.init();
+
+  $('.js-select-link').on('change', ({ target }) => {
+    window.location.href = $(target).val();
+  })
 });

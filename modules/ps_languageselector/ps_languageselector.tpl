@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <div id="_desktop_language_selector" class="col flex-grow-0 flex-shrink-0">
-  <select aria-labelledby="language-selector-label">
+  <select class="bootstrap-select-sm js-select-link" aria-labelledby="language-selector-label">
     {foreach from=$languages item=language}
       <option value="{url entity='language' id=$language.id_lang}"{if $language.id_lang == $current_language.id_lang} selected="selected"{/if} data-iso-code="{$language.iso_code}">
         {$language.name_simple}
