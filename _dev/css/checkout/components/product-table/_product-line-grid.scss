@@ -1,0 +1,79 @@
+
+.product-line-grid {
+  align-items: center;
+
+  &:not(:last-child) {
+    padding-bottom: map-get($spacers, 3);
+    margin-bottom: map-get($spacers, 3);
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__row {
+    margin: 0 -#{map-get($spacers, 2)};
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    @include media-breakpoint-up(md) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__block {
+    padding: 0 rem-calc(10px);
+
+    &--image {
+      align-self: flex-start;
+      @include customCol(80px);
+      order: -3;
+      @include media-breakpoint-up(md) {
+        align-self: center;
+        @include customCol(100px);
+      }
+    }
+
+    &--prod {
+      order: -2;
+      @include customCol(calc(100% - #{rem-calc(80px)} - #{rem-calc(50px)}));
+      @include media-breakpoint-up(md) {
+        flex: 1 1 auto;
+        max-width: inherit;
+      }
+    }
+
+    &--qty {
+      @include make-col(6);
+      margin: rem-calc(15px) 0 0;
+      @include media-breakpoint-up(md) {
+        margin: 0;
+        @include customCol(rem-calc(110px));
+      }
+    }
+
+    &--total {
+      @include make-col(6);
+      text-align: right;
+      margin: rem-calc(15px) 0 0;
+      @include media-breakpoint-up(md) {
+        margin: 0;
+        @include customCol(rem-calc(120px));
+        text-align: center;
+      }
+      @include media-breakpoint-up(xl) {
+        @include customCol(rem-calc(150px));
+      }
+    }
+
+    &--delete {
+      @include customCol(rem-calc(50px));
+      text-align: center;
+      @include media-breakpoint-down(sm) {
+        padding-top: rem-calc(5px);
+        align-self: flex-start;
+        order: -1;
+      }
+      @include media-breakpoint-up(xl) {
+        @include customCol(rem-calc(110px));
+      }
+    }
+  }
+}
