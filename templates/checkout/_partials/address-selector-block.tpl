@@ -29,7 +29,7 @@
       id="{$name|classname}-address-{$address.id}">
       <input type="radio" name="{$name}" value="{$address.id}" id="r-{$name|classname}-address-{$address.id}"
         class="custom-control-input" {if $address.id == $selected}checked{/if}>
-      <label for="r-{$name|classname}-address-{$address.id}" class="card mb-0 cursor-pointer">
+      <label for="r-{$name|classname}-address-{$address.id}" class="card mb-0 cursor-pointer h-100">
         <div class="address__header card-header h5">
           {$address.alias}
         </div>

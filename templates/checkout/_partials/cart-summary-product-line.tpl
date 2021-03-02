@@ -32,6 +32,20 @@
       <p class="h6 mb-2 font-sm">
         <span class="text-muted">{$product.quantity}x</span> {$product.name}
       </p>
+
+      <ul class="mb-2">
+        <li class="text-muted small">
+          <span>{l s='Quantity' d='Shop.Theme.Catalog'}:</span>
+          <span class="font-weight-bold">{$product.quantity}</span>
+        </li>
+        {foreach from=$product.attributes key="attribute" item="value"}
+          <li class="text-muted small">
+            <span>{$attribute}:</span>
+            <span class="font-weight-bold">{$value}</span>
+          </li>
+        {/foreach}
+      </ul>
+
       <span class="price price--sm">
         {$product.price}
       </span>

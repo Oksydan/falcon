@@ -45,7 +45,7 @@
       margin: rem-calc(15px) 0 0;
       @include media-breakpoint-up(md) {
         margin: 0;
-        @include customCol(rem-calc(110px));
+        @include customCol(rem-calc(130px));
       }
     }
 
@@ -70,9 +70,6 @@
         padding-top: rem-calc(5px);
         align-self: flex-start;
         order: -1;
-      }
-      @include media-breakpoint-up(xl) {
-        @include customCol(rem-calc(110px));
       }
     }
   }

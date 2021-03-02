@@ -8,7 +8,7 @@
   }
 
   &__thumb {
-    @include customCol(rem-calc(60px));
+    @include customCol(rem-calc(80px));
     padding-right: map-get($spacers, 2);
   }
 

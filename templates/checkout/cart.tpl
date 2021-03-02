@@ -43,9 +43,12 @@
         </div>
 
         {block name='continue_shopping'}
-          <a class="label" href="{$urls.pages.index}">
-            {l s='Continue shopping' d='Shop.Theme.Actions'}
-          </a>
+          <div class="mt-3">
+            <a class="btn btn-outline-primary" href="{$urls.pages.index}">
+              <span class="material-icons btn-icon mr-1">keyboard_arrow_left</span>
+              {l s='Continue shopping' d='Shop.Theme.Actions'}
+            </a>
+          </div>
         {/block}
 
         <!-- shipping informations -->

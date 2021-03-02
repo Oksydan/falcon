@@ -72,7 +72,7 @@
           <p class="alert alert-danger js-address-error" name="alert-delivery" style="display: none">{l s="Your address is incomplete, please update it." d="Shop.Notifications.Error"}</p>
         {/if}
 
-        <div class="add-address mb-3">
+        <div class="add-address mt-2 mb-3">
           <a class="btn btn-outline-primary btn-sm" href="{$new_address_delivery_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
         </div>
 
