@@ -1,10 +1,10 @@
-{extends file='module:is_shoppingcart/views/template/front/modal-base.tpl'}
+{extends file='components/modal.tpl'}
 
-{block name='blockcart_modal_id'}id="blockcart-modal"{/block}
-{block name='blockcart_modal_title'}{l s='Product added to cart' d='Shop.Prozoo'}{/block}
+{block name='modal_id'}id="blockcart-modal"{/block}
+{block name='modal_title'}{l s='Product added to cart' d='Shop.Prozoo'}{/block}
 
 
-{block name='blockcart_modal_body'}
+{block name='modal_body'}
 
   <div class="cart-products p-0 mb-4">
     <div class="cart-products__thumb">
@@ -12,7 +12,7 @@
     </div>
     <div class="cart-products__desc">
         <p class="h6 mb-2 font-sm">
-          <span class="text-muted">{$product.cart_quantity}x</span> {$product.name}
+          {$product.name}
         </p>
         <div class="price price--sm">{$product.price}</div>
         {hook h='displayProductPriceBlock' product=$product type="unit_price"}
@@ -48,7 +48,7 @@
   {/if}
 {/block}
 
-{block name='blockcart_modal_footer'}
-  <a href="{$cart_url}" class="btn btn-primary btn-sm btn-block">{l s='Proceed to checkout' d='Shop.Theme.Actions'}</a>
-  <button type="button" class="btn btn-text btn-sm btn-block" data-dismiss="modal">{l s='Continue shopping' d='Shop.Theme.Actions'}</button>
+{block name='modal_footer'}
+  <a href="{$cart_url}" class="btn btn-primary btn-block">{l s='Proceed to checkout' d='Shop.Theme.Actions'}</a>
+  <button type="button" class="btn btn-text btn-block" data-dismiss="modal">{l s='Continue shopping' d='Shop.Theme.Actions'}</button>
 {/block}
