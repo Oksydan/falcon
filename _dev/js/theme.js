@@ -63,6 +63,7 @@ prestashop.pageLoader = new PageLoader();
 
 $(document).ready(() => {
   prestashop.BSSelect.init();
+  accLinksTriggerActive();
   const form = new Form();
   let topMenu = new TopMenu('#_desktop_top_menu #top-menu');
 
@@ -73,3 +74,13 @@ $(document).ready(() => {
     window.location.href = $(target).val();
   })
 });
+
+function accLinksTriggerActive() {
+  const url = window.location.pathname;
+  $('.js-customer-links a').each((i, el) => {
+    const $el = $(el);
+    if($el.attr('href').indexOf(url) !== -1) {
+      $el.addClass('active');
+    }
+  })
+}
