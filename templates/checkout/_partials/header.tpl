@@ -61,14 +61,6 @@
             </div>
           </div>
         </div>
-        <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
-          <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
-          <div class="js-top-menu-bottom">
-            <div id="_mobile_currency_selector"></div>
-            <div id="_mobile_language_selector"></div>
-            <div id="_mobile_contact_link"></div>
-          </div>
-        </div>
       </div>
     </div>
     {hook h='displayNavFullWidth'}
