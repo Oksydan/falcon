@@ -29,11 +29,14 @@
 {/block}
 
 {block name='page_content'}
+  {Tools::redirect('identity')}
+
   <div class="row">
     <div class="links">
 
       <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="identity-link" href="{$urls.pages.identity}">
         <span class="link-item">
+          <i class="material-icons">account_circle</i>
           {l s='Information' d='Shop.Theme.Customeraccount'}
         </span>
       </a>
@@ -41,12 +44,14 @@
       {if $customer.addresses|count}
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="addresses-link" href="{$urls.pages.addresses}">
           <span class="link-item">
+            <i class="material-icons">location_on</i>
             {l s='Addresses' d='Shop.Theme.Customeraccount'}
           </span>
         </a>
       {else}
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="address-link" href="{$urls.pages.address}">
           <span class="link-item">
+            <i class="material-icons">location_on</i>
             {l s='Add first address' d='Shop.Theme.Customeraccount'}
           </span>
         </a>
@@ -55,6 +60,7 @@
       {if !$configuration.is_catalog}
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="history-link" href="{$urls.pages.history}">
           <span class="link-item">
+            <i class="material-icons">library_books</i>
             {l s='Order history and details' d='Shop.Theme.Customeraccount'}
           </span>
         </a>
@@ -63,6 +69,7 @@
       {if !$configuration.is_catalog}
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="order-slips-link" href="{$urls.pages.order_slip}">
           <span class="link-item">
+            <i class="material-icons">&#xE8B0;</i>
             {l s='Credit slips' d='Shop.Theme.Customeraccount'}
           </span>
         </a>
@@ -71,6 +78,7 @@
       {if $configuration.voucher_enabled && !$configuration.is_catalog}
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="discounts-link" href="{$urls.pages.discount}">
           <span class="link-item">
+            <i class="material-icons">&#xE54E;</i>
             {l s='Vouchers' d='Shop.Theme.Customeraccount'}
           </span>
         </a>
@@ -79,6 +87,7 @@
       {if $configuration.return_enabled && !$configuration.is_catalog}
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="returns-link" href="{$urls.pages.order_follow}">
           <span class="link-item">
+            <i class="material-icons">&#xE860;</i>
             {l s='Merchandise returns' d='Shop.Theme.Customeraccount'}
           </span>
         </a>

@@ -1,13 +1,5 @@
 /*** SOME GENERIC STYLES ***/
-@mixin customer-area-base-box {
-  padding: 1rem;
-  background: #fff;
-}
-@mixin customer-area-box {
-  @include customer-area-base-box ();
-  font-size: $font-size-sm;
-  color: $gray-600;
-}
+
 .table-labeled {
   th {
     vertical-align: middle;
@@ -50,37 +42,6 @@
     .custom-radio {
       margin-right: 0;
     }
-  }
-}
-
-/*** Most of the customer accpunt pages ***/
-.page-customer-account {
-  #content {
-    @include customer-area-box ();
-    .order-actions {
-      a {
-        padding: 0 0.125rem;
-      }
-    }
-    .forgot-password {
-      padding-bottom: 0.9375rem;
-      margin-top: 1rem;
-      font-size: $font-size-sm;
-      text-align: center;
-    }
-    .no-account {
-      font-size: $font-size-base;
-      text-align: center;
-    }
-  }
-}
-
-/*** Login page ***/
-.page-authentication {
-  #content {
-    @include customer-area-base-box ();
-    max-width: 640px;
-    margin: 0 auto;
   }
 }
 
@@ -144,7 +105,6 @@
   font-size: 0.875rem;
   color: $gray-600;
   .box {
-    @include customer-area-base-box ();
     margin-bottom: 1rem;
   }
   h3 {
@@ -270,45 +230,6 @@
   }
   .customization {
     margin-top: 0.75rem;
-  }
-}
-
-/*** My account landing page ***/
-.page-my-account {
-  #content {
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      a {
-        display: inline-block;
-        padding: 0 0.9375rem;
-        margin-bottom: 1.875rem;
-        font-size: $font-size-base;
-        font-weight: 700;
-        color: $gray-600;
-        text-align: center;
-        text-transform: uppercase;
-        span.link-item {
-          display: block;
-          height: 100%;
-          @include customer-area-base-box ();
-        }
-        i {
-          display: block;
-          width: 100%;
-          padding-bottom: 3.4rem;
-          font-size: 2.6rem;
-          color: $gray-900;
-        }
-        &:hover {
-          color: $gray-900;
-          i {
-            color: $primary;
-          }
-        }
-      }
-    }
   }
 }
 

@@ -25,22 +25,48 @@
 {extends file='page.tpl'}
 
 {block name='page_title'}
-  {l s='Log in to your account' d='Shop.Theme.Customeraccount'}
+  {l s='Login and registration' d='Shop.IsTheme'}
 {/block}
 
 {block name='page_content'}
-    {block name='login_form_container'}
-      <section class="login-form">
-        {render file='customer/_partials/login-form.tpl' ui=$login_form}
-      </section>
-      <hr/>
-      {block name='display_after_login_form'}
-        {hook h='displayCustomerLoginFormAfter'}
+  <div class="card user-form">
+    <div class="row user-form__row">
+
+      {block name='login_form_container'}
+        <section class="col-md-6 col-12 user-form__block">
+          <div class="user-form__content card-body h-100 bg-light d-flex flex-column">
+            <h4 class="text-center h3 mb-3">
+              {l s='Login' d='Shop.IsTheme'}
+            </h4>
+            {render file='customer/_partials/login-form.tpl' ui=$login_form}
+            {block name='display_after_login_form'}
+              {hook h='displayCustomerLoginFormAfter'}
+            {/block}
+          </div>
+        </section>
+
       {/block}
-      <div class="no-account">
-        <a href="{$urls.pages.register}" data-link-action="display-register-form">
-          {l s='No account? Create one here' d='Shop.Theme.Customeraccount'}
-        </a>
+
+      <div class="user-form__block  col-md-6 col-12">
+        <div class="user-form__content card-body h-100 d-flex flex-column">
+          <h4 class="text-center h3 mb-3">
+            {l s='Registration' d='Shop.IsTheme'}
+          </h4>
+
+          <p class="mb-4 text-muted">
+            {l s='Creating an account is simple, and thanks to this you will complete the order faster! Additionally, you have the option of tracking your order and viewing purchase history.' d='Shop.IsTheme'}
+          </p>
+
+          <div class="mt-auto text-center">
+            <a href="{$urls.pages.register}" class="btn btn-primary">
+              {l s='I want to create an account' d='Shop.IsTheme'}
+            </a>
+          </div>
+
+        </div>
       </div>
-    {/block}
+    </div>
+  </div>
+{/block}
+{block name='page_footer'}
 {/block}

@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name="address_form"}
-  <div class="js-address-form">
+  <div class="js-address-form user-form user-form--sm">
     {include file='_partials/form-errors.tpl' errors=$errors['']}
 
     {block name="address_form_url"}
@@ -48,10 +48,10 @@
       {/block}
 
       {block name="address_form_footer"}
-      <footer class="form-footer clearfix">
+      <footer class="form-footer text-center mt-3">
         <input type="hidden" name="submitAddress" value="1">
         {block name='form_buttons'}
-          <button class="btn btn-primary form-control-submit float-right" type="submit">
+          <button class="btn btn-primary form-control-submit" type="submit">
             {l s='Save' d='Shop.Theme.Actions'}
           </button>
         {/block}

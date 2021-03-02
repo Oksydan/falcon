@@ -61,7 +61,6 @@ export default class Form {
     let forms = document.getElementsByClassName("needs-validation");
 
     if (forms.length > 0) {
-      console.log(`Form validation support: ${supportedValidity()}`);
       if (!supportedValidity()) {
         return;
       }
