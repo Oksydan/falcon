@@ -39,44 +39,36 @@
       >
         <div class="form-fields">
           {block name='delivery_options'}
-            <div class="delivery-options">
-              {foreach from=$delivery_options item=carrier key=carrier_id}
-                  <div class="row delivery-option">
-                    <div class="col-sm-1">
-                      <span class="custom-radio float-left">
-                        <input type="radio" name="delivery_option[{$id_address}]" id="delivery_option_{$carrier.id}" value="{$carrier_id}"{if $delivery_option == $carrier_id} checked{/if}>
-                        <span></span>
-                      </span>
-                    </div>
-                    <label for="delivery_option_{$carrier.id}" class="col-9 col-sm-11 delivery-option-2">
-                      <div class="row">
-                        <div class="col-sm-5 col-12">
-                          <div class="row carrier{if $carrier.logo} carrier-hasLogo{/if}">
-                            {if $carrier.logo}
-                            <div class="col-12 col-md-4 carrier-logo">
-                                <img src="{$carrier.logo}" alt="{$carrier.name}" loading="lazy" />
-                            </div>
-                            {/if}
-                            <div class="col-12 carriere-name-container{if $carrier.logo} col-md-8{/if}">
-                              <span class="h6 carrier-name">{$carrier.name}</span>
-                            </div>
-                          </div>
+            <div class="delivery-options row">
+                {foreach from=$delivery_options item=carrier key=carrier_id}
+                  <div class="col-12 col-md-6 col-lg-4 mb-3 checkout-option-block checkout-option {if $delivery_option == $carrier_id} selected{/if}">
+                    <input class="custom-control-input" type="radio" name="delivery_option[{$id_address}]" id="delivery_option_{$carrier.id}" value="{$carrier_id}"{if $delivery_option == $carrier_id} checked{/if}>
+
+                    <label class="card mb-0 cursor-pointer h-100" for="delivery_option_{$carrier.id}">
+                      <div class="address__header card-header h5 text-center">
+                        {$carrier.name}
+                      </div>
+                      <div class="card-body address__body text-center">
+                        <div class="checkout-option__thumb mb-2">
+                          {if $carrier.logo}
+                            <img src="{$carrier.logo}" alt="{$carrier.name}" class="checkout-option__img" />
+                          {/if}
                         </div>
-                        <div class="col-sm-4 col-12">
-                          <span class="carrier-delay">{$carrier.delay}</span>
-                        </div>
-                        <div class="col-sm-3 col-12">
-                          <span class="carrier-price">{$carrier.price}</span>
+                        <div class="checkout-option__delay text-muted small">{$carrier.delay}</div>
+                        <div class="checkout-option__price price">
+                          {if $carrier.price_with_tax > 0}
+                            {Tools::displayPrice($carrier.price_with_tax)}
+                          {else}
+                            {$carrier.price}
+                          {/if}
                         </div>
                       </div>
                     </label>
+
+                    <div class="carrier-extra-content"{if $delivery_option != $carrier_id} style="display:none;"{/if}>{$carrier.extraContent nofilter}</div>
                   </div>
-                  <div class="row carrier-extra-content"{if $delivery_option != $carrier_id} style="display:none;"{/if}>
-                    {$carrier.extraContent nofilter}
-                  </div>
-                  <div class="clearfix"></div>
-              {/foreach}
-            </div>
+                {/foreach}
+              </div>
           {/block}
           <div class="order-options">
             <div id="delivery">

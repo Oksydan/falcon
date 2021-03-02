@@ -30,7 +30,6 @@ import 'jquery-hoverintent';
 
 import './components/page-slider';
 import './components/responsive';
-import './components/checkout';
 import './components/customer';
 import './components/quickview';
 import './components/product';
