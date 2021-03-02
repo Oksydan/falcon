@@ -24,7 +24,6 @@
  */
 
 import $ from 'jquery';
-import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
