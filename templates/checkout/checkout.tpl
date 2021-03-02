@@ -37,7 +37,7 @@
       {hook h='displayAfterBodyOpeningTag'}
     {/block}
 
-    <header id="header">
+    <header id="header" class="page-header">
       {block name='header'}
         {include file='checkout/_partials/header.tpl'}
       {/block}
@@ -75,7 +75,7 @@
       {hook h="displayWrapperBottom"}
     </section>
 
-    <footer id="footer">
+    <footer id="footer" class="page-footer">
       {block name='footer'}
         {include file='checkout/_partials/footer.tpl'}
       {/block}

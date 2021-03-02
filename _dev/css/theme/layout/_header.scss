@@ -1,5 +1,10 @@
 /* HEADER STYLES */
 
+.page-header {
+  border-bottom: 1px solid $border-color;
+  margin: 0 0 map-get($spacers, 3);
+}
+
 .header-top {
 
   &__row {
