@@ -1,3 +1,7 @@
+.modal-content {
+  background-clip: border-box;
+}
+
 .modal-fullscreen {
   padding: 0 !important; // override inline padding-right added from js
   .modal-dialog {
@@ -17,8 +21,10 @@
 }
 
 .modal .modal-dialog-aside {
-  width: 350px;
-  max-width: 80%;
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    max-width: 320px;
+  }
   height: 100%;
   margin: 0;
   transform: translate(0);

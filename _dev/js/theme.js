@@ -63,7 +63,7 @@ $(document).ready(() => {
   prestashop.customSelect.init();
   accLinksTriggerActive();
   const form = new Form();
-  let topMenu = new TopMenu('#_desktop_top_menu #top-menu');
+  let topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
 
   prestashop.on('updatedAddressForm', () => {
     prestashop.customSelect.init();

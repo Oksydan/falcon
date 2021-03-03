@@ -29,7 +29,7 @@
 {/block}
 
 {block name='header_nav'}
-  <nav class="header-nav border-bottom bg-light mb-3 py-1">
+  <nav class="header-nav border-bottom bg-light mb-3 py-1 d-none d-md-block">
     <div class="container">
       <div class="row align-items-center">
         {hook h='displayNav1'}

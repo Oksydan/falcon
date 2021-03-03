@@ -28,25 +28,27 @@ export default class TopMenu {
   constructor(el) {
     this.$el = $(el);
   }
+
   init() {
     let self = this;
     self.$el.hoverIntent({
       over: self.toggleClassSubMenu,
       out: self.toggleClassSubMenu,
-      selector: " > li",
+      selector: ' > li',
       timeout: 300,
     });
   }
 
   toggleClassSubMenu() {
-    let _item = $(this);
-    let expanded = _item.attr("aria-expanded");
-    if (typeof expanded !== "undefined") {
-      expanded = expanded.toLowerCase() === "true";
-      _item.toggleClass("menu__item--active").attr("aria-expanded", !expanded);
-      $(".menu-sub", _item)
-        .attr("aria-expanded", !expanded)
-        .attr("aria-hidden", expanded);
+    const $item = $(this);
+    let expanded = $item.attr('aria-expanded');
+
+    if (typeof expanded !== 'undefined') {
+      expanded = expanded.toLowerCase() === 'true';
+      $item.toggleClass('main-menu__item--active').attr('aria-expanded', !expanded);
+      $('.main-menu__sub', $item)
+        .attr('aria-expanded', !expanded)
+        .attr('aria-hidden', expanded);
     }
   }
 }
