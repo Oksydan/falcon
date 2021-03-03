@@ -36,52 +36,54 @@
     {block name='hook_after_body_opening_tag'}
       {hook h='displayAfterBodyOpeningTag'}
     {/block}
+    <main class="l-main">
+      <header id="header" class="l-header">
+        {block name='header'}
+          {include file='checkout/_partials/header.tpl'}
+        {/block}
+      </header>
 
-    <header id="header" class="l-header">
-      {block name='header'}
-        {include file='checkout/_partials/header.tpl'}
+      {block name='notifications'}
+        {include file='_partials/notifications.tpl'}
       {/block}
-    </header>
 
-    {block name='notifications'}
-      {include file='_partials/notifications.tpl'}
-    {/block}
+      <section id="wrapper">
+        {hook h="displayWrapperTop"}
+        <div class="container">
 
-    <section id="wrapper">
-      {hook h="displayWrapperTop"}
-      <div class="container">
+        {block name='content'}
+          <section id="content">
+            <div class="row">
+              <div class="cart-grid-body col-12 col-lg-8">
+                <div class="card">
+                  {block name='checkout_process'}
+                    {render file='checkout/checkout-process.tpl' ui=$checkout_process}
+                  {/block}
+                </div>
+              </div>
 
-      {block name='content'}
-        <section id="content">
-          <div class="row">
-            <div class="cart-grid-body col-12 col-lg-8">
-              <div class="card">
-                {block name='checkout_process'}
-                  {render file='checkout/checkout-process.tpl' ui=$checkout_process}
+              <div class="cart-grid-right col-12 col-lg-4">
+
+                {block name='cart_summary'}
+                  {include file='checkout/_partials/cart-summary.tpl' cart = $cart}
                 {/block}
+
+                {hook h='displayReassurance'}
               </div>
             </div>
+          </section>
+        {/block}
+        </div>
+        {hook h="displayWrapperBottom"}
+      </section>
 
-            <div class="cart-grid-right col-12 col-lg-4">
+      <footer id="footer" class="l-footer">
+        {block name='footer'}
+          {include file='checkout/_partials/footer.tpl'}
+        {/block}
+      </footer>
 
-              {block name='cart_summary'}
-                {include file='checkout/_partials/cart-summary.tpl' cart = $cart}
-              {/block}
-
-              {hook h='displayReassurance'}
-            </div>
-          </div>
-        </section>
-      {/block}
-      </div>
-      {hook h="displayWrapperBottom"}
-    </section>
-
-    <footer id="footer" class="l-footer">
-      {block name='footer'}
-        {include file='checkout/_partials/footer.tpl'}
-      {/block}
-    </footer>
+    </main>
 
     {block name='javascript_bottom'}
       {include file="_partials/javascript.tpl" javascript=$javascript.bottom}

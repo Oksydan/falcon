@@ -37,7 +37,7 @@
       {hook h='displayAfterBodyOpeningTag'}
     {/block}
 
-    <main>
+    <main class="l-main">
       {block name='product_activation'}
         {include file='catalog/_partials/product-activation.tpl'}
       {/block}
