@@ -27,12 +27,12 @@
 
   <div class="d-flex align-items-center mb-3 justify-content-between">
     <span class="h4 mb-0">{l s='Store information' d='Shop.Theme.Global'}</span>
-    <a href="#footer_contact_list" class="icon-collapse stretched-link text-reset d-block d-lg-none" data-toggle="collapse">
+    <a href="#footer_contact_list" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
       <i class="material-icons d-block"></i>
     </a>
   </div>
 
-  <div class="collapse d-lg-block" id="footer_contact_list">
+  <div class="collapse d-md-block" id="footer_contact_list">
     {$contact_infos.address.formatted nofilter}
     {if $contact_infos.phone}
       <br>

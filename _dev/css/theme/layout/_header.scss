@@ -6,17 +6,25 @@
 }
 
 .header-top {
+  padding: map-get($spacers, 2);
+  @include media-breakpoint-up(md) {
+    padding: 0;
+  }
 
   &__row {
     align-items: center;
   }
 
   &__link {
-    padding: map-get($spacers, 2);
+    padding: map-get($spacers, 1);
     color: $gray-700;
     display: block;
     border-radius: $border-radius;
     text-decoration: none;
+
+    @include media-breakpoint-up(sm) {
+      padding: map-get($spacers, 2);
+    }
 
     @include hf() {
       text-decoration: none;
@@ -30,8 +38,11 @@
   }
 
   &__icon {
-    font-size: rem-calc(32px);
+    font-size: rem-calc(26px);
     display: block;
+    @include media-breakpoint-up(sm) {
+      font-size: rem-calc(32px);
+    }
   }
 
   &__badge {
@@ -47,5 +58,13 @@
     position: absolute;
     right: -0.2em;
     top: -0.5em;
+  }
+
+  &__block {
+    &--search {
+      @include media-breakpoint-down(sm) {
+        flex-grow: 0;
+      }
+    }
   }
 }

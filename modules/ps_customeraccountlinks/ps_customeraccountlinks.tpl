@@ -27,12 +27,12 @@
 
   <div class="d-flex align-items-center mb-3 justify-content-between">
     <span class="h4 mb-0">{l s='Your account' d='Shop.Theme.Customeraccount'}</span>
-    <a href="#footer_account_list" class="icon-collapse stretched-link text-reset d-block d-lg-none" data-toggle="collapse">
+    <a href="#footer_account_list" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
       <i class="material-icons d-block"></i>
     </a>
   </div>
 
-  <div class="collapse d-lg-block" id="footer_account_list">
+  <div class="collapse d-md-block" id="footer_account_list">
     <ul class="links-list">
       {foreach from=$my_account_urls item=my_account_url}
         <li class="links-list__elem">

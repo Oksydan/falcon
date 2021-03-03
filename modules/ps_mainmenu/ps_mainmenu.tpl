@@ -33,7 +33,7 @@
           </div>
           {/if}
           {if $node.children|count}
-            <div class="{if $depth === 0}main-menu__sub {/if} collapse d-lg-block" data-collapse-hide-mobile
+            <div class="{if $depth === 0}main-menu__sub {/if} collapse d-md-block" data-collapse-hide-mobile
                  id="top_sub_menu_{$_expand_id}" role="group" aria-labelledby="{$node.page_identifier}"
                  aria-expanded="false" aria-hidden="true">
               <div {if $depth === 0}class="menu-sub__content"{/if}>
