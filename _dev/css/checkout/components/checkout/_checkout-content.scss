@@ -1,6 +1,5 @@
 
 .checkout-step {
-
   &:not(:first-child) {
     border-top: $card-border-width solid $card-border-color;
   }
@@ -55,95 +54,6 @@
   }
   .step-number {
     display: inline-block;
-  }
-}
-
-/**** ORDER CONFIRMATION *****/
-#order-details {
-  padding-left: 1.3rem;
-  margin-top: 1.25rem;
-  > .card-title {
-    margin-bottom: map-get($spacers, 4);
-  }
-  ul {
-    margin-bottom: map-get($spacers, 3);
-    li {
-      margin-bottom: map-get($spacers, 2);
-    }
-  }
-}
-#order-items {
-  border-right: $gray-200 1px solid;
-  .h3 {
-    font-size: 1rem;
-    &._desktop-title {
-      @include media-breakpoint-down(md) {
-        display: none;
-      }
-    }
-  }
-  hr {
-    border-top-color: $gray-900;
-  }
-  table {
-    width: 100%;
-    tr {
-      height: map-get($spacers, 4);
-      td {
-        padding: .5rem;
-        font-size: .875rem;
-        &:last-child {
-          text-align: right;
-        }
-      }
-      &.total-value {
-        background-color: $gray-100;
-      }
-      &.taxes {
-        td {
-          text-align: left;
-          .value {
-            padding-top: 0;
-          }
-        }
-      }
-    }
-  }
-  .order-line {
-    margin-top: 1rem;
-  }
-  .image {
-    img {
-      width: 100%;
-      margin-bottom: 1rem;
-      border: 1px solid gray-lighter;
-    }
-  }
-  .details {
-    margin-bottom: 1rem;
-    .customizations {
-      margin-top: 0.625rem;
-    }
-  }
-  .qty {
-    margin-bottom: 1rem;
-  }
-}
-#order-confirmation {
-  #registration-form {
-    width: 50%;
-    margin: 0 auto 1rem;
-  }
-}
-@include media-breakpoint-down(md) {
-  .done {
-    padding: 0;
-    margin-right: .625rem;
-  }
-  .condition-label {
-    label[for="conditions_to_approve[terms-and-conditions]"] {
-      text-align: left;
-    }
   }
 }
 
