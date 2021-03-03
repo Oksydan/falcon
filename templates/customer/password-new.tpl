@@ -29,56 +29,50 @@
 {/block}
 
 {block name='page_content'}
-    <form action="{$urls.pages.password}" method="post">
-      <div class="alert alert-error">
-        {foreach $errors as $error}
-          {$error}<br>
-        {/foreach}
+  <form action="{$urls.pages.password}" method="post" class="card user-form user-form--sm">
+    <section class="form-fields card-body">
+      {if $errors}
+        <div class="alert alert-error">
+          {foreach $errors as $error}
+            {$error}<br>
+          {/foreach}
+        </div>
+      {/if}
+
+      <p>
+        {l
+          s='Email address: %email%'
+          d='Shop.Theme.Customeraccount'
+          sprintf=['%email%' => $customer_email|stripslashes]}
+      </p>
+
+      <div class="form-group">
+        <label class="form-control-label">{l s='New password' d='Shop.Forms.Labels'}</label>
+        <input class="form-control" type="password" data-validate="isPasswd" name="passwd" value="">
       </div>
 
-      <section class="form-fields renew-password">
+      <div class="form-group">
+        <label class="form-control-label">{l s='Confirmation' d='Shop.Forms.Labels'}</label>
+        <input class="form-control" type="password" data-validate="isPasswd" name="confirmation" value="">
+      </div>
 
-        <div class="email">
-          {l
-            s='Email address: %email%'
-            d='Shop.Theme.Customeraccount'
-            sprintf=['%email%' => $customer_email|stripslashes]}
-        </div>
+      <input type="hidden" name="token" id="token" value="{$customer_token}">
+      <input type="hidden" name="id_customer" id="id_customer" value="{$id_customer}">
+      <input type="hidden" name="reset_token" id="reset_token" value="{$reset_token}">
 
-        <div class="container-fluid">
-          <div class="row form-group">
-            <label class="form-control-label col-md-3 offset-md-2">{l s='New password' d='Shop.Forms.Labels'}</label>
-            <div class="col-md-4">
-              <input class="form-control" type="password" data-validate="isPasswd" name="passwd" value="">
-            </div>
-          </div>
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" type="submit" name="submit">
+          {l s='Change Password' d='Shop.Theme.Actions'}
+        </button>
+      </div>
 
-          <div class="row form-group">
-            <label class="form-control-label col-md-3 offset-md-2">{l s='Confirmation' d='Shop.Forms.Labels'}</label>
-            <div class="col-md-4">
-              <input class="form-control" type="password" data-validate="isPasswd" name="confirmation" value="">
-            </div>
-          </div>
+    </section>
 
-          <input type="hidden" name="token" id="token" value="{$customer_token}">
-          <input type="hidden" name="id_customer" id="id_customer" value="{$id_customer}">
-          <input type="hidden" name="reset_token" id="reset_token" value="{$reset_token}">
-
-          <div class="row form-group">
-            <div class="offset-md-5">
-              <button class="btn btn-primary" type="submit" name="submit">
-                {l s='Change Password' d='Shop.Theme.Actions'}
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </section>
-    </form>
+    <div class="card-footer text-center">
+      <a href="{$urls.pages.authentication}">{l s='Back to Login' d='Shop.Theme.Actions'}</a>
+    </div>
+  </form>
 {/block}
 
 {block name='page_footer'}
-  <ul>
-    <li><a href="{$urls.pages.authentication}">{l s='Back to Login' d='Shop.Theme.Actions'}</a></li>
-  </ul>
 {/block}

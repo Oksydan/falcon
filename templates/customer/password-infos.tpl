@@ -29,15 +29,21 @@
 {/block}
 
 {block name='page_content'}
-  <div class="alert alert-success">
-    {foreach $successes as $success}
-      {$success}<br>
-    {/foreach}
+  <div class="card user-form user-form--sm">
+    <div class="card-body">
+      {if $successes}
+        <div class="alert alert-success mb-0">
+          {foreach $successes as $success}
+            {$success}<br>
+          {/foreach}
+        </div>
+      {/if}
+    </div>
+    <div class="card-footer text-center">
+      <a href="{$urls.pages.authentication}">{l s='Back to Login' d='Shop.Theme.Actions'}</a>
+    </div>
   </div>
 {/block}
 
 {block name='page_footer'}
-  <ul>
-    <li><a href="{$urls.pages.authentication}">{l s='Back to Login' d='Shop.Theme.Actions'}</a></li>
-  </ul>
 {/block}
