@@ -37,7 +37,7 @@
     <div class="dropdown-menu blockcart__dropdown cart-dropdown dropdown-menu-right" aria-labelledby="cartDropdown">
       <div class="cart-dropdown__content keep-open js-cart__card-body cart__card-body">
         <div class="cart-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">{l s='Loading...' d='Shop.Theme.Global'}</span></div></div>
-        <div class="cart-dropdown__title d-flex align-items-center mb-2">
+        <div class="cart-dropdown__title d-flex align-items-center mb-3">
           <p class="h5 mb-0 mr-2">
             {l s='Your cart' d='Shop.IsTheme'}
           </p>

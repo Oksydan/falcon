@@ -9,4 +9,8 @@
       }
     }
   }
+
+  @include hf() {
+    text-decoration: none;
+  }
 }
