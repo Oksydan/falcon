@@ -1,6 +1,6 @@
 {extends file='components/modal.tpl'}
 
-{block name='modal_id'}id="saerchModal"{/block}
+{block name='modal_extra_attribues'}id="saerchModal" data-modal-hide-mobile{/block}
 {block name='modal_extra_class'}modal-fullscreen search-modal{/block}
 {block name='modal_header'}{/block}
 {block name='modal_body'}

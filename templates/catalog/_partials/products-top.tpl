@@ -31,7 +31,7 @@
 
   <div class="col flex-grow-0 hidden-md-up ml-auto">
     {if !empty($listing.rendered_facets)}
-      <button id="search_filter_toggler" class="btn btn-secondary">
+      <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary">
         {l s='Filter' d='Shop.Theme.Actions'}
       </button>
     {/if}

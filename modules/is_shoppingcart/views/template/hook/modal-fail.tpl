@@ -1,7 +1,7 @@
 {extends file='components/modal.tpl'}
 
 {block name='modal_title'}{l s='Something went wrong' d='Shop.Theme.Checkout'}{/block}
-{block name='modal_id'}id="blockcart-error"{/block}
+{block name='modal_extra_attribues'}id="blockcart-error"{/block}
 
 {block name='modal_body'}
   <div class="alert alert-danger js-blockcart-alert">

@@ -1,6 +1,6 @@
 {extends file='components/modal.tpl'}
 
-{block name='modal_id'}id="blockcart-modal"{/block}
+{block name='modal_extra_attribues'}id="blockcart-modal"{/block}
 {block name='modal_title'}{l s='Product added to cart' d='Shop.Prozoo'}{/block}
 
 

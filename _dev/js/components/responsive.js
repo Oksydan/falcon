@@ -47,6 +47,8 @@ function toggleMobileStyles() {
         swapChildren($(el), target);
       }
     });
+
+    $('[data-collapse-hide-mobile]').collapse('hide');
   } else {
     $("*[id^='_mobile_']").each((idx, el) => {
       const target = $(`#${el.id.replace('_mobile_', '_desktop_')}`);
@@ -54,6 +56,9 @@ function toggleMobileStyles() {
         swapChildren($(el), target);
       }
     });
+
+    $('[data-collapse-hide-mobile]').not('.show').collapse('show');
+    $('[data-modal-hide-mobile].show').modal('hide');
   }
   prestashop.emit('responsive update', {
     mobile: prestashop.responsive.mobile,

@@ -5,23 +5,6 @@ import Filters from './components/Filters';
 $(() => {
   const filters = new Filters();
 
-  $('body').on('click', '#search_filter_toggler', () => {
-    $('#search_filters_wrapper').removeClass('hidden-sm-down');
-    $('#content-wrapper').addClass('hidden-sm-down');
-    $('#footer').addClass('hidden-sm-down');
-  });
-  $('#search_filter_controls .clear').on('click', () => {
-    $('#search_filters_wrapper').addClass('hidden-sm-down');
-    $('#content-wrapper').removeClass('hidden-sm-down');
-    $('#footer').removeClass('hidden-sm-down');
-  });
-  $('#search_filter_controls .ok').on('click', () => {
-    $('#search_filters_wrapper').addClass('hidden-sm-down');
-    $('#content-wrapper').removeClass('hidden-sm-down');
-    $('#footer').removeClass('hidden-sm-down');
-  });
-
-
   prestashop.on('updateProductList', (data) => {
     updateProductListDOM(data);
     window.scrollTo(0, 0);

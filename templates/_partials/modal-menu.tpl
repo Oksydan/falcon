@@ -1,6 +1,6 @@
 {extends file='components/modal.tpl'}
 
-{block name='modal_id'}id="mobile_top_menu_wrapper"{/block}
+{block name='modal_extra_attribues'}id="mobile_top_menu_wrapper" data-modal-hide-mobile{/block}
 {block name='modal_extra_class'}fixed-left{/block}
 {block name='modal_dialog_extra_class'}modal-dialog-aside{/block}
 {block name='modal_title'}{l s='Menu' d='Shop.Theme.Catalog'}{/block}
