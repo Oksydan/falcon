@@ -2,14 +2,14 @@
 .cart-summary-line {
   display: flex;
   justify-content: space-between;
-  @include font-size(14px);
+  @include font-size($font-size-base);
 
   &:not(:last-child) {
     margin-bottom: map-get($spacers, 2);
   }
 
   &.cart-total {
-    @include font-size($font-size-base);
+    @include font-size($font-size-lg);
   }
 
   .label {
