@@ -23,17 +23,17 @@
 
     &--image {
       align-self: flex-start;
-      @include customCol(80px);
+      @include custom-col(80px);
       order: -3;
       @include media-breakpoint-up(md) {
         align-self: center;
-        @include customCol(100px);
+        @include custom-col(100px);
       }
     }
 
     &--prod {
       order: -2;
-      @include customCol(calc(100% - #{rem-calc(80px)} - #{rem-calc(50px)}));
+      @include custom-col(calc(100% - #{rem-calc(80px)} - #{rem-calc(50px)}));
       @include media-breakpoint-up(md) {
         flex: 1 1 auto;
         max-width: inherit;
@@ -45,7 +45,7 @@
       margin: rem-calc(15px) 0 0;
       @include media-breakpoint-up(md) {
         margin: 0;
-        @include customCol(rem-calc(130px));
+        @include custom-col(rem-calc(130px));
       }
     }
 
@@ -55,16 +55,16 @@
       margin: rem-calc(15px) 0 0;
       @include media-breakpoint-up(md) {
         margin: 0;
-        @include customCol(rem-calc(120px));
+        @include custom-col(rem-calc(120px));
         text-align: center;
       }
       @include media-breakpoint-up(xl) {
-        @include customCol(rem-calc(150px));
+        @include custom-col(rem-calc(150px));
       }
     }
 
     &--delete {
-      @include customCol(rem-calc(50px));
+      @include custom-col(rem-calc(50px));
       text-align: center;
       @include media-breakpoint-down(sm) {
         padding-top: rem-calc(5px);

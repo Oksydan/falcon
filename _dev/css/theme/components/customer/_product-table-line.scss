@@ -1,0 +1,89 @@
+.product-line {
+  $self: &;
+  display: flex;
+  flex-wrap: wrap;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &--first {
+    border-top: 1px solid $border-color;
+  }
+
+  @include media-breakpoint-up(md) {
+    padding: 0;
+    display: table-row;
+    border-bottom: 1px solid $border-color;
+    padding: map-get($spacers, 2) 0;
+  }
+
+  #{$self} {
+    // NESTING TO OVERRIDE BOOTSTRAP TABLE STYLES
+    &__cell {
+      padding: map-get($spacers, 2);
+      @include media-breakpoint-up(sm) {
+        vertical-align: middle;
+        padding: $table-cell-padding;
+      }
+    }
+  }
+
+  &__qty-input {
+    .bootstrap-touchspin {
+      margin: 0 auto;
+    }
+  }
+
+  &__cell {
+
+    &--img {
+      width: rem-calc(120px);
+      @include media-breakpoint-down(sm) {
+        order: -3;
+        width: auto;
+        @include custom-col(rem-calc(90px));
+      }
+    }
+
+    &--prod {
+      @include media-breakpoint-down(sm) {
+        order: -2;
+        @include custom-col(calc(100% - #{rem-calc(90px)}));
+      }
+    }
+
+    &--delete {
+      @include media-breakpoint-down(sm) {
+        order: -1;
+        @include custom-col(rem-calc(40px));
+      }
+    }
+
+    &--price,
+    &--total,
+    &--qty {
+      @include media-breakpoint-down(sm) {
+        @include make-col(4);
+      }
+    }
+
+    &--total {
+      @include media-breakpoint-down(sm) {
+        text-align: right;
+      }
+    }
+
+    @include media-breakpoint-down(sm) {
+      &[data-title] {
+        &:before {
+          @include font-size($font-size-xs);
+          margin: 0 0 map-get($spacers, 1);
+          content: attr(data-title);
+          display: block;
+        }
+      }
+    }
+  }
+
+}

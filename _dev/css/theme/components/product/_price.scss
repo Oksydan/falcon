@@ -1,5 +1,5 @@
 .price {
-  font-size: $font-size-lg;
+  @include font-size($font-size-lg);
   font-weight: 700;
   color: $primary;
 
