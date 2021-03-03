@@ -2,13 +2,13 @@
   <div class="product-miniature__thumb position-relative {$thumbExtraClass|default:''}">
     <a href="{$product.url}" class="product-miniature__thumb-link">
       <img
-        {if $product.cover}
-          data-full-size-image-url="{$product.cover.large.url}"
-          src="{$product.cover.bySize.home_default.url}"
+        {if $product.default_image}
+          data-full-size-image-url="{$product.default_image.large.url}"
+          src="{$product.default_image.bySize.home_default.url}"
         {else}
           src="{$urls.no_picture_image.bySize.home_default.url}"
         {/if}
-        alt="{if !empty($product.cover.legend)}{$product.cover.legend}{else}{$product.name|truncate:30:'...'}{/if}"
+        alt="{if !empty($product.default_image.legend)}{$product.default_image.legend}{else}{$product.name|truncate:30:'...'}{/if}"
         loading="lazy"
         class="img-fluid rounded"
         />
