@@ -49,7 +49,7 @@
       <div class="tab-content" id="tab-content">
         <div class="tab-pane fade in" id="description" role="tabpanel">
           {block name='product_description'}
-            <div class="product-description">{$product.description nofilter}</div>
+            <div class="product-description cms-content">{$product.description nofilter}</div>
           {/block}
         </div>
 
@@ -77,7 +77,7 @@
         {/block}
 
         {foreach from=$product.extraContent item=extra key=extraKey}
-        <div class="tab-pane fade in {$extra.attr.class}" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
+        <div class="tab-pane fade in {$extra.attr.class} cms-content" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
           {$extra.content nofilter}
         </div>
         {/foreach}

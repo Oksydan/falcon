@@ -81,9 +81,9 @@
             {include file='catalog/_partials/product-prices.tpl'}
           {/block}
 
-          <div class="product-information">
+          <div class="product-information ">
             {block name='product_description_short'}
-              <div id="product-description-short-{$product.id}" class="product-description" itemprop="description">{$product.description_short nofilter}</div>
+              <div id="product-description-short-{$product.id}" class="product-description cms-content" itemprop="description">{$product.description_short nofilter}</div>
             {/block}
 
             {if $product.is_customizable && count($product.customizations.fields)}
