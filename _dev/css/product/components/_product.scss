@@ -42,35 +42,3 @@
     }
   }
 }
-
-.product-features {
-  margin-top: map-get($spacers, 3);
-  margin-left: 0.3125rem;
-  > dl.data-sheet {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    dd.value,
-    dt.name {
-      flex: 1 0 40%;
-      min-height: 2.5rem;
-      padding: map-get($spacers, 2);
-      margin-right: map-get($spacers, 2);
-      margin-bottom: .5rem;
-      font-weight: 400;
-      text-transform: capitalize;
-      word-break: normal;
-      background: $gray-100;
-      &:nth-of-type(even) {
-        background: $gray-200;
-      }
-    }
-  }
-}
-
-.products-selection {
-  margin-bottom: map-get($spacers, 3);
-  .title {
-    color: $gray-600;
-  }
-}
