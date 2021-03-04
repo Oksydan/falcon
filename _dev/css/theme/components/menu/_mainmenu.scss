@@ -36,7 +36,8 @@
     display: block;
 
     @include media-breakpoint-up(md) {
-      display: inline-block
+      display: inline-block;
+      padding: 0;
     }
 
     &--top {
