@@ -144,23 +144,14 @@
     </div>
     {include file="catalog/_partials/product-tabs.tpl"}
 
-    {block name='product_accessories'}
-      {if $accessories}
-        <section class="product-accessories clearfix">
-          <p class="h5 text-uppercase">{l s='You might also like' d='Shop.Theme.Catalog'}</p>
-          <div class="products" itemscope itemtype="http://schema.org/ItemList">
-            {foreach from=$accessories item="product_accessory" key="position"}
-              {block name='product_miniature'}
-                {include file='catalog/_partials/miniatures/product.tpl' product=$product_accessory position=$position}
-              {/block}
-            {/foreach}
-          </div>
-        </section>
-      {/if}
-    {/block}
-
     {block name='product_footer'}
       {hook h='displayFooterProduct' product=$product category=$category}
+    {/block}
+
+    {block name='product_accessories'}
+      {if $accessories}
+        {include file='catalog/_partials/product-accessories.tpl' products=$accessories}
+      {/if}
     {/block}
 
     {block name='product_images_modal'}
