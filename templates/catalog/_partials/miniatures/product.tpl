@@ -35,9 +35,18 @@
     {/if}
     >
     {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
-    <article class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
-
-      {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
+    <article
+      class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}"
+      data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}"
+      {if $listingType === 'listing'}
+        itemprop="item"
+        itemscope
+        itemtype="http://schema.org/Product"
+      {/if}
+      >
+      {if $listingType === 'listing'}
+        {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
+      {/if}
 
       {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
