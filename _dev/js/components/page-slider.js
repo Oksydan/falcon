@@ -8,9 +8,73 @@ import 'swiper/components/thumbs/thumbs.scss';
 
 SwiperCore.use([Navigation, Pagination, Thumbs]);
 
+class PageSlider {
+
+  constructor ({ defaultOptions } = {}) {
+    this.sliders = [];
+    this.defaultOptions = defaultOptions;
+    this.init();
+  }
+
+  init() {
+    $('.swiper-container:not(.swiper-container-initialized)').not('.swiper-container-custom').each((i, el) => {
+      this.addSlider(el);
+    })
+  }
+
+  addSlider(el) {
+    const $el = $(el);
+    let elConfig = $el.data('swiper');
+    const $parent = $el.parent();
+    const $nextEl = $parent.find('.swiper-button-next');
+    const $prevEl = $parent.find('.swiper-button-prev');
+
+    if($nextEl.length && $prevEl.length) {
+      elConfig = {
+        ...elConfig,
+        navigation: {
+          nextEl: $nextEl[0],
+          prevEl: $prevEl[0],
+        },
+      }
+    }
+
+    this.sliders.push({
+      el: el,
+      config: this.mergeConfig(elConfig)
+    });
+  }
+
+  mergeConfig(config) {
+    return {
+      ...this.defaultOptions,
+      ...config
+    }
+  }
+
+  runSliders() {
+    for(const slider of this.sliders) {
+      const swiper = new Swiper(slider.el, slider.config);
+    }
+
+    this.sliders = [];
+  }
+
+  refresh() {
+    this.init();
+    this.runSliders();
+  }
+
+}
+
 
 $(() => {
-  initSlider();
+  const slider = new PageSlider({
+    slidesPerView: 1
+  });
+
+  slider.runSliders();
+
   initProductImageSlider();
   bindProductModalSlider();
 
@@ -20,36 +84,6 @@ $(() => {
   });
 })
 
-function initSlider() {
-  $('.swiper-container.product-slider').each((i, el) => {
-    const $el = $(el);
-    const $parent = $(el).parent();
-    const nextEl = $parent.find('.swiper-button-next');
-    const prevEl = $parent.find('.swiper-button-prev');
-
-    const swiper = new Swiper(el, {
-      speed: 500,
-      breakpoints: {
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 10
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
-        992: {
-          slidesPerView: 4,
-          spaceBetween: 20
-        }
-      },
-      navigation: {
-        nextEl: nextEl[0],
-        prevEl: prevEl[0],
-      },
-    });
-  })
-}
 
 
 function initProductImageSlider() {

@@ -28,7 +28,7 @@
 
       <div class="positon-relative product-main-images">
         {if $product.images|count > 1}
-          <div class="js-product-main-images swiper-container">
+          <div class="js-product-main-images swiper-container swiper-container-custom">
             <div class="product-main-images__list swiper-wrapper">
               {foreach from=$product.images item=image}
                 <div class="swiper-slide">
@@ -41,11 +41,11 @@
               {/foreach}
             </div>
 
-            <div class="swiper-button-prev swiper-button-prev-custom">
+            <div class="swiper-button-prev swiper-button-custom">
               <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
               <span class="material-icons">keyboard_arrow_left</span>
             </div>
-            <div class="swiper-button-next swiper-button-prev-custom">
+            <div class="swiper-button-next swiper-button-custom">
               <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
               <span class="material-icons">keyboard_arrow_right</span>
             </div>
@@ -69,7 +69,7 @@
 
   {block name='product_images'}
     {if $product.images|count > 1}
-      <div class="js-product-thumbs product-thumbs swiper-container mt-2">
+      <div class="js-product-thumbs product-thumbs swiper-container mt-2 swiper-container-custom">
         <div class="product-thumbs__list swiper-wrapper">
           {foreach from=$product.images item=image}
             <div class="product-thumbs__elem swiper-slide">

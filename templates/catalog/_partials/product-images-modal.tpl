@@ -26,7 +26,9 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="js-modal-gallery modal-gallery swiper-container">
+        <div class="js-modal-gallery modal-gallery swiper-container swiper-container-custom">
+
+        {if $product.images|count > 1}
 
           <div class="modal-gallery__list swiper-wrapper">
             {foreach from=$product.images item=image}
@@ -49,14 +51,34 @@
             {/foreach}
           </div>
 
-          <div class="swiper-button-prev swiper-button-prev-custom">
-            <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
-            <span class="material-icons">keyboard_arrow_left</span>
-          </div>
-          <div class="swiper-button-next swiper-button-prev-custom">
-            <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
-            <span class="material-icons">keyboard_arrow_right</span>
-          </div>
+            <div class="swiper-button-prev swiper-button-custom">
+              <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
+              <span class="material-icons">keyboard_arrow_left</span>
+            </div>
+            <div class="swiper-button-next swiper-button-custom">
+              <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
+              <span class="material-icons">keyboard_arrow_right</span>
+            </div>
+          {else}
+            {foreach from=$product.images item=image}
+              <div class="swiper-slide modal-gallery__elem">
+                <img
+                  class="rounded img-fluid"
+                  src="{$image.bySize.large_default.url}"
+                  width="{$image.bySize.large_default.width}"
+                  height="{$image.bySize.large_default.height}"
+                  {if !empty($product.default_image.legend)}
+                    alt="{$image.legend}"
+                    title="{$image.legend}"
+                  {else}
+                    alt="{$product.name}"
+                  {/if}
+                  itemprop="image"
+                  loading="lazy"
+                >
+              </div>
+            {/foreach}
+          {/if}
 
         </div>
 
