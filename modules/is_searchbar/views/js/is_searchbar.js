@@ -14,6 +14,9 @@ $(document).ready(function () {
         onResult: function(e) {
             $body.addClass('header-dropdown-open search-result-open');
         },
+        onResultAfter: function(e) {
+            prestashop.pageLazyLoad.update();
+        },
         onRemoveResult: function(e) {
             $body.removeClass('header-dropdown-open search-result-open');
         },
@@ -41,6 +44,7 @@ var SearchInput = function({
     $input,
     onType,
     onResult,
+    onResultAfter,
     beforeSend,
     onRemoveResult,
     perPage,
@@ -54,6 +58,7 @@ var SearchInput = function({
     this.$appendTo = $(appendTo);
     this.onType = onType || function() {};
     this.onResult = onResult || function() {};
+    this.onResultAfter = onResultAfter || function() {};
     this.onRemoveResult = onRemoveResult || function() {};
     this.beforeSend = beforeSend || function() {};
     this.min = min || 3;
@@ -117,6 +122,13 @@ var SearchInput = function({
                 var $el = $('<div>').addClass(resultBoxClass).html(data.content);
                 self.$appendTo.append($el);
                 self.$resultBox= $('.' + resultBoxClass);
+
+                self.onResultAfter({
+                    input: self.$input,
+                    appendTo: self.appendTo,
+                    s: str,
+                    data: data
+                });
             }
           })
           .fail(function(err) {
