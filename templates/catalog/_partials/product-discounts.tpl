@@ -24,9 +24,9 @@
  *}
 <section class="product-discounts">
   {if $product.quantity_discounts}
-    <p class="h6 product-discounts-title">{l s='Volume discounts' d='Shop.Theme.Catalog'}</p>
+    <p class="h6 mb-2">{l s='Volume discounts' d='Shop.Theme.Catalog'}</p>
     {block name='product_discount_table'}
-      <table class="table-product-discounts">
+      <table class="table mb-4">
         <thead>
         <tr>
           <th>{l s='Quantity' d='Shop.Theme.Catalog'}</th>
@@ -37,9 +37,9 @@
         <tbody>
         {foreach from=$product.quantity_discounts item='quantity_discount' name='quantity_discounts'}
           <tr data-discount-type="{$quantity_discount.reduction_type}" data-discount="{$quantity_discount.real_value}" data-discount-quantity="{$quantity_discount.quantity}">
-            <td>{$quantity_discount.quantity}</td>
-            <td>{$quantity_discount.discount}</td>
-            <td>{$quantity_discount.save}</td>
+            <td><strong>{$quantity_discount.quantity}</strong></td>
+            <td><span class="price">{$quantity_discount.discount}<span></td>
+            <td><span class="price">{$quantity_discount.save}<span></td>
           </tr>
         {/foreach}
         </tbody>

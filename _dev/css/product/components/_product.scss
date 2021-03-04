@@ -13,32 +13,3 @@
     }
   }
 }
-
-
-.product-discounts {
-  margin-bottom: 1.5rem;
-  > .product-discounts-title {
-    font-size: $font-size-sm;
-    font-weight: 400;
-  }
-  > .table-product-discounts {
-    thead tr th {
-      width: 33%;
-      padding: map-get($spacers, 2) map-get($spacers, 3);
-      text-align: center;
-      background: #fff;
-      border: 0.3125rem $gray-200 solid;
-    }
-    tbody tr {
-      background: $gray-200;
-      &:nth-of-type(even) {
-        background: #fff;
-      }
-      td {
-        padding: map-get($spacers, 2) map-get($spacers, 3);
-        text-align: center;
-        border: 0.3125rem $gray-200 solid;
-      }
-    }
-  }
-}
