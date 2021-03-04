@@ -1,27 +1,48 @@
-.carousel {
-  .carousel-item {
-    height: 100%;
-    img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
+
+.homeslider {
+
+  &__img {
+    background: $gray-100;
+  }
+
+  &__list {
+    margin: 0;
+  }
+
+  &__slider {
+    position: relative;
+  }
+
+  &__caption {
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__desc {
+    * {
+      color: $gray-800;
     }
   }
-}
 
-.carousel-indicators {
-  li {
-    border-color: $gray-600;
-  }
-  .active {
-    background-color: $gray-600;
-  }
-}
 
-@include media-breakpoint-up(lg) {
-  .carousel {
-    .carousel-indicators {
-      display: none;
+  &__arrow {
+    top: 0;
+    bottom: 0;
+    line-height: 1;
+    padding: 0 map-get($spacers, 3);
+
+    > * {
+      font-size: rem-calc(40px);
+    }
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
     }
   }
 }
