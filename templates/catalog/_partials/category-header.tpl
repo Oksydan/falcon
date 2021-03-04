@@ -28,7 +28,7 @@
             <h1 class="h1">{$category.name}</h1>
             <div class="block-category-inner">
                 {if $category.description}
-                    <div id="category-description" class="text-muted">{$category.description nofilter}</div>
+                    <div id="category-description" class="cms-content">{$category.description nofilter}</div>
                 {/if}
                 {* {if $category.image.large.url}
                     <div class="category-cover">
