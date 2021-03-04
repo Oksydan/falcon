@@ -49,8 +49,7 @@
 
 {block name='content'}
 
-  <section id="main" itemscope itemtype="https://schema.org/Product">
-    <meta itemprop="url" content="{$product.url}">
+  <section id="main">
 
     <div class="row product-container">
       <div class="col-md-5 mb-4">
@@ -74,7 +73,7 @@
         <div class="col-md-7 mb-4">
           {block name='page_header_container'}
             {block name='page_header'}
-              <h1 class="h1" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
+              <h1 class="h1">{block name='page_title'}{$product.name}{/block}</h1>
             {/block}
           {/block}
           {block name='product_prices'}
@@ -83,7 +82,7 @@
 
           <div class="product-information ">
             {block name='product_description_short'}
-              <div id="product-description-short-{$product.id}" class="product-description cms-content" itemprop="description">{$product.description_short nofilter}</div>
+              <div id="product-description-short-{$product.id}" class="product-description cms-content">{$product.description_short nofilter}</div>
             {/block}
 
             {if $product.is_customizable && count($product.customizations.fields)}

@@ -45,7 +45,6 @@
                   {else}
                     alt="{$product.name}"
                   {/if}
-                  itemprop="image"
                   loading="lazy"
                 >
               </div>
@@ -75,7 +74,6 @@
                   {else}
                     alt="{$product.name}"
                   {/if}
-                  itemprop="image"
                   loading="lazy"
                 >
               </div>
