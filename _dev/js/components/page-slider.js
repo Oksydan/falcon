@@ -1,10 +1,7 @@
 import prestashop from 'prestashop';
 
 import SwiperCore, { Swiper, Navigation, Pagination, Thumbs } from 'swiper';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/thumbs/thumbs.scss';
+
 
 SwiperCore.use([Navigation, Pagination, Thumbs]);
 
