@@ -32,11 +32,18 @@
             <div class="product-main-images__list swiper-wrapper">
               {foreach from=$product.images item=image}
                 <div class="swiper-slide">
-                  <img class="rounded img-fluid" src="{$image.bySize.large_default.url}"
-                    width="{$image.bySize.large_default.width}" height="{$image.bySize.large_default.height}"
-                    {if !empty($product.default_image.legend)} alt="{$image.legend}" title="{$image.legend}"
+                  <img
+                    class="rounded img-fluid lazyload"
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.large_default.width}' height='{$image.bySize.large_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                    data-src="{$image.bySize.large_default.url}"
+                    width="{$image.bySize.large_default.width}"
+                    height="{$image.bySize.large_default.height}"
+                    {if !empty($product.default_image.legend)}
+                      alt="{$image.legend}" title="{$image.legend}"
                     {else}
-                    alt="{$product.name}" {/if} itemprop="image" loading="lazy">
+                      alt="{$product.name}"
+                    {/if}
+                    loading="lazy">
                 </div>
               {/foreach}
             </div>
@@ -51,10 +58,19 @@
             </div>
           </div>
         {else}
-          <img class="rounded img-fluid" src="{$product.default_image.bySize.large_default.url}"
-            {if !empty($product.default_image.legend)} alt="{$product.default_image.legend}"
-            title="{$product.default_image.legend}" {else} alt="{$product.name}"
-            {/if} itemprop="image" loading="lazy">
+          <img
+            class="rounded img-fluid"
+            src="{$product.default_image.bySize.large_default.url}"
+            width="{$product.default_image.bySize.large_default.width}"
+            height="{$product.default_image.bySize.large_default.height}"
+            {if !empty($product.default_image.legend)}
+              alt="{$product.default_image.legend}"
+              title="{$product.default_image.legend}"
+            {else}
+              alt="{$product.name}"
+            {/if}
+            itemprop="image"
+            loading="lazy">
         {/if}
 
         <a class="product-main-images__modal-trigger-layer btn btn-light shadow rounded-circle hidden-sm-down" data-toggle="modal" data-target="#product-modal">
@@ -73,10 +89,19 @@
         <div class="product-thumbs__list swiper-wrapper">
           {foreach from=$product.images item=image}
             <div class="product-thumbs__elem swiper-slide">
-              <img class="img-fluid rounded" width="{$image.bySize.home_default.width}"
-                height="{$image.bySize.home_default.height}" src="{$image.bySize.home_default.url}" {if !empty($image.legend)}
-                alt="{$image.legend}" title="{$image.legend}" {else} alt="{$product.name}"
-                {/if} itemprop="image"
+              <img
+                class="img-fluid rounded lazyload"
+                width="{$image.bySize.home_default.width}"
+                height="{$image.bySize.home_default.height}"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.home_default.width}' height='{$image.bySize.home_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                data-src="{$image.bySize.home_default.url}"
+                {if !empty($image.legend)}
+                  alt="{$image.legend}"
+                  title="{$image.legend}"
+                {else}
+                  alt="{$product.name}"
+                {/if}
+                itemprop="image"
                 loading="lazy">
             </div>
           {/foreach}

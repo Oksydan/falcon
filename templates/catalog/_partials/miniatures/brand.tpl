@@ -25,7 +25,16 @@
 {block name='brand_miniature_item'}
   <li class="col-lg-3 col-sm-4 col-6 mb-3">
     <div class="card h-100">
-      <img src="{$brand.image|replace:'small_default':'home_default'}" alt="{$brand.name}" loading="lazy" class="card-img-top">
+      {$sizes = Image::getSize('home_default')}
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$sizes.width}' height='{$sizes.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+        data-src="{$brand.image|replace:'small_default':'home_default'}"
+        alt="{$brand.name}"
+        loading="lazy"
+        class="card-img-top lazyload"
+        width="{$sizes.width}"
+        height="{$sizes.height}"
+        >
       <div class="card-body">
         <p class="h6 mb-0">
           <a class="text-reset stretched-link" href="{$brand.url}">{$brand.name}</a>

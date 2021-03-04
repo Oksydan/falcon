@@ -27,6 +27,7 @@
     "popper.js": "^1.16.1",
     "prestashop": "0.0.1",
     "swiper": "^6.4.15",
+    "vanilla-lazyload": "^17.3.1",
     "wnumb": "^1.2.0"
   },
   "devDependencies": {

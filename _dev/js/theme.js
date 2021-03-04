@@ -43,6 +43,7 @@ import TopMenu from './components/top-menu';
 import CustomSelect from './components/custom-select';
 // import DynamicImportHandler from './utils/DynamicImportHandler';
 
+import PageLazyLoad from './components/Lazyload';
 import PageLoader from './components/page-loader';
 
 /* eslint-disable */
@@ -55,6 +56,10 @@ for (const i in EventEmitter.prototype) {
 prestashop.customSelect = new CustomSelect({
   selector: 'select',
   excludeSelector: '.normal-select'
+})
+
+prestashop.pageLazyLoad = new PageLazyLoad({
+  selector: '.lazyload'
 })
 
 prestashop.pageLoader = new PageLoader();

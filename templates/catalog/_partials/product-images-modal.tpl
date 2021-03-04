@@ -34,8 +34,9 @@
             {foreach from=$product.images item=image}
               <div class="swiper-slide modal-gallery__elem">
                 <img
-                  class="rounded img-fluid"
-                  src="{$image.bySize.large_default.url}"
+                  class="rounded img-fluid lazyload"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.large_default.width}' height='{$image.bySize.large_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                  data-src="{$image.bySize.large_default.url}"
                   width="{$image.bySize.large_default.width}"
                   height="{$image.bySize.large_default.height}"
                   {if !empty($product.default_image.legend)}
@@ -63,8 +64,9 @@
             {foreach from=$product.images item=image}
               <div class="swiper-slide modal-gallery__elem">
                 <img
-                  class="rounded img-fluid"
-                  src="{$image.bySize.large_default.url}"
+                  class="rounded img-fluid lazyload"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.large_default.width}' height='{$image.bySize.large_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                  data-src="{$image.bySize.large_default.url}"
                   width="{$image.bySize.large_default.width}"
                   height="{$image.bySize.large_default.height}"
                   {if !empty($product.default_image.legend)}

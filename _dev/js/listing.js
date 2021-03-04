@@ -9,6 +9,10 @@ $(() => {
     updateProductListDOM(data);
     window.scrollTo(0, 0);
   });
+
+  prestashop.on('updatedProductList', (data) => {
+    prestashop.pageLazyLoad.update();
+  });
 });
 
 

@@ -55,6 +55,8 @@ $(() => {
     }
 
     updateEvenType = false;
+
+    prestashop.pageLazyLoad.update();
   });
 
   function createInputFile() {
