@@ -1,0 +1,123 @@
+// Default variables
+$font_size: 14px;
+$font_size_small: 12px;
+
+$input_border_radius: 5px;
+$input_height: $custom-select-height;
+$input_height_small: 36px;
+$dropdown_padding: 18px;
+
+$gray_dark: $gray-900;
+$gray: $gray-600;
+$gray_light: $gray-200;
+$gray_lighter: $gray-100;
+
+// Style the dropdown
+.nice-select {
+  @extend .custom-select;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // Arrow
+
+  &.open {
+    @extend :active;
+    .list {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+    }
+  }
+  &.disabled {
+    border-color: lighten($gray_light, 2%);
+    color: $gray;
+    pointer-events: none;
+  }
+
+  // Modifiers
+  &.wide {
+    width: 100%;
+    .list {
+      left: 0 !important;
+      right: 0 !important;
+    }
+  }
+  &.right {
+    float: right;
+    .list {
+      left: auto;
+      right: 0;
+    }
+  }
+  &.small {
+    font-size: $font_size_small;
+    height: $input_height_small;
+    line-height: $input_height_small;
+    &:after {
+      height: 4px;
+      width: 4px;
+    }
+    .option {
+      line-height: $input_height_small;
+      min-height: $input_height_small;
+    }
+  }
+
+  // List and options
+  .list {
+    background-color: #fff;
+    border-radius: $input_border_radius;
+    box-shadow: 0 0 0 1px rgba($gray_dark, .11);
+    box-sizing: border-box;
+    margin-top: 4px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%; left: 0;
+    transform-origin: 50% 0;
+    transform: scale(.75) translateY(- $input_height / 2);
+    transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
+    z-index: 9;
+    &:hover .option:not(:hover) {
+      background-color: transparent !important;
+    }
+  }
+  .option {
+    cursor: pointer;
+    font-weight: 400;
+    line-height: $input_height;
+    list-style: none;
+    min-height: $input_height;
+    outline: none;
+    padding-left: $dropdown_padding;
+    padding-right: $dropdown_padding + 11;
+    text-align: left;
+    transition: all 0.2s;
+    &:hover, &.focus, &.selected.focus {
+      background-color: $gray_lighter;
+    }
+    &.selected {
+      font-weight: bold;
+    }
+    &.disabled {
+      background-color: transparent;
+      color: $gray;
+      cursor: default;
+    }
+  }
+}
+
+// Use display instead of opacity for IE <= 10
+.no-csspointerevents .nice-select {
+  .list {
+    display: none;
+  }
+  &.open {
+    .list {
+      display: block;
+    }
+  }
+}

@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<select data-action="search-select" data-prefix="{l s='Sort by:' d='Shop.Theme.Global'}">
+<select data-action="search-select">
   {foreach from=$listing.sort_orders item=sort_order}
     <option
       data-href="{$sort_order.url}"

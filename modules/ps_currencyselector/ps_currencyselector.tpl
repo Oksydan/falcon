@@ -24,7 +24,7 @@
  *}
 
 <div id="_desktop_currency_selector" class="col flex-grow-0 flex-shrink-0">
-  <select class="bootstrap-select-sm js-select-link" aria-labelledby="currency-selector-label">
+  <select class="js-select-link" aria-labelledby="currency-selector-label">
     {foreach from=$currencies item=currency}
       <option value="{$currency.url}"{if $currency.current} selected="selected"{/if}>{$currency.iso_code}{if $currency.sign !== $currency.iso_code} {$currency.sign}{/if}</option>
     {/foreach}

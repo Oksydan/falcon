@@ -7,9 +7,9 @@
 {block name='modal_body'}
   <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
   <div class="js-top-menu-bottom">
-    <div id="_mobile_currency_selector"></div>
-    <div id="_mobile_language_selector"></div>
-    <div id="_mobile_contact_link"></div>
+    <div id="_mobile_currency_selector" class="mb-2"></div>
+    <div id="_mobile_language_selector" class="mb-2"></div>
+    <div id="_mobile_contact_link" class="mb-2"></div>
   </div>
 </div>
 {/block}

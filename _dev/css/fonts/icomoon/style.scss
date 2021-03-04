@@ -4,8 +4,7 @@
   font-family: '#{$icomoon-font-family}';
   src:
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?qzbeni') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qzbeni') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?qzbeni##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qzbeni') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -28,47 +27,47 @@
 
 .icon-facebook {
   &:before {
-    content: $icon-facebook; 
+    content: $icon-facebook;
   }
 }
 .icon-gplus {
   &:before {
-    content: $icon-gplus; 
+    content: $icon-gplus;
   }
 }
 .icon-instagram {
   &:before {
-    content: $icon-instagram; 
+    content: $icon-instagram;
   }
 }
 .icon-linkedin {
   &:before {
-    content: $icon-linkedin; 
+    content: $icon-linkedin;
   }
 }
 .icon-pinterest {
   &:before {
-    content: $icon-pinterest; 
+    content: $icon-pinterest;
   }
 }
 .icon-rss {
   &:before {
-    content: $icon-rss; 
+    content: $icon-rss;
   }
 }
 .icon-twitter {
   &:before {
-    content: $icon-twitter; 
+    content: $icon-twitter;
   }
 }
 .icon-vimeo {
   &:before {
-    content: $icon-vimeo; 
+    content: $icon-vimeo;
   }
 }
 .icon-youtube {
   &:before {
-    content: $icon-youtube; 
+    content: $icon-youtube;
   }
 }
 
