@@ -21,7 +21,7 @@
       </form>
     {else}
         <a href="{$product.canonical_url}"
-           class="btn btn-primary btn-block"
+           class="btn btn-secondary btn-block"
         > {l s='View' d='Shop.Theme.Actions'}
         </a>
     {/if}
