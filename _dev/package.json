@@ -38,7 +38,6 @@
     "css-minimizer-webpack-plugin": "^1.2.0",
     "dotenv": "^8.2.0",
     "esbuild-loader": "^2.9.1",
-    "expose-loader": "^0.7.3",
     "file-loader": "^6.2.0",
     "glob-all": "^3.2.1",
     "hot-accept-webpack-plugin": "^1.1.2",
