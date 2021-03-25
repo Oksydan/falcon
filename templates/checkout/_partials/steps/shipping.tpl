@@ -99,8 +99,11 @@
 
           </div>
         </div>
-        <div class="d-flex justify-content-end mt-3">
-          <button type="submit" class="continue btn btn-primary" name="confirmDeliveryOption" value="1">
+        <div class="text-right mt-3">
+          <button type="submit" class="continue btn btn-primary d-none d-md-inline-block" name="confirmDeliveryOption" value="1">
+            {l s='Continue' d='Shop.Theme.Actions'}
+          </button>
+          <button type="submit" class="continue btn btn-primary btn-block d-block d-md-none" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
         </div>

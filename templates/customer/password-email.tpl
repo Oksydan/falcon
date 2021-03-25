@@ -50,7 +50,10 @@
         <input type="email" name="email" id="email" value="{if isset($smarty.post.email)}{$smarty.post.email|stripslashes}{/if}" class="form-control" required>
 
         <div class="text-center mt-3">
-          <button class="form-control-submit btn btn-primary" name="submit" type="submit">
+          <button class="form-control-submit btn btn-primary d-none d-md-inline-block" name="submit" type="submit">
+            {l s='Send reset link' d='Shop.Theme.Actions'}
+          </button>
+          <button class="form-control-submit btn btn-primary btn-block d-block d-md-none" name="submit" type="submit">
             {l s='Send reset link' d='Shop.Theme.Actions'}
           </button>
         </div>

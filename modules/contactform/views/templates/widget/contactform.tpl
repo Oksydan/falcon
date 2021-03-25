@@ -78,6 +78,7 @@
               <small class="form-text text-muted">
                 {l s='optional' d='Shop.Forms.Help'}
               </small>
+            </div>
           {/if}
 
           {if $contact.allow_file_upload}
@@ -122,7 +123,8 @@
           </style>
           <input type="text" name="url" value=""/>
           <input type="hidden" name="token" value="{$token}" />
-          <input class="btn btn-primary" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
+          <input class="btn btn-primary d-none d-md-inline-block" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
+          <input class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
         </footer>
       {/if}
     </div>

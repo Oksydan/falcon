@@ -73,7 +73,7 @@
           </div>
 
         {else}
-          <div class="alert alert-warning mb-4">
+          <div class="alert alert-warning">
             {l s='Unfortunately your basket is empty' d='Shop.IsTheme'}
           </div>
         {/if}

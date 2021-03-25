@@ -58,7 +58,10 @@
           </p>
 
           <div class="mt-auto text-center">
-            <a href="{$urls.pages.register}" class="btn btn-primary">
+            <a href="{$urls.pages.register}" class="btn btn-primary d-none d-md-inline-block">
+              {l s='I want to create an account' d='Shop.IsTheme'}
+            </a>
+            <a href="{$urls.pages.register}" class="btn btn-primary btn-block d-block d-md-none">
               {l s='I want to create an account' d='Shop.IsTheme'}
             </a>
           </div>

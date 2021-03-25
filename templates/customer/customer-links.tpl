@@ -72,7 +72,7 @@
     {/block}
   </div>
 
-  <div class="text-xs-center customer-links__footer">
+  <div class="text-center customer-links__footer">
     <a href="{$link->getPageLink('index', true, null, 'mylogout')}" class="customer-links__logout">
       {l s='Sign out' d='Shop.Theme.Actions'}
     </a>
