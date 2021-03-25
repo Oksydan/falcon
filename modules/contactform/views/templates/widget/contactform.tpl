@@ -26,7 +26,7 @@
   <form class="card mb-4" action="{$urls.pages.contact}" method="post" {if $contact.allow_file_upload}enctype="multipart/form-data"{/if}>
 
     <div class="card-header">
-      <p class="h4 card-title">
+      <p class="h4 card-title mb-0">
         {l s='Contact us' d='Shop.Theme.Global'}
       </p>
     </div>

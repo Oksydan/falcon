@@ -25,7 +25,7 @@
 <section class="product-customization">
   {if !$configuration.is_catalog}
     <div class="card">
-      <p class="h4 card-title">{l s='Product customization' d='Shop.Theme.Catalog'}</p>
+      <p class="h4 card-title mb-0">{l s='Product customization' d='Shop.Theme.Catalog'}</p>
 
       <div class="card-body">
         <p>
