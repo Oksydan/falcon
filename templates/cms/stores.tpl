@@ -32,59 +32,111 @@
   <section id="content" class="page-content page-stores">
 
     {foreach $stores as $store}
-      <article id="store-{$store.id}" class="store-item card">
-        <div class="store-item-container clearfix">
-          <div class="col-md-3 store-picture hidden-sm-down">
-            <img
-              src="{$store.image.bySize.stores_default.url}"
-              {if !empty($store.image.legend)}
-                alt="{$store.image.legend}"
-                title="{$store.image.legend}"
-              {else}
-                alt="{$store.name}"
-              {/if}
-            >
-          </div>
-          <div class="col-md-5 col-sm-7 col-12 store-description">
-            <p class="h3 card-title">{$store.name}</p>
-            <address>{$store.address.formatted nofilter}</address>
-            {if $store.note || $store.phone || $store.fax || $store.email}
-              <a data-toggle="collapse" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}"><strong>{l s='About and Contact' d='Shop.Theme.Global'}</strong></a>
-            {/if}
-          </div>
-          <div class="col-md-4 col-sm-5 col-12 divide-left">
-            <table>
+      <article id="store-{$store.id}" class="store-item card mb-4">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-auto store-picture hidden-sm-down">
+              <img
+                src="{$store.image.bySize.stores_default.url}"
+                {if !empty($store.image.legend)}
+                  alt="{$store.image.legend}"
+                  title="{$store.image.legend}"
+                {else}
+                  alt="{$store.name}"
+                {/if}
+              >
+            </div>
+            <div class="col-md col-sm-7 col-12 store-description">
+              <p class="h4 card-title">{$store.name}</p>
+              <address class="mb-0">{$store.address.formatted nofilter}</address>
+            </div>
+            <div class="col-md-auto col-sm-5 col-12 mt-2 mt-sm-0">
+              {$daysFormated = []}
               {foreach $store.business_hours as $day}
-              <tr>
-                <th>{$day.day|truncate:4:'.'}</th>
-                <td>
-                  <ul>
-                  {foreach $day.hours as $h}
-                    <li>{$h}</li>
-                  {/foreach}
-                  </ul>
-                </td>
-              </tr>
+                {$daysFormatedCount = $daysFormated|count}
+                {$daysFormatedIndex = $daysFormatedCount - 1}
+                {$isPrevValueTheSame = false}
+                {if $daysFormatedCount > 0 && isset($daysFormated[$daysFormatedIndex][0]) && $daysFormated[$daysFormatedIndex][0].hours == $day.hours[0]}
+                  {$isPrevValueTheSame = true}
+                {/if}
+
+                {if $daysFormatedCount == 0 || !$isPrevValueTheSame}
+                  {$daysFormated[][]= [
+                    'day' => $day.day,
+                    'hours' => $day.hours[0]
+                  ]}
+                {elseif $isPrevValueTheSame}
+                  {$daysFormated[$daysFormatedIndex][] = [
+                    'day' => $day.day,
+                    'hours' => $day.hours
+                  ]}
+                {/if}
+
               {/foreach}
-            </table>
-          </div>
-        </div>
-        <footer id="about-{$store.id}" class="collapse">
-          <div class="store-item-footer divide-top">
-            {if $store.note}
-              <div class="card-block">
-                <p class="text-justify">{$store.note}</p>
+              {foreach $daysFormated as $fDay}
+                {if $fDay[0].hours == ''}
+                  {continue}
+                {/if}
+                {$daysCount = $fDay|count}
+                {$suffix = ''}
+
+                {if $daysCount > 1}
+                  {$suffix = "- `$fDay[$daysCount-1].day|truncate:'4':'.'`"}
+                {/if}
+
+                {if $daysCount == 1}
+                  <span class="text-muted">{$fDay[0].day}</span> {$fDay[0].hours}
+                {else}
+                  <span class="text-muted">{$fDay[0].day|truncate:'4':'.'} {$suffix}</span> {$fDay[0].hours}
+                {/if}
+                <br>
+              {/foreach}
+            </div>
+
+            {if $store.note || $store.phone || $store.fax || $store.email}
+              <div class="col-12">
+                <div class="pt-3 mt-4 border-top text-center">
+                  <a data-toggle="collapse" class="icon-collapse d-inline-flex" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}">
+                    {l s='About and Contact' d='Shop.Theme.Global'}
+                    <span class="material-icons"></span>
+                  </a>
+                </div>
               </div>
             {/if}
-            <ul class="card-block">
+          </div>
+        </div>
+
+        <footer id="about-{$store.id}" class="collapse">
+          <div class="card-footer">
+            {if $store.note}
+              <p>{$store.note}</p>
+            {/if}
+            <ul class="card-block mb-0 row">
               {if $store.phone}
-                <li>{$store.phone}</li>
+                <li class="col-md-4 d-flex align-items-center mt-1">
+                  <span class="material-icons mr-2 font-reset">
+                    call
+                  </span>
+                  <a href="tel:{$store.phone}">{$store.phone}</a>
+                </li>
               {/if}
               {if $store.fax}
-                <li>{$store.fax}</li>
+                <li class="col-md-4 d-flex align-items-center mt-1">
+                  <span class="material-icons mr-2 font-reset">
+                    local_printshop
+                  </span>
+                  <span>{$store.fax}</span>
+                </li>
               {/if}
               {if $store.email}
-                <li>{$store.email}</li>
+                <li class="col-md-4 d-flex align-items-center mt-1">
+                  <span class="material-icons mr-2 font-reset">
+                    mail
+                  </span>
+                  <a href="mailto:{$store.email}">
+                    {$store.email}
+                  </a>
+                </li>
               {/if}
             </ul>
           </div>
