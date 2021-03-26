@@ -1,6 +1,7 @@
 const chokidar = require('chokidar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ESBuildPlugin } = require('esbuild-loader');
+const ChunkRenamePlugin = require('enhanced-webpack-chunk-rename-plugin');
 const path = require('path');
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
@@ -129,6 +130,27 @@ exports.extractFonts = ({ publicPath }) => ({
       }
     ]
   }
+})
+
+exports.extractVendorsChunks = () => ({
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        swiper: {
+          test: /[\\/]node_modules[\\/](swiper)[\\/]/,
+          name: 'swipervendor',
+          chunks: 'all'
+        }
+      },
+    },
+  },
+  plugins: [
+    new ChunkRenamePlugin({
+      initialChunks: true,
+      swiper: "[name].js",
+      bootstrap: "[name].js",
+    }),
+  ],
 })
 
 exports.externals = () => ({
