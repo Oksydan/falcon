@@ -1,42 +1,51 @@
-import $ from 'jquery';
+import DynamicImportJqueryPlugin from './DynamicImportJqueryPlugin';
+import DynamicImportDOMEvents from './DynamicImportDOMEvents';
 
 export default class DynamicImportHandler {
   constructor({
     files,
     jqueryPluginCover = null,
-  }) {
+    enableObserve = false,
+    observeOptions = false,
+    DOMEvents = false,
+    DOMEventsSelector = false,
+    DOMEventsPreventDefault = false,
+    onLoadFiles = () => {}
+  } = {}) {
     this.files = files;
     this.jqueryPluginCover = jqueryPluginCover;
-    this.jqueryElementCalled = null;
-    this.jqueryElementCalledArgs = null;
-  }
+    this.enableObserve = enableObserve;
+    this.observeOptions = observeOptions;
+    this.onLoadFiles = onLoadFiles;
 
-  init() {
-    this.setJqueryPlugin();
-    // this.loadFiles();
-  }
+    this.jqueryDynamicImport = false;
+    this.dynamicDOMEvents = false;
+    this.filesLoaded = false;
 
-  loadFiles() {
-    Promise.all(this.files()).then(() => {
-      this.callJqueryAction();
-    });
-  }
-
-  callJqueryAction() {
-    this.jqueryElementCalled[this.jqueryPluginCover](this.jqueryElementCalledArgs);
-  }
-
-  setJqueryPlugin() {
-    if (!this.jqueryPluginCover) {
-      return;
+    if (jqueryPluginCover) {
+      this.jqueryDynamicImport = new DynamicImportJqueryPlugin({
+        jqueryPluginCover,
+        importer: this
+      });
     }
+    if (DOMEvents && DOMEventsSelector) {
+      this.dynamicDOMEvents = new DynamicImportDOMEvents({
+        events: DOMEvents,
+        eventSelector: DOMEventsSelector,
+        preventDefault: DOMEventsPreventDefault,
+        importer: this
+      });
+    }
+  }
 
-    const self = this;
+  loadFiles(callback = () => {}) {
+    if (!this.filesLoaded) {
+      Promise.all(this.files()).then((res) => {
+        callback();
+        this.onLoadFiles(res);
+      });
 
-    $.fn[this.jqueryPluginCover] = function (args) {
-      self.jqueryElementCalled = this;
-      self.jqueryElementCalledArgs = args;
-      self.loadFiles();
-    };
+      this.filesLoaded = true;
+    }
   }
 }

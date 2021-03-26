@@ -27,6 +27,7 @@ import $ from 'jquery';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
+import './components/DynamicBootstrapComponents';
 
 import './components/page-slider';
 import './components/responsive';
