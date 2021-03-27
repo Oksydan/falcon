@@ -32,10 +32,18 @@
       <p><small>{l s='If you sign out now, your cart will be emptied.' d='Shop.Theme.Checkout'}</small></p>
     {/if}
 
-    <div class="clearfix">
+    <div class="text-right">
       <form method="GET" action="{$urls.pages.order}">
         <button
-          class="continue btn btn-primary float-right"
+          class="continue btn btn-primary d-none d-md-inline-block"
+          name="controller"
+          type="submit"
+          value="order"
+        >
+          {l s='Continue' d='Shop.Theme.Actions'}
+        </button>
+        <button
+          class="continue btn btn-primary btn-block d-block d-md-none"
           name="controller"
           type="submit"
           value="order"

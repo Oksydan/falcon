@@ -1,0 +1,19 @@
+
+.product-table {
+  margin: 0;
+
+  &__head {
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+    th {
+      border-top: 0;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    tbody {
+      display: block;
+    }
+  }
+}

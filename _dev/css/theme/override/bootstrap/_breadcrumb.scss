@@ -1,0 +1,31 @@
+
+.breadcrumb {
+  @include media-breakpoint-down(sm) {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .breadcrumb-item {
+      &:first-child {
+        padding-left: $breadcrumb-padding-x;
+      }
+      &:last-child {
+        padding-right: $breadcrumb-padding-x;
+      }
+    }
+  }
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  float: none;
+  display: inline-block;
+}

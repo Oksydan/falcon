@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div class="contact-rich">
+<div class="contact-rich mb-4">
   <h4>{l s='Store information' d='Shop.Theme.Global'}</h4>
   <div class="block">
     <div class="data">{$contact_infos.address.formatted nofilter}</div>

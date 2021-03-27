@@ -1,0 +1,77 @@
+.customer-links {
+  margin: 0 0 map-get($spacers, 3);
+  @include media-breakpoint-up(lg) {
+    margin: 0;
+  }
+  .link-item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list {
+    @include media-breakpoint-down(md) {
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+
+      margin: rem-calc(20px) 0 0;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    max-width: inherit;
+    white-space: nowrap;
+    flex: 0 0;
+    padding: map-get($spacers, 2);
+    @include font-size($font-size-base);
+    color: $gray-800;
+    font-weight: 700;
+    border-radius: $border-radius;
+
+    @include media-breakpoint-up(lg) {
+      white-space: normal;
+    }
+
+    @include hf() {
+      color: $primary;
+      text-decoration: none;
+    }
+
+    &.active {
+      color: #fff;
+      background: $primary;
+      &::after {
+        display: block;
+      }
+      i {
+        color: inherit;
+      }
+    }
+
+    i {
+      margin-right: map-get($spacers, 1);
+      color: $primary;
+      @include font-size(26px);
+      @include media-breakpoint-up(md) {
+        margin-right: map-get($spacers, 2);
+      }
+    }
+  }
+
+  &__logout {
+    text-align: center;
+    &::after,
+    &::before {
+      display: none;
+    }
+  }
+}

@@ -23,45 +23,46 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div class="block-contact col-md-3 links wrapper">
-  <div class="hidden-sm-down">
-    <p class="h4 text-uppercase block-contact-title">{l s='Store information' d='Shop.Theme.Global'}</p>
-      {$contact_infos.address.formatted nofilter}
-      {if $contact_infos.phone}
-        <br>
-        {* [1][/1] is for a HTML tag. *}
-        {l s='Call us: [1]%phone%[/1]'
-          sprintf=[
+<div class="col-md-3 col-12 mb-lg-4">
+
+  <div class="d-flex align-items-center mb-3 justify-content-between">
+    <span class="h4 mb-0">{l s='Store information' d='Shop.Theme.Global'}</span>
+    <a href="#footer_contact_list" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
+      <i class="material-icons d-block"></i>
+    </a>
+  </div>
+
+  <div class="collapse d-md-block" id="footer_contact_list">
+    {$contact_infos.address.formatted nofilter}
+    {if $contact_infos.phone}
+      <br>
+      {* [1][/1] is for a HTML tag. *}
+      {l s='Call us: [1]%phone%[/1]'
+        sprintf=[
+        '[1]' => '<span>',
+        '[/1]' => '</span>',
+        '%phone%' => $contact_infos.phone
+        ]
+        d='Shop.Theme.Global'
+      }
+    {/if}
+    {if $contact_infos.fax}
+      <br>
+      {* [1][/1] is for a HTML tag. *}
+      {l
+        s='Fax: [1]%fax%[/1]'
+        sprintf=[
           '[1]' => '<span>',
           '[/1]' => '</span>',
-          '%phone%' => $contact_infos.phone
-          ]
-          d='Shop.Theme.Global'
-        }
-      {/if}
-      {if $contact_infos.fax}
-        <br>
-        {* [1][/1] is for a HTML tag. *}
-        {l
-          s='Fax: [1]%fax%[/1]'
-          sprintf=[
-            '[1]' => '<span>',
-            '[/1]' => '</span>',
-            '%fax%' => $contact_infos.fax
-          ]
-          d='Shop.Theme.Global'
-        }
-      {/if}
-      {if $contact_infos.email && $display_email}
-        <br>
-          {l s='Email us:' d='Shop.Theme.Global'}
-          {mailto address=$contact_infos.email encode="javascript"}
-      {/if}
+          '%fax%' => $contact_infos.fax
+        ]
+        d='Shop.Theme.Global'
+      }
+    {/if}
+    {if $contact_infos.email && $display_email}
+      <br>
+        {mailto address=$contact_infos.email encode="javascript"}
+    {/if}
   </div>
-  <div class="hidden-md-up">
-    <div class="title">
-      <a class="h3" href="{$urls.pages.stores}">{l s='Store information' d='Shop.Theme.Global'}</a>
 
-    </div>
-  </div>
 </div>

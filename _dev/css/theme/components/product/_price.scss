@@ -1,0 +1,19 @@
+.price {
+  @include font-size($font-size-lg);
+  font-weight: 700;
+  color: $primary;
+
+  &--regular {
+    text-decoration: line-through;
+    color: $text-muted;
+    font-weight: 400;
+  }
+
+  &--lg {
+    @include font-size($h2-font-size);
+  }
+
+  &--sm {
+    @include font-size($font-size-base);
+  }
+}

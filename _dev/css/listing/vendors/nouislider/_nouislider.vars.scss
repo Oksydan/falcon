@@ -1,0 +1,72 @@
+
+// Slider target
+$noUiSlider-target-border-width: 0;
+$noUiSlider-target-border-color: $gray-300;
+$noUiSlider-target-border-radius: $border-radius;
+$noUiSlider-target-background-color: $gray-200;
+$noUiSlider-target-shadow: null;
+
+// Slider handle basic styles
+$noUiSlider-handle-border-radius: 50%;
+$noUiSlider-handle-border-color: $primary;
+$noUiSlider-handle-border-width: 1px;
+$noUiSlider-handle-background-color: $primary;
+$noUiSlider-handle-shadow: null;
+// Slider handle active styles
+$noUiSlider-handle-active-shadow: null;
+$noUiSlider-handle-active-background-color: darken($primary, 10%);
+
+// Slider bar horizontal
+$noUiSlider-horizontal-height: 8px;
+$noUiSlider-horizontal-handler-width: 16px;
+$noUiSlider-horizontal-handler-height: 16px;
+
+// Slider bar vertical
+$noUiSlider-vertical-width: 8px;
+$noUiSlider-vertical-handler-width: 16px;
+$noUiSlider-vertical-handler-height: 16px;
+
+// Slider connect
+$noUiSlider-connects-background-color: lighten($primary, 20%);
+$noUiSlider-connects-border-radius: $border-radius;
+$noUiSlider-connects-disabled-background-color: $gray-200;
+
+// Slider pips
+$noUiSlider-pips-color: #999;
+$noUiSlider-pips-value-color: #ccc;
+$noUiSlider-pips-value-font-size: 10px;
+
+// Slider pips horizontal
+$noUiSlider-pips-horizontal-spacing: 10px 0;
+$noUiSlider-pips-horizontal-height: 80px;
+
+// Slider pips vertical
+$noUiSlider-pips-vertical-spacing: 0 10px;
+$noUiSlider-pips-vertical-height: 80px;
+
+//Slider marker
+$noUiSlider-marker-background-color: #ccc;
+$noUiSlider-marker-sub-background-color: #aaa;
+$noUiSlider-marker-large-background-color: #aaa;
+
+//Slider marker horizontal
+$noUiSlider-marker-horizontal-width: 2px;
+$noUiSlider-marker-horizontal-height: 5px;
+$noUiSlider-marker-sub-horizontal-height: 10px;
+$noUiSlider-marker-large-horizontal-height: 15px;
+
+//Slider marker vertical
+$noUiSlider-marker-vertical-height: 2px;
+$noUiSlider-marker-vertical-width: 5px;
+$noUiSlider-marker-sub-vertical-width: 10px;
+$noUiSlider-marker-large-vertical-width: 15px;
+
+//Slider tooltips base
+$noUiSlider-tooltips-border-color: $border-color;
+$noUiSlider-tooltips-border-width: 1px;
+$noUiSlider-tooltips-border-radius: $border-radius;
+$noUiSlider-tooltips-background-color: #fff;
+$noUiSlider-tooltips-color: $gray-900;
+$noUiSlider-tooltips-padding: 1px 5px;
+$noUiSlider-tooltips-font-size: 12px;
+$noUiSlider-tooltips-font-weight: 600;

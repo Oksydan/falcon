@@ -1,0 +1,99 @@
+/* Base;
+ *
+ */
+.noUi-pips,
+.noUi-pips * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.noUi-pips {
+  position: absolute;
+  color: $noUiSlider-pips-color;
+}
+
+/* Values;
+  *
+  */
+.noUi-value {
+  position: absolute;
+  white-space: nowrap;
+  text-align: center;
+}
+.noUi-value-sub {
+  color: $noUiSlider-pips-value-color;
+  font-size: $noUiSlider-pips-value-font-size;
+}
+
+/* Markings;
+  *
+  */
+.noUi-marker {
+  position: absolute;
+  background: $noUiSlider-marker-background-color;
+}
+.noUi-marker-sub {
+  background: $noUiSlider-marker-sub-background-color;
+}
+.noUi-marker-large {
+  background: $noUiSlider-marker-large-background-color;
+}
+
+/* Horizontal layout;
+  *
+  */
+.noUi-pips-horizontal {
+  padding: $noUiSlider-pips-horizontal-spacing;
+  height: $noUiSlider-pips-horizontal-height;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+.noUi-value-horizontal {
+  transform: translate(-50%, 50%);
+
+  .noUi-rtl & {
+    transform: translate(50%, 50%);
+  }
+}
+
+.noUi-marker-horizontal.noUi-marker {
+  margin-left: -#{$noUiSlider-marker-horizontal-width/2};
+  width: $noUiSlider-marker-horizontal-width;
+  height: $noUiSlider-marker-horizontal-height;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+  height: $noUiSlider-marker-sub-horizontal-height;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+  height: $noUiSlider-marker-large-horizontal-height;
+}
+
+/* Vertical layout;
+  *
+  */
+.noUi-pips-vertical {
+  padding: $noUiSlider-pips-vertical-spacing;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+.noUi-value-vertical {
+  transform: translate(0, -50%);
+  padding-left: 25px;
+
+  .noUi-rtl & {
+    transform: translate(0, 50%);
+  }
+}
+
+.noUi-marker-vertical.noUi-marker {
+  width: $noUiSlider-marker-vertical-width;
+  height: $noUiSlider-marker-vertical-height;
+  margin-top: -#{$noUiSlider-marker-vertical-height/2};
+}
+.noUi-marker-vertical.noUi-marker-sub {
+  width: $noUiSlider-marker-sub-vertical-width;
+}
+.noUi-marker-vertical.noUi-marker-large {
+  width: $noUiSlider-marker-large-vertical-width;
+}

@@ -30,27 +30,24 @@
       <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
         <div class="row">
           <div class="col-12">
-            <input
-              class="btn btn-primary float-right hidden-xs-down"
-              name="submitNewsletter"
-              type="submit"
-              value="{l s='Subscribe' d='Shop.Theme.Actions'}"
-            >
-            <input
-              class="btn btn-primary float-right hidden-sm-up"
-              name="submitNewsletter"
-              type="submit"
-              value="{l s='OK' d='Shop.Theme.Actions'}"
-            >
-            <div class="input-wrapper">
+            <div class="input-group js-parent-focus">
               <input
                 name="email"
                 type="email"
                 value="{$value}"
+                class="form-control js-child-focus"
                 placeholder="{l s='Your email address' d='Shop.Forms.Labels'}"
                 aria-labelledby="block-newsletter-label"
                 required
               >
+              <div class="input-group-append">
+                <input
+                  class="btn btn-primary float-right hidden-xs-down"
+                  name="submitNewsletter"
+                  type="submit"
+                  value="{l s='Subscribe' d='Shop.Theme.Actions'}"
+                >
+              </div>
             </div>
             <input type="hidden" name="blockHookName" value="{$hookName}" />
             <input type="hidden" name="action" value="0">
@@ -58,7 +55,7 @@
           </div>
           <div class="col-12">
               {if $conditions}
-                <p>{$conditions nofilter}</p>
+                <small class="form-text text-muted">{$conditions nofilter}</small>
               {/if}
               {if $msg}
                 <p class="alert {if $nw_error}alert-danger{else}alert-success{/if}">

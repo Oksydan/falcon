@@ -37,11 +37,11 @@
       {/if}
 
       {if $use_same_address && !$cart.is_virtual}
-        <p>
+        <p class="mb-4">
           {l s='The selected address will be used both as your personal address (for invoice) and as your delivery address.' d='Shop.Theme.Checkout'}
         </p>
       {elseif $use_same_address && $cart.is_virtual}
-        <p>
+        <p class="mb-4">
           {l s='The selected address will be used as your personal address (for invoice).' d='Shop.Theme.Checkout'}
         </p>
       {/if}
@@ -56,7 +56,7 @@
           }
         </div>
       {elseif $customer.addresses|count > 0}
-        <div id="delivery-addresses" class="address-selector js-address-selector">
+        <div id="delivery-addresses" class="address-selector js-address-selector row">
           {include  file        = 'checkout/_partials/address-selector-block.tpl'
             addresses   = $customer.addresses
             name        = "id_address_delivery"
@@ -72,9 +72,9 @@
           <p class="alert alert-danger js-address-error" name="alert-delivery" style="display: none">{l s="Your address is incomplete, please update it." d="Shop.Notifications.Error"}</p>
         {/if}
 
-        <p class="add-address">
-          <a href="{$new_address_delivery_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
-        </p>
+        <div class="add-address mt-2 mb-3">
+          <a class="btn btn-outline-primary btn-sm" href="{$new_address_delivery_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
+        </div>
 
         {if $use_same_address && !$cart.is_virtual}
           <p>
@@ -100,7 +100,7 @@
             }
           </div>
         {else}
-          <div id="invoice-addresses" class="address-selector js-address-selector">
+          <div id="invoice-addresses" class="address-selector js-address-selector row">
             {include  file        = 'checkout/_partials/address-selector-block.tpl'
               addresses   = $customer.addresses
               name        = "id_address_invoice"
@@ -124,8 +124,11 @@
       {/if}
 
       {if !$form_has_continue_button}
-        <div class="clearfix">
-          <button type="submit" class="btn btn-primary continue float-right" name="confirm-addresses" value="1">
+        <div class="text-right">
+          <button type="submit" class="btn btn-primary continue d-none d-md-inline-block" name="confirm-addresses" value="1">
+            {l s='Continue' d='Shop.Theme.Actions'}
+          </button>
+          <button type="submit" class="btn btn-primary continue btn-block d-block d-md-none" name="confirm-addresses" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
           <input type="hidden" id="not-valid-addresses" value="{$not_valid_addresses}">

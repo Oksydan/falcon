@@ -22,12 +22,15 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<section class="featured-products clearfix mt-3">
-  <h2 class="h2 products-section-title text-uppercase">
-    {l s='Best Sellers' d='Shop.Theme.Catalog'}
-  </h2>
-  {include file="catalog/_partials/productlist.tpl" products=$products}
-  <a class="all-product-link float-left float-md-right h4" href="{$allBestSellers}">
+
+{extends file="components/featured-products.tpl"}
+
+{block name='featured_products_title'}
+  {l s='Best Sellers' d='Shop.Theme.Catalog'}
+{/block}
+
+{block name='featured_products_footer'}
+  <a class="btn btn-secondary" href="{$allBestSellers}">
     {l s='All best sellers' d='Shop.Theme.Catalog'}
   </a>
-</section>
+{/block}

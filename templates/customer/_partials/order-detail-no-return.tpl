@@ -23,153 +23,51 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='order_products_table'}
-  <div class="box hidden-sm-down">
-    <table id="order-products" class="table table-bordered">
-      <thead class="thead-default">
-        <tr>
-          <th>{l s='Product' d='Shop.Theme.Catalog'}</th>
-          <th>{l s='Quantity' d='Shop.Theme.Catalog'}</th>
-          <th>{l s='Unit price' d='Shop.Theme.Catalog'}</th>
-          <th>{l s='Total price' d='Shop.Theme.Catalog'}</th>
-        </tr>
-      </thead>
-      {foreach from=$order.products item=product}
-        <tr>
-          <td>
-            <strong>
-              <a {if isset($product.download_link)}href="{$product.download_link}"{/if}>
-                {$product.name}
-              </a>
-            </strong><br/>
-            {if $product.product_reference}
-              {l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}<br/>
-            {/if}
-            {if $product.customizations}
-              {foreach from=$product.customizations item="customization"}
-                <div class="customization">
-                  <a href="#" data-toggle="modal" data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
-                </div>
-                <div id="_desktop_product_customization_modal_wrapper_{$customization.id_customization}">
-                  <div class="modal fade customization-modal" id="product-customizations-modal-{$customization.id_customization}" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                          <h4 class="modal-title">{l s='Product customization' d='Shop.Theme.Catalog'}</h4>
-                        </div>
-                        <div class="modal-body">
-                          {foreach from=$customization.fields item="field"}
-                            <div class="product-customization-line row">
-                              <div class="col-sm-3 col-4 label">
-                                {$field.label}
-                              </div>
-                              <div class="col-sm-9 col-8 value">
-                                {if $field.type == 'text'}
-                                  {if (int)$field.id_module}
-                                    {$field.text nofilter}
-                                  {else}
-                                    {$field.text}
-                                  {/if}
-                                {elseif $field.type == 'image'}
-                                  <img src="{$field.image.small.url}" loading="lazy">
-                                {/if}
-                              </div>
-                            </div>
-                          {/foreach}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              {/foreach}
-            {/if}
-          </td>
-          <td>
-            {if $product.customizations}
-              {foreach $product.customizations as $customization}
-                {$customization.quantity}
-              {/foreach}
-            {else}
-              {$product.quantity}
-            {/if}
-          </td>
-          <td class="text-xs-right">{$product.price}</td>
-          <td class="text-xs-right">{$product.total}</td>
-        </tr>
-      {/foreach}
-      <tfoot>
-        {foreach $order.subtotals as $line}
-          {if $line.value}
-            <tr class="text-xs-right line-{$line.type}">
-              <td colspan="3">{$line.label}</td>
-              <td>{$line.value}</td>
-            </tr>
-          {/if}
-        {/foreach}
-        <tr class="text-xs-right line-{$order.totals.total.type}">
-          <td colspan="3">{$order.totals.total.label}</td>
-          <td>{$order.totals.total.value}</td>
-        </tr>
-      </tfoot>
-    </table>
+
+  <div class="card my-4">
+    {include file="customer/_partials/product-table.tpl" products=$order.products}
   </div>
 
-  <div class="order-items hidden-md-up box">
-    {foreach from=$order.products item=product}
-      <div class="order-item">
-        <div class="row">
-          <div class="col-sm-5 desc">
-            <div class="name">{$product.name}</div>
-            {if $product.product_reference}
-              <div class="ref">{l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}</div>
-            {/if}
-            {if $product.customizations}
-              {foreach $product.customizations as $customization}
-                <div class="customization">
-                  <a href="#" data-toggle="modal" data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
-                </div>
-                <div id="_mobile_product_customization_modal_wrapper_{$customization.id_customization}">
-                </div>
-              {/foreach}
-            {/if}
-          </div>
-          <div class="col-sm-7 qty">
-            <div class="row">
-              <div class="col-4 text-sm-left text-xs-left">
-                {$product.price}
-              </div>
-              <div class="col-4">
-                {if $product.customizations}
-                  {foreach $product.customizations as $customization}
-                    {$customization.quantity}
-                  {/foreach}
-                {else}
-                  {$product.quantity}
-                {/if}
-              </div>
-              <div class="col-4 text-xs-right">
-                {$product.total}
-              </div>
-            </div>
-          </div>
+  <div class="row card-group no-gutters my-4">
+    {block name='order_details'}
+      <div class="col-sm-6 col-12 card">
+        <div class="card-header">
+          <h3 class="h5 mb-0 card-title">{l s='Order details' d='Shop.Theme.Checkout'}</h3>
+        </div>
+        <div class="card-body">
+          <ul class="m-0">
+            <li class="cart-summary-line">
+              <span>{l s='Carrier' d='Shop.Theme.Checkout'}: <strong>{$order.carrier.name}</strong></span>
+            </li>
+            <li class="cart-summary-line">
+              <span>{l s='Payment method' d='Shop.Theme.Checkout'}: <strong>{$order.details.payment}</strong></span>
+            </li>
+          </ul>
         </div>
       </div>
-    {/foreach}
-  </div>
-  <div class="order-totals hidden-md-up box">
-    {foreach $order.subtotals as $line}
-      {if $line.value}
-        <div class="order-total row">
-          <div class="col-8"><strong>{$line.label}</strong></div>
-          <div class="col-4 text-xs-right">{$line.value}</div>
+    {/block}
+
+    <div class="col-sm-6 col-12 card">
+      <div class="card-header">
+        <h3 class="h5 mb-0 card-title">{l s='Order subtotals' d='Shop.IsTheme'}</h3>
+      </div>
+
+      <div class="card-body">
+        {foreach $order.subtotals as $line}
+          {if $line.value}
+            <div class="cart-summary-line">
+              <span class="label">{$line.label}</span>
+              <span class="value">{if 'discount' == $line.type}-&nbsp;{/if}{$line.value}</span>
+            </div>
+          {/if}
+        {/foreach}
+        <div class="cart-summary-line cart-total">
+          <span class="label">{$order.totals.total.label}</span>
+          <div class="value">{$order.totals.total.value}</div>
         </div>
-      {/if}
-    {/foreach}
-    <div class="order-total row">
-      <div class="col-8"><strong>{$order.totals.total.label}</strong></div>
-      <div class="col-4 text-xs-right">{$order.totals.total.value}</div>
+      </div>
+
     </div>
+
   </div>
 {/block}

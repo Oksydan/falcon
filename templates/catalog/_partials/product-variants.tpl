@@ -25,8 +25,8 @@
 <div class="product-variants">
   {foreach from=$groups key=id_attribute_group item=group}
     {if !empty($group.attributes)}
-    <div class="clearfix product-variants-item">
-      <span class="control-label">{$group.name}</span>
+    <div class="product-variants-item">
+      <p class="control-label h6 mb-2">{$group.name}</p>
       {if $group.group_type == 'select'}
         <select
           class="form-control form-control-select"
@@ -38,19 +38,27 @@
           {/foreach}
         </select>
       {elseif $group.group_type == 'color'}
-        <ul id="group_{$id_attribute_group}">
+        <ul class="row mx-n1" id="group_{$id_attribute_group}">
+
           {foreach from=$group.attributes key=id_attribute item=group_attribute}
-            <li class="float-left input-container">
-              <label aria-label="{$group_attribute.name}">
-                <input class="input-color" type="radio" data-product-attribute="{$id_attribute_group}" name="group[{$id_attribute_group}]" value="{$id_attribute}" title="{$group_attribute.name}"{if $group_attribute.selected} checked="checked"{/if}>
-                <span
-                  {if $group_attribute.texture}
-                    class="color texture" style="background-image: url({$group_attribute.texture})"
-                  {elseif $group_attribute.html_color_code}
-                    class="color" style="background-color: {$group_attribute.html_color_code}" 
-                  {/if}
-                ><span class="sr-only">{$group_attribute.name}</span></span>
-              </label>
+            <li class="col flex-grow-0 px-1 pb-2">
+              <div class="custom-control custom-radio-color">
+                  <input class="custom-control-input" type="radio" data-product-attribute="{$id_attribute_group}" id="{$id_attribute_group}_{$id_attribute}"  name="group[{$id_attribute_group}]" value="{$id_attribute}" title="{$group_attribute.name}"{if $group_attribute.selected} checked="checked"{/if}>
+
+                  <label class="custom-control-label {if $group_attribute.html_color_code}custom-control-label-{if Tools::getBrightness($group_attribute.html_color_code) > 128}dark{else}bright{/if}{/if}" for="{$id_attribute_group}_{$id_attribute}" aria-label="{$group_attribute.name}">
+                    <span
+                      {if $group_attribute.texture}
+                        class="custom-control-input-color" style="background-image: url({$group_attribute.texture})"
+                      {elseif $group_attribute.html_color_code}
+                        class="custom-control-input-color" style="background-color: {$group_attribute.html_color_code}"
+                      {/if}
+                    >
+                    </span>
+                    <span class="sr-only">
+                      {$group_attribute.name}
+                    </span>
+                </label>
+              </div>
             </li>
           {/foreach}
         </ul>

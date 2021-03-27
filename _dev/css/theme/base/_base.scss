@@ -1,0 +1,39 @@
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+input,
+textarea {
+  &::placeholder {
+    color: $gray-600;
+  }
+  &:active {
+    &::placeholder {
+      color: $gray-900;
+    }
+  }
+}
+
+
+input[type="number"] {
+  appearance: textfield;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    margin: 0;
+    appearance: none;
+  }
+}

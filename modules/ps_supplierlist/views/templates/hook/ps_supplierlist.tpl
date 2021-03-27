@@ -23,19 +23,20 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div id="search_filters_suppliers">
-  <section class="facet">
-    <p class="h6 text-uppercase facet-label">
-      {if $display_link_supplier}<a href="{$page_link}" title="{l s='Suppliers' d='Shop.Theme.Catalog'}">{/if}
-        {l s='Suppliers' d='Shop.Theme.Catalog'}
-      {if $display_link_supplier}</a>{/if}
-    </p>
-    <div>
-      {if $suppliers}
-        {include file="module:ps_supplierlist/views/templates/_partials/$supplier_display_type.tpl" suppliers=$suppliers}
-      {else}
-        <p>{l s='No supplier' d='Shop.Theme.Catalog'}</p>
-      {/if}
-    </div>
-  </section>
-</div>
+{extends file="components/left-column-list-group.tpl"}
+
+{if $suppliers}
+{block name='list_group_extra_class'}mb-md-3  d-none d-md-block{/block}
+
+  {block name='list_group_title'}
+    {if $display_link_supplier}<a href="{$page_link}" class="text-reset" title="{l s='Suppliers' d='Shop.Theme.Catalog'}">{/if}
+      {l s='Suppliers' d='Shop.Theme.Catalog'}
+    {if $display_link_supplier}</a>{/if}
+  {/block}
+
+  {block name='list_group_body'}
+    {include file="module:ps_supplierlist/views/templates/_partials/$supplier_display_type.tpl" suppliers=$suppliers}
+  {/block}
+{else}
+  {block name='list_group'}{/block}
+{/if}

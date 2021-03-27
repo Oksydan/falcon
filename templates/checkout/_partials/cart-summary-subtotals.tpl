@@ -23,22 +23,19 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div class="card-block cart-summary-subtotals-container">
+{foreach from=$cart.subtotals item="subtotal"}
+  {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
+    <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-{$subtotal.type}">
 
-  {foreach from=$cart.subtotals item="subtotal"}
-    {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
-      <div class="cart-summary-line cart-summary-subtotals" id="cart-subtotal-{$subtotal.type}">
+      <span class="label">
+          {$subtotal.label}
+      </span>
 
-        <span class="label">
-            {$subtotal.label}
-        </span>
+      <span class="value">
+        {$subtotal.value}
+      </span>
+    </div>
+  {/if}
+{/foreach}
 
-        <span class="value">
-          {$subtotal.value}
-        </span>
-      </div>
-    {/if}
-  {/foreach}
-
-</div>
 

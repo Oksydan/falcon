@@ -23,14 +23,12 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<ul>
+<ul class="list-group list-group-flush">
   {foreach from=$suppliers item=supplier name=supplier_list}
-    {if $smarty.foreach.supplier_list.iteration <= $text_list_nb}
-      <li class="facet-label">
-        <a href="{$supplier['link']}" title="{$supplier['name']}">
-          {$supplier['name']}
-        </a>
-      </li>
+    {if $smarty.foreach.brand_list.iteration <= $text_list_nb}
+      <a class="list-group-item list-group-item-action" href="{$supplier['link']}" title="{$supplier['name']}">
+        {$supplier['name']}
+      </a>
     {/if}
   {/foreach}
 </ul>

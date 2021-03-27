@@ -23,7 +23,36 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='cart_summary_product_line'}
-  <div class="media-left">
+  <div class="cart-products">
+    <div class="cart-products__thumb">
+      <img src="{$product.cover.bySize.cart_default.url}" alt="{$product.name|escape:'quotes'}" class="img-fluid rounded"
+        width="{$product.cover.bySize.cart_default.width}" height="{$product.cover.bySize.cart_default.height}">
+    </div>
+    <div class="cart-products__desc">
+      <p class="h6 mb-2 font-sm">
+        <span class="text-muted">{$product.quantity}x</span> {$product.name}
+      </p>
+
+      <ul class="mb-2">
+        <li class="text-muted small">
+          <span>{l s='Quantity' d='Shop.Theme.Catalog'}:</span>
+          <span class="font-weight-bold">{$product.quantity}</span>
+        </li>
+        {foreach from=$product.attributes key="attribute" item="value"}
+          <li class="text-muted small">
+            <span>{$attribute}:</span>
+            <span class="font-weight-bold">{$value}</span>
+          </li>
+        {/foreach}
+      </ul>
+
+      <span class="price price--sm">
+        {$product.price}
+      </span>
+    </div>
+  </div>
+
+  {* <div class="media-left">
     <a href="{$product.url}" title="{$product.name}">
       <img class="media-object" src="{$product.cover.small.url}" alt="{$product.name}" loading="lazy">
     </a>
@@ -34,11 +63,11 @@
     <span class="product-price float-right">{$product.price}</span>
     {hook h='displayProductPriceBlock' product=$product type="unit_price"}
     {foreach from=$product.attributes key="attribute" item="value"}
-        <div class="product-line-info product-line-info-secondary text-muted">
-            <span class="label">{$attribute}:</span>
-            <span class="value">{$value}</span>
-        </div>
+      <div class="product-line-info product-line-info-secondary text-muted">
+        <span class="label">{$attribute}:</span>
+        <span class="value">{$value}</span>
+      </div>
     {/foreach}
-    <br/>
-  </div>
+    <br />
+  </div> *}
 {/block}

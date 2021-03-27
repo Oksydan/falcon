@@ -58,6 +58,10 @@
   <link rel="shortcut icon" type="image/x-icon" href="{$urls.img_ps_url}{$shop.favicon}?{$shop.favicon_update_time}">
 {/block}
 
+{block name='head_preload'}
+  {include file="_partials/head-preload.tpl"}
+{/block}
+
 {block name='stylesheets'}
   {include file="_partials/stylesheets.tpl" stylesheets=$stylesheets}
 {/block}

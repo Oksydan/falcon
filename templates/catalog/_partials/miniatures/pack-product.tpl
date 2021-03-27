@@ -23,43 +23,40 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='pack_miniature_item'}
-  <article>
-    <div class="card">
-      <div class="pack-product-container">
-        <div class="thumb-mask">
-          <div class="mask">
-            <a href="{$product.url}" title="{$product.name}">
-              <img
-                src="{$product.cover.medium.url}"
-                {if !empty($product.cover.legend)}
-                  alt="{$product.cover.legend}"
-                  title="{$product.cover.legend}"
-                {else}
-                  alt="{$product.name}"
-                {/if}
-                loading="lazy"
-                data-full-size-image-url="{$product.cover.large.url}"
-              >
-            </a>
-          </div>
-        </div>
-
-        <div class="pack-product-name">
-          <a href="{$product.url}" title="{$product.name}">
-            {$product.name}
+  <div class="card overflow-hidden">
+    <div class="row no-gutters flex-nowrap">
+      <div class="col-4 col-md-3 col-xl-2">
+        <a href="{$product.url}" title="{$product.name}">
+          <img
+            class="img-fluid lazyload"
+            width="{$product.default_image.medium.width}"
+            height="{$product.default_image.medium.height}"
+            data-src="{$product.default_image.medium.url}"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$product.default_image.medium.width}' height='{$product.default_image.medium.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+            {if !empty($product.default_image.legend)}
+              alt="{$product.default_image.legend}"
+              title="{$product.default_image.legend}"
+            {else}
+              alt="{$product.name}"
+            {/if}
+            loading="lazy"
+            data-full-size-image-url="{$product.default_image.large.url}"
+          >
+        </a>
+      </div>
+      <div class="card-body align-self-center">
+        <p class="pack-product-name h6 mb-2">
+          <a href="{$product.url}" class="text-reset" title="{$product.name}">
+            <span class="text-muted">{$product.pack_quantity}x</span> {$product.name}
           </a>
-        </div>
+        </p>
 
         {if $showPackProductsPrice}
-          <div class="pack-product-price">
-            <strong>{$product.price}</strong>
+          <div class="price">
+            {$product.price}
           </div>
         {/if}
-
-        <div class="pack-product-quantity">
-          <span>x {$product.pack_quantity}</span>
-        </div>
       </div>
     </div>
-  </article>
+  </div>
 {/block}

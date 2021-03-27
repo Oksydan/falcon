@@ -1,0 +1,24 @@
+
+.font-reset {
+  font-size: inherit !important;
+}
+
+.line-height-reset {
+  line-height: inherit !important;
+}
+
+.font-sm {
+  @include font-size($font-size-sm);
+}
+
+.font-lg {
+  @include font-size($font-size-lg);
+}
+
+.font-xs {
+  @include font-size($font-size-xs);
+}
+
+.font-base {
+  @include font-size($font-size-base);
+}

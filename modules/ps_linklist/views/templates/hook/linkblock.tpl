@@ -22,37 +22,32 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="col-md-6 links">
-  <div class="row">
+
   {foreach $linkBlocks as $linkBlock}
-    <div class="col-md-6 wrapper">
-      <p class="h3 hidden-sm-down">{$linkBlock.title}</p>
+    <div class="col-md-3 col-12 mb-lg-4">
       {assign var=_expand_id value=10|mt_rand:100000}
-      <div class="title clearfix hidden-md-up" data-target="#footer_sub_menu_{$_expand_id}" data-toggle="collapse">
-        <span class="h3">{$linkBlock.title}</span>
-        <span class="float-right">
-          <span class="navbar-toggler collapse-icons">
-            <i class="add">add</i>
-            <i class="remove">remove</i>
-          </span>
-        </span>
+      <div class="d-flex align-items-center mb-3 justify-content-between">
+        <span class="h4 mb-0">{$linkBlock.title}</span>
+        <a href="#footer_sub_menu_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
+          <i class="material-icons d-block"></i>
+        </a>
       </div>
-      <ul id="footer_sub_menu_{$_expand_id}" class="collapse">
-        {foreach $linkBlock.links as $link}
-          <li>
-            <a
-                id="{$link.id}-{$linkBlock.id}"
-                class="{$link.class}"
-                href="{$link.url}"
-                title="{$link.description}"
-                {if !empty($link.target)} target="{$link.target}" {/if}
-            >
-              {$link.title}
-            </a>
-          </li>
-        {/foreach}
-      </ul>
+      <div id="footer_sub_menu_{$_expand_id}" class="collapse d-md-block">
+        <ul class="links-list">
+          {foreach $linkBlock.links as $link}
+            <li class="links-list__elem">
+              <a
+                  id="{$link.id}-{$linkBlock.id}"
+                  class="{$link.class} links-list__link"
+                  href="{$link.url}"
+                  title="{$link.description}"
+                  {if !empty($link.target)} target="{$link.target}" {/if}
+              >
+                {$link.title}
+              </a>
+            </li>
+          {/foreach}
+        </ul>
+      </div>
     </div>
   {/foreach}
-  </div>
-</div>

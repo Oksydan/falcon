@@ -241,9 +241,12 @@
           <textarea cols="67" rows="3" name="returnText" class="form-control"></textarea>
         </div>
       </section>
-      <footer class="form-footer">
+      <footer class="form-footer text-center">
         <input type="hidden" name="id_order" value="{$order.details.id}">
-        <button class="form-control-submit btn btn-primary" type="submit" name="submitReturnMerchandise">
+        <button class="form-control-submit btn btn-primary d-none d-md-inline-block" type="submit" name="submitReturnMerchandise">
+          {l s='Request a return' d='Shop.Theme.Customeraccount'}
+        </button>
+        <button class="form-control-submit btn btn-primary btn-block d-block d-md-none" type="submit" name="submitReturnMerchandise">
           {l s='Request a return' d='Shop.Theme.Customeraccount'}
         </button>
       </footer>

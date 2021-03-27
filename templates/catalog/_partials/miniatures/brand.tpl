@@ -23,15 +23,26 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='brand_miniature_item'}
-  <li class="brand">
-    <div class="brand-img"><a href="{$brand.url}"><img src="{$brand.image}" alt="{$brand.name}" loading="lazy"></a></div>
-    <div class="brand-infos">
-      <p><a href="{$brand.url}">{$brand.name}</a></p>
-      {$brand.text nofilter}
-    </div>
-    <div class="brand-products">
-      <a href="{$brand.url}">{$brand.nb_products}</a>
-      <a href="{$brand.url}">{l s='View products' d='Shop.Theme.Actions'}</a>
+  <li class="col-lg-3 col-sm-4 col-6 mb-3">
+    <div class="card h-100">
+      {$sizes = Image::getSize('home_default')}
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$sizes.width}' height='{$sizes.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+        data-src="{$brand.image|replace:'small_default':'home_default'}"
+        alt="{$brand.name}"
+        loading="lazy"
+        class="card-img-top lazyload"
+        width="{$sizes.width}"
+        height="{$sizes.height}"
+        >
+      <div class="card-body">
+        <p class="h6 mb-0">
+          <a class="text-reset stretched-link" href="{$brand.url}">{$brand.name}</a>
+        </p>
+      </div>
+      <div class="card-footer text-center">
+        <span class="btn btn-link p-0">{$brand.nb_products}</span>
+      </div>
     </div>
   </li>
 {/block}

@@ -29,7 +29,7 @@
 {/block}
 
 {block name='page_content_container'}
-  <section id="content" class="page-content page-cms page-cms-{$cms.id}">
+  <section id="content" class="page-content cms-content page-cms page-cms-{$cms.id}">
 
     {block name='cms_content'}
       {$cms.content nofilter}

@@ -1,0 +1,22 @@
+
+.links-list {
+  margin: 0;
+  padding: 0 0 map-get($spacers, 4);
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+  }
+
+
+  &__elem {
+    &:not(:last-child) {
+      margin: 0 0 map-get($spacers, 2);
+    }
+  }
+
+  &__link {
+    color: $gray-600;
+    @include hf() {
+      color: $gray-900;
+    }
+  }
+}

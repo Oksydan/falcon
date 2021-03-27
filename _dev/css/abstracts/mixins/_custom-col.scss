@@ -1,0 +1,11 @@
+@mixin custom-col-padded($width, $padding: $grid-gutter-width/2) {
+  flex: 0 0 $width;
+  max-width: $width;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin custom-col($width) {
+  flex: 0 0 $width;
+  max-width: $width;
+}

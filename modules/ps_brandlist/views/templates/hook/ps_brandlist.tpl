@@ -23,19 +23,21 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div id="search_filters_brands">
-  <section class="facet">
-    <p class="h6 text-uppercase facet-label">
-      {if $display_link_brand}<a href="{$page_link}" title="{l s='Brands' d='Shop.Theme.Catalog'}">{/if}
-        {l s='Brands' d='Shop.Theme.Catalog'}
-      {if $display_link_brand}</a>{/if}
-    </p>
-    <div>
-      {if $brands}
-        {include file="module:ps_brandlist/views/templates/_partials/$brand_display_type.tpl" brands=$brands}
-      {else}
-        <p>{l s='No brand' d='Shop.Theme.Catalog'}</p>
-      {/if}
-    </div>
-  </section>
-</div>
+{extends file="components/left-column-list-group.tpl"}
+
+{if $brands}
+  {block name='list_group_extra_class'}mb-md-3 d-none d-md-block{/block}
+
+  {block name='list_group_title'}
+    {if $display_link_brand}<a href="{$page_link}" class="text-reset" title="{l s='Brands' d='Shop.Theme.Catalog'}">{/if}
+      {l s='Brands' d='Shop.Theme.Catalog'}
+    {if $display_link_brand}</a>{/if}
+  {/block}
+
+  {block name='list_group_body'}
+    {include file="module:ps_brandlist/views/templates/_partials/$brand_display_type.tpl" brands=$brands}
+  {/block}
+
+{else}
+  {block name='list_group'}{/block}
+{/if}

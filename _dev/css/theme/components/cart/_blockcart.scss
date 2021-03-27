@@ -1,0 +1,12 @@
+
+.blockcart {
+  &__dropdown {
+    border-radius: $border-radius;
+    min-width: inherit;
+    width: rem-calc(320px);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid $border-color;
+  }
+}

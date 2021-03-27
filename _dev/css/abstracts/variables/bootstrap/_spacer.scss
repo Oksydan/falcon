@@ -1,0 +1,12 @@
+$spacer: 10px;
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: (
+  0: 0,
+  1: ($spacer * .5),
+  2: $spacer,
+  3: ($spacer * 2),
+  4: ($spacer * 3),
+  5: ($spacer * 4),
+  6: ($spacer * 5),
+);

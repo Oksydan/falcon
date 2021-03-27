@@ -29,24 +29,11 @@
 {/block}
 
 {block name='header_nav'}
-  <nav class="header-nav">
+  <nav class="header-nav border-bottom bg-light mb-3 py-1 d-none d-md-block">
     <div class="container">
-      <div class="row">
-        <div class="hidden-sm-down">
-          <div class="col-md-5 col-12">
-            {hook h='displayNav1'}
-          </div>
-          <div class="col-md-7 right-nav">
-              {hook h='displayNav2'}
-          </div>
-        </div>
-        <div class="hidden-md-up text-sm-center mobile">
-          <div class="float-left" id="menu-icon">
-            MENU
-          </div>
-          <div class="float-right" id="_mobile_cart"></div>
-          <div class="float-right" id="_mobile_user_info"></div>
-        </div>
+      <div class="row align-items-center">
+        {hook h='displayNav1'}
+        {hook h='displayNav2'}
       </div>
     </div>
   </nav>
@@ -58,12 +45,26 @@
 
        <div class="row header-top__row">
 
-        <div class="header-top__block header-top__block--logo">
+       <div class="col flex-grow-0 header-top__block header-top__block--menu-toggle d-block d-md-none">
+          <a
+            class="header-top__link"
+            rel="nofollow"
+            href="#"
+            data-toggle="modal"
+            data-target="#mobile_top_menu_wrapper"
+            >
+            <div class="header-top__icon-container">
+              <span class="header-top__icon material-icons">menu</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4 col header-top__block header-top__block--logo">
           {if $page.page_name == 'index'}
             <h1 class="mb-0">
           {/if}
             <a href="{$urls.base_url}">
-              <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name}" loading="lazy">
+            <img class="logo img-fluid" src="{$urls.img_ps_url}{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
             </a>
           {if $page.page_name == 'index'}
             </h1>
@@ -71,15 +72,6 @@
         </div>
 
         {hook h='displayTop'}
-      </div>
-
-      <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
-        <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
-        <div class="js-top-menu-bottom">
-          <div id="_mobile_currency_selector"></div>
-          <div id="_mobile_language_selector"></div>
-          <div id="_mobile_contact_link"></div>
-        </div>
       </div>
 
     </div>

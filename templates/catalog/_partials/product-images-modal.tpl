@@ -23,54 +23,65 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <div class="modal fade js-product-images-modal" id="product-modal">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        {assign var=imagesCount value=$product.images|count}
-        <figure>
-          <img
-            class="js-modal-product-cover product-cover-modal"
-            width="{$product.cover.large.width}"
-            src="{$product.cover.large.url}"
-            {if !empty($product.cover.legend)}
-              alt="{$product.cover.legend}"
-              title="{$product.cover.legend}"
-            {else}
-              alt="{$product.name}"
-            {/if}
-            itemprop="image"
-          >
-          <figcaption class="image-caption">
-          {block name='product_description_short'}
-            <div id="product-description-short" itemprop="description">{$product.description_short nofilter}</div>
-          {/block}
-        </figcaption>
-        </figure>
-        <aside id="thumbnails" class="thumbnails js-thumbnails text-sm-center">
-          {block name='product_images'}
-            <div class="js-modal-mask mask {if $imagesCount <= 5} nomargin {/if}">
-              <ul class="product-images js-modal-product-images">
-                {foreach from=$product.images item=image}
-                  <li class="thumb-container">
-                    <img
-                      data-image-large-src="{$image.large.url}"
-                      class="thumb js-modal-thumb"
-                      src="{$image.medium.url}"
-                      {if !empty($image.legend)}
-                        alt="{$image.legend}"
-                        title="{$image.legend}"
-                      {else}
-                        alt="{$product.name}"
-                      {/if}
-                      width="{$image.medium.width}"
-                      itemprop="image"
-                    >
-                  </li>
-                {/foreach}
-              </ul>
+        <div class="js-modal-gallery modal-gallery swiper-container swiper-container-custom">
+
+        {if $product.images|count > 1}
+
+          <div class="modal-gallery__list swiper-wrapper">
+            {foreach from=$product.images item=image}
+              <div class="swiper-slide modal-gallery__elem">
+                <img
+                  class="rounded img-fluid lazyload"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.large_default.width}' height='{$image.bySize.large_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                  data-src="{$image.bySize.large_default.url}"
+                  width="{$image.bySize.large_default.width}"
+                  height="{$image.bySize.large_default.height}"
+                  {if !empty($product.default_image.legend)}
+                    alt="{$image.legend}"
+                    title="{$image.legend}"
+                  {else}
+                    alt="{$product.name}"
+                  {/if}
+                  loading="lazy"
+                >
+              </div>
+            {/foreach}
+          </div>
+
+            <div class="swiper-button-prev swiper-button-custom">
+              <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
+              <span class="material-icons">keyboard_arrow_left</span>
             </div>
-          {/block}
-        </aside>
+            <div class="swiper-button-next swiper-button-custom">
+              <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
+              <span class="material-icons">keyboard_arrow_right</span>
+            </div>
+          {else}
+            {foreach from=$product.images item=image}
+              <div class="swiper-slide modal-gallery__elem">
+                <img
+                  class="rounded img-fluid lazyload"
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.large_default.width}' height='{$image.bySize.large_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
+                  data-src="{$image.bySize.large_default.url}"
+                  width="{$image.bySize.large_default.width}"
+                  height="{$image.bySize.large_default.height}"
+                  {if !empty($product.default_image.legend)}
+                    alt="{$image.legend}"
+                    title="{$image.legend}"
+                  {else}
+                    alt="{$product.name}"
+                  {/if}
+                  loading="lazy"
+                >
+              </div>
+            {/foreach}
+          {/if}
+
+        </div>
+
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

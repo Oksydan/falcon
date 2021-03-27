@@ -23,16 +23,22 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='sitemap_item'}
-  <ul{if isset($is_nested)} class="nested"{/if}>
+  <div class="list-group list-group-flush list-group-collapse">
     {foreach $links as $link}
-      <li>
-        <a id="{$link.id}" href="{$link.url}" title="{$link.label}">
+
+      {if isset($link.children) && $link.children|@count > 0}
+        <div class="list-group-item list-group-item-action-dropdown">
+          <a class="text-reset stretched-link" id="{$link.id}" href="{$link.url}" title="{$link.label}">
+            {$link.label}
+          </a>
+        </div>
+        {include file='cms/_partials/sitemap-nested-list.tpl' links=$link.children is_nested=true}
+      {else}
+        <a class="list-group-item list-group-item-action" id="{$link.id}" href="{$link.url}" title="{$link.label}">
           {$link.label}
         </a>
-        {if isset($link.children) && $link.children|@count > 0}
-          {include file='cms/_partials/sitemap-nested-list.tpl' links=$link.children is_nested=true}
-        {/if}
-      </li>
+      {/if}
+
     {/foreach}
-  </ul>
+  </div>
 {/block}

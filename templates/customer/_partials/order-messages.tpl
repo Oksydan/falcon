@@ -29,8 +29,10 @@
       {foreach from=$order.messages item=message}
         <div class="message row">
           <div class="col-sm-4">
-            {$message.name}<br/>
-            {$message.message_date}
+            <strong>{$message.name}</strong><br/>
+            <small>
+              {$message.message_date}
+            </small>
           </div>
           <div class="col-sm-8">
             {$message.message nofilter}
@@ -42,19 +44,19 @@
 {/block}
 
 {block name='order_message_form'}
-  <section class="order-message-form box">
-    <form action="{$urls.pages.order_detail}" method="post">
+  <section class="order-message-form my-4">
+    <form class="card" action="{$urls.pages.order_detail}" method="post">
 
-      <header>
-        <h3>{l s='Add a message' d='Shop.Theme.Customeraccount'}</h3>
-        <p>{l s='If you would like to add a comment about your order, please write it in the field below.' d='Shop.Theme.Customeraccount'}</p>
+      <header class="card-header">
+        <h3 class="h4 card-title mb-0">{l s='Add a message' d='Shop.Theme.Customeraccount'}</h3>
       </header>
 
-      <section class="form-fields">
+      <div class="card-body">
+        <section class="form-fields">
+          <p>{l s='If you would like to add a comment about your order, please write it in the field below.' d='Shop.Theme.Customeraccount'}</p>
 
-        <div class="form-group row">
-          <label class="col-md-3 form-control-label">{l s='Product' d='Shop.Forms.Labels'}</label>
-          <div class="col-md-5">
+          <div class="form-group">
+            <label class="form-control-label">{l s='Product' d='Shop.Forms.Labels'}</label>
             <select name="id_product" class="form-control form-control-select">
               <option value="0">{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
               {foreach from=$order.products item=product}
@@ -62,23 +64,20 @@
               {/foreach}
             </select>
           </div>
-        </div>
 
-        <div class="form-group row">
-          <label class="col-md-3 form-control-label"></label>
-          <div class="col-md-9">
-            <textarea rows="3" name="msgText" class="form-control"></textarea>
+          <div class="form-group">
+            <textarea rows="4" name="msgText" class="form-control"></textarea>
           </div>
-        </div>
 
-      </section>
+        </section>
 
-      <footer class="form-footer text-sm-center">
-        <input type="hidden" name="id_order" value="{$order.details.id}">
-        <button type="submit" name="submitMessage" class="btn btn-primary form-control-submit">
-          {l s='Send' d='Shop.Theme.Actions'}
-        </button>
-      </footer>
+        <footer class="form-footer text-center mt-3">
+          <input type="hidden" name="id_order" value="{$order.details.id}">
+          <button type="submit" name="submitMessage" class="btn btn-primary form-control-submit">
+            {l s='Send' d='Shop.Theme.Actions'}
+          </button>
+        </footer>
+      </div>
 
     </form>
   </section>

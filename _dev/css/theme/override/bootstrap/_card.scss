@@ -1,0 +1,23 @@
+.card {
+  &--secondary {
+    border: 0;
+  }
+}
+
+.card-body + .card-body {
+  border-top: $card-border-width solid $card-border-color;
+}
+
+.card-group-vertical {
+  > .card {
+    &:not(:first-child) {
+      border-top: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:not(:last-child) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

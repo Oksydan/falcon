@@ -23,41 +23,40 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <section class="contact-form">
-  <form action="{$urls.pages.contact}" method="post" {if $contact.allow_file_upload}enctype="multipart/form-data"{/if}>
+  <form class="card mb-4" action="{$urls.pages.contact}" method="post" {if $contact.allow_file_upload}enctype="multipart/form-data"{/if}>
 
-    {if $notifications}
-      <div class="col-12 alert {if $notifications.nw_error}alert-danger{else}alert-success{/if}">
-        <ul>
-          {foreach $notifications.messages as $notif}
-            <li>{$notif}</li>
-          {/foreach}
-        </ul>
-      </div>
-    {/if}
+    <div class="card-header">
+      <p class="h4 card-title mb-0">
+        {l s='Contact us' d='Shop.Theme.Global'}
+      </p>
+    </div>
 
-    {if !$notifications || $notifications.nw_error}
-      <section class="form-fields">
+    <div class="card-body">
 
-        <div class="form-group row">
-          <div class="col-md-9 col-md-offset-3">
-            <h3>{l s='Contact us' d='Shop.Theme.Global'}</h3>
-          </div>
+      {if $notifications}
+        <div class="col-12 alert {if $notifications.nw_error}alert-danger{else}alert-success{/if}">
+          <ul>
+            {foreach $notifications.messages as $notif}
+              <li>{$notif}</li>
+            {/foreach}
+          </ul>
         </div>
+      {/if}
 
-        <div class="form-group row">
-          <label class="col-md-3 form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
-          <div class="col-md-6">
+      {if !$notifications || $notifications.nw_error}
+        <section class="form-fields">
+
+          <div class="form-group">
+            <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
             <select name="id_contact" class="form-control form-control-select">
               {foreach from=$contact.contacts item=contact_elt}
                 <option value="{$contact_elt.id_contact}">{$contact_elt.name}</option>
               {/foreach}
             </select>
           </div>
-        </div>
 
-        <div class="form-group row">
-          <label class="col-md-3 form-control-label">{l s='Email address' d='Shop.Forms.Labels'}</label>
-          <div class="col-md-6">
+          <div class="form-group">
+            <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'}</label>
             <input
               class="form-control"
               name="from"
@@ -66,70 +65,71 @@
               placeholder="{l s='your@email.com' d='Shop.Forms.Help'}"
             >
           </div>
-        </div>
 
-        {if $contact.orders}
-          <div class="form-group row">
-            <label class="col-md-3 form-control-label">{l s='Order reference' d='Shop.Forms.Labels'}</label>
-            <div class="col-md-6">
+          {if $contact.orders}
+            <div class="form-group">
+              <label class="form-control-label">{l s='Order reference' d='Shop.Forms.Labels'}</label>
               <select name="id_order" class="form-control form-control-select">
                 <option value="">{l s='Select reference' d='Shop.Forms.Help'}</option>
                 {foreach from=$contact.orders item=order}
                   <option value="{$order.id_order}">{$order.reference}</option>
                 {/foreach}
               </select>
+              <small class="form-text text-muted">
+                {l s='optional' d='Shop.Forms.Help'}
+              </small>
             </div>
-            <span class="col-md-3 form-control-comment">
-              {l s='optional' d='Shop.Forms.Help'}
-            </span>
-          </div>
-        {/if}
+          {/if}
 
-        {if $contact.allow_file_upload}
-          <div class="form-group row">
-            <label class="col-md-3 form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
-            <div class="col-md-6">
-              <input type="file" name="fileUpload" class="filestyle" data-buttonText="{l s='Choose file' d='Shop.Theme.Actions'}">
+          {if $contact.allow_file_upload}
+            <div class="form-group">
+              <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
+
+              <div class="custom-file">
+                <input name="fileUpload" type="file" class="custom-file-input" id="fileUpload">
+                <label class="custom-file-label" for="fileUpload">{l s='Choose file' d='Shop.Theme.Actions'}</label>
+              </div>
+              <small class="form-text text-muted">
+                {l s='optional' d='Shop.Forms.Help'}
+              </small>
             </div>
-            <span class="col-md-3 form-control-comment">
-              {l s='optional' d='Shop.Forms.Help'}
-            </span>
-          </div>
-        {/if}
+          {/if}
 
-        <div class="form-group row">
-          <label class="col-md-3 form-control-label">{l s='Message' d='Shop.Forms.Labels'}</label>
-          <div class="col-md-9">
+          <div class="form-group">
+            <label class="col-md-3">{l s='Message' d='Shop.Forms.Labels'}</label>
             <textarea
               class="form-control"
               name="message"
               placeholder="{l s='How can we help?' d='Shop.Forms.Help'}"
-              rows="3"
+              rows="5"
             >{if $contact.message}{$contact.message}{/if}</textarea>
           </div>
-        </div>
 
-        {if isset($id_module)}
-          <div class="form-group row">
-            <div class="offset-md-3">
-              {hook h='displayGDPRConsent' id_module=$id_module}
+          {if isset($id_module)}
+            <div class="form-group row">
+              <div class="offset-md-3">
+                {hook h='displayGDPRConsent' id_module=$id_module}
+              </div>
             </div>
-          </div>
-        {/if}
+          {/if}
 
-      </section>
+        </section>
 
-      <footer class="form-footer text-sm-right">
-        <style>
-          input[name=url] {
-            display: none !important;
-          }
-        </style>
-        <input type="text" name="url" value=""/>
-        <input type="hidden" name="token" value="{$token}" />
-        <input class="btn btn-primary" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
-      </footer>
-    {/if}
+        <footer class="form-footer text-right">
+          <style>
+            input[name=url] {
+              display: none !important;
+            }
+          </style>
+          <input type="text" name="url" value=""/>
+          <input type="hidden" name="token" value="{$token}" />
+          <input class="btn btn-primary d-none d-md-inline-block" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
+          <input class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
+        </footer>
+      {/if}
+    </div>
+
+
 
   </form>
 </section>

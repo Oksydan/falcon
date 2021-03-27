@@ -1,0 +1,20 @@
+
+.product-main-images {
+  position: relative;
+  &__modal-trigger-layer {
+    position: absolute;
+    z-index: 2;
+    bottom: map-get($spacers, 2);
+    right: map-get($spacers, 2);
+
+    @include font-size(20px);
+
+    border: 0;
+    padding: 0;
+
+    width: 1.6em;
+    height: 1.6em;
+    line-height: 1.6em;
+    border-radius: 50%;
+  }
+}

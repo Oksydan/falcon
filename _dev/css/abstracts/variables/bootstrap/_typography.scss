@@ -1,0 +1,41 @@
+
+$font-size-base:              rem-calc(16px);
+$font-size-lg:                $font-size-base * 1.125;
+$font-size-sm:                $font-size-base * .875;
+$font-size-xs:                $font-size-base * .6875;
+
+$font-weight-lighter:         200;
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-bold:            700;
+$font-weight-bolder:          800;
+
+$h1-font-size:                $font-size-base * 2;
+$h2-font-size:                $font-size-base * 1.75;
+$h3-font-size:                $font-size-base * 1.5;
+$h4-font-size:                $font-size-base * 1.25;
+$h5-font-size:                $font-size-base * 1.125;
+$h6-font-size:                $font-size-base;
+
+$headings-margin-bottom:      10px;
+$headings-font-weight:        $font-weight-bold;
+$headings-line-height:        1.2;
+
+$display1-size:               $font-size-base * 2.5;
+$display2-size:               $font-size-base * 2.25;
+$display3-size:               $font-size-base * 2;
+$display4-size:               $font-size-base * 1.75;
+
+$display1-weight:             400;
+$display2-weight:             400;
+$display3-weight:             400;
+$display4-weight:             400;
+
+$text-muted:                  $gray-600;
+
+$paragraph-margin-bottom:   rem-calc(20px);
+
+$headings-margin-bottom: rem-calc(20px);
+$headings-font-weight: 700;
+$headings-line-height: 1.2;
+$headings-color: $gray-900;

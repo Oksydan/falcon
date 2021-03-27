@@ -1,0 +1,51 @@
+.search-form {
+  position: relative;
+  max-width: rem-calc(620px);
+  margin: 0 auto;
+
+  &__form-group {
+    position: relative;
+    @include media-breakpoint-up(lg) {
+      .search-result-open & {
+        z-index: 101;
+      }
+    }
+  }
+
+  &__input {
+    border-radius: 99em;
+    padding: 0 rem-calc(70px) 0 rem-calc(30px);
+    height: $search_input-height;
+    line-height: $search_input-height;
+    border-width: 1px;
+    color: $gray-900;
+
+    &:focus {
+      background: $gray-100;
+      box-shadow: none;
+    }
+
+  }
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: $primary;
+    line-height: 1;
+    padding: 0 map-get($spacers, 3);
+  }
+}
+
+.search-modal {
+  .modal-body {
+    padding-top: rem-calc(40px);
+  }
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: rem-calc(7px) rem-calc(10px);
+  }
+}

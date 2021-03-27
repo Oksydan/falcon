@@ -22,25 +22,19 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="header-top__block header-top__block--user">
-  <div class="user-info">
+<div class="col flex-grow-0 header-top__block header-top__block--user">
+  <a
+    class="header-top__link"
+    rel="nofollow"
+    href="{$my_account_url}"
     {if $logged}
-      <a
-        class="account"
-        href="{$my_account_url}"
-        title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}"
-        rel="nofollow"
-      >
-        <span class="hidden-sm-down">{$customerName}</span>
-      </a>
+      title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}"
     {else}
-      <a
-        href="{$my_account_url}"
-        title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
-        rel="nofollow"
-      >
-        <span class="hidden-sm-down">{l s='Sign in' d='Shop.Theme.Actions'}</span>
-      </a>
+      title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
     {/if}
-  </div>
+  >
+    <div class="header-top__icon-container">
+      <span class="header-top__icon material-icons">person</span>
+    </div>
+  </a>
 </div>

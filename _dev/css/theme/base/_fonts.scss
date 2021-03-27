@@ -1,0 +1,96 @@
+@import "../../fonts/icomoon/style";
+
+%abstract-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  width: 1em;
+  height: 1em;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
+    url('~material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+
+/* roboto-regular - latin-ext_latin */
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/roboto-v20-latin-ext_latin-regular.woff2") format("woff2"), url("./fonts/roboto-v20-latin-ext_latin-regular.woff") format("woff");
+}
+
+/* roboto-500 - latin-ext_latin */
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/roboto-v20-latin-ext_latin-500.woff2") format("woff2"), url("./fonts/roboto-v20-latin-ext_latin-500.woff") format("woff");
+}
+
+/* roboto-italic - latin-ext_latin */
+@font-face {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/roboto-v20-latin-ext_latin-italic.woff2") format("woff2"), url("./fonts/roboto-v20-latin-ext_latin-italic.woff") format("woff");
+}
+
+/* roboto-700 - latin-ext_latin */
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/roboto-v20-latin-ext_latin-700.woff2") format("woff2"), url("./fonts/roboto-v20-latin-ext_latin-700.woff") format("woff");
+}
+
+

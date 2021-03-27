@@ -1,4 +1,4 @@
-<div class="tab-pane fade{if !$product.description} in active{/if}"
+<div class="tab-pane fade"
      id="product-details"
      data-product="{$product.embedded_attributes|json_encode}"
      role="tabpanel"
@@ -21,7 +21,7 @@
     {if isset($product.reference_to_display) && $product.reference_to_display neq ''}
       <div class="product-reference">
         <label class="label">{l s='Reference' d='Shop.Theme.Catalog'} </label>
-        <span itemprop="sku">{$product.reference_to_display}</span>
+        <span>{$product.reference_to_display}</span>
       </div>
     {/if}
   {/block}
@@ -52,12 +52,12 @@
 
   {block name='product_features'}
     {if $product.grouped_features}
-      <section class="product-features">
+      <section class="product-features my-3">
         <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>
-        <dl class="data-sheet">
+        <dl class="row no-gutters mb-0">
           {foreach from=$product.grouped_features item=feature}
-            <dt class="name">{$feature.name}</dt>
-            <dd class="value">{$feature.value|escape:'htmlall'|nl2br nofilter}</dd>
+            <dt class="col-4 pr-3 {if !$feature@last}pb-2 mb-2 border-bottom{/if}">{$feature.name}</dt>
+            <dd class="col-8 {if !$feature@last}pb-2 mb-2 border-bottom{/if}">{$feature.value|escape:'htmlall'|nl2br nofilter}</dd>
           {/foreach}
         </dl>
       </section>
@@ -67,12 +67,12 @@
   {* if product have specific references, a table will be added to product details section *}
   {block name='product_specific_references'}
     {if !empty($product.specific_references)}
-      <section class="product-features">
+      <section class="product-features my-3">
         <p class="h6">{l s='Specific References' d='Shop.Theme.Catalog'}</p>
-          <dl class="data-sheet">
+          <dl class="row">
             {foreach from=$product.specific_references item=reference key=key}
-              <dt class="name">{$key}</dt>
-              <dd class="value">{$reference}</dd>
+              <dt class="col-4 pr-3 {if !$reference@last}pb-2 mb-2 border-bottom{/if}">{$key}</dt>
+              <dd class="col-8 {if !$reference@last}pb-2 mb-2 border-bottom{/if}">{$reference}</dd>
             {/foreach}
           </dl>
       </section>
@@ -83,7 +83,7 @@
     {if $product.condition}
       <div class="product-condition">
         <label class="label">{l s='Condition' d='Shop.Theme.Catalog'} </label>
-        <link itemprop="itemCondition" href="{$product.condition.schema_url}"/>
+        <link href="{$product.condition.schema_url}"/>
         <span>{$product.condition.label}</span>
       </div>
     {/if}

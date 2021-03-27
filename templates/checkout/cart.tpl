@@ -34,8 +34,8 @@
 
         <!-- cart products detailed -->
         <div class="card cart-container">
-          <div class="card-block">
-            <h1 class="h1">{l s='Shopping Cart' d='Shop.Theme.Checkout'}</h1>
+          <div class="card-header">
+            <h1 class="h4 card-title mb-0">{l s='Shopping Cart' d='Shop.Theme.Checkout'}</h1>
           </div>
           {block name='cart_overview'}
             {include file='checkout/_partials/cart-detailed.tpl' cart=$cart}
@@ -43,9 +43,12 @@
         </div>
 
         {block name='continue_shopping'}
-          <a class="label" href="{$urls.pages.index}">
-            {l s='Continue shopping' d='Shop.Theme.Actions'}
-          </a>
+          <div class="mt-3">
+            <a class="btn btn-outline-primary" href="{$urls.pages.index}">
+              <span class="material-icons btn-icon mr-1">keyboard_arrow_left</span>
+              {l s='Continue shopping' d='Shop.Theme.Actions'}
+            </a>
+          </div>
         {/block}
 
         <!-- shipping informations -->
@@ -60,17 +63,26 @@
         {block name='cart_summary'}
           <div class="card cart-summary">
 
-            {block name='hook_shopping_cart'}
-              {hook h='displayShoppingCart'}
-            {/block}
+            <div class="card-header">
+              <p class="cart-title h4 mb-0">
+                {l s='Summary' d='Shop.IsTheme'}
+              </p>
+            </div>
 
-            {block name='cart_totals'}
-              {include file='checkout/_partials/cart-detailed-totals.tpl' cart=$cart}
-            {/block}
+            <div class="card-body">
+              {block name='hook_shopping_cart'}
+                {hook h='displayShoppingCart'}
+              {/block}
 
-            {block name='cart_actions'}
-              {include file='checkout/_partials/cart-detailed-actions.tpl' cart=$cart}
-            {/block}
+              {block name='cart_totals'}
+                {include file='checkout/_partials/cart-detailed-totals.tpl' cart=$cart}
+              {/block}
+            </div>
+            <div class="card-body">
+              {block name='cart_actions'}
+                {include file='checkout/_partials/cart-detailed-actions.tpl' cart=$cart}
+              {/block}
+            </div>
 
           </div>
         {/block}

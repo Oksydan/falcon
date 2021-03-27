@@ -1,0 +1,44 @@
+.bootstrap-touchspin {
+  border: $input-border-width solid $input-border-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  max-width: 100px;
+  > input {
+    max-width: 60px;
+    border:none;
+    box-shadow: none;
+    text-align: center;
+    font-weight: 700;
+    -moz-appearance: textfield;
+    padding: 0;
+    border-left: $input-border-width solid $input-border-color;
+    border-right: $input-border-width solid $input-border-color;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  .btn {
+    position: relative;
+    z-index: 2;
+    color: $input-color;
+    background-color: $white;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    display: block;
+    width: 1.8em;
+    border: 0;
+
+    @include hf {
+      background: $gray-200;
+    }
+  }
+  .input-group-prepend,
+  .input-group-append {
+    display: block;
+    margin: 0;
+  }
+}

@@ -24,27 +24,28 @@
  */
 
 import $ from 'jquery';
-import 'jquery-migrate';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
+import 'jquery-hoverintent';
+import './components/DynamicBootstrapComponents';
 
-import './responsive';
-import './checkout';
-import './customer';
-import './listing';
-import './product';
-import './cart';
-
-import '../css/theme.scss';
+import './components/page-slider';
+import './components/responsive';
+import './components/customer';
+import './components/quickview';
+import './components/product';
+import './components/cart/cart';
+import './components/cart/block-cart';
 
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
-import DropDown from './components/drop-down';
 import Form from './components/form';
-import ProductMinitature from './components/product-miniature';
 import TopMenu from './components/top-menu';
+import CustomSelect from './components/custom-select';
+// import DynamicImportHandler from './utils/DynamicImportHandler';
 
-import './components/block-cart';
+import PageLazyLoad from './components/Lazyload';
+import PageLoader from './components/page-loader';
 
 /* eslint-disable */
 // "inherit" EventEmitter
@@ -53,13 +54,41 @@ for (const i in EventEmitter.prototype) {
 }
 /* eslint-enable */
 
+prestashop.customSelect = new CustomSelect({
+  selector: 'select',
+  excludeSelector: '.normal-select'
+})
+
+prestashop.pageLazyLoad = new PageLazyLoad({
+  selector: '.lazyload'
+})
+
+prestashop.pageLoader = new PageLoader();
+
 $(document).ready(() => {
-  const dropDownEl = $('.js-dropdown');
-  const topMenuEl = $('.js-top-menu ul[data-depth="0"]');
-  const dropDown = new DropDown(dropDownEl);
-  const topMenu = new TopMenu(topMenuEl);
-  dropDown.init();
-  Form.init();
+  prestashop.customSelect.init();
+  accLinksTriggerActive();
+  const form = new Form();
+  let topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
+
+  prestashop.on('updatedAddressForm', () => {
+    prestashop.customSelect.init();
+  });
+
+  form.init();
   topMenu.init();
-  ProductMinitature.init();
+
+  $('.js-select-link').on('change', ({ target }) => {
+    window.location.href = $(target).val();
+  })
 });
+
+function accLinksTriggerActive() {
+  const url = window.location.pathname;
+  $('.js-customer-links a').each((i, el) => {
+    const $el = $(el);
+    if($el.attr('href').indexOf(url) !== -1) {
+      $el.addClass('active');
+    }
+  })
+}

@@ -1,0 +1,11 @@
+$custom-checkbox-indicator-border-radius: 4px;
+
+
+$custom-checkbox-indicator-icon-checked-dark-color: $black;
+$custom-checkbox-indicator-icon-checked-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='#{$custom-checkbox-indicator-icon-checked-dark-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/></svg>");
+
+//Custom radio color
+
+$custom-color-control-indicator-size: rem-calc(24px);
+$custom-color-control-indicator-size-checked-border-color: $gray-900;
+$custom-color-control-indicator-icon-size: rem-calc(18px);

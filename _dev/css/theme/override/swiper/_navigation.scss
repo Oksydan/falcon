@@ -1,0 +1,12 @@
+
+.swiper-button-custom {
+  color: $primary;
+  width: auto;
+  height: auto;
+  margin: 0;
+
+  &::after {
+    display: none;
+  }
+
+}
