@@ -4,6 +4,7 @@ const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const safeList = require('./purge-safelist');
 const glob = require('glob-all');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TerserPlugin = require("terser-webpack-plugin");
 
 const plugins = (purge) => ([
   new BundleAnalyzerPlugin(),
@@ -26,9 +27,11 @@ exports.productionConfig = ({ purge }) => ({
   optimization: {
     minimize: true,
     minimizer: [
-      new ESBuildMinifyPlugin({
-        target: 'es2015' // Syntax to compile to (see options below for possible values)
-      }),
+      // ESBuildMinifyPlugin replaced with TeaserPlugin due to bug with dynamic import. Will be investigated in future.
+      // new ESBuildMinifyPlugin({
+      //   target: 'es2015'
+      // }),
+      new TerserPlugin(),
       new CssMinimizerPlugin()
     ],
   },
