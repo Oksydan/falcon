@@ -6,7 +6,8 @@
   "scripts": {
     "build-purge": "webpack --progress --colors --debug --display-chunks --mode=production --purge=true",
     "build": "webpack --progress --colors --debug --display-chunks --mode=production",
-    "watch": "webpack-dev-server --progress --colors --debug --display-chunks --watch --mode=development",
+    "watch": "webpack --progress --colors --debug --display-chunks --watch --mode=development",
+    "dev": "webpack-dev-server --progress --colors --debug --display-chunks --watch --mode=development",
     "scss-fix": "stylelint \"**/*.scss\" --fix",
     "eslint-fix": "eslint \"**/*.js\" --fix"
   },
