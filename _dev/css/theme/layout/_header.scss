@@ -6,13 +6,18 @@
 }
 
 .header-top {
-  padding: map-get($spacers, 2);
+  padding: map-get($spacers, 2) 0;
   @include media-breakpoint-up(md) {
     padding: 0;
   }
 
   &__row {
     align-items: center;
+    flex-wrap: nowrap;
+    @include media-breakpoint-up(md) {
+      flex-wrap: wrap;
+    }
+
   }
 
   &__link {

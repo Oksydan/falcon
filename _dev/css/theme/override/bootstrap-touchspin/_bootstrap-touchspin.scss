@@ -42,3 +42,11 @@
     margin: 0;
   }
 }
+
+.input-touchspin {
+  max-width: 100px;
+  opacity: 0;
+  .bootstrap-touchspin & {
+    opacity: 1;
+  }
+}
