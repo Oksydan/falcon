@@ -31,7 +31,9 @@ exports.productionConfig = ({ purge }) => ({
       // new ESBuildMinifyPlugin({
       //   target: 'es2015'
       // }),
-      new TerserPlugin(),
+      new TerserPlugin({
+        extractComments: true,
+      }),
       new CssMinimizerPlugin()
     ],
   },
