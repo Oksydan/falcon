@@ -24,7 +24,7 @@ class DynamicImportDOMEvents {
 
     this.importer.loadFiles(() => {
         if(e && this.eventsArray.includes(e.type)) {
-          $(e.currentTarget.activeElement).trigger(e.type);
+          $(e.target).trigger(e.type);
           this.unbindEvents();
         }
       }
