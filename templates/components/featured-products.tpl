@@ -25,16 +25,13 @@
       'speed' => 500,
       'breakpoints' => [
         '320' => [
-          'slidesPerView' => 2,
-          'spaceBetween' => 10
+          'slidesPerView' => 2
         ],
         '768' => [
-          'slidesPerView' => 3,
-          'spaceBetween' => 20
+          'slidesPerView' => 3
         ],
         '992' => [
-          'slidesPerView' => 4,
-          'spaceBetween' => 20
+          'slidesPerView' => 4
         ]
       ]
     ]}

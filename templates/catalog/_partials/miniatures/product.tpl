@@ -31,7 +31,7 @@
       itemtype="http://schema.org/ListItem"
       class="products-list__block products-list__block--grid"
     {elseif $listingType === 'slider'}
-      class="swiper-slide"
+      class="swiper-slide product-slider__item col-6 col-sm-4 col-md-3"
     {/if}
     >
     {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
