@@ -6,7 +6,8 @@
   "scripts": {
     "build-purge": "webpack --progress --colors --debug --display-chunks --mode=production --purge=true",
     "build": "webpack --progress --colors --debug --display-chunks --mode=production",
-    "watch": "webpack-dev-server --progress --colors --debug --display-chunks --watch --mode=development",
+    "watch": "webpack --progress --colors --debug --display-chunks --watch --mode=development",
+    "dev": "webpack-dev-server --progress --colors --debug --display-chunks --watch --mode=development",
     "scss-fix": "stylelint \"**/*.scss\" --fix",
     "eslint-fix": "eslint \"**/*.js\" --fix"
   },
@@ -14,7 +15,7 @@
   "license": "AFL-3.0",
   "dependencies": {
     "@prestashop-core/jquery.live-polyfill": "^1.1.2",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^4.6.0",
     "bootstrap-touchspin": "^4.3.0",
     "emitter": "0.0.5",
     "jquery": "^3.4.1",
@@ -33,12 +34,17 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
+    "babel-eslint": "^10.1.0",
     "chokidar": "^3.4.3",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.3.0",
     "css-minimizer-webpack-plugin": "^1.2.0",
     "dotenv": "^8.2.0",
     "enhanced-webpack-chunk-rename-plugin": "^1.0.3",
     "esbuild-loader": "^2.9.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-prestashop": "^0.1.0",
     "file-loader": "^6.2.0",
     "glob-all": "^3.2.1",
     "hot-accept-webpack-plugin": "^1.1.2",

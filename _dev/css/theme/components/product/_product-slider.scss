@@ -1,0 +1,18 @@
+
+.product-slider {
+  margin-right: -5px;
+  margin-left: -5px;
+  @include media-breakpoint-up(sm) {
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+
+  &__item {
+    padding-right: 5px;
+    padding-left: 5px;
+    @include media-breakpoint-up(sm) {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+}

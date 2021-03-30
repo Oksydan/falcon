@@ -10,7 +10,7 @@ export default class DynamicImportHandler {
     DOMEvents = false,
     DOMEventsSelector = false,
     DOMEventsPreventDefault = false,
-    onLoadFiles = () => {}
+    onLoadFiles = () => {},
   } = {}) {
     this.files = files;
     this.jqueryPluginCover = jqueryPluginCover;
@@ -25,7 +25,7 @@ export default class DynamicImportHandler {
     if (jqueryPluginCover) {
       this.jqueryDynamicImport = new DynamicImportJqueryPlugin({
         jqueryPluginCover,
-        importer: this
+        importer: this,
       });
     }
     if (DOMEvents && DOMEventsSelector) {
@@ -33,7 +33,7 @@ export default class DynamicImportHandler {
         events: DOMEvents,
         eventSelector: DOMEventsSelector,
         preventDefault: DOMEventsPreventDefault,
-        importer: this
+        importer: this,
       });
     }
   }

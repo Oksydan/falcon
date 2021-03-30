@@ -3,9 +3,10 @@
   &[aria-expanded="true"] {
     .material-icons {
       font-size: 0;
+
       &::before {
-        content: 'keyboard_arrow_up';
         font-size: 24px;
+        content: "keyboard_arrow_up";
       }
     }
   }

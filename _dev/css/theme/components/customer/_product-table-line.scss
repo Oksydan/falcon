@@ -12,10 +12,10 @@
   }
 
   @include media-breakpoint-up(md) {
-    padding: 0;
     display: table-row;
-    border-bottom: 1px solid $border-color;
+    padding: 0;
     padding: map-get($spacers, 2) 0;
+    border-bottom: 1px solid $border-color;
   }
 
   #{$self} {
@@ -23,8 +23,8 @@
     &__cell {
       padding: map-get($spacers, 2);
       @include media-breakpoint-up(sm) {
-        vertical-align: middle;
         padding: $table-cell-padding;
+        vertical-align: middle;
       }
     }
   }
@@ -76,11 +76,11 @@
 
     @include media-breakpoint-down(sm) {
       &[data-title] {
-        &:before {
+        &::before {
           @include font-size($font-size-xs);
+          display: block;
           margin: 0 0 map-get($spacers, 1);
           content: attr(data-title);
-          display: block;
         }
       }
     }

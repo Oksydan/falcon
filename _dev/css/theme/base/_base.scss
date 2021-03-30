@@ -21,6 +21,7 @@ textarea {
   &::placeholder {
     color: $gray-600;
   }
+
   &:active {
     &::placeholder {
       color: $gray-900;
@@ -31,6 +32,7 @@ textarea {
 
 input[type="number"] {
   appearance: textfield;
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     margin: 0;

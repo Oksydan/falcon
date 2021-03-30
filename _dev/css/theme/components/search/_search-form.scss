@@ -13,12 +13,12 @@
   }
 
   &__input {
-    border-radius: 99em;
+    height: $search-input-height;
     padding: 0 rem-calc(70px) 0 rem-calc(30px);
-    height: $search_input-height;
-    line-height: $search_input-height;
-    border-width: 1px;
+    line-height: $search-input-height;
     color: $gray-900;
+    border-width: 1px;
+    border-radius: 99em;
 
     &:focus {
       background: $gray-100;
@@ -32,9 +32,9 @@
     top: 0;
     right: 0;
     bottom: 0;
-    color: $primary;
-    line-height: 1;
     padding: 0 map-get($spacers, 3);
+    line-height: 1;
+    color: $primary;
   }
 }
 
@@ -42,10 +42,11 @@
   .modal-body {
     padding-top: rem-calc(40px);
   }
+
   .close {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     padding: rem-calc(7px) rem-calc(10px);
   }
 }

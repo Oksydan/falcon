@@ -1,17 +1,21 @@
 @import "../../fonts/icomoon/style";
 
 %abstract-icon {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: '#{$icomoon-font-family}' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
 
   width: 1em;
   height: 1em;
+
+  /* use !important to prevent issues with browser extensions that change fonts */
+
+  /* stylelint-disable */
+  font-family: $icomoon-font-family !important;
+  /* stylelint-enable */
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  speak: none;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -20,11 +24,13 @@
 
 
 .material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
   display: inline-block;
+  /* stylelint-disable */
+  font-family: "Material Icons";
+  /* stylelint-enable */
+  font-size: 24px;  /* Preferred icon size */
+  font-style: normal;
+  font-weight: 400;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
@@ -34,6 +40,7 @@
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
+
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
 
@@ -41,19 +48,15 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
 
 
-
 @font-face {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src:
-    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
-    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
-    url('~material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+  src: url("~material-design-icons/iconfont/MaterialIcons-Regular.woff2") format("woff2"), url("~material-design-icons/iconfont/MaterialIcons-Regular.woff") format("woff"), url("~material-design-icons/iconfont/MaterialIcons-Regular.ttf") format("truetype");
 }
 
 
@@ -92,5 +95,4 @@
   font-display: swap;
   src: url("./fonts/roboto-v20-latin-ext_latin-700.woff2") format("woff2"), url("./fonts/roboto-v20-latin-ext_latin-700.woff") format("woff");
 }
-
 

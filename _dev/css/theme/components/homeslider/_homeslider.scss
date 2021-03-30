@@ -15,8 +15,8 @@
 
   &__caption {
     position: absolute;
-    left: 80px;
     top: 50%;
+    left: 80px;
     transform: translateY(-50%);
   }
 
@@ -30,8 +30,8 @@
   &__arrow {
     top: 0;
     bottom: 0;
-    line-height: 1;
     padding: 0 map-get($spacers, 3);
+    line-height: 1;
 
     > * {
       font-size: rem-calc(40px);

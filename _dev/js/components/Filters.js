@@ -1,18 +1,17 @@
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
-import FiltersUrlHandler from './FiltersUrlHandler';
 import prestashop from 'prestashop';
 import $ from 'jquery';
+import FiltersUrlHandler from './FiltersUrlHandler';
 
 class Filters {
-
   constructor() {
     this.$body = $('body');
     this.initFilersSlider();
     this.setEvents();
   }
 
-  setEvents () {
+  setEvents() {
     prestashop.on('updatedProductList', () => {
       prestashop.pageLoader.hideLoader();
       this.initFilersSlider();
@@ -45,7 +44,7 @@ class Filters {
     });
   }
 
-  static parseSearchUrl (event){
+  static parseSearchUrl(event) {
     if (event.target.dataset.searchUrl !== undefined) {
       return event.target.dataset.searchUrl;
     }
@@ -55,11 +54,11 @@ class Filters {
     }
 
     return $(event.target).parent()[0].dataset.searchUrl;
-  };
+  }
 
 
-  initFilersSlider () {
-    const $rangeSliders = $(".js-range-slider");
+  initFilersSlider() {
+    const $rangeSliders = $('.js-range-slider');
 
     const handlerSliderChange = (
       values,
@@ -67,19 +66,19 @@ class Filters {
       unencoded,
       tap,
       positions,
-      noUiSlider
+      noUiSliderInstance,
     ) => {
-      const formatFunction = noUiSlider.options.format;
-      const $target = $(noUiSlider.target);
-      const group = $target.data("slider-label");
-      const unit = $target.data("slider-unit");
-      const [from, to] = values.map((val) => formatFunction.from(val));
+      const formatFunction = noUiSliderInstance.options.format;
+      const $target = $(noUiSliderInstance.target);
+      const group = $target.data('slider-label');
+      const unit = $target.data('slider-unit');
+      const [from, to] = values.map(val => formatFunction.from(val));
 
       const filtersHandler = new FiltersUrlHandler();
-      filtersHandler.setRangeParams(group, { unit, from, to });
+      filtersHandler.setRangeParams(group, {unit, from, to});
 
       const newUrl = filtersHandler.getFiltersUrl();
-      prestashop.emit("updateFacets", newUrl);
+      prestashop.emit('updateFacets', newUrl);
     };
 
     $rangeSliders.each((i, slider) => {
@@ -93,8 +92,7 @@ class Filters {
       } = $slider.data('slider-specifications');
       let values = $slider.data('slider-values');
 
-      const signPosition =
-        positivePattern.indexOf('¤') == 0 ? 'prefix' : 'suffix';
+      const signPosition = positivePattern.indexOf('¤') === 0 ? 'prefix' : 'suffix';
 
       if (!Array.isArray(values)) {
         values = [min, max];
@@ -131,7 +129,7 @@ class Filters {
    * @param threshold Minimum proximity (in percentages) to merge tooltips
    * @param separator String joining tooltips
    */
-  static mergeTooltips (slider, threshold, separator) {
+  static mergeTooltips(slider, threshold, separator) {
     const textIsRtl = getComputedStyle(slider).direction === 'rtl';
     const isRtl = slider.noUiSlider.options.direction === 'rtl';
     const isVertical = slider.noUiSlider.options.orientation === 'vertical';
@@ -139,7 +137,7 @@ class Filters {
     const origins = slider.noUiSlider.getOrigins();
 
     // Move tooltips into the origin element. The default stylesheet handles this.
-    tooltips.forEach(function (tooltip, index) {
+    tooltips.forEach((tooltip, index) => {
       if (tooltip) {
         origins[index].appendChild(tooltip);
       }
@@ -147,7 +145,7 @@ class Filters {
 
     slider.noUiSlider.on(
       'update',
-      function (values, handle, unencoded, tap, positions) {
+      (values, handle, unencoded, tap, positions) => {
         const pools = [[]];
         const poolPositions = [[]];
         const poolValues = [[]];
@@ -156,13 +154,14 @@ class Filters {
         // Assign the first tooltip to the first pool, if the tooltip is configured
         if (tooltips[0]) {
           pools[0][0] = 0;
+          /* eslint prefer-destructuring: ["error", {AssignmentExpression: {array: false}}] */
           poolPositions[0][0] = positions[0];
           poolValues[0][0] = values[0];
         }
 
-        for (let i = 1; i < positions.length; i++) {
+        for (let i = 1; i < positions.length; i += 1) {
           if (!tooltips[i] || positions[i] - positions[i - 1] > threshold) {
-            atPool++;
+            atPool += 1;
             pools[atPool] = [];
             poolValues[atPool] = [];
             poolPositions[atPool] = [];
@@ -175,40 +174,39 @@ class Filters {
           }
         }
 
-        pools.forEach(function (pool, poolIndex) {
+        pools.forEach((pool, poolIndex) => {
           const handlesInPool = pool.length;
 
-          for (let j = 0; j < handlesInPool; j++) {
+          for (let j = 0; j < handlesInPool; j += 1) {
             const handleNumber = pool[j];
 
             if (j === handlesInPool - 1) {
               let offset = 0;
 
-              poolPositions[poolIndex].forEach(function (value) {
+              poolPositions[poolIndex].forEach((value) => {
                 offset += 1000 - 10 * value;
               });
 
-              const direction = isVertical ? "bottom" : "right";
+              const direction = isVertical ? 'bottom' : 'right';
               const last = isRtl ? 0 : handlesInPool - 1;
               const lastOffset = 1000 - 10 * poolPositions[poolIndex][last];
-              offset =
-                (textIsRtl && !isVertical ? 100 : 0) +
-                offset / handlesInPool -
-                lastOffset;
+              offset = (textIsRtl && !isVertical ? 100 : 0)
+                + offset / handlesInPool
+                - lastOffset;
 
               // Center this tooltip over the affected handles
               tooltips[handleNumber].innerHTML = poolValues[poolIndex].join(
-                separator
+                separator,
               );
-              tooltips[handleNumber].style.display = "block";
-              tooltips[handleNumber].style[direction] = offset + "%";
+              tooltips[handleNumber].style.display = 'block';
+              tooltips[handleNumber].style[direction] = `${offset}%`;
             } else {
               // Hide this tooltip
-              tooltips[handleNumber].style.display = "none";
+              tooltips[handleNumber].style.display = 'none';
             }
           }
         });
-      }
+      },
     );
   }
 }

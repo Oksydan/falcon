@@ -1,8 +1,9 @@
 
 .products-list {
   &__block {
-    padding: 0 #{$grid-gutter-width/2};
+    padding: 0 #{$grid-gutter-width / 2};
     margin-bottom: $grid-gutter-width;
+
     &--grid {
       @include make-col(6);
 

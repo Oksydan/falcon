@@ -1,9 +1,9 @@
 name: starter
-display_name: display
+display_name: starter theme
 version: 1.0.0
 author:
   name: "Igor Stępień"
-  email: "oksydan56@gmail.com"
+  email: "igor@istepien.dev"
   url: "https://github.com/Oksydan"
 
 meta:
@@ -53,49 +53,45 @@ global_settings:
   modules:
    to_enable:
      - ps_linklist
+     - is_themecore
+     - is_shoppingcart
+     - is_imageslider
+     - is_searchbar
+   to_disable:
+     - blockreassurance
+     - ps_searchbar
+     - ps_shoppingcart
+     - ps_imageslider
   hooks:
     modules_to_hook:
-      displayAfterBodyOpeningTag:
-        - blockreassurance
-      displayNavFullWidth:
-        - blockreassurance
       displayNav1:
         - ps_contactinfo
       displayNav2:
         - ps_languageselector
         - ps_currencyselector
       displayTop:
-        - ps_searchbar
+        - is_searchbar
         - ps_customersignin
-        - ps_shoppingcart
+        - is_shoppingcart
         - ps_mainmenu
       displayHome:
-        - ps_imageslider
+        - is_imageslider
         - ps_featuredproducts
         - ps_banner
         - ps_customtext
       displayFooterBefore:
-        - blockreassurance
         - ps_emailsubscription
         - ps_socialfollow
       displayFooter:
         - ps_linklist
         - ps_customeraccountlinks
         - ps_contactinfo
-      displayFooterAfter:
-        - blockreassurance
       displayLeftColumn:
         - ps_categorytree
         - ps_facetedsearch
-      displaySearch:
-        - ps_searchbar
       displayProductAdditionalInfo:
         - ps_sharebuttons
-      displayReassurance:
-        - blockreassurance
       displayOrderConfirmation2:
-        - ps_featuredproducts
-      displayCrossSellingShoppingCart:
         - ps_featuredproducts
 
   image_types:
@@ -136,3 +132,10 @@ theme_settings:
     new-products: layout-left-column
     prices-drop: layout-left-column
     contact: layout-left-column
+
+dependencies:
+  modules:
+    - is_themecore
+    - is_shoppingcart
+    - is_imageslider
+    - is_searchbar

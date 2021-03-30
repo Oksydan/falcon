@@ -3,6 +3,7 @@
   @include media-breakpoint-up(lg) {
     margin: 0;
   }
+
   .link-item {
     display: flex;
     align-items: center;
@@ -12,13 +13,13 @@
     @include media-breakpoint-down(md) {
       display: flex;
       flex-wrap: nowrap;
-      white-space: nowrap;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
 
       margin: rem-calc(20px) 0 0;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
 
       &::-webkit-scrollbar {
         display: none;
@@ -28,14 +29,14 @@
 
   a {
     display: block;
-    max-width: inherit;
-    white-space: nowrap;
     flex: 0 0;
+    max-width: inherit;
     padding: map-get($spacers, 2);
-    @include font-size($font-size-base);
-    color: $gray-800;
     font-weight: 700;
+    color: $gray-800;
+    white-space: nowrap;
     border-radius: $border-radius;
+    @include font-size($font-size-base);
 
     @include media-breakpoint-up(lg) {
       white-space: normal;
@@ -49,9 +50,11 @@
     &.active {
       color: #fff;
       background: $primary;
+
       &::after {
         display: block;
       }
+
       i {
         color: inherit;
       }
@@ -69,6 +72,7 @@
 
   &__logout {
     text-align: center;
+
     &::after,
     &::before {
       display: none;

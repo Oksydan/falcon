@@ -43,7 +43,7 @@
         </div>
 
         {block name='continue_shopping'}
-          <div class="mt-3">
+          <div class="my-3">
             <a class="btn btn-outline-primary" href="{$urls.pages.index}">
               <span class="material-icons btn-icon mr-1">keyboard_arrow_left</span>
               {l s='Continue shopping' d='Shop.Theme.Actions'}

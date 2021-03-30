@@ -1,3 +1,4 @@
+import $ from 'jquery';
 
 class PageLoader {
   constructor() {

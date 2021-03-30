@@ -27,9 +27,9 @@ import $ from 'jquery';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
-import './components/DynamicBootstrapComponents';
+import './components/dynamic-bootstrap-components';
 
-import './components/page-slider';
+import './components/sliders';
 import './components/responsive';
 import './components/customer';
 import './components/quickview';
@@ -40,12 +40,11 @@ import './components/cart/block-cart';
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import Form from './components/form';
-import TopMenu from './components/top-menu';
-import CustomSelect from './components/custom-select';
-// import DynamicImportHandler from './utils/DynamicImportHandler';
+import TopMenu from './components/TopMenu';
+import CustomSelect from './components/CustomSelect';
 
 import PageLazyLoad from './components/Lazyload';
-import PageLoader from './components/page-loader';
+import PageLoader from './components/PageLoader';
 
 /* eslint-disable */
 // "inherit" EventEmitter
@@ -56,39 +55,39 @@ for (const i in EventEmitter.prototype) {
 
 prestashop.customSelect = new CustomSelect({
   selector: 'select',
-  excludeSelector: '.normal-select'
-})
+  excludeSelector: '.normal-select',
+});
 
 prestashop.pageLazyLoad = new PageLazyLoad({
-  selector: '.lazyload'
-})
+  selector: '.lazyload',
+});
 
 prestashop.pageLoader = new PageLoader();
 
 $(document).ready(() => {
   prestashop.customSelect.init();
   accLinksTriggerActive();
-  const form = new Form();
-  let topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
+  Form.init();
+  const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
 
   prestashop.on('updatedAddressForm', () => {
     prestashop.customSelect.init();
   });
 
-  form.init();
   topMenu.init();
 
-  $('.js-select-link').on('change', ({ target }) => {
+  $('.js-select-link').on('change', ({target}) => {
     window.location.href = $(target).val();
-  })
+  });
 });
 
 function accLinksTriggerActive() {
   const url = window.location.pathname;
   $('.js-customer-links a').each((i, el) => {
     const $el = $(el);
-    if($el.attr('href').indexOf(url) !== -1) {
+
+    if ($el.attr('href').indexOf(url) !== -1) {
       $el.addClass('active');
     }
-  })
+  });
 }

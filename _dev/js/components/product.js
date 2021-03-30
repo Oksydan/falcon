@@ -30,7 +30,7 @@ $(() => {
   createInputFile();
   let updateEvenType = false;
 
-  prestashop.on('updateProduct', ({ eventType }) => {
+  prestashop.on('updateProduct', ({eventType}) => {
     updateEvenType = eventType;
   });
 
@@ -48,7 +48,7 @@ $(() => {
       });
     }
 
-    if(updateEvenType === 'updatedProductCombination') {
+    if (updateEvenType === 'updatedProductCombination') {
       $('.js-product-images').replaceWith(event.product_cover_thumbnails);
       $('.js-product-images-modal').replaceWith(event.product_images_modal);
       prestashop.emit('updatedProductCombination', event);

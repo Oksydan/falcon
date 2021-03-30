@@ -7,7 +7,7 @@ class FiltersUrlHandler {
   }
 
   getFiltersUrl() {
-    return this.baseUrl + '?q=' + this.searchUrl;
+    return `${this.baseUrl}?q=${this.searchUrl}`;
   }
 
   setSearchUrl() {
@@ -27,53 +27,57 @@ class FiltersUrlHandler {
   appendParam(group, prop) {
     const oldSearchUrl = this.searchUrl || '';
     let newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrlLength = newSearchUrl.length;
     let groupExist = false;
 
-    for(let i in newSearchUrl) {
+    for (let i = 0; i < newSearchUrlLength; i += 1) {
       const filterGroup = newSearchUrl[i];
       const filterGroupArry = filterGroup.split('-');
-      if(filterGroupArry[0] == group) {
-        newSearchUrl[i] = newSearchUrl[i] + "-" + prop;
+
+      if (filterGroupArry[0] === group) {
+        newSearchUrl[i] = `${newSearchUrl[i]}-${prop}`;
         groupExist = true;
         break;
       }
     }
 
-    if(!groupExist) {
-      newSearchUrl = [...newSearchUrl, group + '-' + prop]
+    if (!groupExist) {
+      newSearchUrl = [...newSearchUrl, `${group}-${prop}`];
     }
 
-    this.searchUrl = this.formatSearchUrl(newSearchUrl);
+    this.searchUrl = FiltersUrlHandler.formatSearchUrl(newSearchUrl);
   }
 
   removeGroup(group) {
     const oldSearchUrl = this.searchUrl || '';
-    let newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrlLength = newSearchUrl.length;
 
-    for(let i in newSearchUrl) {
+    for (let i = 0; i < newSearchUrlLength; i += 1) {
       const filterGroup = newSearchUrl[i];
       const filterGroupArray = filterGroup.split('-');
 
-      if(filterGroupArray[0] == group) {
+      if (filterGroupArray[0] === group) {
         newSearchUrl.splice(i, 1);
       }
     }
 
-    this.searchUrl = this.formatSearchUrl(newSearchUrl);
+    this.searchUrl = FiltersUrlHandler.formatSearchUrl(newSearchUrl);
   }
 
   removeParam(group, prop) {
     const oldSearchUrl = this.searchUrl || '';
-    let newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrlLength = newSearchUrl.length;
 
-    for(let i in newSearchUrl) {
+    for (let i = 0; i < newSearchUrlLength; i += 1) {
       const filterGroup = newSearchUrl[i];
       const filterGroupArry = filterGroup.split('-');
 
-      if(filterGroupArry[0] == group) {
+      if (filterGroupArry[0] === group) {
         const filterRestul = filterGroupArry.filter(el => el !== prop);
 
-        if(filterRestul.length == 1) {
+        if (filterRestul.length === 1) {
           newSearchUrl.splice(i, 1);
         } else {
           newSearchUrl[i] = filterRestul.join('-');
@@ -82,13 +86,12 @@ class FiltersUrlHandler {
       }
     }
 
-    this.searchUrl = this.formatSearchUrl(newSearchUrl);
+    this.searchUrl = FiltersUrlHandler.formatSearchUrl(newSearchUrl);
   }
 
-  formatSearchUrl(arry) {
+  static formatSearchUrl(arry) {
     return arry.join('/');
   }
-
 }
 
 export default FiltersUrlHandler;

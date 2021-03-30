@@ -1,9 +1,9 @@
 
 .swiper-button-custom {
-  color: $primary;
   width: auto;
   height: auto;
   margin: 0;
+  color: $primary;
 
   &::after {
     display: none;

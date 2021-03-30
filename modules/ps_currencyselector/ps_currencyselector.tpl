@@ -23,10 +23,10 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div id="_desktop_currency_selector" class="col flex-grow-0 flex-shrink-0">
-  <select class="js-select-link" aria-labelledby="currency-selector-label">
+<div id="_desktop_currency_selector" class="col-auto flex-grow-0 flex-shrink-0">
+  <select class="js-select-link custom-select" aria-labelledby="currency-selector-label">
     {foreach from=$currencies item=currency}
-      <option value="{$currency.url}"{if $currency.current} selected="selected"{/if}>{$currency.iso_code}{if $currency.sign !== $currency.iso_code} {$currency.sign}{/if}</option>
+      <option value="{$currency.url}"{if $currency.current} selected{/if}>{$currency.iso_code}{if $currency.sign !== $currency.iso_code} {$currency.sign}{/if}</option>
     {/foreach}
   </select>
 </div>

@@ -1,24 +1,24 @@
 @import "variables";
 
 @font-face {
-  font-family: '#{$icomoon-font-family}';
-  src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?qzbeni') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qzbeni') format('woff');
-  font-weight: normal;
+  font-family: "#{$icomoon-font-family}";
   font-style: normal;
+  font-weight: 400;
+  src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?qzbeni") format("truetype"), url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qzbeni") format("woff");
   font-display: block;
 }
 
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: '#{$icomoon-font-family}' !important;
-  speak: never;
+  /* stylelint-disable */
+  font-family: "#{$icomoon-font-family}" !important;
+  /* stylelint-enable */
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-variant: normal;
-  text-transform: none;
   line-height: 1;
+  text-transform: none;
+  speak: never;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -26,47 +26,55 @@
 }
 
 .icon-facebook {
-  &:before {
+  &::before {
     content: $icon-facebook;
   }
 }
+
 .icon-gplus {
-  &:before {
+  &::before {
     content: $icon-gplus;
   }
 }
+
 .icon-instagram {
-  &:before {
+  &::before {
     content: $icon-instagram;
   }
 }
+
 .icon-linkedin {
-  &:before {
+  &::before {
     content: $icon-linkedin;
   }
 }
+
 .icon-pinterest {
-  &:before {
+  &::before {
     content: $icon-pinterest;
   }
 }
+
 .icon-rss {
-  &:before {
+  &::before {
     content: $icon-rss;
   }
 }
+
 .icon-twitter {
-  &:before {
+  &::before {
     content: $icon-twitter;
   }
 }
+
 .icon-vimeo {
-  &:before {
+  &::before {
     content: $icon-vimeo;
   }
 }
+
 .icon-youtube {
-  &:before {
+  &::before {
     content: $icon-youtube;
   }
 }

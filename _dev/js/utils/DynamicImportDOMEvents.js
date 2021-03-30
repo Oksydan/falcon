@@ -5,7 +5,7 @@ class DynamicImportDOMEvents {
     importer,
     events,
     eventSelector,
-    preventDefault
+    preventDefault,
   } = {}) {
     this.eventSelector = eventSelector;
     this.events = events;
@@ -23,11 +23,11 @@ class DynamicImportDOMEvents {
     }
 
     this.importer.loadFiles(() => {
-        if(e && this.eventsArray.includes(e.type)) {
-          $(e.currentTarget.activeElement).trigger(e.type);
-          this.unbindEvents();
-        }
+      if (e && this.eventsArray.includes(e.type)) {
+        $(e.target).trigger(e.type);
+        this.unbindEvents();
       }
+    },
     );
   }
 

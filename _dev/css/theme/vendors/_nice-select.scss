@@ -1,111 +1,131 @@
 // Default variables
-$font_size: 14px;
-$font_size_small: 12px;
+$font-size: 14px;
+$font-size-small: 12px;
 
-$input_border_radius: 5px;
-$input_height: $custom-select-height;
-$input_height_small: 36px;
-$dropdown_padding: 18px;
+$input-border-radius: 5px;
+$input-height: $custom-select-height;
+$input-height-small: 36px;
+$dropdown-padding: 18px;
 
-$gray_dark: $gray-900;
+$gray-dark: $gray-900;
 $gray: $gray-600;
-$gray_light: $gray-200;
-$gray_lighter: $gray-100;
+$gray-light: $gray-200;
+$gray-lighter: $gray-100;
 
 // Style the dropdown
 .nice-select {
   @extend .custom-select;
-  cursor: pointer;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
   // Arrow
 
   &.open {
     @extend :active;
+
     .list {
-      opacity: 1;
       pointer-events: auto;
+      opacity: 1;
       transform: scale(1) translateY(0);
     }
   }
+
   &.disabled {
-    border-color: lighten($gray_light, 2%);
     color: $gray;
     pointer-events: none;
+    border-color: lighten($gray-light, 2%);
   }
 
   // Modifiers
   &.wide {
     width: 100%;
+
     .list {
-      left: 0 !important;
+      /* stylelint-disable */
       right: 0 !important;
+      left: 0 !important;
+      /* stylelint-enable */
     }
   }
+
   &.right {
     float: right;
+
     .list {
-      left: auto;
       right: 0;
+      left: auto;
     }
   }
+
   &.small {
-    font-size: $font_size_small;
-    height: $input_height_small;
-    line-height: $input_height_small;
-    &:after {
-      height: 4px;
+    height: $input-height-small;
+    font-size: $font-size-small;
+    line-height: $input-height-small;
+
+    &::after {
       width: 4px;
+      height: 4px;
     }
+
     .option {
-      line-height: $input_height_small;
-      min-height: $input_height_small;
+      min-height: $input-height-small;
+      line-height: $input-height-small;
     }
   }
 
   // List and options
   .list {
-    background-color: #fff;
-    border-radius: $input_border_radius;
-    box-shadow: 0 0 0 1px rgba($gray_dark, .11);
-    box-sizing: border-box;
-    margin-top: 4px;
-    opacity: 0;
-    overflow: hidden;
-    padding: 0;
-    pointer-events: none;
     position: absolute;
-    top: 100%; left: 0;
-    transform-origin: 50% 0;
-    transform: scale(.75) translateY(- $input_height / 2);
-    transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
+    top: 100%;
+    left: 0;
     z-index: 9;
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 4px;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: #fff;
+    border-radius: $input-border-radius;
+    box-shadow: 0 0 0 1px rgba($gray-dark, .11);
+    opacity: 0;
+    transition: all .2s cubic-bezier(0.5, 0, 0, 1.25), opacity .15s ease-out;
+    transform: scale(.75) translateY(- $input-height / 2);
+    transform-origin: 50% 0;
+
     &:hover .option:not(:hover) {
+      /* stylelint-disable */
       background-color: transparent !important;
+      /* stylelint-enable */
     }
   }
+
   .option {
-    cursor: pointer;
+    min-height: $input-height;
+    padding-right: $dropdown-padding + 11;
+    padding-left: $dropdown-padding;
     font-weight: 400;
-    line-height: $input_height;
-    list-style: none;
-    min-height: $input_height;
-    outline: none;
-    padding-left: $dropdown_padding;
-    padding-right: $dropdown_padding + 11;
+    line-height: $input-height;
     text-align: left;
+    list-style: none;
+    cursor: pointer;
+    outline: none;
     transition: all 0.2s;
-    &:hover, &.focus, &.selected.focus {
-      background-color: $gray_lighter;
+
+    &:hover,
+    &.focus,
+    &.selected.focus {
+      background-color: $gray-lighter;
     }
+
     &.selected {
-      font-weight: bold;
+      font-weight: 700;
     }
+
     &.disabled {
-      background-color: transparent;
       color: $gray;
       cursor: default;
+      background-color: transparent;
     }
   }
 }
@@ -115,6 +135,7 @@ $gray_lighter: $gray-100;
   .list {
     display: none;
   }
+
   &.open {
     .list {
       display: block;

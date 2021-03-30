@@ -3,12 +3,12 @@
  */
 .noUi-pips,
 .noUi-pips * {
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 .noUi-pips {
   position: absolute;
-  color: $noUiSlider-pips-color;
+  color: $nouislider-pips-color;
 }
 
 /* Values;
@@ -16,12 +16,13 @@
   */
 .noUi-value {
   position: absolute;
-  white-space: nowrap;
   text-align: center;
+  white-space: nowrap;
 }
+
 .noUi-value-sub {
-  color: $noUiSlider-pips-value-color;
-  font-size: $noUiSlider-pips-value-font-size;
+  font-size: $nouislider-pips-value-font-size;
+  color: $nouislider-pips-value-color;
 }
 
 /* Markings;
@@ -29,25 +30,28 @@
   */
 .noUi-marker {
   position: absolute;
-  background: $noUiSlider-marker-background-color;
+  background: $nouislider-marker-background-color;
 }
+
 .noUi-marker-sub {
-  background: $noUiSlider-marker-sub-background-color;
+  background: $nouislider-marker-sub-background-color;
 }
+
 .noUi-marker-large {
-  background: $noUiSlider-marker-large-background-color;
+  background: $nouislider-marker-large-background-color;
 }
 
 /* Horizontal layout;
   *
   */
 .noUi-pips-horizontal {
-  padding: $noUiSlider-pips-horizontal-spacing;
-  height: $noUiSlider-pips-horizontal-height;
   top: 100%;
   left: 0;
   width: 100%;
+  height: $nouislider-pips-horizontal-height;
+  padding: $nouislider-pips-horizontal-spacing;
 }
+
 .noUi-value-horizontal {
   transform: translate(-50%, 50%);
 
@@ -57,29 +61,32 @@
 }
 
 .noUi-marker-horizontal.noUi-marker {
-  margin-left: -#{$noUiSlider-marker-horizontal-width/2};
-  width: $noUiSlider-marker-horizontal-width;
-  height: $noUiSlider-marker-horizontal-height;
+  width: $nouislider-marker-horizontal-width;
+  height: $nouislider-marker-horizontal-height;
+  margin-left: -#{$nouislider-marker-horizontal-width / 2};
 }
+
 .noUi-marker-horizontal.noUi-marker-sub {
-  height: $noUiSlider-marker-sub-horizontal-height;
+  height: $nouislider-marker-sub-horizontal-height;
 }
+
 .noUi-marker-horizontal.noUi-marker-large {
-  height: $noUiSlider-marker-large-horizontal-height;
+  height: $nouislider-marker-large-horizontal-height;
 }
 
 /* Vertical layout;
   *
   */
 .noUi-pips-vertical {
-  padding: $noUiSlider-pips-vertical-spacing;
-  height: 100%;
   top: 0;
   left: 100%;
+  height: 100%;
+  padding: $nouislider-pips-vertical-spacing;
 }
+
 .noUi-value-vertical {
-  transform: translate(0, -50%);
   padding-left: 25px;
+  transform: translate(0, -50%);
 
   .noUi-rtl & {
     transform: translate(0, 50%);
@@ -87,13 +94,15 @@
 }
 
 .noUi-marker-vertical.noUi-marker {
-  width: $noUiSlider-marker-vertical-width;
-  height: $noUiSlider-marker-vertical-height;
-  margin-top: -#{$noUiSlider-marker-vertical-height/2};
+  width: $nouislider-marker-vertical-width;
+  height: $nouislider-marker-vertical-height;
+  margin-top: -#{$nouislider-marker-vertical-height / 2};
 }
+
 .noUi-marker-vertical.noUi-marker-sub {
-  width: $noUiSlider-marker-sub-vertical-width;
+  width: $nouislider-marker-sub-vertical-width;
 }
+
 .noUi-marker-vertical.noUi-marker-large {
-  width: $noUiSlider-marker-large-vertical-width;
+  width: $nouislider-marker-large-vertical-width;
 }

@@ -22,26 +22,26 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-import $ from "jquery";
+import $ from 'jquery';
 
 export default class Form {
-  init() {
-    this.parentFocus();
-    this.togglePasswordVisibility();
-    this.formValidation();
+  static init() {
+    Form.parentFocus();
+    Form.togglePasswordVisibility();
+    Form.formValidation();
   }
 
-  parentFocus() {
-    $(".js-child-focus").on('focus', ({ target }) => {
-      $(target).closest(".js-parent-focus").addClass("focus");
+  static parentFocus() {
+    $('.js-child-focus').on('focus', ({target}) => {
+      $(target).closest('.js-parent-focus').addClass('focus');
     });
-    $(".js-child-focus").on('focusout', ({ target }) => {
-      $(target).closest(".js-parent-focus").removeClass("focus");
+    $('.js-child-focus').on('focusout', ({target}) => {
+      $(target).closest('.js-parent-focus').removeClass('focus');
     });
   }
 
-  togglePasswordVisibility() {
-    $('[data-action="show-password"]').on("click", ({ currentTarget }) => {
+  static togglePasswordVisibility() {
+    $('[data-action="show-password"]').on('click', ({currentTarget}) => {
       const $btn = $(currentTarget);
       const $input = $btn
         .closest('.input-group')
@@ -56,9 +56,10 @@ export default class Form {
       }
     });
   }
-  formValidation() {
+
+  static formValidation() {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    let forms = document.getElementsByClassName("needs-validation");
+    const forms = document.getElementsByClassName('needs-validation');
 
     if (forms.length > 0) {
       if (!supportedValidity()) {
@@ -67,59 +68,59 @@ export default class Form {
       // Loop over them and prevent submission
       let divToScroll = false;
 
-      let validation = Array.prototype.filter.call(forms, function (form) {
+      Array.prototype.filter.call(forms, (form) => {
         form.addEventListener(
-          "submit",
-          function (event) {
+          'submit',
+          (event) => {
             if (form.checkValidity() === false) {
               event.preventDefault();
               event.stopPropagation();
-              $("input:invalid,select:invalid,textarea:invalid", form).each(
-                function (index) {
-                  const $field = $(this);
-                  const $parent = $field.closest(".form-group");
+              $('input:invalid,select:invalid,textarea:invalid', form).each((index, field) => {
+                const $field = $(field);
+                const $parent = $field.closest('.form-group');
 
-                  $(".js-invalid-feedback-browser", $parent).text(
-                    $field[0].validationMessage
-                  );
-                  if (!divToScroll) {
-                    divToScroll = $parent;
-                  }
+                $('.js-invalid-feedback-browser', $parent).text(
+                  $field[0].validationMessage,
+                );
+                if (!divToScroll) {
+                  divToScroll = $parent;
                 }
+              },
               );
 
               const $form = $(form);
-              $form.data("disabled", false);
-              $form.find('[type="submit"]').removeClass("disabled");
+              $form.data('disabled', false);
+              $form.find('[type="submit"]').removeClass('disabled');
             }
-            form.classList.add("was-validated");
+            form.classList.add('was-validated');
             if (divToScroll) {
-              $("html, body").animate(
-                { scrollTop: divToScroll.offset().top },
-                300
+              $('html, body').animate(
+                {scrollTop: divToScroll.offset().top},
+                300,
               );
               divToScroll = false;
             }
           },
-          false
+          false,
         );
       });
     }
   }
 }
 
-const supportedValidity = function () {
-  var input = document.createElement("input");
+const supportedValidity = () => {
+  const input = document.createElement('input');
+
   return (
-    "validity" in input &&
-    "badInput" in input.validity &&
-    "patternMismatch" in input.validity &&
-    "rangeOverflow" in input.validity &&
-    "rangeUnderflow" in input.validity &&
-    "tooLong" in input.validity &&
-    "tooShort" in input.validity &&
-    "typeMismatch" in input.validity &&
-    "valid" in input.validity &&
-    "valueMissing" in input.validity
+    'validity' in input
+    && 'badInput' in input.validity
+    && 'patternMismatch' in input.validity
+    && 'rangeOverflow' in input.validity
+    && 'rangeUnderflow' in input.validity
+    && 'tooLong' in input.validity
+    && 'tooShort' in input.validity
+    && 'typeMismatch' in input.validity
+    && 'valid' in input.validity
+    && 'valueMissing' in input.validity
   );
 };
