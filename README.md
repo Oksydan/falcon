@@ -42,6 +42,14 @@ This theme was created to deliver starter theme with latest developers tools and
 
 ### Prerequisites
 
+#### Modules required
+
+- [is_imageslider](https://github.com/Oksydan/is_imageslider)
+- [is_searchbar](https://github.com/Oksydan/is_searchbar)
+- [is_shoppingcart](https://github.com/Oksydan/is_shoppingcart)
+- [is_themecore](https://github.com/Oksydan/is_themecore)
+
+
 #### System requirements:
 - [Prestashop requirements](https://devdocs.prestashop.com/1.7/basics/installation/system-requirements/),
 - vhost setup, to work with starter theme it is required to setup your shop domain with vhost e.g. `starter.test`,
