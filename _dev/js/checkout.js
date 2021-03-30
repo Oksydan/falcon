@@ -26,24 +26,24 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 
 function setUpCheckout() {
-
   $('.js-terms a').on('click', (event) => {
     event.preventDefault();
-    var url = $(event.target).attr('href');
+    let url = $(event.target).attr('href');
+
     if (url) {
       // TODO: Handle request if no pretty URL
-      url += `?content_only=1`;
+      url += '?content_only=1';
       $.get(url, (content) => {
         $('#modal').find('.js-modal-content').html($(content).find('.page-content--cms').contents());
       }).fail((resp) => {
-        prestashop.emit('handleError', {eventType: 'clickTerms', resp: resp});
+        prestashop.emit('handleError', {eventType: 'clickTerms', resp});
       });
     }
 
     $('#modal').modal('show');
   });
 
-  $('.js-gift-checkbox').on('click', (event) => {
+  $('.js-gift-checkbox').on('click', () => {
     $('#gift').collapse('toggle');
   });
 }
@@ -54,24 +54,22 @@ $(document).ready(() => {
   }
 
   prestashop.on('updatedDeliveryForm', (params) => {
-    if (typeof params.deliveryOption === 'undefined' || 0 === params.deliveryOption.length) {
-        return;
+    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
+      return;
     }
     // Hide all carrier extra content ...
-    $(".carrier-extra-content").hide();
+    $('.carrier-extra-content').hide();
     // and show the one related to the selected carrier
-    params.deliveryOption.next(".carrier-extra-content").slideDown();
+    params.deliveryOption.next('.carrier-extra-content').slideDown();
   });
-    prestashop.on('changedCheckoutStep', (params) => {
-
-        if(typeof params.event.currentTarget !== 'undefined'){
-            $('.collapse',params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
-        }
-    });
-
+  prestashop.on('changedCheckoutStep', (params) => {
+    if (typeof params.event.currentTarget !== 'undefined') {
+      $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
+    }
+  });
 });
 
-$(document).on('change','.checkout-option input[type="radio"]', (event) => {
+$(document).on('change', '.checkout-option input[type="radio"]', (event) => {
   const $target = $(event.currentTarget);
   const $block = $target.closest('.checkout-option');
   const $relatedBlocks = $block.parent();
@@ -80,8 +78,8 @@ $(document).on('change','.checkout-option input[type="radio"]', (event) => {
   $block.addClass('selected');
 });
 
-$(document).on('click','.js-checkout-step-header', (event) => {
-    let stepIdentifier = $(event.currentTarget).data('identifier');
-    $('#'+stepIdentifier).addClass('-current');
-    $('#content-'+stepIdentifier).collapse('show').scrollTop();
+$(document).on('click', '.js-checkout-step-header', (event) => {
+  const stepIdentifier = $(event.currentTarget).data('identifier');
+  $(`#${stepIdentifier}`).addClass('-current');
+  $(`#content-${stepIdentifier}`).collapse('show').scrollTop();
 });

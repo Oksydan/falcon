@@ -3,7 +3,7 @@ import $ from 'jquery';
 class DynamicImportJqueryPlugin {
   constructor({
     jqueryPluginCover,
-    importer
+    importer,
   } = {}) {
     this.jqueryPluginCover = jqueryPluginCover;
     this.importer = importer;
@@ -26,6 +26,7 @@ class DynamicImportJqueryPlugin {
   setJqueryPlugin() {
     const self = this;
 
+    /* eslint-disable func-names */
     $.fn[this.jqueryPluginCover] = function (args) {
       self.jqueryElementCalled = this;
       self.jqueryElementCalledArgs = args;

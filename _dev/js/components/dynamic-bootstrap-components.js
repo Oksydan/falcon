@@ -1,6 +1,9 @@
+import $ from 'jquery';
 import DynamicImportHandler from '../utils/DynamicImportHandler';
 
 $(() => {
+  /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "import" }] */
+
   const importModal = new DynamicImportHandler({
     jqueryPluginCover: 'modal',
     DOMEvents: 'click',
@@ -44,7 +47,7 @@ $(() => {
   const importScrollspy = new DynamicImportHandler({
     jqueryPluginCover: 'scrollspy',
     files: () => [
-      import('bootstrap/js/src/scrollspy.js')
+      import('bootstrap/js/src/scrollspy.js'),
     ],
   });
 
@@ -55,4 +58,4 @@ $(() => {
       import('../../css/dynamic/toast/_index.scss'),
     ],
   });
-})
+});

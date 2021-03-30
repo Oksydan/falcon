@@ -55,39 +55,39 @@ for (const i in EventEmitter.prototype) {
 
 prestashop.customSelect = new CustomSelect({
   selector: 'select',
-  excludeSelector: '.normal-select'
-})
+  excludeSelector: '.normal-select',
+});
 
 prestashop.pageLazyLoad = new PageLazyLoad({
-  selector: '.lazyload'
-})
+  selector: '.lazyload',
+});
 
 prestashop.pageLoader = new PageLoader();
 
 $(document).ready(() => {
   prestashop.customSelect.init();
   accLinksTriggerActive();
-  const form = new Form();
-  let topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
+  Form.init();
+  const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
 
   prestashop.on('updatedAddressForm', () => {
     prestashop.customSelect.init();
   });
 
-  form.init();
   topMenu.init();
 
-  $('.js-select-link').on('change', ({ target }) => {
+  $('.js-select-link').on('change', ({target}) => {
     window.location.href = $(target).val();
-  })
+  });
 });
 
 function accLinksTriggerActive() {
   const url = window.location.pathname;
   $('.js-customer-links a').each((i, el) => {
     const $el = $(el);
-    if($el.attr('href').indexOf(url) !== -1) {
+
+    if ($el.attr('href').indexOf(url) !== -1) {
       $el.addClass('active');
     }
-  })
+  });
 }

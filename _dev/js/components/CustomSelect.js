@@ -1,4 +1,4 @@
-
+import $ from 'jquery';
 import 'jquery-nice-select';
 
 class CustomSelect {
@@ -12,16 +12,16 @@ class CustomSelect {
   }
 
   init() {
-    let $select = $(this.selector);
+    let $selects = $(this.selector);
 
     if (this.excludeSelector) {
-      $select = $select.not(this.excludeSelector);
+      $selects = $selects.not(this.excludeSelector);
     }
 
-    $select.each((i, select) => {
+    $selects.each((i, select) => {
       const $select = $(select);
 
-      if($select.hasClass('nice-select-init')) {
+      if ($select.hasClass('nice-select-init')) {
         $select
           .niceSelect('update');
       } else {
@@ -30,9 +30,8 @@ class CustomSelect {
           .niceSelect()
           .addClass('nice-select-init');
       }
-    })
+    });
   }
-
 }
 
 export default CustomSelect;

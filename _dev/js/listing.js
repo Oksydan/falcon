@@ -3,6 +3,7 @@ import prestashop from 'prestashop';
 import Filters from './components/Filters';
 
 $(() => {
+  /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "filters" }] */
   const filters = new Filters();
 
   prestashop.on('updateProductList', (data) => {
@@ -10,7 +11,7 @@ $(() => {
     window.scrollTo(0, 0);
   });
 
-  prestashop.on('updatedProductList', (data) => {
+  prestashop.on('updatedProductList', () => {
     prestashop.pageLazyLoad.update();
   });
 });

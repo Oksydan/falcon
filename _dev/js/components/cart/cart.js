@@ -120,7 +120,7 @@ $(() => {
     }
   };
 
-  const getTouchSpinInput = ($button) => $($button.parents('.bootstrap-touchspin').find('input'));
+  const getTouchSpinInput = $button => $($button.parents('.bootstrap-touchspin').find('input'));
 
   const handleCartAction = (event) => {
     event.preventDefault();
@@ -189,10 +189,9 @@ $(() => {
         CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
         $target.val(resp.quantity);
 
-        let dataset;
-        if ($target && $target.dataset) {
-          dataset = $target.dataset;
-        } else {
+        let {dataset} = {...$target};
+
+        if (!dataset) {
           dataset = resp;
         }
 
@@ -230,6 +229,7 @@ $(() => {
 
     // There should be a valid product quantity in cart
     const targetValue = $target.val();
+
     if (targetValue !== parseInt(targetValue, 10) || targetValue < 0 || Number.isNaN(targetValue)) {
       $target.val(baseValue);
       return;
@@ -237,6 +237,7 @@ $(() => {
 
     // There should be a new product quantity in cart
     const qty = targetValue - baseValue;
+
     if (qty === 0) {
       return;
     }
@@ -309,6 +310,7 @@ const CheckUpdateQuantityOperations = {
      * if hasError is true, quantity was not updated : we don't disable checkout button
      */
     const $checkoutBtn = $('.checkout a');
+
     if ($('#notifications article.alert-danger').length || (errorMsg !== '' && !hasError)) {
       $checkoutBtn.addClass('disabled');
     }
@@ -339,6 +341,7 @@ const CheckUpdateQuantityOperations = {
 
     hasError = Object.prototype.hasOwnProperty.call(resp, 'hasError');
     const errors = resp.errors || '';
+
     // 1.7.2.x returns errors as string, 1.7.3.x returns array
     if (errors instanceof Array) {
       errorMsg = errors.join(' ');
