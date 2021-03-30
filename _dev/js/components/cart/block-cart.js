@@ -40,11 +40,5 @@ prestashop.blockcart.showModal = (html) => {
 
   $('body').append(html);
 
-  $blockCartModal = getBlockCartModal();
-  $blockCartModal.modal('show').on('hidden.bs.modal', (event) => {
-    prestashop.emit('updateProduct', {
-      reason: event.currentTarget.dataset,
-      event,
-    });
-  });
+  getBlockCartModal().modal('show');
 };
