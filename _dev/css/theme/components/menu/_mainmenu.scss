@@ -14,9 +14,9 @@
     margin: -#{$modal-inner-padding} -#{$modal-inner-padding} map-get($spacers, 3);
     border-bottom: 1px solid $border-color;
     @include media-breakpoint-up(md) {
+      position: relative;
       display: flex;
       align-items: center;
-      position: relative;
       margin: 0;
       border: 0;
     }
@@ -25,6 +25,7 @@
   &__list {
     @include media-breakpoint-up(md) {
       margin: 0 0 map-get($spacers, 2);
+
       &--1 {
         display: flex;
       }
@@ -32,8 +33,8 @@
   }
 
   &__item-link {
-    padding: $modal-inner-padding;
     display: block;
+    padding: $modal-inner-padding;
 
     @include media-breakpoint-up(md) {
       display: inline-block;
@@ -125,16 +126,16 @@
     @include media-breakpoint-up(md) {
       position: absolute;
       top: 100%;
-      left: 0;
       right: 0;
-      visibility: hidden;
-      opacity: 0;
-      padding: map-get($spacers, 4) map-get($spacers, 4) map-get($spacers, 3);
-      transform: translateY(5px);
-      background: $white;
-      transition: 0.2s ease-in;
+      left: 0;
       z-index: 100;
+      padding: map-get($spacers, 4) map-get($spacers, 4) map-get($spacers, 3);
+      visibility: hidden;
+      background: $white;
       box-shadow: $box-shadow;
+      opacity: 0;
+      transition: 0.2s ease-in;
+      transform: translateY(5px);
     }
   }
 }

@@ -1,33 +1,37 @@
 .noUi-tooltip {
-  display: block;
   position: absolute;
-  border: $noUiSlider-tooltips-border-width solid $noUiSlider-tooltips-border-color;
-  border-radius: $noUiSlider-tooltips-border-radius;
-  background: $noUiSlider-tooltips-background-color;
-  color: $noUiSlider-tooltips-color;
-  padding: $noUiSlider-tooltips-padding;
-  font-size: $noUiSlider-tooltips-font-size;
-  font-weight: $noUiSlider-tooltips-font-weight;
+  display: block;
+  padding: $nouislider-tooltips-padding;
+  font-size: $nouislider-tooltips-font-size;
+  font-weight: $nouislider-tooltips-font-weight;
+  color: $nouislider-tooltips-color;
   text-align: center;
   white-space: nowrap;
+  background: $nouislider-tooltips-background-color;
+  border: $nouislider-tooltips-border-width solid $nouislider-tooltips-border-color;
+  border-radius: $nouislider-tooltips-border-radius;
 }
+
 .noUi-horizontal .noUi-tooltip {
-  transform: translate(-50%, 0);
-  left: 50%;
   bottom: 120%;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
+
 .noUi-vertical .noUi-tooltip {
-  transform: translate(0, -50%);
   top: 50%;
   right: 120%;
+  transform: translate(0, -50%);
 }
+
 .noUi-horizontal .noUi-origin > .noUi-tooltip {
-  transform: translate(50%, 0);
-  left: auto;
   bottom: 10px;
+  left: auto;
+  transform: translate(50%, 0);
 }
+
 .noUi-vertical .noUi-origin > .noUi-tooltip {
-  transform: translate(0, -18px);
   top: auto;
   right: 28px;
+  transform: translate(0, -18px);
 }

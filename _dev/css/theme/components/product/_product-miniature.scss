@@ -6,12 +6,12 @@
     position: absolute;
     right: map-get($spacers, 2);
     bottom: map-get($spacers, 2);
-    @include font-size(20px);
     width: 1.7em;
     height: 1.7em;
-    line-height: 1.7em;
     padding: 0;
+    line-height: 1.7em;
     border: 0;
+    @include font-size(20px);
   }
 
   &__quick-view-icon {
@@ -26,10 +26,10 @@
   &__title {
     $number-of-lines: 2;
     $line-height: 1.3;
-
-    line-height: $line-height;
     height: #{$number-of-lines * $line-height}em;
     overflow: hidden;
+
+    line-height: $line-height;
   }
 
   &--smaller {

@@ -9,10 +9,10 @@
   }
 
   &__row {
-    margin: 0 -#{map-get($spacers, 2)};
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    margin: 0 -#{map-get($spacers, 2)};
     @include media-breakpoint-up(md) {
       flex-wrap: nowrap;
     }
@@ -51,12 +51,12 @@
 
     &--total {
       @include make-col(6);
-      text-align: right;
       margin: rem-calc(15px) 0 0;
+      text-align: right;
       @include media-breakpoint-up(md) {
         margin: 0;
-        @include custom-col(rem-calc(120px));
         text-align: center;
+        @include custom-col(rem-calc(120px));
       }
       @include media-breakpoint-up(xl) {
         @include custom-col(rem-calc(150px));
@@ -67,9 +67,9 @@
       @include custom-col(rem-calc(50px));
       text-align: center;
       @include media-breakpoint-down(sm) {
-        padding-top: rem-calc(5px);
         align-self: flex-start;
         order: -1;
+        padding-top: rem-calc(5px);
       }
     }
   }

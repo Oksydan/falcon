@@ -13,11 +13,13 @@
   .list-group-item-collapse {
     position: relative;
     z-index: 1;
-    margin-left: 10px;
-    padding: 0;
     width: auto;
-    background: none;
+    padding: 0;
+    margin-left: 10px;
+    /* stylelint-disable */
     text-decoration: none !important;
+    /* stylelint-enable */
+    background: none;
   }
 
 }
@@ -25,10 +27,11 @@
 .list-group-collapse {
   .list-group-collapse {
     .list-group-item {
-      font-weight: 400;
       padding-left: #{$list-group-item-padding-x + $list-group-item-padding-x * 0.5};
+      font-weight: 400;
       border-bottom: $list-group-border-width solid $list-group-border-color;
     }
+
     .list-group-collapse {
       .list-group-item {
         padding-left: #{$list-group-item-padding-x + $list-group-item-padding-x * 1};

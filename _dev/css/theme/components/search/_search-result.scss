@@ -2,15 +2,15 @@
 .js-search-result {
   @include media-breakpoint-up(lg) {
     position: absolute;
-    z-index: 99;
-    left: 0;
-    right: 0;
     top: 100%;
-    margin-top: -#{$search_input-height/2};
-    padding: #{$search_input-height/2 + #{map-get($spacers, 2)}} map-get($spacers, 3) map-get($spacers, 3);
+    right: 0;
+    left: 0;
+    z-index: 99;
+    padding: #{$search-input-height / 2 + #{map-get($spacers, 2)}} map-get($spacers, 3) map-get($spacers, 3);
+    margin-top: -#{$search-input-height / 2};
     background: $white;
-    border-radius: 0 0 $border-radius $border-radius;
     border: 1px solid $border-color;
+    border-radius: 0 0 $border-radius $border-radius;
   }
 }
 
@@ -18,11 +18,13 @@
   @include media-breakpoint-up(md) {
     padding: map-get($spacers, 3);
   }
+
   &__products {
     margin: map-get($spacers, 3) -#{map-get($spacers, 2)} 0;
+
     .products-list__block {
-      margin: 0 0 map-get($spacers, 3);
       padding: 0 map-get($spacers, 2);
+      margin: 0 0 map-get($spacers, 3);
       @include make-col(6);
       @include media-breakpoint-up(md) {
         @include make-col(4);
@@ -31,14 +33,16 @@
   }
 
   &__bottom {
+    /* stylelint-disable */
     position: sticky;
+    /* stylelint-enable */
+    right: 0;
     bottom: -#{$modal-inner-padding};
     left: 0;
-    right: 0;
-    background: #fff;
-    margin: 0 -#{map-get($spacers, 2)};
-    padding: map-get($spacers, 2) map-get($spacers, 3);
     z-index: 1;
+    padding: map-get($spacers, 2) map-get($spacers, 3);
+    margin: 0 -#{map-get($spacers, 2)};
+    background: #fff;
     @include media-breakpoint-up(md) {
       padding: 0;
       margin: 0;

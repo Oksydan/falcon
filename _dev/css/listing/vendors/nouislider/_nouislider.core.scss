@@ -1,58 +1,57 @@
 .noUi-target,
 .noUi-target * {
+  box-sizing: border-box;
+  /* stylelint-disable */
+  touch-action: none;
+  /* stylelint-enable */
+  user-select: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: none;
-  -webkit-user-select: none;
-  -ms-touch-action: none;
-  touch-action: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  box-sizing: border-box;
 }
-.noUi-target {
-  position: relative;
-}
+
 .noUi-base,
 .noUi-connects {
-  width: 100%;
-  height: 100%;
   position: relative;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
+
 /* Wrapper for all connect elements.
   */
 .noUi-connects {
-  overflow: hidden;
   z-index: 0;
+  overflow: hidden;
+  border-radius: $nouislider-connects-border-radius;
 }
+
 .noUi-connect,
 .noUi-origin {
-  will-change: transform;
   position: absolute;
-  z-index: 1;
   top: 0;
   right: 0;
-  -ms-transform-origin: 0 0;
-  -webkit-transform-origin: 0 0;
-  -webkit-transform-style: preserve-3d;
+  z-index: 1;
   transform-origin: 0 0;
+  will-change: transform;
+  transform-style: preserve-3d;
   transform-style: flat;
 }
+
 .noUi-connect {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
+
 .noUi-origin {
-  height: 10%;
   width: 10%;
+  height: 10%;
 }
 
 /* Offset direction
   */
 .noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
-  left: 0;
   right: auto;
+  left: 0;
 }
 
 /* Give origins 0 height/width so they don't interfere with clicking the
@@ -61,65 +60,62 @@
 .noUi-vertical .noUi-origin {
   width: 0;
 }
+
 .noUi-horizontal .noUi-origin {
   height: 0;
 }
-.noUi-handle {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  position: absolute;
-  outline: none;
-}
+
 .noUi-touch-area {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
+
 .noUi-state-tap .noUi-connect,
 .noUi-state-tap .noUi-origin {
-  -webkit-transition: transform 0.3s;
   transition: transform 0.3s;
 }
+
 .noUi-state-drag * {
+  /* stylelint-disable */
   cursor: inherit !important;
+  /* stylelint-enable */
 }
 
 /* Slider size and handle placement;
   */
 .noUi-horizontal {
-  height: $noUiSlider-horizontal-height;
-  margin: 0 #{$noUiSlider-horizontal-handler-width/2};
+  height: $nouislider-horizontal-height;
+  margin: 0 #{$nouislider-horizontal-handler-width / 2};
 }
+
 .noUi-horizontal .noUi-handle {
-  width: $noUiSlider-horizontal-handler-width;
-  height: $noUiSlider-horizontal-handler-height;
-  right: -#{$noUiSlider-horizontal-handler-width/2};
-  top: -#{(($noUiSlider-horizontal-handler-height - $noUiSlider-horizontal-height)/2) + $noUiSlider-target-border-width};
+  top: -#{(($nouislider-horizontal-handler-height - $nouislider-horizontal-height) / 2) + $nouislider-target-border-width};
+  right: -#{$nouislider-horizontal-handler-width / 2};
+  width: $nouislider-horizontal-handler-width;
+  height: $nouislider-horizontal-handler-height;
 }
+
 .noUi-vertical {
-  width: $noUiSlider-vertical-width;
-  margin: #{$noUiSlider-vertical-handler-height/2} 0;
+  width: $nouislider-vertical-width;
+  margin: #{$nouislider-vertical-handler-height / 2} 0;
 }
+
 .noUi-vertical .noUi-handle {
-  width: $noUiSlider-vertical-handler-width;
-  height: $noUiSlider-vertical-handler-height;
-  right: -#{(($noUiSlider-horizontal-handler-width - $noUiSlider-vertical-width)/2) + $noUiSlider-target-border-width};
-  top: -#{$noUiSlider-vertical-handler-height/2};
+  top: -#{$nouislider-vertical-handler-height / 2};
+  right: -#{(($nouislider-horizontal-handler-width - $nouislider-vertical-width) / 2) + $nouislider-target-border-width};
+  width: $nouislider-vertical-handler-width;
+  height: $nouislider-vertical-handler-height;
 }
 
 /* Styling;
   * Giving the connect element a border radius causes issues with using transform: scale
   */
 .noUi-target {
-  background: $noUiSlider-target-background-color;
-  border-radius: $noUiSlider-target-border-radius;
-  border: $noUiSlider-target-border-width solid $noUiSlider-target-border-color;
-  box-shadow: $noUiSlider-target-shadow;
-}
-.noUi-connects {
-  border-radius: $noUiSlider-connects-border-radius;
-}
-.noUi-connect {
-  background: $noUiSlider-connects-background-color;
+  position: relative;
+  background: $nouislider-target-background-color;
+  border: $nouislider-target-border-width solid $nouislider-target-border-color;
+  border-radius: $nouislider-target-border-radius;
+  box-shadow: $nouislider-target-shadow;
 }
 
 /* Handles and cursors;
@@ -127,27 +123,35 @@
 .noUi-draggable {
   cursor: ew-resize;
 }
+
 .noUi-vertical .noUi-draggable {
   cursor: ns-resize;
 }
+
 .noUi-handle {
-  border: $noUiSlider-handle-border-width solid $noUiSlider-handle-border-color;
-  border-radius: $noUiSlider-handle-border-radius;
-  background: $noUiSlider-handle-background-color;
+  position: absolute;
   cursor: default;
-  box-shadow: $noUiSlider-handle-shadow;
+  background: $nouislider-handle-background-color;
+  border: $nouislider-handle-border-width solid $nouislider-handle-border-color;
+  border-radius: $nouislider-handle-border-radius;
+  outline: none;
+  box-shadow: $nouislider-handle-shadow;
+  backface-visibility: hidden;
 }
+
 .noUi-active {
-  box-shadow: $noUiSlider-handle-active-shadow;
-  background: $noUiSlider-handle-active-background-color;
+  background: $nouislider-handle-active-background-color;
+  box-shadow: $nouislider-handle-active-shadow;
 }
 
 /* Disabled state;
   */
 
 [disabled] .noUi-connect {
-  background: $noUiSlider-connects-disabled-background-color;
+  background: $nouislider-connects-disabled-background-color;
+  background: $nouislider-connects-background-color;
 }
+
 [disabled].noUi-target,
 [disabled].noUi-handle,
 [disabled] .noUi-handle {

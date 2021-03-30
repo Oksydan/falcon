@@ -7,8 +7,10 @@
   }
 
   .custom-control-label {
-    &:before {
+    &::before {
+      /* stylelint-disable */
       display: none !important;
+      /* stylelint-enable */
     }
   }
 
@@ -23,16 +25,16 @@
 .custom-radio-color {
   @extend .custom-radio;
   position: relative;
-  padding-left: $custom-color-control-indicator-size;
   width: $custom-color-control-indicator-size;
   height: $custom-color-control-indicator-size;
+  padding-left: $custom-color-control-indicator-size;
 
   .custom-control-input-color {
     @extend .custom-control-label::before;
+    top: 0;
+    left: -#{$custom-color-control-indicator-size};
     width: $custom-color-control-indicator-size;
     height: $custom-color-control-indicator-size;
-    left: -#{$custom-color-control-indicator-size};
-    top: 0;
   }
 
   .custom-control-input {
@@ -40,13 +42,13 @@
     height: 100%;
 
     &:checked ~ .custom-control-label {
-      &:after {
-        background-image: escape-svg($custom-checkbox-indicator-icon-checked);
+      &::after {
+        top: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size) / 2};
+        right: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size) / 2};
+        left: auto;
         width: $custom-color-control-indicator-icon-size;
         height: $custom-color-control-indicator-icon-size;
-        top: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size)/2};
-        left: auto;
-        right: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size)/2};
+        background-image: escape-svg($custom-checkbox-indicator-icon-checked);
       }
 
       .custom-control-input-color {
@@ -56,7 +58,7 @@
   }
 
   .custom-control-label {
-    &:before {
+    &::before {
       display: none;
     }
   }

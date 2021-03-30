@@ -1,7 +1,7 @@
 
 .links-list {
-  margin: 0;
   padding: 0 0 map-get($spacers, 4);
+  margin: 0;
   @include media-breakpoint-up(lg) {
     padding: 0;
   }

@@ -2,23 +2,23 @@
 .display-toggle {
 
   &__link {
-    font-size: rem-calc(18px);
     width: 1.7em;
     height: 1.7em;
+    font-size: rem-calc(18px);
     line-height: 1.7em;
-    text-align: center;
-    border-radius: 50%;
-    background: $gray-100;
     color: $gray-900;
+    text-align: center;
+    background: $gray-100;
+    border-radius: 50%;
 
-    @include hf {
-      background: $gray-200;
+    @include hf () {
       color: $gray-900;
+      background: $gray-200;
     }
 
     &.active {
-      background: $primary;
       color: $white;
+      background: $primary;
     }
   }
 

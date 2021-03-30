@@ -4,11 +4,14 @@
   th {
     vertical-align: middle;
   }
+
   td {
     vertical-align: middle;
   }
+
   .label {
     white-space: normal;
+
     &.bright {
       color: #fff;
     }
@@ -20,14 +23,17 @@
   .box {
     margin-bottom: 1rem;
   }
+
   #order-history {
     .history-lines {
       .history-line {
         padding: 0.5rem 0;
         border-bottom: 1px solid $gray-200;
+
         &:last-child {
           border-bottom: 0;
         }
+
         .label {
           display: inline-block;
           padding: 0.25rem 0.375rem;
@@ -45,6 +51,7 @@
   .thead-default th {
     color: $gray-900;
   }
+
   .customization {
     margin-top: 0.75rem;
   }
@@ -54,6 +61,7 @@
 #history {
   .orders {
     margin: 0 -1rem;
+
     .order {
       a {
         h3 {
@@ -62,6 +70,7 @@
       }
       padding: 0.75rem 1rem;
       border-bottom: 1px solid $gray-200;
+
       .label {
         display: inline-block;
         padding: 0.25rem 0.375rem;
@@ -69,6 +78,7 @@
         color: #fff;
         border-radius: 3px;
       }
+
       &:last-child {
         border-bottom: 0;
       }

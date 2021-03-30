@@ -3,23 +3,29 @@
     width: calc(100% - 30px);
     max-width: 64rem;
   }
+
   .modal-content {
     min-height: 28.13rem;
     background: $gray-100;
   }
+
   .modal-header {
     padding: map-get($spacers, 2);
     border: none;
   }
+
   .modal-body {
     min-height: 23.75rem;
   }
+
   .modal-footer {
     border-top: 1px solid rgba($gray-600, .3);
   }
+
   .layer {
     display: none;
   }
+
   .product-cover img {
     width: 95%;
   }

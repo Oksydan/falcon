@@ -1,15 +1,15 @@
 
 .page-loader {
-  left: 0;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  position: fixed;
-  background-color: rgba($white, 0.5);
+  left: 0;
   z-index: 1001;
   display: none;
   align-items: center;
   justify-content: center;
+  background-color: rgba($white, 0.5);
 
   .page-loader-active & {
     display: flex;

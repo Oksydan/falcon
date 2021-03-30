@@ -4,9 +4,9 @@
   color: $primary;
 
   &--regular {
-    text-decoration: line-through;
-    color: $text-muted;
     font-weight: 400;
+    color: $text-muted;
+    text-decoration: line-through;
   }
 
   &--lg {
