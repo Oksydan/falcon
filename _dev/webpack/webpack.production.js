@@ -5,6 +5,8 @@ const safeList = require('./purge-safelist');
 const glob = require('glob-all');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
+const { cleanDistFolders } = require('./webpack.parts');
+const { merge } = require("webpack-merge");
 
 const plugins = (purge) => ([
   new BundleAnalyzerPlugin(),
@@ -22,20 +24,25 @@ const plugins = (purge) => ([
   : false
 ].filter(el => el && el));
 
-exports.productionConfig = ({ purge }) => ({
-  devtool: '(none)',
-  optimization: {
-    minimize: true,
-    minimizer: [
-      // ESBuildMinifyPlugin replaced with TeaserPlugin due to bug with dynamic import. https://github.com/privatenumber/esbuild-loader/issues/139
-      // new ESBuildMinifyPlugin({
-      //   target: 'es2015'
-      // }),
-      new TerserPlugin({
-        extractComments: true,
-      }),
-      new CssMinimizerPlugin()
-    ],
-  },
-  plugins: plugins(purge)
-});
+exports.productionConfig = ({ purge }) => (
+  merge(
+    {
+      devtool: '(none)',
+      optimization: {
+        minimize: true,
+        minimizer: [
+          // ESBuildMinifyPlugin replaced with TeaserPlugin due to bug with dynamic import. https://github.com/privatenumber/esbuild-loader/issues/139
+          // new ESBuildMinifyPlugin({
+          //   target: 'es2015'
+          // }),
+          new TerserPlugin({
+            extractComments: true,
+          }),
+          new CssMinimizerPlugin()
+        ],
+      },
+      plugins: plugins(purge)
+    },
+    cleanDistFolders()
+  )
+);

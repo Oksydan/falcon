@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { ESBuildPlugin } = require('esbuild-loader');
 const ChunkRenamePlugin = require('enhanced-webpack-chunk-rename-plugin');
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
   host: serverAddress,
@@ -107,8 +108,8 @@ exports.extractImages = ({ publicPath }) => ({
         test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
-          outputPath: 'img/',
-          publicPath: publicPath + '/img/',
+          outputPath: 'img-dist/',
+          publicPath: publicPath + '/img-dist/',
           name: '[name].[ext]',
         },
       },
@@ -151,6 +152,21 @@ exports.extractVendorsChunks = () => ({
       bootstrap: "[name].js",
     }),
   ],
+})
+
+exports.cleanDistFolders = () => ({
+  plugins: [
+    new CleanWebpackPlugin({
+      dry: false,
+      dangerouslyAllowCleanPatternsOutsideProject: true,
+      cleanOnceBeforeBuildPatterns: [
+        path.join(__dirname, '../../assets/js/**'),
+        path.join(__dirname, '../../assets/css/**'),
+        path.join(__dirname, '../../assets/img-dist/**'),
+        path.join(__dirname, '../../assets/fonts/**')
+      ],
+    }),
+  ]
 })
 
 exports.externals = () => ({
