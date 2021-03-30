@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
 assets
-!assets/js/custom.js
 .env
+dependencies

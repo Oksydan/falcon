@@ -53,8 +53,10 @@ global_settings:
   modules:
    to_enable:
      - ps_linklist
-   to_enable:
-     - ps_linklist
+     - is_themecore
+     - is_shoppingcart
+     - is_imageslider
+     - is_searchbar
    to_disable:
      - blockreassurance
      - ps_searchbar
@@ -134,6 +136,6 @@ theme_settings:
 dependencies:
   modules:
     - is_themecore
-    - is_searchbar
     - is_shoppingcart
     - is_imageslider
+    - is_searchbar
