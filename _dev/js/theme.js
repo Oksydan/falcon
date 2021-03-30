@@ -27,9 +27,9 @@ import $ from 'jquery';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
-import './components/DynamicBootstrapComponents';
+import './components/dynamic-bootstrap-components';
 
-import './components/page-slider';
+import './components/PageSlider';
 import './components/responsive';
 import './components/customer';
 import './components/quickview';
@@ -40,12 +40,11 @@ import './components/cart/block-cart';
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import Form from './components/form';
-import TopMenu from './components/top-menu';
-import CustomSelect from './components/custom-select';
-// import DynamicImportHandler from './utils/DynamicImportHandler';
+import TopMenu from './components/TopMenu';
+import CustomSelect from './components/CustomSelect';
 
 import PageLazyLoad from './components/Lazyload';
-import PageLoader from './components/page-loader';
+import PageLoader from './components/PageLoader';
 
 /* eslint-disable */
 // "inherit" EventEmitter
