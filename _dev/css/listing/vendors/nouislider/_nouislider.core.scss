@@ -40,6 +40,7 @@
 .noUi-connect {
   width: 100%;
   height: 100%;
+  background: $nouislider-connects-background-color;
 }
 
 .noUi-origin {
@@ -149,7 +150,6 @@
 
 [disabled] .noUi-connect {
   background: $nouislider-connects-disabled-background-color;
-  background: $nouislider-connects-background-color;
 }
 
 [disabled].noUi-target,
