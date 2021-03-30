@@ -50,7 +50,7 @@ This theme was created to deliver starter theme with latest developers tools and
 
 ### Installation
 
-1. Clone repository or download. There is `starter.zip` file included that contains dependency modules.
+1. Go to [releases](https://github.com/Oksydan/modern-prestashop-starter-theme/releases/) and download latest version `.zip` file not source code.
 2. If you want to change theme name unzip file. Change folder name e.g. `your-theme-name` then go to `config/theme.yml` and change:
 ```yml
 name: starter
