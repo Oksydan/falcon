@@ -45,7 +45,7 @@ This theme was created to deliver starter theme with latest developers tools and
 #### System requirements:
 - [Prestashop requirements](https://devdocs.prestashop.com/1.7/basics/installation/system-requirements/),
 - vhost setup, to work with starter theme it is required to setup your shop domain with vhost e.g. `starter.test`,
-- node >= 15v,
+- node >= 10v,
 - starter tested only on macOS, create an issue if it isn't working with your system.
 
 ### Installation
