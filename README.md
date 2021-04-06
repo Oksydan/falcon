@@ -10,6 +10,7 @@
 * [Usage](#usage)
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
+* [Contribution](#contribution)
 
 ## About The Theme
 
@@ -124,3 +125,8 @@ script  | description
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
 `scss-fix`  | Script that run `stylelint` and fix minor issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
+
+## Contribution
+
+Any kind of contribution is welcome.
+Make pull request on develop branch but make sure to create an issue before submitting.
