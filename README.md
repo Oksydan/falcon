@@ -10,8 +10,7 @@
 * [Usage](#usage)
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
-* [Instructions](#instructions)
-  * [ps_facetedsearch modification](#ps_facetedsearch-modification)
+* [Contribution](#contribution)
 
 ## About The Theme
 
@@ -25,7 +24,7 @@ This theme was created to deliver starter theme with latest developers tools and
 4. Removed **velocity-animate**, **jquery.scrollbox.js** and **jquery-touchswipe** - replaced with **swiper**.
 5. Removed **bootstrap-filestyle.js** - replaced with bootstrap [custom file input](https://getbootstrap.com/docs/4.6/components/input-group/#custom-file-input)
 6. Removed **jquery.ui** from `ps_searchbar`, new module `is_searchbar` included.
-7. Removed **jquery.ui** from `ps_facetedsearch` - replaced with **nouislider**. (requires `ps_facetedsearch` module modification to make it work properly, [instruction included](#ps_facetedsearch-modification)).
+7. Removed **jquery.ui** from `ps_facetedsearch` - replaced with **nouislider**. (`ps_facetedsearch` assets unregistered in `is_themecore` module).
 8. Added **jquery-nice-select** to make selects looks better.
 
 #### Main features:
@@ -127,81 +126,7 @@ script  | description
 `scss-fix`  | Script that run `stylelint` and fix minor issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
 
-## Instructions
+## Contribution
 
-### ps_facetedsearch modification
-
-To remove not used `jquery.ui` and other `.css/.js` files module you have to modify module file.
-Go to main shop directory, find `modules/ps_facetedsearch/src/Hook/ProductSearch.php` and replace:
-
-```php
-public function productSearchProvider(array $params)
-{
-    $query = $params['query'];
-    // do something with query,
-    // e.g. use $query->getIdCategory()
-    // to choose a template for filters.
-    // Query is an instance of:
-    // PrestaShop\PrestaShop\Core\Product\Search\ProductSearchQuery
-    if ($query->getIdCategory()) {
-        $this->context->controller->addJqueryUi('slider');
-        $this->context->controller->registerStylesheet(
-            'facetedsearch_front',
-            '/modules/ps_facetedsearch/views/dist/front.css'
-        );
-        $this->context->controller->registerJavascript(
-            'facetedsearch_front',
-            '/modules/ps_facetedsearch/views/dist/front.js',
-            ['position' => 'bottom', 'priority' => 100]
-        );
-
-        $urlSerializer = new URLSerializer();
-        $dataAccessor = new DataAccessor($this->module->getDatabase());
-
-        return new SearchProvider(
-            $this->module,
-            new Converter(
-                $this->module->getContext(),
-                $this->module->getDatabase(),
-                $urlSerializer,
-                $dataAccessor
-            ),
-            $urlSerializer,
-            $dataAccessor
-        );
-    }
-
-    return null;
-}
-```
-
-width:
-```php
-public function productSearchProvider(array $params)
-{
-    $query = $params['query'];
-    // do something with query,
-    // e.g. use $query->getIdCategory()
-    // to choose a template for filters.
-    // Query is an instance of:
-    // PrestaShop\PrestaShop\Core\Product\Search\ProductSearchQuery
-    if ($query->getIdCategory()) {
-        $urlSerializer = new URLSerializer();
-        $dataAccessor = new DataAccessor($this->module->getDatabase());
-
-        return new SearchProvider(
-            $this->module,
-            new Converter(
-                $this->module->getContext(),
-                $this->module->getDatabase(),
-                $urlSerializer,
-                $dataAccessor
-            ),
-            $urlSerializer,
-            $dataAccessor
-        );
-    }
-
-    return null;
-}
-```
+Any kind of contribution is welcome.
+Make pull request on develop branch but make sure to create an issue before submitting.
