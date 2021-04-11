@@ -1,6 +1,6 @@
 {
   "name": "modern-prestashop-build-tool",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Modern tools that help you develop your theme.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "eslint-fix": "eslint \"**/*.js\" --fix"
   },
   "author": "Igor Stępień",
-  "license": "AFL-3.0",
+  "license": "GPL-3.0",
   "dependencies": {
     "@prestashop-core/jquery.live-polyfill": "^1.1.2",
     "bootstrap": "^4.6.0",

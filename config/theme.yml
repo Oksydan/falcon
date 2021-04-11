@@ -1,6 +1,6 @@
 name: starter
 display_name: starter theme
-version: 1.0.0
+version: 1.0.3
 author:
   name: "Igor Stępień"
   email: "igor@istepien.dev"
@@ -8,7 +8,7 @@ author:
 
 meta:
   compatibility:
-      from: 1.7.5.0
+      from: 1.7.7.0
       to: ~
 
   available_layouts:
