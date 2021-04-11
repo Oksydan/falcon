@@ -1,6 +1,6 @@
 {
   "name": "modern-prestashop-build-tool",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Modern tools that help you develop your theme.",
   "main": "index.js",
   "scripts": {
