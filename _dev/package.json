@@ -50,7 +50,7 @@
     "hot-accept-webpack-plugin": "^1.1.2",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^5.0.0",
-    "postcss": "^8.0.1",
+    "postcss": "^8.2.10",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^4.2.0",
     "postcss-preset-env": "^6.7.0",
