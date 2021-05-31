@@ -206,63 +206,8 @@
   display: block;
 }
 
-.product-comment-list-item {
-  padding: 26px 0;
-  margin: 0 0 20px;
-  background-color: #ffffff;
-  text-align: left;
-}
-
 #empty-product-comment {
   text-align: center;
-}
-
-.product-comment-list-item .grade-stars .star-content {
-  margin: 0 0 10px;
-}
-
-.product-comment-list-item .comment-infos {
-  height: 19px;
-  color: #6b868f;
-  font-size: 14px;
-  letter-spacing: -0.28px;
-  line-height: 19px;
-  min-height: 100px;
-}
-
-.product-comment-list-item .comment-infos .grade-stars {
-  margin-bottom: 20px;
-}
-
-.product-comment-list-item .comment-content h4 {
-  height: 22px;
-  color: #363a41;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.32px;
-  line-height: 22px;
-}
-
-.product-comment-list-item .comment-content p {
-  color: #363a42;
-  font-size: 14px;
-  letter-spacing: -0.28px;
-  line-height: 19px;
-  word-break: break-word;
-  white-space: pre-wrap;
-}
-
-.product-comment-list-item .comment-content .comment-buttons a {
-  color: #6b868f;
-  font-size: 14px;
-  letter-spacing: -0.28px;
-  line-height: 19px;
-  margin-right: 8px;
-}
-
-.product-comment-list-item .comment-content .comment-buttons a .material-icons {
-  font-size: 18px;
-  cursor: pointer;
 }
 
 /*

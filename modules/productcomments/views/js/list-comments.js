@@ -111,13 +111,16 @@ jQuery(document).ready(function () {
     $('.grade-stars', $comment).rating({
       grade: comment.grade
     });
-    $('.useful-review', $comment).click(function() {
+    $('.js-useful-review', $comment).click(function(e) {
+      e.preventDefault();
       updateCommentUsefulness($comment, comment.id_product_comment, 1);
     });
-    $('.not-useful-review', $comment).click(function() {
+    $('.js-not-useful-review', $comment).click(function(e) {
+      e.preventDefault();
       updateCommentUsefulness($comment, comment.id_product_comment, 0);
     });
-    $('.report-abuse', $comment).click(function() {
+    $('.js-report-abuse', $comment).click(function(e) {
+      e.preventDefault();
       confirmCommentAbuse(comment.id_product_comment);
     });
 
@@ -128,8 +131,8 @@ jQuery(document).ready(function () {
     $.post(updateCommentUsefulnessUrl, {id_product_comment: commentId, usefulness: usefulness}, function(jsonData){
       if (jsonData) {
         if (jsonData.success) {
-          $('.useful-review-value', $comment).html(jsonData.usefulness);
-          $('.not-useful-review-value', $comment).html(jsonData.total_usefulness - jsonData.usefulness);
+          $('.js-useful-review-value', $comment).html(jsonData.usefulness);
+          $('.js-not-useful-review-value', $comment).html(jsonData.total_usefulness - jsonData.usefulness);
         } else {
           const decodedErrorMessage = $("<div/>").html(jsonData.error).text();
           showUpdatePostCommentErrorModal(decodedErrorMessage);

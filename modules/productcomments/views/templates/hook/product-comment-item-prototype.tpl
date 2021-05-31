@@ -23,34 +23,39 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div class="product-comment-list-item row" data-product-comment-id="@COMMENT_ID@" data-product-id="@PRODUCT_ID@">
-  <div class="col-md-3 col-sm-3 comment-infos">
-    <div class="grade-stars"></div>
-    <div class="comment-date">
+<div class="product-comment-list-item pb-4 mb-4 border-bottom" data-product-comment-id="@COMMENT_ID@" data-product-id="@PRODUCT_ID@">
+  <div class="d-flex mb-2 align-items-center">
+    <div class="font-weight-bold">
+      @CUSTOMER_NAME@
+    </div>
+    {* <div class="text-muted font-sm ml-2">
       @COMMENT_DATE@
-    </div>
-    <div class="comment-author">
-      {l s='By %1$s' sprintf=['@CUSTOMER_NAME@'] d='Modules.Productcomments.Shop'}
-    </div>
+    </div> *}
+    <div class="grade-stars flex-shrink-0 flex-grow-0 ml-auto"></div>
   </div>
 
-  <div class="col-md-9 col-sm-9 comment-content">
-    <h4>@COMMENT_TITLE@</h4>
-    <p>@COMMENT_COMMENT@</p>
-    <div class="comment-buttons btn-group">
+  <div class="comment-content">
+    <p class="h5 mb-3">@COMMENT_TITLE@</p>
+    <p class="font-sm">@COMMENT_COMMENT@</p>
+    <div class="d-flex">
       {if $usefulness_enabled}
-        <a class="useful-review">
-          <i class="material-icons thumb_up">thumb_up</i>
-          <span class="useful-review-value">@COMMENT_USEFUL_ADVICES@</span>
-        </a>
-        <a class="not-useful-review">
-          <i class="material-icons thumb_down">thumb_down</i>
-          <span class="not-useful-review-value">@COMMENT_NOT_USEFUL_ADVICES@</span>
-        </a>
+        <div class="mr-2">
+          <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-useful-review">
+            <i class="material-icons text-reset font-reset thumb_up">thumb_up</i>
+            <span class="js-useful-review-value font-sm ml-1">@COMMENT_USEFUL_ADVICES@</span>
+          </a>
+          <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-not-useful-review">
+            <i class="material-icons text-reset font-reset thumb_down">thumb_down</i>
+            <span class="js-not-useful-review-value font-sm ml-1">@COMMENT_NOT_USEFUL_ADVICES@</span>
+          </a>
+        </div>
       {/if}
-      <a class="report-abuse" title="{l s='Report abuse' d='Modules.Productcomments.Shop'}">
-        <i class="material-icons outlined_flag">flag</i>
-      </a>
+
+      <div class="ml-auto">
+        <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-report-abuse" title="{l s='Report abuse' d='Modules.Productcomments.Shop'}">
+          <i class="material-icons text-reset font-reset outlined_flag">flag</i>
+        </a>
+      </div>
     </div>
   </div>
 </div>
