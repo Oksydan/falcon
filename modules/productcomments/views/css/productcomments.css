@@ -22,87 +22,6 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  */
-
-/**
- *  Product comments CSS
- */
-
-.btn-comment,
-.btn-comment-inverse {
-  height: 36px;
-  border-radius: 2px;
-  background-color: #6b868f;
-  color: #ffffff;
-  font-size: 14px;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
-  padding: 8px;
-}
-.btn-comment .material-icons,
-.btn-comment-inverse .material-icons {
-  font-size: 20px;
-  margin-right: 7px;
-}
-
-.btn-comment:hover {
-  background-color: #3c4d52;
-}
-
-.btn-comment-inverse {
-  background-color: #ffffff;
-  color: #363a41;
-  border: 1px solid #979797;
-}
-.btn-comment-inverse:hover {
-  background-color: #6b868f;
-  border: 1px solid #6b868f;
-  color: #ffffff;
-}
-
-.btn-comment-big {
-  padding: 13px 16px;
-  height: 45px;
-}
-
-.btn-comment-huge {
-  padding: 13px 28px;
-  height: 45px;
-}
-
-.link-comment {
-  color: #232323;
-}
-
-.link-comment:hover,
-.link-comment:active {
-  text-decoration: underline;
-  color: #232323;
-}
-
-/**
- * Additional product infos
- */
-
-.product-comments-additional-info {
-  margin: 20px 0;
-  font-weight: 300;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  font-size: 14px;
-}
-
-.product-comments-additional-info .link-comment.post-product-comment {
-  border-left: 1px solid #979797;
-  padding-left: 12px;
-  margin-left: 12px;
-}
-
-.product-comments-additional-info .comments-note {
-  margin-right: 30px;
-  margin-bottom: 20px;
-}
-
 /**
  *  Star component
  */
@@ -168,61 +87,10 @@
   top: 0;
 }
 
-#post-product-comment-form input.error,
-#post-product-comment-form textarea.error {
-  background-color: #f2dede;
-  border: solid 1px #ebcccc;
-}
-
-#post-product-comment-form input.valid,
-#post-product-comment-form textarea.valid {
-  border: solid 1px #d0e9c6;
-}
-
-/**
- *  Product comments list
- */
-
-#product-comments-list-header {
-  padding: 20px 15px;
-  color: #232323;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-#product-comments-list-header .comments-nb {
-  padding-left: 0;
-  padding-top: 3px;
-}
-
-#product-comments-list-header .comments-nb .material-icons {
-  margin-right: 3px;
-}
-
-#product-comments-list .btn-comment {
-  margin: 0 auto;
-  display: block;
-}
-
-#empty-product-comment {
-  text-align: center;
-}
 
 /*
 ** Quickview style
 */
-
-.product-quickview-review {
-  display: flex;
-  flex-direction: row;
-}
-
-.product-quickview-review .grade-stars .star-content {
-  margin: 0 0 0 0;
-  top: 0;
-}
 
 @media (min-width: 768px) {
   #product-comments-list-footer {

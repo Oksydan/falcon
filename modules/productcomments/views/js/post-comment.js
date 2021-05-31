@@ -25,7 +25,7 @@
 
 jQuery(document).ready(function () {
   const $ = jQuery;
-  $('body').on('click', '.post-product-comment', function (event) {
+  $('body').on('click', '.js-post-product-comment', function (event) {
     event.preventDefault();
     showPostCommentModal();
   });
@@ -62,15 +62,15 @@ jQuery(document).ready(function () {
 
   function clearPostCommentForm() {
     $('#post-product-comment-form input[type="text"]').val('');
-    $('#post-product-comment-form input[type="text"]').removeClass('valid error');
+    $('#post-product-comment-form input[type="text"]').removeClass('vis-invalid');
     $('#post-product-comment-form textarea').val('');
-    $('#post-product-comment-form textarea').removeClass('valid error');
+    $('#post-product-comment-form textarea').removeClass('is-invalid');
     $('#post-product-comment-form .criterion-rating input').val(3).change();
   }
 
   function initCommentModal() {
     $('#post-product-comment-modal .grade-stars').rating();
-    $('body').on('click', '.post-product-comment', function (event) {
+    $('body').on('click', '.js-post-product-comment', function (event) {
       event.preventDefault();
       showPostCommentModal();
     });
@@ -115,12 +115,10 @@ jQuery(document).ready(function () {
     formData.forEach(function(formField) {
       const fieldSelector = '#post-product-comment-form [name="'+formField.name+'"]';
       if (!formField.value) {
-        $(fieldSelector).addClass('error');
-        $(fieldSelector).removeClass('valid');
+        $(fieldSelector).addClass('is-invalid');
         isValid = false;
       } else {
-        $(fieldSelector).removeClass('error');
-        $(fieldSelector).addClass('valid');
+        $(fieldSelector).removeClass('is-invalid');
       }
     });
 

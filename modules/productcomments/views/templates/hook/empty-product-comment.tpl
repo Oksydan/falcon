@@ -25,8 +25,8 @@
 
 <div id="empty-product-comment" class="product-comment-list-item">
   {if $post_allowed}
-    <button class="btn btn-comment btn-comment-big post-product-comment">
-      <i class="material-icons shopping-cart">edit</i>
+    <button class="btn btn-primary js-post-product-comment">
+      <i class="material-icons btn-icon">edit</i>
       {l s='Be the first to write your review' d='Modules.Productcomments.Shop'}
     </button>
   {else}
