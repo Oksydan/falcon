@@ -118,19 +118,44 @@
             {elseif $facet.widgetType == 'slider'}
               {block name='facet_item_slider'}
                 {foreach from=$facet.filters item="filter"}
+
                   <div class="py-1 {if $filter@first}pt-2{/if}">
                     <div id="facet_{$_expand_id}" class="search-filters__slider">
-                      <div>
-                        {* <p id="facet_label_{$_expand_id}">
-                        {$filter.label}
-                      </p> *}
-
-                        <div class="mt-4 js-range-slider" data-slider-min="{$facet.properties.min}"
+                      <div class="js-input-range-slider-container">
+                        <div class="js-range-slider mt-1" data-slider-min="{$facet.properties.min}"
                           data-slider-max="{$facet.properties.max}" data-slider-id="{$_expand_id}"
                           data-slider-values="{$filter.value|@json_encode}" data-slider-unit="{$facet.properties.unit}"
                           data-slider-label="{$facet.label}"
                           data-slider-specifications="{$facet.properties.specifications|@json_encode}"
                           data-slider-encoded-url="{$filter.nextEncodedFacetsURL}" id="slider-range_{$_expand_id}"></div>
+                        <div class="d-flex mt-3 mx-n2">
+                          <div class="px-2 search-filters__input-group">
+                            <input
+                              class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
+                              type="text"
+                              {if $facet.filters.0.value}
+                                value="{$facet.filters.0.value.0}"
+                              {else}
+                                value="{$facet.properties.min}"
+                              {/if}
+                              data-unit="{$facet.properties.unit}"
+                              data-action="range-from"
+                              >
+                          </div>
+                          <div class="px-2 ml-auto search-filters__input-group">
+                            <input
+                              class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
+                              type="text"
+                              {if $facet.filters.0.value}
+                                value="{$facet.filters.0.value.1}"
+                              {else}
+                                value="{$facet.properties.max}"
+                              {/if}
+                              data-unit="{$facet.properties.unit}"
+                              data-action="range-to"
+                              >
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
