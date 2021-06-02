@@ -69,8 +69,8 @@ jQuery(document).ready(function () {
             items: jsonResponse.comments_nb,
             itemsOnPage: jsonResponse.comments_per_page,
             cssStyle: '',
-            prevText: '<i class="material-icons">chevron_left</i>',
-            nextText: '<i class="material-icons">chevron_right</i>',
+            prevText: '<i class="material-icons font-reset align-middle">chevron_left</i>',
+            nextText: '<i class="material-icons font-reset align-middle">chevron_right</i>',
             useAnchors: false,
             displayedPages: 2,
             onPageClick: paginateComments

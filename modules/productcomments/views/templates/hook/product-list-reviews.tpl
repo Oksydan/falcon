@@ -29,11 +29,3 @@
   <div class="grade-stars small-stars"></div>
   <div class="comments-nb"></div>
 </div>
-
-{if $nb_comments != 0}
-{* Rich snippet rating is displayed via php/smarty meaning it will be cached (for example on homepage) *}
-<div itemprop="aggregateRating" itemtype="http://schema.org/AggregateRating" itemscope>
-  <meta itemprop="reviewCount" content="{$nb_comments}" />
-  <meta itemprop="ratingValue" content="{$average_grade}" />
-</div>
-{/if}

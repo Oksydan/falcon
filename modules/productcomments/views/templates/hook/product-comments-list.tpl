@@ -50,13 +50,15 @@
     </div>
   </div>
 
-  <div class="text-center" id="product-comments-list-footer">
-    <div id="product-comments-list-pagination"></div>
+  <div class="flex-column flex-sm-row d-flex align-items-center" id="product-comments-list-footer">
+    <div id="product-comments-list-pagination" class="comments-pagination ml-sm-auto order-sm-1"></div>
     {if $post_allowed && $nb_comments != 0}
-      <button class="btn btn-primary js-post-product-comment">
-        <i class="material-icons btn-icon">edit</i>
-        {l s='Write your review' d='Modules.Productcomments.Shop'}
-      </button>
+      <div class="my-sm-2 mt-3">
+        <button class="btn btn-primary js-post-product-comment">
+          <i class="material-icons btn-icon mr-1">edit</i>
+          {l s='Write your review' d='Modules.Productcomments.Shop'}
+        </button>
+      </div>
     {/if}
   </div>
 
