@@ -1,6 +1,6 @@
 name: starter
 display_name: starter theme
-version: 1.0.3
+version: 1.1.1
 author:
   name: "Igor Stępień"
   email: "igor@istepien.dev"
@@ -132,10 +132,3 @@ theme_settings:
     new-products: layout-left-column
     prices-drop: layout-left-column
     contact: layout-left-column
-
-dependencies:
-  modules:
-    - is_themecore
-    - is_shoppingcart
-    - is_imageslider
-    - is_searchbar
