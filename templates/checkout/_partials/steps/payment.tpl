@@ -34,7 +34,7 @@
                         {if $option.logo}
                             <img src="{$option.logo}" class="checkout-option__img" />
                         {else}
-                            <img src="{$urls.img_url}payment/bankwire.svg" class="checkout-option__img" />
+                            <img src="{$urls.img_url}checkout/payment_default.svg" class="checkout-option__img" />
                         {/if}
                     </div>
                 </div>

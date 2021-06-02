@@ -58,4 +58,12 @@ $(() => {
       import('../../css/dynamic/toast/_index.scss'),
     ],
   });
+
+  const importTooltip = new DynamicImportHandler({
+    jqueryPluginCover: 'tooltip',
+    files: () => [
+      import('bootstrap/js/src/tooltip.js'),
+      import('../../css/dynamic/tooltip/_index.scss'),
+    ],
+  });
 });

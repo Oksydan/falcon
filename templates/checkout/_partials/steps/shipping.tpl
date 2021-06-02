@@ -52,6 +52,8 @@
                         <div class="checkout-option__thumb mb-2">
                           {if $carrier.logo}
                             <img src="{$carrier.logo}" alt="{$carrier.name}" class="checkout-option__img" />
+                          {else}
+                            <img src="{$urls.img_url}checkout/carrier_default.svg" class="checkout-option__img" />
                           {/if}
                         </div>
                         <div class="checkout-option__delay text-muted small">{$carrier.delay}</div>

@@ -106,10 +106,8 @@
           </div>
 
           {if isset($id_module)}
-            <div class="form-group row">
-              <div class="offset-md-3">
-                {hook h='displayGDPRConsent' id_module=$id_module}
-              </div>
+            <div class="form-group">
+              {hook h='displayGDPRConsent' id_module=$id_module}
             </div>
           {/if}
 

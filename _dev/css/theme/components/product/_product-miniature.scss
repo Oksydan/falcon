@@ -12,6 +12,7 @@
     line-height: 1.7em;
     border: 0;
     @include font-size(20px);
+    z-index: 2;
   }
 
   &__quick-view-icon {

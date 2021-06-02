@@ -1,0 +1,14 @@
+
+.comments-pagination {
+  ul {
+    @extend .pagination;
+    margin: 0;
+  }
+  li {
+    @extend .page-item;
+  }
+  span {
+    @extend .page-link;
+    cursor: pointer;
+  }
+}

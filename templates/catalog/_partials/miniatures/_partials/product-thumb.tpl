@@ -24,5 +24,10 @@
         <i class="material-icons product-miniature__quick-view-icon">visibility</i>
       </a>
     {/block}
+
+
+    {block name='product_reviews'}
+      {hook h='displayProductListReviews' product=$product}
+    {/block}
   </div>
 {/block}

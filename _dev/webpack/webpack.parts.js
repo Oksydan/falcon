@@ -105,7 +105,7 @@ exports.extractImages = ({ publicPath }) => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'img-dist/',
@@ -138,7 +138,7 @@ exports.extractVendorsChunks = () => ({
     splitChunks: {
       cacheGroups: {
         swiper: {
-          test: /[\\/]node_modules[\\/](swiper)[\\/]/,
+          test: /[\\/]node_modules[\\/](swiper|dom7)[\\/]/,
           name: 'swipervendor',
           chunks: 'all'
         }

@@ -57,8 +57,9 @@ This theme was created to deliver starter theme with latest developers tools and
 
 ### Installation
 
-1. Go to [releases](https://github.com/Oksydan/modern-prestashop-starter-theme/releases/) and download latest version `.zip` file not source code.
-2. If you want to change theme name unzip file. Change folder name e.g. `your-theme-name` then go to `config/theme.yml` and change:
+1. Clone or download repository. Make sure to remove branch name (`master`).
+2. Download required modules and place them into `{shop_dir}/modules/` folder. Make sure that folder name of module don't contain branch name.
+3. If you want to change theme name unzip file. Change folder name e.g. `your-theme-name` then go to `config/theme.yml` and change:
 ```yml
 name: starter
 display_name: display
@@ -71,7 +72,7 @@ display_name: my theme display name
 ```
 Name in `theme.yml` must be equal folder name. Zip theme folder and install theme from prestashop BO.
 
-3. If you changed theme name you have to go to `is_themecore` module. Find `hookActionFrontControllerSetMedia` method and change:
+4. If you changed theme name you have to go to `is_themecore` module. Find `hookActionFrontControllerSetMedia` method and change:
 ```php
 $themeAssetsObject  = new ThemeAssets($pageName, 'starter', $this->context);
 ```
@@ -79,8 +80,7 @@ to:
 ```php
 $themeAssetsObject  = new ThemeAssets($pageName, 'your-theme-name', $this->context);
 ```
-
-4. Open in terminal directory `your-theme-name/_dev` and run:
+5. Open in terminal directory `your-theme-name/_dev` and run:
 - for `npm` :
 ```
 npm install
@@ -89,8 +89,8 @@ npm install
 ```
 yarn install
 ```
-5. Go to `your-theme-name/_dev/webpack` and find `.env-example`. Copy file and rename it with `.env`. Replace example value with proper one based on your setup.
-6. Now try to run:
+6. Go to `your-theme-name/_dev/webpack` and find `.env-example`. Copy file and rename it with `.env`. Replace example value with proper one based on your setup.
+7. Now try to run:
 - for `npm` :
 ```
 npm run dev
@@ -121,7 +121,7 @@ script  | description
 ------------- | -------------
 `build`  | Script run production config with assets optimization and chunks names hashing.
 `build-purge`  | Script run production config with assets optimization, chunks hashing also runs `purgecss` to remove not used styles. **Not recomended to use yet, create safelist before use**.
-`watch`  | Good old watch command that watch your files and compile them. Not `HRM` and `webpack dev server` included. **Assets optimization not included**.
+`watch`  | watch is an alias for `npm run dev`. **Assets optimization not included**.
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
 `scss-fix`  | Script that run `stylelint` and fix minor issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.

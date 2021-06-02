@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
-import Filters from './components/Filters';
+import Filters from './components/filters/Filters';
 
 $(() => {
   /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "filters" }] */
