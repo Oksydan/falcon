@@ -121,7 +121,7 @@ script  | description
 ------------- | -------------
 `build`  | Script run production config with assets optimization and chunks names hashing.
 `build-purge`  | Script run production config with assets optimization, chunks hashing also runs `purgecss` to remove not used styles. **Not recomended to use yet, create safelist before use**.
-`watch`  | Good old watch command that watch your files and compile them. Not `HRM` and `webpack dev server` included. **Assets optimization not included**.
+`watch`  | watch is an alias for `npm run dev`. **Assets optimization not included**.
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
 `scss-fix`  | Script that run `stylelint` and fix minor issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
