@@ -1,8 +1,7 @@
 const path = require('path');
 const themeDev = path.resolve(__dirname, '../../_dev');
 
-require('dotenv').config({ path: './webpack/.env' });
-
+const envResult = require('dotenv').config({ path: './webpack/.env' });
 
 const {
   PORT: port,
@@ -10,6 +9,10 @@ const {
   SERVER_ADDRESS: serverAddress,
   SITE_URL: siteURL
 } = process.env;
+
+if (envResult.error) {
+  console.error('\x1b[41m\x1b[37m%s\x1b[0m', envResult.error + ' Your .env file not exits. Read installation documentation for more info https://github.com/Oksydan/modern-prestashop-starter-theme#installation.');
+}
 
 const entriesArray = ['theme', 'product', 'checkout', 'listing'];
 
