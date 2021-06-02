@@ -1,0 +1,64 @@
+
+.star-content {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .star,
+  .star-on,
+  .star-hover {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url('../img/icons/star_gray.svg') no-repeat 0 0 transparent;
+    flex: auto;
+    margin-left: 3px;
+    background-size: 20px;
+  }
+
+  .star-on,
+  .star-hover {
+    background-image: url('../img/icons/star_active.svg');
+  }
+
+  .star-hover {
+    cursor: pointer;
+  }
+
+  .small-stars & {
+    .star,
+    .star-on,
+    .star-hover {
+      width: 16px;
+      height: 16px;
+      margin-left: 2px;
+      background-size: 16px;
+    }
+  }
+}
+
+.grade-stars {
+  position: relative;
+  height: 20px;
+  min-width: 120px;
+  display: inline-block;
+  &.small-stars {
+    height: 16px;
+    min-width: 70px;
+  }
+}
+
+.product-list-reviews {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: map-get($spacers, 2);
+  background: rgba($white, 0.4);
+  visibility: hidden;
+
+  .grade-stars {
+    display: block;
+  }
+}

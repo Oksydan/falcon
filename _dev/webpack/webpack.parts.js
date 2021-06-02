@@ -105,7 +105,7 @@ exports.extractImages = ({ publicPath }) => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'img-dist/',

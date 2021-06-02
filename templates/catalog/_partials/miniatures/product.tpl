@@ -54,10 +54,6 @@
 
       {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
 
-      {block name='product_reviews'}
-        {hook h='displayProductListReviews' product=$product}
-      {/block}
-
       {block name='product_form'}
         {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
       {/block}
