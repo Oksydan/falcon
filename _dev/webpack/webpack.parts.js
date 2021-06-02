@@ -138,7 +138,7 @@ exports.extractVendorsChunks = () => ({
     splitChunks: {
       cacheGroups: {
         swiper: {
-          test: /[\\/]node_modules[\\/](swiper)[\\/]/,
+          test: /[\\/]node_modules[\\/](swiper|dom7)[\\/]/,
           name: 'swipervendor',
           chunks: 'all'
         }
