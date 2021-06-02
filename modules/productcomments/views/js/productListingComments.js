@@ -43,7 +43,7 @@ var productListingComments = (function () {
         productListReviewsContainer: '.product-list-reviews',
         productListReviewsNumberOfComments: '.comments-nb',
         productListReviewsStarsContainer: '.grade-stars',
-        productContainer: '.thumbnail-container'
+        productContainer: '.js-product-miniature'
     };
 
     var DOMClasses =  {

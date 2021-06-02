@@ -42,8 +42,8 @@
             <ul id="criterions_list">
               {foreach from=$criterions item='criterion'}
                 <li>
-                  <div class="criterion-rating">
-                    <label>{$criterion.name|escape:'html':'UTF-8'}:</label>
+                  <div class="criterion-rating d-flex">
+                    <label class="mb-0 mr-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
                     <div
                       class="grade-stars"
                       data-grade="3"

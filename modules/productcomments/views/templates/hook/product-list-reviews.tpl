@@ -27,5 +27,4 @@
 
 <div class="product-list-reviews" data-id="{$product.id}" data-url="{$product_comment_grade_url nofilter}">
   <div class="grade-stars small-stars"></div>
-  <div class="comments-nb"></div>
 </div>
