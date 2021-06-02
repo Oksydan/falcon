@@ -35,17 +35,18 @@ $(document).ready(function() {
     addNotification(e);
   });
 
-  $('.js-remove-email-alert').click(function()
-  {
-    var self = $(this);
-    var ids = self.attr('rel').replace('js-id-emailalerts-', '');
+  $('.js-remove-email-alert').on('click', function(e){
+    e.preventDefault();
+
+    var $self = $(this);
+    var ids = $self.attr('rel').replace('js-id-emailalerts-', '');
     ids = ids.split('-');
     var id_product_mail_alert = ids[0];
     var id_product_attribute_mail_alert = ids[1];
-    var parent = self.closest('li');
+    var $parent = $self.closest('.js-mailalert-product-miniature');
 
     $.ajax({
-      url: self.data('url'),
+      url: $self.data('url'),
       type: "POST",
       data: {
         'id_product': id_product_mail_alert,
@@ -55,9 +56,9 @@ $(document).ready(function() {
       {
         if (result == '0')
         {
-          parent.fadeOut("normal", function()
+          $parent.fadeOut("normal", function()
           {
-            parent.remove();
+            $parent.remove();
           });
         }
       }
