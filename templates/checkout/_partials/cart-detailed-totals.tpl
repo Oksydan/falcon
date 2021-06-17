@@ -23,29 +23,31 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='cart_detailed_totals'}
+  <div class="cart-detailed-totals">
 
-  {foreach from=$cart.subtotals item="subtotal"}
-    {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
-      <div class="cart-summary-line" id="cart-subtotal-{$subtotal.type}">
-        <span class="label">
-          {$subtotal.label}
-        </span>
-        <span class="value">
-          {if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}
-          {if $subtotal.type === 'shipping'}
-            <small class="value d-block">{hook h='displayCheckoutSubtotalDetails' subtotal=$subtotal}</small>
-          {/if}
-        </span>
-      </div>
-    {/if}
-  {/foreach}
+    {foreach from=$cart.subtotals item="subtotal"}
+      {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
+        <div class="cart-summary-line" id="cart-subtotal-{$subtotal.type}">
+          <span class="label">
+            {$subtotal.label}
+          </span>
+          <span class="value">
+            {if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}
+            {if $subtotal.type === 'shipping'}
+              <small class="value d-block">{hook h='displayCheckoutSubtotalDetails' subtotal=$subtotal}</small>
+            {/if}
+          </span>
+        </div>
+      {/if}
+    {/foreach}
 
-  {block name='cart_summary_totals'}
-    {include file='checkout/_partials/cart-summary-totals.tpl' cart=$cart}
-  {/block}
+    {block name='cart_summary_totals'}
+      {include file='checkout/_partials/cart-summary-totals.tpl' cart=$cart}
+    {/block}
 
-  {block name='cart_voucher'}
-    {include file='checkout/_partials/cart-voucher.tpl'}
-  {/block}
+    {block name='cart_voucher'}
+      {include file='checkout/_partials/cart-voucher.tpl'}
+    {/block}
 
+  </div>
 {/block}
