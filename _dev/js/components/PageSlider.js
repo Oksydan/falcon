@@ -1,11 +1,11 @@
 import $ from 'jquery';
 
 import SwiperCore, {
-  Swiper, Navigation, Pagination, Thumbs,
+  Swiper, Navigation, Pagination, Thumbs, Autoplay
 } from 'swiper';
 
 
-SwiperCore.use([Navigation, Pagination, Thumbs]);
+SwiperCore.use([Navigation, Pagination, Thumbs, Autoplay]);
 
 export const SwiperSlider = Swiper;
 
