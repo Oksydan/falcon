@@ -106,7 +106,7 @@
                 </div>
                 {if $product.quantity > $product.qty_returned}
                   <div class="select" id="_desktop_return_qty_{$product.id_order_detail}">
-                    <select name="order_qte_input[{$product.id_order_detail}]" class="form-control form-control-select">
+                    <select name="order_qte_input[{$product.id_order_detail}]" class="custom-select">
                       {section name=quantity start=1 loop=$product.quantity+1-$product.qty_returned}
                         <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
                       {/section}
@@ -121,7 +121,7 @@
                   <div class="select" id="_desktop_return_qty_{$product.id_order_detail}_{$customization.id_customization}">
                     <select
                       name="customization_qty_input[{$customization.id_customization}]"
-                      class="form-control form-control-select"
+                      class="custom-select"
                     >
                       {section name=quantity start=1 loop=$customization.quantity+1}
                         <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
