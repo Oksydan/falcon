@@ -32,10 +32,12 @@
               {foreach from=$cart.vouchers.added item=voucher}
                 <li class="cart-summary-line">
                   <span class="label">{$voucher.name}</span>
-                  <div class="float-right">
+                  <div class="value d-inline-flex align-items-center">
                     <span>{$voucher.reduction_formatted}</span>
                       {if isset($voucher.code) && $voucher.code !== ''}
-                        <a href="{$voucher.delete_url}" data-link-action="remove-voucher"><i>DELETE</i></a>
+                        <a href="{$voucher.delete_url}" data-link-action="remove-voucher" class="text-danger ml-1">
+                          <span class="material-icons font-reset btn-icon">delete</span>
+                        </a>
                       {/if}
                   </div>
                 </li>
@@ -56,20 +58,29 @@
               <form action="{$urls.pages.cart}" data-link-action="add-voucher" method="post">
                 <input type="hidden" name="token" value="{$static_token}">
                 <input type="hidden" name="addDiscount" value="1">
-                <input class="promo-input" type="text" name="discount_name" placeholder="{l s='Promo code' d='Shop.Theme.Checkout'}">
-                <button type="submit" class="btn btn-primary"><span>{l s='Add' d='Shop.Theme.Actions'}</span></button>
+
+                <div class="input-group js-parent-focus">
+                  <input class="promo-input form-control js-child-focus" type="text" name="discount_name" placeholder="{l s='Promo code' d='Shop.Theme.Checkout'}">
+                  <span class="input-group-append">
+                    <button type="submit" class="btn btn-primary">
+                      {l s='Add' d='Shop.Theme.Actions'}
+                    </button>
+                  </span>
+                </div>
               </form>
             {/block}
 
             {block name='cart_voucher_notifications'}
-              <div class="alert alert-danger js-error" role="alert">
-                <span class="ml-1 js-error-text"></span>
+              <div class="alert alert-danger js-error mt-2" role="alert" style="display:none;">
+                <span class="js-error-text"></span>
               </div>
             {/block}
 
-            <a class="collapse-button promo-code-button cancel-promo" role="button" data-toggle="collapse" data-target="#promo-code" aria-expanded="true" aria-controls="promo-code">
-              {l s='Close' d='Shop.Theme.Checkout'}
-            </a>
+            <div class="mt-2">
+              <a class="collapse-button promo-code-button cancel-promo" role="button" data-toggle="collapse" data-target="#promo-code" aria-expanded="true" aria-controls="promo-code">
+                {l s='Close' d='Shop.Theme.Checkout'}
+              </a>
+            </div>
           </div>
         </div>
 
