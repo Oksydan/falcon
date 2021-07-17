@@ -46,13 +46,11 @@
           {/block}
         {/if}
 
-        <p class="promo-code-button display-promo{if $cart.discounts|count > 0} with-discounts{/if}">
-          <a class="collapse-button" href="#promo-code">
-            {l s='Have a promo code?' d='Shop.Theme.Checkout'}
-          </a>
+        <p class="h6 mb-2">
+          {l s='Have a promo code?' d='Shop.Theme.Checkout'}
         </p>
 
-        <div id="promo-code" class="collapse{if $cart.discounts|count > 0} in{/if}">
+        <div id="promo-code">
           <div class="promo-code">
             {block name='cart_voucher_form'}
               <form action="{$urls.pages.cart}" data-link-action="add-voucher" method="post">
@@ -75,24 +73,18 @@
                 <span class="js-error-text"></span>
               </div>
             {/block}
-
-            <div class="mt-2">
-              <a class="collapse-button promo-code-button cancel-promo" role="button" data-toggle="collapse" data-target="#promo-code" aria-expanded="true" aria-controls="promo-code">
-                {l s='Close' d='Shop.Theme.Checkout'}
-              </a>
-            </div>
           </div>
         </div>
 
         {if $cart.discounts|count > 0}
-          <p class="block-promo promo-highlighted">
+          <p class="block-promo promo-highlighted h6 mb-1 mt-3">
             {l s='Take advantage of our exclusive offers:' d='Shop.Theme.Actions'}
           </p>
-          <ul class="js-discount card-block promo-discounts">
+          <ul class="js-discount card-block promo-discounts mb-0">
             {foreach from=$cart.discounts item=discount}
               <li class="cart-summary-line">
                 <span class="label">
-                  <span class="code">{$discount.code}</span> - {$discount.name}
+                  <a href="#" class="js-code font-weight-bold">{$discount.code}</a> - {$discount.name}
                 </span>
               </li>
             {/foreach}
