@@ -39,7 +39,7 @@
         <div class="cart-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">{l s='Loading...' d='Shop.Theme.Global'}</span></div></div>
         <div class="cart-dropdown__title d-flex align-items-center mb-3">
           <p class="h5 mb-0 mr-2">
-            {l s='Your cart' d='Shop.IsTheme'}
+            {l s='Your cart' d='Shop.Istheme'}
           </p>
           <span class="cart-dropdown__close dropdown-close ml-auto cursor-pointer">
             ×
@@ -74,7 +74,7 @@
 
         {else}
           <div class="alert alert-warning">
-            {l s='Unfortunately your basket is empty' d='Shop.IsTheme'}
+            {l s='Unfortunately your basket is empty' d='Shop.Istheme'}
           </div>
         {/if}
       </div>
