@@ -34,6 +34,18 @@ $(() => {
     updateEvenType = eventType;
   });
 
+  prestashop.on('updateCart', (event) => {
+    if (prestashop.page.page_name == 'product' && event.reason.idProduct == $('#add-to-cart-or-refresh').find('[name="id_product"]').val()) {
+      prestashop.emit('updateProduct', {
+        event,
+        resp: {},
+        reason: {
+          productUrl: prestashop.urls.pages.product || '',
+        },
+      });
+    }
+  });
+
   prestashop.on('updatedProduct', (event) => {
     createInputFile();
 
