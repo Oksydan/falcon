@@ -43,7 +43,9 @@
 
         <div>
           <span class="price price--lg">{$product.price}</span>
-          <span class="ml-2 price price--regular">{$product.regular_price}</span>
+          {if $product.has_discount}
+            <span class="ml-2 price price--regular">{$product.regular_price}</span>
+          {/if}
           {hook h='displayProductPriceBlock' product=$product type="old_price"}
         </div>
 
