@@ -31,9 +31,13 @@
           {foreach from=$breadcrumb.links item=path name=breadcrumb}
             {block name='breadcrumb_item'}
               <li {if $smarty.foreach.breadcrumb.last}class="breadcrumb-item active" aria-current="page"{else}class="breadcrumb-item"{/if}>
-                <a href="{$path.url}">
+                {if !$smarty.foreach.breadcrumb.last}
+                  <a href="{$path.url}">
+                {/if}
                   {$path.title}
-                </a>
+                {if !$smarty.foreach.breadcrumb.last}
+                  </a>
+                {/if}
               </li>
             {/block}
           {/foreach}
