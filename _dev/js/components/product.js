@@ -35,7 +35,9 @@ $(() => {
   });
 
   prestashop.on('updateCart', (event) => {
-    if (prestashop.page.page_name == 'product' && event.reason.idProduct == $('#add-to-cart-or-refresh').find('[name="id_product"]').val()) {
+    if (
+      prestashop.page.page_name === 'product'
+      && parseInt(event.reason.idProduct, 10) === parseInt($('#add-to-cart-or-refresh').find('[name="id_product"]').val(), 10)) {
       prestashop.emit('updateProduct', {
         event,
         resp: {},

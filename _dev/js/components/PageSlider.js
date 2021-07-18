@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import SwiperCore, {
-  Swiper, Navigation, Pagination, Thumbs, Autoplay
+  Swiper, Navigation, Pagination, Thumbs, Autoplay,
 } from 'swiper';
 
 

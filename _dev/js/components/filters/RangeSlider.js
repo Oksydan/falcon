@@ -29,7 +29,7 @@ class RangeSlider {
 
     this.getSliderType();
 
-    if (this.sliderType == 'price') {
+    if (this.sliderType === 'price') {
       const {
         currencySymbol,
         positivePattern,
@@ -39,14 +39,13 @@ class RangeSlider {
       this.positivePattern = positivePattern;
       this.values = this.$slider.data('slider-values');
       this.signPosition = this.positivePattern.indexOf('¤') === 0 ? 'prefix' : 'suffix';
-    } else if (this.sliderType == 'weight') {
+    } else if (this.sliderType === 'weight') {
       const unit = this.$slider.data('slider-unit');
 
       this.sign = unit;
       this.values = this.$slider.data('slider-values');
       this.signPosition = 'suffix';
     }
-
 
 
     if (!Array.isArray(this.values)) {
@@ -72,7 +71,7 @@ class RangeSlider {
         min: this.min,
         max: this.max,
       },
-      format: this.format
+      format: this.format,
     });
   }
 
@@ -84,12 +83,12 @@ class RangeSlider {
     this.$inputs.forEach((input, i) => {
       const val = formatValue ? this.format.from(values[i]) : values[i];
       $(input).val(val);
-    })
+    });
   }
 
   setEvents() {
-    this.sliderHandler.off('set', this.handlerSliderSet);
-    this.sliderHandler.on('set', this.handlerSliderSet);
+    this.sliderHandler.off('set', this.constructor.handlerSliderSet);
+    this.sliderHandler.on('set', this.constructor.handlerSliderSet);
     this.sliderHandler.off('update', this.handlerSliderUpdate);
     this.sliderHandler.on('update', this.handlerSliderUpdate);
 
@@ -98,30 +97,30 @@ class RangeSlider {
       $input.on('focus', this.handleInputFocus);
       $input.off('blur', this.handleInputBlur);
       $input.on('blur', this.handleInputBlur);
-    })
+    });
   }
 
-  getInputAction($input) {
+  static getInputAction($input) {
     return $input.data('action');
   }
 
   getInputPositionInValue($input) {
     const actionPosition = {
       'range-from': 0,
-      'range-to': 1
-    }
+      'range-to': 1,
+    };
 
-    return actionPosition[this.getInputAction($input)];
+    return actionPosition[this.constructor.getInputAction($input)];
   }
 
-  handleInputFocus = ({ target }) => {
+  handleInputFocus = ({target}) => {
     const $input = $(target);
     $input.val(this.format.from($input.val()));
   }
 
-  handleInputBlur = ({ target }) => {
+  handleInputBlur = ({target}) => {
     const $input = $(target);
-    const value =  $input.val();
+    const value = $input.val();
     const position = this.getInputPositionInValue($input);
     const oldValues = this.values;
     const newValues = [...oldValues];
@@ -135,12 +134,12 @@ class RangeSlider {
   }
 
   handlerSliderUpdate = (
-    values
+    values,
   ) => {
     this.setInputValues(values);
   }
 
-  handlerSliderSet (
+  static handlerSliderSet(
     values,
     handle,
     unencoded,
@@ -159,9 +158,7 @@ class RangeSlider {
 
     const newUrl = filtersHandler.getFiltersUrl();
     prestashop.emit('updateFacets', newUrl);
-  };
-
-
+  }
 }
 
 export default RangeSlider;
