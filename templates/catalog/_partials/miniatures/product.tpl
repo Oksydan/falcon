@@ -26,28 +26,15 @@
   {$listingType = $type|default:'listing'}
   <div
     {if $listingType === 'listing'}
-      itemprop="itemListElement"
-      itemscope
-      itemtype="http://schema.org/ListItem"
       class="products-list__block products-list__block--grid"
     {elseif $listingType === 'slider'}
       class="swiper-slide product-slider__item col-6 col-md-4 col-lg-3"
     {/if}
     >
-    {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
     <article
       class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}"
       data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}"
-      {if $listingType === 'listing'}
-        itemprop="item"
-        itemscope
-        itemtype="http://schema.org/Product"
-      {/if}
       >
-      {if $listingType === 'listing'}
-        {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
-      {/if}
-
       {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
       {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
