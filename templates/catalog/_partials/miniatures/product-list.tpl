@@ -39,10 +39,6 @@
           <div class="d-flex flex-column h-100">
             {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
 
-            {block name='product_reviews'}
-              {hook h='displayProductListReviews' product=$product}
-            {/block}
-
             {block name='product_desc'}
               {if $product.description_short}
                 <div class="product-miniature__desc">
