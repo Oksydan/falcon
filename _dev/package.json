@@ -27,7 +27,7 @@
     "nouislider": "^14.6.3",
     "popper.js": "^1.16.1",
     "prestashop": "0.0.1",
-    "swiper": "^6.4.15",
+    "swiper": "^6.7.5",
     "vanilla-lazyload": "^17.3.1",
     "wnumb": "^1.2.0"
   },
@@ -52,7 +52,7 @@
     "html-webpack-plugin": "^4.5.2",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^5.0.0",
-    "postcss": "^8.0.1",
+    "postcss": "^8.3.5",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^4.2.0",
     "postcss-preset-env": "^6.7.0",
