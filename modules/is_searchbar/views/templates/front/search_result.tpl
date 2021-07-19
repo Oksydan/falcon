@@ -15,14 +15,14 @@
             sprintf=[
               '%qty%' => $moreResultsCount
             ]
-            d='Shop.IsTheme'
+            d='Shop.Istheme'
           }
         </a>
       </div>
     {/if}
   {else}
     <div class="search-result__not-result">
-      {l s='There are no matching results' d='Shop.IsTheme'}
+      {l s='There are no matching results' d='Shop.Istheme'}
     </div>
   {/if}
 </div>

@@ -48,7 +48,7 @@
 
           <div class="form-group">
             <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
-            <select name="id_contact" class="form-control form-control-select">
+            <select name="id_contact" class="custom-select">
               {foreach from=$contact.contacts item=contact_elt}
                 <option value="{$contact_elt.id_contact}">{$contact_elt.name}</option>
               {/foreach}
@@ -69,7 +69,7 @@
           {if $contact.orders}
             <div class="form-group">
               <label class="form-control-label">{l s='Order reference' d='Shop.Forms.Labels'}</label>
-              <select name="id_order" class="form-control form-control-select">
+              <select name="id_order" class="custom-select">
                 <option value="">{l s='Select reference' d='Shop.Forms.Help'}</option>
                 {foreach from=$contact.orders item=order}
                   <option value="{$order.id_order}">{$order.reference}</option>
@@ -96,7 +96,7 @@
           {/if}
 
           <div class="form-group">
-            <label class="col-md-3">{l s='Message' d='Shop.Forms.Labels'}</label>
+            <label class="form-control-label">{l s='Message' d='Shop.Forms.Labels'}</label>
             <textarea
               class="form-control"
               name="message"

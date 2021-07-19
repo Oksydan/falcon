@@ -1,14 +1,18 @@
 {extends file='components/modal.tpl'}
 
 {block name='modal_extra_attribues'}id="blockcart-modal"{/block}
-{block name='modal_title'}{l s='Product added to cart' d='Shop.Prozoo'}{/block}
+{block name='modal_title'}{l s='Product added to cart' mod='Shop.Istheme'}{/block}
 
 
 {block name='modal_body'}
 
   <div class="cart-products p-0 mb-4">
     <div class="cart-products__thumb">
-      <img class="img-fluid rounded" src="{$product.cover.medium.url}" alt="{$product.cover.legend}" title="{$product.cover.legend}">
+      <img
+        class="img-fluid rounded"
+        {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+        alt="{$product.cover.legend}"
+        title="{$product.cover.legend}">
     </div>
     <div class="cart-products__desc">
         <p class="h6 mb-2 font-sm">

@@ -6,7 +6,7 @@ class Filters {
   constructor() {
     this.$body = $('body');
     this.setEvents();
-    this.rangeSliders = new FiltersRangeSliders();
+    this.rangeSliders = FiltersRangeSliders;
     this.rangeSliders.init();
   }
 
@@ -54,8 +54,6 @@ class Filters {
 
     return $(event.target).parent()[0].dataset.searchUrl;
   }
-
-
 }
 
 export default Filters;

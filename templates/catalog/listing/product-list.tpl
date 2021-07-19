@@ -24,6 +24,10 @@
  *}
 {extends file=$layout}
 
+{block name='hook_header' append}
+  {hook h='displayListingStructuredData' listing=$listing}
+{/block}
+
 {block name='content'}
   <section id="main">
 

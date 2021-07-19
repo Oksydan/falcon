@@ -25,9 +25,12 @@
 <div class="product-line-grid">
   <div class="product-line-grid__row">
     <div class="product-line-grid__block product-line-grid__block--image">
-      <img src="{$product.cover.bySize.cart_default.url}" alt="{$product.name|escape:'quotes'}"
-        class="img-fluid rounded" width="{$product.cover.bySize.cart_default.width}"
-        height="{$product.cover.bySize.cart_default.height}">
+      <img
+        {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+        alt="{$product.name|escape:'quotes'}"
+        class="img-fluid rounded"
+        width="{$product.default_image.bySize.cart_default.width}"
+        height="{$product.default_image.bySize.cart_default.height}">
     </div>
     <div class="product-line-grid__block product-line-grid__block--prod">
       <p class="h6 product-line-grid__title mb-2">

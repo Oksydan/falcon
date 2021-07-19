@@ -11,7 +11,7 @@
 
 {block name='modal_footer'}
   <button type="button" class="btn btn-block btn-primary" data-dismiss="modal" aria-label="Close">
-    {l s='Show results' d='Shop.IsTheme'}
+    {l s='Show results' d='Shop.Istheme'}
   </button>
 {/block}
 

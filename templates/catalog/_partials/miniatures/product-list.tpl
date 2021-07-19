@@ -25,15 +25,9 @@
  {block name='product_miniature_item'}
   {$listingType = $type|default:'listing'}
   <div
-    itemprop="itemListElement"
-    itemscope
-    itemtype="http://schema.org/ListItem"
     class="products-list__block products-list__block--list"
     >
-    {if isset($position)}<meta itemprop="position" content="{$position}" />{/if}
-    <article class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}" itemprop="item" itemscope itemtype="http://schema.org/Product">
-
-      {include file='catalog/_partials/miniatures/_partials/product-microdata.tpl'}
+    <article class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}" data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}">
 
       <div class="row">
         <div class="col-md-4 col-lg-3">
@@ -43,10 +37,6 @@
 
           <div class="d-flex flex-column h-100">
             {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
-
-            {block name='product_reviews'}
-              {hook h='displayProductListReviews' product=$product}
-            {/block}
 
             {block name='product_desc'}
               {if $product.description_short}

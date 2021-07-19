@@ -4,6 +4,8 @@ const { ESBuildPlugin } = require('esbuild-loader');
 const ChunkRenamePlugin = require('enhanced-webpack-chunk-rename-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FontPreloadPlugin = require('webpack-font-preload-plugin');
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
   host: serverAddress,
@@ -126,7 +128,7 @@ exports.extractFonts = ({ publicPath }) => ({
         options: {
           outputPath: 'fonts/',
           publicPath: publicPath + '/fonts/',
-          name: '[name].[ext]'
+          name: '[contenthash].[ext]'
         },
       }
     ]
@@ -175,4 +177,21 @@ exports.externals = () => ({
     $: '$',
     jquery : 'jQuery'
   }
+})
+
+exports.preloadFonts = () => ({
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'preload.html',
+      template: 'preload-template.html',
+      inject: false,
+    }),
+    new FontPreloadPlugin({
+      index: 'preload.html',
+      extensions: ['woff2', 'woff', 'ttf', 'eot'],
+      replaceCallback: ({ indexSource, linksAsString }) => {
+        return indexSource.replace('{{{preloadLinks}}}', linksAsString);
+      },
+    }),
+  ]
 })

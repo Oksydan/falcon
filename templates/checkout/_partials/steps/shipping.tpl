@@ -79,19 +79,21 @@
             </div>
 
             {if $recyclablePackAllowed}
-              <span class="custom-checkbox">
-                <input type="checkbox" id="input_recyclable" name="recyclable" value="1" {if $recyclable} checked {/if}>
-                <span><i class="checkbox-checked">checkbox-checked</i></span>
-                <label for="input_recyclable">{l s='I would like to receive my order in recycled packaging.' d='Shop.Theme.Checkout'}</label>
-              </span>
+              <div class="form-group my-3">
+                <div class="custom-control custom-checkbox">
+                  <input class="custom-control-input" type="checkbox" id="input_recyclable" name="recyclable" value="1" {if $recyclable} checked {/if}>
+                  <label class="custom-control-label" for="input_recyclable">{l s='I would like to receive my order in recycled packaging.' d='Shop.Theme.Checkout'}</label>
+                </div>
+              </div>
             {/if}
 
             {if $gift.allowed}
-              <span class="custom-checkbox">
-                <input class="js-gift-checkbox" id="input_gift" name="gift" type="checkbox" value="1" {if $gift.isGift}checked="checked"{/if}>
-                <span><i class="checkbox-checked">checkbox-checked</i></span>
-                <label for="input_gift">{$gift.label}</label >
-              </span>
+              <div class="form-group my-3">
+                <div class="custom-control custom-checkbox">
+                  <input class="custom-control-input js-gift-checkbox" type="checkbox" id="input_gift" name="gift" value="1" {if $gift.isGift} checked {/if}>
+                  <label class="custom-control-label" for="input_gift">{$gift.label}</label>
+                </div>
+              </div>
 
               <div id="gift" class="collapse{if $gift.isGift} in{/if}">
                 <label for="gift_message">{l s='If you\'d like, you can add a note to the gift:' d='Shop.Theme.Checkout'}</label>

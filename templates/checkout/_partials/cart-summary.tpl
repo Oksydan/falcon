@@ -26,7 +26,7 @@
 
   <div class="card-header">
     <p class="card-title mb-0 h4">
-      {l s='Summary' d='Shop.IsTheme'}
+      {l s='Summary' d='Shop.Istheme'}
     </p>
   </div>
   <div class="card-body">

@@ -34,8 +34,7 @@
                 <div class="swiper-slide">
                   <img
                     class="rounded img-fluid lazyload"
-                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.large_default.width}' height='{$image.bySize.large_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                    data-src="{$image.bySize.large_default.url}"
+                    {generateImagesSources image=$image size='large_default' lazyload=!$image@first}
                     width="{$image.bySize.large_default.width}"
                     height="{$image.bySize.large_default.height}"
                     {if !empty($product.default_image.legend)}
@@ -60,7 +59,7 @@
         {else}
           <img
             class="rounded img-fluid"
-            src="{$product.default_image.bySize.large_default.url}"
+            {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
             width="{$product.default_image.bySize.large_default.width}"
             height="{$product.default_image.bySize.large_default.height}"
             {if !empty($product.default_image.legend)}
@@ -90,10 +89,9 @@
             <div class="product-thumbs__elem swiper-slide">
               <img
                 class="img-fluid rounded lazyload"
+                {generateImagesSources image=$image size='home_default'}
                 width="{$image.bySize.home_default.width}"
                 height="{$image.bySize.home_default.height}"
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$image.bySize.home_default.width}' height='{$image.bySize.home_default.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
-                data-src="{$image.bySize.home_default.url}"
                 {if !empty($image.legend)}
                   alt="{$image.legend}"
                   title="{$image.legend}"

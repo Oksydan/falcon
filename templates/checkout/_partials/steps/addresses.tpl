@@ -116,9 +116,9 @@
             <p class="alert alert-danger js-address-error" name="alert-invoice" style="display: none">{l s="Your address is incomplete, please update it." d="Shop.Notifications.Error"}</p>
           {/if}
 
-          <p class="add-address">
-            <a href="{$new_address_invoice_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
-          </p>
+          <div class="add-address mt-2 mb-3">
+            <a class="btn btn-outline-primary btn-sm" href="{$new_address_invoice_url}">{l s='add new address' d='Shop.Theme.Actions'}</a>
+          </div>
         {/if}
 
       {/if}

@@ -36,6 +36,8 @@ This theme was created to deliver starter theme with latest developers tools and
 6. Multiple entry point for webpack, files separated per view. There are 4 output `js/css` files **theme**, **product**, **checkout**, **listing** and you are able to add more with ease. If you need rich cms pages with a lot of styles included in it. You don't have to include them everywhere with **theme** output file. You are able to create another entry e.g. **cms** and just include it in `ThemeAssets` class in module `is_themecore` that handle theme assets.
 7. List/grid listing display. You are able to choose default listing display type. With only few lines of `.js` code. All template changes are handle in `.tpl` file. It is also easy to add another list type.
 8. Specific `.scss` file structure that help you maintain your code.
+9. Automatic generated preload links for theme fonts. You don't have to care about manually preloading fonts inside template. Webpack generates `.html` file that is included inside head. Fonts fileNames are `contentHashed` so client side caching problems after fonts changes are resolved (especially useful for icomoon generated icon fonts.).
+10. High dpi images support added. With just simple call of smarty function `generateImageSources` you are able to handle whole image sources logic - `srcset` for high dpi images option enabled.
 
 ## Getting started
 

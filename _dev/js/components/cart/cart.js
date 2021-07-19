@@ -260,44 +260,20 @@ $(() => {
       return updateProductQuantityInCart(event);
     });
 
-  const $timeoutEffect = 400;
-
-  $body.on(
-    'hidden.bs.collapse',
-    '#promo-code',
-    () => {
-      $('.display-promo').show($timeoutEffect);
-    });
-
   $body.on(
     'click',
-    '.promo-code-button',
-    (event) => {
-      event.preventDefault();
-
-      $('#promo-code').collapse('toggle');
-    });
-
-  $body.on(
-    'click',
-    '.display-promo',
-    (event) => {
-      $(event.currentTarget).hide($timeoutEffect);
-    });
-
-  $body.on(
-    'click',
-    '.js-discount .code',
+    '.js-discount .js-code',
     (event) => {
       event.stopPropagation();
+      event.preventDefault();
 
       const $code = $(event.currentTarget);
       const $discountInput = $('[name=discount_name]');
+      const $discountForm = $discountInput.closest('form');
 
       $discountInput.val($code.text());
       // Show promo code field
-      $('#promo-code').collapse('show');
-      $('.display-promo').hide($timeoutEffect);
+      $discountForm.trigger('submit');
 
       return false;
     });
