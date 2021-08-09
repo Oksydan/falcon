@@ -1,7 +1,0 @@
-
-@mixin hf {
-  &:hover,
-  &:focus {
-    @content;
-  }
-}

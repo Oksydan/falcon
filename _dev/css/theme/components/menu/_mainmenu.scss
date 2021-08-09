@@ -46,7 +46,7 @@
       font-weight: 700;
       color: $gray-900;
 
-      @include hf() {
+      @include hover-focus() {
         text-decoration: none;
       }
 

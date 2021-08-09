@@ -42,7 +42,7 @@
       white-space: normal;
     }
 
-    @include hf() {
+    @include hover-focus() {
       color: $primary;
       text-decoration: none;
     }
