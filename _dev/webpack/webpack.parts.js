@@ -188,7 +188,7 @@ exports.preloadFonts = () => ({
     }),
     new FontPreloadPlugin({
       index: 'preload.html',
-      extensions: ['woff2', 'woff', 'ttf', 'eot'],
+      extensions: ['woff2'],
       replaceCallback: ({ indexSource, linksAsString }) => {
         return indexSource.replace('{{{preloadLinks}}}', linksAsString);
       },
