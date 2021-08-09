@@ -29,6 +29,12 @@
     {/block}
   </div>
 
+  <div class="col flex-grow-0">
+    {block name='sort_by'}
+      {include file='catalog/_partials/per-page.tpl'}
+    {/block}
+  </div>
+
   <div class="col flex-grow-0 hidden-md-up ml-auto">
     {if !empty($listing.rendered_facets)}
       <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary">
