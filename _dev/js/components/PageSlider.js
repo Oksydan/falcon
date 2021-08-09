@@ -29,7 +29,7 @@ class PageSlider {
     const $nextEl = $parent.find('.swiper-button-next');
     const $prevEl = $parent.find('.swiper-button-prev');
 
-    if ($nextEl.length && $prevEl.length) {
+    if ($nextEl.length && $prevEl.length && typeof elConfig.navigation === 'undefined') {
       elConfig = {
         ...elConfig,
         navigation: {
