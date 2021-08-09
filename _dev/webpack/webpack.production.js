@@ -31,12 +31,9 @@ exports.productionConfig = ({ purge }) => (
       optimization: {
         minimize: true,
         minimizer: [
-          // ESBuildMinifyPlugin replaced with TeaserPlugin due to bug with dynamic import. https://github.com/privatenumber/esbuild-loader/issues/139
-          // new ESBuildMinifyPlugin({
-          //   target: 'es2015'
-          // }),
-          new TerserPlugin({
-            extractComments: true,
+          new ESBuildMinifyPlugin({
+            target: 'es2015',
+            format: 'iife'
           }),
           new CssMinimizerPlugin()
         ],
