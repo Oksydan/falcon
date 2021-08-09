@@ -183,12 +183,11 @@ exports.preloadFonts = () => ({
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'preload.html',
-      template: 'preload-template.html',
-      inject: false,
+      templateContent: `{{{preloadLinks}}}`
     }),
     new FontPreloadPlugin({
       index: 'preload.html',
-      extensions: ['woff2', 'woff', 'ttf', 'eot'],
+      extensions: ['woff2'],
       replaceCallback: ({ indexSource, linksAsString }) => {
         return indexSource.replace('{{{preloadLinks}}}', linksAsString);
       },

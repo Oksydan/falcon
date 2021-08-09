@@ -11,7 +11,7 @@
     }
   }
 
-  @include hf() {
+  @include hover-focus() {
     text-decoration: none;
   }
 }

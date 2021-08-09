@@ -34,7 +34,7 @@
     background-color: $white;
     border: 0;
 
-    @include hf () {
+    @include hover-focus() {
       background: $gray-200;
     }
   }
