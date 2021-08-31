@@ -183,7 +183,8 @@ exports.preloadFonts = () => ({
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'preload.html',
-      templateContent: `{{{preloadLinks}}}`
+      templateContent: '{{{preloadLinks}}}',
+      inject: false,
     }),
     new FontPreloadPlugin({
       index: 'preload.html',
