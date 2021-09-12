@@ -72,44 +72,44 @@
           </div>
           <div class="card-body">
             <ul class="mb-0 row">
-              <div class="col-sm-6 mb-2">
+              <li class="col-sm-6 mb-2">
                 <strong>
                   {l s='Code' d='Shop.Theme.Checkout'}:
                 </strong>
                 {$cart_rule.code}
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>
                   {l s='Quantity' d='Shop.Theme.Checkout'}:
                 </strong>
                 {$cart_rule.quantity_for_user}
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>
                   {l s='Value' d='Shop.Theme.Checkout'}:
                 </strong>
                 <span class="text-lowercase">
                   {$cart_rule.value}
                 </span>
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>
                   {l s='Minimum' d='Shop.Theme.Checkout'}:
                 </strong>
                 {$cart_rule.voucher_minimal}
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>
                   {l s='Cumulative' d='Shop.Theme.Checkout'}:
                 </strong>
                 {$cart_rule.voucher_cumulable}
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>
                   {l s='Expiration date' d='Shop.Theme.Checkout'}:
                 </strong>
                 {$cart_rule.voucher_date}
-              </div>
+              </li>
             </ul>
           </div>
         </div>
