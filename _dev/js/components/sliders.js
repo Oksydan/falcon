@@ -10,10 +10,10 @@ $(() => {
   slider.runSliders();
 
   initProductImageSlider();
-  bindProductModalSlider();
+  initModalGallerySlider();
 
   prestashop.on('updatedProductCombination', () => {
-    bindProductModalSlider();
+    initModalGallerySlider();
     initProductImageSlider();
   });
 });
@@ -55,10 +55,6 @@ function initProductImageSlider() {
   });
 }
 
-function bindProductModalSlider() {
-  $('.js-product-images-modal').on('shown.bs.modal', initModalGallerySlider);
-}
-
 function initModalGallerySlider() {
   const $gallery = $('.js-modal-gallery');
 
@@ -67,7 +63,7 @@ function initModalGallerySlider() {
   }
 
   /* eslint-disable no-new */
-  new SwiperSlider($gallery[0], {
+  const modalSlider = new SwiperSlider($gallery[0], {
     slidesPerView: 1,
     spaceBetween: 10,
     freeMode: false,
@@ -76,4 +72,22 @@ function initModalGallerySlider() {
       prevEl: $gallery.find('.swiper-button-prev')[0],
     },
   });
+
+  $('.js-product-images-modal').on('show.bs.modal', () => changeModalImage(modalSlider, $gallery));
+}
+
+function changeModalImage(modalSlider, $gallery) {
+  const mainSliderIndex = $('.js-product-main-images .swiper-slide-active').attr('data-index');
+
+  // DIRTY HACK
+  $gallery.css({
+    opacity: 0
+  });
+  setTimeout(() => {
+    modalSlider.update();
+    modalSlider.slideTo(mainSliderIndex, 0);
+    $gallery.css({
+      opacity: 1
+    });
+  }, 200);
 }

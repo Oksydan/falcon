@@ -29,23 +29,40 @@
         <div class="js-modal-gallery modal-gallery swiper-container swiper-container-custom">
 
         {if $product.images|count > 1}
-
           <div class="modal-gallery__list swiper-wrapper">
+
+            <div class="swiper-slide modal-gallery__elem">
+              <img
+                class="rounded img-fluid lazyload"
+                {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+                width="{$product.default_image.bySize.large_default.width}"
+                height="{$product.default_image.bySize.large_default.height}"
+                {if !empty($product.default_image.legend)}
+                  alt="{$product.default_image.legend}"
+                  title="{$product.default_image.legend}"
+                {else}
+                  alt="{$product.name}"
+                {/if}
+                loading="lazy">
+            </div>
+
             {foreach from=$product.images item=image}
+              {if $image.id_image === $product.default_image.id_image}
+                {continue}
+              {/if}
+
               <div class="swiper-slide modal-gallery__elem">
                 <img
                   class="rounded img-fluid lazyload"
-                  {generateImagesSources image=$image size='large_default'}
+                  {generateImagesSources image=$image size='large_default' lazyload=true}
                   width="{$image.bySize.large_default.width}"
                   height="{$image.bySize.large_default.height}"
                   {if !empty($product.default_image.legend)}
-                    alt="{$image.legend}"
-                    title="{$image.legend}"
+                    alt="{$image.legend}" title="{$image.legend}"
                   {else}
                     alt="{$product.name}"
                   {/if}
-                  loading="lazy"
-                >
+                  loading="lazy">
               </div>
             {/foreach}
           </div>
@@ -59,23 +76,18 @@
               <span class="material-icons">keyboard_arrow_right</span>
             </div>
           {else}
-            {foreach from=$product.images item=image}
-              <div class="swiper-slide modal-gallery__elem">
-                <img
-                  class="rounded img-fluid lazyload"
-                  {generateImagesSources image=$image size='large_default'}
-                  width="{$image.bySize.large_default.width}"
-                  height="{$image.bySize.large_default.height}"
-                  {if !empty($product.default_image.legend)}
-                    alt="{$image.legend}"
-                    title="{$image.legend}"
-                  {else}
-                    alt="{$product.name}"
-                  {/if}
-                  loading="lazy"
-                >
-              </div>
-            {/foreach}
+            <img
+              class="rounded img-fluid"
+              {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+              width="{$product.default_image.bySize.large_default.width}"
+              height="{$product.default_image.bySize.large_default.height}"
+              {if !empty($product.default_image.legend)}
+                alt="{$product.default_image.legend}"
+                title="{$product.default_image.legend}"
+              {else}
+                alt="{$product.name}"
+              {/if}
+              loading="lazy">
           {/if}
 
         </div>
