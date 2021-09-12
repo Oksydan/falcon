@@ -1,7 +1,7 @@
 {extends file='components/modal.tpl'}
 
 {block name='modal_extra_attribues'}id="blockcart-modal"{/block}
-{block name='modal_title'}{l s='Product added to cart' mod='Shop.Istheme'}{/block}
+{block name='modal_title'}{l s='Product added to cart' d='Shop.Istheme'}{/block}
 
 
 {block name='modal_body'}
