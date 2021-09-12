@@ -4,7 +4,7 @@
 {$pageDiscount = ['discount']}
 {$pageCartHistory = ['cart-history']}
 {$pageOrderSlip = ['order-slip']}
-{$pageOrderFollow = ['order-follow']}
+{$pageOrderFollow = ['order-follow', 'order-return']}
 
 <div class="customer-links">
   <div class="customer-links__list js-customer-links">

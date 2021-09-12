@@ -28,23 +28,46 @@
 
       <div class="positon-relative product-main-images">
         {if $product.images|count > 1}
-          <div class="js-product-main-images swiper-container swiper-container-custom">
+          {$index = 0}
+
+          <div class="js-product-main-images swiper-container swiper-container-custom" data-index="{$index}">
             <div class="product-main-images__list swiper-wrapper">
-              {foreach from=$product.images item=image}
-                <div class="swiper-slide">
-                  <img
-                    class="rounded img-fluid lazyload"
-                    {generateImagesSources image=$image size='large_default' lazyload=!$image@first}
-                    width="{$image.bySize.large_default.width}"
-                    height="{$image.bySize.large_default.height}"
-                    {if !empty($product.default_image.legend)}
-                      alt="{$image.legend}" title="{$image.legend}"
-                    {else}
-                      alt="{$product.name}"
-                    {/if}
-                    loading="lazy">
-                </div>
-              {/foreach}
+              <div class="swiper-slide">
+                <img
+                  class="rounded img-fluid lazyload"
+                  {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+                  width="{$product.default_image.bySize.large_default.width}"
+                  height="{$product.default_image.bySize.large_default.height}"
+                  {if !empty($product.default_image.legend)}
+                    alt="{$product.default_image.legend}"
+                    title="{$product.default_image.legend}"
+                  {else}
+                    alt="{$product.name}"
+                  {/if}
+                  loading="lazy">
+              </div>
+              {if $product.images|count > 1}
+                {foreach from=$product.images item=image}
+                  {if $image.id_image === $product.default_image.id_image}
+                    {continue}
+                  {/if}
+                  {$index = $index + 1}
+
+                  <div class="swiper-slide" data-index="{$index}">
+                    <img
+                      class="rounded img-fluid lazyload"
+                      {generateImagesSources image=$image size='large_default' lazyload=true}
+                      width="{$image.bySize.large_default.width}"
+                      height="{$image.bySize.large_default.height}"
+                      {if !empty($product.default_image.legend)}
+                        alt="{$image.legend}" title="{$image.legend}"
+                      {else}
+                        alt="{$product.name}"
+                      {/if}
+                      loading="lazy">
+                  </div>
+                {/foreach}
+              {/if}
             </div>
 
             <div class="swiper-button-prev swiper-button-custom">
@@ -85,22 +108,40 @@
     {if $product.images|count > 1}
       <div class="js-product-thumbs product-thumbs swiper-container mt-2 swiper-container-custom">
         <div class="product-thumbs__list swiper-wrapper">
-          {foreach from=$product.images item=image}
-            <div class="product-thumbs__elem swiper-slide">
-              <img
-                class="img-fluid rounded lazyload"
-                {generateImagesSources image=$image size='home_default'}
-                width="{$image.bySize.home_default.width}"
-                height="{$image.bySize.home_default.height}"
-                {if !empty($image.legend)}
-                  alt="{$image.legend}"
-                  title="{$image.legend}"
-                {else}
-                  alt="{$product.name}"
-                {/if}
-                loading="lazy">
-            </div>
-          {/foreach}
+          <div class="product-thumbs__elem swiper-slide">
+            <img
+              class="rounded img-fluid lazyload"
+              {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
+              width="{$product.default_image.bySize.home_default.width}"
+              height="{$product.default_image.bySize.home_default.height}"
+              {if !empty($product.default_image.legend)}
+                alt="{$product.default_image.legend}"
+                title="{$product.default_image.legend}"
+              {else}
+                alt="{$product.name}"
+              {/if}
+              loading="lazy">
+          </div>
+          {if $product.images|count > 1}
+            {foreach from=$product.images item=image}
+              {if $image.id_image === $product.default_image.id_image}
+                {continue}
+              {/if}
+              <div class="product-thumbs__elem swiper-slide">
+                <img
+                  class="rounded img-fluid lazyload"
+                  {generateImagesSources image=$image size='home_default' lazyload=true}
+                  width="{$image.bySize.home_default.width}"
+                  height="{$image.bySize.home_default.height}"
+                  {if !empty($product.default_image.legend)}
+                    alt="{$image.legend}" title="{$image.legend}"
+                  {else}
+                    alt="{$product.name}"
+                  {/if}
+                  loading="lazy">
+              </div>
+            {/foreach}
+          {/if}
         </div>
       </div>
     {/if}

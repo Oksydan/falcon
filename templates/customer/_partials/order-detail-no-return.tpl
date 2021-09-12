@@ -30,7 +30,7 @@
 
   <div class="row card-group no-gutters my-4">
     {block name='order_details'}
-      <div class="col-sm-6 col-12 card">
+      <div class="col-sm-6 col-12 card mb-sm-0 mb-4">
         <div class="card-header">
           <h3 class="h5 mb-0 card-title">{l s='Order details' d='Shop.Theme.Checkout'}</h3>
         </div>
@@ -47,7 +47,7 @@
       </div>
     {/block}
 
-    <div class="col-sm-6 col-12 card">
+    <div class="col-sm-6 col-12 card mb-0">
       <div class="card-header">
         <h3 class="h5 mb-0 card-title">{l s='Order subtotals' d='Shop.Istheme'}</h3>
       </div>

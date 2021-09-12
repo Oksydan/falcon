@@ -70,44 +70,60 @@
 
   {block name='order_history'}
     <section id="order-history" class="my-4">
-      <h3 class="h4">{l s='Follow your order\'s status step-by-step' d='Shop.Theme.Customeraccount'}</h3>
-      <table class="table table-striped table-bordered table-labeled hidden-xs-down">
-        <thead class="thead-default">
-          <tr>
-            <th>{l s='Date' d='Shop.Theme.Global'}</th>
-            <th>{l s='Status' d='Shop.Theme.Global'}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {foreach from=$order.history item=state}
+      <div class="d-none d-md-block">
+        <h3 class="h4">{l s='Follow your order\'s status step-by-step' d='Shop.Theme.Customeraccount'}</h3>
+        <table class="table table-striped table-bordered hidden-xs-down">
+          <thead class="thead-default">
             <tr>
-              <td>{$state.history_date}</td>
-              <td>
-                <span class="label label-pill badge {$state.contrast}" style="background-color:{$state.color}">
-                  {$state.ostate_name}
-                </span>
-              </td>
+              <th>{l s='Date' d='Shop.Theme.Global'}</th>
+              <th>{l s='Status' d='Shop.Theme.Global'}</th>
             </tr>
-          {/foreach}
-        </tbody>
-      </table>
-      <div class="hidden-sm-up history-lines">
-        {foreach from=$order.history item=state}
-          <div class="history-line">
-            <div class="date">{$state.history_date}</div>
-            <div class="state">
-              <span class="label label-pill badge {$state.contrast}" style="background-color:{$state.color}">
-                {$state.ostate_name}
-              </span>
-            </div>
+          </thead>
+          <tbody>
+            {foreach from=$order.history item=state}
+              <tr>
+                <td>{$state.history_date}</td>
+                <td>
+                  <span
+                    class="label label-pill badge {if Tools::getBrightness($state.color) < 128}text-white{/if}"
+                    style="background-color:{$state.color}">
+                    {$state.ostate_name}
+                  </span>
+                </td>
+              </tr>
+            {/foreach}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="d-md-none">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="h5 card-title mb-0">
+              {l s='Follow your order\'s status step-by-step' d='Shop.Theme.Customeraccount'}
+            </h4>
           </div>
-        {/foreach}
+          <div class="card-body">
+            <ul class="mb-0">
+              {foreach from=$order.history item=state}
+                <li class="mb-2">
+                  <strong class="date">
+                    {$state.history_date}:
+                  </strong>
+                  <strong style="color:{$state.color}">
+                    {$state.ostate_name}
+                  </strong>
+                </li>
+              {/foreach}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   {/block}
 
   {if $order.follow_up}
-    <div class="box">
+    <div class="mb-4">
       <p>{l s='Click the following link to track the delivery of your order' d='Shop.Theme.Customeraccount'}</p>
       <a href="{$order.follow_up}">{$order.follow_up}</a>
     </div>
@@ -149,7 +165,7 @@
 
   {block name='order_carriers'}
     {if $order.shipping}
-      <div class="box">
+      <div class="mb-4">
         <table class="table table-striped table-bordered hidden-sm-down">
           <thead class="thead-default">
             <tr>
@@ -173,27 +189,34 @@
           </tbody>
         </table>
         <div class="hidden-md-up shipping-lines">
-          {foreach from=$order.shipping item=line}
-            <div class="shipping-line">
-              <ul>
-                <li>
-                  <strong>{l s='Date' d='Shop.Theme.Global'}</strong> {$line.shipping_date}
-                </li>
-                <li>
-                  <strong>{l s='Carrier' d='Shop.Theme.Checkout'}</strong> {$line.carrier_name}
-                </li>
-                <li>
-                  <strong>{l s='Weight' d='Shop.Theme.Checkout'}</strong> {$line.shipping_weight}
-                </li>
-                <li>
-                  <strong>{l s='Shipping cost' d='Shop.Theme.Checkout'}</strong> {$line.shipping_cost}
-                </li>
-                <li>
-                  <strong>{l s='Tracking number' d='Shop.Theme.Checkout'}</strong> {$line.tracking nofilter}
-                </li>
-              </ul>
+          <div class="card">
+            <div class="card-header">
+              <h4 class="h5 mb-0 card-title">
+                {l s='Shipping infromations' d='Shop.Theme.Customeraccount'}
+              </h4>
             </div>
-          {/foreach}
+            <div class="card-body">
+              {foreach from=$order.shipping item=line}
+                <ul class="mb-0 row {if !$line@last} mb-2 border-bottom{/if}">
+                  <li class="col-sm-6 mb-2">
+                    <strong>{l s='Date' d='Shop.Theme.Global'}:</strong> {$line.shipping_date}
+                  </li>
+                  <li class="col-sm-6 mb-2">
+                    <strong>{l s='Carrier' d='Shop.Theme.Checkout'}:</strong> {$line.carrier_name}
+                  </li>
+                  <li class="col-sm-6 mb-2">
+                    <strong>{l s='Weight' d='Shop.Theme.Checkout'}:</strong> {$line.shipping_weight}
+                  </li>
+                  <li class="col-sm-6 mb-2">
+                    <strong>{l s='Shipping cost' d='Shop.Theme.Checkout'}:</strong> {$line.shipping_cost}
+                  </li>
+                  <li class="col-sm-6 mb-2">
+                    <strong>{l s='Tracking number' d='Shop.Theme.Checkout'}:</strong> {$line.tracking nofilter}
+                  </li>
+                </ul>
+              {/foreach}
+            </div>
+          </div>
         </div>
       </div>
     {/if}

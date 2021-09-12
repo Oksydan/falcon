@@ -32,7 +32,7 @@
   <h6>{l s='Here are the orders you\'ve placed since your account was created.' d='Shop.Theme.Customeraccount'}</h6>
 
   {if $orders}
-    <table class="table table-striped table-bordered table-labeled hidden-sm-down">
+    <table class="table table-striped table-bordered hidden-sm-down">
       <thead class="thead-default">
         <tr>
           <th>{l s='Order reference' d='Shop.Theme.Checkout'}</th>
@@ -40,75 +40,75 @@
           <th>{l s='Total price' d='Shop.Theme.Checkout'}</th>
           <th class="hidden-md-down">{l s='Payment' d='Shop.Theme.Checkout'}</th>
           <th class="hidden-md-down">{l s='Status' d='Shop.Theme.Checkout'}</th>
-          <th>{l s='Invoice' d='Shop.Theme.Checkout'}</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
         {foreach from=$orders item=order}
           <tr>
-            <th scope="row">{$order.details.reference}</th>
-            <td>{$order.details.order_date}</td>
-            <td class="text-xs-right">{$order.totals.total.value}</td>
-            <td class="hidden-md-down">{$order.details.payment}</td>
-            <td>
+            <th scope="row" class="align-middle">{$order.details.reference}</th>
+            <td class="align-middle">
+              <span class="text-nowrap">
+                {$order.details.order_date}
+              </span>
+            </td>
+            <td class="text-xs-right align-middle">
+              <span class="text-primary font-weight-bold text-lowercase">
+                {$order.totals.total.value}
+              </span>
+            </td>
+            <td class="hidden-md-down align-middle">{$order.details.payment}</td>
+            <td class="align-middle">
               <span
-                class="label label-pill badge {$order.history.current.contrast}"
+                class="label label-pill badge {if Tools::getBrightness($order.history.current.color) < 128}text-white{/if}"
                 style="background-color:{$order.history.current.color}"
               >
                 {$order.history.current.ostate_name}
               </span>
             </td>
-            <td class="text-sm-center hidden-md-down">
-              {if $order.details.invoice_url}
-                <a href="{$order.details.invoice_url}"><i>INVOICE</i></a>
-              {else}
-                -
-              {/if}
-            </td>
-            <td class="text-sm-center order-actions">
-              <a href="{$order.details.details_url}" data-link-action="view-order-details">
+            <td class="text-sm-center order-actions align-middle">
+              <a class="btn btn-sm btn-primary" href="{$order.details.details_url}" data-link-action="view-order-details">
                 {l s='Details' d='Shop.Theme.Customeraccount'}
               </a>
-              {if $order.details.reorder_url}
-                <a href="{$order.details.reorder_url}">{l s='Reorder' d='Shop.Theme.Actions'}</a>
-              {/if}
             </td>
           </tr>
         {/foreach}
       </tbody>
     </table>
 
-    <div class="orders hidden-md-up">
+    <div class="orders d-md-none">
       {foreach from=$orders item=order}
-        <div class="order">
-          <div class="row">
-            <div class="col-10">
-              <a href="{$order.details.details_url}"><h3>{$order.details.reference}</h3></a>
-              <div class="date">{$order.details.order_date}</div>
-              <div class="total">{$order.totals.total.value}</div>
-              <div class="status">
-                <span
-                  class="label label-pill {$order.history.current.contrast}"
-                  style="background-color:{$order.history.current.color}"
-                >
-                  {$order.history.current.ostate_name}
-                </span>
+        <div class="card mb-5">
+          <div class="card-header">
+            <h5 class="mb-0">{l s='Order reference' d='Shop.Theme.Checkout'}: {$order.details.reference}</h5>
+          </div>
+          <div class="card-body">
+            <ul class="mb-0 row">
+              <li class="col-sm-6 mb-2">
+                <strong>{l s='Date' d='Shop.Theme.Checkout'}:</strong> {$order.details.order_date}
+              </li>
+              <li class="col-sm-6 mb-2">
+                <strong>{l s='Total price' d='Shop.Theme.Checkout'}:</strong> {$order.totals.total.value}
+              </li>
+              <li class="col-sm-6 mb-2">
+                <strong>{l s='Status' d='Shop.Theme.Checkout'}:</strong> {$order.history.current.ostate_name}
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <div class="row mt-n2">
+              <div class="col-sm-6 mt-2">
+                <a class="btn btn-primary btn-block btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
+                  {l s='Details' d='Shop.Theme.Customeraccount'}
+                </a>
               </div>
-            </div>
-            <div class="col-2 text-xs-right">
-                <div>
-                  <a href="{$order.details.details_url}" data-link-action="view-order-details" title="{l s='Details' d='Shop.Theme.Customeraccount'}">
-                    <i>VIEW</i>
+              {if $order.details.reorder_url}
+                <div class="col-sm-6 mt-2">
+                  <a class="btn btn-light btn-block btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
+                    {l s='Reorder' d='Shop.Theme.Actions'}
                   </a>
                 </div>
-                {if $order.details.reorder_url}
-                  <div>
-                    <a href="{$order.details.reorder_url}" title="{l s='Reorder' d='Shop.Theme.Actions'}">
-                      <i>REORDER</i>
-                    </a>
-                  </div>
-                {/if}
+              {/if}
             </div>
           </div>
         </div>

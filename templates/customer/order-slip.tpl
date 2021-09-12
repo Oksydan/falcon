@@ -43,11 +43,14 @@
       <tbody>
         {foreach from=$credit_slips item=slip}
           <tr>
-            <td><a href="{$slip.order_url_details}" data-link-action="view-order-details">{$slip.order_reference}</a></td>
-            <td scope="row">{$slip.credit_slip_number}</td>
-            <td>{$slip.credit_slip_date}</td>
-            <td class="text-sm-center">
-              <a href="{$slip.url}"><i>VIWE</i></a>
+            <td class="align-middle"><a href="{$slip.order_url_details}" data-link-action="view-order-details">{$slip.order_reference}</a></td>
+            <td class="align-middle" scope="row">{$slip.credit_slip_number}</td>
+            <td class="align-middle">{$slip.credit_slip_date}</td>
+            <td class="align-middle text-sm-center">
+              <a href="{$slip.url}" class="btn btn-primary btn-sm">
+                <span class="material-icons btn-icon ml-1">file_download</span>
+                {l s='Download' d='Shop.Theme.Catalog'}
+              </a>
             </td>
           </tr>
         {/foreach}
@@ -55,24 +58,30 @@
     </table>
     <div class="credit-slips hidden-md-up">
       {foreach from=$credit_slips item=slip}
-        <div class="credit-slip">
-          <ul>
-            <li>
-              <strong>{l s='Order' d='Shop.Theme.Customeraccount'}</strong>
-              <a href="{$slip.order_url_details}" data-link-action="view-order-details">{$slip.order_reference}</a>
-            </li>
-            <li>
-              <strong>{l s='Credit slip' d='Shop.Theme.Customeraccount'}</strong>
-              {$slip.credit_slip_number}
-            </li>
-            <li>
-              <strong>{l s='Date issued' d='Shop.Theme.Customeraccount'}</strong>
-              {$slip.credit_slip_date}
-            </li>
-            <li>
-              <a href="{$slip.url}">{l s='View credit slip' d='Shop.Theme.Customeraccount'}</a>
-            </li>
-          </ul>
+        <div class="card mb-5">
+          <div class="card-header">
+            <p class="card-title h5 mb-0">
+              {l s='Credit slip' d='Shop.Theme.Customeraccount'} - {$slip.credit_slip_number}
+            </p>
+          </div>
+          <div class="card-body">
+            <ul class="mb-0 row">
+              <li class="col-sm-6 mb-2">
+                <strong>{l s='Order' d='Shop.Theme.Customeraccount'}:</strong>
+                <a href="{$slip.order_url_details}" data-link-action="view-order-details">{$slip.order_reference}</a>
+              </li>
+              <li class="col-sm-6 mb-2">
+                <strong>{l s='Date issued' d='Shop.Theme.Customeraccount'}:</strong>
+                {$slip.credit_slip_date}
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <a href="{$slip.url}" class="btn btn-primary btn-sm btn-block">
+              <span class="material-icons btn-icon ml-1">file_download</span>
+              {l s='View credit slip' d='Shop.Theme.Customeraccount'}
+            </a>
+          </div>
         </div>
       {/foreach}
     </div>
