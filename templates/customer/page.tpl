@@ -39,7 +39,7 @@
     <div class="col-lg-3 col-12">
      {include file='customer/customer-links.tpl'}
     </div>
-    <div class="offset-lg-1 col-lg-8 col-12">
+    <div class="pl-lg-5 col-lg-9 col-12">
       <section id="content" class="{block name='pageContentClass'}page-content {/block}page-content--{$page.page_name}">
         {$smarty.capture.acc_title nofilter}
 
