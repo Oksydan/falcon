@@ -87,15 +87,15 @@
           </div>
           <div class="card-body">
             <ul class="mb-0 row">
-              <div class="col-sm-6 mb-2">
+              <li class="col-sm-6 mb-2">
                 <strong>{l s='Date' d='Shop.Theme.Checkout'}:</strong> {$order.details.order_date}
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>{l s='Total price' d='Shop.Theme.Checkout'}:</strong> {$order.totals.total.value}
-              </div>
-              <div class="col-sm-6 mb-2">
+              </li>
+              <li class="col-sm-6 mb-2">
                 <strong>{l s='Status' d='Shop.Theme.Checkout'}:</strong> {$order.history.current.ostate_name}
-              </div>
+              </li>
             </ul>
           </div>
           <div class="card-footer">
