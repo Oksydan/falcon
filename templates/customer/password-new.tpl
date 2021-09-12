@@ -61,7 +61,7 @@
       <input type="hidden" name="reset_token" id="reset_token" value="{$reset_token}">
 
       <div class="text-center mt-3">
-        <button class="btn btn-primary d-none d-md-inlie-block" type="submit" name="submit">
+        <button class="btn btn-primary d-none d-md-inline-block" type="submit" name="submit">
           {l s='Change Password' d='Shop.Theme.Actions'}
         </button>
         <button class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submit">
