@@ -28,7 +28,6 @@ function initProductImageSlider() {
   }
 
   const galleryThumbs = new SwiperSlider($thumbs[0], {
-    spaceBetween: 10,
     breakpoints: {
       320: {
         slidesPerView: 3,

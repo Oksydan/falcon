@@ -108,7 +108,7 @@
     {if $product.images|count > 1}
       <div class="js-product-thumbs product-thumbs swiper-container mt-2 swiper-container-custom">
         <div class="product-thumbs__list swiper-wrapper">
-          <div class="swiper-slide">
+          <div class="product-thumbs__elem swiper-slide">
             <img
               class="rounded img-fluid lazyload"
               {generateImagesSources image=$product.default_image size='home_default' lazyload=true}

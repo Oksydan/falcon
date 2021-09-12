@@ -1,9 +1,14 @@
 
 .product-thumbs {
+  margin-left: -#{map-get($spacers, 1)};
+  margin-right: -#{map-get($spacers, 1)};
+
   &__elem {
     cursor: pointer;
     opacity: .3;
     transition: .3s ease opacity;
+    @include make-col(4);
+    padding: 0 map-get($spacers, 1);
 
     &:focus,
     &:hover {
@@ -12,6 +17,10 @@
 
     &.swiper-slide-thumb-active {
       opacity: 1;
+    }
+
+    @include media-breakpoint-up(sm) {
+      @include make-col(3);
     }
   }
 }
