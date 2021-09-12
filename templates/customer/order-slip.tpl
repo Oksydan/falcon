@@ -43,10 +43,10 @@
       <tbody>
         {foreach from=$credit_slips item=slip}
           <tr>
-            <td><a href="{$slip.order_url_details}" data-link-action="view-order-details">{$slip.order_reference}</a></td>
-            <td scope="row">{$slip.credit_slip_number}</td>
-            <td>{$slip.credit_slip_date}</td>
-            <td class="text-sm-center">
+            <td class="align-middle"><a href="{$slip.order_url_details}" data-link-action="view-order-details">{$slip.order_reference}</a></td>
+            <td class="align-middle" scope="row">{$slip.credit_slip_number}</td>
+            <td class="align-middle">{$slip.credit_slip_date}</td>
+            <td class="align-middle text-sm-center">
               <a href="{$slip.url}" class="btn btn-primary btn-sm">
                 <span class="material-icons btn-icon ml-1">file_download</span>
                 {l s='Download' d='Shop.Theme.Catalog'}

@@ -32,7 +32,7 @@
   <h6>{l s='Here are the orders you\'ve placed since your account was created.' d='Shop.Theme.Customeraccount'}</h6>
 
   {if $orders}
-    <table class="table table-striped table-bordered table-labeled hidden-sm-down">
+    <table class="table table-striped table-bordered hidden-sm-down">
       <thead class="thead-default">
         <tr>
           <th>{l s='Order reference' d='Shop.Theme.Checkout'}</th>
@@ -46,33 +46,30 @@
       <tbody>
         {foreach from=$orders item=order}
           <tr>
-            <th scope="row">{$order.details.reference}</th>
-            <td>
+            <th scope="row" class="align-middle">{$order.details.reference}</th>
+            <td class="align-middle">
               <span class="text-nowrap">
                 {$order.details.order_date}
               </span>
             </td>
-            <td class="text-xs-right">
-              <span class="price text-lowercase">
+            <td class="text-xs-right align-middle">
+              <span class="text-primary font-weight-bold text-lowercase">
                 {$order.totals.total.value}
               </span>
             </td>
-            <td class="hidden-md-down">{$order.details.payment}</td>
-            <td>
+            <td class="hidden-md-down align-middle">{$order.details.payment}</td>
+            <td class="align-middle">
               <span
-                class="label label-pill badge {$order.history.current.contrast}"
+                class="label label-pill badge {if Tools::getBrightness($order.history.current.color) < 128}text-white{/if}"
                 style="background-color:{$order.history.current.color}"
               >
                 {$order.history.current.ostate_name}
               </span>
             </td>
-            <td class="text-sm-center order-actions">
-              <a href="{$order.details.details_url}" data-link-action="view-order-details">
+            <td class="text-sm-center order-actions align-middle">
+              <a class="btn btn-sm btn-primary" href="{$order.details.details_url}" data-link-action="view-order-details">
                 {l s='Details' d='Shop.Theme.Customeraccount'}
               </a>
-              {if $order.details.reorder_url}
-                <a href="{$order.details.reorder_url}">{l s='Reorder' d='Shop.Theme.Actions'}</a>
-              {/if}
             </td>
           </tr>
         {/foreach}

@@ -45,17 +45,17 @@
       <tbody>
         {foreach from=$cart_rules item=cart_rule}
           <tr>
-            <th scope="row">{$cart_rule.code}</th>
-            <td>{$cart_rule.name}</td>
+            <th scope="row" class="align-middle">{$cart_rule.code}</th>
+            <td class="align-middle">{$cart_rule.name}</td>
             <td class="text-xs-right">{$cart_rule.quantity_for_user}</td>
-            <td>
-              <span class="price text-lowercase">
+            <td class="align-middle">
+              <span class="text-primary font-weight-bold text-lowercase align-middle">
                 {$cart_rule.value}
               </span>
             </td>
-            <td>{$cart_rule.voucher_minimal}</td>
-            <td>{$cart_rule.voucher_cumulable}</td>
-            <td>
+            <td class="align-middle">{$cart_rule.voucher_minimal}</td>
+            <td class="align-middle">{$cart_rule.voucher_cumulable}</td>
+            <td class="align-middle">
               <span class="text-nowrap">
                 {$cart_rule.voucher_date}
               </span>

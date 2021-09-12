@@ -47,15 +47,15 @@
       <tbody>
         {foreach from=$ordersReturn item=return}
           <tr>
-            <td><a href="{$return.details_url}">{$return.reference}</a></td>
-            <td><a href="{$return.return_url}">{$return.return_number}</a></td>
-            <td>{$return.state_name}</td>
-            <td>
+            <td class="align-middle"><a href="{$return.details_url}">{$return.reference}</a></td>
+            <td class="align-middle"><a href="{$return.return_url}">{$return.return_number}</a></td>
+            <td class="align-middle">{$return.state_name}</td>
+            <td class="align-middle">
               <span class="text-nowrap">
                 {$return.return_date}
               </span>
             </td>
-            <td class="text-sm-center">
+            <td class="text-sm-center align-middle">
               {if $return.print_url}
                 <a href="{$return.print_url}" class="btn btn-primary btn-sm">
                   <span class="material-icons btn-icon ml-1">file_download</span>
