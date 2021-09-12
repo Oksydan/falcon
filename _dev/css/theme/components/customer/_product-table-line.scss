@@ -2,6 +2,7 @@
   $self: &;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 
   &:last-child {
     border-bottom: 0;
@@ -86,4 +87,20 @@
     }
   }
 
+  &__price {
+    @include font-size($font-size-base);
+  }
+
+  &__checkbox-block {
+    position: static;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      cursor: pointer;
+    }
+  }
 }

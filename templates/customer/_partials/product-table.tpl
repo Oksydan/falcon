@@ -11,6 +11,11 @@
       <th>
         {l s='Quantity' d='Shop.Theme.Catalog'}
       </th>
+      {if $page.page_name == 'order-detail' && $order.details.is_returnable}
+        <th>
+          {l s='Returned' d='Shop.Theme.Customeraccount'}
+        </th>
+      {/if}
       <th>
         {l s='Total' d='Shop.Theme.Checkout'}
       </th>
