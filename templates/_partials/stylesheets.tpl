@@ -23,9 +23,14 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
+{$cssAssetHash = Configuration::get('PS_CCCCSS_VERSION')|md5}
 
 {foreach $stylesheets.external as $stylesheet}
-  <link rel="stylesheet" href="{$stylesheet.uri}" type="text/css" media="{$stylesheet.media}">
+  <link
+    rel="stylesheet"
+    href="{$stylesheet.uri}?v={$cssAssetHash}"
+    type="text/css"
+    media="{$stylesheet.media}">
 {/foreach}
 
 {foreach $stylesheets.inline as $stylesheet}
