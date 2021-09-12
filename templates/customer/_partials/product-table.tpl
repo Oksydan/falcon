@@ -22,7 +22,7 @@
     </tr>
   </thead>
   {foreach from=$products item=product}
-    <tr class="product-table__row product-line">
+    <tr class="product-table__row product-line {if $page.page_name == 'order-detail' && $order.details.is_returnable}product-line--extended{/if}">
       {block name='cart_detailed_product_line'}
         {include file='customer/_partials/product-table-line.tpl' product=$product interactive=$interactive|default:false}
       {/block}

@@ -24,7 +24,7 @@
     </tr>
   </thead>
   {foreach from=$order.products item=product name=products}
-    <tr class="product-table__row product-line">
+    <tr class="product-table__row product-line product-line--return">
       <td class="product-line__cell product-line__cell--checkbox">
         {if !$product.customizations}
           <label class="custom-control custom-checkbox product-line__checkbox-block mb-0 custom-checkbox-block">
@@ -137,16 +137,16 @@
         </div>
       </td>
 
-      <td class="product-line__cell product-line__cell--price qty" data-title="{l s='Quantity' d='Shop.Theme.Catalog'}">
+      <td class="product-line__cell product-line__cell--qty qty" {if $product.quantity > $product.qty_returned} data-title="{l s='Quantity' d='Shop.Theme.Catalog'}"{/if}>
         {if !$product.customizations}
           {if $product.quantity > $product.qty_returned}
-            <div class="select" id="_desktop_return_qty_{$product.id_order_detail}">
-              <select name="order_qte_input[{$product.id_order_detail}]" class="custom-select">
-                {section name=quantity start=1 loop=$product.quantity+1-$product.qty_returned}
-                  <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
-                {/section}
-              </select>
-            </div>
+              <div class="select" id="_desktop_return_qty_{$product.id_order_detail}">
+                <select name="order_qte_input[{$product.id_order_detail}]" class="custom-select">
+                  {section name=quantity start=1 loop=$product.quantity+1-$product.qty_returned}
+                    <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
+                  {/section}
+                </select>
+              </div>
           {/if}
         {else}
           {foreach $product.customizations as $customization}

@@ -1,6 +1,7 @@
 
 .product-table {
   margin: 0;
+  overflow: hidden;
 
   &__head {
     @include media-breakpoint-down(sm) {
@@ -9,6 +10,12 @@
 
     th {
       border-top: 0;
+    }
+  }
+
+  &__row {
+    @include media-breakpoint-up(sm) {
+      margin-top: -1px;
     }
   }
 

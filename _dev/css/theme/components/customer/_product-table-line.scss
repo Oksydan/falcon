@@ -103,4 +103,56 @@
       cursor: pointer;
     }
   }
+
+  &--return {
+    #{$self} {
+      &__cell {
+        @include media-breakpoint-down(sm) {
+          &--checkbox {
+            order: -3;
+            @include custom-col(rem-calc(40px));
+          }
+          &--img {
+            @include custom-col(rem-calc(70px));
+            padding-left: 0
+          }
+
+          &--prod {
+            @include custom-col(calc(100% - #{rem-calc(110px)}));
+          }
+
+          &--qty,
+          &--price {
+            @include custom-col(50%);
+          }
+        }
+      }
+    }
+  }
+
+  &--extended {
+    #{$self} {
+      &__cell {
+        @include media-breakpoint-down(sm) {
+          &--price,
+          &--qty,
+          &--returned,
+          &--total {
+            @include custom-col(25%);
+          }
+        }
+        @include media-breakpoint-down(xs) {
+          &--price,
+          &--qty,
+          &--returned,
+          &--total {
+            @include custom-col(50%);
+          }
+          &--qty {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
 }
