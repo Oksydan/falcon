@@ -20,10 +20,6 @@
 
 /*** Order details page ***/
 .page-order-detail {
-  .box {
-    margin-bottom: 1rem;
-  }
-
   #order-history {
     .history-lines {
       .history-line {
@@ -46,42 +42,4 @@
   }
 }
 
-/*** Order return page ***/
-#order-return-infos {
-  .thead-default th {
-    color: $gray-900;
-  }
 
-  .customization {
-    margin-top: 0.75rem;
-  }
-}
-
-/*** History page ***/
-#history {
-  .orders {
-    margin: 0 -1rem;
-
-    .order {
-      a {
-        h3 {
-          color: $gray-600;
-        }
-      }
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid $gray-200;
-
-      .label {
-        display: inline-block;
-        padding: 0.25rem 0.375rem;
-        margin: 0.25rem 0;
-        color: #fff;
-        border-radius: 3px;
-      }
-
-      &:last-child {
-        border-bottom: 0;
-      }
-    }
-  }
-}
