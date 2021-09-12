@@ -85,7 +85,7 @@
           <div class="card-header">
             <h5 class="mb-0">{l s='Order reference' d='Shop.Theme.Checkout'}: {$order.details.reference}</h5>
           </div>
-          <div class="card-body font-sm">
+          <div class="card-body">
             <ul class="mb-0 row">
               <div class="col-sm-6 mb-2">
                 <strong>{l s='Date' d='Shop.Theme.Checkout'}:</strong> {$order.details.order_date}

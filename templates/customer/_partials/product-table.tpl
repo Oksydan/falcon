@@ -1,4 +1,9 @@
 <table class="table product-table">
+  <div class="card-header d-md-none">
+    <p class="card-title mb-0 h5">
+      {l s='Products' d='Shop.Theme.Catalog'}
+    </p>
+  </div>
   <thead class="thead-default product-table__head">
     <tr>
       <th></th>
