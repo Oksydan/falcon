@@ -10,6 +10,7 @@
 * [Usage](#usage)
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
+  * [Smarty functions](#smarty-functions)
 * [Contribution](#contribution)
 
 ## About The Theme
@@ -146,6 +147,70 @@ script  | description
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
 `scss-fix`  | Script that run `stylelint` and fix minor issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
+
+
+### Smarty functions
+
+#### GenerateImagesSources
+
+Function created to simplify adding images src with support for high DPI images.
+
+parameter  | required | description
+------------- | ------------- | -------------
+`image` | `true` | Parameter must be a product image array for example `$product.default_image`.
+`size` | `true` | Size of image defined in `theme.yml` file for example `home_default`.
+`lazyload` | `false` | Optional parameter, default value is equal `true`. If `lazyload` is set to true it replace image `src` parameter to `data-src` (or `srcset` if high DPI images are turned on). To lazyload working properly it is required to add `lazyload` class to that img.
+
+Example of usage:
+
+```smarty
+  <img
+    class="rounded img-fluid lazyload"
+    {generateImagesSources image=$product.default_image size='home_default' lazyload=false}
+    width="{$product.default_image.bySize.home_default.width}"
+    height="{$product.default_image.bySize.home_default.height}"
+    loading="lazy"
+    />
+```
+
+It will output:
+
+```html
+  <img
+    class="img-fluid rounded lazyload"
+    data-srcset="http://domain.com/{id}-home_default/{product_name}.jpg,
+                http://domain.com/{id}-home_default2x/{product_name}.jpg 2x"
+    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 1 1'%3E%3C/svg%3E"
+    width="250"
+    height="250"
+    loading="lazy"
+    />
+```
+
+#### generateImageSvgPlaceholder
+
+Function created to return simple svg placeholder with given sizes.
+
+parameter  | required | description
+------------- | ------------- | -------------
+`width` | `true` | Width of an image.
+`height` | `true` | Height of an image.
+
+Example of usage:
+
+```smarty
+  <img
+     src="{generateImageSvgPlaceholder width=100 height=150}"
+    />
+```
+
+It will output:
+
+```html
+    <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 1 1'%3E%3C/svg%3E"
+    />
+```
 
 ## Contribution
 
