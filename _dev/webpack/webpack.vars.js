@@ -29,15 +29,15 @@ exports.webpackVars = {
     for (const entry of entries) {
       resultEntries[entry] = [
         path.resolve(themeDev, `./js/${entry}.js`),
-        path.resolve(themeDev, `./css/${entry}.scss`)
+        path.resolve(themeDev, `./css/${entry}.scss`),
       ]
     }
 
     return resultEntries;
   },
   getOutput: ({ mode, publicPath, siteURL, port }) => ({
-    filename: "js/[name].js",
-    chunkFilename: mode === 'production' ? "js/[chunkhash].js" : "js/[id].js",
+    filename: 'js/[name].js',
+    chunkFilename: mode === 'production' ? 'js/[chunkhash].js' : 'js/[id].js',
     path: path.resolve(themeDev, '../assets'),
     publicPath: mode === 'production' ? publicPath : siteURL + ':' + port + publicPath,
     pathinfo: false,
