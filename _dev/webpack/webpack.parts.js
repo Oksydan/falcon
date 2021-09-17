@@ -56,12 +56,7 @@ exports.extractScss = ({mode = 'production'}) => ({
     rules: [{
       test: /\.scss$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: true
-          }
-        },
+        MiniCssExtractPlugin.loader,
         'css-loader',
         {
           loader: 'postcss-loader',
@@ -97,10 +92,7 @@ exports.extractJs = () => ({
         }
       },
     ]
-  },
-  plugins: [
-    new ESBuildPlugin()
-  ]
+  }
 });
 
 exports.extractImages = ({ publicPath }) => ({
@@ -108,12 +100,17 @@ exports.extractImages = ({ publicPath }) => ({
     rules: [
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'img-dist/',
-          publicPath: publicPath + '/img-dist/',
-          name: '[name].[ext]',
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'img-dist/',
+              publicPath: publicPath + '/img-dist/',
+              name: '[contenthash].[ext]',
+            },
+          },
+        ],
+        type: 'javascript/auto',
       },
     ]
   }
@@ -124,12 +121,17 @@ exports.extractFonts = ({ publicPath }) => ({
     rules: [
       {
         test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'fonts/',
-          publicPath: publicPath + '/fonts/',
-          name: '[contenthash].[ext]'
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'fonts/',
+              publicPath: publicPath + '/fonts/',
+              name: '[contenthash].[ext]',
+            },
+          },
+        ],
+        type: 'javascript/auto',
       }
     ]
   }
