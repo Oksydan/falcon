@@ -22,19 +22,26 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="col flex-grow-0 header-top__block header-top__block--user">
-  <a
-    class="header-top__link"
-    rel="nofollow"
-    href="{$urls.pages.my_account}"
-    {if $logged}
-      title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}"
-    {else}
-      title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
-    {/if}
-  >
-    <div class="header-top__icon-container">
-      <span class="header-top__icon material-icons">person</span>
-    </div>
-  </a>
-</div>
+
+{if isset($listing.pagination) && $listing.pagination.should_be_displayed}
+  {$page_nb = 1}
+  {if isset($smarty.get.page)}
+      {$page_nb = $smarty.get.page|intval|default:1}
+  {/if}
+  {$queryPage = '?page='|cat:$page_nb}
+  {$page.canonical = $page.canonical|replace:$queryPage:''}
+
+  {$prev = false}
+  {$next = false}
+  {if ($page_nb - 1) == 1}
+      {$prev = $page.canonical}
+  {elseif $page_nb > 2}
+      {$prev = ($page['canonical']|cat:'?page='|cat:($page_nb - 1))}
+  {/if}
+  {if $listing.pagination.total_items > $listing.pagination.items_shown_to}
+      {$next = ($page['canonical']|cat:'?page='|cat:($page_nb + 1))}
+  {/if}
+
+  {if $prev}<link rel="prev" href="{$prev}">{/if}
+  {if $next}<link rel="next" href="{$next}">{/if}
+{/if}

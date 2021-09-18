@@ -23,11 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {if $product.show_price}
-  <div class="product-prices mb-3">
-    {block name='product_discount'}
-      {if $product.has_discount}
-      {/if}
-    {/block}
+  <div class="product-prices js-product-prices mb-3">
 
     {block name='product_price'}
       <div class="product-price">
@@ -42,10 +38,19 @@
         {/if}
 
         <div>
-          <span class="price price--lg">{$product.price}</span>
-          {if $product.has_discount}
-            <span class="ml-2 price price--regular">{$product.regular_price}</span>
-          {/if}
+          <span class="price price--lg">
+            {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='product_sheet'}{/capture}
+            {if '' !== $smarty.capture.custom_price}
+              {$smarty.capture.custom_price nofilter}
+            {else}
+              {$product.price}
+            {/if}
+          </span>
+          {block name='product_discount'}
+            {if $product.has_discount}
+              <span class="ml-2 price price--regular">{$product.regular_price}</span>
+            {/if}
+          {/block}
           {hook h='displayProductPriceBlock' product=$product type="old_price"}
         </div>
 
@@ -71,7 +76,7 @@
 
     {block name='product_ecotax'}
       {if $product.ecotax.amount > 0}
-        <p class="price-ecotax">{l s='Including %amount% for ecotax' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.ecotax.value]}
+        <p class="price-ecotax">{l s='Including %amount% for ecotax' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.ecotax_tax_inc]}
           {if $product.has_discount}
             {l s='(not impacted by the discount)' d='Shop.Theme.Catalog'}
           {/if}
@@ -89,6 +94,7 @@
       {/if}
       {hook h='displayProductPriceBlock' product=$product type="price"}
       {hook h='displayProductPriceBlock' product=$product type="after_price"}
+
       {if $product.is_virtual	== 0}
         {if $product.additional_delivery_times == 1}
           {if $product.delivery_information}

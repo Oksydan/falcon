@@ -25,7 +25,7 @@
 
 <div id="_desktop_filters">
   {if isset($displayedFacets) && $displayedFacets|count}
-    <div id="search_filters" class="search-filters card mb-md-3">
+    <div id="search_filters" class="js-search-filters search-filters card mb-md-3">
       <div class="card-header d-none d-md-block">
         {block name='facets_title'}
           <p class="card-title h5 mb-0">{l s='Filter By' d='Shop.Theme.Actions'}</p>
