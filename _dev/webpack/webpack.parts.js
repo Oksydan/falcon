@@ -1,6 +1,5 @@
 const chokidar = require('chokidar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ChunkRenamePlugin = require('enhanced-webpack-chunk-rename-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
