@@ -1,13 +1,16 @@
 import $ from 'jquery';
 
-import SwiperCore, {
-  Swiper, Navigation, Pagination, Thumbs, Autoplay,
+import Swiper, {
+  Navigation, Pagination, Thumbs, Autoplay,
 } from 'swiper';
 
-
-SwiperCore.use([Navigation, Pagination, Thumbs, Autoplay]);
-
-export const SwiperSlider = Swiper;
+export {
+  Swiper,
+  Navigation,
+  Pagination,
+  Thumbs,
+  Autoplay,
+}
 
 class PageSlider {
   constructor({defaultOptions} = {}) {
@@ -17,7 +20,7 @@ class PageSlider {
   }
 
   init() {
-    $('.swiper-container:not(.swiper-container-initialized)').not('.swiper-container-custom').each((i, el) => {
+    $('.swiper:not(.swiper-initialized)').not('.swiper-custom').each((i, el) => {
       this.addSlider(el);
     });
   }
@@ -49,6 +52,11 @@ class PageSlider {
     return {
       ...this.defaultOptions,
       ...config,
+      ...{
+        modules: [
+          Navigation, Pagination, Thumbs, Autoplay
+        ]
+      }
     };
   }
 

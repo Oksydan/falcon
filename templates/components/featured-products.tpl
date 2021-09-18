@@ -36,7 +36,7 @@
       ]
     ]}
 
-    <div class="swiper-container product-slider py-1 my-n1" data-swiper='{block name="featured_products_slider_options"}{$sliderConfig|json_encode}{/block}'>
+    <div class="swiper product-slider py-1 my-n1" data-swiper='{block name="featured_products_slider_options"}{$sliderConfig|json_encode}{/block}'>
       {block name='featured_products_products'}
         <div class="featured-products__slider swiper-wrapper {block name='featured_products_slider_class'}{/block}">
           {foreach from=$products item="product"}

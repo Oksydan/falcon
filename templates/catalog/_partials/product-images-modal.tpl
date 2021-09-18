@@ -26,7 +26,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="js-modal-gallery modal-gallery swiper-container swiper-container-custom">
+        <div class="js-modal-gallery modal-gallery swiper swiper-custom">
 
         {if $product.images|count > 1}
           <div class="modal-gallery__list swiper-wrapper">

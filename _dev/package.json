@@ -27,7 +27,7 @@
     "nouislider": "^14.6.3",
     "popper.js": "^1.16.1",
     "prestashop": "0.0.1",
-    "swiper": "^6.7.5",
+    "swiper": "^7.0.6",
     "vanilla-lazyload": "^17.3.1",
     "wnumb": "^1.2.0"
   },

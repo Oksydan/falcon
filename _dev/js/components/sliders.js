@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import $ from 'jquery';
-import PageSlider, {SwiperSlider} from './PageSlider';
+import PageSlider, { Swiper, Navigation, Thumbs } from './PageSlider';
 
 $(() => {
   const slider = new PageSlider({
@@ -27,7 +27,7 @@ function initProductImageSlider() {
     return;
   }
 
-  const galleryThumbs = new SwiperSlider($thumbs[0], {
+  const galleryThumbs = new Swiper($thumbs[0], {
     breakpoints: {
       320: {
         slidesPerView: 3,
@@ -36,18 +36,19 @@ function initProductImageSlider() {
         slidesPerView: 4,
       },
     },
-    freeMode: true,
+    modules: [ Navigation, Thumbs ],
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
   });
 
   /* eslint-disable no-new */
-  new SwiperSlider($galleryTop[0], {
+  new Swiper($galleryTop[0], {
     spaceBetween: 10,
     navigation: {
       nextEl: $galleryTop.find('.swiper-button-next')[0],
       prevEl: $galleryTop.find('.swiper-button-prev')[0],
     },
+    modules: [ Navigation, Thumbs ],
     thumbs: {
       swiper: galleryThumbs,
     },
@@ -62,10 +63,10 @@ function initModalGallerySlider() {
   }
 
   /* eslint-disable no-new */
-  const modalSlider = new SwiperSlider($gallery[0], {
+  const modalSlider = new Swiper($gallery[0], {
     slidesPerView: 1,
     spaceBetween: 10,
-    freeMode: false,
+    modules: [ Navigation ],
     navigation: {
       nextEl: $gallery.find('.swiper-button-next')[0],
       prevEl: $gallery.find('.swiper-button-prev')[0],
