@@ -29,32 +29,34 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <h4 class="h4">
-      {l s='Addresses' d='Shop.Theme.Checkout'}
-        <span class="step-edit step-to-addresses js-edit-addresses"><i class="edit">edit</i> {l s='edit' d='Shop.Theme.Actions'}</span>
-      </h4>
+  {if !$cart.is_virtual}
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="h4">
+        {l s='Addresses' d='Shop.Theme.Checkout'}
+          <span class="step-edit step-to-addresses js-edit-addresses"><i class="edit">edit</i> {l s='edit' d='Shop.Theme.Actions'}</span>
+        </h4>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card noshadow">
-        <div class="card-block">
-          <h4 class="h5 black addresshead">{l s='Your Delivery Address' d='Shop.Theme.Checkout'}</h4>
-          {$customer.addresses[$cart.id_address_delivery]['formatted'] nofilter}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card noshadow">
+          <div class="card-block">
+            <h4 class="h5 black addresshead">{l s='Your Delivery Address' d='Shop.Theme.Checkout'}</h4>
+            {$customer.addresses[$cart.id_address_delivery]['formatted'] nofilter}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card noshadow">
+          <div class="card-block">
+            <h4 class="h5 black addresshead">{l s='Your Invoice Address' d='Shop.Theme.Checkout'}</h4>
+            {$customer.addresses[$cart.id_address_invoice]['formatted'] nofilter}
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card noshadow">
-        <div class="card-block">
-          <h4 class="h5 black addresshead">{l s='Your Invoice Address' d='Shop.Theme.Checkout'}</h4>
-          {$customer.addresses[$cart.id_address_invoice]['formatted'] nofilter}
-        </div>
-      </div>
-    </div>
-  </div>
+  {/if}
 
   <div class="row">
     <div class="col-md-12">

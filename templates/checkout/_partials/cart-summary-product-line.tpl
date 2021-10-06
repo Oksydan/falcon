@@ -26,7 +26,11 @@
   <div class="cart-products">
     <div class="cart-products__thumb">
       <img
-      {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+        {if $product.default_image}
+          {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+        {else}
+          src="{$urls.no_picture_image.bySize.cart_default.url}"
+        {/if}
         alt="{$product.name|escape:'quotes'}"
         class="img-fluid rounded"
         width="{$product.default_image.bySize.cart_default.width}"
@@ -55,23 +59,4 @@
       </span>
     </div>
   </div>
-
-  {* <div class="media-left">
-    <a href="{$product.url}" title="{$product.name}">
-      <img class="media-object" src="{$product.cover.small.url}" alt="{$product.name}" loading="lazy">
-    </a>
-  </div>
-  <div class="media-body">
-    <span class="product-name">{$product.name}</span>
-    <span class="product-quantity">x{$product.quantity}</span>
-    <span class="product-price float-right">{$product.price}</span>
-    {hook h='displayProductPriceBlock' product=$product type="unit_price"}
-    {foreach from=$product.attributes key="attribute" item="value"}
-      <div class="product-line-info product-line-info-secondary text-muted">
-        <span class="label">{$attribute}:</span>
-        <span class="value">{$value}</span>
-      </div>
-    {/foreach}
-    <br />
-  </div> *}
 {/block}
