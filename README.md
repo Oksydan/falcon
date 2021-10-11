@@ -12,6 +12,7 @@
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
+* [Support project](#support-project)
 * [Contribution](#contribution)
 
 ## About The Theme
@@ -218,6 +219,11 @@ It will output:
       src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 1 1'%3E%3C/svg%3E"
     />
 ```
+
+## Support project
+
+If you like this project, but me a cup of coffee. [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=JCSU5Z2AZV2UA)
+
 
 ## Contribution
 
