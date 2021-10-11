@@ -6,6 +6,7 @@
 * [About the Theme](#about-the-theme)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
+  * [Support table](#support-table)
   * [Installation](#installation)
 * [Usage](#usage)
   * [Working with webpack](#working-with-webpack)
@@ -15,7 +16,7 @@
 
 ## About The Theme
 
-**Modern prestashop starter theme** is made with modern tools such as webpack 4.4, webpack dev server with HMR :fire::fire: and latest bootstrap 4.6.
+**Modern prestashop starter theme** is made with modern tools such as webpack 5.53, webpack dev server with HMR :fire::fire: and latest bootstrap 4.6.
 This theme was created to deliver starter theme with latest developers tools and frameworks. You are able to create enterprise level prestashop theme that is easy to maintain. Made for developers, **if you are merchant don't download it!**
 
 #### List of changes compared to classic theme:
@@ -55,8 +56,14 @@ This theme was created to deliver starter theme with latest developers tools and
 #### System requirements:
 - [Prestashop requirements](https://devdocs.prestashop.com/1.7/basics/installation/system-requirements/),
 - vhost setup, to work with starter theme it is required to setup your shop domain with vhost e.g. `starter.test`,
-- node >= 10v,
 - starter tested only on macOS, create an issue if it isn't working with your system.
+
+### Support table
+
+Starter version |  PS version | node version
+------------- | ------------- | -------------
+v 1.X  | 1.7.7.X | >= 10
+v 2.X  | 1.7.8.X | >= 14
 
 ### Installation
 
