@@ -174,7 +174,7 @@ Example of usage:
 ```smarty
   <img
     class="rounded img-fluid lazyload"
-    {generateImagesSources image=$product.default_image size='home_default' lazyload=false}
+    {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
     width="{$product.default_image.bySize.home_default.width}"
     height="{$product.default_image.bySize.home_default.height}"
     loading="lazy"
@@ -222,7 +222,7 @@ It will output:
 
 ## Support project
 
-If you like this project, but me a cup of coffee. [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=JCSU5Z2AZV2UA)
+If you like this project, buy me a cup of coffee. [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=JCSU5Z2AZV2UA)
 
 
 ## Contribution
