@@ -4,6 +4,7 @@
 ## Table of Contents
 
 * [About the Theme](#about-the-theme)
+  * [Online demo](#online-demo)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Support table](#support-table)
@@ -41,6 +42,11 @@ This theme was created to deliver starter theme with latest developers tools and
 8. Specific `.scss` file structure that help you maintain your code.
 9. Automatic generated preload links for theme fonts. You don't have to care about manually preloading fonts inside template. Webpack generates `.html` file that is included inside head. Fonts fileNames are `contentHashed` so client side caching problems after fonts changes are resolved (especially useful for icomoon generated icon fonts.).
 10. High dpi images support added. With just simple call of smarty function `generateImageSources` you are able to handle whole image sources logic - `srcset` for high dpi images option enabled.
+
+### Online demo
+
+Want to check it online in action before downloading? Demo available [here](https://mpst.dev/).<br>
+Demo hosted by our technical partner [Wrapnet](https://wrapnet.pl/).
 
 ## Getting started
 
