@@ -4,18 +4,21 @@
 ## Table of Contents
 
 * [About the Theme](#about-the-theme)
+  * [Online demo](#online-demo)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
+  * [Support table](#support-table)
   * [Installation](#installation)
 * [Usage](#usage)
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
+* [Support project](#support-project)
 * [Contribution](#contribution)
 
 ## About The Theme
 
-**Modern prestashop starter theme** is made with modern tools such as webpack 4.4, webpack dev server with HMR :fire::fire: and latest bootstrap 4.6.
+**Modern prestashop starter theme** is made with modern tools such as webpack 5.53, webpack dev server with HMR :fire::fire: and latest bootstrap 4.6.
 This theme was created to deliver starter theme with latest developers tools and frameworks. You are able to create enterprise level prestashop theme that is easy to maintain. Made for developers, **if you are merchant don't download it!**
 
 #### List of changes compared to classic theme:
@@ -40,6 +43,11 @@ This theme was created to deliver starter theme with latest developers tools and
 9. Automatic generated preload links for theme fonts. You don't have to care about manually preloading fonts inside template. Webpack generates `.html` file that is included inside head. Fonts fileNames are `contentHashed` so client side caching problems after fonts changes are resolved (especially useful for icomoon generated icon fonts.).
 10. High dpi images support added. With just simple call of smarty function `generateImageSources` you are able to handle whole image sources logic - `srcset` for high dpi images option enabled.
 
+### Online demo
+
+Want to check it online in action before downloading? Demo available [here](https://mpst.dev/).<br>
+Demo hosted by our technical partner [Wrapnet](https://wrapnet.pl/).
+
 ## Getting started
 
 ### Prerequisites
@@ -55,8 +63,14 @@ This theme was created to deliver starter theme with latest developers tools and
 #### System requirements:
 - [Prestashop requirements](https://devdocs.prestashop.com/1.7/basics/installation/system-requirements/),
 - vhost setup, to work with starter theme it is required to setup your shop domain with vhost e.g. `starter.test`,
-- node >= 10v,
 - starter tested only on macOS, create an issue if it isn't working with your system.
+
+### Support table
+
+Starter version |  PS version | node version
+------------- | ------------- | -------------
+v 1.X  | 1.7.7.X | >= 10
+v 2.X  | 1.7.8.X | >= 14
 
 ### Installation
 
@@ -166,7 +180,7 @@ Example of usage:
 ```smarty
   <img
     class="rounded img-fluid lazyload"
-    {generateImagesSources image=$product.default_image size='home_default' lazyload=false}
+    {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
     width="{$product.default_image.bySize.home_default.width}"
     height="{$product.default_image.bySize.home_default.height}"
     loading="lazy"
@@ -211,6 +225,11 @@ It will output:
       src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 1 1'%3E%3C/svg%3E"
     />
 ```
+
+## Support project
+
+If you like this project, buy me a cup of coffee. [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=JCSU5Z2AZV2UA)
+
 
 ## Contribution
 

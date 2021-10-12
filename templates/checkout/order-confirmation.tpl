@@ -55,7 +55,7 @@
         <div class="card-body">
           <ul class="m-0">
             <li class="cart-summary-line">
-              <span>
+              <span id="order-reference-value">
                 {l s='Order reference: %reference%' d='Shop.Theme.Checkout' sprintf=['%reference%' => "<strong>`$order.details.reference`</strong>"]}
               </span>
             </li>
@@ -83,7 +83,7 @@
 
       <div class="card-body">
         {foreach $order.subtotals as $subtotal}
-          {if $subtotal.type !== 'tax' && $subtotal.label !== null}
+          {if $subtotal !== null && $subtotal.type !== 'tax' && $subtotal.label !== null}
             <div class="cart-summary-line">
               <span class="label">{$subtotal.label}</span>
               <span class="value">{if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}</span>
@@ -107,7 +107,7 @@
           </div>
         {/if}
 
-        {if $order.subtotals.tax.label !== null}
+        {if $order.subtotals !== null $order.subtotals.tax.label !== null}
           <div class="cart-summary-line">
             <span class="label">{l s='%label%:' sprintf=['%label%' => $order.subtotals.tax.label] d='Shop.Theme.Global'}</span>
             <span class="value">{$order.subtotals.tax.value}</span>

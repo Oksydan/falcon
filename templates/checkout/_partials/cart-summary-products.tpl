@@ -23,7 +23,7 @@
  * International Registered Trademark & Property of PrestaShop SA
  *}
 
-<div class="cart-summary-products">
+<div class="cart-summary-products js-cart-summary-products">
   {block name='cart_summary_product_list'}
     <div id="cart-summary-product-list">
       {foreach from=$cart.products item=product}

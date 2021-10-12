@@ -26,7 +26,7 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 
 function setUpCheckout() {
-  $('.js-terms a').on('click', (event) => {
+  $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
     event.preventDefault();
     let url = $(event.target).attr('href');
 
@@ -34,13 +34,15 @@ function setUpCheckout() {
       // TODO: Handle request if no pretty URL
       url += '?content_only=1';
       $.get(url, (content) => {
-        $('#modal').find('.js-modal-content').html($(content).find('.page-content--cms').contents());
+        $(prestashop.themeSelectors.modal)
+          .find(prestashop.themeSelectors.modalContent)
+          .html($(content).find('.page-cms').contents());
       }).fail((resp) => {
         prestashop.emit('handleError', {eventType: 'clickTerms', resp});
       });
     }
 
-    $('#modal').modal('show');
+    $(prestashop.themeSelectors.modal).modal('show');
   });
 
   $('.js-gift-checkbox').on('click', () => {
@@ -58,9 +60,9 @@ $(document).ready(() => {
       return;
     }
     // Hide all carrier extra content ...
-    $('.carrier-extra-content').hide();
+    $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
     // and show the one related to the selected carrier
-    params.deliveryOption.next('.carrier-extra-content').slideDown();
+    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).slideDown();
   });
   prestashop.on('changedCheckoutStep', (params) => {
     if (typeof params.event.currentTarget !== 'undefined') {

@@ -4,7 +4,6 @@ const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const safeList = require('./purge-safelist');
 const glob = require('glob-all');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const TerserPlugin = require("terser-webpack-plugin");
 const { cleanDistFolders } = require('./webpack.parts');
 const { merge } = require("webpack-merge");
 
@@ -27,7 +26,7 @@ const plugins = (purge) => ([
 exports.productionConfig = ({ purge }) => (
   merge(
     {
-      devtool: '(none)',
+      devtool: 'hidden-source-map',
       optimization: {
         minimize: true,
         minimizer: [

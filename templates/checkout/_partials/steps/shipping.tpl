@@ -39,7 +39,7 @@
       >
         <div class="form-fields">
           {block name='delivery_options'}
-            <div class="delivery-options row">
+            <div class="delivery-options row js-delivery-option">
                 {foreach from=$delivery_options item=carrier key=carrier_id}
                   <div class="col-12 col-md-6 col-lg-4 mb-3 checkout-option-block checkout-option {if $delivery_option == $carrier_id} selected{/if}">
                     <input class="custom-control-input" type="radio" name="delivery_option[{$id_address}]" id="delivery_option_{$carrier.id}" value="{$carrier_id}"{if $delivery_option == $carrier_id} checked{/if}>
@@ -67,7 +67,7 @@
                       </div>
                     </label>
 
-                    <div class="carrier-extra-content"{if $delivery_option != $carrier_id} style="display:none;"{/if}>{$carrier.extraContent nofilter}</div>
+                    <div class="carrier-extra-content js-carrier-extra-content"{if $delivery_option != $carrier_id} style="display:none;"{/if}>{$carrier.extraContent nofilter}</div>
                   </div>
                 {/foreach}
               </div>

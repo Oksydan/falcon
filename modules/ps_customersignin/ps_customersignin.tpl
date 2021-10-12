@@ -26,7 +26,7 @@
   <a
     class="header-top__link"
     rel="nofollow"
-    href="{$my_account_url}"
+    href="{$urls.pages.my_account}"
     {if $logged}
       title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}"
     {else}

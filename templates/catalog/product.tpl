@@ -24,10 +24,6 @@
  *}
 {extends file=$layout}
 
-{block name='head_seo' prepend}
-  <link rel="canonical" href="{$product.canonical_url}">
-{/block}
-
 {block name='head' append}
   {if $product.show_price}
     <meta property="product:pretax_price:amount" content="{$product.price_tax_exc}">
@@ -45,7 +41,7 @@
 
   <section id="main">
 
-    <div class="row product-container">
+    <div class="row product-container js-product-container">
       <div class="col-md-5 mb-4">
         {block name='page_content_container'}
             {block name='page_content'}
@@ -85,12 +81,12 @@
               {/block}
             {/if}
 
-            <div class="product-actions">
+            <div class="product-actions js-product-actions">
               {block name='product_buy'}
                 <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
                   <input type="hidden" name="token" value="{$static_token}">
                   <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
-                  <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id">
+                  <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id" class="js-product-customization-id">
 
                   {block name='product_variants'}
                     {include file='catalog/_partials/product-variants.tpl'}

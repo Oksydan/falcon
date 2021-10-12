@@ -1,22 +1,41 @@
 const chokidar = require('chokidar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { ESBuildPlugin } = require('esbuild-loader');
-const ChunkRenamePlugin = require('enhanced-webpack-chunk-rename-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FontPreloadPlugin = require('webpack-font-preload-plugin');
 
 exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
+  allowedHosts: [ serverAddress ],
   host: serverAddress,
-  hot: true,
-  open: true,
-  overlay: true,
-  port,
-  publicPath,
-  writeToDisk: (filePath) => {
-    return !(/hot-update/.test(filePath));
+  client: {
+    logging: 'error',
+    progress: false,
+    overlay: {
+      errors: true,
+      warnings: false,
+    },
   },
+  devMiddleware: {
+    publicPath: publicPath,
+    writeToDisk: (filePath) => {
+      return !(/hot-update/.test(filePath));
+    },
+  },
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+  },
+  hot: true,
+  liveReload: true,
+  watchFiles: [
+    '../../**/*.tpl',
+    '../../modules/**/*.js',
+    '../../modules/**/*.css',
+  ],
+  open: true,
+  port,
   proxy: {
     '**': {
       target: siteURL,
@@ -24,31 +43,9 @@ exports.configureDevServer = (serverAddress, publicPath, port, siteURL) => ({
       changeOrigin: true,
     }
   },
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+  static: {
+    publicPath: publicPath,
   },
-  before(app, server) {
-    const files = [
-      '../../**/*.tpl',
-      '../../modules/**/*.js',
-      '../../modules/**/*.css'
-    ];
-
-    chokidar
-      .watch(files, {
-        alwaysStat: true,
-        atomic: false,
-        followSymlinks: false,
-        ignoreInitial: true,
-        ignorePermissionErrors: true,
-        persistent: true
-      })
-      .on("all", () => {
-        server.sockWrite(server.sockets, "content-changed");
-      });
-  }
 });
 
 exports.extractScss = ({mode = 'production'}) => ({
@@ -56,12 +53,7 @@ exports.extractScss = ({mode = 'production'}) => ({
     rules: [{
       test: /\.scss$/,
       use: [
-        {
-          loader: MiniCssExtractPlugin.loader,
-          options: {
-            hmr: true
-          }
-        },
+        MiniCssExtractPlugin.loader,
         'css-loader',
         {
           loader: 'postcss-loader',
@@ -97,10 +89,7 @@ exports.extractJs = () => ({
         }
       },
     ]
-  },
-  plugins: [
-    new ESBuildPlugin()
-  ]
+  }
 });
 
 exports.extractImages = ({ publicPath }) => ({
@@ -108,12 +97,17 @@ exports.extractImages = ({ publicPath }) => ({
     rules: [
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'img-dist/',
-          publicPath: publicPath + '/img-dist/',
-          name: '[name].[ext]',
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'img-dist/',
+              publicPath: publicPath + '/img-dist/',
+              name: '[contenthash].[ext]',
+            },
+          },
+        ],
+        type: 'javascript/auto',
       },
     ]
   }
@@ -124,12 +118,17 @@ exports.extractFonts = ({ publicPath }) => ({
     rules: [
       {
         test: /\.(woff|woff2|ttf|eot)$/,
-        loader: 'file-loader',
-        options: {
-          outputPath: 'fonts/',
-          publicPath: publicPath + '/fonts/',
-          name: '[contenthash].[ext]'
-        },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'fonts/',
+              publicPath: publicPath + '/fonts/',
+              name: '[contenthash].[ext]',
+            },
+          },
+        ],
+        type: 'javascript/auto',
       }
     ]
   }
@@ -142,18 +141,12 @@ exports.extractVendorsChunks = () => ({
         swiper: {
           test: /[\\/]node_modules[\\/](swiper|dom7)[\\/]/,
           name: 'swipervendor',
-          chunks: 'all'
+          filename: 'js/swipervendor.js',
+          chunks: 'all',
         }
       },
     },
   },
-  plugins: [
-    new ChunkRenamePlugin({
-      initialChunks: true,
-      swiper: "[name].js",
-      bootstrap: "[name].js",
-    }),
-  ],
 })
 
 exports.cleanDistFolders = () => ({

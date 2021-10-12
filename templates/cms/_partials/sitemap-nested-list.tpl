@@ -26,13 +26,13 @@
   <div class="list-group list-group-flush list-group-collapse">
     {foreach $links as $link}
 
-      {if isset($link.children) && $link.children|@count > 0}
+      {if !empty($link.children)}
         <div class="list-group-item list-group-item-action-dropdown">
           <a class="text-reset stretched-link" id="{$link.id}" href="{$link.url}" title="{$link.label}">
             {$link.label}
           </a>
         </div>
-        {include file='cms/_partials/sitemap-nested-list.tpl' links=$link.children is_nested=true}
+        {include file='cms/_partials/sitemap-nested-list.tpl' links=$link.children}
       {else}
         <a class="list-group-item list-group-item-action" id="{$link.id}" href="{$link.url}" title="{$link.label}">
           {$link.label}
