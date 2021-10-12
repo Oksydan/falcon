@@ -33,7 +33,7 @@
                     ]|classnames}"
   >
     <div class="card-header checkout-step__header" id="heading-{$identifier}" data-identifier="{$identifier}">
-      <p class="step-title h5 mb-0">
+      <p class="step-title js-step-title h5 mb-0">
         <span class="step-number">{$position}.</span>
         {$title}
         <i class="material-icons font-reset rtl-no-flip text-success mx-2">&#xE876;</i>

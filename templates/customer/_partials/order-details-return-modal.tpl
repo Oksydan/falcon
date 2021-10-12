@@ -5,7 +5,7 @@
 
 {block name='modal_content'}
 
-  <form id="order-return-form" class="modal-content" action="{$urls.pages.order_follow}" method="post">
+  <form id="order-return-form" class="modal-content js-order-return-form" action="{$urls.pages.order_follow}" method="post">
 
     {block name='modal_header'}
       <div class="modal-header {block name='modal_header_extra_class'}{/block}">

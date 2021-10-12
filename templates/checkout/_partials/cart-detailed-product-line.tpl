@@ -61,6 +61,8 @@
             <div class="unit-price-cart">{$product.unit_price_full}</div>
           {/if}
         </div>
+
+        {hook h='displayProductPriceBlock' product=$product type="unit_price"}
       </div>
       {* end product-price *}
       {if is_array($product.customizations) && $product.customizations|count}
@@ -110,21 +112,31 @@
     </div>
 
     <div class="product-line-grid__block product-line-grid__block--qty">
-      {if isset($product.is_gift) && $product.is_gift}
+      {if !empty($product.is_gift)}
         <span class="gift-quantity">{$product.quantity}</span>
       {else}
         <div>
-          <input class="js-cart-line-product-quantity input-touchspin" data-down-url="{$product.down_quantity_url}"
-            data-up-url="{$product.up_quantity_url}" data-update-url="{$product.update_quantity_url}"
-            data-product-id="{$product.id_product}" type="number" value="{$product.quantity}" name="product-quantity-spin"
-            min="{$product.minimal_quantity}" />
+          <input
+            class="js-cart-line-product-quantity input-touchspin"
+            data-down-url="{$product.down_quantity_url}"
+            data-up-url="{$product.up_quantity_url}"
+            data-update-url="{$product.update_quantity_url}"
+            data-product-id="{$product.id_product}"
+            type="number"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            value="{$product.quantity}"
+            name="product-quantity-spin"
+            min="{$product.minimal_quantity}"
+            aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
+            />
         </div>
       {/if}
     </div>
 
     <div class="product-line-grid__block product-line-grid__block--total">
       <span class="product-price">
-        {if isset($product.is_gift) && $product.is_gift}
+        {if !empty($product.is_gift)}
           <span class="gift">{l s='Gift' d='Shop.Theme.Checkout'}</span>
         {else}
           <span class="price">
@@ -135,7 +147,7 @@
     </div>
 
     <div class="product-line-grid__block product-line-grid__block--delete">
-      {if !isset($product.is_gift) || !$product.is_gift}
+      {if empty($product.is_gift)}
         <a class="remove-from-cart text-danger" rel="nofollow" href="{$product.remove_from_cart_url}"
           data-link-action="delete-from-cart" data-id-product="{$product.id_product|escape:'javascript'}"
           data-id-product-attribute="{$product.id_product_attribute|escape:'javascript'}"

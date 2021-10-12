@@ -63,8 +63,8 @@
           {if $page.page_name == 'index'}
             <h1 class="mb-0">
           {/if}
-            <a href="{$urls.base_url}">
-            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+            <a href="{$urls.pages.index}">
+              <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
             </a>
           {if $page.page_name == 'index'}
             </h1>

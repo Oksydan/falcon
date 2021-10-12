@@ -26,7 +26,7 @@
   {foreach $linkBlocks as $linkBlock}
     <div class="col-md-3 col-12 mb-lg-4">
       {assign var=_expand_id value=10|mt_rand:100000}
-      <div class="d-flex align-items-center mb-3 justify-content-between">
+      <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
         <span class="h4 mb-0">{$linkBlock.title}</span>
         <a href="#footer_sub_menu_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
           <i class="material-icons d-block"></i>

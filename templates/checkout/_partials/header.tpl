@@ -22,24 +22,23 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-{block name='header'}
-  {block name='header_nav'}
-    <nav class="header-nav py-2">
-      <div class="container">
-        <div class="row">
-          <div class="col hidden-sm-down" id="_desktop_logo">
-            <a href="{$urls.base_url}">
-              <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
-            </a>
-          </div>
-          <div class="col text-right">
-            {hook h='displayNav1'}
-          </div>
+
+{block name='header_nav'}
+  <nav class="header-nav py-2">
+    <div class="container">
+      <div class="row">
+        <div class="col hidden-sm-down" id="_desktop_logo">
+          <a href="{$urls.base_url}">
+            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+          </a>
+        </div>
+        <div class="col text-right">
+          {hook h='displayNav1'}
         </div>
       </div>
-    </nav>
-  {/block}
+    </div>
+  </nav>
+{/block}
 
-  {block name='header_top'}
-  {/block}
+{block name='header_top'}
 {/block}

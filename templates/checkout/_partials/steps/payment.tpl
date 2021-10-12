@@ -110,13 +110,13 @@
     {include file='checkout/_partials/order-final-summary.tpl'}
   {/if}
 
-  <div id="payment-confirmation" class="mt-4">
+  <div id="payment-confirmation" class="mt-4 js-payment-confirmation">
     <div class="ps-shown-by-js">
       <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-lg d-none d-md-inline-block" {if !$selected_payment_option} disabled {/if}>
+        <button type="submit" class="btn btn-primary btn-lg d-none d-md-inline-block {if !$selected_payment_option} disabled {/if}">
           {l s='Place order' d='Shop.Theme.Checkout'}
         </button>
-        <button type="submit" class="btn btn-primary btn-lg btn-block d-block d-md-none" {if !$selected_payment_option} disabled {/if}>
+        <button type="submit" class="btn btn-primary btn-lg btn-block d-block d-md-none {if !$selected_payment_option} disabled {/if}">
           {l s='Place order' d='Shop.Theme.Checkout'}
         </button>
       </div>
@@ -143,15 +143,4 @@
   </div>
 
   {hook h='displayPaymentByBinaries'}
-
-  <div class="modal fade" id="modal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="js-modal-content"></div>
-      </div>
-    </div>
-  </div>
 {/block}

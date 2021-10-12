@@ -2,6 +2,9 @@
 .cart-dropdown {
   &__content {
     padding: map-get($spacers, 2) map-get($spacers, 3) map-get($spacers, 3);
+    max-height: rem-calc(500px);
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   &__products {

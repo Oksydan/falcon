@@ -28,22 +28,21 @@
   <div class="js-address-form">
     <form
       method="POST"
+      data-id-address="{$id_address}"
       action="{url entity='order' params=['id_address' => $id_address]}"
       data-refresh-url="{url entity='order' params=['ajax' => 1, 'action' => 'addressForm']}"
     >
 
-      {if !$use_same_address}
+      {if $use_same_address}
+        <p class="mb-4">
+          {if $cart.is_virtual}
+            {l s='The selected address will be used as your personal address (for invoice).' d='Shop.Theme.Checkout'}
+          {else}
+            {l s='The selected address will be used both as your personal address (for invoice) and as your delivery address.' d='Shop.Theme.Checkout'}
+          {/if}
+        </p>
+      {else}
         <h2 class="h4">{l s='Shipping Address' d='Shop.Theme.Checkout'}</h2>
-      {/if}
-
-      {if $use_same_address && !$cart.is_virtual}
-        <p class="mb-4">
-          {l s='The selected address will be used both as your personal address (for invoice) and as your delivery address.' d='Shop.Theme.Checkout'}
-        </p>
-      {elseif $use_same_address && $cart.is_virtual}
-        <p class="mb-4">
-          {l s='The selected address will be used as your personal address (for invoice).' d='Shop.Theme.Checkout'}
-        </p>
       {/if}
 
       {if $show_delivery_address_form}
@@ -131,7 +130,7 @@
           <button type="submit" class="btn btn-primary continue btn-block d-block d-md-none" name="confirm-addresses" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
-          <input type="hidden" id="not-valid-addresses" value="{$not_valid_addresses}">
+          <input type="hidden" id="not-valid-addresses" class="js-not-valid-addresses" value="{$not_valid_addresses}">
         </div>
       {/if}
 

@@ -30,7 +30,12 @@
       <ul class="mb-0 row">
         {foreach from=$social_share_links item='social_share_link'}
           <li class="col flex-grow-0 flex-shrink-0 mb-2">
-            <a href="{$social_share_link.url}" title="{$social_share_link.label}" target="_blank" class="btn btn-light p-2 rounded-circle btn-lg">
+            <a
+              href="{$social_share_link.url}"
+              title="{$social_share_link.label}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-light p-2 rounded-circle btn-lg">
               <span class="icon icon-{$social_share_link.class} d-block"></span>
               <div class="sr-only">
                 {$social_share_link.label}

@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="product-add-to-cart">
+<div class="product-add-to-cart js-product-add-to-cart">
   {if !$configuration.is_catalog}
 
     {block name='product_quantity'}
@@ -32,6 +32,8 @@
             type="number"
             name="qty"
             id="quantity_wanted"
+            inputmode="numeric"
+            pattern="[0-9]*"
             {if $product.quantity_wanted}
               value="{$product.quantity_wanted}"
               min="{$product.minimal_quantity}"
@@ -87,7 +89,7 @@
     {/block}
 
     {block name='product_minimal_quantity'}
-      <div class="product-minimal-quantity">
+      <div class="product-minimal-quantity js-product-minimal-quantity">
       {if $product.minimal_quantity > 1}
         <small>
           {l

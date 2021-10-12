@@ -29,6 +29,7 @@ import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
 import './components/dynamic-bootstrap-components';
 
+import './components/selectors';
 import './components/sliders';
 import './components/responsive';
 import './components/customer';
