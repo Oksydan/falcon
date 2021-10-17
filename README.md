@@ -5,6 +5,7 @@
 
 * [About the Theme](#about-the-theme)
   * [Online demo](#online-demo)
+  * [Performance](#performance)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Support table](#support-table)
@@ -47,6 +48,18 @@ This theme was created to deliver starter theme with latest developers tools and
 
 Want to check it online in action before downloading? Demo available [here](https://mpst.dev/).<br>
 Demo hosted by our technical partner [Wrapnet](https://wrapnet.pl/).
+
+### Performance
+
+Performacne results based on PageSpeed Insights: 
+
+#### Desktop
+
+![psi_desktop](https://user-images.githubusercontent.com/25306716/137646511-661c58bf-3a29-4696-a58b-5a46e9667459.jpg)
+
+#### Mobile 
+
+![psi_mobile](https://user-images.githubusercontent.com/25306716/137646514-6e584e10-9ca4-4c92-9199-07e55c01a647.jpg)
 
 ## Getting started
 
