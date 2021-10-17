@@ -51,7 +51,7 @@ Demo hosted by our technical partner [Wrapnet](https://wrapnet.pl/).
 
 ### Performance
 
-Performacne results based on PageSpeed Insights: 
+Performance results based on PageSpeed Insights: 
 
 #### Desktop
 
