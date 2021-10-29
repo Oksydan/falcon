@@ -107,7 +107,7 @@
           </div>
         {/if}
 
-        {if $order.subtotals !== null $order.subtotals.tax.label !== null}
+        {if $order.subtotals !== null && $order.subtotals.tax.label !== null}
           <div class="cart-summary-line">
             <span class="label">{l s='%label%:' sprintf=['%label%' => $order.subtotals.tax.label] d='Shop.Theme.Global'}</span>
             <span class="value">{$order.subtotals.tax.value}</span>
