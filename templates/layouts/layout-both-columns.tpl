@@ -111,7 +111,7 @@
       {hook h='displayBeforeBodyClosingTag'}
     {/block}
 
-    {block name='page-loader'}
+    {block name='mobile-modals'}
       {include file="_partials/mobile-modals.tpl"}
     {/block}
 
