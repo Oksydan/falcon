@@ -41,8 +41,11 @@ export default class Form {
   }
 
   static togglePasswordVisibility() {
-    $('[data-action="show-password"]').on('click', ({currentTarget}) => {
-      const $btn = $(currentTarget);
+    $('[data-action="show-password"]').on('click', (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      const $btn = $(e.currentTarget);
       const $input = $btn
         .closest('.input-group')
         .children('input.js-visible-password');
