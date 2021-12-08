@@ -27,6 +27,7 @@
       margin: 0 0 map-get($spacers, 2);
 
       &--1 {
+        flex-wrap: wrap;
         display: flex;
       }
     }
