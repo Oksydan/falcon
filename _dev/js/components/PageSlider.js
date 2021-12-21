@@ -24,7 +24,7 @@ class PageSlider {
 
   addSlider(el) {
     const $el = $(el);
-    let elConfig = $el.data('swiper');
+    let elConfig = $el.data('swiper') || {};
     const $parent = $el.parent();
     const $nextEl = $parent.find('.swiper-button-next');
     const $prevEl = $parent.find('.swiper-button-prev');
