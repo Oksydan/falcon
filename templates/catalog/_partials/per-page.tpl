@@ -29,7 +29,7 @@
 {if $listing.pagination.total_items > $defaultPerPage}
   {$currentPage = $listing.pagination.current_page}
   {$currentUrl = $listing.current_url}
-  {$currentUrlFromated = $currentUrl|replace:"page=`$currentPage`":"page=1"} {* RESET PAGE IS REQUIRED *}
+  {$currentUrlFormatted = $currentUrl|replace:"page=`$currentPage`":"page=1"} {* RESET PAGE IS REQUIRED *}
   {$otherParamsExists = !!strpos($currentUrl, '?')}
 
   {$productPerPageArray = [
@@ -43,11 +43,11 @@
       <option
         {if $currentPerPage == $perPage}selected{/if}
         {if $smarty.get.resultsPerPage|default:0}
-          data-href="{$currentUrlFromated|replace:"resultsPerPage=`$currentPerPage`":"resultsPerPage=`$perPage`"}"
+          data-href="{$currentUrlFormatted|replace:"resultsPerPage=`$currentPerPage`":"resultsPerPage=`$perPage`"}"
         {else}
           data-href="{$currentUrlFromated}{if $otherParamsExists}&{else}?{/if}resultsPerPage={$perPage}"
         {/if}>
-         {l s='Per page:' l='Shop.Theme.Catalog'} {$perPage}
+         {l s='Per page:' d='Shop.Theme.Catalog'} {$perPage}
       </option>
     {/foreach}
   </select>
