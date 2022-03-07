@@ -45,7 +45,7 @@
         {if $smarty.get.resultsPerPage|default:0}
           data-href="{$currentUrlFormatted|replace:"resultsPerPage=`$currentPerPage`":"resultsPerPage=`$perPage`"}"
         {else}
-          data-href="{$currentUrlFromated}{if $otherParamsExists}&{else}?{/if}resultsPerPage={$perPage}"
+          data-href="{$currentUrlFormatted}{if $otherParamsExists}&{else}?{/if}resultsPerPage={$perPage}"
         {/if}>
          {l s='Per page:' d='Shop.Theme.Catalog'} {$perPage}
       </option>
