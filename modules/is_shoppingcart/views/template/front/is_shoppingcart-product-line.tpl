@@ -20,7 +20,11 @@
 <div class="cart-products">
     <div class="cart-products__thumb">
         <img
-            {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+            {if $product.default_image}
+                {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+            {else}
+                src="{$urls.no_picture_image.bySize.cart_default.url}"
+            {/if}
             alt="{$product.name|escape:'quotes'}"
             class="img-fluid rounded"
             width="{$product.default_image.bySize.cart_default.width}"

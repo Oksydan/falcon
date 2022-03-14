@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="quickview-modal-{$product.id}-{$product.id_product_attribute}" class="modal fade quickview" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="quickview-modal-{$product.id}-{$product.id_product_attribute}" class="modal fade quickview in" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
    <div class="modal-content">
      <div class="modal-header">
@@ -36,26 +36,7 @@
       <div class="row">
         <div class="col-lg-5 col-md-6 d-none d-md-block">
           {block name='product_cover_thumbnails'}
-            <div class="card">
-              <div class="card-body">
-                {if $product.default_image}
-                  <img
-                    class="rounded img-fluid lazyload"
-                    {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
-                    width="{$product.default_image.bySize.large_default.width}"
-                    height="{$product.default_image.bySize.large_default.height}"
-                    {if !empty($product.default_image.legend)}
-                      alt="{$product.default_image.legend}"
-                      title="{$product.default_image.legend}"
-                    {else}
-                      alt="{$product.name}"
-                    {/if}
-                    loading="lazy">
-                {else}
-                  <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
-                {/if}
-              </div>
-            </div>
+            {include file='catalog/_partials/product-cover-thumbnails.tpl'}
           {/block}
         </div>
         <div class="col-lg-7 col-md-6">
