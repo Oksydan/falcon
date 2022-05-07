@@ -63,6 +63,9 @@
 {/block}
 
 {block name='head_preload'}
+  {if $shop.logo}
+    <link rel="preload" as="image" href="{$shop.logo}">
+  {/if}
   {include file="_partials/head-preload.tpl"}
 {/block}
 

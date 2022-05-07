@@ -29,7 +29,16 @@
       <div class="row">
         <div class="col hidden-sm-down" id="_desktop_logo">
           <a href="{$urls.base_url}">
-            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}">
+            <img
+              {if !empty($shop.logo_details)}
+                src="{$shop.logo_details.src}"
+                width="{$shop.logo_details.width}"
+                height="{$shop.logo_details.height}"
+              {else}
+                src="{$shop.logo}"
+              {/if}
+              class="logo img-fluid"
+              alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}">
           </a>
         </div>
         <div class="col text-right">
