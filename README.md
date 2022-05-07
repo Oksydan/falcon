@@ -30,7 +30,6 @@ This theme was created to deliver starter theme with latest developers tools and
 5. Removed **bootstrap-filestyle.js** - replaced with bootstrap [custom file input](https://getbootstrap.com/docs/4.6/components/input-group/#custom-file-input)
 6. Removed **jquery.ui** from `ps_searchbar`, new module `is_searchbar` included.
 7. Removed **jquery.ui** from `ps_facetedsearch` - replaced with **nouislider**. (`ps_facetedsearch` assets unregistered in `is_themecore` module).
-8. Added **jquery-nice-select** to make selects looks better.
 
 #### Main features:
 1. Webpack config working properly with webpack dev server and HMR. Watcher also observe changes on `.tpl` templates files and module `.css/.js/.tpl` files and make page full reload. You don't need to refresh your webpage anymore to inspect results.

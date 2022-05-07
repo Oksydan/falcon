@@ -42,7 +42,6 @@ import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import Form from './components/form';
 import TopMenu from './components/TopMenu';
-import CustomSelect from './components/CustomSelect';
 
 import PageLazyLoad from './components/Lazyload';
 import PageLoader from './components/PageLoader';
@@ -54,11 +53,6 @@ for (const i in EventEmitter.prototype) {
 }
 /* eslint-enable */
 
-prestashop.customSelect = new CustomSelect({
-  selector: 'select',
-  excludeSelector: '.normal-select',
-});
-
 prestashop.pageLazyLoad = new PageLazyLoad({
   selector: '.lazyload',
 });
@@ -66,14 +60,9 @@ prestashop.pageLazyLoad = new PageLazyLoad({
 prestashop.pageLoader = new PageLoader();
 
 $(document).ready(() => {
-  prestashop.customSelect.init();
   accLinksTriggerActive();
   Form.init();
   const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
-
-  prestashop.on('updatedAddressForm', () => {
-    prestashop.customSelect.init();
-  });
 
   topMenu.init();
 

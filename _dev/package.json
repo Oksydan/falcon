@@ -21,7 +21,6 @@
     "jquery": "^3.4.1",
     "jquery-hoverintent": "^1.10.1",
     "jquery-migrate": "^3.1.0",
-    "jquery-nice-select": "^1.1.0",
     "jquery.browser": "^0.1.0",
     "material-design-icons": "^3.0.1",
     "node-sass": "^7.0.1",
