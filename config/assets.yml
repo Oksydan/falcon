@@ -1,0 +1,53 @@
+css:
+  product:
+    fileName: product.css
+    media: all
+    priority: 200
+    include:
+      - product
+  checkout:
+    fileName: checkout.css
+    media: all
+    priority: 200
+    include:
+      - cart
+      - checkout
+      - order-confirmation
+  listing:
+    fileName: listing.css
+    media: all
+    priority: 200
+    include:
+      - category
+      - prices-drop
+      - new-products
+      - best-sales
+      - manufacturer
+      - search
+
+js:
+  swipervendor:
+    fileName: swipervendor.js
+    priority: 1
+  product:
+    fileName: product.js
+    priority: 200
+    include:
+      - product
+  checkout:
+    fileName: checkout.js
+    priority: 200
+    include:
+      - cart
+      - checkout
+      - order-confirmation
+  listing:
+    fileName: listing.js
+    priority: 200
+    include:
+      - category
+      - prices-drop
+      - new-products
+      - best-sales
+      - manufacturer
+      - search
