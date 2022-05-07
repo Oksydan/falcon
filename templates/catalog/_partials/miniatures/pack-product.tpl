@@ -39,7 +39,6 @@
             {else}
               alt="{$product.name}"
             {/if}
-            loading="lazy"
             data-full-size-image-url="{$product.default_image.large.url}"
           >
         </a>

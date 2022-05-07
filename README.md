@@ -51,13 +51,13 @@ Demo hosted by our technical partner [Wrapnet](https://wrapnet.pl/).
 
 ### Performance
 
-Performance results based on PageSpeed Insights: 
+Performance results based on PageSpeed Insights:
 
 #### Desktop
 
 ![psi_desktop](https://user-images.githubusercontent.com/25306716/137646511-661c58bf-3a29-4696-a58b-5a46e9667459.jpg)
 
-#### Mobile 
+#### Mobile
 
 ![psi_mobile](https://user-images.githubusercontent.com/25306716/137646514-6e584e10-9ca4-4c92-9199-07e55c01a647.jpg)
 
@@ -196,7 +196,6 @@ Example of usage:
     {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
     width="{$product.default_image.bySize.home_default.width}"
     height="{$product.default_image.bySize.home_default.height}"
-    loading="lazy"
     />
 ```
 
@@ -210,7 +209,6 @@ It will output:
     src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 1 1'%3E%3C/svg%3E"
     width="250"
     height="250"
-    loading="lazy"
     />
 ```
 

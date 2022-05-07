@@ -43,7 +43,7 @@
                 {else}
                   alt="{$product.name}"
                 {/if}
-                loading="lazy">
+                >
             </div>
 
             {foreach from=$product.images item=image}
@@ -62,7 +62,7 @@
                   {else}
                     alt="{$product.name}"
                   {/if}
-                  loading="lazy">
+                  >
               </div>
             {/foreach}
           </div>

@@ -41,7 +41,7 @@
             {/if}
             >
         {else}
-          <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
+          <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid">
         {/if}
       </div>
     </div>
@@ -89,7 +89,7 @@
                         {else}
                           alt="{$product.name}"
                         {/if}
-                        loading="lazy">
+                        >
                     </div>
                   {/foreach}
                 {/if}
@@ -144,7 +144,7 @@
                 {else}
                   alt="{$product.name}"
                 {/if}
-                loading="lazy">
+                >
             </div>
             {if $product.images|count > 1}
               {foreach from=$product.images item=image}
@@ -162,7 +162,7 @@
                     {else}
                       alt="{$product.name}"
                     {/if}
-                    loading="lazy">
+                    >
                 </div>
               {/foreach}
             {/if}

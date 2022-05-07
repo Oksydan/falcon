@@ -28,7 +28,6 @@
       <img
         src="{$category.image.medium.url}"
         alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}"
-        loading="lazy"
       >
     </a>
 
