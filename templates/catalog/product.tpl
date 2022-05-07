@@ -37,6 +37,12 @@
   {/if}
 {/block}
 
+{block name='head' prepend}
+  {if $product.default_image}
+    <link rel="preload" href="{$product.default_image.bySize.large_default.url}" as="image">
+  {/if}
+{/block}
+
 {block name='content'}
 
   <section id="main">
