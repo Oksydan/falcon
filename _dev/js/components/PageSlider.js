@@ -1,11 +1,10 @@
 import $ from 'jquery';
 
-import SwiperCore, {
-  Swiper, Navigation, Pagination, Thumbs, Autoplay, Lazy
+import Swiper, {
+  Navigation, Pagination, Thumbs, Autoplay, Lazy
 } from 'swiper';
 
-
-SwiperCore.use([Navigation, Pagination, Thumbs, Autoplay, Lazy]);
+export const modules = [ Navigation, Pagination, Thumbs, Autoplay, Lazy ];
 
 export const SwiperSlider = Swiper;
 
@@ -17,7 +16,7 @@ class PageSlider {
   }
 
   init() {
-    $('.swiper-container:not(.swiper-container-initialized)').not('.swiper-container-custom').each((i, el) => {
+    $('.swiper:not(.swiper-initialized)').not('.swiper-custom').each((i, el) => {
       this.addSlider(el);
     });
   }
@@ -32,6 +31,7 @@ class PageSlider {
     if ($nextEl.length && $prevEl.length && typeof elConfig.navigation === 'undefined') {
       elConfig = {
         ...elConfig,
+        modules,
         navigation: {
           nextEl: $nextEl[0],
           prevEl: $prevEl[0],

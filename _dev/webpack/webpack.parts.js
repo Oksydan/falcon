@@ -79,6 +79,10 @@ exports.extractJs = () => ({
   module: {
     rules: [
       {
+        test: /swiper\.esm\.js/,
+        sideEffects: false
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {

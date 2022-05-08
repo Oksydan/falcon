@@ -55,7 +55,7 @@
           {if $product.images|count > 1}
             {$index = 0}
 
-            <div class="js-product-main-images swiper-container swiper-container-custom" data-index="{$index}">
+            <div class="js-product-main-images swiper swiper-custom" data-index="{$index}">
               <div class="product-main-images__list swiper-wrapper">
                 <div class="swiper-slide">
                   <img
@@ -130,7 +130,7 @@
 
     {block name='product_images'}
       {if $product.images|count > 1}
-        <div class="js-product-thumbs product-thumbs swiper-container mt-2 swiper-container-custom">
+        <div class="js-product-thumbs product-thumbs swiper mt-2 swiper-custom">
           <div class="product-thumbs__list swiper-wrapper">
             <div class="product-thumbs__elem swiper-slide">
               <img
