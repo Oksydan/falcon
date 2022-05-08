@@ -14,6 +14,7 @@
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
+  * [Register assets](#register-assets)
 * [Support project](#support-project)
 * [Contribution](#contribution)
 
@@ -37,7 +38,7 @@ This theme was created to deliver starter theme with latest developers tools and
 3. Dynamic importing boostrap components. You are able to load `.js/.css` file dynamicly with **DynamicImportHandler** class. There is no docs yet, example of use available in `_dev/js/components/dynamic-bootstrap-components.js`.
 4. [Lazyload](https://github.com/verlok/vanilla-lazyload) for images added.
 5. Modified version of `ps_imageslider` included. You are able to upload different images for mobile and desktop.
-6. Multiple entry point for webpack, files separated per view. There are 4 output `js/css` files **theme**, **product**, **checkout**, **listing** and you are able to add more with ease. If you need rich cms pages with a lot of styles included in it. You don't have to include them everywhere with **theme** output file. You are able to create another entry e.g. **cms** and just include it in `ThemeAssets` class in module `is_themecore` that handle theme assets.
+6. Multiple entry point for webpack, files separated per view. There are 4 output `js/css` files **theme**, **product**, **checkout**, **listing** and you are able to add more with ease. If you need rich cms pages with a lot of styles included in it. You don't have to include them everywhere with **theme** output file. You are able to create another entry e.g. **cms** and just modify `assets.yml` file to include new assets file.
 7. List/grid listing display. You are able to choose default listing display type. With only few lines of `.js` code. All template changes are handle in `.tpl` file. It is also easy to add another list type.
 8. Specific `.scss` file structure that help you maintain your code.
 9. Automatic generated preload links for theme fonts. You don't have to care about manually preloading fonts inside template. Webpack generates `.html` file that is included inside head. Fonts fileNames are `contentHashed` so client side caching problems after fonts changes are resolved (especially useful for icomoon generated icon fonts.).
@@ -105,16 +106,7 @@ display_name: my theme display name
 ```
 Name in `theme.yml` must be equal folder name.
 
-5. If you changed theme name you have to go to `is_themecore` module. Find `hookActionFrontControllerSetMedia` method and change:
-```php
-$themeAssetsObject  = new ThemeAssets($pageName, 'starter', $this->context);
-```
-to:
-```php
-$themeAssetsObject  = new ThemeAssets($pageName, 'your-theme-name', $this->context);
-```
-
-6. Open in terminal directory `your-theme-name/_dev` and run:
+5. Open in terminal directory `your-theme-name/_dev` and run:
 - for `npm` :
 ```
 npm install
@@ -124,9 +116,9 @@ npm install
 yarn install
 ```
 
-7. Go to `your-theme-name/_dev/webpack` and find `.env-example`. Copy file and rename it with `.env`. Replace example value with proper one based on your setup.
+6. Go to `your-theme-name/_dev/webpack` and find `.env-example`. Copy file and rename it with `.env`. Replace example value with proper one based on your setup.
 
-8. Now try to run:
+7. Now try to run:
 - for `npm` :
 ```
 npm run build
@@ -136,9 +128,9 @@ npm run build
 yarn build
 ```
 
-9. Go in BO to Design->Theme & Logo and turn on theme. Now starter should be displayed correctly in FO and modules should be installed.
+8. Go in BO to Design->Theme & Logo and turn on theme. Now starter should be displayed correctly in FO and modules should be installed.
 
-10. Now try to run:
+9. Now try to run:
 - for `npm` :
 ```
 npm run dev
@@ -234,6 +226,51 @@ It will output:
     <img
       src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='150' viewBox='0 0 1 1'%3E%3C/svg%3E"
     />
+```
+
+### Register assets
+
+Since version 2.1.0 new `assets.yml` file has been added to theme config directory.
+It is completely new way of registering assets inside theme w/o writing any of php code, fully based on `.yml` file.
+You can find new file inside `main_shop_directory/themes/theme_name/config/assets.yml`.
+
+**Working with `assets.yml`.**
+
+#### 1. Css files:
+
+```yml
+css:
+  product: # Asset id
+    fileName: product.css # File name inside assets/css
+    media: all # Media attribute, allowed you can find inside StylesheetManagerCore $valid_media
+    priority: 200 # Priority (lower > higher inside document)
+    include: # List of page names that assets will be included, if you don't add to it will be the same as * (everywhere)
+      - product
+```
+
+#### 2. Js files:
+
+```yml
+js:
+  product: # Asset id
+    fileName: product.js # File name inside assets/js
+    priority: 200 # Priority (lower > higher inside document)
+    include: # List of page names that assets will be included, if you don't add to it will be the same as * (everywhere)
+      - product
+```
+
+#### 3. Working with include:
+
+You are able to use wildcard inside `include`, making it easy to register assets for multiple module pages
+
+```yml
+css:
+  blog:
+    fileName: blog.css
+    media: all
+    priority: 200
+    include:
+      - module_blog_name*
 ```
 
 ## Support project
