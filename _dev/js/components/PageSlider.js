@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
 import Swiper, {
-  Navigation, Pagination, Thumbs, Autoplay, Lazy
+  Navigation, Pagination, Thumbs, Autoplay, Lazy,
 } from 'swiper';
 
-export const modules = [ Navigation, Pagination, Thumbs, Autoplay, Lazy ];
+export const modules = [Navigation, Pagination, Thumbs, Autoplay, Lazy];
 
 export const SwiperSlider = Swiper;
 

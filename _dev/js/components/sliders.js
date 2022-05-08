@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import $ from 'jquery';
-import PageSlider, { SwiperSlider, modules } from './PageSlider';
+import PageSlider, {SwiperSlider, modules} from './PageSlider';
 
 $(() => {
   const slider = new PageSlider({
@@ -81,13 +81,13 @@ function changeModalImage(modalSlider, $gallery) {
 
   // DIRTY HACK
   $gallery.css({
-    opacity: 0
+    opacity: 0,
   });
   setTimeout(() => {
     modalSlider.update();
     modalSlider.slideTo(mainSliderIndex, 0);
     $gallery.css({
-      opacity: 1
+      opacity: 1,
     });
   }, 200);
 }
