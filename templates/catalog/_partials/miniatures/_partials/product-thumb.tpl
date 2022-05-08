@@ -9,7 +9,6 @@
           src="{$urls.no_picture_image.bySize.home_default.url}"
         {/if}
         alt="{if !empty($product.default_image.legend)}{$product.default_image.legend}{else}{$product.name|truncate:30:'...'}{/if}"
-        loading="lazy"
         class="img-fluid rounded lazyload"
         width="{$product.default_image.bySize.home_default.width}"
         height="{$product.default_image.bySize.home_default.height}"

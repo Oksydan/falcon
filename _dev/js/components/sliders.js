@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import $ from 'jquery';
-import PageSlider, {SwiperSlider} from './PageSlider';
+import PageSlider, {SwiperSlider, modules} from './PageSlider';
 
 $(() => {
   const slider = new PageSlider({
@@ -36,7 +36,7 @@ function initProductImageSlider() {
         slidesPerView: 4,
       },
     },
-    freeMode: true,
+    modules,
     watchSlidesVisibility: true,
     watchSlidesProgress: true,
   });
@@ -48,6 +48,7 @@ function initProductImageSlider() {
       nextEl: $galleryTop.find('.swiper-button-next')[0],
       prevEl: $galleryTop.find('.swiper-button-prev')[0],
     },
+    modules,
     thumbs: {
       swiper: galleryThumbs,
     },
@@ -65,7 +66,7 @@ function initModalGallerySlider() {
   const modalSlider = new SwiperSlider($gallery[0], {
     slidesPerView: 1,
     spaceBetween: 10,
-    freeMode: false,
+    modules,
     navigation: {
       nextEl: $gallery.find('.swiper-button-next')[0],
       prevEl: $gallery.find('.swiper-button-prev')[0],
@@ -80,13 +81,13 @@ function changeModalImage(modalSlider, $gallery) {
 
   // DIRTY HACK
   $gallery.css({
-    opacity: 0
+    opacity: 0,
   });
   setTimeout(() => {
     modalSlider.update();
     modalSlider.slideTo(mainSliderIndex, 0);
     $gallery.css({
-      opacity: 1
+      opacity: 1,
     });
   }, 200);
 }
