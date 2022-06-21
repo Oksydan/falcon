@@ -154,6 +154,7 @@ class RangeSlider {
     const [from, to] = values.map(val => formatFunction.from(val));
 
     const filtersHandler = new FiltersUrlHandler();
+    filtersHandler.setSearchUrl();
     filtersHandler.setRangeParams(group, {unit, from, to});
 
     const newUrl = filtersHandler.getFiltersUrl();
