@@ -27,6 +27,7 @@ class PageSlider {
     const $parent = $el.parent();
     const $nextEl = $parent.find('.swiper-button-next');
     const $prevEl = $parent.find('.swiper-button-prev');
+    const $pagination = $parent.find('.swiper-pagination');
 
     if ($nextEl.length && $prevEl.length && typeof elConfig.navigation === 'undefined') {
       elConfig = {
@@ -35,6 +36,18 @@ class PageSlider {
         navigation: {
           nextEl: $nextEl[0],
           prevEl: $prevEl[0],
+        },
+      };
+    }
+
+    if ($pagination.length && typeof elConfig.pagination === 'undefined') {
+      elConfig = {
+        ...elConfig,
+        modules,
+        pagination: {
+          el: $pagination[0],
+          type: 'bullets',
+          clickable: true,
         },
       };
     }
