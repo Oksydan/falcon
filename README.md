@@ -228,6 +228,28 @@ It will output:
     />
 ```
 
+#### appendParamToUrl
+
+Function created to append param to url.
+
+parameter  | required | description
+------------- | ------------- | -------------
+`url` | `true` | URL addres.
+`key` | `true` | Parameter variable
+`value` | `true` | Parameter value
+
+Example of usage:
+
+```smarty
+  {appendParamToUrl url='https://example.com?page=1' key='variable' value='value'}
+```
+
+It will output:
+
+```html
+    https://example.com?page=1&variable=value
+```
+
 ### Register assets
 
 Since version 2.1.0 new `assets.yml` file has been added to theme config directory.
