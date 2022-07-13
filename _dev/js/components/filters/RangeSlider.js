@@ -97,6 +97,7 @@ class RangeSlider {
       $input.on('focus', this.handleInputFocus);
       $input.off('blur', this.handleInputBlur);
       $input.on('blur', this.handleInputBlur);
+      $input.on('keyup', this.handleInputKeyup);
     });
   }
 
@@ -133,6 +134,24 @@ class RangeSlider {
     }
   }
 
+  handleInputKeyup = ({target, keyCode}) => {
+    if (keyCode !== 13) {
+      return;
+    }
+    const $input = $(target);
+    const value = $input.val();
+    const position = this.getInputPositionInValue($input);
+    const oldValues = this.values;
+    const newValues = [...oldValues];
+    newValues[position] = value;
+
+    if (value !== oldValues[position]) {
+      this.sliderHandler.set(newValues);
+    } else {
+      $input.val(this.format.to(parseFloat($input.val(), 10)));
+    }
+  }
+
   handlerSliderUpdate = (
     values,
   ) => {
@@ -154,6 +173,7 @@ class RangeSlider {
     const [from, to] = values.map(val => formatFunction.from(val));
 
     const filtersHandler = new FiltersUrlHandler();
+    filtersHandler.setSearchUrl();
     filtersHandler.setRangeParams(group, {unit, from, to});
 
     const newUrl = filtersHandler.getFiltersUrl();

@@ -36,7 +36,7 @@
  'city'=>'address-level2',
  'company'=>'organization'
  ]}
-{if $field.type == 'hidden' || $field.name == 'id_gender' || $field.name == 'birthday'}
+{if $field.type == 'hidden'}
 
   {block name='form_field_item_hidden'}
     <input type="hidden" name="{$field.name}" value="{$field.value}">

@@ -42,7 +42,7 @@
               >
               <div class="input-group-append">
                 <input
-                  class="btn btn-primary float-right hidden-xs-down"
+                  class="btn btn-primary"
                   name="submitNewsletter"
                   type="submit"
                   value="{l s='Subscribe' d='Shop.Theme.Actions'}"

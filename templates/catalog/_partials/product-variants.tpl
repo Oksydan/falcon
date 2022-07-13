@@ -25,7 +25,7 @@
 <div class="product-variants js-product-variants mb-3">
   {foreach from=$groups key=id_attribute_group item=group}
     {if !empty($group.attributes)}
-    <div class="product-variants-item">
+    <div class="product-variants-item mb-3">
       <p class="control-label h6 mb-2">{$group.name}</p>
       {if $group.group_type == 'select'}
         <select

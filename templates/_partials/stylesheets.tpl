@@ -28,7 +28,7 @@
 {foreach $stylesheets.external as $stylesheet}
   <link
     rel="stylesheet"
-    href="{$stylesheet.uri}?v={$cssAssetHash}"
+    href="{appendParamToUrl url=$stylesheet.uri key=v value=$cssAssetHash}"
     type="text/css"
     media="{$stylesheet.media}">
 {/foreach}

@@ -15,6 +15,9 @@
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
   * [Register assets](#register-assets)
+* [Javascript Components](#javascript-components)
+  * [PageSLider](#pageslider)
+  * [SwiperSlider](#swiperslider)
 * [Support project](#support-project)
 * [Contribution](#contribution)
 
@@ -228,6 +231,28 @@ It will output:
     />
 ```
 
+#### appendParamToUrl
+
+Function created to append param to url.
+
+parameter  | required | description
+------------- | ------------- | -------------
+`url` | `true` | URL addres.
+`key` | `true` | Parameter variable
+`value` | `true` | Parameter value
+
+Example of usage:
+
+```smarty
+  {appendParamToUrl url='https://example.com?page=1' key='variable' value='value'}
+```
+
+It will output:
+
+```html
+    https://example.com?page=1&variable=value
+```
+
 ### Register assets
 
 Since version 2.1.0 new `assets.yml` file has been added to theme config directory.
@@ -272,6 +297,216 @@ css:
     include:
       - module_blog_name*
 ```
+
+#### 4. Remote files:
+
+You are able to register remote files.
+
+```yml
+css:
+  example_remote_bootstrap:
+    fileName: //cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css
+    server: remote # required to set server: remote for remote file
+    priority: 200
+
+js:
+  example_remote_bootstrap:
+    fileName: //cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js
+    server: remote # required to set server: remote for remote file
+    priority: 200
+```
+
+## Javascript Components
+
+### PageSLider
+
+PageSlider automatically initialize sliders that are visible in viewport.
+PageSlider instance is exposed with `prestashop` global object, you can access it with `prestashop.pageSlider`.
+
+##### Excluding from automatic initialization
+To exclude slider from automatic initialization, your slider `.swiper` element have to contain `swiper-custom` class.
+
+##### Dynamic added sliders
+If you add new sliders element for example via ajax, you can refresh `pageSlider` observer to include newly included sliders with calling `prestashop.pageSlider.refresh()`.
+
+##### Example of template
+
+PageSlider will automatically initialize that slider with config passed to `data-swiper` attribute.
+
+```smarty
+  {$sliderConfig = [
+    'speed' => 500,
+    'slidesPerView' => 2
+  ]}
+
+  <div class="swiper" data-swiper="{$sliderConfig|json_encode}">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        SLIDE 1
+      </div>
+      <div class="swiper-slide">
+        SLIDE 2
+      </div>
+      <div class="swiper-slide">
+        SLIDE 3
+      </div>
+    </div>
+  </div>
+```
+
+##### Automatic handling navigation, pagination
+
+PageSlider automatic handles navigation and pagination if they are available. PageSlider is searching one node element above `.swiper` that why it is important to adds wrapper to swiper to prevent bugs.
+
+```smarty
+  {$sliderConfig = [
+    'speed' => 500,
+    'slidesPerView' => 2
+  ]}
+
+  <div class="example-wrapper">
+
+    <div class="swiper" data-swiper="{$sliderConfig|json_encode}">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          SLIDE 1
+        </div>
+        <div class="swiper-slide">
+          SLIDE 2
+        </div>
+        <div class="swiper-slide">
+          SLIDE 3
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-button-prev">
+      PREV
+    </div>
+    <div class="swiper-button-next">
+      NEXT
+    </div>
+
+    <div class="swiper-pagination">
+    </div>
+
+  </div>
+```
+
+##### Custom navigation, pagination
+
+If pagination or navigation config exists inside swiper config automatic handling isn't executed. Classed for navigation and slider are just examples it is important that this selectors are unique. You can also make use of `id` or just any valid querySelector.
+
+```smarty
+  {$sliderConfig = [
+    'speed' => 500,
+    'slidesPerView' => 2,
+    'navigation' => [
+      'nextEl' => '.js-unique-button-next',
+      'prevEl' => '.js-unique-button-prev',
+    ],
+    'pagination' => [
+      'el' => '.js-unique-swiper-pagination',
+      'type' => 'bullets',
+    ]
+  ]}
+
+  <div class="example-wrapper">
+
+    <div class="swiper" data-swiper="{$sliderConfig|json_encode}">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          SLIDE 1
+        </div>
+        <div class="swiper-slide">
+          SLIDE 2
+        </div>
+        <div class="swiper-slide">
+          SLIDE 3
+        </div>
+      </div>
+    </div>
+
+    <div class="js-unique-button-prev swiper-button-prev">
+      PREV
+    </div>
+    <div class="js-unique-button-next swiper-button-next">
+      NEXT
+    </div>
+
+    <div class="js-unique-swiper-pagination swiper-pagination">
+    </div>
+
+  </div>
+```
+
+## SwiperSlider
+
+Swiper is splitted to multiple modules that are not included in initial javascript/css files. We don't have to include every module to make sure that needed module just for one slider will be available for us.
+`SwiperSlider` is wrapper to `Swiper` that handles dynamic imports for modules. It reads passed config and looking for modules that have to be fetched.
+
+#### Default modules
+
+We have some modules that are commonly used and we are not fetching them dynamically `Navigation, Pagination, Lazy, Autoplay`.
+
+#### How it is working
+
+Example, passed config:
+
+```javascript
+{
+  slidesPerView: 1,
+  spaceBetween: 10,
+  freeMode: {
+    enabled: true,
+    sticky: true,
+  },
+}
+```
+
+When we initialize this slider with `SwiperSlider` class it will search for needed module to fetch.
+It finds `freeMode` in config and fetch `freeMode` module and include this module it to parameters.
+
+#### Working with SwiperSlider
+
+`SwiperSlider` constructor accepts two parameters just like `Swiper`.
+First argument is selector or node element that contains `swiper` class.
+Second argument is swiper config, you can read more about it in [swiper API documentation](https://swiperjs.com/swiper-api#parameters)
+
+```javascript
+  const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  })
+```
+
+`SwiperSlider` constructor returns `SwiperSlider` object.
+If you want to access swiper instance it will be available for (example above) via `exampleSlider.swiperInstance`. It might be tricky since `SwiperSlider` is executed asynchronous.
+
+#### Asynchronous nature of SwiperSlider
+
+We know that `SwiperSlider` isn't initialize `Swiper` immediately since it is fetching needed modules asynchronous. `exampleSlider.swiperInstance` might not be available right after we create new `SwiperSlider` instance.
+To solve this problem, events has been added to `SwiperSlider` object.
+
+How to register event:
+
+```javascript
+  exampleSlider.on('afterInitSlider', ({ object, eventName }) => {
+    object // is SwiperSlider object
+    eventName // is eventName here it is afterInitSlider
+    object.swiperInstance // Swiper instance is now available
+  });
+```
+
+List of events:
+
+event name  |  description
+------------- | -------------
+`startFetchingModules` | Called when needed modules are staring to fetch.
+`endFetchingModules` | Called when modules fetch is finished.
+`beforeInitSlider` | Called right before swiperSlider initialization.
+`afterInitSlider` | Called right after swiperSlider initialization. Swiper instance is only available after this event is being called.
+
 
 ## Support project
 

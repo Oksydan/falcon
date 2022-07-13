@@ -7,6 +7,11 @@
     list-style-position: inside;
   }
 
+  ol {
+    list-style: decimal;
+    padding-left: rem-calc(30px);
+  }
+
   img {
     max-width: 100%;
     height: auto;
