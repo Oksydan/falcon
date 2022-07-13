@@ -146,7 +146,7 @@ exports.extractVendorsChunks = () => ({
           test: /[\\/]node_modules[\\/](swiper|dom7)[\\/]/,
           name: 'swipervendor',
           filename: 'js/swipervendor.js',
-          chunks: 'all',
+          chunks: 'initial',
         }
       },
     },
