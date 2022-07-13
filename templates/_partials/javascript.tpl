@@ -28,7 +28,7 @@
 {foreach $javascript.external as $js}
   <script
     type="text/javascript"
-    src="{$js.uri}?v={$jsAssetHash}"
+    src="{appendParamToUrl url=$js.uri key=v value=$jsAssetHash}"
     {$js.attribute}></script>
 {/foreach}
 
