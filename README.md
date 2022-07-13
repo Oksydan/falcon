@@ -273,6 +273,23 @@ css:
       - module_blog_name*
 ```
 
+#### 4. Remote files:
+
+You are able to register remote files.
+
+```yml
+css:
+  example_remote_bootstrap:
+    fileName: //cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css
+    server: remote # required to set server: remote for remote file
+    priority: 200
+
+js:
+  example_remote_bootstrap:
+    fileName: //cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js
+    server: remote # required to set server: remote for remote file
+    priority: 200
+```
 ## Support project
 
 If you like this project, buy me a cup of coffee. [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=JCSU5Z2AZV2UA)
