@@ -75,14 +75,14 @@ class ProductGallery {
         // DIRTY HACK
         setTimeout(() => {
           this.modalSliderSwiperInstance.update();
-          this.modalSliderSwiperInstance.slideTo(this.mainSliderSwiperInstance.activeIndex, 0);
+          this.modalSliderSwiperInstance.slideTo(this.mainSliderSwiperInstance ? this.mainSliderSwiperInstance.activeIndex : 0, 0);
           gallerySliderElem.style.opacity = 1;
         }, 200);
       } else {
         const modalSlider = new prestashop.SwiperSlider(gallerySliderElem, {
           slidesPerView: 1,
           spaceBetween: 10,
-          initialSlide: this.mainSliderSwiperInstance.activeIndex,
+          initialSlide: this.mainSliderSwiperInstance ? this.mainSliderSwiperInstance.activeIndex : 0,
           navigation: {
             nextEl: gallerySliderElem.querySelector('.swiper-button-next'),
             prevEl: gallerySliderElem.querySelector('.swiper-button-prev'),
