@@ -27,7 +27,7 @@
   <nav class="header-nav py-2">
     <div class="container">
       <div class="row">
-        <div class="col hidden-sm-down" id="_desktop_logo">
+        <div class="col text-md-left text-center">
           <a href="{$urls.base_url}">
             <img
               {if !empty($shop.logo_details)}
@@ -41,7 +41,7 @@
               alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}">
           </a>
         </div>
-        <div class="col text-right">
+        <div class="col d-none d-md-block text-right">
           {hook h='displayNav1'}
         </div>
       </div>
