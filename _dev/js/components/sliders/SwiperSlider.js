@@ -2,7 +2,6 @@ import Swiper, {
   Navigation, Pagination, Lazy, Autoplay
 } from 'swiper';
 
-import SliderEventEmitter from './SliderEventEmitter';
 import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 
 const dynamicModulesMap = {
@@ -61,44 +60,24 @@ class SwiperSlider {
     this.modules = defaultModules;
     this._modulesToFetch = [];
     this.SwiperInstance = null;
-    this.SliderEventEmitter = new SliderEventEmitter();
-
-    this.initSlider();
-  }
-
-  on(eventName, callback) {
-    this.SliderEventEmitter.on(eventName, callback);
   }
 
   async initSlider() {
     this.findNeededModulesToFetch();
     await this.fetchNeededModules();
     await this.initSwiper();
+
+    return this.SwiperInstance;
   }
 
   initSwiper() {
-    this.SliderEventEmitter.emit('beforeInitSlider', {
-      object: this,
-      eventName: 'beforeInitSlider'
-    });
-
     this.SwiperInstance = new Swiper(this.target, {
       ...this.options,
       modules: this.modules
     });
-
-    this.SliderEventEmitter.emit('afterInitSlider', {
-      object: this,
-      eventName: 'afterInitSlider'
-    });
   }
 
   async fetchNeededModules() {
-    this.SliderEventEmitter.emit('startFetchingModules', {
-      object: this,
-      eventName: 'startFetchingModules'
-    });
-
     if (this._modulesToFetch.length > 0) {
       const modulesPromisesArray = [];
 
@@ -118,19 +97,7 @@ class SwiperSlider {
             }
           }
         }
-
-        this.SliderEventEmitter.emit('endFetchingModules', {
-          object: this,
-          eventName: 'endFetchingModules'
-        });
       })
-    } else {
-
-      this.SliderEventEmitter.emit('endFetchingModules', {
-        object: this,
-        eventName: 'endFetchingModules'
-      });
-      return true;
     }
   }
 

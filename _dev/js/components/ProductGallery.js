@@ -21,7 +21,7 @@ class ProductGallery {
     this.initModalGallerySlider();
   }
 
-  initProductImageSlider() {
+  async initProductImageSlider() {
     const thumbsElem = document.querySelector(this.thumbsSliderSelector);
     const galleryTopElem = document.querySelector(this.mainSliderSelector);
 
@@ -42,23 +42,22 @@ class ProductGallery {
       watchSlidesProgress: true,
     })
 
-    galleryThumbs.on('afterInitSlider', ({ object, eventName }) => {
-      /* eslint-disable no-new */
-      const mainSlider = new prestashop.SwiperSlider(galleryTopElem, {
-        spaceBetween: 10,
-        navigation: {
-          nextEl: galleryTopElem.querySelector('.swiper-button-next'),
-          prevEl: galleryTopElem.querySelector('.swiper-button-prev'),
-        },
-        thumbs: {
-          swiper: galleryThumbs.SwiperInstance,
-        },
-      });
+    const galleryThumbsInstance = await galleryThumbs.initSlider();
 
-      mainSlider.on('afterInitSlider', ({ object, eventName }) => {
-        this.mainSliderSwiperInstance = mainSlider.SwiperInstance;
-      });
-    })
+    const mainSlider = new prestashop.SwiperSlider(galleryTopElem, {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: galleryTopElem.querySelector('.swiper-button-next'),
+        prevEl: galleryTopElem.querySelector('.swiper-button-prev'),
+      },
+      thumbs: {
+        swiper: galleryThumbsInstance,
+      },
+    });
+
+    const mainSliderInstance = await mainSlider.initSlider();
+
+    this.mainSliderSwiperInstance = mainSliderInstance;
   }
 
   initModalGallerySlider() {
@@ -89,9 +88,9 @@ class ProductGallery {
           },
         });
 
-        modalSlider.on('afterInitSlider', ({ object, eventName }) => {
-          this.modalSliderSwiperInstance = modalSlider.SwiperInstance;
-        });
+        const modalSliderInstance = modalSlider.initSlider();
+
+        this.modalSliderSwiperInstance = modalSliderInstance;
       }
     }
 

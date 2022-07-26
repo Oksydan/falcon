@@ -22,7 +22,8 @@ class PageSlider {
   }
 
   initSlider(target) {
-    new SwiperSlider(target, this.getConfigForSliderElement(target));
+    const swiper = new SwiperSlider(target, this.getConfigForSliderElement(target));
+    swiper.initSlider();
   }
 
   getConfigForSliderElement(target) {

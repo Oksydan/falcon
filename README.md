@@ -477,36 +477,46 @@ Second argument is swiper config, you can read more about it in [swiper API docu
   const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
     slidesPerView: 1,
     spaceBetween: 10,
-  })
+  });
+
+  const exampleSliderSwiperInstance = exampleSlider.initSwiper();
 ```
 
 `SwiperSlider` constructor returns `SwiperSlider` object.
-If you want to access swiper instance it will be available for (example above) via `exampleSlider.swiperInstance`. It might be tricky since `SwiperSlider` is executed asynchronous.
+If you want to access swiper instance it will be available for (example above) via `exampleSlider.swiperInstance` or `exampleSliderSwiperInstance`.
 
 #### Asynchronous nature of SwiperSlider
 
 We know that `SwiperSlider` isn't initialize `Swiper` immediately since it is fetching needed modules asynchronous. `exampleSlider.swiperInstance` might not be available right after we create new `SwiperSlider` instance.
-To solve this problem, events has been added to `SwiperSlider` object.
+To solve this problem `initSwiper` is returning promise that resolved is returning us SwiperSlider instance.
 
-How to register event:
+Example with usage of `async/await` (recommended way, cleaner):
 
 ```javascript
-  exampleSlider.on('afterInitSlider', ({ object, eventName }) => {
-    object // is SwiperSlider object
-    eventName // is eventName here it is afterInitSlider
-    object.swiperInstance // Swiper instance is now available
+  const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
   });
+
+  const exampleSliderSwiperInstance = await exampleSlider.initSwiper();
+
+  // exampleSliderSwiperInstance is Swiper instance created with SwiperSlider class
+  exampleSliderSwiperInstance
 ```
 
-List of events:
+Example with usage of `then`:
 
-event name  |  description
-------------- | -------------
-`startFetchingModules` | Called when needed modules are staring to fetch.
-`endFetchingModules` | Called when modules fetch is finished.
-`beforeInitSlider` | Called right before swiperSlider initialization.
-`afterInitSlider` | Called right after swiperSlider initialization. Swiper instance is only available after this event is being called.
+```javascript
+    const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  });
 
+  exampleSlider.initSwiper().then(swiperInstance => {
+    // swiperInstance is Swiper instance created with SwiperSlider class
+    swiperInstance
+  });
+```
 
 ## Support project
 
