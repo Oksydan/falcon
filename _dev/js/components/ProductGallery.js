@@ -67,7 +67,7 @@ class ProductGallery {
       return;
     }
 
-    const handleModalOpen = () => {
+    const handleModalOpen = async () => {
       if (this.modalSliderSwiperInstance) {
         gallerySliderElem.style.opacity = 0;
 
@@ -88,7 +88,7 @@ class ProductGallery {
           },
         });
 
-        const modalSliderInstance = modalSlider.initSlider();
+        const modalSliderInstance = await modalSlider.initSlider();
 
         this.modalSliderSwiperInstance = modalSliderInstance;
       }
