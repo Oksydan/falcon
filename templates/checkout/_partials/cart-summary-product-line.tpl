@@ -25,16 +25,18 @@
 {block name='cart_summary_product_line'}
   <div class="cart-products">
     <div class="cart-products__thumb">
-      <img
-        {if $product.default_image}
-          {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
-        {else}
-          src="{$urls.no_picture_image.bySize.cart_default.url}"
-        {/if}
-        alt="{$product.name|escape:'quotes'}"
-        class="img-fluid rounded"
-        width="{$product.default_image.bySize.cart_default.width}"
-        height="{$product.default_image.bySize.cart_default.height}">
+      {images_block webpEnabled=$webpEnabled}
+        <img
+          {if $product.default_image}
+            {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+          {else}
+            src="{$urls.no_picture_image.bySize.cart_default.url}"
+          {/if}
+          alt="{$product.name|escape:'quotes'}"
+          class="img-fluid rounded"
+          width="{$product.default_image.bySize.cart_default.width}"
+          height="{$product.default_image.bySize.cart_default.height}">
+      {/images_block}
     </div>
     <div class="cart-products__desc">
       <p class="h6 mb-2 font-sm">
