@@ -27,20 +27,21 @@
     <div class="row no-gutters flex-nowrap">
       <div class="col-4 col-md-3 col-xl-2">
         <a href="{$product.url}" title="{$product.name}">
-          <img
-            class="img-fluid lazyload"
-            width="{$product.default_image.medium.width}"
-            height="{$product.default_image.medium.height}"
-            data-src="{$product.default_image.medium.url}"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$product.default_image.medium.width}' height='{$product.default_image.medium.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
-            {if !empty($product.default_image.legend)}
-              alt="{$product.default_image.legend}"
-              title="{$product.default_image.legend}"
-            {else}
-              alt="{$product.name}"
-            {/if}
-            data-full-size-image-url="{$product.default_image.large.url}"
-          >
+          {images_block webpEnabled=$webpEnabled}
+            <img
+              class="img-fluid lazyload"
+              {generateImagesSources image=$product.default_image size='cart_default' lazyload=true}
+              width="{$product.default_image.bySize.cart_default.width}"
+              height="{$product.default_image.bySize.cart_default.height}"
+              {if !empty($product.default_image.legend)}
+                alt="{$product.default_image.legend}"
+                title="{$product.default_image.legend}"
+              {else}
+                alt="{$product.name}"
+              {/if}
+              data-full-size-image-url="{$product.default_image.large.url}"
+            >
+          {/images_block}
         </a>
       </div>
       <div class="card-body align-self-center">
