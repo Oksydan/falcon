@@ -49,7 +49,9 @@
       <div class="tab-content" id="tab-content">
         <div class="tab-pane fade in" id="description" role="tabpanel">
           {block name='product_description'}
-            <div class="product-description cms-content">{$product.description nofilter}</div>
+            {cms_images_block webpEnabled=$webpEnabled}
+              <div class="product-description cms-content">{$product.description nofilter}</div>
+            {/cms_images_block}
           {/block}
         </div>
 
