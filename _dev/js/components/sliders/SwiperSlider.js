@@ -26,7 +26,7 @@ const dynamicModulesMap = {
       import('../../../node_modules/swiper/modules/mousewheel/mousewheel.js'),
     ]
   ),
-  'mousewheel': new DynamicImportSwiperModule(
+  'scrollbar': new DynamicImportSwiperModule(
     () => [
       import('../../../node_modules/swiper/modules/scrollbar/scrollbar.js'),
       import('../../../node_modules/swiper/modules/scrollbar/scrollbar.scss'),
