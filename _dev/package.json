@@ -4,10 +4,11 @@
   "description": "Modern tools that help you develop your theme.",
   "main": "index.js",
   "scripts": {
-    "build-purge": "webpack --progress --mode=production --purge=true",
-    "build": "webpack --progress --mode=production",
-    "watch": "npm run dev",
-    "dev": "webpack serve --progress --mode=development",
+    "build-purge": "webpack --progress --mode=production --env purge=true",
+    "build-analyze": "webpack --progress --mode=production --env analyze=true",
+    "build": "webpack --progress --mode=production --env stats=errors-only",
+    "watch": "webpack watch --progress --mode=development",
+    "dev": "webpack serve --progress --mode=development --env devServer=true",
     "scss-fix": "stylelint \"**/*.scss\" --fix",
     "eslint-fix": "eslint \"**/*.js\" --fix"
   },

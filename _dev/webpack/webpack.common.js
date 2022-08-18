@@ -1,12 +1,12 @@
 const { extractScss, extractJs, extractImages, extractFonts, externals, extractVendorsChunks, preloadFonts } = require('./webpack.parts');
 const { merge } = require("webpack-merge");
 
-exports.commonConfig = ({ mode, port, publicPath, siteURL, getOutput, getEntry, entriesArray }) => (
+exports.commonConfig = ({ mode, port, publicPath, siteURL, getOutput, getEntry, entriesArray, stats, devServer }) => (
   merge(
     {
       mode,
       entry: getEntry(entriesArray),
-      output: getOutput({ mode, publicPath, siteURL, port }),
+      output: getOutput({ mode, publicPath, siteURL, port, devServer }),
       target: 'web',
     },
     preloadFonts(),
@@ -16,5 +16,6 @@ exports.commonConfig = ({ mode, port, publicPath, siteURL, getOutput, getEntry, 
     extractImages({ publicPath }),
     extractFonts({ publicPath }),
     extractVendorsChunks(),
+    (stats ? { stats } : {})
   )
 );
