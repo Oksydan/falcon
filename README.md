@@ -95,7 +95,7 @@ v 2.X  | 1.7.8.X | >= 14
 
 1. Go to [releases](https://github.com/Oksydan/modern-prestashop-starter-theme/releases/) and download latest version `starter.zip` file not source code.
 
-2. Download required modules and place them into `{shop_dir}/modules/` folder. Make sure that folder name of module don't contain branch name.
+2. Download required modules via github releases and place them into `{shop_dir}/modules/` folder. Make sure that folder name of module don't contain branch name when you are cloning them instead of downloading releases. If your `is_themecore` module don't contain `vendor` directory inside, download it from release or run `composer install` inside that module folder.
 
 3. Unzip theme file and place it inside `{shop_dir}/themes/`.
 
