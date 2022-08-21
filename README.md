@@ -14,6 +14,7 @@
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
+  * [Smarty blocks](#smarty-blocks)
   * [Register assets](#register-assets)
   * [Preloads/early hints](#preloads/early-hints)
 * [Javascript Components](#javascript-components)
@@ -257,6 +258,88 @@ It will output:
 ```html
     https://example.com?page=1&variable=value
 ```
+
+
+### Smarty blocks
+
+#### images_block
+
+Smarty block that modify `<img>` tags inside block to picture tag with `webp` `<source>` that if webp option is enabled inside `is_themecore` module.
+Module check if image extension is `png`, `jpeg`, `jpg`, `svg` or `gif` will be omitted.<br>
+This block don't check if image is external resource, don't use it for external resource.
+
+Example of usage:
+
+```smarty
+  {images_block webpEnabled=$webpEnabled}
+    <img
+      class="rounded img-fluid"
+      {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+      width="{$product.default_image.bySize.large_default.width}"
+      height="{$product.default_image.bySize.large_default.height}"
+      {if !empty($product.default_image.legend)}
+        alt="{$product.default_image.legend}"
+      {else}
+        alt="{$product.name}"
+      {/if}
+      >
+  {/images_block}
+```
+
+It will output:
+
+```smarty
+  <picture>
+    <source
+      type="image/webp"
+      srcset="http://domain.com/2-large_default/hummingbird-printed-t-shirt.webp">
+    <img
+      class="rounded img-fluid"
+      src="http://domain.com/2-large_default/hummingbird-printed-t-shirt.jpg"
+      width="800"
+      height="800"
+      alt="Hummingbird printed t-shirt">
+  </picture>
+```
+
+`$webpEnabled` is global variable provided from `is_themecore` module, this parameter isn't required.
+Block can also contains multiple images inside and every image will be modified to `<picture>` tag.
+
+
+#### cms_images_block
+
+This smarty block is working the same like `images_block` but it will check if files are containing internal urls or cdn urls.
+Every external image will be omitted.
+
+Example of usage:
+
+```smarty
+  {cms_images_block webpEnabled=$webpEnabled}
+    <img src="http://domain.com/img/cms/image.jpg"/>
+
+    <h2>Title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor porta nulla, nec elementum orci. Ut pellentesque lacus felis, non vestibulum nunc fermentum eget. Pellentesque gravida ante sed gravida ultricies.</p>
+
+    <img src="http://externalurl.com/image.jpg"/>
+  {/images_block}
+```
+
+It will output:
+
+```smarty
+  <picture>
+    <source type="image/webp" srcset="http://domain.com/img/cms/image.webp">
+    <img src="http://domain.com/img/cms/image.jpg"/>
+  </picture>
+
+  <h2>Title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor porta nulla, nec elementum orci. Ut pellentesque lacus felis, non vestibulum nunc fermentum eget. Pellentesque gravida ante sed gravida ultricies.</p>
+
+  <img src="http://externalurl.com/image.jpg"/>
+```
+
+Use this block instead of `images_block` only if you want to processed html content that can contains external urls for example cms pages/product description.
+This block is a bit slower that `images_block` so make sure that you are using it properly.
 
 ### Register assets
 
