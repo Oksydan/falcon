@@ -15,6 +15,7 @@
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
   * [Register assets](#register-assets)
+  * [Preloads/early hints](#preloads/early-hints)
 * [Javascript Components](#javascript-components)
   * [PageSLider](#pageslider)
   * [SwiperSlider](#swiperslider)
@@ -319,6 +320,20 @@ js:
     server: remote # required to set server: remote for remote file
     priority: 200
 ```
+
+### Preloads/early hints
+
+### Preload css
+
+Preload css option inside `is_themecore` is only working when `CCC option for css` is enabled. Switching this option on will automatically add `preload` `<link>` to head with css file.
+
+### Early hints
+
+Enabled early hints option inside `is_themecore` module will append every image/style preload link to response head as `Link` header.
+This option is requiring cloudflare and Early hints option enabled in your cloudflare dashboard. <br>
+This option is still in beta stage, to read more about it [click here](https://developers.cloudflare.com/cache/about/early-hints/)
+
+
 
 ## Javascript Components
 
