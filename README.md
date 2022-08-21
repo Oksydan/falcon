@@ -63,11 +63,12 @@ Performance results based on PageSpeed Insights:
 
 #### Desktop
 
-![psi_desktop](https://user-images.githubusercontent.com/25306716/137646511-661c58bf-3a29-4696-a58b-5a46e9667459.jpg)
+<img width="990" alt="mpst_desktop" src="https://user-images.githubusercontent.com/25306716/185810465-f85146be-4beb-4a16-8e14-ceaa230e96cd.png">
+
 
 #### Mobile
 
-![psi_mobile](https://user-images.githubusercontent.com/25306716/137646514-6e584e10-9ca4-4c92-9199-07e55c01a647.jpg)
+<img width="990" alt="mpst_mobile" src="https://user-images.githubusercontent.com/25306716/185810449-f652b86b-acc2-4046-8dd9-4ceeab224fe3.png">
 
 ## Getting started
 
