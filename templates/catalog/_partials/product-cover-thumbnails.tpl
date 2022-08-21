@@ -61,18 +61,18 @@
               <div class="js-product-main-images swiper swiper-custom" data-index="{$index}">
                 <div class="product-main-images__list swiper-wrapper">
                   <div class="swiper-slide">
-                      <img
-                        class="rounded img-fluid lazyload"
-                        {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
-                        width="{$product.default_image.bySize.large_default.width}"
-                        height="{$product.default_image.bySize.large_default.height}"
-                        {if !empty($product.default_image.legend)}
-                          alt="{$product.default_image.legend}"
-                          title="{$product.default_image.legend}"
-                        {else}
-                          alt="{$product.name}"
-                        {/if}
-                        >
+                    <img
+                      class="rounded img-fluid"
+                      {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+                      width="{$product.default_image.bySize.large_default.width}"
+                      height="{$product.default_image.bySize.large_default.height}"
+                      {if !empty($product.default_image.legend)}
+                        alt="{$product.default_image.legend}"
+                        title="{$product.default_image.legend}"
+                      {else}
+                        alt="{$product.name}"
+                      {/if}
+                      >
                   </div>
                   {if $product.images|count > 1}
                     {foreach from=$product.images item=image}
