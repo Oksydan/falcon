@@ -1,8 +1,8 @@
 .product-line {
   $self: &;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  position: relative;
 
   &:last-child {
     border-bottom: 0;
@@ -93,14 +93,15 @@
 
   &__checkbox-block {
     position: static;
+
     &::before {
-      content: '';
       position: absolute;
-      left: 0;
-      right: 0;
       top: 0;
+      right: 0;
       bottom: 0;
+      left: 0;
       cursor: pointer;
+      content: "";
     }
   }
 
@@ -112,9 +113,10 @@
             order: -3;
             @include custom-col(rem-calc(40px));
           }
+
           &--img {
             @include custom-col(rem-calc(70px));
-            padding-left: 0
+            padding-left: 0;
           }
 
           &--prod {
@@ -148,6 +150,7 @@
           &--total {
             @include custom-col(50%);
           }
+
           &--qty {
             text-align: right;
           }

@@ -1,14 +1,13 @@
-
 .product-thumbs {
-  margin-left: -#{map-get($spacers, 1)};
   margin-right: -#{map-get($spacers, 1)};
+  margin-left: -#{map-get($spacers, 1)};
 
   &__elem {
+    padding: 0 map-get($spacers, 1);
     cursor: pointer;
     opacity: .3;
     transition: .3s ease opacity;
     @include make-col(4);
-    padding: 0 map-get($spacers, 1);
 
     &:focus,
     &:hover {

@@ -173,7 +173,8 @@ script  | description
 `build-purge`  | Script run production config with assets optimization, chunks hashing also runs `purgecss` to remove not used styles. **Not recomended to use yet, create safelist before use**.
 `watch`  | good old watch option good if you struggle to setup `webpack-dev-server` . **Assets optimization not included**.
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
-`scss-fix`  | Script that run `stylelint` and fix minor issues in code.
+`scss-fix`  | Script that run `stylelint` and fix minor issues in code. `Removed until migration to dart-sass from node-sass`
+`eslint`    | Script that run `eslint` find issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
 
 
