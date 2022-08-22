@@ -16,10 +16,13 @@
   * [Smarty functions](#smarty-functions)
   * [Smarty blocks](#smarty-blocks)
   * [Register assets](#register-assets)
-  * [Preloads/early hints](#preloads/early-hints)
 * [Javascript Components](#javascript-components)
   * [PageSLider](#pageslider)
   * [SwiperSlider](#swiperslider)
+* [Features](#features)
+  * [Preloads/early hints](#preloads/early-hints)
+  * [Webp](#webp)
+  * [Webp nginx](#webp-nginx)
 * [Support project](#support-project)
 * [Contribution](#contribution)
 
@@ -406,20 +409,6 @@ js:
     priority: 200
 ```
 
-### Preloads/early hints
-
-### Preload css
-
-Preload css option inside `is_themecore` is only working when `CCC option for css` is enabled. Switching this option on will automatically add `preload` `<link>` to head with css file.
-
-### Early hints
-
-Enabled early hints option inside `is_themecore` module will append every image/style preload link to response head as `Link` header.
-This option is requiring cloudflare and Early hints option enabled in your cloudflare dashboard. <br>
-This option is still in beta stage, to read more about it [click here](https://developers.cloudflare.com/cache/about/early-hints/)
-
-
-
 ## Javascript Components
 
 ### PageSLider
@@ -620,6 +609,74 @@ Example with usage of `then`:
     // swiperInstance is Swiper instance created with SwiperSlider class
     swiperInstance
   });
+```
+
+## Features
+
+### Preloads/early hints
+
+### Preload css
+
+Preload css option inside `is_themecore` is only working when `CCC option for css` is enabled. Switching this option on will automatically add `preload` `<link>` to head with css file.
+
+### Early hints
+
+Enabled early hints option inside `is_themecore` module will append every image/style preload link to response head as `Link` header.
+This option is requiring cloudflare and Early hints option enabled in your cloudflare dashboard. <br>
+This option is still in beta stage, to read more about it [click here](https://developers.cloudflare.com/cache/about/early-hints/)
+
+### Webp
+
+In version `2.3.0` of `is_themecore` and `mpst` webp image format has been added.<br>
+You are albe to simply add webp image format by changing image extenstion to `.webp` from for example `.jpg` or `.png`. Module will automaticly find source file and convert it to `webp`.<br>
+Module is adding specific rules to `.htaccess` file to handle `webp` files. To enable `webp` image format you have to enable it in `is_themecore` module configuration.
+You are also able to set `quality` and `converter` that will be used to convert files to `webp` format. <br>
+
+### Webp nginx
+
+If you are using `nginx` you have to add manually some rules to your nginx configuration file.<br>
+Configuration that is being used for `mpst.dev`:
+
+```
+location ~ ^/(\d)(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$1$2$3.webp /img/p/$1/$1$2$3.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$1$2$3.webp;
+}
+
+location ~ ^/(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$1$2$3$4.webp /img/p/$1/$2/$1$2$3$4.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$1$2$3$4.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$1$2$3$4$5.webp /img/p/$1/$2/$3/$1$2$3$4$5.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$1$2$3$4$5.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$1$2$3$4$5$6.webp /img/p/$1/$2/$3/$4/$1$2$3$4$5$6.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$1$2$3$4$5$6.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.webp /img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.webp /img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.webp /img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.webp;
+}
+
+location ~ ^/c/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.webp$ {
+    try_files /img/c/$1$2$3.webp /img/c/$1$2$3.webp /modules/is_themecore/webp.php?source=$document_root/img/c/$1$2$3.webp;
+}
+
+location ~ ^/c/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.webp$ {
+    try_files /img/c/$1$2.webp /img/c/$1$2.webp /modules/is_themecore/webp.php?source=$document_root/img/c/$1$2.webp;
+}
+
+location ~ ^/(.*)\.webp$ {
+    try_files /$1.webp /$1.webp /modules/is_themecore/webp.php?source=$document_root/$1.webp;
+}
 ```
 
 ## Support project
