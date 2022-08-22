@@ -36,11 +36,11 @@ exports.webpackVars = {
 
     return resultEntries;
   },
-  getOutput: ({ mode, publicPath, siteURL, port }) => ({
+  getOutput: ({ mode, publicPath, siteURL, port, devServer }) => ({
     filename: 'js/[name].js',
     chunkFilename: mode === 'production' ? 'js/[chunkhash].js' : 'js/[id].js',
     path: path.resolve(themeDev, '../assets'),
-    publicPath: mode === 'production' ? publicPath : siteURL + ':' + port + publicPath,
+    publicPath: !devServer ? publicPath : siteURL + ':' + port + publicPath,
     pathinfo: false,
   }),
 }

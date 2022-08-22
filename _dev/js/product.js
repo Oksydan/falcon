@@ -1,6 +1,10 @@
 import $ from 'jquery';
 import ProductGallery from './components/ProductGallery';
 
+function activateFirstProductTab() {
+  $('.product-tabs .nav .nav-item:first-child a').tab('show');
+}
+
 $(() => {
   activateFirstProductTab();
   const gallery = new ProductGallery();
@@ -9,9 +13,5 @@ $(() => {
 
   prestashop.on('updatedProductCombination', () => {
     gallery.init();
-  })
+  });
 });
-
-function activateFirstProductTab() {
-  $('.product-tabs .nav .nav-item:first-child a').tab('show');
-}

@@ -1,11 +1,10 @@
-
 class ProductGallery {
   constructor({
-      thumbsSliderSelector = '.js-product-thumbs',
-      mainSliderSelector = '.js-product-main-images',
-      modalSliderSelector = '.js-modal-gallery',
-      galleryModalSelector = '.js-product-images-modal',
-    } = {}) {
+    thumbsSliderSelector = '.js-product-thumbs',
+    mainSliderSelector = '.js-product-main-images',
+    modalSliderSelector = '.js-modal-gallery',
+    galleryModalSelector = '.js-product-images-modal',
+  } = {}) {
     this.thumbsSliderSelector = thumbsSliderSelector;
     this.mainSliderSelector = mainSliderSelector;
     this.modalSliderSelector = modalSliderSelector;
@@ -21,7 +20,7 @@ class ProductGallery {
     this.initModalGallerySlider();
   }
 
-  initProductImageSlider() {
+  async initProductImageSlider() {
     const thumbsElem = document.querySelector(this.thumbsSliderSelector);
     const galleryTopElem = document.querySelector(this.mainSliderSelector);
 
@@ -40,25 +39,24 @@ class ProductGallery {
       },
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
-    })
+    });
 
-    galleryThumbs.on('afterInitSlider', ({ object, eventName }) => {
-      /* eslint-disable no-new */
-      const mainSlider = new prestashop.SwiperSlider(galleryTopElem, {
-        spaceBetween: 10,
-        navigation: {
-          nextEl: galleryTopElem.querySelector('.swiper-button-next'),
-          prevEl: galleryTopElem.querySelector('.swiper-button-prev'),
-        },
-        thumbs: {
-          swiper: galleryThumbs.SwiperInstance,
-        },
-      });
+    const galleryThumbsInstance = await galleryThumbs.initSlider();
 
-      mainSlider.on('afterInitSlider', ({ object, eventName }) => {
-        this.mainSliderSwiperInstance = mainSlider.SwiperInstance;
-      });
-    })
+    const mainSlider = new prestashop.SwiperSlider(galleryTopElem, {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: galleryTopElem.querySelector('.swiper-button-next'),
+        prevEl: galleryTopElem.querySelector('.swiper-button-prev'),
+      },
+      thumbs: {
+        swiper: galleryThumbsInstance,
+      },
+    });
+
+    const mainSliderInstance = await mainSlider.initSlider();
+
+    this.mainSliderSwiperInstance = mainSliderInstance;
   }
 
   initModalGallerySlider() {
@@ -68,7 +66,7 @@ class ProductGallery {
       return;
     }
 
-    const handleModalOpen = () => {
+    const handleModalOpen = async () => {
       if (this.modalSliderSwiperInstance) {
         gallerySliderElem.style.opacity = 0;
 
@@ -89,11 +87,11 @@ class ProductGallery {
           },
         });
 
-        modalSlider.on('afterInitSlider', ({ object, eventName }) => {
-          this.modalSliderSwiperInstance = modalSlider.SwiperInstance;
-        });
+        const modalSliderInstance = await modalSlider.initSlider();
+
+        this.modalSliderSwiperInstance = modalSliderInstance;
       }
-    }
+    };
 
     // TO REFACTO LATER WITH BS5 REMOVE JQUERY!
     $(this.galleryModalSelector).on('show.bs.modal', handleModalOpen);

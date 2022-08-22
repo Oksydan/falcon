@@ -7,8 +7,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const { cleanDistFolders } = require('./webpack.parts');
 const { merge } = require("webpack-merge");
 
-const plugins = (purge) => ([
-  new BundleAnalyzerPlugin(),
+const plugins = (purge, analyze) => ([
+  analyze ? new BundleAnalyzerPlugin() : false,
   purge ? new PurgeCSSPlugin({
     paths: glob.sync([
       'js/*.js',
@@ -23,7 +23,7 @@ const plugins = (purge) => ([
   : false
 ].filter(el => el && el));
 
-exports.productionConfig = ({ purge }) => (
+exports.productionConfig = ({ purge, analyze }) => (
   merge(
     {
       devtool: 'hidden-source-map',
@@ -37,7 +37,7 @@ exports.productionConfig = ({ purge }) => (
           new CssMinimizerPlugin()
         ],
       },
-      plugins: plugins(purge)
+      plugins: plugins(purge, analyze)
     },
     cleanDistFolders()
   )

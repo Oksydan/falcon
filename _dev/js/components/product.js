@@ -26,11 +26,50 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 
 $(() => {
+  const createInputFile = () => {
+    $('.js-file-input').on('change', (event) => {
+      const target = event.currentTarget;
+      const file = target.files[0];
+
+      if (target && file) {
+        $(target).prev().text(file.name);
+      }
+    });
+  };
+
+  const createProductSpin = () => {
+    const $quantityInput = $('#quantity_wanted');
+
+    $quantityInput.TouchSpin({
+      verticalupclass: 'material-icons touchspin-up',
+      verticaldownclass: 'material-icons touchspin-down',
+      buttondown_class: 'btn btn-touchspin js-touchspin',
+      buttonup_class: 'btn btn-touchspin js-touchspin',
+      min: parseInt($quantityInput.attr('min'), 10),
+      max: 1000000,
+    });
+
+    $quantityInput.on('focusout', () => {
+      if ($quantityInput.val() === '' || $quantityInput.val() < $quantityInput.attr('min')) {
+        $quantityInput.val($quantityInput.attr('min'));
+        $quantityInput.trigger('change');
+      }
+    });
+
+    $('body').on('change keyup', '#quantity_wanted', (event) => {
+      $(event.currentTarget).trigger('touchspin.stopspin');
+      prestashop.emit('updateProduct', {
+        eventType: 'updatedProductQuantity',
+        event,
+      });
+    });
+  };
+
   createProductSpin();
   createInputFile();
   let updateEvenType = false;
 
-  prestashop.on('updateProduct', ({eventType}) => {
+  prestashop.on('updateProduct', ({ eventType }) => {
     updateEvenType = eventType;
   });
 
@@ -72,43 +111,4 @@ $(() => {
 
     prestashop.pageLazyLoad.update();
   });
-
-  function createInputFile() {
-    $('.js-file-input').on('change', (event) => {
-      const target = event.currentTarget;
-      const file = target.files[0];
-
-      if (target && file) {
-        $(target).prev().text(file.name);
-      }
-    });
-  }
-
-  function createProductSpin() {
-    const $quantityInput = $('#quantity_wanted');
-
-    $quantityInput.TouchSpin({
-      verticalupclass: 'material-icons touchspin-up',
-      verticaldownclass: 'material-icons touchspin-down',
-      buttondown_class: 'btn btn-touchspin js-touchspin',
-      buttonup_class: 'btn btn-touchspin js-touchspin',
-      min: parseInt($quantityInput.attr('min'), 10),
-      max: 1000000,
-    });
-
-    $quantityInput.on('focusout', () => {
-      if ($quantityInput.val() === '' || $quantityInput.val() < $quantityInput.attr('min')) {
-        $quantityInput.val($quantityInput.attr('min'));
-        $quantityInput.trigger('change');
-      }
-    });
-
-    $('body').on('change keyup', '#quantity_wanted', (event) => {
-      $(event.currentTarget).trigger('touchspin.stopspin');
-      prestashop.emit('updateProduct', {
-        eventType: 'updatedProductQuantity',
-        event,
-      });
-    });
-  }
 });

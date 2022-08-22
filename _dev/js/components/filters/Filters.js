@@ -20,7 +20,7 @@ class Filters {
       prestashop.pageLoader.showLoader();
     });
 
-    this.$body.on('change', '#search_filters select', ({target}) => {
+    this.$body.on('change', '#search_filters select', ({ target }) => {
       const form = $(target).closest('form');
       prestashop.emit('updateFacets', `?${form.serialize()}`);
     });
@@ -30,7 +30,7 @@ class Filters {
       prestashop.emit('updateFacets', $(event.target).closest('a').get(0).href);
     });
 
-    this.$body.on('change', '[data-action="search-select"]', ({target}) => {
+    this.$body.on('change', '[data-action="search-select"]', ({ target }) => {
       prestashop.emit('updateFacets', $(target).find('option:selected').data('href'));
     });
 

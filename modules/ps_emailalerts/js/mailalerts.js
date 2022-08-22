@@ -30,7 +30,7 @@ $(document).ready(function() {
     clearAlert();
   })
 
-  $('.js-mailalert-submit').on('click', function(e) {
+  $(document).on('click', '.js-mailalert-submit', function(e) {
     e.preventDefault();
     addNotification(e);
   });

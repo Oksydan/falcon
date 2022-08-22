@@ -1,13 +1,13 @@
-import 'bootstrap/js/dist/alert.js';
-import 'bootstrap/js/dist/button.js';
-import 'bootstrap/js/dist/tab.js';
-import 'bootstrap/js/dist/util.js';
+import 'bootstrap/js/dist/alert';
+import 'bootstrap/js/dist/button';
+import 'bootstrap/js/dist/tab';
+import 'bootstrap/js/dist/util';
 
 // MOVED TO DYNAMIC IMPORTS
-// import 'bootstrap/js/dist/carousel.js';
-// import 'bootstrap/js/dist/collapse.js';
-// import 'bootstrap/js/dist/dropdown.js';
-// import 'bootstrap/js/dist/modal.js';
-// import 'bootstrap/js/dist/popover.js';
-// import 'bootstrap/js/dist/scrollspy.js';
-// import 'bootstrap/js/dist/toast.js';
+// import 'bootstrap/js/dist/carousel';
+// import 'bootstrap/js/dist/collapse';
+// import 'bootstrap/js/dist/dropdown';
+// import 'bootstrap/js/dist/modal';
+// import 'bootstrap/js/dist/popover';
+// import 'bootstrap/js/dist/scrollspy';
+// import 'bootstrap/js/dist/toast';

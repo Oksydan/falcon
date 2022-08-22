@@ -27,8 +27,7 @@ class DynamicImportDOMEvents {
         $(e.target).trigger(e.type);
         this.unbindEvents();
       }
-    },
-    );
+    });
   }
 
   bindEvents() {

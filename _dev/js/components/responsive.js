@@ -68,7 +68,7 @@ function toggleMobileStyles() {
 }
 
 $(window).on('resize', () => {
-  const {responsive} = prestashop;
+  const { responsive } = prestashop;
   const cw = responsive.current_width;
   const mw = responsive.min_width;
   const w = window.innerWidth;

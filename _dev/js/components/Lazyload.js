@@ -1,7 +1,7 @@
 import LazyLoad from 'vanilla-lazyload';
 
 class PageLazyLoad {
-  constructor({selector = '.lazyload'} = {}) {
+  constructor({ selector = '.lazyload' } = {}) {
     this.selector = selector;
     this.lazyLoadInstance = null;
     this.init();

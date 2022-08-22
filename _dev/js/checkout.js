@@ -38,7 +38,7 @@ function setUpCheckout() {
           .find(prestashop.themeSelectors.modalContent)
           .html($(content).find('.page-cms').contents());
       }).fail((resp) => {
-        prestashop.emit('handleError', {eventType: 'clickTerms', resp});
+        prestashop.emit('handleError', { eventType: 'clickTerms', resp });
       });
     }
 

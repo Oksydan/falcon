@@ -24,6 +24,23 @@
  */
 import $ from 'jquery';
 
+const supportedValidity = () => {
+  const input = document.createElement('input');
+
+  return (
+    'validity' in input
+    && 'badInput' in input.validity
+    && 'patternMismatch' in input.validity
+    && 'rangeOverflow' in input.validity
+    && 'rangeUnderflow' in input.validity
+    && 'tooLong' in input.validity
+    && 'tooShort' in input.validity
+    && 'typeMismatch' in input.validity
+    && 'valid' in input.validity
+    && 'valueMissing' in input.validity
+  );
+};
+
 export default class Form {
   static init() {
     Form.parentFocus();
@@ -32,10 +49,10 @@ export default class Form {
   }
 
   static parentFocus() {
-    $('.js-child-focus').on('focus', ({target}) => {
+    $('.js-child-focus').on('focus', ({ target }) => {
       $(target).closest('.js-parent-focus').addClass('focus');
     });
-    $('.js-child-focus').on('focusout', ({target}) => {
+    $('.js-child-focus').on('focusout', ({ target }) => {
       $(target).closest('.js-parent-focus').removeClass('focus');
     });
   }
@@ -88,8 +105,7 @@ export default class Form {
                 if (!divToScroll) {
                   divToScroll = $parent;
                 }
-              },
-              );
+              });
 
               const $form = $(form);
               $form.data('disabled', false);
@@ -98,7 +114,7 @@ export default class Form {
             form.classList.add('was-validated');
             if (divToScroll) {
               $('html, body').animate(
-                {scrollTop: divToScroll.offset().top},
+                { scrollTop: divToScroll.offset().top },
                 300,
               );
               divToScroll = false;
@@ -110,20 +126,3 @@ export default class Form {
     }
   }
 }
-
-const supportedValidity = () => {
-  const input = document.createElement('input');
-
-  return (
-    'validity' in input
-    && 'badInput' in input.validity
-    && 'patternMismatch' in input.validity
-    && 'rangeOverflow' in input.validity
-    && 'rangeUnderflow' in input.validity
-    && 'tooLong' in input.validity
-    && 'tooShort' in input.validity
-    && 'typeMismatch' in input.validity
-    && 'valid' in input.validity
-    && 'valueMissing' in input.validity
-  );
-};

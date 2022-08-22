@@ -1,4 +1,3 @@
-
 class FiltersUrlHandler {
   constructor() {
     this.baseUrl = window.location.origin + window.location.pathname;
@@ -16,7 +15,7 @@ class FiltersUrlHandler {
     this.oldSearchUrl = searchParams.get('q');
   }
 
-  setRangeParams(group, {unit, from, to}) {
+  setRangeParams(group, { unit, from, to }) {
     this.removeGroup(group);
 
     this.appendParam(group, unit);
@@ -75,7 +74,7 @@ class FiltersUrlHandler {
       const filterGroupArry = filterGroup.split('-');
 
       if (filterGroupArry[0] === group) {
-        const filterRestul = filterGroupArry.filter(el => el !== prop);
+        const filterRestul = filterGroupArry.filter((el) => el !== prop);
 
         if (filterRestul.length === 1) {
           newSearchUrl.splice(i, 1);

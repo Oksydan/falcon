@@ -13,7 +13,7 @@ class PageSlider {
       entries.forEach(({ intersectionRatio, target }) => {
         if (intersectionRatio > 0) {
           self.observer.unobserve(target);
-          self.initSlider(target);
+          PageSlider.initSlider(target);
         }
       });
     });
@@ -21,11 +21,12 @@ class PageSlider {
     this.observerElements();
   }
 
-  initSlider(target) {
-    new SwiperSlider(target, this.getConfigForSliderElement(target));
+  static initSlider(target) {
+    const swiper = new SwiperSlider(target, PageSlider.getConfigForSliderElement(target));
+    swiper.initSlider();
   }
 
-  getConfigForSliderElement(target) {
+  static getConfigForSliderElement(target) {
     let elConfig = target.dataset.swiper || {};
 
     if (typeof elConfig === 'string') {
@@ -41,8 +42,8 @@ class PageSlider {
       elConfig = {
         ...elConfig,
         navigation: {
-          nextEl: nextEl,
-          prevEl: prevEl,
+          nextEl,
+          prevEl,
         },
       };
     }
@@ -62,9 +63,9 @@ class PageSlider {
   }
 
   observerElements() {
-    var elms = document.querySelectorAll(this.selfInitializedSlidersSelector);
+    const elms = document.querySelectorAll(this.selfInitializedSlidersSelector);
 
-    for (var i = 0; i < elms.length; i++) {
+    for (let i = 0; i < elms.length; i += 1) {
       const elem = elms[i];
 
       if (!elem.classList.contains(this.observeElementClass)) {

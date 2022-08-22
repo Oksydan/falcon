@@ -62,6 +62,10 @@
   <link rel="shortcut icon" type="image/x-icon" href="{$shop.favicon}?{$shop.favicon_update_time}">
 {/block}
 
+{block name='hook_header'}
+  {$HOOK_HEADER nofilter}
+{/block}
+
 {block name='head_preload'}
   {if $shop.logo}
     <link rel="preload" as="image" href="{$shop.logo}">
@@ -75,10 +79,6 @@
 
 {block name='javascript_head'}
   {include file="_partials/javascript.tpl" javascript=$javascript.head vars=$js_custom_vars}
-{/block}
-
-{block name='hook_header'}
-  {$HOOK_HEADER nofilter}
 {/block}
 
 {block name='hook_extra'}{/block}

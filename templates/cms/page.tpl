@@ -32,7 +32,9 @@
   <section id="content" class="page-content cms-content page-cms page-cms-{$cms.id}">
 
     {block name='cms_content'}
-      {$cms.content nofilter}
+      {cms_images_block webpEnabled=$webpEnabled}
+        {$cms.content nofilter}
+      {/cms_images_block}
     {/block}
 
     {block name='hook_cms_dispute_information'}

@@ -14,10 +14,15 @@
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
   * [Smarty functions](#smarty-functions)
+  * [Smarty blocks](#smarty-blocks)
   * [Register assets](#register-assets)
 * [Javascript Components](#javascript-components)
   * [PageSLider](#pageslider)
   * [SwiperSlider](#swiperslider)
+* [Features](#features)
+  * [Preloads/early hints](#preloads/early-hints)
+  * [Webp](#webp)
+  * [Webp nginx](#webp-nginx)
 * [Support project](#support-project)
 * [Contribution](#contribution)
 
@@ -46,6 +51,9 @@ This theme was created to deliver starter theme with latest developers tools and
 8. Specific `.scss` file structure that help you maintain your code.
 9. Automatic generated preload links for theme fonts. You don't have to care about manually preloading fonts inside template. Webpack generates `.html` file that is included inside head. Fonts fileNames are `contentHashed` so client side caching problems after fonts changes are resolved (especially useful for icomoon generated icon fonts.).
 10. High dpi images support added. With just simple call of smarty function `generateImageSources` you are able to handle whole image sources logic - `srcset` for high dpi images option enabled.
+11. `SwiperSlider` wrapper class for `swiper.js` to fetch needed swiper modules lazily based on provided config.
+12. Webp image format generated automatically on demand via `is_themcore` module.
+13. `Early hints (103)` support via cloudflare for css/image file.
 
 ### Online demo
 
@@ -58,11 +66,12 @@ Performance results based on PageSpeed Insights:
 
 #### Desktop
 
-![psi_desktop](https://user-images.githubusercontent.com/25306716/137646511-661c58bf-3a29-4696-a58b-5a46e9667459.jpg)
+<img width="990" alt="mpst_desktop" src="https://user-images.githubusercontent.com/25306716/185810465-f85146be-4beb-4a16-8e14-ceaa230e96cd.png">
+
 
 #### Mobile
 
-![psi_mobile](https://user-images.githubusercontent.com/25306716/137646514-6e584e10-9ca4-4c92-9199-07e55c01a647.jpg)
+<img width="990" alt="mpst_mobile" src="https://user-images.githubusercontent.com/25306716/185810449-f652b86b-acc2-4046-8dd9-4ceeab224fe3.png">
 
 ## Getting started
 
@@ -92,7 +101,7 @@ v 2.X  | 1.7.8.X | >= 14
 
 1. Go to [releases](https://github.com/Oksydan/modern-prestashop-starter-theme/releases/) and download latest version `starter.zip` file not source code.
 
-2. Download required modules and place them into `{shop_dir}/modules/` folder. Make sure that folder name of module don't contain branch name.
+2. Download required modules via github releases and place them into `{shop_dir}/modules/` folder. Make sure that folder name of module don't contain branch name when you are cloning them instead of downloading releases. If your `is_themecore` module don't contain `vendor` directory inside, download it from release or run `composer install` inside that module folder.
 
 3. Unzip theme file and place it inside `{shop_dir}/themes/`.
 
@@ -162,11 +171,13 @@ file  | description
 
 script  | description
 ------------- | -------------
-`build`  | Script run production config with assets optimization and chunks names hashing.
+`build`  | Script run production config with assets optimization and chunks names hashing, silent console output.
+`build-analyze`  | Script run production config with assets optimization and chunks names hashing also display bundle-analyzer.
 `build-purge`  | Script run production config with assets optimization, chunks hashing also runs `purgecss` to remove not used styles. **Not recomended to use yet, create safelist before use**.
-`watch`  | watch is an alias for `npm run dev`. **Assets optimization not included**.
+`watch`  | good old watch option good if you struggle to setup `webpack-dev-server` . **Assets optimization not included**.
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
-`scss-fix`  | Script that run `stylelint` and fix minor issues in code.
+`scss-fix`  | Script that run `stylelint` and fix minor issues in code. `Removed until migration to dart-sass from node-sass`
+`eslint`    | Script that run `eslint` find issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
 
 
@@ -252,6 +263,88 @@ It will output:
 ```html
     https://example.com?page=1&variable=value
 ```
+
+
+### Smarty blocks
+
+#### images_block
+
+Smarty block that modify `<img>` tags inside block to picture tag with `webp` `<source>` that if webp option is enabled inside `is_themecore` module.
+Module check if image extension is `png`, `jpeg`, `jpg`, `svg` or `gif` will be omitted.<br>
+This block don't check if image is external resource, don't use it for external resource.
+
+Example of usage:
+
+```smarty
+  {images_block webpEnabled=$webpEnabled}
+    <img
+      class="rounded img-fluid"
+      {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+      width="{$product.default_image.bySize.large_default.width}"
+      height="{$product.default_image.bySize.large_default.height}"
+      {if !empty($product.default_image.legend)}
+        alt="{$product.default_image.legend}"
+      {else}
+        alt="{$product.name}"
+      {/if}
+      >
+  {/images_block}
+```
+
+It will output:
+
+```smarty
+  <picture>
+    <source
+      type="image/webp"
+      srcset="http://domain.com/2-large_default/hummingbird-printed-t-shirt.webp">
+    <img
+      class="rounded img-fluid"
+      src="http://domain.com/2-large_default/hummingbird-printed-t-shirt.jpg"
+      width="800"
+      height="800"
+      alt="Hummingbird printed t-shirt">
+  </picture>
+```
+
+`$webpEnabled` is global variable provided from `is_themecore` module, this parameter isn't required.
+Block can also contains multiple images inside and every image will be modified to `<picture>` tag.
+
+
+#### cms_images_block
+
+This smarty block is working the same like `images_block` but it will check if files are containing internal urls or cdn urls.
+Every external image will be omitted.
+
+Example of usage:
+
+```smarty
+  {cms_images_block webpEnabled=$webpEnabled}
+    <img src="http://domain.com/img/cms/image.jpg"/>
+
+    <h2>Title</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor porta nulla, nec elementum orci. Ut pellentesque lacus felis, non vestibulum nunc fermentum eget. Pellentesque gravida ante sed gravida ultricies.</p>
+
+    <img src="http://externalurl.com/image.jpg"/>
+  {/images_block}
+```
+
+It will output:
+
+```smarty
+  <picture>
+    <source type="image/webp" srcset="http://domain.com/img/cms/image.webp">
+    <img src="http://domain.com/img/cms/image.jpg"/>
+  </picture>
+
+  <h2>Title</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor porta nulla, nec elementum orci. Ut pellentesque lacus felis, non vestibulum nunc fermentum eget. Pellentesque gravida ante sed gravida ultricies.</p>
+
+  <img src="http://externalurl.com/image.jpg"/>
+```
+
+Use this block instead of `images_block` only if you want to processed html content that can contains external urls for example cms pages/product description.
+This block is a bit slower that `images_block` so make sure that you are using it properly.
 
 ### Register assets
 
@@ -477,36 +570,115 @@ Second argument is swiper config, you can read more about it in [swiper API docu
   const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
     slidesPerView: 1,
     spaceBetween: 10,
-  })
+  });
+
+  const exampleSliderSwiperInstance = exampleSlider.initSwiper();
 ```
 
 `SwiperSlider` constructor returns `SwiperSlider` object.
-If you want to access swiper instance it will be available for (example above) via `exampleSlider.swiperInstance`. It might be tricky since `SwiperSlider` is executed asynchronous.
+If you want to access swiper instance it will be available for (example above) via `exampleSlider.swiperInstance` or `exampleSliderSwiperInstance`.
 
 #### Asynchronous nature of SwiperSlider
 
 We know that `SwiperSlider` isn't initialize `Swiper` immediately since it is fetching needed modules asynchronous. `exampleSlider.swiperInstance` might not be available right after we create new `SwiperSlider` instance.
-To solve this problem, events has been added to `SwiperSlider` object.
+To solve this problem `initSwiper` is returning promise that resolved is returning us SwiperSlider instance.
 
-How to register event:
+Example with usage of `async/await` (recommended way, cleaner):
 
 ```javascript
-  exampleSlider.on('afterInitSlider', ({ object, eventName }) => {
-    object // is SwiperSlider object
-    eventName // is eventName here it is afterInitSlider
-    object.swiperInstance // Swiper instance is now available
+  const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  });
+
+  const exampleSliderSwiperInstance = await exampleSlider.initSwiper();
+
+  // exampleSliderSwiperInstance is Swiper instance created with SwiperSlider class
+  exampleSliderSwiperInstance
+```
+
+Example with usage of `then`:
+
+```javascript
+    const exampleSlider = new prestashop.SwiperSlider('.js-slider', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+  });
+
+  exampleSlider.initSwiper().then(swiperInstance => {
+    // swiperInstance is Swiper instance created with SwiperSlider class
+    swiperInstance
   });
 ```
 
-List of events:
+## Features
 
-event name  |  description
-------------- | -------------
-`startFetchingModules` | Called when needed modules are staring to fetch.
-`endFetchingModules` | Called when modules fetch is finished.
-`beforeInitSlider` | Called right before swiperSlider initialization.
-`afterInitSlider` | Called right after swiperSlider initialization. Swiper instance is only available after this event is being called.
+### Preloads/early hints
 
+### Preload css
+
+Preload css option inside `is_themecore` is only working when `CCC option for css` is enabled. Switching this option on will automatically add `preload` `<link>` to head with css file.
+
+### Early hints
+
+Enabled early hints option inside `is_themecore` module will append every image/style preload link to response head as `Link` header.
+This option is requiring cloudflare and Early hints option enabled in your cloudflare dashboard. <br>
+This option is still in beta stage, to read more about it [click here](https://developers.cloudflare.com/cache/about/early-hints/)
+
+### Webp
+
+In version `2.3.0` of `is_themecore` and `mpst` webp image format has been added.<br>
+You are able to simply add webp image format by changing image extenstion to `.webp` from for example `.jpg` or `.png`. Module will automaticly find source file and convert it to `webp`.<br>
+You don't have to create `<picture>` tag and change image src extenstion to `webp`. Two new smarty blocks has been added to handle needed template modyfication `images_block` and `cms_images_block`, you can read more about it in [smarty blocks section](#smarty-blocks). <br>
+Module is adding specific rules to `.htaccess` file to handle `webp` files. To enable `webp` image format you have to enable it in `is_themecore` module configuration.
+You are also able to set `quality` and `converter` that will be used to convert files to `webp` format. <br>
+
+### Webp nginx
+
+If you are using `nginx` you have to add manually some rules to your nginx configuration file.<br>
+Configuration that is being used for `mpst.dev`:
+
+```
+location ~ ^/(\d)(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$1$2$3.webp /img/p/$1/$1$2$3.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$1$2$3.webp;
+}
+
+location ~ ^/(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$1$2$3$4.webp /img/p/$1/$2/$1$2$3$4.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$1$2$3$4.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$1$2$3$4$5.webp /img/p/$1/$2/$3/$1$2$3$4$5.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$1$2$3$4$5.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$1$2$3$4$5$6.webp /img/p/$1/$2/$3/$4/$1$2$3$4$5$6.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$1$2$3$4$5$6.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.webp /img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6$7.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.webp /img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7$8.webp;
+}
+
+location ~ ^/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
+    try_files /img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.webp /img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.webp /modules/is_themecore/webp.php?source=$document_root/img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8$9.webp;
+}
+
+location ~ ^/c/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.webp$ {
+    try_files /img/c/$1$2$3.webp /img/c/$1$2$3.webp /modules/is_themecore/webp.php?source=$document_root/img/c/$1$2$3.webp;
+}
+
+location ~ ^/c/([0-9]+)(\-[\.*_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.webp$ {
+    try_files /img/c/$1$2.webp /img/c/$1$2.webp /modules/is_themecore/webp.php?source=$document_root/img/c/$1$2.webp;
+}
+
+location ~ ^/(.*)\.webp$ {
+    try_files /$1.webp /$1.webp /modules/is_themecore/webp.php?source=$document_root/$1.webp;
+}
+```
 
 ## Support project
 

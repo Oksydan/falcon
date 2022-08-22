@@ -17,6 +17,9 @@ const getConfig = ({mode, ...vars}) => {
 
 module.exports = (env, options) => getConfig({
   mode: options.mode,
-  purge: options.purge ? options.purge : false,
+  purge: env.purge ? env.purge : false,
+  analyze: env.analyze ? env.analyze : false,
+  devServer: env.devServer ? env.devServer : false,
+  stats: env.stats ? env.stats : false,
   ...webpackVars
 });

@@ -1,58 +1,59 @@
 import Swiper, {
-  Navigation, Pagination, Lazy, Autoplay
+  Navigation, Pagination, Lazy, Autoplay,
 } from 'swiper';
 
-import SliderEventEmitter from './SliderEventEmitter';
 import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 
+/* eslint-disable */
 const dynamicModulesMap = {
-  'thumbs': new DynamicImportSwiperModule(
+  thumbs: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/thumbs/thumbs.js'),
-    ]
+      import('node_modules/swiper/modules/thumbs/thumbs.js'),
+    ],
   ),
-  'virtual': new DynamicImportSwiperModule(
+  virtual: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/virtual/virtual.js'),
-      import('../../../node_modules/swiper/modules/virtual/virtual.scss'),
-    ]
+      import('node_modules/swiper/modules/virtual/virtual.js'),
+      import('node_modules/swiper/modules/virtual/virtual.scss'),
+    ],
   ),
-  'keyboard': new DynamicImportSwiperModule(
+  keyboard: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/keyboard/keyboard.js'),
-    ]
+      import('node_modules/swiper/modules/keyboard/keyboard.js'),
+    ],
   ),
-  'mousewheel': new DynamicImportSwiperModule(
+  mousewheel: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/mousewheel/mousewheel.js'),
-    ]
+      import('node_modules/swiper/modules/mousewheel/mousewheel.js'),
+    ],
   ),
-  'mousewheel': new DynamicImportSwiperModule(
+  scrollbar: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/scrollbar/scrollbar.js'),
-      import('../../../node_modules/swiper/modules/scrollbar/scrollbar.scss'),
-    ]
+      import('node_modules/swiper/modules/scrollbar/scrollbar.js'),
+      import('node_modules/swiper/modules/scrollbar/scrollbar.scss'),
+    ],
   ),
-  'parallax': new DynamicImportSwiperModule(
+  parallax: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/parallax/parallax.js'),
-    ]
+      import('node_modules/swiper/modules/parallax/parallax.js'),
+    ],
   ),
-  'zoom': new DynamicImportSwiperModule(
+  zoom: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/zoom/zoom.js'),
-      import('../../../node_modules/swiper/modules/zoom/zoom.scss'),
-    ]
+      import('node_modules/swiper/modules/zoom/zoom.js'),
+      import('node_modules/swiper/modules/zoom/zoom.scss'),
+    ],
   ),
-  'freeMode': new DynamicImportSwiperModule(
+  freeMode: new DynamicImportSwiperModule(
     () => [
-      import('../../../node_modules/swiper/modules/free-mode/free-mode.js'),
-      import('../../../node_modules/swiper/modules/free-mode/free-mode.scss'),
-    ]
+      import('node_modules/swiper/modules/free-mode/free-mode.js'),
+      import('node_modules/swiper/modules/free-mode/free-mode.scss'),
+    ],
   ),
 };
+/* eslint-enable */
 
-const defaultModules = [ Navigation, Pagination, Lazy, Autoplay ];
+const defaultModules = [Navigation, Pagination, Lazy, Autoplay];
 
 class SwiperSlider {
   constructor(target, options) {
@@ -61,44 +62,24 @@ class SwiperSlider {
     this.modules = defaultModules;
     this._modulesToFetch = [];
     this.SwiperInstance = null;
-    this.SliderEventEmitter = new SliderEventEmitter();
-
-    this.initSlider();
-  }
-
-  on(eventName, callback) {
-    this.SliderEventEmitter.on(eventName, callback);
   }
 
   async initSlider() {
     this.findNeededModulesToFetch();
     await this.fetchNeededModules();
     await this.initSwiper();
+
+    return this.SwiperInstance;
   }
 
   initSwiper() {
-    this.SliderEventEmitter.emit('beforeInitSlider', {
-      object: this,
-      eventName: 'beforeInitSlider'
-    });
-
     this.SwiperInstance = new Swiper(this.target, {
       ...this.options,
-      modules: this.modules
-    });
-
-    this.SliderEventEmitter.emit('afterInitSlider', {
-      object: this,
-      eventName: 'afterInitSlider'
+      modules: this.modules,
     });
   }
 
   async fetchNeededModules() {
-    this.SliderEventEmitter.emit('startFetchingModules', {
-      object: this,
-      eventName: 'startFetchingModules'
-    });
-
     if (this._modulesToFetch.length > 0) {
       const modulesPromisesArray = [];
 
@@ -107,10 +88,10 @@ class SwiperSlider {
       }
 
       const allPromises = Promise.all(
-        modulesPromisesArray.map((innerModulesPromisesArray) => Promise.all(innerModulesPromisesArray))
+        modulesPromisesArray.map((innerModulesPromisesArray) => Promise.all(innerModulesPromisesArray)),
       );
 
-      return allPromises.then(arrayOfModules => {
+      return allPromises.then((arrayOfModules) => {
         for (const moduleImported of arrayOfModules) {
           for (const module of moduleImported) {
             if (typeof module.default !== 'undefined') {
@@ -118,26 +99,17 @@ class SwiperSlider {
             }
           }
         }
-
-        this.SliderEventEmitter.emit('endFetchingModules', {
-          object: this,
-          eventName: 'endFetchingModules'
-        });
-      })
-    } else {
-
-      this.SliderEventEmitter.emit('endFetchingModules', {
-        object: this,
-        eventName: 'endFetchingModules'
       });
-      return true;
     }
+
+    return Promise.resolve();
   }
 
   findNeededModulesToFetch() {
     for (const dynamicModuleProp in dynamicModulesMap) {
-      if (dynamicModulesMap.hasOwnProperty(dynamicModuleProp) && typeof this.options[dynamicModuleProp] !== 'undefined') {
-        this._modulesToFetch.push(dynamicModulesMap[dynamicModuleProp])
+      if (Object.prototype.hasOwnProperty.call(dynamicModulesMap, dynamicModuleProp)
+          && typeof this.options[dynamicModuleProp] !== 'undefined') {
+        this._modulesToFetch.push(dynamicModulesMap[dynamicModuleProp]);
       }
     }
   }

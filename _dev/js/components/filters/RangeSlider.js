@@ -4,7 +4,6 @@ import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
 import FiltersUrlHandler from './FiltersUrlHandler';
 
-
 class RangeSlider {
   constructor(element) {
     this.$slider = $(element);
@@ -46,7 +45,6 @@ class RangeSlider {
       this.values = this.$slider.data('slider-values');
       this.signPosition = 'suffix';
     }
-
 
     if (!Array.isArray(this.values)) {
       this.values = [this.min, this.max];
@@ -114,12 +112,12 @@ class RangeSlider {
     return actionPosition[this.constructor.getInputAction($input)];
   }
 
-  handleInputFocus = ({target}) => {
+  handleInputFocus = ({ target }) => {
     const $input = $(target);
     $input.val(this.format.from($input.val()));
-  }
+  };
 
-  handleInputBlur = ({target}) => {
+  handleInputBlur = ({ target }) => {
     const $input = $(target);
     const value = $input.val();
     const position = this.getInputPositionInValue($input);
@@ -132,9 +130,9 @@ class RangeSlider {
     } else {
       $input.val(this.format.to(parseFloat($input.val(), 10)));
     }
-  }
+  };
 
-  handleInputKeyup = ({target, keyCode}) => {
+  handleInputKeyup = ({ target, keyCode }) => {
     if (keyCode !== 13) {
       return;
     }
@@ -150,13 +148,13 @@ class RangeSlider {
     } else {
       $input.val(this.format.to(parseFloat($input.val(), 10)));
     }
-  }
+  };
 
   handlerSliderUpdate = (
     values,
   ) => {
     this.setInputValues(values);
-  }
+  };
 
   static handlerSliderSet(
     values,
@@ -170,11 +168,11 @@ class RangeSlider {
     const $target = $(noUiSliderInstance.target);
     const group = $target.data('slider-label');
     const unit = $target.data('slider-unit');
-    const [from, to] = values.map(val => formatFunction.from(val));
+    const [from, to] = values.map((val) => formatFunction.from(val));
 
     const filtersHandler = new FiltersUrlHandler();
     filtersHandler.setSearchUrl();
-    filtersHandler.setRangeParams(group, {unit, from, to});
+    filtersHandler.setRangeParams(group, { unit, from, to });
 
     const newUrl = filtersHandler.getFiltersUrl();
     prestashop.emit('updateFacets', newUrl);

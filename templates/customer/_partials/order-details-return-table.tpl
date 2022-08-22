@@ -52,12 +52,14 @@
       </td>
 
       <td class="product-line__cell product-line__cell--img">
-        <img
-          {generateImagesSources image=$product.cover size='cart_default' lazyload=false}
-          alt="{$product.name|escape:'quotes'}"
-          class="product-line__img rounded img-fluid"
-          width="{$product.cover.bySize.cart_default.width}"
-          height="{$product.cover.bySize.cart_default.height}">
+        {images_block webpEnabled=$webpEnabled}
+          <img
+            {generateImagesSources image=$product.cover size='cart_default' lazyload=false}
+            alt="{$product.name|escape:'quotes'}"
+            class="product-line__img rounded img-fluid"
+            width="{$product.cover.bySize.cart_default.width}"
+            height="{$product.cover.bySize.cart_default.height}">
+        {/images_block}
       </td>
 
       <td class="product-line__cell product-line__cell--prod">

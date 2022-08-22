@@ -26,6 +26,20 @@
 {$cssAssetHash = Configuration::get('PS_CCCCSS_VERSION')|md5}
 
 {foreach $stylesheets.external as $stylesheet}
+  {$url = {appendParamToUrl url=$stylesheet.uri key=v value=$cssAssetHash}}
+
+  {if $preloadCss|default:false &&
+      ($stylesheet.id === 'theme-ccc')
+      ||
+      (in_array($stylesheet.id, ['theme-main', 'theme-product', 'theme-listing', 'theme-checkout']) && $stylesheet.server !== 'remote')
+    }
+    <link
+      rel="preload"
+      href="{appendParamToUrl url=$stylesheet.uri key=v value=$cssAssetHash}"
+      as="stylesheet"
+    >
+  {/if}
+
   <link
     rel="stylesheet"
     href="{appendParamToUrl url=$stylesheet.uri key=v value=$cssAssetHash}"
