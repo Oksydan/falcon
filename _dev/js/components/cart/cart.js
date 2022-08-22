@@ -10,6 +10,56 @@ let hasError = false;
 let isUpdateOperation = false;
 let errorMsg = '';
 
+const CheckUpdateQuantityOperations = {
+  switchErrorStat: () => {
+    /**
+     * if errorMsg is not empty or if notifications are shown, we have error to display
+     * if hasError is true, quantity was not updated : we don't disable checkout button
+     */
+    const $checkoutBtn = $('.checkout a');
+
+    if ($('#notifications article.alert-danger').length || (errorMsg !== '' && !hasError)) {
+      $checkoutBtn.addClass('disabled');
+    }
+
+    if (errorMsg !== '') {
+      const strError = `<article class="alert alert-danger" role="alert" data-alert="danger"><ul><li>${errorMsg}</li></ul></article>`;
+      $('#notifications .container').html(strError);
+      errorMsg = '';
+      isUpdateOperation = false;
+      if (hasError) {
+        // if hasError is true, quantity was not updated : allow checkout
+        $checkoutBtn.removeClass('disabled');
+      }
+    } else if (!hasError && isUpdateOperation) {
+      hasError = false;
+      isUpdateOperation = false;
+      $('#notifications .container').html('');
+      $checkoutBtn.removeClass('disabled');
+    }
+  },
+  checkUpdateOpertation: (resp) => {
+    /* eslint-disable max-len */
+    /**
+     * resp.hasError can be not defined but resp.errors not empty: quantity is updated but order cannot be placed
+     * when resp.hasError=true, quantity is not updated
+     */
+    /* eslint-enable max-len */
+
+    hasError = Object.prototype.hasOwnProperty.call(resp, 'hasError');
+    const errors = resp.errors || '';
+
+    // 1.7.2.x returns errors as string, 1.7.3.x returns array
+    if (errors instanceof Array) {
+      errorMsg = errors.join(' ');
+    } else {
+      errorMsg = errors;
+    }
+
+    isUpdateOperation = true;
+  },
+};
+
 /**
  * Attach Bootstrap TouchSpin event handlers
  */
@@ -120,13 +170,13 @@ $(() => {
     }
   };
 
-  const getTouchSpinInput = $button => $($button.parents('.bootstrap-touchspin').find('input'));
+  const getTouchSpinInput = ($button) => $($button.parents('.bootstrap-touchspin').find('input'));
 
   const handleCartAction = (event) => {
     event.preventDefault();
 
     const $target = $(event.currentTarget);
-    const {dataset} = event.currentTarget;
+    const { dataset } = event.currentTarget;
 
     const cartAction = parseCartAction($target, event.namespace);
     const requestData = {
@@ -189,7 +239,7 @@ $(() => {
         CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
         $target.val(resp.quantity);
 
-        let {dataset} = {...$target};
+        let { dataset } = { ...$target };
 
         if (!dataset) {
           dataset = resp;
@@ -209,6 +259,10 @@ $(() => {
       });
   }
 
+  function getQuantityChangeType($quantity) {
+    return $quantity > 0 ? 'up' : 'down';
+  }
+
   function getRequestData(quantity) {
     return {
       ajax: '1',
@@ -216,10 +270,6 @@ $(() => {
       action: 'update',
       op: getQuantityChangeType(quantity),
     };
-  }
-
-  function getQuantityChangeType($quantity) {
-    return $quantity > 0 ? 'up' : 'down';
   }
 
   function updateProductQuantityInCart(event) {
@@ -258,7 +308,8 @@ $(() => {
       }
 
       return updateProductQuantityInCart(event);
-    });
+    },
+  );
 
   $body.on(
     'click',
@@ -276,55 +327,6 @@ $(() => {
       $discountForm.trigger('submit');
 
       return false;
-    });
+    },
+  );
 });
-
-const CheckUpdateQuantityOperations = {
-  switchErrorStat: () => {
-    /**
-     * if errorMsg is not empty or if notifications are shown, we have error to display
-     * if hasError is true, quantity was not updated : we don't disable checkout button
-     */
-    const $checkoutBtn = $('.checkout a');
-
-    if ($('#notifications article.alert-danger').length || (errorMsg !== '' && !hasError)) {
-      $checkoutBtn.addClass('disabled');
-    }
-
-    if (errorMsg !== '') {
-      const strError = `<article class="alert alert-danger" role="alert" data-alert="danger"><ul><li>${errorMsg}</li></ul></article>`;
-      $('#notifications .container').html(strError);
-      errorMsg = '';
-      isUpdateOperation = false;
-      if (hasError) {
-        // if hasError is true, quantity was not updated : allow checkout
-        $checkoutBtn.removeClass('disabled');
-      }
-    } else if (!hasError && isUpdateOperation) {
-      hasError = false;
-      isUpdateOperation = false;
-      $('#notifications .container').html('');
-      $checkoutBtn.removeClass('disabled');
-    }
-  },
-  checkUpdateOpertation: (resp) => {
-    /* eslint-disable max-len */
-    /**
-     * resp.hasError can be not defined but resp.errors not empty: quantity is updated but order cannot be placed
-     * when resp.hasError=true, quantity is not updated
-     */
-    /* eslint-enable max-len */
-
-    hasError = Object.prototype.hasOwnProperty.call(resp, 'hasError');
-    const errors = resp.errors || '';
-
-    // 1.7.2.x returns errors as string, 1.7.3.x returns array
-    if (errors instanceof Array) {
-      errorMsg = errors.join(' ');
-    } else {
-      errorMsg = errors;
-    }
-
-    isUpdateOperation = true;
-  },
-};

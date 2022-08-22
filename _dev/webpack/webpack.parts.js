@@ -193,3 +193,12 @@ exports.preloadFonts = () => ({
     }),
   ]
 })
+
+exports.resolve = () => ({
+  resolve: {
+    alias: {
+      node_modules: path.resolve(__dirname, '../node_modules')
+    }
+  },
+});
+

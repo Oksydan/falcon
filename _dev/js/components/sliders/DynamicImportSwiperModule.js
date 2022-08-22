@@ -1,4 +1,3 @@
-
 class DynamicImportSwiperModule {
   constructor(getFiles) {
     this.getFiles = getFiles;

@@ -1,11 +1,10 @@
-
 class ProductGallery {
   constructor({
-      thumbsSliderSelector = '.js-product-thumbs',
-      mainSliderSelector = '.js-product-main-images',
-      modalSliderSelector = '.js-modal-gallery',
-      galleryModalSelector = '.js-product-images-modal',
-    } = {}) {
+    thumbsSliderSelector = '.js-product-thumbs',
+    mainSliderSelector = '.js-product-main-images',
+    modalSliderSelector = '.js-modal-gallery',
+    galleryModalSelector = '.js-product-images-modal',
+  } = {}) {
     this.thumbsSliderSelector = thumbsSliderSelector;
     this.mainSliderSelector = mainSliderSelector;
     this.modalSliderSelector = modalSliderSelector;
@@ -40,7 +39,7 @@ class ProductGallery {
       },
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
-    })
+    });
 
     const galleryThumbsInstance = await galleryThumbs.initSlider();
 
@@ -92,7 +91,7 @@ class ProductGallery {
 
         this.modalSliderSwiperInstance = modalSliderInstance;
       }
-    }
+    };
 
     // TO REFACTO LATER WITH BS5 REMOVE JQUERY!
     $(this.galleryModalSelector).on('show.bs.modal', handleModalOpen);

@@ -59,18 +59,6 @@ prestashop.pageLazyLoad = new PageLazyLoad({
 
 prestashop.pageLoader = new PageLoader();
 
-$(document).ready(() => {
-  accLinksTriggerActive();
-  Form.init();
-  const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
-
-  topMenu.init();
-
-  $('.js-select-link').on('change', ({target}) => {
-    window.location.href = $(target).val();
-  });
-});
-
 function accLinksTriggerActive() {
   const url = window.location.pathname;
   $('.js-customer-links a').each((i, el) => {
@@ -81,3 +69,15 @@ function accLinksTriggerActive() {
     }
   });
 }
+
+$(() => {
+  accLinksTriggerActive();
+  Form.init();
+  const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
+
+  topMenu.init();
+
+  $('.js-select-link').on('change', ({ target }) => {
+    window.location.href = $(target).val();
+  });
+});

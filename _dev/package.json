@@ -9,8 +9,10 @@
     "build": "webpack --progress --mode=production --env stats=errors-only",
     "watch": "webpack watch --progress --mode=development",
     "dev": "webpack serve --progress --mode=development --env devServer=true",
+
     "scss-fix": "stylelint \"**/*.scss\" --fix",
-    "eslint-fix": "eslint \"**/*.js\" --fix"
+    "lint": "eslint -c .eslintrc.js --ext .js,.vue ./js",
+    "lint-fix": "eslint -c .eslintrc.js --ext .js,.vue ./js --fix"
   },
   "author": "Igor Stępień",
   "license": "GPL-3.0",
