@@ -18,10 +18,10 @@ jobs:
     - name: Install dependencies
       uses: Borales/actions-yarn@v3
       with:
-          cmd: install
+        cmd: --cwd ./dev install
 
     - name: Lint files
       uses: Borales/actions-yarn@v3
       with:
-          cmd: gh-lint
+        cmd: --cwd ./dev gh-lint
 
