@@ -1,29 +1,41 @@
-name: Code quality
+name: Lint code
+
 on: [ push, pull_request ]
+
 permissions:
   contents: read
 
 jobs:
-  code-quality:
-    name: Lint source code scss/js
+  stylelint:
+    name: Code quality - SCSS Lint
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
 
-    - name: Install dependencies
-      working-directory: ./dev
-      uses: Borales/actions-yarn@v3
-      with:
-        cmd: install
+      - name: Install dependencies
+        run: cd ./_dev && npm install
 
-    - name: Lint files
-      working-directory: ./dev
-      uses: Borales/actions-yarn@v3
-      with:
-        cmd: gh-lint
+      - name: Stylelint action
+        run: cd ./_dev && npm run scss-lint
 
+  eslint:
+    name: Code quality - ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: cd ./_dev && npm install
+
+      - name: Eslint action
+        run: cd ./_dev && npm run js-lint

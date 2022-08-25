@@ -1,0 +1,35 @@
+name: Theme build
+
+on: [ push, pull_request ]
+
+# on:
+#   push:
+#     branches: [master]
+#     tags: ['**']
+
+jobs:
+  theme-build:
+    name: 'Build source code | Node ${{ matrix.node-version }} | ${{ matrix.os }}'
+    runs-on: ${{ matrix.os }}-latest
+
+    strategy:
+      matrix:
+        os: [ubuntu, macos, windows]
+        node-version: [16.x, 15.x, 14.x]
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        check-latest: true
+
+    - name: Install dependencies
+      run: cd ./_dev && npm ci
+
+    - name: Build assets
+      run: cd ./_dev && npm run build-ci
+

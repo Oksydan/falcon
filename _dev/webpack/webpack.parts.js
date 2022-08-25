@@ -66,7 +66,7 @@ exports.extractScss = ({mode = 'production'}) => ({
         {
           loader: 'sass-loader',
           options: {
-            implementation: require('sass-embedded'),
+            implementation: require('sass'),
           },
         },
       ]

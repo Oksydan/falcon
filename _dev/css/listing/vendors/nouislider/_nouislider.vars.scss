@@ -15,7 +15,7 @@ $nouislider-handle-background-color: $primary;
 $nouislider-handle-shadow: null;
 // Slider handle active styles
 $nouislider-handle-active-shadow: null;
-$nouislider-handle-active-background-color: color.adjust($primary, -10%);
+$nouislider-handle-active-background-color: color.adjust($primary, $lightness: -10%);
 
 // Slider bar horizontal
 $nouislider-horizontal-height: 8px;
@@ -28,7 +28,7 @@ $nouislider-vertical-handler-width: 16px;
 $nouislider-vertical-handler-height: 16px;
 
 // Slider connect
-$nouislider-connects-background-color: color.adjust($primary, 20%);
+$nouislider-connects-background-color: color.adjust($primary, $lightness: 20%);
 $nouislider-connects-border-radius: $border-radius;
 $nouislider-connects-disabled-background-color: $gray-200;
 

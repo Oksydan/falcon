@@ -1,28 +1,41 @@
 const path = require('path');
 const themeDev = path.resolve(__dirname, '../../_dev');
 
-const envResult = require('dotenv').config({ path: './webpack/.env' });
+const entriesArray = ['theme', 'product', 'checkout', 'listing'];
 
-const {
-  PORT: port,
-  PUBLIC_PATH: publicPath,
-  SERVER_ADDRESS: serverAddress,
-  SITE_URL: siteURL
-} = process.env;
+exports.getEnvData = ({env, options, webpackVars}, initConfig) => {
+  const envFileName = typeof env.envFile != 'undefined' ? env.envFile : '.env';
+  const envResult = require('dotenv').config({ path: `./webpack/${envFileName}` });
 
-if (envResult.error) {
-  console.error('\x1b[41m\x1b[37m%s\x1b[0m', envResult.error + ' Your .env file not exits. Read installation documentation for more info https://github.com/Oksydan/modern-prestashop-starter-theme#installation.');
-  process.exit();
+  const {
+    PORT: port,
+    PUBLIC_PATH: publicPath,
+    SERVER_ADDRESS: serverAddress,
+    SITE_URL: siteURL
+  } = process.env;
+
+  if (envResult.error) {
+    console.error('\x1b[41m\x1b[37m%s\x1b[0m', envResult.error + ' Your .env file not exits. Read installation documentation for more info https://github.com/Oksydan/modern-prestashop-starter-theme#installation.');
+    process.exit();
+  }
+
+  return initConfig({
+    mode: options.mode,
+    purge: env.purge ? env.purge : false,
+    analyze: env.analyze ? env.analyze : false,
+    devServer: env.devServer ? env.devServer : false,
+    stats: env.stats ? env.stats : false,
+    port,
+    publicPath,
+    serverAddress,
+    siteURL,
+    ...webpackVars
+  })
 }
 
-const entriesArray = ['theme', 'product', 'checkout', 'listing'];
 
 exports.webpackVars = {
   themeDev,
-  publicPath,
-  serverAddress,
-  siteURL,
-  port,
   entriesArray,
   getEntry: (entries) => {
     const resultEntries = {};
