@@ -15,8 +15,13 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: Setup NPM
-      run: npm install -g npm@6
+    - name: Install dependencies
+      uses: Borales/actions-yarn@v3
+      with:
+          cmd: install
 
     - name: Lint files
-      run: cd ./_dev && npm install && npm run gh-lint
+      uses: Borales/actions-yarn@v3
+      with:
+          cmd: gh-lint
+
