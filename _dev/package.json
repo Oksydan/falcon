@@ -11,8 +11,9 @@
     "dev": "webpack serve --progress --mode=development --env devServer=true",
     "scss-lint": "stylelint \"**/*.scss\" --fix",
     "scss-lint-fix": "stylelint \"**/*.scss\" --fix",
-    "lint": "eslint -c .eslintrc.js --ext .js,.vue ./js",
-    "lint-fix": "eslint -c .eslintrc.js --ext .js,.vue ./js --fix"
+    "js-lint": "esjs-lint -c .eslintrc.js --ext .js,.vue ./js",
+    "js-lint-fix": "eslint -c .eslintrc.js --ext .js,.vue ./js --fix",
+    "gh-lint": "npm run scss-lint && npm run js-lint"
   },
   "author": "Igor Stępień",
   "license": "GPL-3.0",
