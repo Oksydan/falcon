@@ -16,12 +16,14 @@ jobs:
         node-version: '14.x'
 
     - name: Install dependencies
+      working-directory: ./dev
       uses: Borales/actions-yarn@v3
       with:
-        cmd: --cwd ~/_dev install
+        cmd: install
 
     - name: Lint files
+      working-directory: ./dev
       uses: Borales/actions-yarn@v3
       with:
-        cmd: --cwd ~/_dev gh-lint
+        cmd: gh-lint
 
