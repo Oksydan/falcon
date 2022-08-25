@@ -1,4 +1,6 @@
-@mixin custom-col-padded($width, $padding: $grid-gutter-width / 2) {
+@use "sass:math";
+
+@mixin custom-col-padded($width, $padding: math.div($grid-gutter-width, 2)) {
   flex: 0 0 $width;
   max-width: $width;
   padding-right: $padding;

@@ -1,3 +1,4 @@
+@use "sass:math";
 
 .custom-checkbox-color {
   @extend .custom-checkbox;
@@ -19,7 +20,7 @@
 
 .custom-control-input-color {
   position: absolute;
-  top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
+  top: math.div(($font-size-base * $line-height-base - $custom-control-indicator-size), 2);
   left: -($custom-control-gutter + $custom-control-indicator-size);
   display: block;
   width: $custom-control-indicator-size;
@@ -55,8 +56,8 @@
 
     &:checked ~ .custom-control-label {
       &::after {
-        top: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size) / 2};
-        right: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size) / 2};
+        top: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
+        right: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
         left: auto;
         width: $custom-color-control-indicator-icon-size;
         height: $custom-color-control-indicator-icon-size;
