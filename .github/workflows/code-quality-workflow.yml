@@ -1,10 +1,11 @@
 name: Code quality
-
-on: ['push', 'pull_request']
+on: [ push, pull_request ]
+permissions:
+  contents: read
 
 jobs:
   code-quality:
-    name: Lint source code
+    name: Lint source code scss/js
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -18,5 +19,4 @@ jobs:
         run: npm install -g npm@6
 
     - name: Lint files
-      run: |
-        cd ./_dev && npm install && npm run gh-lint
+      run: cd ./_dev && npm install && npm run gh-lint
