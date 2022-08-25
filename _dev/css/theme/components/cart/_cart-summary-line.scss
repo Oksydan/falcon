@@ -1,10 +1,12 @@
+@use "sass:map";
+
 .cart-summary-line {
   display: flex;
   justify-content: space-between;
   @include font-size($font-size-base);
 
   &:not(:last-child) {
-    margin-bottom: map-get($spacers, 2);
+    margin-bottom: map.get($spacers, 2);
   }
 
   &.cart-total {
@@ -12,7 +14,7 @@
   }
 
   .label {
-    margin-right: map-get($spacers, 2);
+    margin-right: map.get($spacers, 2);
   }
 
   .value {

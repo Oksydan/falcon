@@ -9,6 +9,8 @@
     "build": "webpack --progress --mode=production --env stats=errors-only",
     "watch": "webpack watch --progress --mode=development",
     "dev": "webpack serve --progress --mode=development --env devServer=true",
+    "scss-lint": "stylelint \"**/*.scss\" --fix",
+    "scss-lint-fix": "stylelint \"**/*.scss\" --fix",
     "lint": "eslint -c .eslintrc.js --ext .js,.vue ./js",
     "lint-fix": "eslint -c .eslintrc.js --ext .js,.vue ./js --fix"
   },

@@ -33,6 +33,13 @@
   @include border-radius($custom-checkbox-indicator-border-radius);
 }
 
+.custom-checkbox-block {
+  padding-left: $custom-control-indicator-size;
+  .custom-control-label::after,
+  .custom-control-label::before {
+    left: -#{$custom-control-indicator-size};
+  }
+}
 
 .custom-radio-color {
   @extend .custom-radio;
@@ -49,6 +56,13 @@
     height: $custom-color-control-indicator-size;
     border-radius: $custom-radio-indicator-border-radius;
   }
+
+  .custom-control-label {
+    &::before {
+      display: none;
+    }
+  }
+
 
   .custom-control-input {
     width: 100%;
@@ -70,12 +84,6 @@
     }
   }
 
-  .custom-control-label {
-    &::before {
-      display: none;
-    }
-  }
-
   .custom-control-input:checked ~ .custom-control-label-dark {
     &::after {
       background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
@@ -83,10 +91,3 @@
   }
 }
 
-.custom-checkbox-block {
-  padding-left: $custom-control-indicator-size;
-  .custom-control-label::after,
-  .custom-control-label::before {
-    left: -#{$custom-control-indicator-size};
-  }
-}

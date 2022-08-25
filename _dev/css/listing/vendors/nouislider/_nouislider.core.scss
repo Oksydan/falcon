@@ -50,13 +50,6 @@
   height: 10%;
 }
 
-/* Offset direction
-  */
-.noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
-  right: auto;
-  left: 0;
-}
-
 /* Give origins 0 height/width so they don't interfere with clicking the
   * connect elements.
   */
@@ -78,6 +71,13 @@
   transition: transform 0.3s;
 }
 
+/* Offset direction
+*/
+.noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
+  right: auto;
+  left: 0;
+}
+
 .noUi-state-drag * {
   /* stylelint-disable */
   cursor: inherit !important;
@@ -89,6 +89,17 @@
 .noUi-horizontal {
   height: $nouislider-horizontal-height;
   margin: 0 math.div($nouislider-horizontal-handler-width, 2);
+}
+
+.noUi-handle {
+  position: absolute;
+  cursor: default;
+  background: $nouislider-handle-background-color;
+  border: $nouislider-handle-border-width solid $nouislider-handle-border-color;
+  border-radius: $nouislider-handle-border-radius;
+  outline: none;
+  box-shadow: $nouislider-handle-shadow;
+  backface-visibility: hidden;
 }
 
 .noUi-horizontal .noUi-handle {
@@ -129,17 +140,6 @@
 
 .noUi-vertical .noUi-draggable {
   cursor: ns-resize;
-}
-
-.noUi-handle {
-  position: absolute;
-  cursor: default;
-  background: $nouislider-handle-background-color;
-  border: $nouislider-handle-border-width solid $nouislider-handle-border-color;
-  border-radius: $nouislider-handle-border-radius;
-  outline: none;
-  box-shadow: $nouislider-handle-shadow;
-  backface-visibility: hidden;
 }
 
 .noUi-active {

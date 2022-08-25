@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .product-flags {
   top: 0;
   left: 0;
@@ -7,8 +9,8 @@
 
   &__flag {
     width: fit-content;
-    padding: map-get($spacers, 1) map-get($spacers, 2);
-    margin-bottom: map-get($spacers, 2);
+    padding: map.get($spacers, 1) map.get($spacers, 2);
+    margin-bottom: map.get($spacers, 2);
     font-size: $font-size-sm;
     font-weight: 700;
     line-height: 1.35;

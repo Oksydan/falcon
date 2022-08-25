@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .product-line {
   $self: &;
   position: relative;
@@ -15,14 +17,14 @@
   @include media-breakpoint-up(md) {
     display: table-row;
     padding: 0;
-    padding: map-get($spacers, 2) 0;
+    padding: map.get($spacers, 2) 0;
     border-bottom: 1px solid $border-color;
   }
 
   #{$self} {
     // NESTING TO OVERRIDE BOOTSTRAP TABLE STYLES
     &__cell {
-      padding: map-get($spacers, 2);
+      padding: map.get($spacers, 2);
       @include media-breakpoint-up(sm) {
         padding: $table-cell-padding;
         vertical-align: middle;
@@ -80,7 +82,7 @@
         &::before {
           @include font-size($font-size-xs);
           display: block;
-          margin: 0 0 map-get($spacers, 1);
+          margin: 0 0 map.get($spacers, 1);
           content: attr(data-title);
         }
       }

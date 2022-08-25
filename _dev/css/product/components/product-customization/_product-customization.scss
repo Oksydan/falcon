@@ -1,8 +1,10 @@
+@use "sass:map";
+
 .product-customization {
-  margin: map-get($spacers, 5) 0;
+  margin: map.get($spacers, 5) 0;
 
   .product-customization-item {
-    margin: map-get($spacers, 3) 0;
+    margin: map.get($spacers, 3) 0;
   }
 
   .product-message {
@@ -39,7 +41,7 @@
     display: block;
     width: 100%;
     height: 2.625rem;
-    margin-top: map-get($spacers, 3);
+    margin-top: map.get($spacers, 3);
     line-height: 2.625rem;
     color: $gray-600;
     text-indent: 0.625rem;
