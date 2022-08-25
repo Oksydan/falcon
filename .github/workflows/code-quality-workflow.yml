@@ -1,33 +1,22 @@
 name: Code quality
 
-on: 'push'
+on: ['push', 'pull_request']
 
 jobs:
   code-quality:
     name: Lint source code
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
-        node-version: '12.1'
+        node-version: '14.x'
 
-    - name: Cache dependencies
-      uses: actions/cache@v1
-      with:
-        path: ./node\_modules
-        key: ${{ runner.OS }}-dependencies-${{ hashFiles('\*\*/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-dependencies-${{ env.cache-name }}-
-          ${{ runner.OS }}-dependencies-
-          ${{ runner.OS }}-
-
-    - name: Install dependencies
-      run: |
-        npm install
+    - name: Setup NPM
+        run: npm install -g npm@6
 
     - name: Lint files
       run: |
-        npm run gh-lint
+        cd ./_dev && npm install && npm run gh-lint
