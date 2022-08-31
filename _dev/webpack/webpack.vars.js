@@ -16,7 +16,7 @@ exports.getEnvData = ({env, options, webpackVars}, initConfig) => {
 
   if (envResult.error) {
     console.error('\x1b[41m\x1b[37m%s\x1b[0m', envResult.error + ' Your .env file not exits. Read installation documentation for more info https://github.com/Oksydan/modern-prestashop-starter-theme#installation.');
-    process.exit();
+    process.exit(1);
   }
 
   return initConfig({
