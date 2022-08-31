@@ -23,6 +23,8 @@
   * [Preloads/early hints](#preloads/early-hints)
   * [Webp](#webp)
   * [Webp nginx](#webp-nginx)
+* [Troubleshooting](#troubleshooting)
+  * [Sass performance issue](#sass-performance-issue)
 * [Support project](#support-project)
 * [Contribution](#contribution)
 
@@ -679,6 +681,49 @@ location ~ ^/(.*)\.webp$ {
     try_files /$1.webp /$1.webp /modules/is_themecore/webp.php?source=$document_root/$1.webp;
 }
 ```
+
+## Troubleshooting
+
+### Sass performance issue
+
+In version `2.4.0` `node-sass` has been replaced with dart implementation of `sass`. Your build times will surely increased since `sass` is slower that `node-sass` used in older version of starter. There is alterative package https://github.com/sass/embedded-host-node that will solve your performacne issue. <br>
+You are asking yourself. Why we are still using `sass` packages instead of `sass-embedded`? Well, not every linux distro is supporting `dart-lang` at this moment thats you have to implement it on your own. Starter theme have to be versatile and we should support as much OS versions as possible.<br>
+
+1. Firt run:
+
+```bash
+  npm i sass-embedded --save
+```
+
+or
+
+```bash
+  yarn add sass-embedded
+```
+
+2. Go to `themes/theme_name/_dev/webpack/webpack.parts.js` and find `sass-loader` and replace:
+
+```javascript
+ {
+   loader: 'sass-loader',
+   options: {
+     implementation: require('sass'),
+   },
+  },
+```
+
+with:
+
+```javascript
+ {
+   loader: 'sass-loader',
+   options: {
+     implementation: require('sass-embedded'),
+   },
+  },
+```
+
+3. Run your `dev` script and you should right now feel like your theme is building much faster.
 
 ## Support project
 
