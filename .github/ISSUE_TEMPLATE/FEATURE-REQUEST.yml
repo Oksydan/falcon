@@ -13,6 +13,13 @@ body:
       placeholder: Describe in a few lines your feature request
     validations:
       required: true
+  - type: input
+    id: type
+    attributes:
+      label: "Feature target required module/theme"
+      placeholder: is_themecore or theme
+    validations:
+      required: true
   - type: textarea
     id: drawbacks
     attributes:

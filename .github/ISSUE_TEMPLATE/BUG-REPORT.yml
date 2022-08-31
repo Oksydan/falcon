@@ -48,6 +48,13 @@ body:
         - Opera
     validations:
       required: false
+  - type: input
+    id: type
+    attributes:
+      label: "Required module/theme"
+      placeholder: is_themecore or theme
+    validations:
+      required: true
   - type: textarea
     id: reprod
     attributes:
