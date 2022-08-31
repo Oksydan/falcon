@@ -17,6 +17,7 @@ body:
     id: type
     attributes:
       label: "Feature target required module/theme"
+      description: Is bug affecting required module or theme?
       placeholder: is_themecore or theme
     validations:
       required: true

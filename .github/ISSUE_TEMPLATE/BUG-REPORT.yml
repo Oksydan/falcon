@@ -38,7 +38,7 @@ body:
     id: browsers
     attributes:
       label: "Browsers"
-      description: What browsers are you seeing the problem on ?
+      description: What browsers are you seeing the problem on?
       multiple: true
       options:
         - Firefox
@@ -52,6 +52,7 @@ body:
     id: type
     attributes:
       label: "Required module/theme"
+      description: Is bug affecting required module or theme?
       placeholder: is_themecore or theme
     validations:
       required: true
