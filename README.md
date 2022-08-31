@@ -689,7 +689,7 @@ location ~ ^/(.*)\.webp$ {
 In version `2.4.0` `node-sass` has been replaced with dart implementation of `sass`. Your build times will surely increased since `sass` is slower that `node-sass` used in older version of starter. There is alterative package https://github.com/sass/embedded-host-node that will solve your performacne issue. <br>
 You are asking yourself. Why we are still using `sass` packages instead of `sass-embedded`? Well, not every linux distro is supporting `dart-lang` at this moment thats you have to implement it on your own. Starter theme have to be versatile and we should support as much OS versions as possible.<br>
 
-1. Firt run:
+1. First run:
 
 ```bash
   npm i sass-embedded --save
@@ -704,22 +704,22 @@ or
 2. Go to `themes/theme_name/_dev/webpack/webpack.parts.js` and find `sass-loader` and replace:
 
 ```javascript
- {
-   loader: 'sass-loader',
-   options: {
-     implementation: require('sass'),
-   },
+  {
+    loader: 'sass-loader',
+    options: {
+      implementation: require('sass'),
+    },
   },
 ```
 
 with:
 
 ```javascript
- {
-   loader: 'sass-loader',
-   options: {
-     implementation: require('sass-embedded'),
-   },
+  {
+    loader: 'sass-loader',
+    options: {
+      implementation: require('sass-embedded'),
+    },
   },
 ```
 
