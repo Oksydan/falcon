@@ -30,32 +30,34 @@
 
 ## About The Theme
 
-**Modern prestashop starter theme** is made with modern tools such as webpack 5.53, webpack dev server with HMR :fire::fire: and latest bootstrap 4.6.
-This theme was created to deliver starter theme with latest developers tools and frameworks. You are able to create enterprise level prestashop theme that is easy to maintain. Made for developers, **if you are merchant don't download it!**
+**Modern PrestaShop starter theme** is made with the latest tools such as Webpack 5.53, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
+This theme was created to deliver a starter theme with the latest developers' tools and frameworks. You can create an enterprise-level PrestaShop theme that is easy to maintain.
+
+Made for developers, and **if you are a merchant, you shouldn't download it.**
 
 #### List of changes compared to classic theme:
 1. Bootstrap updated to **4.6** from **4.0.0-alpha.5** - backwards compatibility included.
-2. Updated webpack to **4.46** from **2.2.1** with whole new webpack config.
-3. Removed **tether** - not used anymore with bootstrap 4.6 - **popper.js** added.
-4. Removed **velocity-animate**, **jquery.scrollbox.js** and **jquery-touchswipe** - replaced with **swiper**.
-5. Removed **bootstrap-filestyle.js** - replaced with bootstrap [custom file input](https://getbootstrap.com/docs/4.6/components/input-group/#custom-file-input)
-6. Removed **jquery.ui** from `ps_searchbar`, new module `is_searchbar` included.
-7. Removed **jquery.ui** from `ps_facetedsearch` - replaced with **nouislider**. (`ps_facetedsearch` assets unregistered in `is_themecore` module).
+2. Updated Webpack to **4.46** from **2.2.1** with a whole new Webpack config.
+3. Removed **tether** - not used anymore with Bootstrap 4.6 - **popper.js** added instead.
+4. Removed **velocity-animate**, **jquery.scrollbox.js** and **jquery-touchswipe** - replaced with **Swiper**.
+5. Removed **bootstrap-filestyle.js** - replaced with Bootstrap [custom file input](https://getbootstrap.com/docs/4.6/components/input-group/#custom-file-input)
+6. Removed **jquery.ui** from `ps_searchbar`, a new module `is_searchbar` included.
+7. Removed **jquery.ui** from `ps_facetedsearch` - replaced with **nouislider**. (`ps_facetedsearch` assets are unregistered inside `is_themecore` module that is required for the theme to work properly).
 
 #### Main features:
-1. Webpack config working properly with webpack dev server and HMR. Watcher also observe changes on `.tpl` templates files and module `.css/.js/.tpl` files and make page full reload. You don't need to refresh your webpage anymore to inspect results.
-2. Module `is_themecore` adds structured data with proper `JSON-LD` format for **WebPage**, **Product**, **Organization** and **BreadcrumbList**. Also support **OpenGraph** and **Twitter:card**. Module add missing breadcrumbs for pages: **cart**, **404**, **stores**, **sitemap**.
-3. Dynamic importing boostrap components. You are able to load `.js/.css` file dynamicly with **DynamicImportHandler** class. There is no docs yet, example of use available in `_dev/js/components/dynamic-bootstrap-components.js`.
-4. [Lazyload](https://github.com/verlok/vanilla-lazyload) for images added.
-5. Modified version of `ps_imageslider` included. You are able to upload different images for mobile and desktop.
-6. Multiple entry point for webpack, files separated per view. There are 4 output `js/css` files **theme**, **product**, **checkout**, **listing** and you are able to add more with ease. If you need rich cms pages with a lot of styles included in it. You don't have to include them everywhere with **theme** output file. You are able to create another entry e.g. **cms** and just modify `assets.yml` file to include new assets file.
-7. List/grid listing display. You are able to choose default listing display type. With only few lines of `.js` code. All template changes are handle in `.tpl` file. It is also easy to add another list type.
-8. Specific `.scss` file structure that help you maintain your code.
-9. Automatic generated preload links for theme fonts. You don't have to care about manually preloading fonts inside template. Webpack generates `.html` file that is included inside head. Fonts fileNames are `contentHashed` so client side caching problems after fonts changes are resolved (especially useful for icomoon generated icon fonts.).
-10. High dpi images support added. With just simple call of smarty function `generateImageSources` you are able to handle whole image sources logic - `srcset` for high dpi images option enabled.
+1. Webpack config works properly with Webpack Dev server and HMR. Its watcher also observes changes on `.tpl` templates, and modules `.css/.js/.tpl` files and makes the page complete reload if needed. You don't need to refresh your webpage manually anymore to inspect results.
+2. Module `is_themecore` adds structured data with proper `JSON-LD` format for **WebPage**, **Product**, **Organization** and **BreadcrumbList**. Also supports **OpenGraph** and **Twitter:card**. It adds missing breadcrumbs for pages: **cart**, **404**, **stores**, **sitemap**.
+3. Dynamic importing of the Boostrap components. You can load `.js/.css` file dynamically with **DynamicImportHandler** class. There is no documentation yet, only an example of use available in `_dev/js/components/dynamic-bootstrap-components.js`.
+4. [Lazyload](https://github.com/verlok/vanilla-lazyload) added for images that are below the fold.
+5. Modified version of `ps_imageslider` included. You can upload images for mobile and desktop separately.
+6. Multiple entry points for Webpack, files separated per view. There are 4 output `js/css` files **theme**, **product**, **checkout**, **listing** and you are able to add more with ease. If you need rich CMS pages with many styles, you don't have to include them everywhere with the **theme** output file. You can create another entry e.g. **cms** and modify the `assets.yml` file to include the new assets file.
+7. List/grid switcher on the list. You are able to choose the default listing display type with only a few lines of `.js` code. All template changes are handled in `.tpl` file. It is also easy to add another list type.
+8. Specific `.scss` file structure that helps you maintain your code over time.
+9. Automatically generated preload links for theme fonts. You don't have to care about manually preloading fonts inside the template. Webpack generates `.html` file that is included inside the head. Fonts fileNames are `contentHashed` so client-side caching problems after fonts changes are resolved (especially useful for `icomoon` generated icon fonts.).
+10. High DPI images support. With just a simple call of the Smarty function (`generateImageSources`), you are able to handle whole image sources logic - `srcset` for the High DPI images option enabled.
 11. `SwiperSlider` wrapper class for `swiper.js` to fetch needed swiper modules lazily based on provided config.
-12. Webp image format generated automatically on demand via `is_themcore` module.
-13. `Early hints (103)` support via cloudflare for css/image file.
+12. WebP image format generated automatically on demand via `is_themcore` module.
+13. `Early hints (103)` support via Cloudflare for css/image file.
 
 ### Online demo
 
