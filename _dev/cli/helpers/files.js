@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-export const getCurrentDirectoryBase = () => {
-  return path.basename(process.cwd());
-};
+exports.getCurrentDirectory = () => process.cwd();
 
-export const directoryExists = (filePath) => {
-  return fs.existsSync(filePath);
-};
+exports.getDirectoryName = (directory) => path.basename(directory);
+
+exports.directoryExists = (filePath) => fs.existsSync(filePath);
+
+exports.fileExists = (filePath) => fs.existsSync(filePath);
