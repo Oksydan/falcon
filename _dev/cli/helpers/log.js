@@ -5,19 +5,19 @@ const log = (message, newLine = false) => {
   newLine && breakLine();
 }
 
-const warning = (message, newLine = false) => {
+const warningLog = (message, newLine = false) => {
   log(chalk.yellow(message), newLine);
 }
 
-const info = (message, newLine = false) => {
+const infoLog = (message, newLine = false) => {
   log(chalk.blue(message), newLine);
 }
 
-const success = (message, newLine = false) => {
+const successLog = (message, newLine = false) => {
   log(chalk.green(message), newLine);
 }
 
-const error = (message, newLine = false) => {
+const errorLog = (message, newLine = false) => {
   log(chalk.red(message), newLine);
 }
 
@@ -26,8 +26,8 @@ const breakLine = () => {
 }
 
 exports.log = log;
-exports.warning = warning;
-exports.info = info;
-exports.success = success;
-exports.error = error;
+exports.warningLog = warningLog;
+exports.infoLog = infoLog;
+exports.successLog = successLog;
+exports.errorLog = errorLog;
 exports.breakLine = breakLine;

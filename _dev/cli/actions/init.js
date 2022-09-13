@@ -4,7 +4,7 @@ const ora = require('ora');
 const execa = require('execa');
 const { detectPnpm, detectYarn } = require('../helpers/node');
 const EnvCreator = require('../EnvCreator');
-const { log, success, breakLine } = require('../helpers/log');
+const { log, successLog , breakLine } = require('../helpers/log');
 const { prompt } = require('../helpers/prompt');
 const { checkAddress } = require('../helpers/host');
 
@@ -89,7 +89,7 @@ const processPromptEnvConfiguration = async () => {
   }
 }
 
-const serverPrompt = async (message) => {
+const serverPrompt = async () => {
   return prompt([
     {
       type: 'text',
@@ -148,7 +148,7 @@ const processPromptFileEnvAlreadyExists = async () => {
 
 const successMessage = () => {
   breakLine();
-  success('🎉 You are ready to use Falcon theme 🎉');
+  successLog('🎉 You are ready to use Falcon theme 🎉');
   breakLine();
   process.exit(0);
 }
