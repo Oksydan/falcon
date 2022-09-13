@@ -58,6 +58,7 @@
     "minimis": "^0.1.7",
     "minimist": "^1.2.6",
     "ora": "^5.4.1",
+    "ping": "^0.4.2",
     "postcss": "^8.3.6",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^6.1.1",
