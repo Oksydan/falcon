@@ -4,7 +4,7 @@ const ora = require('ora');
 const execa = require('execa');
 const { detectPnpm, detectYarn } = require('../helpers/node');
 const EnvCreator = require('../EnvCreator');
-const { log, successLog , breakLine } = require('../helpers/log');
+const { log, successLog, errorLog, breakLine } = require('../helpers/log');
 const { prompt } = require('../helpers/prompt');
 const { checkAddress } = require('../helpers/host');
 
@@ -78,7 +78,8 @@ const processPromptEnvConfiguration = async () => {
     try {
       await execa(packageManager, args);
     }  catch (error) {
-      error(error);
+      assetsBuildSpinner.stop();
+      errorLog(error);
       process.exit(1);
     }
 
