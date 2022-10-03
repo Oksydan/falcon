@@ -1,7 +1,14 @@
 const path = require('path');
 const themeDev = path.resolve(__dirname, '../../_dev');
+let entriesArray = null;
 
-const entriesArray = ['theme', 'product', 'checkout', 'listing'];
+const getEntriesArray = () => {
+  if (!entriesArray) {
+    entriesArray = require('../webpack/entries.json').entries
+  }
+
+  return entriesArray;
+}
 
 exports.getEnvData = ({env, options, webpackVars}, initConfig) => {
   const envFileName = typeof env.envFile != 'undefined' ? env.envFile : '.env';
@@ -36,7 +43,7 @@ exports.getEnvData = ({env, options, webpackVars}, initConfig) => {
 
 exports.webpackVars = {
   themeDev,
-  entriesArray,
+  entriesArray: getEntriesArray(),
   getEntry: (entries) => {
     const resultEntries = {};
 

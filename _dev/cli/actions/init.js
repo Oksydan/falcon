@@ -25,10 +25,8 @@ const init = async () => {
   }
 }
 
-const processPromptEnvConfiguration = async () => {
-  const envCreator = new EnvCreator();
-
-  let { serverAddress } = await serverPrompt('What is your server address (ex. domain.test)?');
+const serverAddressPrompt = async () => {
+  let { serverAddress } = await serverPrompt();
 
   const hostReachable = await checkAddress(serverAddress);
 
@@ -42,10 +40,17 @@ const processPromptEnvConfiguration = async () => {
     ]);
 
     if (changeHost) {
-      let res = await serverPrompt();
-      serverAddress = res.serverAddress;
+      return serverAddressPrompt()
     }
   }
+
+  return serverAddress;
+}
+
+const processPromptEnvConfiguration = async () => {
+  const envCreator = new EnvCreator();
+
+  const serverAddress = await serverAddressPrompt()
 
   const { serverPort, physicalUri, buildAssets } = await basicPrompt();
 
