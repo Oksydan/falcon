@@ -20,11 +20,6 @@ class Filters {
       prestashop.pageLoader.showLoader();
     });
 
-    this.$body.on('change', '#search_filters select', ({ target }) => {
-      const form = $(target).closest('form');
-      prestashop.emit('updateFacets', `?${form.serialize()}`);
-    });
-
     this.$body.on('click', '.js-search-link', (event) => {
       event.preventDefault();
       prestashop.emit('updateFacets', $(event.target).closest('a').get(0).href);
