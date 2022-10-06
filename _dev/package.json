@@ -1,6 +1,6 @@
 {
   "name": "modern-prestashop-build-tool",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Modern tools that help you develop your theme.",
   "scripts": {
     "project-init": "falcon-cli init",
