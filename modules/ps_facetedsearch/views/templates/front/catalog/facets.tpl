@@ -97,12 +97,14 @@
 
             {elseif $facet.widgetType == 'dropdown'}
               {block name='facet_item_dropdown'}
-                <div class="py-1 {if $filter@first}pt-2{/if}">
-                  <div id="facet_{$_expand_id}" class="search-filters__collapse  collapse{if !$_collapse} show{/if}">
-                    <select class="custom-select">
-                      <option value="">---</option>
+                <div id="facet_{$_expand_id}" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
+                  <div class="py-1 {if $filter@first}pt-2{/if}">
+                    <select class="custom-select" data-action="search-select">
+                      {if $_collapse}
+                        <option value="">---</option>
+                      {/if}
                       {foreach from=$facet.filters item="filter"}
-                        <option value="{$filter.nextEncodedFacetsURL}" {if $filter.active} selected="selected" {/if}>
+                        <option data-href="{$filter.nextEncodedFacetsURL}" {if $filter.active} selected="selected" {/if}>
                           {$filter.label}
                           {if $filter.magnitude and $show_quantities}
                             ({$filter.magnitude})
@@ -110,7 +112,6 @@
                         </option>
                       {/foreach}
                     </select>
-
                   </div>
                 </div>
               {/block}
