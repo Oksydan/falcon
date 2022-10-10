@@ -8,46 +8,46 @@ import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 const dynamicModulesMap = {
   thumbs: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/thumbs/thumbs.js'),
+      import('@node_modules/swiper/modules/thumbs/thumbs.js'),
     ],
   ),
   virtual: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/virtual/virtual.js'),
-      import('node_modules/swiper/modules/virtual/virtual.scss'),
+      import('@node_modules/swiper/modules/virtual/virtual.js'),
+      import('@node_modules/swiper/modules/virtual/virtual.scss'),
     ],
   ),
   keyboard: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/keyboard/keyboard.js'),
+      import('@node_modules/swiper/modules/keyboard/keyboard.js'),
     ],
   ),
   mousewheel: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/mousewheel/mousewheel.js'),
+      import('@node_modules/swiper/modules/mousewheel/mousewheel.js'),
     ],
   ),
   scrollbar: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/scrollbar/scrollbar.js'),
-      import('node_modules/swiper/modules/scrollbar/scrollbar.scss'),
+      import('@node_modules/swiper/modules/scrollbar/scrollbar.js'),
+      import('@node_modules/swiper/modules/scrollbar/scrollbar.scss'),
     ],
   ),
   parallax: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/parallax/parallax.js'),
+      import('@node_modules/swiper/modules/parallax/parallax.js'),
     ],
   ),
   zoom: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/zoom/zoom.js'),
-      import('node_modules/swiper/modules/zoom/zoom.scss'),
+      import('@node_modules/swiper/modules/zoom/zoom.js'),
+      import('@node_modules/swiper/modules/zoom/zoom.scss'),
     ],
   ),
   freeMode: new DynamicImportSwiperModule(
     () => [
-      import('node_modules/swiper/modules/free-mode/free-mode.js'),
-      import('node_modules/swiper/modules/free-mode/free-mode.scss'),
+      import('@node_modules/swiper/modules/free-mode/free-mode.js'),
+      import('@node_modules/swiper/modules/free-mode/free-mode.scss'),
     ],
   ),
 };

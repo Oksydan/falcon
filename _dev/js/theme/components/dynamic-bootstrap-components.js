@@ -11,7 +11,7 @@ $(() => {
     DOMEventsPreventDefault: true,
     files: () => [
       import('bootstrap/js/src/modal'),
-      import('../../css/dynamic/modal/_index.scss'),
+      import('@css/dynamic/modal/_index.scss'),
     ],
   });
 
@@ -22,7 +22,7 @@ $(() => {
     DOMEventsPreventDefault: true,
     files: () => [
       import('bootstrap/js/src/dropdown'),
-      import('../../css/dynamic/dropdown/_index.scss'),
+      import('@css/dynamic/dropdown/_index.scss'),
     ],
   });
 
@@ -40,7 +40,7 @@ $(() => {
     jqueryPluginCover: 'popover',
     files: () => [
       import('bootstrap/js/src/popover'),
-      import('../../css/dynamic/popover/_index.scss'),
+      import('@css/dynamic/popover/_index.scss'),
     ],
   });
 
@@ -55,7 +55,7 @@ $(() => {
     jqueryPluginCover: 'toast',
     files: () => [
       import('bootstrap/js/src/toast'),
-      import('../../css/dynamic/toast/_index.scss'),
+      import('@css/dynamic/toast/_index.scss'),
     ],
   });
 
@@ -63,7 +63,7 @@ $(() => {
     jqueryPluginCover: 'tooltip',
     files: () => [
       import('bootstrap/js/src/tooltip'),
-      import('../../css/dynamic/tooltip/_index.scss'),
+      import('@css/dynamic/tooltip/_index.scss'),
     ],
   });
 });
