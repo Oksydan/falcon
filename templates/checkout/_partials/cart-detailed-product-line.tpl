@@ -73,7 +73,7 @@
             {foreach from=$product.customizations item="customization"}
               <a href="#" data-toggle="modal"
                 data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
-              <div class="modal fade customization-modal" id="product-customizations-modal-{$customization.id_customization}"
+              <div class="modal fade customization-modal js-customization-modal" id="product-customizations-modal-{$customization.id_customization}"
                 tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -153,7 +153,7 @@
         <a class="remove-from-cart text-danger" rel="nofollow" href="{$product.remove_from_cart_url}"
           data-link-action="delete-from-cart" data-id-product="{$product.id_product|escape:'javascript'}"
           data-id-product-attribute="{$product.id_product_attribute|escape:'javascript'}"
-          data-id-customization="{$product.id_customization|escape:'javascript'}">
+          data-id-customization="{$product.id_customization|default|escape:'javascript'}">
           <span class="material-icons font-reset">delete</span>
         </a>
       {/if}

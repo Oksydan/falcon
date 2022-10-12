@@ -14,7 +14,7 @@
   {/if}
 
   {if $is_free}
-    <p>{l s='No payment needed for this order' d='Shop.Theme.Checkout'}</p>
+    <p class="cart-payment-step-not-needed-info">{l s='No payment needed for this order' d='Shop.Theme.Checkout'}</p>
   {/if}
   <div class="payment-options {if $is_free}d-none{/if} row">
     {foreach from=$payment_options item="module_options"}
@@ -106,6 +106,9 @@
       {/foreach}
     </form>
   {/if}
+
+  {hook h='displayCheckoutBeforeConfirmation'}
+
   {if $show_final_summary}
     {include file='checkout/_partials/order-final-summary.tpl'}
   {/if}

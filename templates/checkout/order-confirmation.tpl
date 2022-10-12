@@ -10,7 +10,7 @@
     <div class="card-block">
 
       <p>
-        {l s='An email has been sent to your mail address %email%.' d='Shop.Theme.Checkout' sprintf=['%email%' => $customer.email]}
+        {l s='An email has been sent to your mail address %email%.' d='Shop.Theme.Checkout' sprintf=['%email%' => $order_customer.email]}
         {if $order.details.invoice_url}
           {* [1][/1] is for a HTML tag. *}
           {l
@@ -71,6 +71,11 @@
                 </span>
               </li>
             {/if}
+            {if $order.details.recyclable}
+              <li class="cart-summary-line">
+                <span>{l s='You have given permission to receive your order in recycled packaging.' d="Shop.Theme.Customeraccount"}</span>
+              </li>
+            {/if}
           </ul>
         </div>
       </div>
@@ -102,7 +107,7 @@
           </div>
         {else}
           <div class="cart-summary-line cart-total">
-            <span class="label">{$order.totals.total.label}&nbsp;{if $configuration.taxes_enabled}{$order.labels.tax_short}{/if}</span>
+            <span class="label">{$order.totals.total.label}&nbsp;{if $configuration.taxes_enabled && $configuration.display_taxes_label}{$order.labels.tax_short}{/if}</span>
               <span class="value">{$order.totals.total.value}</span>
           </div>
         {/if}
@@ -118,8 +123,6 @@
     </div>
 
   </div>
-
-
 
   {block name='hook_payment_return'}
     {if ! empty($HOOK_PAYMENT_RETURN)}
