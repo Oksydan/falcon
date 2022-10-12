@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
+import debounce from '@js/theme/utils/debounce';
 
 prestashop.cart = prestashop.cart || {};
 
@@ -16,15 +17,21 @@ const CheckUpdateQuantityOperations = {
      * if errorMsg is not empty or if notifications are shown, we have error to display
      * if hasError is true, quantity was not updated : we don't disable checkout button
      */
-    const $checkoutBtn = $('.checkout a');
+    const $checkoutBtn = $(prestashop.themeSelectors.checkout.btn);
 
-    if ($('#notifications article.alert-danger').length || (errorMsg !== '' && !hasError)) {
+    if ($(prestashop.themeSelectors.notifications.dangerAlert).length || (errorMsg !== '' && !hasError)) {
       $checkoutBtn.addClass('disabled');
     }
 
     if (errorMsg !== '') {
-      const strError = `<article class="alert alert-danger" role="alert" data-alert="danger"><ul><li>${errorMsg}</li></ul></article>`;
-      $('#notifications .container').html(strError);
+      const strError = `
+        <article class="alert alert-danger" role="alert" data-alert="danger">
+          <ul>
+            <li>${errorMsg}</li>
+          </ul>
+        </article>
+      `;
+      $(prestashop.themeSelectors.notifications.container).html(strError);
       errorMsg = '';
       isUpdateOperation = false;
       if (hasError) {
@@ -34,20 +41,18 @@ const CheckUpdateQuantityOperations = {
     } else if (!hasError && isUpdateOperation) {
       hasError = false;
       isUpdateOperation = false;
-      $('#notifications .container').html('');
+      $(prestashop.themeSelectors.notifications.container).html('');
       $checkoutBtn.removeClass('disabled');
     }
   },
-  checkUpdateOpertation: (resp) => {
-    /* eslint-disable max-len */
+  checkUpdateOperation: (resp) => {
     /**
      * resp.hasError can be not defined but resp.errors not empty: quantity is updated but order cannot be placed
      * when resp.hasError=true, quantity is not updated
      */
-    /* eslint-enable max-len */
-
-    hasError = Object.prototype.hasOwnProperty.call(resp, 'hasError');
-    const errors = resp.errors || '';
+    const { hasError: hasErrorOccurred, errors: errorData } = resp;
+    hasError = hasErrorOccurred ?? false;
+    const errors = errorData ?? '';
 
     // 1.7.2.x returns errors as string, 1.7.3.x returns array
     if (errors instanceof Array) {
@@ -78,16 +83,32 @@ function createSpin() {
   CheckUpdateQuantityOperations.switchErrorStat();
 }
 
+const preventCustomModalOpen = (event) => {
+  if (window.shouldPreventModal) {
+    event.preventDefault();
+
+    return false;
+  }
+
+  return true;
+};
+
 $(() => {
-  const productLineInCartSelector = '.js-cart-line-product-quantity';
+  const productLineInCartSelector = prestashop.themeSelectors.cart.productLineQty;
   const promises = [];
 
   prestashop.on('updateCart', () => {
-    $('.quickview').modal('hide');
+    $(prestashop.themeSelectors.cart.quickview).modal('hide');
     $('body').addClass('cart-loading');
   });
 
   prestashop.on('updatedCart', () => {
+    window.shouldPreventModal = false;
+
+    $(prestashop.themeSelectors.product.customizationModal).on('show.bs.modal', (modalEvent) => {
+      preventCustomModalOpen(modalEvent);
+    });
+
     createSpin();
     $('body').removeClass('cart-loading');
   });
@@ -105,7 +126,7 @@ $(() => {
   }
 
   function findCartLineProductQuantityInput($target) {
-    const $input = $target.parents('.bootstrap-touchspin').find(productLineInCartSelector);
+    const $input = $target.parents(prestashop.themeSelectors.cart.touchspin).find(productLineInCartSelector);
 
     if ($input.is(':focus')) {
       return null;
@@ -170,10 +191,15 @@ $(() => {
     }
   };
 
-  const getTouchSpinInput = ($button) => $($button.parents('.bootstrap-touchspin').find('input'));
+  const getTouchSpinInput = ($button) => $($button.parents(prestashop.themeSelectors.cart.touchspin).find('input'));
+
+  $(prestashop.themeSelectors.product.customizationModal).on('show.bs.modal', (modalEvent) => {
+    preventCustomModalOpen(modalEvent);
+  });
 
   const handleCartAction = (event) => {
     event.preventDefault();
+    window.shouldPreventModal = true;
 
     const $target = $(event.currentTarget);
     const { dataset } = event.currentTarget;
@@ -188,7 +214,6 @@ $(() => {
       return;
     }
 
-    abortPreviousRequests();
     $.ajax({
       url: cartAction.url,
       method: 'POST',
@@ -199,8 +224,8 @@ $(() => {
       },
     })
       .then((resp) => {
-        CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
         const $quantityInput = getTouchSpinInput($target);
+        CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
         $quantityInput.val(resp.quantity);
 
         // Refresh cart preview
@@ -218,13 +243,11 @@ $(() => {
       });
   };
 
-  $body.on('click', '[data-link-action="delete-from-cart"], [data-link-action="remove-voucher"]', handleCartAction);
-
-  $body.on('touchspin.on.startdownspin', spinnerSelector, handleCartAction);
-  $body.on('touchspin.on.startupspin', spinnerSelector, handleCartAction);
+  $body.on('click', prestashop.themeSelectors.cart.actions, handleCartAction);
 
   function sendUpdateQuantityInCartRequest(updateQuantityInCartUrl, requestData, $target) {
     abortPreviousRequests();
+    window.shouldPreventModal = true;
 
     return $.ajax({
       url: updateQuantityInCartUrl,
@@ -237,13 +260,9 @@ $(() => {
     })
       .then((resp) => {
         CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
+
         $target.val(resp.quantity);
-
-        let { dataset } = { ...$target };
-
-        if (!dataset) {
-          dataset = resp;
-        }
+        const dataset = ($target && $target.dataset) ? $target.dataset : resp;
 
         // Refresh cart preview
         prestashop.emit('updateCart', {
@@ -281,6 +300,7 @@ $(() => {
     const targetValue = $target.val();
 
     if (targetValue !== parseInt(targetValue, 10) || targetValue < 0 || Number.isNaN(targetValue)) {
+      window.shouldPreventModal = false;
       $target.val(baseValue);
       return;
     }
@@ -292,9 +312,15 @@ $(() => {
       return;
     }
 
-    $target.attr('value', targetValue);
-    sendUpdateQuantityInCartRequest(updateQuantityInCartUrl, getRequestData(qty), $target);
+    if (targetValue === '0') {
+      $target.closest('.product-line-actions').find('[data-link-action="delete-from-cart"]').click();
+    } else {
+      $target.attr('value', targetValue);
+      sendUpdateQuantityInCartRequest(updateQuantityInCartUrl, getRequestData(qty), $target);
+    }
   }
+
+  $body.on('touchspin.on.stopspin', spinnerSelector, debounce(updateProductQuantityInCart));
 
   $body.on(
     'focusout keyup',
@@ -302,18 +328,24 @@ $(() => {
     (event) => {
       if (event.type === 'keyup') {
         if (event.keyCode === 13) {
+          isUpdateOperation = true;
           updateProductQuantityInCart(event);
         }
+
         return false;
       }
 
-      return updateProductQuantityInCart(event);
+      if (!isUpdateOperation) {
+        updateProductQuantityInCart(event);
+      }
+
+      return false;
     },
   );
 
   $body.on(
     'click',
-    '.js-discount .js-code',
+    prestashop.themeSelectors.cart.discountCode,
     (event) => {
       event.stopPropagation();
       event.preventDefault();

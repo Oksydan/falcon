@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import '@js/theme/vendors/boostrap/boostrap-imports';
+import '@js/theme/vendors/bootstrap/bootstrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
 import '@js/theme/components/dynamic-bootstrap-components';

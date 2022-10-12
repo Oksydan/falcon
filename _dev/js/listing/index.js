@@ -3,13 +3,30 @@ import prestashop from 'prestashop';
 import Filters from '@js/listing/components/filters/Filters';
 
 function updateProductListDOM(data) {
-  $('#search_filters').replaceWith(data.rendered_facets);
-  $('#js-active-search-filters').replaceWith(data.rendered_active_filters);
-  $('#js-product-list-top').replaceWith(data.rendered_products_top);
-  $('#js-product-list').replaceWith(data.rendered_products);
-  $('#js-product-list-bottom').replaceWith(data.rendered_products_bottom);
+  $(prestashop.themeSelectors.listing.searchFilters).replaceWith(
+    data.rendered_facets,
+  );
+  $(prestashop.themeSelectors.listing.activeSearchFilters).replaceWith(
+    data.rendered_active_filters,
+  );
+  $(prestashop.themeSelectors.listing.listTop).replaceWith(
+    data.rendered_products_top,
+  );
+
+  const renderedProducts = $(data.rendered_products);
+  const productSelectors = $(prestashop.themeSelectors.listing.product);
+
+  if (productSelectors.length > 0) {
+    productSelectors.removeClass().addClass(productSelectors.first().attr('class'));
+  } else {
+    productSelectors.removeClass().addClass(renderedProducts.first().attr('class'));
+  }
+
+  $(prestashop.themeSelectors.listing.list).replaceWith(renderedProducts);
+  $(prestashop.themeSelectors.listing.listBottom).replaceWith(data.rendered_products_bottom);
+
   if (data.rendered_products_header) {
-    $('#js-product-list-header').replaceWith(data.rendered_products_header);
+    $(prestashop.themeSelectors.listing.listHeader).replaceWith(data.rendered_products_header);
   }
 
   prestashop.emit('updatedProductList', data);

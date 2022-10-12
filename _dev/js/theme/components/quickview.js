@@ -30,7 +30,9 @@ $(() => {
     $.post(prestashop.urls.pages.product, data, null, 'json')
       .then((resp) => {
         $('body').append(resp.quickview_html);
-        const productModal = $(`#quickview-modal-${resp.product.id}-${resp.product.id_product_attribute}`);
+        const productModal = $(
+          `#quickview-modal-${resp.product.id}-${resp.product.id_product_attribute}`,
+        );
         productModal.modal('show');
         productConfig(productModal);
         productModal.on('hidden.bs.modal', () => {

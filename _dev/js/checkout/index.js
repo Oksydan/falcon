@@ -45,8 +45,8 @@ function setUpCheckout() {
     $(prestashop.themeSelectors.modal).modal('show');
   });
 
-  $('.js-gift-checkbox').on('click', () => {
-    $('#gift').collapse('toggle');
+  $(prestashop.themeSelectors.checkout.giftCheckbox).on('click', () => {
+    $('#gift').slideToggle();
   });
 }
 

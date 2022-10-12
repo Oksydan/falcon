@@ -18,6 +18,18 @@ module.exports = {
     'max-len': ['error', {code: 140}],
     'no-underscore-dangle': 'off',
     'no-restricted-syntax': 'off',
+    'no-param-reassign': 'off'
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@js', './js'],
+          ['@css', './css'],
+          ['@node_modules', './node_modules'],
+        ],
+      }
+    }
   },
   parserOptions: {
     ecmaVersion: 2022

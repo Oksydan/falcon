@@ -4,8 +4,8 @@ import prestashop from 'prestashop';
 $(() => {
   const createInputFile = () => {
     $('.js-file-input').on('change', (event) => {
-      const target = event.currentTarget;
-      const file = target.files[0];
+      const target = $(event.currentTarget)[0];
+      const file = (target) ? target.files[0] : null;
 
       if (target && file) {
         $(target).prev().text(file.name);
