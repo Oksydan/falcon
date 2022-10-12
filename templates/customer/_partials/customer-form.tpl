@@ -34,7 +34,13 @@
       {block "form_fields"}
         {foreach from=$formFields item="field"}
           {block "form_field"}
-            {form_field field=$field}
+            {if $field.type === "password"}
+              <div class="field-password-policy">
+                {form_field field=$field}
+              </div>
+            {else}
+              {form_field field=$field}
+            {/if}
           {/block}
         {/foreach}
         {$hook_create_account_form nofilter}

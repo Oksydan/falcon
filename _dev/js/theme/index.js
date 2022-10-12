@@ -13,6 +13,7 @@ import '@js/theme/components/product';
 import '@js/theme/components/cart/cart';
 import '@js/theme/components/cart/block-cart';
 
+import usePasswordPolicy from '@js/theme/components/usePasswordPolicy';
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import Form from '@js/theme/components/form';
@@ -49,6 +50,7 @@ $(() => {
   accLinksTriggerActive();
   Form.init();
   const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
+  usePasswordPolicy('.field-password-policy');
 
   topMenu.init();
 

@@ -14,6 +14,7 @@ prestashop.themeSelectors = {
     selected: '.selected, .js-thumb-selected',
     modalProductCover: '.js-modal-product-cover',
     cover: '.js-qv-product-cover',
+    customizationModal: '.js-customization-modal',
   },
   listing: {
     searchFilterToggler: '#search_filter_toggler, .js-search-toggler',
@@ -45,6 +46,34 @@ prestashop.themeSelectors = {
     giftCheckbox: '.js-gift-checkbox',
     imagesLink: '.card-block .cart-summary-products p a, .js-show-details',
     carrierExtraContent: '.carrier-extra-content, .js-carrier-extra-content',
+    btn: '.checkout a',
+  },
+  cart: {
+    productLineQty: '.js-cart-line-product-quantity',
+    quickview: '.quickview',
+    touchspin: '.bootstrap-touchspin',
+    promoCode: '#promo-code',
+    displayPromo: '.display-promo',
+    promoCodeButton: '.promo-code-button',
+    discountCode: '.js-discount .code',
+    discountName: '[name=discount_name]',
+    actions: '[data-link-action="delete-from-cart"], [data-link-action="remove-voucher"]',
+  },
+  notifications: {
+    dangerAlert: '#notifications article.alert-danger',
+    container: '#notifications .notifications-container',
+  },
+  passwordPolicy: {
+    template: '#password-feedback',
+    hint: '.js-hint-password',
+    container: '.password-strength-feedback',
+    strengthText: '.password-strength-text',
+    requirementScore: '.password-requirements-score',
+    requirementLength: '.password-requirements-length',
+    requirementScoreIcon: '.password-requirements-score i',
+    requirementLengthIcon: '.password-requirements-length i',
+    progressBar: '.progress-bar',
+    inputColumn: '.js-input-column',
   },
 };
 

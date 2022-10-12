@@ -123,6 +123,7 @@ global_settings:
       width: 170
       height: 115
       scope: [stores]
+  new_password_policy_feature: true
 
 theme_settings:
   default_layout: layout-full-width

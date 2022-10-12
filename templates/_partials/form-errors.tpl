@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {if $errors|count}
-  <div class="help-block">
+  <div class="help-block mt-2">
     {block name='form_errors'}
       <ul>
         {foreach $errors as $error}
