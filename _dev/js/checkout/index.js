@@ -22,66 +22,66 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
- import $ from 'jquery';
- import prestashop from 'prestashop';
+import $ from 'jquery';
+import prestashop from 'prestashop';
 
- function setUpCheckout() {
-   $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
-     event.preventDefault();
-     let url = $(event.target).attr('href');
+function setUpCheckout() {
+  $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
+    event.preventDefault();
+    let url = $(event.target).attr('href');
 
-     if (url) {
-       // TODO: Handle request if no pretty URL
-       url += '?content_only=1';
-       $.get(url, (content) => {
-         $(prestashop.themeSelectors.modal)
-           .find(prestashop.themeSelectors.modalContent)
-           .html($(content).find('.page-cms').contents());
-       }).fail((resp) => {
-         prestashop.emit('handleError', { eventType: 'clickTerms', resp });
-       });
-     }
+    if (url) {
+      // TODO: Handle request if no pretty URL
+      url += '?content_only=1';
+      $.get(url, (content) => {
+        $(prestashop.themeSelectors.modal)
+          .find(prestashop.themeSelectors.modalContent)
+          .html($(content).find('.page-cms').contents());
+      }).fail((resp) => {
+        prestashop.emit('handleError', { eventType: 'clickTerms', resp });
+      });
+    }
 
-     $(prestashop.themeSelectors.modal).modal('show');
-   });
+    $(prestashop.themeSelectors.modal).modal('show');
+  });
 
-   $('.js-gift-checkbox').on('click', () => {
-     $('#gift').collapse('toggle');
-   });
- }
+  $('.js-gift-checkbox').on('click', () => {
+    $('#gift').collapse('toggle');
+  });
+}
 
- $(document).ready(() => {
-   if ($('body#checkout').length === 1) {
-     setUpCheckout();
-   }
+$(document).ready(() => {
+  if ($('body#checkout').length === 1) {
+    setUpCheckout();
+  }
 
-   prestashop.on('updatedDeliveryForm', (params) => {
-     if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
-       return;
-     }
-     // Hide all carrier extra content ...
-     $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
-     // and show the one related to the selected carrier
-     params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).slideDown();
-   });
-   prestashop.on('changedCheckoutStep', (params) => {
-     if (typeof params.event.currentTarget !== 'undefined') {
-       $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
-     }
-   });
- });
+  prestashop.on('updatedDeliveryForm', (params) => {
+    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
+      return;
+    }
+    // Hide all carrier extra content ...
+    $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
+    // and show the one related to the selected carrier
+    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).slideDown();
+  });
+  prestashop.on('changedCheckoutStep', (params) => {
+    if (typeof params.event.currentTarget !== 'undefined') {
+      $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
+    }
+  });
+});
 
- $(document).on('change', '.checkout-option input[type="radio"]', (event) => {
-   const $target = $(event.currentTarget);
-   const $block = $target.closest('.checkout-option');
-   const $relatedBlocks = $block.parent();
+$(document).on('change', '.checkout-option input[type="radio"]', (event) => {
+  const $target = $(event.currentTarget);
+  const $block = $target.closest('.checkout-option');
+  const $relatedBlocks = $block.parent();
 
-   $relatedBlocks.find('.checkout-option').removeClass('selected');
-   $block.addClass('selected');
- });
+  $relatedBlocks.find('.checkout-option').removeClass('selected');
+  $block.addClass('selected');
+});
 
- $(document).on('click', '.js-checkout-step-header', (event) => {
-   const stepIdentifier = $(event.currentTarget).data('identifier');
-   $(`#${stepIdentifier}`).addClass('-current');
-   $(`#content-${stepIdentifier}`).collapse('show').scrollTop();
- });
+$(document).on('click', '.js-checkout-step-header', (event) => {
+  const stepIdentifier = $(event.currentTarget).data('identifier');
+  $(`#${stepIdentifier}`).addClass('-current');
+  $(`#content-${stepIdentifier}`).collapse('show').scrollTop();
+});

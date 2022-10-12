@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import $ from 'jquery';
-import FiltersRangeSliders from './FiltersRangeSliders';
+import FiltersRangeSliders from '@js/listing/components/filters/FiltersRangeSliders';
 
 class Filters {
   constructor() {

@@ -1,1 +1,1 @@
-import '@js/theme/venders/bootstrap/bootstrap-imports'
+import '@js/theme/venders/bootstrap/bootstrap-imports';

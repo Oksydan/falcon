@@ -1,7 +1,7 @@
 import prestashop from 'prestashop';
 import $ from 'jquery';
-import PageSlider from './sliders/PageSlider';
-import SwiperSlider from './sliders/SwiperSlider';
+import PageSlider from '@js/theme/components/sliders/PageSlider';
+import SwiperSlider from '@js/theme/components/sliders/SwiperSlider';
 
 prestashop.pageSlider = new PageSlider();
 prestashop.SwiperSlider = SwiperSlider;

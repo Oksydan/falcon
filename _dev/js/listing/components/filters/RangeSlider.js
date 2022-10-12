@@ -2,7 +2,7 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
-import FiltersUrlHandler from './FiltersUrlHandler';
+import FiltersUrlHandler from '@js/listing/components/filters/FiltersUrlHandler';
 
 class RangeSlider {
   constructor(element) {

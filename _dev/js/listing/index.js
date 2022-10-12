@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
-import Filters from '@js/theme/components/filters/Filters';
+import Filters from '@js/listing/components/filters/Filters';
 
 function updateProductListDOM(data) {
   $('#search_filters').replaceWith(data.rendered_facets);

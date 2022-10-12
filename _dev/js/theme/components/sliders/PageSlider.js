@@ -1,4 +1,4 @@
-import SwiperSlider from './SwiperSlider';
+import SwiperSlider from '@js/theme/components/sliders/SwiperSlider';
 
 class PageSlider {
   constructor() {

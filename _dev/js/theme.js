@@ -1,1 +1,1 @@
-import './theme/index'
+import '@js/theme/index';

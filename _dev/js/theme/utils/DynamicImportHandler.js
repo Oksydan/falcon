@@ -1,5 +1,5 @@
-import DynamicImportJqueryPlugin from './DynamicImportJqueryPlugin';
-import DynamicImportDOMEvents from './DynamicImportDOMEvents';
+import DynamicImportJqueryPlugin from '@js/theme/utils/DynamicImportJqueryPlugin';
+import DynamicImportDOMEvents from '@js/theme/utils/DynamicImportDOMEvents';
 
 export default class DynamicImportHandler {
   constructor({

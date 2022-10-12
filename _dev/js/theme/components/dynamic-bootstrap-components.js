@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import DynamicImportHandler from '../utils/DynamicImportHandler';
+import DynamicImportHandler from '@js/theme/utils/DynamicImportHandler';
 
 $(() => {
   /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "import" }] */

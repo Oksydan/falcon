@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import RangeSlider from './RangeSlider';
+import RangeSlider from '@js/listing/components/filters/RangeSlider';
 
 class FiltersRangeSliders {
   static init() {
