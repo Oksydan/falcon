@@ -132,6 +132,16 @@
     {/if}
   {/block}
 
+  {if !$registered_customer_exists}
+    {block name='account_transformation_form'}
+      <div class="row">
+        <div class="col-lg-6 col-md-8 col-12 mx-auto">
+          {include file='customer/_partials/account-transformation-form.tpl'}
+        </div>
+      </div>
+    {/block}
+  {/if}
+
   {block name='hook_order_confirmation_1'}
     {hook h='displayOrderConfirmation1'}
   {/block}

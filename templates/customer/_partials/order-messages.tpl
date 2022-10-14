@@ -35,7 +35,7 @@
             </small>
           </div>
           <div class="col-sm-8">
-            {$message.message nofilter}
+            {$message.message|escape:'html'|nl2br nofilter}
           </div>
         </div>
       {/foreach}
@@ -57,7 +57,7 @@
 
           <div class="form-group">
             <label class="form-control-label">{l s='Product' d='Shop.Forms.Labels'}</label>
-            <select name="id_product" class="custom-select">
+            <select name="id_product" class="custom-select" data-role="product">
               <option value="0">{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
               {foreach from=$order.products item=product}
                 <option value="{$product.id_product}">{$product.name}</option>
@@ -66,7 +66,7 @@
           </div>
 
           <div class="form-group">
-            <textarea rows="4" name="msgText" class="form-control"></textarea>
+            <textarea rows="4" name="msgText" class="form-control" data-role="msg-text"></textarea>
           </div>
 
         </section>

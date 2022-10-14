@@ -26,7 +26,7 @@
   {foreach from=$order.products item=product name=products}
     <tr class="product-table__row product-line product-line--return">
       <td class="product-line__cell product-line__cell--checkbox">
-        {if !$product.customizations}
+        {if !$product.product.is_virtual}
           <label class="custom-control custom-checkbox product-line__checkbox-block mb-0 custom-checkbox-block">
             <input
               class="custom-control-input"
@@ -37,7 +37,7 @@
             <span class="custom-control-label" for="cb_{$product.id_order_detail}"></span>
           </label>
         {else}
-          {foreach $product.customizationspew  as $customization}
+          {foreach $product.customizations as $customization}
             <label class="custom-control custom-checkbox product-line__checkbox-block mb-0 custom-checkbox-block">
               <input
                 class="custom-control-input"
@@ -87,6 +87,13 @@
               </li>
             {/foreach}
           </ul>
+        {/if}
+
+        {if $product.is_virtual}
+          {l s='Virtual products can\'t be returned.' d='Shop.Theme.Customeraccount'}<br/>
+        {/if}
+        {if isset($product.download_link)}
+          <a href="{$product.download_link}">{l s='Download' d='Shop.Theme.Actions'}</a><br/>
         {/if}
 
         {if $product.customizations}
