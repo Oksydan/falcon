@@ -6,13 +6,16 @@
           {if $product.default_image}
             data-full-size-image-url="{$product.default_image.large.url}"
             {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
-            {else}
+            alt="{if !empty($product.default_image.legend)}{$product.default_image.legend}{else}{$product.name|truncate:30:'...'}{/if}"
+            width="{$product.default_image.bySize.home_default.width}"
+            height="{$product.default_image.bySize.home_default.height}"
+          {else}
             src="{$urls.no_picture_image.bySize.home_default.url}"
+            alt="{$product.name|truncate:30:'...'}"
+            width="{$urls.no_picture_image.bySize.home_default.width}"
+            height="{$urls.no_picture_image.bySize.home_default.height}"
           {/if}
-          alt="{if !empty($product.default_image.legend)}{$product.default_image.legend}{else}{$product.name|truncate:30:'...'}{/if}"
           class="img-fluid rounded lazyload"
-          width="{$product.default_image.bySize.home_default.width}"
-          height="{$product.default_image.bySize.home_default.height}"
           />
       {/images_block}
 
