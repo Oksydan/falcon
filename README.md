@@ -257,7 +257,7 @@ parameter  | required | description
 `value` | `true` | Parameter value, can by string or array
 `replace` | `false` | Replace param with the same key (default false)
 
-Example of usage:
+#### Example of usage 1:
 
 ```smarty
   {appendParamToUrl url='https://example.com?page=1' key='variable' value='value'}
@@ -269,6 +269,8 @@ It will output:
     https://example.com?page=1&variable=value
 ```
 
+#### Example of usage 2:
+
 ```smarty
   {appendParamToUrl url='https://example.com?var=value1' key='var' value='value2' replace=true}
 ```
@@ -278,6 +280,8 @@ It will output:
 ```html
     https://example.com?var=value2
 ```
+
+#### Example of usage 3:
 
 ```smarty
   {appendParamToUrl url='https://example.com?family=font1' key='family' value=['font2', 'font3']}
