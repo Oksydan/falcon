@@ -143,10 +143,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@oksydan/falcon-cli@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@oksydan/falcon-cli/-/falcon-cli-0.2.0.tgz#74de838688c746c33728a3999ef357137cc75737"
-  integrity sha512-HkRZJYt/awoGWWiR414lKhKKXRN9Sjj2aCv5l1QpGC5jmjY1C4u75/m1iQXVF5S4u/ELdLmhZUKoVoYMtbTAgA==
+"@oksydan/falcon-cli@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@oksydan/falcon-cli/-/falcon-cli-0.3.0.tgz#718097dfc0ed5b674b6d064d08fa8347f9229892"
+  integrity sha512-ha5Uy9Es3x4Awt1cNhLC6CpfWvSbjjATft3zhoHQI8/AczUYHq5ZoRC4p0h81BFAAvamPevIxb+rmGnt7o0bYQ==
   dependencies:
     chalk "^4.1.2"
     clear "^0.1.0"
