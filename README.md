@@ -254,7 +254,8 @@ parameter  | required | description
 ------------- | ------------- | -------------
 `url` | `true` | URL addres.
 `key` | `true` | Parameter variable
-`value` | `true` | Parameter value
+`value` | `true` | Parameter value, can by string or array
+`replace` | `false` | Replace param with the same key (default false)
 
 Example of usage:
 
@@ -268,6 +269,25 @@ It will output:
     https://example.com?page=1&variable=value
 ```
 
+```smarty
+  {appendParamToUrl url='https://example.com?var=value1' key='var' value='value2' replace=true}
+```
+
+It will output:
+
+```html
+    https://example.com?var=value2
+```
+
+```smarty
+  {appendParamToUrl url='https://example.com?family=font1' key='family' value=['font2', 'font3']}
+```
+
+It will output:
+
+```html
+    https://example.com?family=font1&family=font2&family=font3
+```
 
 ### Smarty blocks
 
