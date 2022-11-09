@@ -13,6 +13,7 @@
 * [Usage](#usage)
   * [Working with webpack](#working-with-webpack)
   * [Working with npm/yarn](#working-with-npm/yarn)
+  * [Falcon CLI](#falcon-cli)
   * [Smarty functions](#smarty-functions)
   * [Smarty blocks](#smarty-blocks)
   * [Register assets](#register-assets)
@@ -132,9 +133,9 @@ npm install
 yarn install
 ```
 
-6. Go to `your-theme-name/_dev/webpack` and find `.env-example`. Copy file and rename it with `.env`. Replace example value with proper one based on your setup.
+6. Creating your `.env` file. You can setup you project by running `project-init` script.
 
-7. Now try to run:
+7. If you didn't build your theme in step 6. Just run:
 - for `npm` :
 ```
 npm run build
@@ -164,7 +165,7 @@ Webpack config is available in `_dev/webpack` folder. Files are structured by th
 
 file  | description
 ------------- | -------------
-`webpack.vars.js`  | Webpack dev server config that comes from `.env` file and entry point, output file setup. To add another entry point just add another element to `entriesArray`, remember to add files `/js/{entry_name}.js` and `/css/{entry_name}.scss`.
+`webpack.vars.js`  | Webpack dev server config that comes from `.env` file and entry point, output file setup. To add new entry just run `add-entry` script.
 `webpack.parts.js`  | Contains loaders and plugins setup.
 `webpack.commons.js`  | Config that runs on both production and development.
 `webpack.development.js`  | Config that runs on development.
@@ -183,6 +184,39 @@ script  | description
 `scss-fix`  | Script that run `stylelint` and fix minor issues in code. `Removed until migration to dart-sass from node-sass`
 `eslint`    | Script that run `eslint` find issues in code.
 `eslint-fix`  | Script that run `eslint` and fix minor issues in code.
+
+### Falcon CLI
+
+Falcon CLI is simple tool to improve your development experience and speed you your work. We are lunching this tool with only two scripts.
+
+#### Project init script
+
+After installing your `node_modules` you are able to init you project without creating `.env` file by yourself.
+You can run script `project-init` and answer few question to create `.env` file and build assets.
+
+- for `npm` :
+```
+npm run project-init
+```
+- for `yarn` :
+```
+yarn project-init
+```
+
+#### Add entry script
+
+New script `add-entry` simplify your process of adding new entry point to webpack configuration.
+You can just run script and after inserting entry name, new entry point will be added to project.
+Just remember to register your new entry in `/config/assets.yml` file.
+
+- for `npm` :
+```
+npm run add-entry
+```
+- for `yarn` :
+```
+yarn add-entry
+```
 
 
 ### Smarty functions
