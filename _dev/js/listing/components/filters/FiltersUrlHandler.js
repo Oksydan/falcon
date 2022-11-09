@@ -5,7 +5,12 @@ class FiltersUrlHandler {
     this.searchUrl = null;
   }
 
+  setOldSearchUrl() {
+    this.oldSearchUrl = this.searchUrl;
+  }
+
   getFiltersUrl() {
+    this.setOldSearchUrl();
     return `${this.baseUrl}?q=${this.searchUrl}`;
   }
 
@@ -25,15 +30,15 @@ class FiltersUrlHandler {
 
   appendParam(group, prop) {
     const oldSearchUrl = this.searchUrl || '';
-    let newSearchUrl = oldSearchUrl.split('/');
-    const newSearchUrlLength = newSearchUrl.length;
+    let newSearchUrl = oldSearchUrl.length ? FiltersUrlHandler.specialEncode(oldSearchUrl).split('/') : '';
     let groupExist = false;
+    const newSearchUrlLength = newSearchUrl.length;
 
     for (let i = 0; i < newSearchUrlLength; i += 1) {
       const filterGroup = newSearchUrl[i];
-      const filterGroupArry = filterGroup.split('-');
+      const filterGroupArray = filterGroup.split('-');
 
-      if (filterGroupArry[0] === group) {
+      if (filterGroupArray[0] === group) {
         newSearchUrl[i] = `${newSearchUrl[i]}-${prop}`;
         groupExist = true;
         break;
@@ -44,12 +49,12 @@ class FiltersUrlHandler {
       newSearchUrl = [...newSearchUrl, `${group}-${prop}`];
     }
 
-    this.searchUrl = FiltersUrlHandler.formatSearchUrl(newSearchUrl);
+    this.searchUrl = FiltersUrlHandler.specialDecode(FiltersUrlHandler.formatSearchUrl(newSearchUrl));
   }
 
   removeGroup(group) {
     const oldSearchUrl = this.searchUrl || '';
-    const newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrl = oldSearchUrl.length ? FiltersUrlHandler.specialEncode(oldSearchUrl).split('/') : '';
     const newSearchUrlLength = newSearchUrl.length;
 
     for (let i = 0; i < newSearchUrlLength; i += 1) {
@@ -61,35 +66,43 @@ class FiltersUrlHandler {
       }
     }
 
-    this.searchUrl = FiltersUrlHandler.formatSearchUrl(newSearchUrl);
+    this.searchUrl = FiltersUrlHandler.specialDecode(FiltersUrlHandler.formatSearchUrl(newSearchUrl));
+  }
+
+  static specialEncode(str) {
+    return str.replace('/', '[slash]');
+  }
+
+  static specialDecode(str) {
+    return str.replace('[slash]', '/');
   }
 
   removeParam(group, prop) {
     const oldSearchUrl = this.searchUrl || '';
-    const newSearchUrl = oldSearchUrl.split('/');
+    const newSearchUrl = oldSearchUrl.length ? FiltersUrlHandler.specialEncode(oldSearchUrl).split('/') : '';
     const newSearchUrlLength = newSearchUrl.length;
 
     for (let i = 0; i < newSearchUrlLength; i += 1) {
       const filterGroup = newSearchUrl[i];
-      const filterGroupArry = filterGroup.split('-');
+      const filterGroupArray = filterGroup.split('-');
 
-      if (filterGroupArry[0] === group) {
-        const filterRestul = filterGroupArry.filter((el) => el !== prop);
+      if (filterGroupArray[0] === group) {
+        const filterResult = filterGroupArray.filter((el) => el !== prop);
 
-        if (filterRestul.length === 1) {
+        if (filterResult.length === 1) {
           newSearchUrl.splice(i, 1);
         } else {
-          newSearchUrl[i] = filterRestul.join('-');
+          newSearchUrl[i] = filterResult.join('-');
         }
         break;
       }
     }
 
-    this.searchUrl = FiltersUrlHandler.formatSearchUrl(newSearchUrl);
+    this.searchUrl = FiltersUrlHandler.specialDecode(FiltersUrlHandler.formatSearchUrl(newSearchUrl));
   }
 
-  static formatSearchUrl(arry) {
-    return arry.join('/');
+  static formatSearchUrl(array) {
+    return array.join('/');
   }
 }
 
