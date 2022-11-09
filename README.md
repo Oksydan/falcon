@@ -374,6 +374,34 @@ It will output:
 Use this block instead of `images_block` only if you want to processed html content that can contains external urls for example cms pages/product description.
 This block is a bit slower that `images_block` so make sure that you are using it properly.
 
+#### display_mobile
+
+Simple smarty block to display content only for mobile devices.
+
+Example of usage:
+
+```smarty
+  {display_mobile}
+    <p>
+      It will be displayed only for mobile device (not existing in DOM for destkop devices)
+    </p>
+  {/display_mobile}
+```
+
+#### display_desktop
+
+Simple smarty block to display content only for destkop devices.
+
+Example of usage:
+
+```smarty
+  {display_desktop}
+    <p>
+      It will be displayed only for desktop (not existing in DOM for mobile devices)
+    </p>
+  {/display_desktop}
+```
+
 ### Register assets
 
 Since version 2.1.0 new `assets.yml` file has been added to theme config directory.
