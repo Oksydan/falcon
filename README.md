@@ -135,6 +135,10 @@ yarn install
 
 6. Creating your `.env` file. You can setup you project by running `project-init` script.
 
+<p align="center">
+<img alt="Falcon CLI preview" src="https://user-images.githubusercontent.com/25306716/200955908-883c9e7b-4ebb-4b59-a842-4eb780e975fb.gif" width="800">
+</p>
+
 7. If you didn't build your theme in step 6. Just run:
 - for `npm` :
 ```
