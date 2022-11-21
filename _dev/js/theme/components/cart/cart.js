@@ -225,7 +225,7 @@ $(() => {
     })
       .then((resp) => {
         const $quantityInput = getTouchSpinInput($target);
-        CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
+        CheckUpdateQuantityOperations.checkUpdateOperation(resp);
         $quantityInput.val(resp.quantity);
 
         // Refresh cart preview
@@ -259,7 +259,7 @@ $(() => {
       },
     })
       .then((resp) => {
-        CheckUpdateQuantityOperations.checkUpdateOpertation(resp);
+        CheckUpdateQuantityOperations.checkUpdateOperation(resp);
 
         $target.val(resp.quantity);
         const dataset = ($target && $target.dataset) ? $target.dataset : resp;
