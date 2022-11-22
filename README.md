@@ -100,19 +100,42 @@ Starter version |  PS version | node version
 ------------- | ------------- | -------------
 v 1.X  | 1.7.7.X | >= 10
 v 2.X  | 1.7.8.X | >= 14
+v 3.X  | 8.0.0.X | >= 14
+
+#### Module requirements
+
+`is_themecore` version |  PS version
+------------- | -------------
+<= 2.X  | <= 1.7.8.X
+\>= 3.X  | >= 8.0.0.X
+
+`is_imageslider` version |  PS version
+------------- | -------------
+<= 1.X  | <= 1.7.8.X
+\>= 2.X  | >= 8.0.0.X
+
+`is_searchbar` version |  PS version
+------------- | -------------
+<= 1.X  | <= 1.7.8.X
+\>= 2.X  | >= 8.0.0.X
+
+`is_shoppingcart` version |  PS version
+------------- | -------------
+<= 1.X  | <= 1.7.8.X
+\>= 2.X  | >= 8.0.0.X
 
 ### Installation
 
 1. Go to [releases](https://github.com/Oksydan/modern-prestashop-starter-theme/releases/) and download latest version `starter.zip` file not source code.
 
-2. Download required modules via github releases and place them into `{shop_dir}/modules/` folder. Make sure that folder name of module don't contain branch name when you are cloning them instead of downloading releases. If your `is_themecore` module don't contain `vendor` directory inside, download it from release or run `composer install` inside that module folder.
+2. Download required modules via github releases and place them into `{shop_dir}/modules/` folder. Make sure that you are downloading release package not source code of module. DON'T clone module repository. If you clone module repository, you will have to run `composer install` in root dir of downloaded module.
 
 3. Unzip theme file and place it inside `{shop_dir}/themes/`.
 
 4. If you want to change theme name unzip file. Change folder name e.g. `your-theme-name` then go to `config/theme.yml` and change:
 ```yml
-name: starter
-display_name: display
+name: falcon
+display_name: Falcon theme
 ```
 to:
 
