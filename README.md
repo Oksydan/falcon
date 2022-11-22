@@ -206,11 +206,13 @@ script  | description
 `build`  | Script run production config with assets optimization and chunks names hashing, silent console output.
 `build-analyze`  | Script run production config with assets optimization and chunks names hashing also display bundle-analyzer.
 `build-purge`  | Script run production config with assets optimization, chunks hashing also runs `purgecss` to remove not used styles. **Not recomended to use yet, create safelist before use**.
+`build-ci`  | Script used for github actions CI.
 `watch`  | good old watch option good if you struggle to setup `webpack-dev-server` . **Assets optimization not included**.
 `dev`  | Script that run `webpack dev server` that watch for changes in files and loading them w/o page reload. Script will open your store in browser with port in url, you have to remove it and refresh page. **Assets optimization not included**.
-`scss-fix`  | Script that run `stylelint` and fix minor issues in code. `Removed until migration to dart-sass from node-sass`
-`eslint`    | Script that run `eslint` find issues in code.
-`eslint-fix`  | Script that run `eslint` and fix minor issues in code.
+`scss-lint`  | Script that run `stylelint`. It finds issues in code.
+`scss-lint-fix`  | Script that run `stylelint`. It finds issues in code and fix minor issues in code.
+`js-lint`    | Script that run `eslint`. It finds issues in code.
+`js-lint-fix`  | Script that run `eslint`. It finds issues in code and fix minor issues in code.
 
 ### Falcon CLI
 
