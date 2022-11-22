@@ -17,6 +17,7 @@
   * [Smarty functions](#smarty-functions)
   * [Smarty blocks](#smarty-blocks)
   * [Register assets](#register-assets)
+  * [Preloading fonts](#preloading-fonts)
 * [Javascript Components](#javascript-components)
   * [PageSLider](#pageslider)
   * [SwiperSlider](#swiperslider)
@@ -524,6 +525,39 @@ js:
     server: remote # required to set server: remote for remote file
     priority: 200
 ```
+
+### Preloading fonts
+
+Fonts are preloaded automaticlly via `webpack-font-preload-plugin`. To preload selected font you have to add font file name to plugin configuration.
+You can find function resposible for it in `_dev/webpack/webpack.parts.js`. Function is called `preloadFonts`.
+
+```javascript
+exports.preloadFonts = () => ({
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'preload.html',
+      templateContent: '{{{preloadLinks}}}',
+      inject: false,
+    }),
+    new FontPreloadPlugin({
+      index: 'preload.html',
+      extensions: ['woff2'],
+      filter: /(materialicons|roboto-v20-latin-ext_latin-regular|roboto-v20-latin-ext_latin-700|roboto-v20-latin-ext_latin-500|icomoon)/i,
+      replaceCallback: ({ indexSource, linksAsString }) => {
+        return indexSource.replace('{{{preloadLinks}}}', linksAsString);
+      },
+    }),
+  ]
+})
+```
+
+To preload font with name for example `my-font-name`. You have to modyfiy value of `filter` field:
+
+```javascript
+  filter: /(materialicons|roboto-v20-latin-ext_latin-regular|roboto-v20-latin-ext_latin-700|roboto-v20-latin-ext_latin-500|icomoon|my-font-name)/i,
+```
+
+You are able to create more advanced matching test with regex, thats just simple example.
 
 ## Javascript Components
 
