@@ -1,5 +1,16 @@
-# Falcon theme
+<p align="center">
+<img width="300" alt="logo" src="https://user-images.githubusercontent.com/25306716/203443689-3a466ddb-c78c-4a13-9525-bd7265a08c74.png">
+</p>
 
+<h1 align="center">
+Falcon theme
+</h1>
+
+* 🚀 super fast
+* 💡 feature rich
+* 📦 lightweight
+* ⭐️ up to date
+* 🐧 prestashop theme
 
 ## Table of Contents
 
