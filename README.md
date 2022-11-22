@@ -877,7 +877,7 @@ with:
 
 ## Support project
 
-If you like this project, buy me a cup of coffee. [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=JCSU5Z2AZV2UA)
+If you like this project, buy me a cup of coffee. [Become a sponsor](https://github.com/sponsors/Oksydan)
 
 
 ## Contribution
