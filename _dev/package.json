@@ -1,7 +1,7 @@
 {
-  "name": "modern-prestashop-build-tool",
-  "version": "2.3.1",
-  "description": "Modern tools that help you develop your theme.",
+  "name": "Falcon-theme",
+  "version": "3.0.0",
+  "description": "Modern prestashop theme that speed up your development process",
   "scripts": {
     "project-init": "falcon-cli init",
     "add-entry": "falcon-cli add-entry",

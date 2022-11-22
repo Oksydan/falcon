@@ -1,6 +1,6 @@
-name: starter
-display_name: starter theme
-version: 2.3.1
+name: falcon
+display_name: Falcon theme
+version: 3.0.0
 author:
   name: "Igor Stępień"
   email: "igor@istepien.dev"
@@ -8,7 +8,7 @@ author:
 
 meta:
   compatibility:
-      from: 1.7.8.0
+      from: 8.0.0.0
       to: ~
 
   available_layouts:
@@ -62,6 +62,7 @@ global_settings:
      - ps_searchbar
      - ps_shoppingcart
      - ps_imageslider
+     - blockwishlist
   hooks:
     modules_to_hook:
       displayNav1:
