@@ -1,4 +1,4 @@
-# PrestaShop Modern Starter Theme
+# Falcon theme
 
 
 ## Table of Contents
@@ -32,7 +32,7 @@
 
 ## About The Theme
 
-**Modern PrestaShop starter theme** is made with the latest tools such as Webpack 5.53, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
+**Falcon theme** is made with the latest tools such as Webpack 5.53, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
 This theme was created to deliver a starter theme with the latest developers' tools and frameworks. You can create an enterprise-level PrestaShop theme that is easy to maintain.
 
 Made for developers, and **if you are a merchant, you shouldn't download it.**
@@ -127,7 +127,7 @@ v 3.X  | 8.0.0.X | >= 14
 
 ### Installation
 
-1. Go to [releases](https://github.com/Oksydan/modern-prestashop-starter-theme/releases/) and download latest version `starter.zip` file not source code.
+1. Go to [releases](https://github.com/Oksydan/falcon/releases/) and download latest version `falcon.zip` file not source code.
 
 2. Download required modules via github releases and place them into `{shop_dir}/modules/` folder. Make sure that you are downloading release package not source code of module. DON'T clone module repository. If you clone module repository, you will have to run `composer install` in root dir of downloaded module.
 
