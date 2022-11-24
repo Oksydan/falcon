@@ -30,9 +30,11 @@ class FiltersUrlHandler {
 
   appendParam(group, prop) {
     const oldSearchUrl = this.searchUrl || '';
-    let newSearchUrl = oldSearchUrl.length ? FiltersUrlHandler.specialEncode(oldSearchUrl).split('/') : '';
+    let newSearchUrl = oldSearchUrl.length ? oldSearchUrl.split('/') : [];
     let groupExist = false;
     const newSearchUrlLength = newSearchUrl.length;
+    group = FiltersUrlHandler.specialEncode(group);
+    prop = FiltersUrlHandler.specialEncode(prop);
 
     for (let i = 0; i < newSearchUrlLength; i += 1) {
       const filterGroup = newSearchUrl[i];
@@ -54,7 +56,7 @@ class FiltersUrlHandler {
 
   removeGroup(group) {
     const oldSearchUrl = this.searchUrl || '';
-    const newSearchUrl = oldSearchUrl.length ? FiltersUrlHandler.specialEncode(oldSearchUrl).split('/') : '';
+    const newSearchUrl = oldSearchUrl.length ? oldSearchUrl.split('/') : [];
     const newSearchUrlLength = newSearchUrl.length;
 
     for (let i = 0; i < newSearchUrlLength; i += 1) {
@@ -69,17 +71,21 @@ class FiltersUrlHandler {
     this.searchUrl = FiltersUrlHandler.specialDecode(FiltersUrlHandler.formatSearchUrl(newSearchUrl));
   }
 
+  static toString(value) {
+    return value + '';
+  }
+
   static specialEncode(str) {
-    return str.replace('/', '[slash]');
+    return FiltersUrlHandler.toString(str).replace('/', '[slash]');
   }
 
   static specialDecode(str) {
-    return str.replace('[slash]', '/');
+    return FiltersUrlHandler.toString(str).replace('[slash]', '/');
   }
 
   removeParam(group, prop) {
     const oldSearchUrl = this.searchUrl || '';
-    const newSearchUrl = oldSearchUrl.length ? FiltersUrlHandler.specialEncode(oldSearchUrl).split('/') : '';
+    const newSearchUrl = oldSearchUrl.length ? oldSearchUrl.split('/') : [];
     const newSearchUrlLength = newSearchUrl.length;
 
     for (let i = 0; i < newSearchUrlLength; i += 1) {
