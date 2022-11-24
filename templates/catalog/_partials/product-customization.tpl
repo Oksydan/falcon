@@ -37,7 +37,7 @@
             <ul class="clearfix">
               {foreach from=$customizations.fields item="field"}
                 <li class="product-customization-item">
-                  <label> {$field.label}</label>
+                  <label class="customization-label">{$field.label}</label>
                   {if $field.type == 'text'}
                     <textarea placeholder="{l s='Your message here' d='Shop.Forms.Help'}" class="product-message" maxlength="250" {if $field.required} required {/if} name="{$field.input_name}"></textarea>
                     <small class="float-right">{l s='250 char. max' d='Shop.Forms.Help'}</small>
@@ -57,7 +57,8 @@
                       <input class="file-input js-file-input" {if $field.required} required {/if} type="file" name="{$field.input_name}">
                       <button class="btn btn-primary">{l s='Choose file' d='Shop.Theme.Actions'}</button>
                     </span>
-                    <small class="float-right">{l s='.png .jpg .gif' d='Shop.Forms.Help'}</small>
+                    {assign var=authExtensions value=' .'|implode:constant('ImageManager::EXTENSIONS_SUPPORTED')}
+                    <small class="float-xs-right">.{$authExtensions}</small>
                   {/if}
                 </li>
               {/foreach}

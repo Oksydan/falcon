@@ -1,0 +1,79 @@
+name: "🐛 Bug Report"
+description: Create a new ticket for a bug.
+title: "🐛 [BUG] - <title>"
+labels: [
+  "bug"
+]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: Please enter an explicit description of your issue
+      placeholder: Short and explicit description of your incident...
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: "Node.js version"
+      placeholder: v14.1.0
+    validations:
+      required: true
+  - type: input
+    id: php-version
+    attributes:
+      label: "php version"
+      placeholder: v7.4
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: "OS and it's version"
+      placeholder: MacOS Monterey ARM
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: "Browsers"
+      description: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Opera
+    validations:
+      required: false
+  - type: input
+    id: type
+    attributes:
+      label: "Required module/theme"
+      description: Is bug affecting required module or theme?
+      placeholder: is_themecore or theme
+    validations:
+      required: true
+  - type: textarea
+    id: reprod
+    attributes:
+      label: "Reproduction steps"
+      description: Please enter an explicit description of your issue
+      value: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs"
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: bash
+    validations:
+      required: false

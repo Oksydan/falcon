@@ -1,12 +1,13 @@
+@use "sass:map";
 /* HEADER STYLES */
 
 .l-header {
-  margin: 0 0 map-get($spacers, 3);
+  margin: 0 0 map.get($spacers, 3);
   border-bottom: 1px solid $border-color;
 }
 
 .header-top {
-  padding: map-get($spacers, 2) 0;
+  padding: map.get($spacers, 2) 0;
   @include media-breakpoint-up(md) {
     padding: 0;
   }
@@ -22,13 +23,13 @@
 
   &__link {
     display: block;
-    padding: map-get($spacers, 1);
+    padding: map.get($spacers, 1);
     color: $gray-700;
     text-decoration: none;
     border-radius: $border-radius;
 
     @include media-breakpoint-up(sm) {
-      padding: map-get($spacers, 2);
+      padding: map.get($spacers, 2);
     }
 
     @include hover-focus() {

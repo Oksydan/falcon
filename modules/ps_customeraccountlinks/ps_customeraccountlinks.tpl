@@ -34,13 +34,55 @@
 
   <div class="collapse d-md-block" id="footer_account_list">
     <ul class="links-list">
-      {foreach from=$my_account_urls item=my_account_url}
+      {if $customer.is_logged}
         <li class="links-list__elem">
-          <a class="links-list__link" href="{$my_account_url.url}" title="{$my_account_url.title}" rel="nofollow">
-            {$my_account_url.title}
-          </a>
+          <a class="links-list__link" href="{$urls.pages.identity}" title="{l s='Information' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Information' d='Shop.Theme.Customeraccount'}</a>
         </li>
-      {/foreach}
+        {if $customer.addresses|count}
+          <li class="links-list__elem">
+            <a class="links-list__link" href="{$urls.pages.addresses}" title="{l s='Addresses' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Addresses' d='Shop.Theme.Customeraccount'}</a>
+          </li>
+        {else}
+          <li class="links-list__elem">
+            <a class="links-list__link" href="{$urls.pages.address}" title="{l s='Add first address' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Add first address' d='Shop.Theme.Customeraccount'}</a>
+          </li>
+        {/if}
+        {if !$configuration.is_catalog}
+          <li class="links-list__elem">
+            <a class="links-list__link" href="{$urls.pages.history}" title="{l s='Orders' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Orders' d='Shop.Theme.Customeraccount'}</a>
+          </li>
+        {/if}
+        {if !$configuration.is_catalog}
+          <li class="links-list__elem">
+            <a class="links-list__link" href="{$urls.pages.order_slip}" title="{l s='Credit slips' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Credit slips' d='Shop.Theme.Customeraccount'}</a>
+          </li>
+        {/if}
+        {if $configuration.voucher_enabled && !$configuration.is_catalog}
+          <li class="links-list__elem">
+            <a class="links-list__link" href="{$urls.pages.discount}" title="{l s='Vouchers' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Vouchers' d='Shop.Theme.Customeraccount'}</a>
+          </li>
+        {/if}
+        {if $configuration.return_enabled && !$configuration.is_catalog}
+          <li class="links-list__elem">
+            <a class="links-list__link" href="{$urls.pages.order_follow}" title="{l s='Merchandise returns' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Merchandise returns' d='Shop.Theme.Customeraccount'}</a>
+          </li>
+        {/if}
+        {hook h='displayMyAccountBlock'}
+        <li class="links-list__elem">
+          <a class="links-list__link" href="{$urls.actions.logout}" title="{l s='Log me out' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Sign out' d='Shop.Theme.Actions'}</a>
+        </li>
+      {else}
+        <li class="links-list__elem">
+          <a class="links-list__link" href="{$urls.pages.guest_tracking}" title="{l s='Order tracking' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Order tracking' d='Shop.Theme.Customeraccount'}</a>
+        </li>
+        <li class="links-list__elem">
+          <a class="links-list__link" href="{$urls.pages.my_account}" title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Sign in' d='Shop.Theme.Actions'}</a>
+        </li>
+        <li class="links-list__elem">
+          <a class="links-list__link" href="{$urls.pages.register}" title="{l s='Create account' d='Shop.Theme.Customeraccount'}" rel="nofollow">{l s='Create account' d='Shop.Theme.Customeraccount'}</a>
+        </li>
+        {hook h='displayMyAccountBlock'}
+      {/if}
     </ul>
   </div>
 

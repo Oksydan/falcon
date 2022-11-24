@@ -56,7 +56,7 @@
 
         {block name='product_unit_price'}
           {if $displayUnitPrice}
-            <p class="product-unit-price small">{l s='(%unit_price%)' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>
+            <p class="product-unit-price small">{$product.unit_price_full}</p>
           {/if}
         {/block}
       </div>
@@ -75,7 +75,7 @@
     {/block}
 
     {block name='product_ecotax'}
-      {if $product.ecotax.amount > 0}
+      {if !$product.is_virtual && $product.ecotax.amount > 0}
         <p class="price-ecotax">{l s='Including %amount% for ecotax' d='Shop.Theme.Catalog' sprintf=['%amount%' => $product.ecotax_tax_inc]}
           {if $product.has_discount}
             {l s='(not impacted by the discount)' d='Shop.Theme.Catalog'}
@@ -101,10 +101,10 @@
             <span class="delivery-information">{$product.delivery_information}</span>
           {/if}
         {elseif $product.additional_delivery_times == 2}
-          {if $product.quantity > 0}
+          {if $product.quantity >= $product.quantity_wanted}
             <span class="delivery-information">{$product.delivery_in_stock}</span>
           {* Out of stock message should not be displayed if customer can't order the product. *}
-          {elseif $product.quantity <= 0 && $product.add_to_cart_url}
+          {elseif $product.add_to_cart_url}
             <span class="delivery-information">{$product.delivery_out_stock}</span>
           {/if}
         {/if}

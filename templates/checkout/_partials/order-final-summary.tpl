@@ -86,6 +86,10 @@
             <span class="carrier-price">{$selected_delivery_option.price}</span>
           </div>
         </div>
+
+        {if $is_recyclable_packaging}
+          <em>{l s='You have given permission to receive your order in recycled packaging.' d="Shop.Theme.Customeraccount"}</em>
+        {/if}
       </div>
     </div>
   </div>

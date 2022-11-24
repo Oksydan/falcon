@@ -41,11 +41,11 @@
       {if $usefulness_enabled}
         <div class="mr-2">
           <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-useful-review">
-            <i class="material-icons text-reset font-reset thumb_up">thumb_up</i>
+            <i class="material-icons text-reset font-reset thumb_up"></i>
             <span class="js-useful-review-value font-sm ml-1">@COMMENT_USEFUL_ADVICES@</span>
           </a>
           <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-not-useful-review">
-            <i class="material-icons text-reset font-reset thumb_down">thumb_down</i>
+            <i class="material-icons text-reset font-reset thumb_down"></i>
             <span class="js-not-useful-review-value font-sm ml-1">@COMMENT_NOT_USEFUL_ADVICES@</span>
           </a>
         </div>
@@ -53,7 +53,7 @@
 
       <div class="ml-auto">
         <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-report-abuse" title="{l s='Report abuse' d='Modules.Productcomments.Shop'}">
-          <i class="material-icons text-reset font-reset outlined_flag">flag</i>
+          <i class="material-icons text-reset font-reset outlined_flag"></i>
         </a>
       </div>
     </div>

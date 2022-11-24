@@ -1,5 +1,7 @@
+@use "sass:map";
+
 .customer-links {
-  margin: 0 0 map-get($spacers, 3);
+  margin: 0 0 map.get($spacers, 3);
   @include media-breakpoint-up(lg) {
     margin: 0;
   }
@@ -31,7 +33,7 @@
     display: block;
     flex: 0 0;
     max-width: inherit;
-    padding: map-get($spacers, 2);
+    padding: map.get($spacers, 2);
     font-weight: 700;
     color: $gray-800;
     white-space: nowrap;
@@ -47,6 +49,15 @@
       text-decoration: none;
     }
 
+    i {
+      margin-right: map.get($spacers, 1);
+      color: $primary;
+      @include font-size(26px);
+      @include media-breakpoint-up(md) {
+        margin-right: map.get($spacers, 2);
+      }
+    }
+
     &.active {
       color: #fff;
       background: $primary;
@@ -57,15 +68,6 @@
 
       i {
         color: inherit;
-      }
-    }
-
-    i {
-      margin-right: map-get($spacers, 1);
-      color: $primary;
-      @include font-size(26px);
-      @include media-breakpoint-up(md) {
-        margin-right: map-get($spacers, 2);
       }
     }
   }

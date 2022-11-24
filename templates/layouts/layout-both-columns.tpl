@@ -64,7 +64,7 @@
             {block name="left_column"}
               <div id="left-column" class="col-12 col-md-4 col-lg-3">
                 {if $page.page_name == 'product'}
-                  {hook h='displayLeftColumnProduct'}
+                  {hook h='displayLeftColumnProduct' product=$product category=$category}
                 {else}
                   {hook h="displayLeftColumn"}
                 {/if}
@@ -104,6 +104,7 @@
     </main>
 
     {block name='javascript_bottom'}
+      {include file="_partials/password-policy-template.tpl"}
       {include file="_partials/javascript.tpl" javascript=$javascript.bottom}
     {/block}
 

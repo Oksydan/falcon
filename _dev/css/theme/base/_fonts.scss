@@ -1,3 +1,6 @@
+$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+@import '~material-design-icons-iconfont/src/material-design-icons';
+
 @import "../../fonts/icomoon/style";
 
 %abstract-icon {
@@ -50,16 +53,6 @@
   /* Support for IE. */
   font-feature-settings: "liga";
 }
-
-
-@font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("~material-design-icons/iconfont/MaterialIcons-Regular.woff2") format("woff2"), url("~material-design-icons/iconfont/MaterialIcons-Regular.woff") format("woff"), url("~material-design-icons/iconfont/MaterialIcons-Regular.ttf") format("truetype");
-}
-
 
 /* roboto-regular - latin-ext_latin */
 @font-face {

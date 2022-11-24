@@ -5,6 +5,6 @@
 {extends file='catalog/listing/product-list.tpl'}
 
 {block name="error_content"}
-  <h4>{l s='No matches were found for your search' d='Shop.Theme.Catalog'}</h4>
+  <h4 id="product-search-no-matches">{l s='No matches were found for your search' d='Shop.Theme.Catalog'}</h4>
   <p>{l s='Please try other keywords to describe what you are looking for.' d='Shop.Theme.Catalog'}</p>
 {/block}

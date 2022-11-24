@@ -1,10 +1,12 @@
+@use "sass:map";
+
 .product-miniature {
   $self: &;
 
   &__quick-view {
     position: absolute;
-    right: map-get($spacers, 2);
-    bottom: map-get($spacers, 2);
+    right: map.get($spacers, 2);
+    bottom: map.get($spacers, 2);
     z-index: 2;
     width: 1.7em;
     height: 1.7em;
@@ -20,7 +22,7 @@
   }
 
   &__pricing {
-    margin: 0 0 map-get($spacers, 4);
+    margin: 0 0 map.get($spacers, 4);
   }
 
   &__title {

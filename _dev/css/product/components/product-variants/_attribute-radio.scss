@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .attribute-radio {
   $self: &;
 
@@ -31,7 +33,7 @@
   &__text {
     display: block;
     min-width: rem-calc(35px);
-    padding: map-get($spacers, 1) map-get($spacers, 2);
+    padding: map.get($spacers, 1) map.get($spacers, 2);
     font-size: $font-size-sm;
     font-weight: 700;
     text-align: center;

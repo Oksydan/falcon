@@ -1,9 +1,11 @@
+@use "sass:map";
+
 .product-line-grid {
   align-items: center;
 
   &:not(:last-child) {
-    padding-bottom: map-get($spacers, 3);
-    margin-bottom: map-get($spacers, 3);
+    padding-bottom: map.get($spacers, 3);
+    margin-bottom: map.get($spacers, 3);
     border-bottom: 1px solid $border-color;
   }
 
@@ -11,7 +13,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 0 -#{map-get($spacers, 2)};
+    margin: 0 -#{map.get($spacers, 2)};
     @include media-breakpoint-up(md) {
       flex-wrap: nowrap;
     }

@@ -1,0 +1,31 @@
+name: "🚀 Feature Request"
+description: Create a new ticket for a new feature request
+title: "🚀 [REQUEST] - <title>"
+labels: [
+  "feature request"
+]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: "Summary"
+      description: Provide a brief explanation of the feature
+      placeholder: Describe in a few lines your feature request
+    validations:
+      required: true
+  - type: input
+    id: type
+    attributes:
+      label: "Feature target required module/theme"
+      description: Is bug affecting required module or theme?
+      placeholder: is_themecore or theme
+    validations:
+      required: true
+  - type: textarea
+    id: drawbacks
+    attributes:
+      label: "Drawbacks"
+      description: What are the drawbacks/impacts of your feature request ?
+      placeholder: Identify the drawbacks and impacts while being neutral on your feature request
+    validations:
+      required: true

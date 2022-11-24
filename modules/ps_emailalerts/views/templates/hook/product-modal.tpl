@@ -22,11 +22,21 @@
         <p>
           {l s='Sign up and get notification when product will be available again.' d='Shop.Theme.Catalog'}
         </p>
-        {if isset($email) AND $email}
-          <div class="form-group">
-            <input class="form-control js-mailalert-email" type="email" placeholder="{l s='your@email.com' d='Modules.Emailalerts.Shop'}"/>
-          </div>
-        {/if}
+        <div class="form-group">
+          <input
+            class="form-control js-mailalert-email"
+            type="email"
+            placeholder="{l s='your@email.com' d='Modules.Emailalerts.Shop'}"
+
+            {if !empty($customer.email)}
+              value="{$customer.email}"
+            {/if}
+
+            {if $customer.is_logged && !$customer.is_guest}
+              readonly
+            {/if}
+            />
+        </div>
         {if isset($id_module)}
           {hook h='displayGDPRConsent' id_module=$id_module}
         {/if}

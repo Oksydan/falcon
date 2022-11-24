@@ -7,6 +7,10 @@
     border-bottom: 0;
   }
 
+  .step-number {
+    display: inline-block;
+  }
+
   .content {
     border-top: $card-border-width solid $card-border-color;
   }
@@ -39,6 +43,16 @@
     }
   }
 
+  &.-reachable.-complete {
+    .done {
+      display: inline-block;
+    }
+
+    .content {
+      display: none;
+    }
+  }
+
   &.-current.-reachable.-complete {
     .done,
     .step-edit {
@@ -52,20 +66,6 @@
     .content {
       display: block;
     }
-  }
-
-  &.-reachable.-complete {
-    .done {
-      display: inline-block;
-    }
-
-    .content {
-      display: none;
-    }
-  }
-
-  .step-number {
-    display: inline-block;
   }
 }
 

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* Base;
  *
  */
@@ -63,7 +65,7 @@
 .noUi-marker-horizontal.noUi-marker {
   width: $nouislider-marker-horizontal-width;
   height: $nouislider-marker-horizontal-height;
-  margin-left: -#{$nouislider-marker-horizontal-width / 2};
+  margin-left: -#{math.div($nouislider-marker-horizontal-width, 2)};
 }
 
 .noUi-marker-horizontal.noUi-marker-sub {
@@ -96,7 +98,7 @@
 .noUi-marker-vertical.noUi-marker {
   width: $nouislider-marker-vertical-width;
   height: $nouislider-marker-vertical-height;
-  margin-top: -#{$nouislider-marker-vertical-height / 2};
+  margin-top: -#{math.div($nouislider-marker-vertical-height, 2)};
 }
 
 .noUi-marker-vertical.noUi-marker-sub {

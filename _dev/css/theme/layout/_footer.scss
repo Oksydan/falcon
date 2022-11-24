@@ -1,12 +1,13 @@
+@use "sass:map";
+
 .l-footer {
-  padding-top: map-get($spacers, 5);
+  padding-top: map.get($spacers, 5);
   margin-top: auto;
 }
 
-
 .footer-container {
-  padding-top: map-get($spacers, 5);
-  padding-bottom: map-get($spacers, 2);
-  margin-top: map-get($spacers, 5);
+  padding-top: map.get($spacers, 5);
+  padding-bottom: map.get($spacers, 2);
+  margin-top: map.get($spacers, 5);
   background: $gray-100;
 }

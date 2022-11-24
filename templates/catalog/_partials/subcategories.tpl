@@ -34,6 +34,7 @@
               <div class="card-body">
                 <a class="stretched-link d-block text-center mb-3 pb-3 border-bottom" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
                   <img
+                    class="img-fluid"
                     height="{$subcategory.image.bySize.category_default.height}"
                     width="{$subcategory.image.bySize.category_default.width}"
                     src="{$subcategory.image.bySize.category_default.url}"

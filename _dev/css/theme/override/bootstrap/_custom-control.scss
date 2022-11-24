@@ -1,3 +1,4 @@
+@use "sass:math";
 
 .custom-checkbox-color {
   @extend .custom-checkbox;
@@ -19,7 +20,7 @@
 
 .custom-control-input-color {
   position: absolute;
-  top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
+  top: math.div(($font-size-base * $line-height-base - $custom-control-indicator-size), 2);
   left: -($custom-control-gutter + $custom-control-indicator-size);
   display: block;
   width: $custom-control-indicator-size;
@@ -32,6 +33,13 @@
   @include border-radius($custom-checkbox-indicator-border-radius);
 }
 
+.custom-checkbox-block {
+  padding-left: $custom-control-indicator-size;
+  .custom-control-label::after,
+  .custom-control-label::before {
+    left: -#{$custom-control-indicator-size};
+  }
+}
 
 .custom-radio-color {
   @extend .custom-radio;
@@ -49,14 +57,21 @@
     border-radius: $custom-radio-indicator-border-radius;
   }
 
+  .custom-control-label {
+    &::before {
+      display: none;
+    }
+  }
+
+
   .custom-control-input {
     width: 100%;
     height: 100%;
 
     &:checked ~ .custom-control-label {
       &::after {
-        top: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size) / 2};
-        right: #{($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size) / 2};
+        top: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
+        right: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
         left: auto;
         width: $custom-color-control-indicator-icon-size;
         height: $custom-color-control-indicator-icon-size;
@@ -69,12 +84,6 @@
     }
   }
 
-  .custom-control-label {
-    &::before {
-      display: none;
-    }
-  }
-
   .custom-control-input:checked ~ .custom-control-label-dark {
     &::after {
       background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
@@ -82,10 +91,3 @@
   }
 }
 
-.custom-checkbox-block {
-  padding-left: $custom-control-indicator-size;
-  .custom-control-label::after,
-  .custom-control-label::before {
-    left: -#{$custom-control-indicator-size};
-  }
-}

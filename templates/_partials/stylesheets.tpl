@@ -36,7 +36,7 @@
     <link
       rel="preload"
       href="{appendParamToUrl url=$stylesheet.uri key=v value=$cssAssetHash}"
-      as="stylesheet"
+      as="style"
     >
   {/if}
 

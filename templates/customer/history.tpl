@@ -67,9 +67,16 @@
               </span>
             </td>
             <td class="text-sm-center order-actions align-middle">
-              <a class="btn btn-sm btn-primary" href="{$order.details.details_url}" data-link-action="view-order-details">
+              <a class="view-order-details-link btn btn-sm btn-primary" href="{$order.details.details_url}" data-link-action="view-order-details">
                 {l s='Details' d='Shop.Theme.Customeraccount'}
               </a>
+              {if $order.details.reorder_url}
+                <div class="col-sm-6 mt-2">
+                  <a class="reorder-link btn btn-sm btn-primary" href="{$order.details.reorder_url}" data-link-action="view-order-details">
+                    {l s='Reorder' d='Shop.Theme.Actions'}
+                  </a>
+                </div>
+              {/if}
             </td>
           </tr>
         {/foreach}
@@ -98,13 +105,13 @@
           <div class="card-footer">
             <div class="row mt-n2">
               <div class="col-sm-6 mt-2">
-                <a class="btn btn-primary btn-block btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
+                <a class="view-order-details-link btn btn-primary btn-block btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
                   {l s='Details' d='Shop.Theme.Customeraccount'}
                 </a>
               </div>
               {if $order.details.reorder_url}
                 <div class="col-sm-6 mt-2">
-                  <a class="btn btn-light btn-block btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
+                  <a class="reorder-link btn btn-light btn-block btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
                     {l s='Reorder' d='Shop.Theme.Actions'}
                   </a>
                 </div>
@@ -114,6 +121,7 @@
         </div>
       {/foreach}
     </div>
-
+  {else}
+    <div class="alert alert-info" role="alert" data-alert="info">{l s='You have not placed any orders.' d='Shop.Notifications.Warning'}</div>
   {/if}
 {/block}

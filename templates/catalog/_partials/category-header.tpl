@@ -23,19 +23,15 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <div id="js-product-list-header">
-    {if $listing.pagination.items_shown_from == 1}
-        <div class="block-category">
-            <h1 class="h1">{$category.name}</h1>
-            <div class="block-category-inner">
-                {if $category.description}
-                    <div id="category-description" class="cms-content">{$category.description nofilter}</div>
-                {/if}
-                {* {if $category.image.large.url}
-                    <div class="category-cover">
-                        <img src="{$category.image.large.url}" alt="{if !empty($category.image.legend)}{$category.image.legend}{else}{$category.name}{/if}" loading="lazy">
-                    </div>
-                {/if} *}
-            </div>
-        </div>
-    {/if}
+    <div class="block-category">
+        <h1 class="h1">
+            {$category.name}
+            {if $listing.pagination.items_shown_from !== 1}
+                {l s='- page' d='Shop.Theme.Catalog'} {$listing.pagination.current_page}
+            {/if}
+        </h1>
+        {if $category.description && $listing.pagination.items_shown_from == 1}
+            <div id="category-description" class="cms-content">{$category.description nofilter}</div>
+        {/if}
+    </div>
 </div>

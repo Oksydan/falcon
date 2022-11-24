@@ -29,6 +29,7 @@ jQuery.fn.rating = function(generalOptions) {
   $ratings.each(function initRating() {
     const $ratingComponent = $(this);
     var options = generalOptions ? generalOptions : {};
+    const ratingAddedClass = 'js-rating-added';
     if (!options.grade && $ratingComponent.data('grade')) {
       options.grade = $ratingComponent.data('grade');
     }
@@ -48,6 +49,10 @@ jQuery.fn.rating = function(generalOptions) {
       max: 5,
       starWidth: 20
     }, options);
+
+    if ($ratingComponent.hasClass(ratingAddedClass)) {
+      return;
+    }
 
     const minValue = Math.min(componentOptions.min, componentOptions.max);
     const maxValue = Math.max(componentOptions.min, componentOptions.max);
@@ -151,6 +156,8 @@ jQuery.fn.rating = function(generalOptions) {
           fullStar.css('width', fullWidth);
           fullStars.append(fullStar.clone());
         }
+
+        $ratingComponent.addClass(ratingAddedClass);
       }
     }
   });

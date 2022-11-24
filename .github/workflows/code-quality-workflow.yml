@@ -1,0 +1,41 @@
+name: Lint code
+
+on: [ push, pull_request ]
+
+permissions:
+  contents: read
+
+jobs:
+  stylelint:
+    name: Code quality - SCSS Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: cd ./_dev && npm install
+
+      - name: Stylelint action
+        run: cd ./_dev && npm run scss-lint
+
+  eslint:
+    name: Code quality - ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: cd ./_dev && npm install
+
+      - name: Eslint action
+        run: cd ./_dev && npm run js-lint

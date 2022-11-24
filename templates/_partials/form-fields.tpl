@@ -22,30 +22,30 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-{$autocomplete =
- ['firstname' => 'given-name',
- 'lastname' => 'family-name',
- 'email'=>'email',
- 'password'=>'current-password',
- 'new_password'=>'new-password',
- 'postcode'=>'postal-code',
- 'birthday'=>'bday',
- 'address1'=>'street-address',
- 'address2'=>'address-line2',
- 'id_state'=>'address-level1',
- 'city'=>'address-level2',
- 'company'=>'organization'
- ]}
+{$autocomplete = [
+  'firstname' => 'given-name',
+  'lastname' => 'family-name',
+  'email'=>'email',
+  'password'=>'current-password',
+  'new_password'=>'new-password',
+  'postcode'=>'postal-code',
+  'birthday'=>'bday',
+  'address1'=>'street-address',
+  'address2'=>'address-line2',
+  'id_state'=>'address-level1',
+  'city'=>'address-level2',
+  'company'=>'organization'
+]}
 {if $field.type == 'hidden'}
 
   {block name='form_field_item_hidden'}
-    <input type="hidden" name="{$field.name}" value="{$field.value}">
+    <input type="hidden" name="{$field.name}" value="{$field.value|default}">
   {/block}
 
 {else}
   {assign var=uniqId value=10|mt_rand:100000}
 
-  <div class="form-group">
+  <div class="form-group js-input-column">
     {if $field.type == 'checkbox' || $field.type == 'radio-buttons'}
       {if $field.type == 'radio-buttons'}
         <div class="form-label label mr-3">{$field.label}</div>
@@ -117,8 +117,11 @@
     {elseif $field.type === 'date'}
 
       {block name='form_field_item_date'}
-        <input name="{$field.name}" class="form-control{if !empty($field.errors)} is-invalid{/if}" type="date"
-          value="{$field.value}"
+        <input
+          name="{$field.name}"
+          class="form-control{if !empty($field.errors)} is-invalid{/if}"
+          type="date"
+          value="{$field.value|default}"
           placeholder="{if isset($field.availableValues.placeholder)}{$field.availableValues.placeholder}{/if}"
           id="f-{$field.name}_{$uniqId}" {if isset($autocomplete[$field.name])} autocomplete="{$autocomplete[$field.name]}"
           {/if}>
@@ -134,19 +137,19 @@
       {block name='form_field_item_birthday'}
         <div class="js-parent-focus">
           {html_select_date
-                               field_order=DMY
-                               time={$field.value}
-          field_array={$field.name}
-          prefix=false
-          reverse_years=true
-          field_separator='<br>'
-          day_extra='class="form-control form-control-select"'
-          month_extra='class="form-control form-control-select"'
-          year_extra='class="form-control form-control-select"'
-          day_empty={l s='-- day --' d='Shop.Forms.Labels'}
-          month_empty={l s='-- month --' d='Shop.Forms.Labels'}
-          year_empty={l s='-- year --' d='Shop.Forms.Labels'}
-          start_year={'Y'|date}-100 end_year={'Y'|date}
+            field_order=DMY
+            time={$field.value}
+            field_array={$field.name}
+            prefix=false
+            reverse_years=true
+            field_separator='<br>'
+            day_extra='class="form-control form-control-select"'
+            month_extra='class="form-control form-control-select"'
+            year_extra='class="form-control form-control-select"'
+            day_empty={l s='-- day --' d='Shop.Forms.Labels'}
+            month_empty={l s='-- month --' d='Shop.Forms.Labels'}
+            year_empty={l s='-- year --' d='Shop.Forms.Labels'}
+            start_year={'Y'|date}-100 end_year={'Y'|date}
           }
         </div>
       {/block}
@@ -155,21 +158,26 @@
 
       {block name='form_field_item_password'}
         <div class="input-group js-parent-focus">
-          <input class="form-control js-child-focus js-visible-password{if !empty($field.errors)} is-invalid{/if}"
-            name="{$field.name}" id="f-{$field.name}_{$uniqId}" type="password" value=""
-            pattern=".{literal}{{/literal}5,{literal}}{/literal}" {if isset($autocomplete[$field.name])}
-            autocomplete="{$autocomplete[$field.name]}" {/if} {if $field.required}required{/if}>
+          <input
+            class="form-control js-child-focus js-visible-password{if !empty($field.errors)} is-invalid{/if}"
+            name="{$field.name}"
+            id="f-{$field.name}_{$uniqId}"
+            type="password"
+            value=""
+            {if isset($configuration.password_policy.minimum_length)}data-minlength="{$configuration.password_policy.minimum_length}"{/if}
+            {if isset($configuration.password_policy.maximum_length)}data-maxlength="{$configuration.password_policy.maximum_length}"{/if}
+            {if isset($configuration.password_policy.minimum_score)}data-minscore="{$configuration.password_policy.minimum_score}"{/if}
+            pattern=".{literal}{{/literal}{$configuration.password_policy.minimum_length},{literal}}{/literal}"
+            {if isset($autocomplete[$field.name])}autocomplete="{$autocomplete[$field.name]}" {/if}
+            {if $field.required}required{/if}>
           <span class="input-group-append">
             <button class="btn btn-primary" type="button" data-action="show-password"
               data-text-show="<span class='material-icons d-block'>visibility</span>" data-text-hide="<span class='material-icons d-block'>visibility_off</span>">
               <span class="material-icons d-block">visibility</span>
             </button>
           </span>
-          {include file='_partials/form-errors.tpl' errors=$field.errors required=$field.required label=$field.label}
-
         </div>
-        <small class="form-text text-muted">{l s='At least 5 characters long' d='Shop.Forms.Help'}</small>
-
+        {include file='_partials/form-errors.tpl' errors=$field.errors required=$field.required label=$field.label}
       {/block}
 
     {elseif $field.type === 'file'}
@@ -181,10 +189,15 @@
     {else}
 
       {block name='form_field_item_other'}
-        <input class="form-control{if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
-          type="{if $field.name === "phone"}tel{else}{$field.type}{/if}" value="{$field.value}" id="f-{$field.name}_{$uniqId}"
+        <input
+          class="form-control{if !empty($field.errors)} is-invalid{/if}"
+          name="{$field.name}"
+          type="{if $field.name === "phone"}tel{else}{$field.type}{/if}"
+          value="{$field.value|default}"
+          id="f-{$field.name}_{$uniqId}"
           {if isset($field.availableValues.placeholder)}placeholder="{$field.availableValues.placeholder}" {/if}
-          {if $field.maxLength}maxlength="{$field.maxLength}" {/if} {if $field.required}required{/if}
+          {if $field.maxLength}maxlength="{$field.maxLength}" {/if}
+          {if $field.required}required{/if}
           {if isset($autocomplete[$field.name])} autocomplete="{$autocomplete[$field.name]}" {/if}
           pattern="^[^\s]+(\s+[^\s]+)*$">
         {if isset($field.availableValues.comment)}
