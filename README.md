@@ -8,7 +8,7 @@ Falcon theme
 
 * 🚀 super fast
 * 💡 feature rich
-* 📦 lightweight
+* 🪶 lightweight
 * ⭐️ up to date
 * 🐧 prestashop theme
 
@@ -74,7 +74,7 @@ Made for developers, and **if you are a merchant, you shouldn't download it.**
 
 ### Online demo
 
-Want to check it online in action before downloading? Demo available [here](https://mpst.dev/).<br>
+Want to check it online in action before downloading? Demo available [here](https://falcon-theme.dev/) (page might not be avaliable on release date).<br>
 Demo hosted by our technical partner [Wrapnet](https://wrapnet.pl/).
 
 ### Performance
@@ -116,25 +116,26 @@ v 3.X  | 8.0.0.X | >= 14
 
 #### Module requirements
 
-`is_themecore` version |  PS version
+`is_themecore` version |  Theme version
 ------------- | -------------
-<= 2.X  | <= 1.7.8.X
-\>= 3.X  | >= 8.0.0.X
+ 1.X.X  | 1.X.X
+ 2.X.X  | 2.X.X
+ 3.X.X  | 2.X.X
 
-`is_imageslider` version |  PS version
+`is_imageslider` version |  Theme version
 ------------- | -------------
-<= 1.X  | <= 1.7.8.X
-\>= 2.X  | >= 8.0.0.X
+ 1.X.X  | <= 2.X.X
+ 2.X.X  | 3.X.X
 
-`is_searchbar` version |  PS version
+`is_searchbar` version |  Theme version
 ------------- | -------------
-<= 1.X  | <= 1.7.8.X
-\>= 2.X  | >= 8.0.0.X
+ 1.X.X  | <= 2.X.X
+ 2.X.X  | 3.X.X
 
-`is_shoppingcart` version |  PS version
+`is_shoppingcart` version |  Theme version
 ------------- | -------------
-<= 1.X  | <= 1.7.8.X
-\>= 2.X  | >= 8.0.0.X
+ 1.X.X  | <= 2.X.X
+ 2.X.X  | 3.X.X
 
 ### Installation
 
