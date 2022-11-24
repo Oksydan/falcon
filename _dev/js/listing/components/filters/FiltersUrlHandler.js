@@ -72,7 +72,7 @@ class FiltersUrlHandler {
   }
 
   static toString(value) {
-    return value + '';
+    return `${value}`;
   }
 
   static specialEncode(str) {
