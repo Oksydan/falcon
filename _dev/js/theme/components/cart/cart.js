@@ -299,11 +299,13 @@ $(() => {
     // There should be a valid product quantity in cart
     const targetValue = $target.val();
 
-    if (targetValue !== parseInt(targetValue, 10) || targetValue < 0 || Number.isNaN(targetValue)) {
+    /* eslint-disable */
+    if (targetValue != parseInt(targetValue, 10) || targetValue < 0 || Number.isNaN(targetValue)) {
       window.shouldPreventModal = false;
       $target.val(baseValue);
       return;
     }
+    /* eslint-enable */
 
     // There should be a new product quantity in cart
     const qty = targetValue - baseValue;
