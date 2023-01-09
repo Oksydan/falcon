@@ -7,15 +7,14 @@ class DynamicImportJqueryPlugin {
   } = {}) {
     this.jqueryPluginCover = jqueryPluginCover;
     this.importer = importer;
-    this.jqueryElementCalled = null;
-    this.jqueryElementCalledArgs = null;
+    this.jqueryFuncCalled = [];
 
     this.setJqueryPlugin();
   }
 
   callJqueryAction() {
-    if (this.jqueryElementCalled.length) {
-      this.jqueryElementCalled[this.jqueryPluginCover](this.jqueryElementCalledArgs);
+    for (const fncCall of this.jqueryFuncCalled) {
+      fncCall.elem[this.jqueryPluginCover](fncCall.args);
     }
   }
 
@@ -28,9 +27,13 @@ class DynamicImportJqueryPlugin {
 
     /* eslint-disable func-names */
     $.fn[this.jqueryPluginCover] = function (args) {
-      self.jqueryElementCalled = this;
-      self.jqueryElementCalledArgs = args;
+      self.jqueryFuncCalled.push({
+        elem: this,
+        args,
+      });
       self.fetchFiles();
+
+      return this;
     };
   }
 }

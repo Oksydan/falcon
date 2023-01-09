@@ -1,11 +1,19 @@
 <td class="product-line__cell product-line__cell--img">
   {images_block webpEnabled=$webpEnabled}
-    <img
-      {generateImagesSources image=$product.cover size='cart_default' lazyload=false}
-      alt="{$product.name|escape:'quotes'}"
-      class="product-line__img rounded img-fluid"
-      width="{$product.cover.bySize.cart_default.width}"
-      height="{$product.cover.bySize.cart_default.height}">
+    {if $product.default_image}
+      <img
+        {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+        alt="{$product.name|escape:'quotes'}"
+        class="product-line__img rounded img-fluid"
+        width="{$product.default_image.bySize.cart_default.width}"
+        height="{$product.default_image.bySize.cart_default.height}">
+    {else}
+      <img
+        src="{$urls.no_picture_image.bySize.cart_default.url}"
+        width="{$urls.no_picture_image.bySize.cart_default.width}"
+        height="{$urls.no_picture_image.bySize.cart_default.height}"
+        class="product-line__img rounded img-fluid">
+    {/if}
   {/images_block}
 </td>
 

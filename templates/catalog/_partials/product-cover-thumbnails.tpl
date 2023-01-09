@@ -53,7 +53,7 @@
     {block name='product_cover'}
       {if $product.default_image}
 
-        <div class="positon-relative product-main-images">
+        <div class="product-main-images">
           {if $product.images|count > 1}
             {$index = 0}
             {images_block webpEnabled=$webpEnabled}
