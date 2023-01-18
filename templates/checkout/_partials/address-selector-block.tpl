@@ -41,11 +41,11 @@
 
             <a class="edit-address d-flex justify-content-center align-items-center" data-link-action="edit-address"
               href="{url entity='order' params=['id_address' => $address.id, 'editAddress' => $type, 'token' => $token]}">
-              <i class="material-icons edit mr-1 font-reset">&#xE254;</i>{l s='Edit' d='Shop.Theme.Actions'}
+              <i class="material-icons mr-1">&#xE254;</i>{l s='Edit' d='Shop.Theme.Actions'}
             </a>
             <a class="delete-address d-flex justify-content-center align-items-center" data-link-action="delete-address"
               href="{url entity='order' params=['id_address' => $address.id, 'deleteAddress' => true, 'token' => $token]}">
-              <i class="material-icons delete mr-1 font-reset">&#xE872;</i>{l s='Delete' d='Shop.Theme.Actions'}
+              <i class="material-icons mr-1">&#xE872;</i>{l s='Delete' d='Shop.Theme.Actions'}
             </a>
           </div>
 
