@@ -110,7 +110,7 @@
           <input name="{$field.name}" type="checkbox" value="1" id="f-{$field.name}_{$uniqId}"
             class="custom-control-input{if !empty($field.errors)} is-invalid{/if}" {if $field.value} checked="checked"
             {/if}{if $field.required} required{/if}>
-          <label class="custom-control-label" for="f-{$field.name}_{$uniqId}">{$field.label nofilter}</label>
+          <label class="custom-control-label" for="f-{$field.name}_{$uniqId}">{$field.label|unescape:'html' nofilter}</label>
         </div>
       {/block}
 
