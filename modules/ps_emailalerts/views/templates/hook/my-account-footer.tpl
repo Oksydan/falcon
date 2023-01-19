@@ -23,8 +23,8 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<li>
-  <a href="{url entity='module' name='ps_emailalerts' controller='account'}" title="{l s='My alerts' d='Shop.Theme.Catalog'}">
+<li class="links-list__elem">
+  <a class="links-list__link" href="{url entity='module' name='ps_emailalerts' controller='account'}" title="{l s='My alerts' d='Shop.Theme.Catalog'}">
     {l s='My alerts' d='Shop.Theme.Catalog'}
   </a>
 </li>
