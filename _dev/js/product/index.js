@@ -14,4 +14,17 @@ $(() => {
   prestashop.on('updatedProductCombination', () => {
     gallery.init();
   });
+
+  prestashop.on('updatedProduct', (e) => {
+    handleProductDetailsToggle();
+  });
 });
+
+function handleProductDetailsToggle() {
+  const $link = $('[href="#product-details"]');
+  const $tab = $($link.attr('href'));
+
+  if ($tab.length && $link.length && $link.hasClass('active')) {
+    $tab.addClass('show active');
+  }
+}
