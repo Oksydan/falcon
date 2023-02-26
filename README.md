@@ -12,6 +12,19 @@ Falcon theme
 * ⭐️ up to date
 * 🐧 prestashop theme
 
+## Sponsors
+
+<br>
+<p align="center">
+ <a href="https://www.waynet.io/" target="_blank">
+   <img 
+    width="200" 
+    alt="Waynet logo"
+    src="https://user-images.githubusercontent.com/25306716/221443746-48877fbf-b83a-4250-a497-b0be7c95d56f.svg">
+  </a>
+</p>
+
+
 ## Table of Contents
 
 * [About the Theme](#about-the-theme)
