@@ -17,10 +17,10 @@ Falcon theme
 <br>
 <p align="center">
  <a href="https://www.waynet.io/" target="_blank">
-   <img 
-    width="300" 
-    alt="Waynet logo"
-    src="https://user-images.githubusercontent.com/25306716/221511145-e97db1f8-a9d7-44d5-89fe-1af2a9a6e529.svg">
+    <picture>
+     <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25306716/221512340-10e18c49-2898-46bd-9c9b-747c56aef0a7.svg">
+     <img alt="Waynet logo" src="https://user-images.githubusercontent.com/25306716/221512697-41c464bc-6c71-447b-8f01-62c6c125f5ac.svg" width="250">
+   </picture>
   </a>
 </p>
 
