@@ -18,12 +18,11 @@ Falcon theme
 <p align="center">
  <a href="https://www.waynet.io/" target="_blank">
    <img 
-    width="200" 
+    width="300" 
     alt="Waynet logo"
-    src="https://user-images.githubusercontent.com/25306716/221443746-48877fbf-b83a-4250-a497-b0be7c95d56f.svg">
+    src="https://user-images.githubusercontent.com/25306716/221511145-e97db1f8-a9d7-44d5-89fe-1af2a9a6e529.svg">
   </a>
 </p>
-
 
 ## Table of Contents
 
