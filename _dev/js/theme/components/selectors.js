@@ -61,7 +61,7 @@ prestashop.themeSelectors = {
   },
   notifications: {
     dangerAlert: '#notifications article.alert-danger',
-    container: '#notifications .notifications-container',
+    container: '#notifications .container',
   },
   passwordPolicy: {
     template: '#password-feedback',
