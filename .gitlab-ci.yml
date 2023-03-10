@@ -1,0 +1,18 @@
+repo_pull_sync:
+  image: danger89/repo_mirror_pull:latest
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: $REMOTE_URL
+    - if: $REMOTE_BRANCH
+    - if: $ACCESS_TOKEN
+  before_script:
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+  script:
+    - git checkout master
+    - git pull
+    - git remote remove upstream || true
+    - git remote add upstream $REMOTE_URL
+    - git fetch upstream
+    - git merge upstream/$REMOTE_BRANCH
+    - git push "https://${GITLAB_USER_LOGIN}:${ACCESS_TOKEN}@${CI_REPOSITORY_URL#*@}" "HEAD:master"
