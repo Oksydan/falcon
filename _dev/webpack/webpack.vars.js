@@ -1,5 +1,6 @@
 const path = require('path');
 const themeDev = path.resolve(__dirname, '../../_dev');
+var glob = require('glob-all');
 let entriesArray = null;
 
 const getEntriesArray = () => {
@@ -50,7 +51,9 @@ exports.webpackVars = {
     for (const entry of entries) {
       resultEntries[entry] = [
         path.resolve(themeDev, `./js/${entry}.js`),
+        ...glob.sync(`../../../modules/*/_dev/src/js/${entry}/index.js`),
         path.resolve(themeDev, `./css/${entry}.scss`),
+        ...glob.sync(`../../../modules/*/_dev/src/css/${entry}/index.scss`),
       ]
     }
 

@@ -203,6 +203,7 @@ exports.resolve = () => ({
   resolve: {
     alias: {
       '@node_modules': path.resolve(__dirname, '../node_modules'),
+      '@themeAbstract': path.resolve(__dirname, '../css/abstracts'),
       '@css': path.resolve(__dirname, '../css'),
       '@js': path.resolve(__dirname, '../js'),
     }

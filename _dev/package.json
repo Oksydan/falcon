@@ -49,7 +49,7 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.26.0",
     "file-loader": "^6.2.0",
-    "glob-all": "^3.3.0",
+    "glob-all": "^3.3.1",
     "hot-accept-webpack-plugin": "^2.0.0-beta.7",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.3.0",
@@ -70,5 +70,9 @@
     "webpack-dev-server": "^4.7.4",
     "webpack-font-preload-plugin": "1.5.0",
     "webpack-merge": "^5.8.0"
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "../../../modules/*/_dev/"
+  ]
 }
