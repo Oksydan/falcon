@@ -64,7 +64,7 @@
     "style-loader": "^3.2.1",
     "stylelint": "^14.11.0",
     "stylelint-config-recommended-scss": "^7.0.0",
-    "webpack": "^5.53.0",
+    "webpack": "^5.76.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.7.4",
