@@ -35,10 +35,14 @@ prestashop.blockcart.showModal = (html) => {
   const $blockCartModal = getBlockCartModal();
 
   if ($blockCartModal.length) {
-    $blockCartModal.remove();
+    $blockCartModal.hide();
   }
 
   $('body').append(html);
 
-  getBlockCartModal().modal('show');
+  getBlockCartModal()
+      .modal('show')
+      .on('hidden.bs.modal', (e) => {
+        $(e.currentTarget).remove();
+      })
 };
