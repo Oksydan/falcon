@@ -48,6 +48,7 @@ Falcon theme
   * [Preloads/early hints](#preloads/early-hints)
   * [Webp](#webp)
   * [Webp nginx](#webp-nginx)
+  * [Workspace Aware Webpack](#workspace-aware-webpack)
 * [Troubleshooting](#troubleshooting)
   * [Sass performance issue](#sass-performance-issue)
 * [Support project](#support-project)
@@ -55,14 +56,14 @@ Falcon theme
 
 ## About The Theme
 
-**Falcon theme** is made with the latest tools such as Webpack 5.53, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
+**Falcon theme** is made with the latest tools such as Webpack 5, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
 This theme was created to deliver a starter theme with the latest developers' tools and frameworks. You can create an enterprise-level PrestaShop theme that is easy to maintain.
 
 Made for developers, and **if you are a merchant, you shouldn't download it.**
 
 #### List of changes compared to classic theme:
 1. Bootstrap updated to **4.6** from **4.0.0-alpha.5** - backwards compatibility included.
-2. Updated Webpack to **4.46** from **2.2.1** with a whole new Webpack config.
+2. Updated Webpack to **5** from **2.2.1** with a whole new Webpack config.
 3. Removed **tether** - not used anymore with Bootstrap 4.6 - **popper.js** added instead.
 4. Removed **velocity-animate**, **jquery.scrollbox.js** and **jquery-touchswipe** - replaced with **Swiper**.
 5. Removed **bootstrap-filestyle.js** - replaced with Bootstrap [custom file input](https://getbootstrap.com/docs/4.6/components/input-group/#custom-file-input)
@@ -121,10 +122,12 @@ Performance results based on PageSpeed Insights:
 ### Support table
 
 Starter version |  PS version | node version
-------------- | ------------- | -------------
+------------- | ----------- | -------------
 v 1.X  | 1.7.7.X | >= 10
 v 2.X  | 1.7.8.X | >= 14
-v 3.X  | 8.0.0.X | >= 14
+v 3.0.X  | 8.0.X | >= 14
+v 3.1.X | 8.0.X | >= 15
+
 
 #### Module requirements
 
@@ -855,6 +858,60 @@ location ~ ^/(.*)\.webp$ {
     try_files /$1.webp /$1.webp /modules/is_themecore/webp.php?source=$document_root/$1.webp;
 }
 ```
+
+### Workspace Aware Webpack
+
+In version `3.1.0` we introduced Workspace Aware Webpack. It means that you can compile for example your module files using only workspace and specific files structure.
+Theme `package.json` file right now is using workspaces. You can find more information about workspaces here: https://classic.yarnpkg.com/en/docs/workspaces/ or here: https://docs.npmjs.com/cli/v7/using-npm/workspaces.
+Our basic workspace: 
+```json
+  "workspaces": [
+    "../../../modules/*/_theme_dev/"
+  ]
+```
+You can add more workspaces to your `package.json` file. For example if you want to compile your other module files you can add:
+```json
+  "workspaces": [
+    "../../../modules/*/_theme_dev/",
+    "../../../modules/*/_dev/"
+  ]
+```
+It will install your module dependencies for workspace to your `node_modules` folder in you theme root directory.
+At the same time it will compile your js/scss files from module `_theme_dev` directory based on specific files structure.
+
+Webpack is looking for files in your workspace directory for module. For example `is_shoppingcart`: 
+```bash
+  is_shoppingcart
+   └── _theme_dev
+       └── src
+           ├── js
+           │   └── theme
+           │       └── index.js
+           └── css
+               └── theme
+                   └── index.scss   
+```
+Webpack is looking for `/js/{entry_name}/index.js` and `/css/{entry_name}/index.scss` files in your module `_theme_dev` directory. If you want to compile your module files and append it automatically to your theme entrypoint.
+If you want for example add an extra js or scss from `is_shoppingcart` module to `listing` entry, all you have to do is to create another `index.js/index.scss` file in your module `/src/js|css/listing` directory.
+```bash
+  is_shoppingcart
+   └── _theme_dev
+       └── src
+           ├── js
+           │   ├── theme
+           │   │   └── index.js
+           │   └── listing
+           │       └── index.js
+           └── css
+               ├── theme
+               │   └── index.scss
+               └── listing
+                   └── index.scss
+   
+```
+
+This approach have one big downside - you have to take core of not used modules in your theme. If your module is not being used but exists in modules directory with this specific struckure it will be automatically compiled and appended to specific entry point.
+Webpack isn't aware what kind of module is being used by your store. It will be your responsibility to take care of it.
 
 ## Troubleshooting
 
