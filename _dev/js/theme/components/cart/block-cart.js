@@ -41,8 +41,8 @@ prestashop.blockcart.showModal = (html) => {
   $('body').append(html);
 
   getBlockCartModal()
-      .modal('show')
-      .on('hidden.bs.modal', (e) => {
-        $(e.currentTarget).remove();
-      })
+    .modal('show')
+    .on('hidden.bs.modal', (e) => {
+      $(e.currentTarget).remove();
+    });
 };
