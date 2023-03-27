@@ -1,6 +1,10 @@
 const path = require('path');
 const themeDev = path.resolve(__dirname, '../../_dev');
+const packageJson = require('../package.json');
+const glob = require('glob-all');
+const getWorkspacesFromPackageJson = (packageJson) => packageJson.workspaces ?? [];
 let entriesArray = null;
+
 
 const getEntriesArray = () => {
   if (!entriesArray) {
@@ -51,6 +55,22 @@ exports.webpackVars = {
       resultEntries[entry] = [
         path.resolve(themeDev, `./js/${entry}.js`),
         path.resolve(themeDev, `./css/${entry}.scss`),
+      ]
+    }
+
+    for (const entry of entries) {
+      const workspaces = getWorkspacesFromPackageJson(packageJson);
+      const extraEntries = [];
+
+      for (const workspace of workspaces) {
+        extraEntries.push(...glob.sync(`${workspace}/src/js/${entry}/index.js`));
+        extraEntries.push(...glob.sync(`${workspace}/src/css/${entry}/index.scss`));
+      }
+
+      resultEntries[entry] = [
+        path.resolve(themeDev, `./js/${entry}.js`),
+        path.resolve(themeDev, `./css/${entry}.scss`),
+        ...extraEntries,
       ]
     }
 
