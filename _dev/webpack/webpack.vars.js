@@ -50,16 +50,9 @@ exports.webpackVars = {
   entriesArray: getEntriesArray(),
   getEntry: (entries) => {
     const resultEntries = {};
+    const workspaces = getWorkspacesFromPackageJson(packageJson);
 
     for (const entry of entries) {
-      resultEntries[entry] = [
-        path.resolve(themeDev, `./js/${entry}.js`),
-        path.resolve(themeDev, `./css/${entry}.scss`),
-      ]
-    }
-
-    for (const entry of entries) {
-      const workspaces = getWorkspacesFromPackageJson(packageJson);
       const extraEntries = [];
 
       for (const workspace of workspaces) {
