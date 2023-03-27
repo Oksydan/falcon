@@ -26,6 +26,9 @@ css:
       - search
 
 js:
+  runtime: # This file is only used to handle HMR for multiple entry points
+    fileName: runtime.js
+    priority: 1
   swipervendor:
     fileName: swipervendor.js
     priority: 1

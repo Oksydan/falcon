@@ -13,7 +13,10 @@ const devServerConfig = (serverAddress, publicPath, port, siteURL, entriesArray)
           ...entriesArray.map(el => `${el}.js`)
         ]
       })
-    ]
+    ],
+    optimization: {
+      runtimeChunk: 'single',
+    }
   }
 }
 
