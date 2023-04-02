@@ -34,7 +34,8 @@
     "sprintf-js": "^1.1.2",
     "swiper": "^8.1.4",
     "vanilla-lazyload": "^17.3.1",
-    "wnumb": "^1.2.0"
+    "wnumb": "^1.2.0",
+    "wretch": "^2.5.1"
   },
   "devDependencies": {
     "@oksydan/falcon-cli": "^0.3.0",
