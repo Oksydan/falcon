@@ -3,7 +3,7 @@
 .product-miniature {
   $self: &;
 
-  &__quick-view {
+  &__functional-btn {
     position: absolute;
     right: map.get($spacers, 2);
     bottom: map.get($spacers, 2);
@@ -14,11 +14,16 @@
     line-height: 1.7em;
     border: 0;
     @include font-size(20px);
+
+    &--top {
+      top: map.get($spacers, 2);
+      bottom: auto;
+    }
   }
 
-  &__quick-view-icon {
-    font-size: inherit;
-    line-height: inherit;
+  &__functional-btn-icon {
+      font-size: inherit;
+      line-height: inherit;
   }
 
   &__pricing {
