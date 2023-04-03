@@ -26,8 +26,8 @@
   {if !$configuration.is_catalog}
 
     {block name='product_quantity'}
-      <div class="product-quantity d-flex mb-1">
-        <div class="qty mr-1 mb-1">
+      <div class="product-quantity row mb-1 mx-n1 mt-n2 align-items-center">
+        <div class="qty col-12 col-sm-auto mx-auto mt-2 px-1">
           <input
             type="number"
             name="qty"
@@ -46,9 +46,9 @@
           >
         </div>
 
-        <div class="add mr-1 mb-1">
+        <div class="add col mt-2 px-1">
           <button
-            class="btn btn-primary add-to-cart"
+            class="btn btn-primary add-to-cart btn-block"
             data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
@@ -59,8 +59,15 @@
           </button>
         </div>
 
-        {hook h='displayProductActions' product=$product}
+        <div class="col-auto mt-2 px-1">
+          <div class="js-product-actions-buttons">
+            <div class="row mx-n1 mt-n2 align-items-center">
+              {hook h='displayProductActions' product=$product}
+            </div>
+          </div>
+        </div>
       </div>
+
     {/block}
 
     {block name='product_availability'}
