@@ -24,6 +24,7 @@ css:
       - best-sales
       - manufacturer
       - search
+      - module-is_favoriteproducts-favorite
 
 js:
   runtime: # This file is only used to handle HMR for multiple entry points
@@ -54,3 +55,4 @@ js:
       - best-sales
       - manufacturer
       - search
+      - module-is_favoriteproducts-favorite
