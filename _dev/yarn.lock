@@ -60,7 +60,7 @@
 
 "@esbuild/darwin-x64@0.16.17":
   version "0.16.17"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.16.17.tgz"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.16.17.tgz#42829168730071c41ef0d028d8319eea0e2904b4"
   integrity sha512-2By45OBHulkd9Svy5IOCZt376Aa2oOkiE9QWUK9fe6Tb+WDr8hXL3dpqi+DeLiMed8tVXspzsTAvd0jUl96wmg==
 
 "@esbuild/freebsd-arm64@0.16.17":
@@ -2611,12 +2611,12 @@ hosted-git-info@^4.0.1:
   dependencies:
     lru-cache "^6.0.0"
 
-hot-accept-webpack-plugin@^2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.npmjs.org/hot-accept-webpack-plugin/-/hot-accept-webpack-plugin-2.0.0-beta.7.tgz"
-  integrity sha512-3uRVxSf558Mb05zkQuqlEtroe6M50qb+k36+2xYOrxq/uQwpk0joGzzGvm62rW/SOyQq0p9pxS2+7kUiVJrcLw==
+hot-accept-webpack-plugin@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/hot-accept-webpack-plugin/-/hot-accept-webpack-plugin-4.0.2.tgz"
+  integrity sha512-j3Nbd7zGt8Az9cy+g9cIqCEIxlrd+v1Vjrhe3uoRTZt9/LMGbgtmeNjRbXQzvibUljIGbYS5lALIes0sIBJRvA==
   dependencies:
-    modify-source-webpack-plugin "2.0.0-beta.7"
+    modify-source-webpack-plugin "4.0.1"
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -3296,7 +3296,7 @@ loader-runner@^4.2.0:
   resolved "https://registry.npmjs.org/loader-runner/-/loader-runner-4.3.0.tgz"
   integrity sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==
 
-loader-utils@^2.0.0:
+"loader-utils-webpack-v4@npm:loader-utils@^2.0.4", loader-utils@^2.0.0:
   version "2.0.4"
   resolved "https://registry.npmjs.org/loader-utils/-/loader-utils-2.0.4.tgz"
   integrity sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==
@@ -3509,13 +3509,13 @@ minimist@^1.2.0, minimist@^1.2.6:
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
 
-modify-source-webpack-plugin@2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.npmjs.org/modify-source-webpack-plugin/-/modify-source-webpack-plugin-2.0.0-beta.7.tgz"
-  integrity sha512-P7CKlGAF+HlinKS5xsIP5wuYwqcpV5eQMpwJYy5yocLAdv2RN5A24orv0Q1DXkbcw5Pd2pCUB4Fo1x9EqfiNeg==
+modify-source-webpack-plugin@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/modify-source-webpack-plugin/-/modify-source-webpack-plugin-4.0.1.tgz"
+  integrity sha512-PhNUlSXYra6s1mCyVZsLif3YVlEzVeCeJLPtWAlZ6qQ49gRxsBNYEYjx/0J4O3YvDfNoxj8Z08LQqSHXbrHbXQ==
   dependencies:
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
+    loader-utils-webpack-v4 "npm:loader-utils@^2.0.4"
+    schema-utils "^4.0.0"
 
 mrmime@^1.0.0:
   version "1.0.1"
@@ -6020,9 +6020,9 @@ wrappy@1:
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
 wretch@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/wretch/-/wretch-2.5.1.tgz#5d763bca8f4dabb6b594c19d951cc2ab001e9ec9"
-  integrity sha512-flhLreVaTBrFlgNUkzS0GYwyoqQs85eq9IteWNKt+n3HYCXCr9HLP0iGajbauKol64ucSuLK8rqHKgbmsDeyJA==
+  version "2.5.2"
+  resolved "https://registry.npmjs.org/wretch/-/wretch-2.5.2.tgz"
+  integrity sha512-6Pd1GvoNYzf17WH1jggzsq8E00UQqiO0kJvLS1dmIEnX8IE0zBfd77Sid5IqTGYVKhad88ygTudbvHdsvPvmCA==
 
 write-file-atomic@^4.0.2:
   version "4.0.2"
