@@ -1,9 +1,10 @@
+@use "sass:map";
 
 .alert-toast {
   $self: &;
 
   @include font-size($font-size-sm);
-  margin-bottom: map-get($spacers, 3);
+  margin-bottom: map.get($spacers, 3);
   opacity: 0;
   transform: translateX(100%);
   box-shadow: $box-shadow;
@@ -11,7 +12,7 @@
   transition: 0.4s ease-in-out;
 
   &__content {
-    padding: map-get($spacers, 2) map-get($spacers, 3);
+    padding: map.get($spacers, 2) map.get($spacers, 3);
   }
 
   &.show {
