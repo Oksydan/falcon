@@ -20,12 +20,14 @@ $(() => {
 
   gallery.init();
 
-  prestashop.on('updatedProductCombination', ({ product_add_to_cart }) => {
+  prestashop.on('updatedProductCombination', (event) => {
     gallery.init();
 
-    if (product_add_to_cart) {
+    const { product_add_to_cart: productAddToCart } = event;
+
+    if (productAddToCart) {
       const node = document.createElement('div');
-      node.innerHTML = product_add_to_cart;
+      node.innerHTML = productAddToCart;
 
       const html = node.querySelector('.js-product-actions-buttons');
 

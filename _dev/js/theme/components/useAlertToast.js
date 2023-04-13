@@ -1,99 +1,96 @@
-import { parseToHtml } from '@js/theme/utils/parseToHtml';
+import parseToHtml from '@js/theme/utils/parseToHtml';
 
 let id = 0;
 
 const getId = (prefix = 'alert_toast_') => {
-    id += 1;
-    return prefix + id;
-}
+  id += 1;
+  return prefix + id;
+};
 
-export const useAlertToast = (params) => {
-    const {
-        duration = 4000,
-    } = params || {};
-    const stackTemplateId = 'alert-toast-stack';
-    const bodyElement = document.querySelector('body');
+const useAlertToast = (params) => {
+  const {
+    duration = 4000,
+  } = params || {};
+  const stackTemplateId = 'alert-toast-stack';
+  const bodyElement = document.querySelector('body');
 
-    const info = (text, timeOut = false) => {
-        showToast(text, 'info', timeOut);
+  const buildToastTemplate = (text, type, toastId) => parseToHtml(`
+    <div class="alert-toast alert-toast--${type} d-none" id=${toastId}>
+      <div class="alert-toast__content">
+        ${text}
+      </div>
+    </div>
+  `);
+
+  const buildToastStackTemplate = () => parseToHtml(`
+    <div id="${stackTemplateId}" class="alert-toast-stack">
+    </div>
+  `);
+
+  const getToastStackTemplate = () => {
+    const getElement = () => document.querySelector(`#${stackTemplateId}`);
+
+    if (!getElement()) {
+      bodyElement.append(buildToastStackTemplate());
     }
 
-    const success = (text, timeOut = false) => {
-        showToast(text, 'success', timeOut);
-    }
+    return getElement();
+  };
 
-    const danger = (text, timeOut = false) => {
-        showToast(text, 'danger', timeOut);
-    }
+  const hideToast = (toast) => {
+    toast.classList.remove('show');
 
-    const warning = (text, timeOut = false) => {
-        showToast(text, 'warning', timeOut);
-    }
+    const hideDuration = (parseFloat(window.getComputedStyle(toast).transitionDuration)) * 1000;
 
-    const showToast = (text, type, timeOut = false) => {
-        const toastId = getId();
-        const toast = buildToastTemplate(text, type, toastId);
-        const toastStack = getToastStackTemplate();
-        timeOut = timeOut || duration;
+    setTimeout(() => {
+      toast.remove();
+    }, hideDuration);
+  };
 
-        toastStack.prepend(toast);
+  const showToast = (text, type, timeOut = false) => {
+    const toastId = getId();
+    const toast = buildToastTemplate(text, type, toastId);
+    const toastStack = getToastStackTemplate();
+    timeOut = timeOut || duration;
 
-        const toastInDOM = document.querySelector(`#${toastId}`);
+    toastStack.prepend(toast);
 
-        toastInDOM.classList.remove('d-none');
+    const toastInDOM = document.querySelector(`#${toastId}`);
 
-        setTimeout(() => {
-            toastInDOM.classList.add('show');
-        }, 10);
+    toastInDOM.classList.remove('d-none');
 
-        toastInDOM.dataset.timeoutId = setTimeout(() => {
-            hideToast(toastInDOM);
-        }, timeOut);
-    }
+    setTimeout(() => {
+      toastInDOM.classList.add('show');
+    }, 10);
 
-    const buildToastTemplate = (text, type, toastId) => {
-        return parseToHtml(`
-          <div class="alert-toast alert-toast--${type} d-none" id=${toastId}>
-            <div class="alert-toast__content">
-              ${text}
-            </div>
-          </div>
-        `);
-    }
+    toastInDOM.dataset.timeoutId = setTimeout(() => {
+      hideToast(toastInDOM);
+    }, timeOut);
+  };
 
-    const buildToastStackTemplate = () => {
-        return parseToHtml(`
-          <div id="${stackTemplateId}" class="alert-toast-stack">
-          </div>
-        `);
-    }
+  const info = (text, timeOut = false) => {
+    showToast(text, 'info', timeOut);
+  };
 
-    const getToastStackTemplate = () => {
-        const getElement = () => document.querySelector(`#${stackTemplateId}`);
+  const success = (text, timeOut = false) => {
+    showToast(text, 'success', timeOut);
+  };
 
-        if (!getElement()) {
-            bodyElement.append(buildToastStackTemplate());
-        }
+  const danger = (text, timeOut = false) => {
+    showToast(text, 'danger', timeOut);
+  };
 
-        return getElement();
-    }
+  const warning = (text, timeOut = false) => {
+    showToast(text, 'warning', timeOut);
+  };
 
-    const hideToast = (toast) => {
-        toast.classList.remove('show');
+  return {
+    info,
+    success,
+    danger,
+    warning,
+    showToast,
+  };
+};
 
-        const hideDuration = (parseFloat(window.getComputedStyle(toast).transitionDuration)) * 1000;
-
-        setTimeout(() => {
-            toast.remove();
-        }, hideDuration);
-    }
-
-
-    return {
-        info,
-        success,
-        danger,
-        warning,
-        showToast,
-    }
-}
+export default useAlertToast;
