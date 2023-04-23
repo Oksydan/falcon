@@ -64,6 +64,11 @@ export default class Form {
       // Loop over them and prevent submission
       let divToScroll = false;
 
+      $('input, textarea', forms).on('blur', (e) => {
+        const $field = $(e.currentTarget);
+        $field.val($field.val().trim());
+      });
+
       Array.prototype.filter.call(forms, (form) => {
         form.addEventListener(
           'submit',
