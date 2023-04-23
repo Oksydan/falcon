@@ -841,7 +841,7 @@ This option is still in beta stage, to read more about it [click here](https://d
 
 ### Webp
 
-In version `2.3.0` of `is_themecore` and `mpst` webp image format has been added.<br>
+In version `2.3.0` of `is_themecore` webp image format has been added.<br>
 You are able to simply add webp image format by changing image extenstion to `.webp` from for example `.jpg` or `.png`. Module will automaticly find source file and convert it to `webp`.<br>
 You don't have to create `<picture>` tag and change image src extenstion to `webp`. Two new smarty blocks has been added to handle needed template modyfication `images_block` and `cms_images_block`, you can read more about it in [smarty blocks section](#smarty-blocks). <br>
 Module is adding specific rules to `.htaccess` file to handle `webp` files. To enable `webp` image format you have to enable it in `is_themecore` module configuration.
@@ -850,7 +850,7 @@ You are also able to set `quality` and `converter` that will be used to convert 
 ### Webp nginx
 
 If you are using `nginx` you have to add manually some rules to your nginx configuration file.<br>
-Configuration that is being used for `mpst.dev`:
+Configuration that is being used for `falcon-theme.dev`:
 
 ```
 location ~ ^/(\d)(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
