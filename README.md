@@ -14,6 +14,10 @@ Falcon theme
 
 ## Sponsors
 
+<h3 align="center">
+Gold sponsors
+</h3>
+
 <br>
 <p align="center">
  <a href="https://www.waynet.io/" target="_blank">
@@ -23,6 +27,27 @@ Falcon theme
    </picture>
   </a>
 </p>
+<br>
+
+<h3 align="center">
+Silver sponsors
+</h3>
+
+<p align="center">
+  This could be your logo <a href="https://github.com/sponsors/Oksydan" target="_blank">become a sponsor</a>
+</p>
+
+<br>
+
+<h3 align="center">
+Bronze sponsors
+</h3>
+
+<p align="center">
+  This could be your logo <a href="https://github.com/sponsors/Oksydan" target="_blank">become a sponsor</a>
+</p>
+
+<br>
 
 ## Table of Contents
 
@@ -112,16 +137,16 @@ Performance results based on PageSpeed Insights:
 - [is_searchbar](https://github.com/Oksydan/is_searchbar)
 - [is_shoppingcart](https://github.com/Oksydan/is_shoppingcart)
 - [is_themecore](https://github.com/Oksydan/is_themecore)
+- [is_favoriteproducts](https://github.com/Oksydan/is_favoriteproducts)
 
 
 #### System requirements:
 - [Prestashop requirements](https://devdocs.prestashop.com/1.7/basics/installation/system-requirements/),
-- vhost setup, to work with starter theme it is required to setup your shop domain with vhost e.g. `starter.test`,
-- starter tested only on macOS, create an issue if it isn't working with your system.
+- vhost setup, to work with Falcon theme it is required to setup your shop domain with vhost e.g. `falcon.test`,
 
 ### Support table
 
-Starter version |  PS version | node version
+Falcon version |  PS version | node version
 ------------- | ----------- | -------------
 v 1.X  | 1.7.7.X | >= 10
 v 2.X  | 1.7.8.X | >= 14
@@ -135,22 +160,32 @@ v 3.1.X | 8.0.X | >= 15
 ------------- | -------------
  1.X.X  | 1.X.X
  2.X.X  | 2.X.X
- 3.X.X  | 3.X.X
+ 3.X.X  | 3.0.X
+ 4.X.X  | >= 3.1.X
 
 `is_imageslider` version |  Theme version
 ------------- | -------------
  1.X.X  | <= 2.X.X
- 2.X.X  | 3.X.X
+ 2.X.X  | 3.1.X
+ 3.X.X  | >= 3.1.X
 
 `is_searchbar` version |  Theme version
 ------------- | -------------
  1.X.X  | <= 2.X.X
- 2.X.X  | 3.X.X
+ 2.X.X  | 3.0.X
+ 3.X.X  | >= 3.1.X
 
 `is_shoppingcart` version |  Theme version
 ------------- | -------------
  1.X.X  | <= 2.X.X
- 2.X.X  | 3.X.X
+ 2.X.X  | 3.1.X
+ 3.X.X  | >= 3.1.X
+
+`is_favoriteproducts` version |  Theme version
+------------- | -------------
+ 1.X.X  | <= 2.X.X
+ 2.X.X  | 3.1.X
+ 3.X.X  | >= 3.1.X
 
 ### Installation
 
@@ -199,7 +234,7 @@ npm run build
 yarn build
 ```
 
-8. Go in BO to Design->Theme & Logo and turn on theme. Now starter should be displayed correctly in FO and modules should be installed.
+8. Go in BO to Design->Theme & Logo and turn on theme. Now theme should be displayed correctly in FO and modules should be installed.
 
 9. Now try to run:
 - for `npm` :
@@ -224,7 +259,7 @@ file  | description
 `webpack.commons.js`  | Config that runs on both production and development.
 `webpack.development.js`  | Config that runs on development.
 `webpack.production.js`  | Config that runs on production.
-`purge-safelist.js`  | Starter theme comes with support for [purgecss](https://purgecss.com/), but safelist is not included.
+`purge-safelist.js`  | Falcon theme comes with support for [purgecss](https://purgecss.com/), but safelist is not included.
 
 ### Working with npm/yarn
 
@@ -917,8 +952,8 @@ Webpack isn't aware what kind of module is being used by your store. It will be 
 
 ### Sass performance issue
 
-In version `2.4.0` `node-sass` has been replaced with dart implementation of `sass`. Your build times will surely increased since `sass` is slower that `node-sass` used in older version of starter. There is alterative package https://github.com/sass/embedded-host-node that will solve your performance issue. <br>
-You are asking yourself. Why we are still using `sass` packages instead of `sass-embedded`? Well, not every linux distro is supporting `dart-lang` at this moment that's you have to implement it on your own. Starter theme have to be versatile and we should support as much OS versions as possible.<br>
+In version `2.4.0` `node-sass` has been replaced with dart implementation of `sass`. Your build times will surely increased since `sass` is slower that `node-sass` used in older version of theme. There is alterative package https://github.com/sass/embedded-host-node that will solve your performance issue. <br>
+You are asking yourself. Why we are still using `sass` packages instead of `sass-embedded`? Well, not every linux distro is supporting `dart-lang` at this moment that's you have to implement it on your own. Falcon theme have to be versatile and we should support as much OS versions as possible.<br>
 
 1. First run:
 
