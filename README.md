@@ -137,6 +137,9 @@ Performance results based on PageSpeed Insights:
 - [is_searchbar](https://github.com/Oksydan/is_searchbar)
 - [is_shoppingcart](https://github.com/Oksydan/is_shoppingcart)
 - [is_themecore](https://github.com/Oksydan/is_themecore)
+
+#### Optional modules
+
 - [is_favoriteproducts](https://github.com/Oksydan/is_favoriteproducts)
 
 
