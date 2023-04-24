@@ -14,6 +14,10 @@ Falcon theme
 
 ## Sponsors
 
+<h3 align="center">
+Gold sponsors
+</h3>
+
 <br>
 <p align="center">
  <a href="https://www.waynet.io/" target="_blank">
@@ -23,6 +27,27 @@ Falcon theme
    </picture>
   </a>
 </p>
+<br>
+
+<h3 align="center">
+Silver sponsors
+</h3>
+
+<p align="center">
+  This could be your logo <a href="https://github.com/sponsors/Oksydan" target="_blank">become a sponsor</a>
+</p>
+
+<br>
+
+<h3 align="center">
+Bronze sponsors
+</h3>
+
+<p align="center">
+  This could be your logo <a href="https://github.com/sponsors/Oksydan" target="_blank">become a sponsor</a>
+</p>
+
+<br>
 
 ## Table of Contents
 
@@ -48,6 +73,7 @@ Falcon theme
   * [Preloads/early hints](#preloads/early-hints)
   * [Webp](#webp)
   * [Webp nginx](#webp-nginx)
+  * [Workspace Aware Webpack](#workspace-aware-webpack)
 * [Troubleshooting](#troubleshooting)
   * [Sass performance issue](#sass-performance-issue)
 * [Support project](#support-project)
@@ -55,14 +81,14 @@ Falcon theme
 
 ## About The Theme
 
-**Falcon theme** is made with the latest tools such as Webpack 5.53, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
+**Falcon theme** is made with the latest tools such as Webpack 5, Webpack dev server with HMR :fire::fire:, and Bootstrap 4.6.
 This theme was created to deliver a starter theme with the latest developers' tools and frameworks. You can create an enterprise-level PrestaShop theme that is easy to maintain.
 
 Made for developers, and **if you are a merchant, you shouldn't download it.**
 
 #### List of changes compared to classic theme:
 1. Bootstrap updated to **4.6** from **4.0.0-alpha.5** - backwards compatibility included.
-2. Updated Webpack to **4.46** from **2.2.1** with a whole new Webpack config.
+2. Updated Webpack to **5** from **2.2.1** with a whole new Webpack config.
 3. Removed **tether** - not used anymore with Bootstrap 4.6 - **popper.js** added instead.
 4. Removed **velocity-animate**, **jquery.scrollbox.js** and **jquery-touchswipe** - replaced with **Swiper**.
 5. Removed **bootstrap-filestyle.js** - replaced with Bootstrap [custom file input](https://getbootstrap.com/docs/4.6/components/input-group/#custom-file-input)
@@ -112,19 +138,24 @@ Performance results based on PageSpeed Insights:
 - [is_shoppingcart](https://github.com/Oksydan/is_shoppingcart)
 - [is_themecore](https://github.com/Oksydan/is_themecore)
 
+#### Optional modules
+
+- [is_favoriteproducts](https://github.com/Oksydan/is_favoriteproducts)
+
 
 #### System requirements:
 - [Prestashop requirements](https://devdocs.prestashop.com/1.7/basics/installation/system-requirements/),
-- vhost setup, to work with starter theme it is required to setup your shop domain with vhost e.g. `starter.test`,
-- starter tested only on macOS, create an issue if it isn't working with your system.
+- vhost setup, to work with Falcon theme it is required to setup your shop domain with vhost e.g. `falcon.test`,
 
 ### Support table
 
-Starter version |  PS version | node version
-------------- | ------------- | -------------
+Falcon version |  PS version | node version
+------------- | ----------- | -------------
 v 1.X  | 1.7.7.X | >= 10
 v 2.X  | 1.7.8.X | >= 14
-v 3.X  | 8.0.0.X | >= 14
+v 3.0.X  | 8.0.X | >= 14
+v 3.1.X | 8.0.X | >= 15
+
 
 #### Module requirements
 
@@ -132,22 +163,32 @@ v 3.X  | 8.0.0.X | >= 14
 ------------- | -------------
  1.X.X  | 1.X.X
  2.X.X  | 2.X.X
- 3.X.X  | 2.X.X
+ 3.X.X  | 3.0.X
+ 4.X.X  | >= 3.1.X
 
 `is_imageslider` version |  Theme version
 ------------- | -------------
  1.X.X  | <= 2.X.X
- 2.X.X  | 3.X.X
+ 2.X.X  | 3.1.X
+ 3.X.X  | >= 3.1.X
 
 `is_searchbar` version |  Theme version
 ------------- | -------------
  1.X.X  | <= 2.X.X
- 2.X.X  | 3.X.X
+ 2.X.X  | 3.0.X
+ 3.X.X  | >= 3.1.X
 
 `is_shoppingcart` version |  Theme version
 ------------- | -------------
  1.X.X  | <= 2.X.X
- 2.X.X  | 3.X.X
+ 2.X.X  | 3.1.X
+ 3.X.X  | >= 3.1.X
+
+`is_favoriteproducts` version |  Theme version
+------------- | -------------
+ 1.X.X  | <= 2.X.X
+ 2.X.X  | 3.1.X
+ 3.X.X  | >= 3.1.X
 
 ### Installation
 
@@ -196,7 +237,7 @@ npm run build
 yarn build
 ```
 
-8. Go in BO to Design->Theme & Logo and turn on theme. Now starter should be displayed correctly in FO and modules should be installed.
+8. Go in BO to Design->Theme & Logo and turn on theme. Now theme should be displayed correctly in FO and modules should be installed.
 
 9. Now try to run:
 - for `npm` :
@@ -221,7 +262,7 @@ file  | description
 `webpack.commons.js`  | Config that runs on both production and development.
 `webpack.development.js`  | Config that runs on development.
 `webpack.production.js`  | Config that runs on production.
-`purge-safelist.js`  | Starter theme comes with support for [purgecss](https://purgecss.com/), but safelist is not included.
+`purge-safelist.js`  | Falcon theme comes with support for [purgecss](https://purgecss.com/), but safelist is not included.
 
 ### Working with npm/yarn
 
@@ -803,7 +844,7 @@ This option is still in beta stage, to read more about it [click here](https://d
 
 ### Webp
 
-In version `2.3.0` of `is_themecore` and `mpst` webp image format has been added.<br>
+In version `2.3.0` of `is_themecore` webp image format has been added.<br>
 You are able to simply add webp image format by changing image extenstion to `.webp` from for example `.jpg` or `.png`. Module will automaticly find source file and convert it to `webp`.<br>
 You don't have to create `<picture>` tag and change image src extenstion to `webp`. Two new smarty blocks has been added to handle needed template modyfication `images_block` and `cms_images_block`, you can read more about it in [smarty blocks section](#smarty-blocks). <br>
 Module is adding specific rules to `.htaccess` file to handle `webp` files. To enable `webp` image format you have to enable it in `is_themecore` module configuration.
@@ -812,7 +853,7 @@ You are also able to set `quality` and `converter` that will be used to convert 
 ### Webp nginx
 
 If you are using `nginx` you have to add manually some rules to your nginx configuration file.<br>
-Configuration that is being used for `mpst.dev`:
+Configuration that is being used for `falcon-theme.dev`:
 
 ```
 location ~ ^/(\d)(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.webp$ {
@@ -856,12 +897,66 @@ location ~ ^/(.*)\.webp$ {
 }
 ```
 
+### Workspace Aware Webpack
+
+In version `3.1.0` we introduced Workspace Aware Webpack. It means that you can compile for example your module files using only workspace and specific files structure.
+Theme `package.json` file right now is using workspaces. You can find more information about workspaces here: https://classic.yarnpkg.com/en/docs/workspaces/ or here: https://docs.npmjs.com/cli/v7/using-npm/workspaces.
+Our basic workspace: 
+```json
+  "workspaces": [
+    "../../../modules/*/_theme_dev/"
+  ]
+```
+You can add more workspaces to your `package.json` file. For example if you want to compile your other module files you can add:
+```json
+  "workspaces": [
+    "../../../modules/*/_theme_dev/",
+    "../../../modules/*/_dev/"
+  ]
+```
+It will install your module dependencies for workspace to your `node_modules` folder in you theme root directory.
+At the same time it will compile your js/scss files from module `_theme_dev` directory based on specific files structure.
+
+Webpack is looking for files in your workspace directory for module. For example `is_shoppingcart`: 
+```bash
+  is_shoppingcart
+   └── _theme_dev
+       └── src
+           ├── js
+           │   └── theme
+           │       └── index.js
+           └── css
+               └── theme
+                   └── index.scss   
+```
+Webpack is looking for `/js/{entry_name}/index.js` and `/css/{entry_name}/index.scss` files in your module `_theme_dev` directory. If you want to compile your module files and append it automatically to your theme entrypoint.
+If you want for example add an extra js or scss from `is_shoppingcart` module to `listing` entry, all you have to do is to create another `index.js/index.scss` file in your module `/src/js|css/listing` directory.
+```bash
+  is_shoppingcart
+   └── _theme_dev
+       └── src
+           ├── js
+           │   ├── theme
+           │   │   └── index.js
+           │   └── listing
+           │       └── index.js
+           └── css
+               ├── theme
+               │   └── index.scss
+               └── listing
+                   └── index.scss
+   
+```
+
+This approach have one big downside - you have to take core of not used modules in your theme. If your module is not being used but exists in modules directory with this specific structure it will be automatically compiled and appended to specific entry point.
+Webpack isn't aware what kind of module is being used by your store. It will be your responsibility to take care of it.
+
 ## Troubleshooting
 
 ### Sass performance issue
 
-In version `2.4.0` `node-sass` has been replaced with dart implementation of `sass`. Your build times will surely increased since `sass` is slower that `node-sass` used in older version of starter. There is alterative package https://github.com/sass/embedded-host-node that will solve your performance issue. <br>
-You are asking yourself. Why we are still using `sass` packages instead of `sass-embedded`? Well, not every linux distro is supporting `dart-lang` at this moment thats you have to implement it on your own. Starter theme have to be versatile and we should support as much OS versions as possible.<br>
+In version `2.4.0` `node-sass` has been replaced with dart implementation of `sass`. Your build times will surely increased since `sass` is slower that `node-sass` used in older version of theme. There is alterative package https://github.com/sass/embedded-host-node that will solve your performance issue. <br>
+You are asking yourself. Why we are still using `sass` packages instead of `sass-embedded`? Well, not every linux distro is supporting `dart-lang` at this moment that's you have to implement it on your own. Falcon theme have to be versatile and we should support as much OS versions as possible.<br>
 
 1. First run:
 

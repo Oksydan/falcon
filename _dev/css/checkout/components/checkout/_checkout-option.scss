@@ -1,9 +1,13 @@
-.checkout-option {
-  &__thumb {
-    height: rem-calc(50px);
-  }
+@use "sass:map";
 
-  &__img {
-    max-height: rem-calc(50px);
+.checkout-option {
+  &__col {
+    &--thumb {
+      @include  custom-col(rem-calc(50px));
+
+      @include  media-breakpoint-up(sm) {
+        @include  custom-col(rem-calc(60px));
+      }
+    }
   }
 }

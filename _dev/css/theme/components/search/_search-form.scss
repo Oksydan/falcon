@@ -7,7 +7,7 @@
 
   &__form-group {
     position: relative;
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
       .search-result-open & {
         z-index: 101;
       }

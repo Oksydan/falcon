@@ -47,7 +47,7 @@
   {/if}
 {/function}
 
-<div class="d-none d-md-block col-12 header-top__block header-top__block--menu mt-3">
+<div class="d-none d-md-block col-12 header-top__block header-top__block--menu mt-1">
   <div class="main-menu" id="_desktop_top_menu">
     {menu nodes=$menu.children}
   </div>

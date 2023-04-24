@@ -201,8 +201,13 @@ exports.preloadFonts = () => ({
 
 exports.resolve = () => ({
   resolve: {
+    modules: [
+      'node_modules',
+      path.resolve('node_modules')
+    ],
     alias: {
       '@node_modules': path.resolve(__dirname, '../node_modules'),
+      '@themeAbstract': path.resolve(__dirname, '../css/abstracts'),
       '@css': path.resolve(__dirname, '../css'),
       '@js': path.resolve(__dirname, '../js'),
     }

@@ -21,6 +21,7 @@ import TopMenu from '@js/theme/components/TopMenu';
 
 import PageLazyLoad from '@js/theme/components/Lazyload';
 import PageLoader from '@js/theme/components/PageLoader';
+import useStickyElement from '@js/theme/components/useStickyElement';
 
 /* eslint-disable */
 // "inherit" EventEmitter
@@ -46,7 +47,17 @@ function accLinksTriggerActive() {
   });
 }
 
+function initStickyHeader() {
+  const header = document.querySelector('.js-header-top');
+  const headerWrapper = document.querySelector('.js-header-top-wrapper');
+
+  if (header && headerWrapper) {
+    useStickyElement(header, headerWrapper);
+  }
+}
+
 $(() => {
+  initStickyHeader();
   accLinksTriggerActive();
   Form.init();
   const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');

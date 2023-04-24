@@ -1,6 +1,6 @@
 {
   "name": "Falcon-theme",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "Modern prestashop theme that speed up your development process",
   "scripts": {
     "project-init": "falcon-cli init",
@@ -32,9 +32,10 @@
     "popper.js": "^1.16.1",
     "prestashop": "0.0.1",
     "sprintf-js": "^1.1.2",
-    "swiper": "^8.1.4",
+    "swiper": "^9.2.4",
     "vanilla-lazyload": "^17.3.1",
-    "wnumb": "^1.2.0"
+    "wnumb": "^1.2.0",
+    "wretch": "^2.5.1"
   },
   "devDependencies": {
     "@oksydan/falcon-cli": "^0.3.0",
@@ -50,7 +51,7 @@
     "eslint-plugin-import": "^2.26.0",
     "file-loader": "^6.2.0",
     "glob-all": "^3.3.0",
-    "hot-accept-webpack-plugin": "^2.0.0-beta.7",
+    "hot-accept-webpack-plugin": "^4.0.2",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.3.0",
     "minimist": "^1.2.6",
@@ -70,5 +71,9 @@
     "webpack-dev-server": "^4.7.4",
     "webpack-font-preload-plugin": "1.5.0",
     "webpack-merge": "^5.8.0"
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "../../../modules/*/_theme_dev/"
+  ]
 }

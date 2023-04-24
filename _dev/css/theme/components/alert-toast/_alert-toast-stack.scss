@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+
+.alert-toast-stack {
+  position: fixed;
+  right: map.get($spacers, 3);
+  top: map.get($spacers, 3);
+  width: rem-calc(250px);
+  display: block;
+  z-index: 101;
+}

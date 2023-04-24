@@ -3,6 +3,7 @@
   overflow: hidden;
   border: $input-border-width solid $input-border-color;
   border-radius: $border-radius;
+  margin: 0 auto;
 
   > input {
     max-width: 60px;
@@ -14,6 +15,8 @@
     border-left: $input-border-width solid $input-border-color;
     box-shadow: none;
     appearance: textfield;
+    margin-top: -#{$input-border-width};
+    margin-bottom: -#{$input-border-width};
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {

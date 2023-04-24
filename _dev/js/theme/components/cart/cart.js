@@ -26,7 +26,7 @@ const CheckUpdateQuantityOperations = {
     if (errorMsg !== '') {
       const strError = `
         <article class="alert alert-danger" role="alert" data-alert="danger">
-          <ul>
+          <ul class="mb-0">
             <li>${errorMsg}</li>
           </ul>
         </article>

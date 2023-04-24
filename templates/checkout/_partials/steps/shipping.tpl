@@ -39,30 +39,39 @@
       >
         <div class="form-fields">
           {block name='delivery_options'}
-            <div class="delivery-options row js-delivery-option">
+            <div class="delivery-options js-delivery-option">
                 {foreach from=$delivery_options item=carrier key=carrier_id}
-                  <div class="col-12 col-md-6 col-lg-4 mb-3 checkout-option-block checkout-option {if $delivery_option == $carrier_id} selected{/if}">
+                  <div class="mb-3 checkout-option-block checkout-option {if $delivery_option == $carrier_id} selected{/if}">
                     <input class="custom-control-input" type="radio" name="delivery_option[{$id_address}]" id="delivery_option_{$carrier.id}" value="{$carrier_id}"{if $delivery_option == $carrier_id} checked{/if}>
 
                     <label class="card mb-0 cursor-pointer h-100" for="delivery_option_{$carrier.id}">
-                      <div class="address__header card-header h5 text-center">
-                        {$carrier.name}
-                      </div>
-                      <div class="card-body address__body text-center">
-                        <div class="checkout-option__thumb mb-2">
-                          {if $carrier.logo}
-                            <img src="{$carrier.logo}" alt="{$carrier.name}" class="checkout-option__img" />
-                          {else}
-                            <img src="{$urls.img_url}checkout/carrier_default.svg" class="checkout-option__img" />
-                          {/if}
-                        </div>
-                        <div class="checkout-option__delay text-muted small">{$carrier.delay}</div>
-                        <div class="checkout-option__price price">
-                          {if $carrier.price_with_tax > 0}
-                            {Tools::displayPrice($carrier.price_with_tax)}
-                          {else}
-                            {$carrier.price}
-                          {/if}
+                      <div class="card-body checkout-option__body py-sm-3 px-sm-4 p-2">
+                        <div class="checkout-option__row row align-items-center">
+                          <div class="col-auto checkout-option__col checkout-option__col--thumb">
+                            <div class="checkout-option__thumb">
+                              {if $carrier.logo}
+                                <img src="{$carrier.logo}" alt="{$carrier.name}" class="checkout-option__img img-fluid" />
+                              {else}
+                                <img src="{$urls.img_url}checkout/carrier_default.svg" class="checkout-option__img img-fluid" />
+                              {/if}
+                            </div>
+                          </div>
+                          <div class="col checkout-option__col">
+                            <div class="checkout-option__row checkout-option__row--inner row align-items-center">
+                              <div class="col checkout-option__col checkout-option__col--text">
+                                <p class="h5 mb-0">
+                                  {$carrier.name}
+                                </p>
+                                <span class="checkout-option__delay text-muted font-sm">{$carrier.delay}</span>
+
+                              </div>
+                              <div class="col-sm-auto col-12 checkout-option__col checkout-option__col--price mt-sm-0 mt-1">
+                                <div class="checkout-option__price price text-right">
+                                  {$carrier.price}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </label>

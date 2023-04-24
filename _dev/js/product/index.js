@@ -20,8 +20,23 @@ $(() => {
 
   gallery.init();
 
-  prestashop.on('updatedProductCombination', () => {
+  prestashop.on('updatedProductCombination', (event) => {
     gallery.init();
+
+    const { product_add_to_cart: productAddToCart } = event;
+
+    if (productAddToCart) {
+      const node = document.createElement('div');
+      node.innerHTML = productAddToCart;
+
+      const html = node.querySelector('.js-product-actions-buttons');
+
+      if (html) {
+        const productActionsElement = document.querySelector('.js-product-actions-buttons');
+
+        productActionsElement.replaceWith(html);
+      }
+    }
   });
 
   prestashop.on('updatedProduct', () => {

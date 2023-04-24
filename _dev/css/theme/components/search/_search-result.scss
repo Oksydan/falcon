@@ -2,7 +2,7 @@
 @use "sass:map";
 
 .js-search-result {
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(md) {
     position: absolute;
     top: 100%;
     right: 0;

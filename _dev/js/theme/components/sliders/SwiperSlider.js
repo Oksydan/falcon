@@ -1,5 +1,5 @@
 import Swiper, {
-  Navigation, Pagination, Lazy, Autoplay,
+  Navigation, Pagination, Autoplay,
 } from 'swiper';
 
 import DynamicImportSwiperModule from '@js/theme/components/sliders/DynamicImportSwiperModule';
@@ -50,10 +50,16 @@ const dynamicModulesMap = {
       import('@node_modules/swiper/modules/free-mode/free-mode.scss'),
     ],
   ),
+  controller: new DynamicImportSwiperModule(
+      () => [
+        import('@node_modules/swiper/modules/controller/controller.js'),
+        import('@node_modules/swiper/modules/controller/controller.scss'),
+      ],
+  ),
 };
 /* eslint-enable */
 
-const defaultModules = [Navigation, Pagination, Lazy, Autoplay];
+const defaultModules = [Navigation, Pagination, Autoplay];
 
 class SwiperSlider {
   constructor(target, options) {
