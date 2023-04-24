@@ -11,7 +11,7 @@ build-zip:
 	rm -rf /tmp/falcon/.php-cs-fixer.cache
 	rm -rf /tmp/falcon/.git
 	mv -v /tmp/falcon $(PWD)/falcon
-	zip -r falcon.zip falcon
+	cd falcon && zip -r ../falcon.zip .
 	rm -rf $(PWD)/falcon
 
 create-env:
