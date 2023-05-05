@@ -3,7 +3,7 @@ import '@js/theme/vendors/bootstrap/bootstrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
 import '@js/theme/components/dynamic-bootstrap-components';
-import bsCustomFileInput from 'bs-custom-file-input'
+import bsCustomFileInput from 'bs-custom-file-input';
 
 import '@js/theme/components/selectors';
 import '@js/theme/components/sliders';
