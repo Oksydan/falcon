@@ -3,6 +3,7 @@ import '@js/theme/vendors/bootstrap/bootstrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
 import '@js/theme/components/dynamic-bootstrap-components';
+import bsCustomFileInput from 'bs-custom-file-input'
 
 import '@js/theme/components/selectors';
 import '@js/theme/components/sliders';
@@ -60,6 +61,7 @@ $(() => {
   initStickyHeader();
   accLinksTriggerActive();
   Form.init();
+  bsCustomFileInput.init();
   const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
   usePasswordPolicy('.field-password-policy');
 
