@@ -2,10 +2,9 @@ import addToCartAction from '@js/theme/frontAPI/addToCartAction';
 
 prestashop.frontAPI = {};
 
-prestashop.addAction = function (actionName, actionFunction) {
+prestashop.addAction = (actionName, actionFunction) => {
     if (typeof prestashop.frontAPI[actionName] !== 'undefined') {
-        console.warn(`Action ${actionName} already exists`);
-        return;
+        throw new Error(`Action ${actionName} already exists`);
     }
 
     prestashop.frontAPI[actionName] = actionFunction;
