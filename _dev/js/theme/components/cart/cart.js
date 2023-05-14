@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
 import debounce from '@js/theme/utils/debounce';
 

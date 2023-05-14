@@ -152,7 +152,13 @@ exports.extractVendorsChunks = () => ({
           name: 'swipervendor',
           filename: 'js/swipervendor.js',
           chunks: 'initial',
-        }
+        },
+        jquery: {
+          test: /[\\/]node_modules[\\/](jquery)[\\/]/,
+          name: 'jquery',
+          filename: 'js/jquery.js',
+          chunks: 'initial',
+        },
       },
     },
   },
@@ -176,9 +182,24 @@ exports.cleanDistFolders = () => ({
 exports.externals = () => ({
   externals: {
     prestashop: 'prestashop',
-    $: '$',
-    jquery : 'jQuery'
   }
+})
+
+exports.expose = () => ({
+  module: {
+    rules: [
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader',
+        options: {
+          exposes: [
+            '$',
+            'jQuery'
+          ],
+        },
+      },
+    ],
+  },
 })
 
 exports.preloadFonts = () => ({

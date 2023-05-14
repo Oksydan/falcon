@@ -79,6 +79,7 @@
 
 {block name='javascript_head'}
   {include file="_partials/javascript.tpl" javascript=$javascript.head vars=$js_custom_vars}
+  {include file="_partials/javascript-translations.tpl"}
 {/block}
 
 {block name='hook_extra'}{/block}
