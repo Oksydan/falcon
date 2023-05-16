@@ -69,8 +69,8 @@
             {/block}
 
             {block name='cart_voucher_notifications'}
-              <div class="alert alert-danger js-error mt-2" role="alert" style="display:none;">
-                <span class="js-error-text"></span>
+              <div class="alert alert-danger js-voucher-error mt-2 mb-0" role="alert" style="display:none;">
+                <span class="js-voucher-error-text"></span>
               </div>
             {/block}
           </div>

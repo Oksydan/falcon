@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import useAlertToast from '@js/theme/components/useAlertToast';
 import sprintf from '@js/theme/utils/sprintf';
+import parseToHtml from '@js/theme/utils/parseToHtml';
 import prestashop from 'prestashop';
 import {refreshCheckoutPage} from './common';
 
@@ -69,11 +70,12 @@ $(() => {
       .fail((resp) => {
         prestashop.emit('handleError', {eventType: 'updateCart', resp});
       });
-  });
+    });
 
   const $body = $('body');
 
-  $body.on('click', '[data-button-action="add-to-cart"]', async (event) => {
+    // REMOVE EVENT AND ADD EVENT HANDLER FORM BS5
+    $body.on('click', '[data-button-action="add-to-cart"]', async (event) => {
     event.preventDefault();
 
     const { danger } = useAlertToast();
@@ -101,7 +103,6 @@ $(() => {
     const idCustomization = form.querySelector('[name=id_customization]')?.value || 0;
 
     const onInvalidQuantity = (input) => {
-
         danger(sprintf(prestashop.t.alert.minimalQuantity, input.getAttribute('min')));
     };
 
@@ -141,42 +142,36 @@ $(() => {
     }, 1000);
   });
 
-  $body.on('submit', '[data-link-action="add-voucher"]', (event) => {
+  // REMOVE EVENT AND ADD EVENT HANDLER FORM BS5
+  $body.on('submit', '[data-link-action="add-voucher"]', async (event) => {
     event.preventDefault();
 
-    const $addVoucherForm = $(event.currentTarget);
-    const getCartViewUrl = $addVoucherForm.attr('action');
+    const { danger } = useAlertToast();
+    const addVoucherForm = event.currentTarget;
+    const input = addVoucherForm.querySelector('[name="discount_name"]');
+    const voucherName = input?.value || '';
 
-    if ($addVoucherForm.find('[name=action]').length === 0) {
-      $addVoucherForm.append(
-        $('<input>', {type: 'hidden', name: 'ajax', value: 1}),
-      );
-    }
-    if ($addVoucherForm.find('[name=action]').length === 0) {
-      $addVoucherForm.append(
-        $('<input>', {type: 'hidden', name: 'action', value: 'update'}),
-      );
-    }
+    try {
+      const resp = await prestashop.frontAPI.addVoucherToCart(voucherName);
 
-    $.post(getCartViewUrl, $addVoucherForm.serialize(), null, 'json')
-      .then((resp) => {
-        if (resp.hasError) {
-          $('.js-error')
-            .show()
-            .find('.js-error-text')
-            .text(resp.errors[0]);
-
-          return;
-        }
-
-        // Refresh cart preview
+      if (!resp.hasError) {
         prestashop.emit('updateCart', {
           reason: event.target.dataset,
           resp,
         });
-      })
-      .fail((resp) => {
-        prestashop.emit('handleError', {eventType: 'updateCart', resp});
-      });
+      } else {
+        const alert = document.querySelector('.js-voucher-error');
+        const alertText = alert.querySelector('.js-voucher-error-text');
+
+        if (alert && alertText && resp.errors?.length) {
+            const errors = resp.errors.map((error) => `<div>${error}</div>`);
+
+            alert.style.display = 'block';
+            alertText.append(parseToHtml(errors.join('')));
+        }
+      }
+    } catch (error) {
+      danger(error.message);
+    }
   });
 });

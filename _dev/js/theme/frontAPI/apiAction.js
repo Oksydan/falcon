@@ -1,4 +1,5 @@
-import addToCartAction from '@js/theme/frontAPI/addToCartAction';
+import addToCartAction from '@js/theme/frontAPI/cart/addToCartAction';
+import addVoucherToCartAction from '@js/theme/frontAPI/cart/addVoucherToCartAction';
 
 prestashop.frontAPI = {};
 
@@ -11,3 +12,4 @@ prestashop.addAction = (actionName, actionFunction) => {
 }
 
 prestashop.addAction('addToCart', addToCartAction);
+prestashop.addAction('addVoucherToCart', addVoucherToCartAction);
