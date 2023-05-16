@@ -3,74 +3,36 @@ import useAlertToast from '@js/theme/components/useAlertToast';
 import sprintf from '@js/theme/utils/sprintf';
 import parseToHtml from '@js/theme/utils/parseToHtml';
 import prestashop from 'prestashop';
-import {refreshCheckoutPage} from './common';
-
 
 $(() => {
-  prestashop.on('updateCart', (event) => {
+    const { danger } = useAlertToast();
+
+  prestashop.on('updateCart', async (event) => {
     prestashop.cart = event.resp.cart;
-    const getCartViewUrl = $('.js-cart').data('refresh-url');
 
-    if (!getCartViewUrl) {
-      return;
+    if (prestashop.page.page_name !== 'cart') {
+        return;
     }
 
-    let requestData = {};
+      try {
+          const resp = await prestashop.frontAPI.refreshCartPage();
 
-    if (event && event.reason) {
-      requestData = {
-        id_product_attribute: event.reason.idProductAttribute,
-        id_product: event.reason.idProduct,
-      };
-    }
+          document.querySelector(prestashop.selectors.cart.detailedTotals)?.replaceWith(parseToHtml(resp.cart_detailed_totals));
+          document.querySelector(prestashop.selectors.cart.summaryItemsSubtotal)?.replaceWith(parseToHtml(resp.cart_summary_items_subtotal));
+          document.querySelector(prestashop.selectors.cart.summarySubTotalsContainer)?.replaceWith(parseToHtml(resp.cart_summary_subtotals_container));
+          document.querySelector(prestashop.selectors.cart.summaryProducts)?.replaceWith(parseToHtml(resp.cart_summary_products));
+          document.querySelector(prestashop.selectors.cart.summaryTotals)?.replaceWith(parseToHtml(resp.cart_summary_totals));
+          document.querySelector(prestashop.selectors.cart.detailedActions)?.replaceWith(parseToHtml(resp.cart_detailed_actions));
+          document.querySelector(prestashop.selectors.cart.voucher)?.replaceWith(parseToHtml(resp.cart_voucher));
+          document.querySelector(prestashop.selectors.cart.overview)?.replaceWith(parseToHtml(resp.cart_detailed));
+          document.querySelector(prestashop.selectors.cart.summaryTop)?.replaceWith(parseToHtml(resp.cart_summary_top));
 
-    $.post(getCartViewUrl, requestData)
-      .then((resp) => {
-        $(prestashop.selectors.cart.detailedTotals).replaceWith(
-          resp.cart_detailed_totals,
-        );
-        $(prestashop.selectors.cart.summaryItemsSubtotal).replaceWith(
-          resp.cart_summary_items_subtotal,
-        );
-        $(prestashop.selectors.cart.summarySubTotalsContainer).replaceWith(
-          resp.cart_summary_subtotals_container,
-        );
-        $(prestashop.selectors.cart.summaryProducts).replaceWith(
-          resp.cart_summary_products,
-        );
-        $(prestashop.selectors.cart.summaryTotals).replaceWith(
-          resp.cart_summary_totals,
-        );
-        $(prestashop.selectors.cart.detailedActions).replaceWith(
-          resp.cart_detailed_actions,
-        );
-        $(prestashop.selectors.cart.voucher).replaceWith(resp.cart_voucher);
-        $(prestashop.selectors.cart.overview).replaceWith(resp.cart_detailed);
-        $(prestashop.selectors.cart.summaryTop).replaceWith(
-          resp.cart_summary_top,
-        );
-
-        $(prestashop.selectors.cart.productCustomizationId).val(0);
-
-        $(prestashop.selectors.cart.lineProductQuantity).each(
-          (index, input) => {
-            const $input = $(input);
-            $input.attr('value', $input.val());
-          },
-        );
-
-        if ($(prestashop.selectors.checkout.cartPaymentStepRefresh).length) {
-          // we get the refresh flag : on payment step we need to refresh page to be sure
-          // amount is correctly updated on payment modules
-          refreshCheckoutPage();
-        }
-
-        prestashop.emit('updatedCart', {eventType: 'updateCart', resp});
-      })
-      .fail((resp) => {
-        prestashop.emit('handleError', {eventType: 'updateCart', resp});
-      });
+          prestashop.emit('updatedCart', {eventType: 'updateCart', resp});
+      } catch (error) {
+          danger(error.message);
+      }
     });
+
 
   const $body = $('body');
 
@@ -78,7 +40,6 @@ $(() => {
     $body.on('click', '[data-button-action="add-to-cart"]', async (event) => {
     event.preventDefault();
 
-    const { danger } = useAlertToast();
     const form = event.currentTarget?.form;
     const addToCartButton = event.currentTarget;
 
@@ -146,7 +107,6 @@ $(() => {
   $body.on('submit', '[data-link-action="add-voucher"]', async (event) => {
     event.preventDefault();
 
-    const { danger } = useAlertToast();
     const addVoucherForm = event.currentTarget;
     const input = addVoucherForm.querySelector('[name="discount_name"]');
     const voucherName = input?.value || '';
