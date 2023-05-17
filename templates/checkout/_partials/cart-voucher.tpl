@@ -35,7 +35,11 @@
                   <div class="value d-inline-flex align-items-center">
                     <span>{$voucher.reduction_formatted}</span>
                       {if isset($voucher.code) && $voucher.code !== ''}
-                        <a href="{$voucher.delete_url}" data-link-action="remove-voucher" class="text-danger ml-1">
+                        <a
+                            href="{$voucher.delete_url}"
+                            data-link-action="remove-voucher"
+                            data-id-discount="{$voucher.id_cart_rule}"
+                            class="text-danger ml-1 js-voucher-delete">
                           <span class="material-icons font-reset btn-icon">delete</span>
                         </a>
                       {/if}

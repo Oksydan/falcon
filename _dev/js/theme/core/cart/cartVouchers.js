@@ -8,6 +8,33 @@ const cartVouchers = () => {
     // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
     $('body').on('submit', '.js-voucher-form', formEventHandler);
     $('body').on('click', prestashop.themeSelectors.cart.discountCode, linkEventHandler);
+    $('body').on('click', '.js-voucher-delete', deleteHandler);
+}
+
+const deleteHandler = async (event) => {
+    event.preventDefault();
+
+    const btn = event.currentTarget;
+    const { dataset } = btn;
+    const { idDiscount } = dataset;
+
+    try {
+        const resp = await prestashop.frontAPI.deleteVoucherFromCart(idDiscount);
+
+        if (!resp.hasError) {
+            prestashop.emit('updateCart', {
+                reason: dataset || resp,
+                resp,
+            });
+        } else {
+            prestashop.emit('handleError', {
+                eventType: 'deleteVoucherFromCart',
+                resp,
+            });
+        }
+    } catch (error) {
+        danger(error.message);
+    }
 }
 
 const linkEventHandler = (event) => {
