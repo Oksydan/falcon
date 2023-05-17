@@ -4,11 +4,11 @@ import prestashop from "prestashop";
 
 const { danger } = useAlertToast();
 
-const updateCart = () => {
-    prestashop.on('updateCart', eventHandler);
+const handleUpdatedEvent = (event) => {
+    document.querySelector('body').classList.remove('cart-loading');
 }
 
-const eventHandler = async (event) => {
+const handleUpdateEvent = async (event) => {
     prestashop.cart = event.resp.cart;
 
     const quickViewModal = document.querySelector(prestashop.themeSelectors.cart.quickview);
@@ -39,5 +39,10 @@ const eventHandler = async (event) => {
         danger(error.message);
     }
 };
+
+const updateCart = () => {
+    prestashop.on('updateCart', handleUpdateEvent);
+    prestashop.on('updatedCart', handleUpdatedEvent);
+}
 
 export default updateCart;
