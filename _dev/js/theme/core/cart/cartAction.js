@@ -1,6 +1,7 @@
 import prestashop from "prestashop";
 
 const cartAction = () => {
+    // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
     $('body').on('click', prestashop.themeSelectors.cart.actions, handleCartAction);
 }
 
