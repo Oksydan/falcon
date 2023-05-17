@@ -1,6 +1,17 @@
 import $ from 'jquery';
+
+import EventEmitter from 'events';
+
+/* eslint-disable */
+// "inherit" EventEmitter
+for (const i in EventEmitter.prototype) {
+  prestashop[i] = EventEmitter.prototype[i];
+}
+/* eslint-enable */
+
 import '@js/theme/frontAPI/apiAction';
 import '@js/theme/corejs';
+import '@js/theme/core';
 
 import '@js/theme/vendors/bootstrap/bootstrap-imports';
 import 'bootstrap-touchspin';
@@ -17,15 +28,6 @@ import '@js/theme/components/cart/cart';
 import '@js/theme/components/cart/block-cart';
 
 import prestashop from 'prestashop';
-import EventEmitter from 'events';
-
-/* eslint-disable */
-// "inherit" EventEmitter
-for (const i in EventEmitter.prototype) {
-  prestashop[i] = EventEmitter.prototype[i];
-}
-/* eslint-enable */
-
 import usePasswordPolicy from '@js/theme/components/usePasswordPolicy';
 import Form from '@js/theme/components/form';
 import TopMenu from '@js/theme/components/TopMenu';

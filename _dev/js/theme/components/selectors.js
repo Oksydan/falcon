@@ -55,7 +55,7 @@ prestashop.themeSelectors = {
     promoCode: '#promo-code',
     displayPromo: '.display-promo',
     promoCodeButton: '.promo-code-button',
-    discountCode: '.js-discount .code',
+    discountCode: '.js-discount .js-code',
     discountName: '[name=discount_name]',
     actions: '[data-link-action="delete-from-cart"], [data-link-action="remove-voucher"]',
   },

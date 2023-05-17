@@ -53,7 +53,7 @@
         <div id="promo-code">
           <div class="promo-code">
             {block name='cart_voucher_form'}
-              <form action="{$urls.pages.cart}" data-link-action="add-voucher" method="post">
+              <form class="js-voucher-form" action="{$urls.pages.cart}" data-link-action="add-voucher" method="post">
                 <input type="hidden" name="token" value="{$static_token}">
                 <input type="hidden" name="addDiscount" value="1">
 

@@ -96,11 +96,6 @@ $(() => {
   const productLineInCartSelector = prestashop.themeSelectors.cart.productLineQty;
   const promises = [];
 
-  prestashop.on('updateCart', () => {
-    $(prestashop.themeSelectors.cart.quickview).modal('hide');
-    $('body').addClass('cart-loading');
-  });
-
   prestashop.on('updatedCart', () => {
     window.shouldPreventModal = false;
 
@@ -344,22 +339,4 @@ $(() => {
     },
   );
 
-  $body.on(
-    'click',
-    prestashop.themeSelectors.cart.discountCode,
-    (event) => {
-      event.stopPropagation();
-      event.preventDefault();
-
-      const $code = $(event.currentTarget);
-      const $discountInput = $('[name=discount_name]');
-      const $discountForm = $discountInput.closest('form');
-
-      $discountInput.val($code.text());
-      // Show promo code field
-      $discountForm.trigger('submit');
-
-      return false;
-    },
-  );
 });

@@ -5,7 +5,6 @@ import 'jquery-migrate';
 import 'jquery.browser';
 
 import './selectors';
-import './cart';
 import './checkout';
 import './facets';
 import './listing';
