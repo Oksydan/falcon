@@ -12,81 +12,47 @@ const { danger } = useAlertToast();
 
 const cartQuantity = () => {
     prestashop.on('updatedCart', () => {
-        window.shouldPreventModal = false;
-
-        $(prestashop.themeSelectors.product.customizationModal).on('show.bs.modal', (modalEvent) => {
-            preventCustomModalOpen(modalEvent);
-        });
-
         createSpinner();
     });
 
     createSpinner();
-}
-
-const preventCustomModalOpen = (event) => {
-    if (window.shouldPreventModal) {
-        event.preventDefault();
-
-        return false;
-    }
-
-    return true;
 };
 
+const switchErrorStat = () => {
+    const checkoutButtons = document.querySelectorAll(prestashop.themeSelectors.checkout.btn);
 
-const CheckUpdateQuantityOperations = {
-    switchErrorStat: () => {
-        /**
-         * if errorMsg is not empty or if notifications are shown, we have error to display
-         * if hasError is true, quantity was not updated : we don't disable checkout button
-         */
-        const $checkoutBtn = $(prestashop.themeSelectors.checkout.btn);
+    const toggleDisabledState = (disabled) => {
+        checkoutButtons.forEach((btn) => {
+            btn.disabled = disabled;
+        })
+    }
 
-        if ($(prestashop.themeSelectors.notifications.dangerAlert).length || (errorMsg !== '' && !hasError)) {
-            $checkoutBtn.addClass('disabled');
+    if (document.querySelector(prestashop.themeSelectors.notifications.dangerAlert) || (errorMsg !== '' && !hasError)) {
+        toggleDisabledState(true);
+    }
+
+    if (errorMsg !== '') {
+        danger(errorMsg);
+        errorMsg = '';
+        isUpdateOperation = false;
+
+        if (hasError) {
+            // if hasError is true, quantity was not updated : allow checkout
+            toggleDisabledState(false);
         }
+    } else if (!hasError && isUpdateOperation) {
+        hasError = false;
+        isUpdateOperation = false;
+        toggleDisabledState(false);
+    }
+};
 
-        if (errorMsg !== '') {
-            const strError = `
-        <article class="alert alert-danger" role="alert" data-alert="danger">
-          <ul class="mb-0">
-            <li>${errorMsg}</li>
-          </ul>
-        </article>
-      `;
-            $(prestashop.themeSelectors.notifications.container).html(strError);
-            errorMsg = '';
-            isUpdateOperation = false;
-            if (hasError) {
-                // if hasError is true, quantity was not updated : allow checkout
-                $checkoutBtn.removeClass('disabled');
-            }
-        } else if (!hasError && isUpdateOperation) {
-            hasError = false;
-            isUpdateOperation = false;
-            $(prestashop.themeSelectors.notifications.container).html('');
-            $checkoutBtn.removeClass('disabled');
-        }
-    },
-    checkUpdateOperation: (resp) => {
-        /**
-         * resp.hasError can be not defined but resp.errors not empty: quantity is updated but order cannot be placed
-         * when resp.hasError=true, quantity is not updated
-         */
-        const { hasError: hasErrorOccurred, errors: errorData } = resp;
-        hasError = hasErrorOccurred ?? false;
-        const errors = errorData ?? '';
+const checkUpdateOperation = (resp) => {
+    const { hasError: hasErrorOccurred, errors: errorData } = resp;
+    hasError = hasErrorOccurred ?? false;
+    errorMsg = errorData ?? '';
 
-        // 1.7.2.x returns errors as string, 1.7.3.x returns array
-        if (errors instanceof Array) {
-            errorMsg = errors.join(' ');
-        } else {
-            errorMsg = errors;
-        }
-
-        isUpdateOperation = true;
-    },
+    isUpdateOperation = true;
 };
 
 const handleQuantityChange = async ({ operation, qtyDifference, input}) => {
@@ -99,7 +65,8 @@ const handleQuantityChange = async ({ operation, qtyDifference, input}) => {
 
     try {
         const resp = await prestashop.frontAPI.updateCartQuantity(simpleOperation, productId, productAttributeId, qtyDifference, customizationId);
-        CheckUpdateQuantityOperations.checkUpdateOperation(resp);
+
+        checkUpdateOperation(resp);
 
         if (!resp.hasError) {
             prestashop.emit('updateCart', {
@@ -134,7 +101,7 @@ const createSpinner = () => {
         init();
     });
 
-    CheckUpdateQuantityOperations.switchErrorStat();
+    switchErrorStat();
 }
 
 export default cartQuantity;

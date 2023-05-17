@@ -24,7 +24,6 @@ import '@js/theme/components/responsive';
 import '@js/theme/components/customer';
 import '@js/theme/components/quickview';
 import '@js/theme/components/product';
-import '@js/theme/components/cart/cart';
 import '@js/theme/components/cart/block-cart';
 
 import prestashop from 'prestashop';
