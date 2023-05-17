@@ -400,33 +400,6 @@ $(() => {
     });
   });
 
-  /**
-   * Button has been removed on classic theme, but event triggering has been kept for compatibility
-   */
-  $('body').on(
-    'click',
-    prestashop.selectors.product.refresh,
-    (e, extraParameters) => {
-      e.preventDefault();
-      let eventType = 'updatedProductCombination';
-
-      if (typeof extraParameters !== 'undefined' && extraParameters.eventType) {
-        // eslint-disable-next-line
-        eventType = extraParameters.eventType;
-      }
-
-      prestashop.emit('updateProduct', {
-        eventType,
-        event: e,
-        // Following variables are not used anymore, but kept for backward compatibility
-        resp: {},
-        reason: {
-          productUrl: prestashop.urls.pages.product || '',
-        },
-      });
-    },
-  );
-
   // Refresh all the product content
   prestashop.on('updateProduct', (args) => {
     const {eventType} = args;
