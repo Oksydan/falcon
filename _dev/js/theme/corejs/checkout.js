@@ -29,7 +29,7 @@ function handleCheckoutStepChange() {
         clickedStep.enableAllBefore();
       }
     }
-    prestashop.emit('changedCheckoutStep', {event});
+    prestashop.emit('changedCheckoutStep', { event });
   });
 }
 

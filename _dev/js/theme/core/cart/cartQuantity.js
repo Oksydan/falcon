@@ -1,6 +1,6 @@
-import useCustomQuantityInput from "@js/theme/components/useCustomQuantityInput";
-import useAlertToast from "@js/theme/components/useAlertToast";
-import prestashop from "prestashop";
+import useCustomQuantityInput from '@js/theme/components/useCustomQuantityInput';
+import useAlertToast from '@js/theme/components/useAlertToast';
+import prestashop from 'prestashop';
 
 prestashop.cart = prestashop.cart || {};
 
@@ -11,97 +11,99 @@ let hasError = false;
 const { danger } = useAlertToast();
 
 const cartQuantity = () => {
-    prestashop.on('updatedCart', () => {
-        createSpinner();
-    });
-
+  prestashop.on('updatedCart', () => {
     createSpinner();
+  });
+
+  createSpinner();
 };
 
 const switchErrorStat = () => {
-    const checkoutButtons = document.querySelectorAll(prestashop.themeSelectors.checkout.btn);
+  const checkoutButtons = document.querySelectorAll(prestashop.themeSelectors.checkout.btn);
 
-    const toggleDisabledState = (disabled) => {
-        checkoutButtons.forEach((btn) => {
-            btn.disabled = disabled;
-        })
+  const toggleDisabledState = (disabled) => {
+    checkoutButtons.forEach((btn) => {
+      btn.disabled = disabled;
+    });
+  };
+
+  if (document.querySelector(prestashop.themeSelectors.notifications.dangerAlert) || (errorMsg !== '' && !hasError)) {
+    toggleDisabledState(true);
+  }
+
+  if (errorMsg !== '') {
+    danger(errorMsg);
+    errorMsg = '';
+    isUpdateOperation = false;
+
+    if (hasError) {
+      // if hasError is true, quantity was not updated : allow checkout
+      toggleDisabledState(false);
     }
-
-    if (document.querySelector(prestashop.themeSelectors.notifications.dangerAlert) || (errorMsg !== '' && !hasError)) {
-        toggleDisabledState(true);
-    }
-
-    if (errorMsg !== '') {
-        danger(errorMsg);
-        errorMsg = '';
-        isUpdateOperation = false;
-
-        if (hasError) {
-            // if hasError is true, quantity was not updated : allow checkout
-            toggleDisabledState(false);
-        }
-    } else if (!hasError && isUpdateOperation) {
-        hasError = false;
-        isUpdateOperation = false;
-        toggleDisabledState(false);
-    }
+  } else if (!hasError && isUpdateOperation) {
+    hasError = false;
+    isUpdateOperation = false;
+    toggleDisabledState(false);
+  }
 };
 
 const checkUpdateOperation = (resp) => {
-    const { hasError: hasErrorOccurred, errors: errorData } = resp;
-    hasError = hasErrorOccurred ?? false;
-    errorMsg = errorData ?? '';
+  const { hasError: hasErrorOccurred, errors: errorData } = resp;
+  hasError = hasErrorOccurred ?? false;
+  errorMsg = errorData ?? '';
 
-    isUpdateOperation = true;
+  isUpdateOperation = true;
 };
 
-const handleQuantityChange = async ({ operation, qtyDifference, input}) => {
-    const { dataset } = input;
-    const { productAttributeId, productId, customizationId } = dataset;
+const handleQuantityChange = async ({ operation, qtyDifference, input }) => {
+  const { dataset } = input;
+  const { productAttributeId, productId, customizationId } = dataset;
 
-    const simpleOperation = operation === 'decrease' ? 'down' : 'up';
+  const simpleOperation = operation === 'decrease' ? 'down' : 'up';
 
-    document.querySelector('body').classList.add('cart-loading');
+  document.querySelector('body').classList.add('cart-loading');
 
-    try {
-        const resp = await prestashop.frontAPI.updateCartQuantity(simpleOperation, productId, productAttributeId, qtyDifference, customizationId);
+  try {
+    const resp = await prestashop.frontAPI.updateCartQuantity(simpleOperation, productId, productAttributeId, qtyDifference, customizationId);
 
-        checkUpdateOperation(resp);
+    checkUpdateOperation(resp);
 
-        if (!resp.hasError) {
-            prestashop.emit('updateCart', {
-                reason: dataset || resp,
-                resp,
-            });
-        } else {
-            prestashop.emit('handleError', {
-                eventType: 'updateProductQuantityInCart',
-                resp,
-            });
-        }
-    } catch (error) {
-        danger(error.message);
+    if (!resp.hasError) {
+      prestashop.emit('updateCart', {
+        reason: dataset || resp,
+        resp,
+      });
+    } else {
+      prestashop.emit('handleError', {
+        eventType: 'updateProductQuantityInCart',
+        resp,
+      });
     }
+  } catch (error) {
+    danger(error.message);
+  }
 
-    document.querySelector('body').classList.remove('cart-loading');
-}
+  document.querySelector('body').classList.remove('cart-loading');
+};
 
 const createSpinner = () => {
-    const spinners = document.querySelectorAll('.js-custom-cart-qty-spinner');
+  const spinners = document.querySelectorAll('.js-custom-cart-qty-spinner');
 
-    spinners.forEach((spinner) => {
-        const { init, getDOMElements } = useCustomQuantityInput(spinner, {
-            onQuantityChange: ({ qty, operation, qtyDifference, startValue }) => {
-                const { input } = getDOMElements();
+  spinners.forEach((spinner) => {
+    const { init, getDOMElements } = useCustomQuantityInput(spinner, {
+      onQuantityChange: ({
+        qty, operation, qtyDifference, startValue,
+      }) => {
+        const { input } = getDOMElements();
 
-                handleQuantityChange({ operation, qtyDifference, input});
-            }
-        });
-
-        init();
+        handleQuantityChange({ operation, qtyDifference, input });
+      },
     });
 
-    switchErrorStat();
-}
+    init();
+  });
+
+  switchErrorStat();
+};
 
 export default cartQuantity;

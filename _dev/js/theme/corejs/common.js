@@ -54,7 +54,7 @@ export function refreshCheckoutPage() {
  * Verify password score.
  * Estimate guesses needed to crack the password.
  */
-prestashop.checkPasswordScore = async(password) => {
+prestashop.checkPasswordScore = async (password) => {
   const zxcvbn = (await import('zxcvbn')).default;
 
   return zxcvbn(password);

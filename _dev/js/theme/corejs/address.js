@@ -31,9 +31,9 @@ function handleCountryChange(selectors) {
         $(this).val(inputs[$(this).prop('name')]);
       });
 
-      prestashop.emit('updatedAddressForm', {target: $(selectors.address), resp});
+      prestashop.emit('updatedAddressForm', { target: $(selectors.address), resp });
     }).fail((resp) => {
-      prestashop.emit('handleError', {eventType: 'updateAddressForm', resp});
+      prestashop.emit('handleError', { eventType: 'updateAddressForm', resp });
     });
   });
 }

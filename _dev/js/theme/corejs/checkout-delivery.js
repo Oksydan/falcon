@@ -1,13 +1,13 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
-import {refreshCheckoutPage} from './common';
+import { refreshCheckoutPage } from './common';
 
 export default function () {
   const $body = $('body');
-  const {deliveryFormSelector} = prestashop.selectors.checkout;
-  const {summarySelector} = prestashop.selectors.checkout;
-  const {deliveryStepSelector} = prestashop.selectors.checkout;
-  const {editDeliveryButtonSelector} = prestashop.selectors.checkout;
+  const { deliveryFormSelector } = prestashop.selectors.checkout;
+  const { summarySelector } = prestashop.selectors.checkout;
+  const { deliveryStepSelector } = prestashop.selectors.checkout;
+  const { editDeliveryButtonSelector } = prestashop.selectors.checkout;
 
   const updateDeliveryForm = (event) => {
     const $deliveryMethodForm = $(deliveryFormSelector);

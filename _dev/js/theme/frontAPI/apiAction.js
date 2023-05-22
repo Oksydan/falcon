@@ -9,12 +9,12 @@ import updateProductAction from '@js/theme/frontAPI/product/updateProductAction'
 prestashop.frontAPI = {};
 
 prestashop.addAction = (actionName, actionFunction) => {
-    if (typeof prestashop.frontAPI[actionName] !== 'undefined') {
-        throw new Error(`Action ${actionName} already exists`);
-    }
+  if (typeof prestashop.frontAPI[actionName] !== 'undefined') {
+    throw new Error(`Action ${actionName} already exists`);
+  }
 
-    prestashop.frontAPI[actionName] = actionFunction;
-}
+  prestashop.frontAPI[actionName] = actionFunction;
+};
 
 prestashop.addAction('addToCart', addToCartAction);
 prestashop.addAction('addVoucherToCart', addVoucherToCartAction);
@@ -23,4 +23,3 @@ prestashop.addAction('refreshCartPage', refreshCartPageAction);
 prestashop.addAction('updateCartQuantity', updateCartQuantityAction);
 prestashop.addAction('deleteFromCart', deleteFromCartAction);
 prestashop.addAction('updateProduct', updateProductAction);
-

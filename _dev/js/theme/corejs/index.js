@@ -11,7 +11,7 @@ import './listing';
 import './product';
 import './address';
 
-import {psShowHide} from './common';
+import { psShowHide } from './common';
 import initEmailFields from './email-idn';
 
 $(() => {

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
-import {psGetRequestParameter} from './common';
+import { psGetRequestParameter } from './common';
 
 const editAddress = psGetRequestParameter('editAddress');
 const useSameAddress = psGetRequestParameter('use_same_address');

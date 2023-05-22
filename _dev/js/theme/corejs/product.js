@@ -2,12 +2,13 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 import { fromSerializeObject } from '@js/theme/utils/formSerialize';
 import parseToHtml from '@js/theme/utils/parseToHtml';
-import {psGetRequestParameter} from './common';import useAlertToast from '@js/theme/components/useAlertToast';
+import useAlertToast from '@js/theme/components/useAlertToast';
+import { psGetRequestParameter } from './common';
 
 const { danger } = useAlertToast();
 
 // Used to be able to abort request if user modify something
-let currentRequest = null;
+const currentRequest = null;
 
 // Used to clearTimeout if user flood the product quantity input
 let currentRequestDelayedId = null;
@@ -21,7 +22,6 @@ const firstFormData = [];
 // Detect if the form has changed one time
 let formChanged = false;
 
-
 const replaceDOMElements = ({
   product_cover_thumbnails,
   product_prices,
@@ -33,36 +33,35 @@ const replaceDOMElements = ({
   product_flags,
 }) => {
   document.querySelector(prestashop.selectors.product.imageContainer)
-      ?.replaceWith(parseToHtml(product_cover_thumbnails));
+    ?.replaceWith(parseToHtml(product_cover_thumbnails));
 
   document.querySelector(prestashop.selectors.product.prices)
-      ?.replaceWith(parseToHtml(product_prices));
+    ?.replaceWith(parseToHtml(product_prices));
 
   document.querySelector(prestashop.selectors.product.customization)
-      ?.replaceWith(parseToHtml(product_customization));
+    ?.replaceWith(parseToHtml(product_customization));
 
   document.querySelector(prestashop.selectors.product.variantsUpdate)
-      ?.replaceWith(parseToHtml(product_variants));
+    ?.replaceWith(parseToHtml(product_variants));
 
   document.querySelector(prestashop.selectors.product.discounts)
-      ?.replaceWith(parseToHtml(product_discounts));
+    ?.replaceWith(parseToHtml(product_discounts));
 
   document.querySelector(prestashop.selectors.product.additionalInfos)
-      ?.replaceWith(parseToHtml(product_additional_info));
+    ?.replaceWith(parseToHtml(product_additional_info));
 
   document.querySelector(prestashop.selectors.product.details)
-      ?.replaceWith(parseToHtml(product_details));
+    ?.replaceWith(parseToHtml(product_details));
 
   document.querySelector(prestashop.selectors.product.flags)
-      ?.replaceWith(parseToHtml(product_flags));
-}
+    ?.replaceWith(parseToHtml(product_flags));
+};
 
 const isPreview = () => {
   const urlParams = new URLSearchParams(window.location.search);
 
   return urlParams.has('preview');
-}
-
+};
 
 /**
  * Update the product html
@@ -122,7 +121,7 @@ const updateProduct = async (event, eventType, updateUrl) => {
       const customizationIdInput = document.querySelector(prestashop.selectors.cart.productCustomizationId);
       // refill customizationId input value when updating quantity or combination
       if (
-          (eventType === 'updatedProductQuantity' || eventType === 'updatedProductCombination')
+        (eventType === 'updatedProductQuantity' || eventType === 'updatedProductCombination')
           && data.id_customization
       ) {
         customizationIdInput && (customizationIdInput.value = data.id_customization);
@@ -132,15 +131,15 @@ const updateProduct = async (event, eventType, updateUrl) => {
 
       replaceAddToCartSections(data);
       const minimalProductQuantity = parseInt(
-          data.product_minimal_quantity,
-          10,
+        data.product_minimal_quantity,
+        10,
       );
 
       document.dispatchEvent(updateRatingEvent);
 
       // Prevent quantity input from blinking with classic theme.
       if (
-          !isNaN(minimalProductQuantity)
+        !isNaN(minimalProductQuantity)
           && eventType !== 'updatedProductQuantity'
       ) {
         quantityWantedInput.setAttribute('min', minimalProductQuantity);
@@ -150,12 +149,12 @@ const updateProduct = async (event, eventType, updateUrl) => {
       prestashop.emit('updatedProduct', data, formSerialized);
     } catch (e) {
       console.log(e.message);
-      danger(prestashop.t.alert.genericHttpError)
+      danger(prestashop.t.alert.genericHttpError);
     }
 
     currentRequestDelayedId = null;
   }, updateDelay);
-}
+};
 
 /**
  * Replace all "add to cart" sections but the quantity input
@@ -250,8 +249,8 @@ $(() => {
 
   // Stocking first form information
   $($productActions.find('form:first').serializeArray()).each(
-    (k, {value, name}) => {
-      firstFormData.push({value, name});
+    (k, { value, name }) => {
+      firstFormData.push({ value, name });
     },
   );
 
@@ -291,10 +290,10 @@ $(() => {
 
   // Refresh all the product content
   prestashop.on('updateProduct', (args) => {
-    const {eventType} = args;
-    const {event} = args;
+    const { eventType } = args;
+    const { event } = args;
 
-    updateProduct(event, eventType, prestashop.urls.pages.product)
+    updateProduct(event, eventType, prestashop.urls.pages.product);
   });
 
   prestashop.on('updatedProduct', (args, formData) => {
