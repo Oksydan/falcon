@@ -10,10 +10,10 @@ prestashop.selectors = {
     container: '.product-container, .js-product-container',
     availability: '#product-availability, .js-product-availability',
     actions: '.product-actions, .js-product-actions',
-    variants: '.product-variants, .js-product-variants',
-    refresh: '.product-refresh, .js-product-refresh',
+    variants: '.js-product-variants',
+    refresh: '.js-product-refresh',
     miniature: '.js-product-miniature',
-    minimalQuantity: '.product-minimal-quantity, .js-product-minimal-quantity',
+    minimalQuantity: '.js-product-minimal-quantity',
     /* eslint-disable */
     addToCart:
       '.quickview .product-add-to-cart, .page-product:not(.modal-open) .row .product-add-to-cart, .page-product:not(.modal-open) .product-container .product-add-to-cart, .quickview .js-product-add-to-cart, .page-product:not(.modal-open) .row .js-product-add-to-cart, .page-product:not(.modal-open) .product-container .js-product-add-to-cart',

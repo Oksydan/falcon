@@ -1,9 +1,10 @@
 import addToCartAction from '@js/theme/frontAPI/cart/addToCartAction';
 import addVoucherToCartAction from '@js/theme/frontAPI/cart/addVoucherToCartAction';
 import refreshCartPageAction from '@js/theme/frontAPI/cart/refreshCartPageAction';
-import updateCartQuantityAction from "@js/theme/frontAPI/cart/updateCartQuantityAction";
-import deleteFromCartAction from "@js/theme/frontAPI/cart/deleteFromCartAction";
-import deleteVoucherFromCartAction from "@js/theme/frontAPI/cart/deleteVoucherFromCartAction";
+import updateCartQuantityAction from '@js/theme/frontAPI/cart/updateCartQuantityAction';
+import deleteFromCartAction from '@js/theme/frontAPI/cart/deleteFromCartAction';
+import deleteVoucherFromCartAction from '@js/theme/frontAPI/cart/deleteVoucherFromCartAction';
+import updateProductAction from '@js/theme/frontAPI/product/updateProductAction';
 
 prestashop.frontAPI = {};
 
@@ -21,3 +22,5 @@ prestashop.addAction('deleteVoucherFromCart', deleteVoucherFromCartAction);
 prestashop.addAction('refreshCartPage', refreshCartPageAction);
 prestashop.addAction('updateCartQuantity', updateCartQuantityAction);
 prestashop.addAction('deleteFromCart', deleteFromCartAction);
+prestashop.addAction('updateProduct', updateProductAction);
+

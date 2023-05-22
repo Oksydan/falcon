@@ -1,5 +1,6 @@
 import wretch from "wretch";
 import QueryStringAddon from "wretch/addons/queryString"
+import AbortAddon from "wretch/addons/abort"
 
 const useHttpRequest = (url, options = {}) => {
     if (!options?.headers) {
@@ -10,10 +11,16 @@ const useHttpRequest = (url, options = {}) => {
         options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
 
-    const request = wretch(url, options).addon(QueryStringAddon);
+    const controller = new AbortController();
+
+    const request = wretch(url, options)
+        .addon(QueryStringAddon)
+        .addon(AbortAddon())
+        .signal(controller);
 
     return {
         request,
+        controller,
     };
 }
 
