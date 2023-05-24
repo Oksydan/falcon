@@ -15,8 +15,6 @@ const useCustomQuantityInput = (spinnerElement, {
   let currentQty = null;
   let DOMElements = null;
 
-  const getDOMElements = () => (DOMElements || setDOMElements());
-
   const setDOMElements = () => {
     const elements = {
       input: spinnerElement?.querySelector(`.${spinnerInputClass}`),
@@ -29,8 +27,49 @@ const useCustomQuantityInput = (spinnerElement, {
     return elements;
   };
 
+  const getDOMElements = () => (DOMElements || setDOMElements());
+
   const resetDomElements = () => {
     DOMElements = null;
+  };
+
+  const setInitialValue = () => {
+    const { input } = getDOMElements();
+    startValue = input.value ? parseInt(input.value, 10) : defaultMinQty;
+    currentQty = startValue;
+    minQty = input.getAttribute('min') ? parseInt(input.getAttribute('min'), 10) : defaultMinQty;
+    maxQty = input.getAttribute('max') ? parseInt(input.getAttribute('max'), 10) : defaultMaxQty;
+  };
+
+  const shouldDispatchChange = () => currentQty !== startValue;
+
+  const getOperationType = () => {
+    if (currentQty > startValue) {
+      return 'increase';
+    }
+
+    return 'decrease';
+  };
+
+  const getQtyDifference = () => Math.abs(currentQty - startValue);
+
+  const dispatchChange = () => {
+    clearTimeout(timeoutId);
+
+    if (!shouldDispatchChange()) {
+      return;
+    }
+
+    timeoutId = setTimeout(() => {
+      onQuantityChange({
+        startValue,
+        qty: currentQty,
+        operation: getOperationType(),
+        qtyDifference: getQtyDifference(),
+      });
+
+      setInitialValue();
+    }, timeout);
   };
 
   const setQty = (qty) => {
@@ -66,7 +105,7 @@ const useCustomQuantityInput = (spinnerElement, {
     setQty(newQty);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = () => {
     const { input } = getDOMElements();
     let newQty = parseInt(input.value, 10);
 
@@ -79,45 +118,6 @@ const useCustomQuantityInput = (spinnerElement, {
     }
 
     setQty(newQty);
-  };
-
-  const shouldDispatchChange = () => currentQty !== startValue;
-
-  const getOperationType = () => {
-    if (currentQty > startValue) {
-      return 'increase';
-    }
-
-    return 'decrease';
-  };
-
-  const getQtyDifference = () => Math.abs(currentQty - startValue);
-
-  const dispatchChange = () => {
-    clearTimeout(timeoutId);
-
-    if (!shouldDispatchChange()) {
-      return;
-    }
-
-    timeoutId = setTimeout(() => {
-      onQuantityChange({
-        startValue,
-        qty: currentQty,
-        operation: getOperationType(),
-        qtyDifference: getQtyDifference(),
-      });
-
-      setInitialValue();
-    }, timeout);
-  };
-
-  const setInitialValue = () => {
-    const { input } = getDOMElements();
-    startValue = input.value ? parseInt(input.value, 10) : defaultMinQty;
-    currentQty = startValue;
-    minQty = input.getAttribute('min') ? parseInt(input.getAttribute('min'), 10) : defaultMinQty;
-    maxQty = input.getAttribute('max') ? parseInt(input.getAttribute('max'), 10) : defaultMaxQty;
   };
 
   const setInitializedClass = () => {
@@ -150,16 +150,16 @@ const useCustomQuantityInput = (spinnerElement, {
     input?.addEventListener('blur', handleInputChange);
   };
 
+  const destroy = () => {
+    detachEvents();
+    resetDomElements();
+  };
+
   const init = () => {
     destroy();
     setInitialValue();
     detachEvents();
     attachEvents();
-  };
-
-  const destroy = () => {
-    detachEvents();
-    resetDomElements();
   };
 
   return {

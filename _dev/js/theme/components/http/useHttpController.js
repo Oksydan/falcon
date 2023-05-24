@@ -29,10 +29,12 @@ const useHttpController = () => {
 
   const abortAll = () => {
     for (const id in requestsStack) {
-      const { controller } = requestsStack[id];
-      controller.abort();
+      if (!Object.hasOwn(requestsStack, id)) {
+        const { controller } = requestsStack[id];
+        controller.abort();
 
-      removeRequestFromRequestStack(id);
+        removeRequestFromRequestStack(id);
+      }
     }
   };
 

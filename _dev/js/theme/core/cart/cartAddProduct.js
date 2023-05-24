@@ -3,11 +3,6 @@ import sprintf from '@js/theme/utils/sprintf';
 
 const { danger } = useAlertToast();
 
-const cartAddProduct = () => {
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $('body').on('click', '[data-button-action="add-to-cart"]', eventHandler);
-};
-
 const eventHandler = async (event) => {
   event.preventDefault();
 
@@ -72,6 +67,11 @@ const eventHandler = async (event) => {
   setTimeout(() => {
     addToCartButton.removeAttribute('disabled');
   }, 1000);
+};
+
+const cartAddProduct = () => {
+  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
+  $('body').on('click', '[data-button-action="add-to-cart"]', eventHandler);
 };
 
 export default cartAddProduct;

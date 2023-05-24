@@ -13,7 +13,7 @@ export function psShowHide() {
  */
 export function psGetRequestParameter(paramName) {
   const vars = {};
-  window.location.href.replace(location.hash, '').replace(/[?&]+([^=&]+)=?([^&]*)?/gi, (m, key, value) => {
+  window.location.href.replace(window.location.hash, '').replace(/[?&]+([^=&]+)=?([^&]*)?/gi, (m, key, value) => {
     vars[key] = value !== undefined ? value : '';
   });
   if (paramName !== undefined) {

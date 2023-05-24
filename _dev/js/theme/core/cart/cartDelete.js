@@ -2,11 +2,6 @@ import useAlertToast from '@js/theme/components/useAlertToast';
 
 const { danger } = useAlertToast();
 
-const cartDelete = () => {
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $('body').on('click', '.js-remove-from-cart', handleCartDelete);
-};
-
 const handleCartDelete = async (event) => {
   event.preventDefault();
 
@@ -31,6 +26,11 @@ const handleCartDelete = async (event) => {
   } catch (error) {
     danger(error.message);
   }
+};
+
+const cartDelete = () => {
+  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
+  $('body').on('click', '.js-remove-from-cart', handleCartDelete);
 };
 
 export default cartDelete;

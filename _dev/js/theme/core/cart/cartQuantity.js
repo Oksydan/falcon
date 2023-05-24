@@ -10,12 +10,49 @@ let hasError = false;
 
 const { danger } = useAlertToast();
 
-const cartQuantity = () => {
-  prestashop.on('updatedCart', () => {
-    createSpinner();
-  });
+const checkUpdateOperation = (resp) => {
+  const { hasError: hasErrorOccurred, errors: errorData } = resp;
+  hasError = hasErrorOccurred ?? false;
+  errorMsg = errorData ?? '';
 
-  createSpinner();
+  isUpdateOperation = true;
+};
+
+const handleQuantityChange = async ({ operation, qtyDifference, input }) => {
+  const { dataset } = input;
+  const { productAttributeId, productId, customizationId } = dataset;
+
+  const simpleOperation = operation === 'decrease' ? 'down' : 'up';
+
+  document.querySelector('body').classList.add('cart-loading');
+
+  try {
+    const resp = await prestashop.frontAPI.updateCartQuantity(
+      simpleOperation,
+      productId,
+      productAttributeId,
+      qtyDifference,
+      customizationId,
+    );
+
+    checkUpdateOperation(resp);
+
+    if (!resp.hasError) {
+      prestashop.emit('updateCart', {
+        reason: dataset || resp,
+        resp,
+      });
+    } else {
+      prestashop.emit('handleError', {
+        eventType: 'updateProductQuantityInCart',
+        resp,
+      });
+    }
+  } catch (error) {
+    danger(error.message);
+  }
+
+  document.querySelector('body').classList.remove('cart-loading');
 };
 
 const switchErrorStat = () => {
@@ -47,52 +84,13 @@ const switchErrorStat = () => {
   }
 };
 
-const checkUpdateOperation = (resp) => {
-  const { hasError: hasErrorOccurred, errors: errorData } = resp;
-  hasError = hasErrorOccurred ?? false;
-  errorMsg = errorData ?? '';
-
-  isUpdateOperation = true;
-};
-
-const handleQuantityChange = async ({ operation, qtyDifference, input }) => {
-  const { dataset } = input;
-  const { productAttributeId, productId, customizationId } = dataset;
-
-  const simpleOperation = operation === 'decrease' ? 'down' : 'up';
-
-  document.querySelector('body').classList.add('cart-loading');
-
-  try {
-    const resp = await prestashop.frontAPI.updateCartQuantity(simpleOperation, productId, productAttributeId, qtyDifference, customizationId);
-
-    checkUpdateOperation(resp);
-
-    if (!resp.hasError) {
-      prestashop.emit('updateCart', {
-        reason: dataset || resp,
-        resp,
-      });
-    } else {
-      prestashop.emit('handleError', {
-        eventType: 'updateProductQuantityInCart',
-        resp,
-      });
-    }
-  } catch (error) {
-    danger(error.message);
-  }
-
-  document.querySelector('body').classList.remove('cart-loading');
-};
-
 const createSpinner = () => {
   const spinners = document.querySelectorAll('.js-custom-cart-qty-spinner');
 
   spinners.forEach((spinner) => {
     const { init, getDOMElements } = useCustomQuantityInput(spinner, {
       onQuantityChange: ({
-        qty, operation, qtyDifference, startValue,
+        operation, qtyDifference,
       }) => {
         const { input } = getDOMElements();
 
@@ -104,6 +102,14 @@ const createSpinner = () => {
   });
 
   switchErrorStat();
+};
+
+const cartQuantity = () => {
+  prestashop.on('updatedCart', () => {
+    createSpinner();
+  });
+
+  createSpinner();
 };
 
 export default cartQuantity;
