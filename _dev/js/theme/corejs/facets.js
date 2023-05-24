@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import useAlertToast from '@js/theme/components/useAlertToast';
-import DOMReady from "@js/theme/utils/DOMReady";
+import DOMReady from '@js/theme/utils/DOMReady';
 
 const { danger } = useAlertToast();
 
@@ -16,10 +16,10 @@ const handleFacetsUpdate = async (url) => {
   } catch (error) {
     danger(prestashop.t.alert.genericHttpError);
   }
-}
+};
 
 DOMReady(() => {
   prestashop.on('updateFacets', (url) => {
     handleFacetsUpdate(url);
   });
-})
+});
