@@ -1,52 +1,25 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
+import useAlertToast from '@js/theme/components/useAlertToast';
+import DOMReady from "@js/theme/utils/DOMReady";
 
-let currentRequest = null;
+const { danger } = useAlertToast();
 
-function updateResults(data) {
-  prestashop.emit('updateProductList', data);
-  window.history.pushState(data, document.title, data.current_url);
-}
+const handleFacetsUpdate = async (url) => {
+  try {
+    const separator = url.indexOf('?') >= 0 ? '&' : '?';
+    const newUrl = `${url}${separator}from-xhr`;
 
-function handleError(xhr, textStatus) {
-  if (textStatus === 'abort') {
-    return false;
-  }
-  // TODO: feedback
-  return true;
-}
+    const data = await prestashop.frontAPI.updateListingFacets(newUrl);
 
-function cleanRequest(xhr) {
-  if (currentRequest === xhr) {
-    currentRequest = null;
+    prestashop.emit('updateProductList', data);
+    window.history.pushState(data, document.title, data.current_url);
+  } catch (error) {
+    danger(prestashop.t.alert.genericHttpError);
   }
 }
 
-function makeQuery(url) {
-  if (currentRequest) {
-    currentRequest.abort();
-  }
-
-  // We need to add a parameter to the URL
-  // to make it different from the one we're on,
-  // otherwise when you do "duplicate tab" under chrome
-  // it mixes up the cache between the AJAX request (that
-  // returns JSON) and the non-AJAX request (that returns
-  // HTML) and you just get a mess of JSON on the duplicated tab.
-  const separator = url.indexOf('?') >= 0 ? '&' : '?';
-  const slightlyDifferentURL = `${url + separator}from-xhr`;
-
-  currentRequest = $.ajax({
-    url: slightlyDifferentURL,
-    dataType: 'json',
-    success: updateResults,
-    error: handleError,
-    complete: cleanRequest,
+DOMReady(() => {
+  prestashop.on('updateFacets', (url) => {
+    handleFacetsUpdate(url);
   });
-}
-
-$(() => {
-  prestashop.on('updateFacets', (param) => {
-    makeQuery(param);
-  });
-});
+})

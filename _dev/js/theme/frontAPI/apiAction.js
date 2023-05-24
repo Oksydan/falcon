@@ -5,6 +5,7 @@ import updateCartQuantityAction from '@js/theme/frontAPI/cart/updateCartQuantity
 import deleteFromCartAction from '@js/theme/frontAPI/cart/deleteFromCartAction';
 import deleteVoucherFromCartAction from '@js/theme/frontAPI/cart/deleteVoucherFromCartAction';
 import updateProductAction from '@js/theme/frontAPI/product/updateProductAction';
+import updateListingFacetsAction from '@js/theme/frontAPI/listing/updateListingFacetsAction';
 
 prestashop.frontAPI = {};
 
@@ -23,3 +24,4 @@ prestashop.addAction('refreshCartPage', refreshCartPageAction);
 prestashop.addAction('updateCartQuantity', updateCartQuantityAction);
 prestashop.addAction('deleteFromCart', deleteFromCartAction);
 prestashop.addAction('updateProduct', updateProductAction);
+prestashop.addAction('updateListingFacets', updateListingFacetsAction);
