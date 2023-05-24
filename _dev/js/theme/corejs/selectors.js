@@ -15,8 +15,7 @@ prestashop.selectors = {
     miniature: '.js-product-miniature',
     minimalQuantity: '.js-product-minimal-quantity',
     /* eslint-disable */
-    addToCart:
-      '.quickview .product-add-to-cart, .page-product:not(.modal-open) .row .product-add-to-cart, .page-product:not(.modal-open) .product-container .product-add-to-cart, .quickview .js-product-add-to-cart, .page-product:not(.modal-open) .row .js-product-add-to-cart, .page-product:not(.modal-open) .product-container .js-product-add-to-cart',
+    addToCart: '.js-product-add-to-cart',
     prices:
       '.quickview .product-prices, .page-product:not(.modal-open) .row .product-prices, .page-product:not(.modal-open) .product-container .product-prices, .quickview .js-product-prices, .page-product:not(.modal-open) .row .js-product-prices, .page-product:not(.modal-open) .product-container .js-product-prices',
     inputCustomization:
@@ -77,7 +76,7 @@ prestashop.selectors = {
     voucher: '.cart-voucher, .js-cart-voucher',
     overview: '.cart-overview',
     summaryTop: '.cart-summary-top, .js-cart-summary-top',
-    productCustomizationId: '#product_customization_id, .js-product-customization-id',
+    productCustomizationId: '.js-product-customization-id',
     lineProductQuantity: '.js-cart-line-product-quantity',
   },
 };
