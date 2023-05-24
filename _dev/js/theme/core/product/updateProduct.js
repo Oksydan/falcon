@@ -350,10 +350,8 @@ const attachEventListeners = () => {
 
   prestashop.on('updateCart', handleUpdateCart);
   prestashop.on('showErrorNextToAddtoCartButton', handleError);
-
   // Refresh all the product content
   prestashop.on('updateProduct', handleUpdateProduct);
-
   prestashop.on('updatedProduct', handleUpdatedProduct);
 
   window.addEventListener('popstate', handlePopState);
@@ -361,7 +359,7 @@ const attachEventListeners = () => {
 
 const initProductPage = () => {
   const productActions = document.querySelector(prestashop.selectors.product.actions);
-  const formElement = productActions.querySelector('form');
+  const formElement = productActions?.querySelector('form');
   const formSerialized = formElement ? fromSerializeObject(formElement) : null;
 
   if (!formSerialized) {
