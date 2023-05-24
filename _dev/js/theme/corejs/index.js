@@ -6,7 +6,6 @@ import 'jquery.browser';
 
 import './selectors';
 import './checkout';
-import './facets';
 import './listing';
 import './address';
 
