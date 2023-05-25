@@ -18,18 +18,14 @@ const updateProductAction = (productFormData, quantityWanted, quickview = false,
     ...productFormData,
   };
 
-  dispatch(request, controller)(({ flush }) => {
-    request
+  dispatch(request, controller)(() => {
+    return request
       .query(payload)
       .post()
       .json((resp) => {
         resolve(resp);
-
-        flush();
       })
       .catch((e) => {
-        flush();
-
         // IF ABORTED
         if (e instanceof DOMException) {
           return;

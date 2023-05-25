@@ -20,16 +20,15 @@ const useHttpController = () => {
     const id = getUniqueId();
     addRequestToRequestStack(id, request, controller);
 
-    return (callback) => {
-      const flush = () => removeRequestFromRequestStack(id);
-
-      callback({ request, callback, flush });
+    return async (callback) => {
+      await callback({ request, controller });
+      removeRequestFromRequestStack(id);
     };
   };
 
   const abortAll = () => {
     for (const id in requestsStack) {
-      if (!Object.hasOwn(requestsStack, id)) {
+      if (Object.hasOwn(requestsStack, id)) {
         const { controller } = requestsStack[id];
         controller.abort();
 

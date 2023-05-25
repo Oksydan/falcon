@@ -6,6 +6,7 @@ import deleteFromCartAction from '@js/theme/frontAPI/cart/deleteFromCartAction';
 import deleteVoucherFromCartAction from '@js/theme/frontAPI/cart/deleteVoucherFromCartAction';
 import updateProductAction from '@js/theme/frontAPI/product/updateProductAction';
 import updateListingFacetsAction from '@js/theme/frontAPI/listing/updateListingFacetsAction';
+import updateAddressAction from '@js/theme/frontAPI/address/updateAddressAction';
 
 prestashop.frontAPI = {};
 
@@ -25,3 +26,4 @@ prestashop.addAction('updateCartQuantity', updateCartQuantityAction);
 prestashop.addAction('deleteFromCart', deleteFromCartAction);
 prestashop.addAction('updateProduct', updateProductAction);
 prestashop.addAction('updateListingFacets', updateListingFacetsAction);
+prestashop.addAction('updateAddress', updateAddressAction);
