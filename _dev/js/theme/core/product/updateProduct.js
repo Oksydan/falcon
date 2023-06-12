@@ -113,7 +113,7 @@ const replaceAddToCartSections = ({
   let currentAddToCartBlockSelector = prestashop.selectors.product.addToCart;
 
   if (isQuickViewOpen()) {
-    currentAddToCartBlockSelector = `.quickview ${currentAddToCartBlockSelector}`;
+    currentAddToCartBlockSelector = `.js-quickview ${currentAddToCartBlockSelector}`;
   }
 
   const currentAddToCartBlock = document.querySelector(currentAddToCartBlockSelector);

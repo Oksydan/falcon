@@ -88,7 +88,7 @@ const linkEventHandler = (event) => {
 const cartVouchers = () => {
   // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
   $('body').on('submit', '.js-voucher-form', formEventHandler);
-  $('body').on('click', prestashop.themeSelectors.cart.discountCode, linkEventHandler);
+  $('body').on('click', prestashop.selectors.cart.discountCode, linkEventHandler);
   $('body').on('click', '.js-voucher-delete', deleteHandler);
 };
 

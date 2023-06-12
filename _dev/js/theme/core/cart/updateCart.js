@@ -11,7 +11,7 @@ const handleUpdatedEvent = () => {
 const handleUpdateEvent = async (event) => {
   prestashop.cart = event.resp.cart;
 
-  const quickViewModal = document.querySelector(prestashop.themeSelectors.cart.quickview);
+  const quickViewModal = document.querySelector(prestashop.selectors.cart.quickview);
 
   // TO DO REMOVE JQUERY
   $(quickViewModal).modal('hide');

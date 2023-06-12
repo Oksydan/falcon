@@ -56,7 +56,7 @@ const handleQuantityChange = async ({ operation, qtyDifference, input }) => {
 };
 
 const switchErrorStat = () => {
-  const checkoutButtons = document.querySelectorAll(prestashop.themeSelectors.checkout.btn);
+  const checkoutButtons = document.querySelectorAll(prestashop.selectors.checkout.btn);
 
   const toggleDisabledState = (disabled) => {
     checkoutButtons.forEach((btn) => {
@@ -64,7 +64,7 @@ const switchErrorStat = () => {
     });
   };
 
-  if (document.querySelector(prestashop.themeSelectors.notifications.dangerAlert) || (errorMsg !== '' && !hasError)) {
+  if (document.querySelector(prestashop.selectors.notifications.dangerAlert) || (errorMsg !== '' && !hasError)) {
     toggleDisabledState(true);
   }
 

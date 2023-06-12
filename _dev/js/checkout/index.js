@@ -25,7 +25,7 @@
 import prestashop from 'prestashop';
 
 function setUpCheckout() {
-  $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
+  $(prestashop.selectors.checkout.termsLink).on('click', (event) => {
     event.preventDefault();
     let url = $(event.target).attr('href');
 
@@ -33,18 +33,18 @@ function setUpCheckout() {
       // TODO: Handle request if no pretty URL
       url += '?content_only=1';
       $.get(url, (content) => {
-        $(prestashop.themeSelectors.modal)
-          .find(prestashop.themeSelectors.modalContent)
+        $(prestashop.selectors.modal)
+          .find(prestashop.selectors.modalContent)
           .html($(content).find('.page-cms').contents());
       }).fail((resp) => {
         prestashop.emit('handleError', { eventType: 'clickTerms', resp });
       });
     }
 
-    $(prestashop.themeSelectors.modal).modal('show');
+    $(prestashop.selectors.modal).modal('show');
   });
 
-  $(prestashop.themeSelectors.checkout.giftCheckbox).on('click', () => {
+  $(prestashop.selectors.checkout.giftCheckbox).on('click', () => {
     $('#gift').slideToggle();
   });
 }
@@ -59,9 +59,9 @@ $(document).ready(() => {
       return;
     }
     // Hide all carrier extra content ...
-    $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
+    $(prestashop.selectors.checkout.carrierExtraContent).hide();
     // and show the one related to the selected carrier
-    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).show();
+    params.deliveryOption.next(prestashop.selectors.checkout.carrierExtraContent).show();
   });
   prestashop.on('changedCheckoutStep', (params) => {
     if (typeof params.event.currentTarget !== 'undefined') {

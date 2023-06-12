@@ -1,10 +1,11 @@
 import $ from 'jquery';
 
+import './selectors';
+
 import './migrate-mute';
 import 'jquery-migrate';
 import 'jquery.browser';
 
-import './selectors';
 import './checkout';
 
 import { psShowHide } from './common';

@@ -1,6 +1,6 @@
 import { sprintf } from 'sprintf-js';
 
-const { passwordPolicy: PasswordPolicyMap } = prestashop.themeSelectors;
+const { passwordPolicy: PasswordPolicyMap } = prestashop.selectors;
 
 const PASSWORD_POLICY_ERROR = 'The password policy elements are undefined.';
 
