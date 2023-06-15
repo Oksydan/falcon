@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import countryAddressChange from "@js/theme/core/address/countryAddressChange";
+import countryAddressChange from '@js/theme/core/address/countryAddressChange';
 
 $(() => {
-    countryAddressChange();
-})
+  countryAddressChange();
+});

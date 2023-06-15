@@ -1,12 +1,6 @@
 import $ from 'jquery';
 
 import EventEmitter from 'events';
-
-/* eslint-disable */
-// "inherit" EventEmitter
-for (const i in EventEmitter.prototype) {
-  prestashop[i] = EventEmitter.prototype[i];
-}
 /* eslint-enable */
 
 import '@js/theme/frontAPI/apiAction';
@@ -24,6 +18,12 @@ import '@js/theme/components/customer';
 import '@js/theme/components/quickview';
 import '@js/theme/components/product';
 import '@js/theme/components/cart/block-cart';
+
+/* eslint-disable */
+// "inherit" EventEmitter
+for (const i in EventEmitter.prototype) {
+  prestashop[i] = EventEmitter.prototype[i];
+}
 
 import prestashop from 'prestashop';
 import usePasswordPolicy from '@js/theme/components/usePasswordPolicy';

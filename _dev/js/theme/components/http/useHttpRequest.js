@@ -28,7 +28,7 @@ const useHttpRequest = (url, options = {}, addons = []) => {
     request = request.addon(addon);
   });
 
-  request = request.signal(controller)
+  request = request.signal(controller);
 
   return {
     request,

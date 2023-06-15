@@ -12,21 +12,19 @@ const updateListingFacetsAction = (url) => new Promise((resolve, reject) => {
     },
   });
 
-  dispatch(request, controller)(({ flush }) => {
-    return request
-      .get()
-      .json((resp) => {
-        resolve(resp);
-      })
-      .catch((e) => {
-        // IF ABORTED
-        if (e instanceof DOMException) {
-          return;
-        }
+  dispatch(request, controller)(({ flush }) => request
+    .get()
+    .json((resp) => {
+      resolve(resp);
+    })
+    .catch((e) => {
+      // IF ABORTED
+      if (e instanceof DOMException) {
+        return;
+      }
 
-        reject();
-      });
-  });
+      reject();
+    }));
 });
 
 export default updateListingFacetsAction;

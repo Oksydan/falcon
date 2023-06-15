@@ -18,22 +18,20 @@ const updateProductAction = (productFormData, quantityWanted, quickview = false,
     ...productFormData,
   };
 
-  dispatch(request, controller)(() => {
-    return request
-      .query(payload)
-      .post()
-      .json((resp) => {
-        resolve(resp);
-      })
-      .catch((e) => {
-        // IF ABORTED
-        if (e instanceof DOMException) {
-          return;
-        }
+  dispatch(request, controller)(() => request
+    .query(payload)
+    .post()
+    .json((resp) => {
+      resolve(resp);
+    })
+    .catch((e) => {
+      // IF ABORTED
+      if (e instanceof DOMException) {
+        return;
+      }
 
-        reject();
-      });
-  });
+      reject();
+    }));
 });
 
 export default updateProductAction;
