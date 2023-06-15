@@ -26,10 +26,26 @@
     display: none;
   }
 
+  &.-reachable.-complete {
+    .done {
+      display: inline-block;
+    }
+
+    .content {
+      display: none;
+    }
+    .step-edit {
+      display: block;
+    }
+  }
+
   &.-unreachable {
     .step-title {
       cursor: not-allowed;
       opacity: 0.5;
+    }
+    .step-edit {
+      display: none;
     }
   }
 
@@ -41,14 +57,7 @@
     .content {
       display: block;
     }
-  }
-
-  &.-reachable.-complete {
-    .done {
-      display: inline-block;
-    }
-
-    .content {
+    .step-edit {
       display: none;
     }
   }
