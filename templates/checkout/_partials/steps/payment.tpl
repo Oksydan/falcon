@@ -19,7 +19,7 @@
   <div class="payment-options {if $is_free}d-none{/if}">
     {foreach from=$payment_options item="module_options"}
       {foreach from=$module_options item="option"}
-        <div
+        <div id="{$option.id}-container"
           class="mb-3 checkout-option-block checkout-option {if $selected_payment_option == $option.id || $is_free}selected{/if}">
             <input class="ps-shown-by-js custom-control-input{if $option.binary} binary{/if}" id="{$option.id}"
                 data-module-name="{$option.module_name}" name="payment-option" type="radio" required
