@@ -50,7 +50,7 @@
         <div
           id="pay-with-{$option.id}-form"
           style="display:none"
-          class="js-payment-option-form {if $option.id != $selected_payment_option} ps-hidden {/if}"
+          class="js-payment-option-form {if $option.id != $selected_payment_option}d-none{/if}"
         >
           {if $option.form}
             {$option.form nofilter}
@@ -67,7 +67,7 @@
         {if $option.additionalInformation}
            <div id="{$option.id}-additional-information"
                 style="display:none"
-                class="mt-2 js-additional-information definition-list additional-information{if $option.id != $selected_payment_option} ps-hidden {/if}">
+                class="mt-2 js-additional-information definition-list additional-information {if $option.id != $selected_payment_option}d-none{/if}">
               <div class="alert alert-info">
                  {$option.additionalInformation nofilter}
               </div>
@@ -87,10 +87,13 @@
             *}
       {l s='By confirming the order, you certify that you have read and agree with all of the conditions below:' d='Shop.Theme.Checkout'}
     </p>
-    <form id="conditions-to-approve" method="GET" class="mt-3">
+    <form id="conditions-to-approve" method="GET" class="mt-3 js-conditions-to-approve">
       {foreach from=$conditions_to_approve item="condition" key="condition_name"}
         <div class="custom-control custom-checkbox">
-          <input id="conditions_to_approve[{$condition_name}]" name="conditions_to_approve[{$condition_name}]" required
+          <input
+            id="conditions_to_approve[{$condition_name}]"
+            name="conditions_to_approve[{$condition_name}]"
+            required
             type="checkbox" value="1" class="ps-shown-by-js custom-control-input">
           <label class="custom-control-label js-terms"
             for="conditions_to_approve[{$condition_name}]">{$condition nofilter}</label>

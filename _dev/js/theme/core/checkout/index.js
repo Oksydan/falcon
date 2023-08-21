@@ -1,7 +1,20 @@
 import DOMReady from '@js/theme/utils/DOMReady';
 import useCheckoutStepsController from '@js/theme/core/checkout/useCheckoutStepsController';
 import prestashop from 'prestashop';
-import $ from "jquery";
+import setUpPayment from '@js/theme/core/checkout/checkoutPayment';
+
+prestashop.checkout = prestashop.checkout || {};
+
+prestashop.checkout.onCheckOrderableCartResponse = (resp, paymentObject) => {
+  if (resp.errors === true) {
+    prestashop.emit('orderConfirmationErrors', {
+      resp,
+      paymentObject,
+    });
+    return true;
+  }
+  return false;
+};
 
 const { handleStepClick } = useCheckoutStepsController();
 
@@ -14,6 +27,7 @@ const handleCheckoutStepChange = () => {
 
   editStepElements.forEach((editStepElement) => {
     editStepElement.addEventListener('click', (event) => {
+      event.preventDefault();
       handleStepClick(event);
 
       prestashop.emit('changedCheckoutStep', { event });
@@ -48,6 +62,7 @@ const initCheckout = () => {
 
   handleSubmitButton();
   handleCheckoutStepChange();
+  setUpPayment();
 };
 
 DOMReady(() => {
