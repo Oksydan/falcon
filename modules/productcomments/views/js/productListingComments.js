@@ -53,7 +53,7 @@ var productListingComments = (function () {
     };
 
     function setEvents() {
-        prestashop.on('updateProductList', function() {
+        prestashop.on('updatedProductList', function() {
             addProductsIDs();
         });
     }
