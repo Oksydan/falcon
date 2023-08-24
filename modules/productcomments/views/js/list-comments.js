@@ -33,14 +33,14 @@ jQuery(document).ready(function () {
   const commentPrototype = commentsList.data('comment-item-prototype');
 
   emptyProductComment.hide();
-  $('.grade-stars').rating();
+  $('.comments-note .grade-stars').rating();
 
   prestashop.on('updatedProduct', function() {
     $('.product-comments-additional-info .grade-stars').rating();
   })
 
   document.addEventListener('updateRating', function() {
-    $('.grade-stars').rating();
+    $('.comments-note .grade-stars').rating();
   });
 
   const updateCommentPostErrorModal = $('#update-comment-usefulness-post-error');

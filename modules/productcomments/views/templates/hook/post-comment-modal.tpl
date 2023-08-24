@@ -57,19 +57,19 @@
 
           <div class="form-group">
             <label for="comment_title" class="form-label required">{l s='Title' d='Modules.Productcomments.Shop'}</label>
-            <input class="form-control" name="comment_title" type="text" value=""/>
+            <input class="form-control" id="comment_title" name="comment_title" type="text" value=""/>
           </div>
 
           {if !$logged}
             <div class="form-group">
               <label class="form-label required" for="customer_name">{l s='Your name' d='Modules.Productcomments.Shop'}</label>
-              <input class="form-control" name="customer_name" type="text" value=""/>
+              <input class="form-control" id="customer_name" name="customer_name" type="text" value=""/>
             </div>
           {/if}
 
           <div class="form-group">
             <label class="form-label required" for="comment_content">{l s='Review' d='Modules.Productcomments.Shop'}</label>
-            <textarea class="form-control" rows="4" name="comment_content"></textarea>
+            <textarea class="form-control" rows="4" id="comment_content" name="comment_content"></textarea>
           </div>
         </div>
         <div class="modal-footer">
