@@ -186,9 +186,7 @@ v 3.1.X | 8.0.X | >= 15
 
 `is_favoriteproducts` version |  Theme version
 ------------- | -------------
- 1.X.X  | <= 2.X.X
- 2.X.X  | 3.1.X
- 3.X.X  | >= 3.1.X
+ 1.X.X  | >= 3.1.X
 
 ### Installation
 

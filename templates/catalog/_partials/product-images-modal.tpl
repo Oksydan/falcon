@@ -27,11 +27,9 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="js-modal-gallery modal-gallery swiper swiper-custom">
-
-        {images_block webpEnabled=$webpEnabled}
-          {if $product.images|count > 1}
+        {if $product.default_image}
+          {images_block webpEnabled=$webpEnabled}
             <div class="modal-gallery__list swiper-wrapper">
-
               <div class="swiper-slide modal-gallery__elem">
                 <img
                   class="rounded img-fluid lazyload"
@@ -44,39 +42,36 @@
                   {else}
                     alt="{$product.name}"
                   {/if}
-                  >
+                >
               </div>
 
-              {foreach from=$product.images item=image}
-                {if $image.id_image === $product.default_image.id_image}
-                  {continue}
-                {/if}
+              {if $product.images|count > 1}
+                {foreach from=$product.images item=image}
+                  {if $image.id_image === $product.default_image.id_image}
+                    {continue}
+                  {/if}
 
-                <div class="swiper-slide modal-gallery__elem">
-                  <img
-                    class="rounded img-fluid lazyload"
-                    {generateImagesSources image=$image size='large_default' lazyload=true}
-                    width="{$image.bySize.large_default.width}"
-                    height="{$image.bySize.large_default.height}"
-                    {if !empty($product.default_image.legend)}
-                      alt="{$image.legend}" title="{$image.legend}"
-                    {else}
-                      alt="{$product.name}"
-                    {/if}
-                    >
-                </div>
-              {/foreach}
-            </div>
+                  <div class="swiper-slide modal-gallery__elem">
+                    <img
+                      class="rounded img-fluid lazyload"
+                      {generateImagesSources image=$image size='large_default' lazyload=true}
+                      width="{$image.bySize.large_default.width}"
+                      height="{$image.bySize.large_default.height}"
+                      {if !empty($product.default_image.legend)}
+                        alt="{$image.legend}" title="{$image.legend}"
+                      {else}
+                        alt="{$product.name}"
+                      {/if}
+                      >
+                  </div>
+                {/foreach}
 
-              <div class="swiper-button-prev swiper-button-custom">
-                <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
-                <span class="material-icons">keyboard_arrow_left</span>
+              {/if}
+
               </div>
-              <div class="swiper-button-next swiper-button-custom">
-                <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
-                <span class="material-icons">keyboard_arrow_right</span>
-              </div>
-            {else}
+            {/images_block}
+          {else}
+            {images_block webpEnabled=$webpEnabled}
               <img
                 class="rounded img-fluid"
                 {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
@@ -87,11 +82,21 @@
                   title="{$product.default_image.legend}"
                 {else}
                   alt="{$product.name}"
-                {/if}
-                loading="lazy">
-            {/if}
+                {/if}>
+            {/images_block}
+          {/if}
 
-          {/images_block}
+
+          {if $product.images|count > 1}
+            <div class="swiper-button-prev swiper-button-custom">
+              <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
+              <span class="material-icons">keyboard_arrow_left</span>
+            </div>
+            <div class="swiper-button-next swiper-button-custom">
+              <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
+              <span class="material-icons">keyboard_arrow_right</span>
+            </div>
+          {/if}
         </div>
 
       </div>

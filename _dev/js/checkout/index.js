@@ -62,7 +62,7 @@ $(document).ready(() => {
     // Hide all carrier extra content ...
     $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
     // and show the one related to the selected carrier
-    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).slideDown();
+    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).show();
   });
   prestashop.on('changedCheckoutStep', (params) => {
     if (typeof params.event.currentTarget !== 'undefined') {
