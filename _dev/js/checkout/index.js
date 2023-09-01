@@ -55,13 +55,17 @@ $(document).ready(() => {
   }
 
   prestashop.on('updatedDeliveryForm', (params) => {
-    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
+    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption === null) {
       return;
     }
+
     // Hide all carrier extra content ...
-    $(prestashop.selectors.checkout.carrierExtraContent).hide();
+    document.querySelectorAll(prestashop.selectors.checkout.carrierExtraContent).forEach((element) => {
+        element.classList.add('d-none');
+    });
+
     // and show the one related to the selected carrier
-    params.deliveryOption.next(prestashop.selectors.checkout.carrierExtraContent).show();
+    params.deliveryOption.nextElementSibling.classList.remove('d-none');
   });
   prestashop.on('changedCheckoutStep', (params) => {
     if (typeof params.event.currentTarget !== 'undefined') {

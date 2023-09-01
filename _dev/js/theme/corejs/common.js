@@ -24,33 +24,6 @@ export function psGetRequestParameter(paramName) {
 }
 
 /**
- * on checkout page, when we get the refresh flag :
- * on payment step we need to refresh page to be sure
- * amount is correctly updated on payment modules
- */
-export function refreshCheckoutPage() {
-  const queryParams = psGetRequestParameter();
-
-  // we get the refresh flag : on payment step we need to refresh page to be sure
-  // amount is correctly updated on payemnt modules
-  if (queryParams.updatedTransaction) {
-    // this parameter is used to display some info message
-    // already set : just refresh page
-    window.location.reload();
-
-    return;
-  }
-
-  // not set : add it to the url
-  queryParams.updatedTransaction = 1;
-
-  const joined = Object.entries(queryParams)
-    .map((v) => v.join('='))
-    .join('&');
-  window.location.href = `${window.location.pathname}?${joined}`;
-}
-
-/**
  * Verify password score.
  * Estimate guesses needed to crack the password.
  */

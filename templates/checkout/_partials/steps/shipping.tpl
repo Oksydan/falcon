@@ -77,7 +77,7 @@
                     </label>
 
                   </div>
-                  <div class="carrier-extra-content js-carrier-extra-content my-3"{if $delivery_option != $carrier_id} style="display:none;"{/if}>{$carrier.extraContent nofilter}</div>
+                  <div class="carrier-extra-content js-carrier-extra-content my-3 {if $delivery_option != $carrier_id}d-none{/if}">{$carrier.extraContent nofilter}</div>
                 {/foreach}
               </div>
           {/block}
