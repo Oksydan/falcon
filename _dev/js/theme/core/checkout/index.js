@@ -1,7 +1,7 @@
 import DOMReady from '@js/theme/utils/DOMReady';
 import useCheckoutStepsController from '@js/theme/core/checkout/useCheckoutStepsController';
 import prestashop from 'prestashop';
-import setUpPayment from '@js/theme/core/checkout/checkoutPayment';
+import checkoutPayment from '@js/theme/core/checkout/checkoutPayment';
 
 prestashop.checkout = prestashop.checkout || {};
 
@@ -62,7 +62,7 @@ const initCheckout = () => {
 
   handleSubmitButton();
   handleCheckoutStepChange();
-  setUpPayment();
+  checkoutPayment();
 };
 
 DOMReady(() => {

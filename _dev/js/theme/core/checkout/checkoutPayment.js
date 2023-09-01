@@ -190,9 +190,10 @@ const init = () => {
     }
 }
 
-
-export default function () {
+const checkoutPayment = () => {
     init();
 }
+
+export default checkoutPayment;
 
 
