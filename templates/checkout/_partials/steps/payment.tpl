@@ -49,7 +49,6 @@
         </div>
         <div
           id="pay-with-{$option.id}-form"
-          style="display:none"
           class="js-payment-option-form {if $option.id != $selected_payment_option}d-none{/if}"
         >
           {if $option.form}
@@ -66,7 +65,6 @@
 
         {if $option.additionalInformation}
            <div id="{$option.id}-additional-information"
-                style="display:none"
                 class="mt-2 js-additional-information definition-list additional-information {if $option.id != $selected_payment_option}d-none{/if}">
               <div class="alert alert-info">
                  {$option.additionalInformation nofilter}

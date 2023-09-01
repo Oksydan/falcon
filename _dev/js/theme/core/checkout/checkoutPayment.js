@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
+import checkCartStillOrderableRequest from '@js/theme/core/checkout/request/checkCartStillOrderableRequest';
 
 
 const collapsePaymentOptions = () => {
@@ -80,127 +81,118 @@ const areConditionsAccepted = () => {
     return accepted;
 }
 
-const init = () => {
-    prestashop.on('orderConfirmationErrors', handleOrderConfirmationErrors);
-}
+const toggleOrderButton = () => {
+    const { confirmationSelector, paymentBinary, conditionAlertSelector } = prestashop.selectors.checkout;
 
-class Payment {
-    constructor() {
-        this.confirmationSelector = prestashop.selectors.checkout.confirmationSelector;
-        this.conditionsSelector = prestashop.selectors.checkout.conditionsSelector;
-        this.conditionAlertSelector = prestashop.selectors.checkout.conditionAlertSelector;
-        this.termsCheckboxSelector = prestashop.selectors.checkout.termsCheckboxSelector;
+    let paymentBtnEnabled = areConditionsAccepted();
+
+    prestashop.emit('termsUpdated', {
+        isChecked: paymentBtnEnabled,
+    });
+
+    collapsePaymentOptions();
+
+    const selectedOptionID = getSelectedOptionId();
+
+    if (!selectedOptionID) {
+        paymentBtnEnabled = false;
     }
 
-    init() {
-        // eslint-disable-next-line no-unused-vars
-
-        const $body = $('body');
-
-        $body.on('change', `${this.conditionsSelector} input[type="checkbox"]`, $.proxy(this.toggleOrderButton, this));
-        $body.on('change', 'input[name="payment-option"]', $.proxy(this.toggleOrderButton, this));
-        // call toggle once on init to handle situation where everything
-        // is already ok (like 0 price order, payment already preselected and so on)
-        this.toggleOrderButton();
-
-        $body.on('click', `${this.confirmationSelector} button`, $.proxy(this.confirm, this));
-
-        if (!getSelectedOptionId()) {
-            collapsePaymentOptions();
-        }
-    }
-
-    toggleOrderButton() {
-        let paymentBtnEnabled = areConditionsAccepted();
-
-        prestashop.emit('termsUpdated', {
-            isChecked: paymentBtnEnabled,
+    document.querySelectorAll(`#${selectedOptionID}-additional-information, #pay-with-${selectedOptionID}-form`)
+        .forEach((element) => {
+            element.classList.remove('d-none');
         });
 
-        collapsePaymentOptions();
+    document.querySelectorAll(paymentBinary)
+        .forEach((element) => {
+            element.classList.add('d-none');
+        });
 
-        const selectedOptionID = getSelectedOptionId();
+    if (document.querySelector(`#${selectedOptionID}`)?.classList.contains('binary')) {
+        const paymentOptionSelector = getPaymentOptionSelector(selectedOptionID);
+        toggleConfirmation(false);
 
-        if (!selectedOptionID) {
-            paymentBtnEnabled = false;
-        }
-
-        $(`#${selectedOptionID}-additional-information`).show();
-        $(`#pay-with-${selectedOptionID}-form`).show();
-
-        $(prestashop.selectors.checkout.paymentBinary).hide();
-
-        if ($(`#${selectedOptionID}`).hasClass('binary')) {
-            const paymentOption = getPaymentOptionSelector(selectedOptionID);
-            toggleConfirmation(false);
-            $(paymentOption).show();
-
-            document.querySelectorAll(`${paymentOption} button, ${paymentOption} input`).forEach((element) => {
-                if (paymentBtnEnabled) {
-                    element.removeAttribute('disabled');
-                } else {
-                    element.setAttribute('disabled', !paymentBtnEnabled);
-                }
+        document.querySelectorAll(paymentOptionSelector)
+            .forEach((element) => {
+                element.classList.remove('d-none');
             });
 
+        document.querySelectorAll(`${paymentOptionSelector} button, ${paymentOptionSelector} input`).forEach((element) => {
             if (paymentBtnEnabled) {
-                $(paymentOption).removeClass('disabled');
+                element.removeAttribute('disabled');
             } else {
-                $(paymentOption).addClass('disabled');
+                element.setAttribute('disabled', 'disabled');
             }
-        } else {
-            toggleConfirmation(true);
-            $(`${this.confirmationSelector} button`).toggleClass('disabled', !paymentBtnEnabled);
-            // Next line provides backward compatibility for Classic Theme < 1.7.8
-            $(`${this.confirmationSelector} button`).attr('disabled', !paymentBtnEnabled);
+        });
+    } else {
+        toggleConfirmation(true);
 
-            if (paymentBtnEnabled) {
-                $(this.conditionAlertSelector).hide();
-            } else {
-                $(this.conditionAlertSelector).show();
-            }
-        }
-    }
-
-    getPaymentOptionSelector(option) {
-        const moduleName = $(`#${option}`).data('module-name');
-
-        return `.js-payment-${moduleName}`;
-    }
-
-
-    async confirm() {
-        const option = getSelectedOptionId();
-        const termsAccepted = haveTermsBeenAccepted();
-
-        if (option === undefined || termsAccepted === false) {
-            showNativeFormErrors();
-            return;
-        }
-
-        // We ask cart controller, if everything in the cart is still orderable
-        const resp = await $.post(window.prestashop.urls.pages.order, {
-            ajax: 1,
-            action: 'checkCartStillOrderable',
+        document.querySelectorAll(`${confirmationSelector} button`).forEach((element) => {
+            element.classList.toggle('disabled', !paymentBtnEnabled);
         });
 
-        // We process the information and allow other modules to intercept this
-        const isRedirected = prestashop.checkout.onCheckOrderableCartResponse(resp, this);
-
-        // If there is a redirect, we deny the form submit below, to allow the redirect to complete
-        if (isRedirected) return;
-
-        $(`${this.confirmationSelector} button`).addClass('disabled');
-        $(`#pay-with-${option}-form form`).submit();
+        document.querySelectorAll(conditionAlertSelector).forEach((element) => {
+            element.classList.toggle('d-none', paymentBtnEnabled);
+        });
     }
 }
 
-export default function () {
-    const payment = new Payment();
-    payment.init();
-    init();
+const confirm = async () => {
+    const { confirmationSelector } = prestashop.selectors.checkout;
+    const option = getSelectedOptionId();
+    const termsAccepted = haveTermsBeenAccepted();
 
-    return payment;
+    if (option === undefined || termsAccepted === false) {
+        showNativeFormErrors();
+        return;
+    }
+
+    // We ask cart controller, if everything in the cart is still orderable
+    const { getRequest } = checkCartStillOrderableRequest(window.prestashop.urls.pages.order);
+
+    const resp = await getRequest();
+
+    // We process the information and allow other modules to intercept this
+    const isRedirected = prestashop.checkout.onCheckOrderableCartResponse(resp);
+
+    // If there is a redirect, we deny the form submit below, to allow the redirect to complete
+    if (isRedirected) return;
+
+    document.querySelectorAll(`${confirmationSelector} button`).forEach((element) => {
+        element.classList.add('disabled');
+    });
+
+    document.querySelector(`#pay-with-${option}-form form`)?.submit();
+}
+
+
+const init = () => {
+    prestashop.on('orderConfirmationErrors', handleOrderConfirmationErrors);
+
+    const { conditionsSelector, confirmationSelector } = prestashop.selectors.checkout;
+
+
+    const $body = $('body');
+
+    // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
+    $body.on('change', `${conditionsSelector} input[type="checkbox"]`, toggleOrderButton);
+    // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
+    $body.on('change', 'input[name="payment-option"]', toggleOrderButton);
+    // call toggle once on init to handle situation where everything
+    // is already ok (like 0 price order, payment already preselected and so on)
+    toggleOrderButton();
+
+    // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
+    $body.on('click', `${confirmationSelector} button`, confirm);
+
+    if (!getSelectedOptionId()) {
+        collapsePaymentOptions();
+    }
+}
+
+
+export default function () {
+    init();
 }
 
 
