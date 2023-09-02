@@ -3,6 +3,7 @@ import useCheckoutStepsController from '@js/theme/core/checkout/useCheckoutSteps
 import prestashop from 'prestashop';
 import checkoutPayment from '@js/theme/core/checkout/checkoutPayment';
 import checkoutDelivery from '@js/theme/core/checkout/checkoutDelivery';
+import checkoutAddress from '@js/theme/core/checkout/checkoutAddress';
 
 prestashop.checkout = prestashop.checkout || {};
 
@@ -65,6 +66,7 @@ const initCheckout = () => {
   handleCheckoutStepChange();
   checkoutPayment();
   checkoutDelivery();
+  checkoutAddress();
 };
 
 DOMReady(() => {
