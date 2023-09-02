@@ -52,7 +52,7 @@ const switchConfirmAddressesButtonState = (enable) => {
 const editAddress = getEditAddress();
 
 const handleOnLoad = () => {
-  const { addressForm, addressError, invoiceAddresses } = prestashop.selectors.checkout;
+  const { addressForm, addressError } = prestashop.selectors.checkout;
   const getAllAddressErrors = () => document.querySelectorAll(addressError);
   const getVisibleAddressErrors = () => Array.from(getAllAddressErrors()).filter(isElementVisible);
   const visibleAddressErrors = getVisibleAddressErrors();
@@ -121,7 +121,10 @@ const handleAddressChange = (e) => {
   if (notValidAddressesVal !== '' && editAddress === null && notValidAddressesVal.split(',').indexOf(eventTarget.value) >= 0) {
     addressErrorElements.forEach(show);
     switchEditAddressButtonColor(true, eventTarget.value, addressType);
-    addressErrorElement && (addressErrorElement.id = `id-failure-address-${eventTarget.value}`);
+
+    if (addressErrorElement) {
+      addressErrorElement.id = `id-failure-address-${eventTarget.value}`;
+    }
   } else {
     addressErrorElements.forEach(hide);
   }
