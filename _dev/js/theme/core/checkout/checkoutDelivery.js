@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
-import { fromSerializeObject, formSerializeArray } from '../../utils/formSerialize';
 import selectDeliveryMethodRequest from '@js/theme/core/checkout/request/selectDeliveryMethodRequest';
 import useAlertToast from '@js/theme/components/useAlertToast';
 import parseToHtml from '@js/theme/utils/parseToHtml';
+import { fromSerializeObject, formSerializeArray } from '../../utils/formSerialize';
 
 const { danger } = useAlertToast();
 
@@ -18,10 +18,12 @@ const refreshCheckoutPage = () => {
 
   urlParams.append('updatedTransaction', 1);
   window.location.href = `${window.location.pathname}?${urlParams.toString()}`;
-}
+};
 
 const updateDeliveryForm = async (event) => {
-  const { deliveryFormSelector, summarySelector, deliveryOption, cartPaymentStepRefresh } = prestashop.selectors.checkout;
+  const {
+    deliveryFormSelector, summarySelector, deliveryOption, cartPaymentStepRefresh,
+  } = prestashop.selectors.checkout;
 
   const deliveryMethodForm = document.querySelector(deliveryFormSelector);
 
@@ -57,13 +59,15 @@ const updateDeliveryForm = async (event) => {
     danger(error.message);
     prestashop.emit('handleError', {
       eventType: 'updateDeliveryOptions',
-      resp: {}
+      resp: {},
     });
   }
 };
 
 const addEvents = () => {
-  const { deliveryFormSelector, deliveryStepSelector, editDeliveryButtonSelector, stepEdit } = prestashop.selectors.checkout;
+  const {
+    deliveryFormSelector, deliveryStepSelector, editDeliveryButtonSelector, stepEdit,
+  } = prestashop.selectors.checkout;
   const $body = $('body');
 
   // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
@@ -75,11 +79,10 @@ const addEvents = () => {
     document.querySelector(`${deliveryStepSelector} ${stepEdit}`)?.click();
     prestashop.emit('editDelivery');
   });
-}
-
+};
 
 const checkoutDelivery = () => {
   addEvents();
-}
+};
 
 export default checkoutDelivery;

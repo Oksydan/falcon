@@ -61,7 +61,7 @@ $(document).ready(() => {
 
     // Hide all carrier extra content ...
     document.querySelectorAll(prestashop.selectors.checkout.carrierExtraContent).forEach((element) => {
-        element.classList.add('d-none');
+      element.classList.add('d-none');
     });
 
     // and show the one related to the selected carrier

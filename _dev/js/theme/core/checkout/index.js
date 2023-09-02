@@ -54,7 +54,7 @@ const handleSubmitButton = () => {
       prestashop.emit('submitCheckoutForm', { event });
     });
   });
-}
+};
 
 const initCheckout = () => {
   if (document.querySelector('body#checkout') === null) {

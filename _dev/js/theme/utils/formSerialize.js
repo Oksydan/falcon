@@ -1,4 +1,3 @@
-
 /**
  * Serializes the form into an object
  * @param {HTMLFormElement} form
@@ -39,4 +38,4 @@ export const formSerializeArray = (form) => {
   }
 
   return data;
-}
+};
