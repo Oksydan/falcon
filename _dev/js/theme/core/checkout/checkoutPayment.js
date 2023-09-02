@@ -60,7 +60,7 @@ const showNativeFormErrors = () => {
 
 const handleOrderConfirmationErrors = ({ resp }) => {
   if (resp.cartUrl !== '') {
-    location.href = resp.cartUrl;
+    window.location.href = resp.cartUrl;
   }
 };
 

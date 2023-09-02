@@ -23,9 +23,11 @@ prestashop.selectors = {
     addToCart: '.js-product-add-to-cart',
     prices: '.js-quickview .js-product-prices, .page-product:not(.js-quickview-open) .js-product-prices',
     inputCustomization: '.js-product-actions .js-product-customization-id',
+    // eslint-disable-next-line max-len
     customization: '.js-quickview .js-product-customization, .page-product:not(.js-quickview-open) .js-product-container .js-product-customization',
     variantsUpdate: '.js-quickview .js-product-variants, .page-product:not(.js-quickview-open) .js-product-container .js-product-variants',
     discounts: '.js-quickview .js-product-discounts, .page-product:not(.js-quickview-open) .js-product-container .js-product-discounts',
+    // eslint-disable-next-line max-len
     additionalInfos: '.js-quickview .js-product-additional-info, .page-product:not(.js-quickview-open) .js-product-container .js-product-additional-info',
     details: '.js-quickview .js-product-details, .page-product:not(.js-quickview-open) .js-product-container .js-product-details',
     flags: '.js-quickview .js-product-flags, .page-product:not(.js-quickview-open) .js-product-container .js-product-flags',

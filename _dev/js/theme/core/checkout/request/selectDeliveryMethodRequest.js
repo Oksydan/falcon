@@ -13,7 +13,7 @@ const selectDeliveryMethodRequest = (url, payload) => {
       .json((resp) => {
         resolve(resp);
       })
-      .catch((er) => {
+      .catch(() => {
         reject(Error(prestashop.t.alert.genericHttpError));
       });
   });

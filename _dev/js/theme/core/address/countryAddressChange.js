@@ -5,7 +5,7 @@ import useAlertToast from '@js/theme/components/useAlertToast';
 
 const { danger } = useAlertToast();
 
-const handleAddressChange = async (e) => {
+const handleAddressChange = async () => {
   const DOMSelectors = {
     addressFormWrapperSelector: '.js-address-form',
     countrySelectSelector: '.js-country',

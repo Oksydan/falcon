@@ -17,12 +17,12 @@ const useCheckoutStepsController = (stepsSelector = prestashop.selectors.checkou
 
   const hasStepContinueButton = (step) => step.querySelector('button.continue') !== null;
 
+  const getCurrentStep = () => document.querySelector(`${stepsSelector}.${DOMClasses.STEP_CURRENT}`);
+
   const setCurrentStep = (step) => {
     getCurrentStep()?.classList.remove(DOMClasses.STEP_CURRENT);
     step.classList.add(DOMClasses.STEP_CURRENT);
   };
-
-  const getCurrentStep = () => document.querySelector(`${stepsSelector}.${DOMClasses.STEP_CURRENT}`);
 
   const disableAllAfter = (step) => {
     const nextSteps = getAllSiblingsAfterElement(step);

@@ -12,7 +12,7 @@ const updateListingFacetsAction = (url) => new Promise((resolve, reject) => {
     },
   });
 
-  dispatch(request, controller)(({ flush }) => request
+  dispatch(request, controller)(() => request
     .get()
     .json((resp) => {
       resolve(resp);
