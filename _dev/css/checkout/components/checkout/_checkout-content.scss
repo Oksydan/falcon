@@ -26,19 +26,6 @@
     display: none;
   }
 
-  &.-reachable.-complete {
-    .done {
-      display: inline-block;
-    }
-
-    .content {
-      display: none;
-    }
-    .step-edit {
-      display: block;
-    }
-  }
-
   &.-unreachable {
     .step-title {
       cursor: not-allowed;
@@ -59,6 +46,19 @@
     }
     .step-edit {
       display: none;
+    }
+  }
+
+  &.-reachable.-complete {
+    .done {
+      display: inline-block;
+    }
+
+    .content {
+      display: none;
+    }
+    .step-edit {
+      display: block;
     }
   }
 
