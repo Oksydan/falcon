@@ -4,7 +4,6 @@ import EventEmitter from 'events';
 /* eslint-enable */
 
 import '@js/theme/frontAPI/apiAction';
-import '@js/theme/corejs';
 import '@js/theme/core';
 
 import '@js/theme/vendors/bootstrap/bootstrap-imports';
@@ -26,7 +25,7 @@ for (const i in EventEmitter.prototype) {
 }
 
 import prestashop from 'prestashop';
-import usePasswordPolicy from '@js/theme/components/usePasswordPolicy';
+import usePasswordPolicy from '@js/theme/components/password/usePasswordPolicy';
 import Form from '@js/theme/components/form';
 import TopMenu from '@js/theme/components/TopMenu';
 import PageLazyLoad from '@js/theme/components/Lazyload';
