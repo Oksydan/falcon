@@ -1,7 +1,9 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
 import useToggleDisplay from '@js/theme/components/display/useToggleDisplay';
 import { isElementVisible } from '@js/theme/utils/DOMHelpers';
+import useEvent from '@js/theme/components/event/useEvent';
+
+const { on } = useEvent();
 
 /**
  * Check if browser url contains editAddress parameter
@@ -24,20 +26,20 @@ const switchEditAddressButtonColor = (
   id,
   type,
 ) => {
-  const addressBtn = $(`#id_address_${type}-address-${id} .js-edit-address`);
+  const addressBtns = document.querySelectorAll(`#id_address_${type}-address-${id} .js-edit-address`);
   const classesToToggle = ['text-danger'];
 
   document.querySelectorAll(`#${type}-addresses .js-edit-address`).forEach((button) => {
     button.classList.remove(...classesToToggle);
   });
 
-  $(`#${type}-addresses .js-edit-address`).removeClass(classesToToggle);
-
-  if (enabled) {
-    addressBtn.classList.add(...classesToToggle);
-  } else {
-    addressBtn.classList.remove(...classesToToggle);
-  }
+  addressBtns.forEach((addressBtn) => {
+    if (enabled) {
+      addressBtn.classList.add(...classesToToggle);
+    } else {
+      addressBtn.classList.remove(...classesToToggle);
+    }
+  });
 };
 
 /**
@@ -141,11 +143,8 @@ const checkoutAddress = () => {
     deliveryAddressRadios,
   } = prestashop.selectors.checkout;
 
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $(editAddresses).on('change', handleEditAddress);
-
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $(deliveryAddressRadios).on('change', handleAddressChange);
+  on(document, 'click', editAddresses, handleEditAddress);
+  on(document, 'click', deliveryAddressRadios, handleAddressChange);
 
   handleOnLoad();
 };

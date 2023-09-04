@@ -1,6 +1,9 @@
 import useAlertToast from '@js/theme/components/useAlertToast';
 import parseToHtml from '@js/theme/utils/parseToHtml';
 import prestashop from 'prestashop';
+import useEvent from '@js/theme/components/event/useEvent';
+
+const { on } = useEvent();
 
 const { danger } = useAlertToast();
 
@@ -86,10 +89,9 @@ const linkEventHandler = (event) => {
 };
 
 const cartVouchers = () => {
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $('body').on('submit', '.js-voucher-form', formEventHandler);
-  $('body').on('click', prestashop.selectors.cart.discountCode, linkEventHandler);
-  $('body').on('click', '.js-voucher-delete', deleteHandler);
+  on(document, 'submit', '.js-voucher-form', formEventHandler);
+  on(document, 'click', prestashop.selectors.cart.discountCode, linkEventHandler);
+  on(document, 'click', '.js-voucher-delete', deleteHandler);
 };
 
 export default cartVouchers;

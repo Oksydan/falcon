@@ -3,8 +3,10 @@ import prestashop from 'prestashop';
 import selectDeliveryMethodRequest from '@js/theme/core/checkout/request/selectDeliveryMethodRequest';
 import useAlertToast from '@js/theme/components/useAlertToast';
 import parseToHtml from '@js/theme/utils/parseToHtml';
+import useEvent from '@js/theme/components/event/useEvent';
 import { fromSerializeObject, formSerializeArray } from '../../utils/formSerialize';
 
+const { on } = useEvent();
 const { danger } = useAlertToast();
 
 const refreshCheckoutPage = () => {
@@ -68,13 +70,9 @@ const addEvents = () => {
   const {
     deliveryFormSelector, deliveryStepSelector, editDeliveryButtonSelector, stepEdit,
   } = prestashop.selectors.checkout;
-  const $body = $('body');
 
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $body.on('change', `${deliveryFormSelector} input`, updateDeliveryForm);
-
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $body.on('click', editDeliveryButtonSelector, (event) => {
+  on(document, 'change', `${deliveryFormSelector} input`, updateDeliveryForm);
+  on(document, 'click', editDeliveryButtonSelector, (event) => {
     event.stopPropagation();
     document.querySelector(`${deliveryStepSelector} ${stepEdit}`)?.click();
     prestashop.emit('editDelivery');

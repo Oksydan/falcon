@@ -1,5 +1,7 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
+import useEvent from '@js/theme/components/event/useEvent';
+
+const { on } = useEvent();
 
 const handleQuickView = (event) => {
   event.preventDefault();
@@ -12,8 +14,7 @@ const handleQuickView = (event) => {
 };
 
 const productQuickView = () => {
-  // TO MOVE TO BS EVENT HANDLER
-  $('body').on('click', prestashop.selectors.listing.quickview, handleQuickView);
+  on(document, 'click', prestashop.selectors.listing.quickview, handleQuickView);
 };
 
 export default productQuickView;

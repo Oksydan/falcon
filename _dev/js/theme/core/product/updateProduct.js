@@ -2,7 +2,9 @@ import prestashop from 'prestashop';
 import { fromSerializeObject } from '@js/theme/utils/formSerialize';
 import parseToHtml from '@js/theme/utils/parseToHtml';
 import useAlertToast from '@js/theme/components/useAlertToast';
-import $ from 'jquery';
+import useEvent from '@js/theme/components/event/useEvent';
+
+const { on } = useEvent();
 
 const { danger } = useAlertToast();
 
@@ -341,12 +343,7 @@ const handlePopState = (event) => {
 };
 
 const attachEventListeners = () => {
-  // MOVE TO EVENT DELEGATED WITH BOOTSTRAP 5
-  $('body').on(
-    'change touchspin.on.startspin',
-    `${prestashop.selectors.product.variants} *[name]`,
-    handleProductFormChange,
-  );
+  on(document, 'change', `${prestashop.selectors.product.variants} *[name]`, handleProductFormChange);
 
   prestashop.on('updateCart', handleUpdateCart);
   prestashop.on('showErrorNextToAddtoCartButton', handleError);

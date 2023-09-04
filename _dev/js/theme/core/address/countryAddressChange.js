@@ -1,9 +1,10 @@
 import prestashop from 'prestashop';
-import $ from 'jquery';
 import parseToHtml from '@js/theme/utils/parseToHtml';
 import useAlertToast from '@js/theme/components/useAlertToast';
+import useEvent from '@js/theme/components/event/useEvent';
 
 const { danger } = useAlertToast();
+const { on } = useEvent();
 
 const handleAddressChange = async () => {
   const DOMSelectors = {
@@ -70,7 +71,7 @@ const handleAddressChange = async () => {
 };
 
 const countryAddressChange = () => {
-  $('body').on('change', '.js-country', handleAddressChange);
+  on(document, 'change', '.js-country', handleAddressChange);
 };
 
 export default countryAddressChange;

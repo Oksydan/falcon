@@ -1,6 +1,8 @@
 import useAlertToast from '@js/theme/components/useAlertToast';
 import sprintf from '@js/theme/utils/sprintf';
+import useEvent from '@js/theme/components/event/useEvent';
 
+const { on } = useEvent();
 const { danger } = useAlertToast();
 
 const eventHandler = async (event) => {
@@ -70,8 +72,7 @@ const eventHandler = async (event) => {
 };
 
 const cartAddProduct = () => {
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $('body').on('click', '[data-button-action="add-to-cart"]', eventHandler);
+  on(document, 'click', '[data-button-action="add-to-cart"]', eventHandler);
 };
 
 export default cartAddProduct;

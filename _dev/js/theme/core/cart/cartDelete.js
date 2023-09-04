@@ -1,5 +1,7 @@
 import useAlertToast from '@js/theme/components/useAlertToast';
+import useEvent from '@js/theme/components/event/useEvent';
 
+const { on } = useEvent();
 const { danger } = useAlertToast();
 
 const handleCartDelete = async (event) => {
@@ -29,8 +31,7 @@ const handleCartDelete = async (event) => {
 };
 
 const cartDelete = () => {
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $('body').on('click', '.js-remove-from-cart', handleCartDelete);
+  on(document, 'click', '.js-remove-from-cart', handleCartDelete);
 };
 
 export default cartDelete;

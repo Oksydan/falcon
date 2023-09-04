@@ -1,6 +1,8 @@
-import $ from 'jquery';
-import prestashop from 'prestashop';
 import checkCartStillOrderableRequest from '@js/theme/core/checkout/request/checkCartStillOrderableRequest';
+import useEvent from '@js/theme/components/event/useEvent';
+import prestashop from 'prestashop';
+
+const { on } = useEvent();
 
 const collapsePaymentOptions = () => {
   const { additionalInformatonSelector, optionsForm } = prestashop.selectors.checkout;
@@ -167,18 +169,13 @@ const init = () => {
 
   const { conditionsSelector, confirmationSelector } = prestashop.selectors.checkout;
 
-  const $body = $('body');
+  on(document, 'change', `${conditionsSelector} input[type="checkbox"]`, toggleOrderButton);
+  on(document, 'change', 'input[name="payment-option"]', toggleOrderButton);
+  on(document, 'click', `${confirmationSelector} button`, confirm);
 
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $body.on('change', `${conditionsSelector} input[type="checkbox"]`, toggleOrderButton);
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $body.on('change', 'input[name="payment-option"]', toggleOrderButton);
   // call toggle once on init to handle situation where everything
   // is already ok (like 0 price order, payment already preselected and so on)
   toggleOrderButton();
-
-  // REMOVE EVENT FROM JQUERY AND ADD EVENT HANDLER FORM BS5 - DELEGATION IS NEEDED
-  $body.on('click', `${confirmationSelector} button`, confirm);
 
   if (!getSelectedOptionId()) {
     collapsePaymentOptions();
