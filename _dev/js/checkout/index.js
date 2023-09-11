@@ -22,11 +22,10 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  */
-import $ from 'jquery';
 import prestashop from 'prestashop';
 
 function setUpCheckout() {
-  $(prestashop.themeSelectors.checkout.termsLink).on('click', (event) => {
+  $(prestashop.selectors.checkout.termsLink).on('click', (event) => {
     event.preventDefault();
     let url = $(event.target).attr('href');
 
@@ -34,18 +33,18 @@ function setUpCheckout() {
       // TODO: Handle request if no pretty URL
       url += '?content_only=1';
       $.get(url, (content) => {
-        $(prestashop.themeSelectors.modal)
-          .find(prestashop.themeSelectors.modalContent)
+        $(prestashop.selectors.modal)
+          .find(prestashop.selectors.modalContent)
           .html($(content).find('.page-cms').contents());
       }).fail((resp) => {
         prestashop.emit('handleError', { eventType: 'clickTerms', resp });
       });
     }
 
-    $(prestashop.themeSelectors.modal).modal('show');
+    $(prestashop.selectors.modal).modal('show');
   });
 
-  $(prestashop.themeSelectors.checkout.giftCheckbox).on('click', () => {
+  $(prestashop.selectors.checkout.giftCheckbox).on('click', () => {
     $('#gift').slideToggle();
   });
 }
@@ -56,13 +55,17 @@ $(document).ready(() => {
   }
 
   prestashop.on('updatedDeliveryForm', (params) => {
-    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
+    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption === null) {
       return;
     }
+
     // Hide all carrier extra content ...
-    $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
+    document.querySelectorAll(prestashop.selectors.checkout.carrierExtraContent).forEach((element) => {
+      element.classList.add('d-none');
+    });
+
     // and show the one related to the selected carrier
-    params.deliveryOption.next(prestashop.themeSelectors.checkout.carrierExtraContent).show();
+    params.deliveryOption.nextElementSibling.classList.remove('d-none');
   });
   prestashop.on('changedCheckoutStep', (params) => {
     if (typeof params.event.currentTarget !== 'undefined') {

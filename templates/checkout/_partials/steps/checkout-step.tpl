@@ -23,25 +23,41 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='step'}
+  {$step_is_clickable = false}
+
+  {if $step_is_reachable && !$step_is_current}
+    {$step_is_clickable = true}
+  {/if}
+
   <section  id    = "{$identifier}"
             class = "{[
+                        'js-checkout-step'   => true,
                         'checkout-step'   => true,
                         '-current'        => $step_is_current,
                         '-reachable'      => $step_is_reachable,
                         '-complete'       => $step_is_complete,
+                        '-clickable'      => $step_is_clickable,
                         'js-current-step' => $step_is_current
                     ]|classnames}"
   >
-    <div class="card-header checkout-step__header" id="heading-{$identifier}" data-identifier="{$identifier}">
-      <p class="step-title js-step-title h5 mb-0">
-        <span class="step-number">{$position}.</span>
-        {$title}
-        <i class="material-icons font-reset rtl-no-flip text-success mx-2">&#xE876;</i>
+    <div class="card-header checkout-step__header position-relative" id="heading-{$identifier}" data-identifier="{$identifier}">
+      <p class="step-title js-step-title h5 mb-0 d-flex align-items-center">
+        <span>
+          <span class="step-number">{$position}.</span>
+          {$title}
+          <i class="material-icons font-reset rtl-no-flip text-success mx-2">&#xE876;</i>
+        </span>
 
         {if $step_is_reachable}
-          <button class="step-edit text-muted btn btn-sm btn-link float-right py-0" data-toggle="collapse" data-target="#content-{$identifier}" aria-expanded="{if $step_is_current}true{else}false{/if}" aria-controls="content-{$identifier}">
-            <i class="material-icons edit small">mode_edit</i> {l s='Edit' d='Shop.Theme.Actions'}
-          </button>
+          <a
+            href="#"
+            class="ml-auto checkout-step__edit-btn step-edit js-step-edit text-muted btn btn-sm btn-link py-0 stretched-link"
+            data-target="#content-{$identifier}">
+            <span class="d-inline-flex align-items-center">
+              <span class="material-icons font-sm mr-1 btn-icon">mode_edit</span>
+              {l s='Edit' d='Shop.Theme.Actions'}
+            </span>
+          </a>
         {/if}
       </p>
     </div>

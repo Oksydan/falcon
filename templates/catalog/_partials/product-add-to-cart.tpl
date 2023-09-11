@@ -46,7 +46,7 @@
           >
         </div>
 
-        <div class="add col mt-2 px-1">
+        <div class="add col mt-2 px-1 js-add-to-cart-btn-wrapper">
           <button
             class="btn btn-primary add-to-cart btn-block"
             data-button-action="add-to-cart"

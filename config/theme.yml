@@ -127,6 +127,7 @@ global_settings:
   new_password_policy_feature: true
 
 theme_settings:
+  core_scripts: false
   default_layout: layout-full-width
   layouts:
     category: layout-left-column

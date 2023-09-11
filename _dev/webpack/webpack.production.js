@@ -31,8 +31,8 @@ exports.productionConfig = ({ purge, analyze }) => (
         minimize: true,
         minimizer: [
           new ESBuildMinifyPlugin({
-            target: 'es2015',
-            format: 'iife'
+            target: 'es2016',
+            format: 'iife',
           }),
           new CssMinimizerPlugin()
         ],

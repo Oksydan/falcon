@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import ProductGallery from '@js/product/components/ProductGallery';
 
 function activateFirstProductTab() {

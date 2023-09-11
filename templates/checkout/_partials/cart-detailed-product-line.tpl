@@ -117,21 +117,37 @@
       {if !empty($product.is_gift)}
         <span class="gift-quantity">{$product.quantity}</span>
       {else}
+          <div class="js-custom-cart-qty-spinner row no-gutters">
+              <div class="col-auto">
+                  <a href="#" class="js-custom-qty-btn-down">
+                      -
+                  </a>
+              </div>
+              <div class="col-auto">
+                  <input
+                      type="number"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      value="{$product.quantity}"
+                      name="product-quantity-spin"
+                      min="{$product.minimal_quantity}"
+                      class="js-custom-qty-spinner-input js-cart-line-product-quantity"
+                      aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
+                      data-down-url="{$product.down_quantity_url}"
+                      data-up-url="{$product.up_quantity_url}"
+                      data-update-url="{$product.update_quantity_url}"
+                      data-product-id="{$product.id_product}"
+                      data-product-attribute-id="{$product.id_product_attribute}"
+                      data-customization-id="{$product.id_customization|intval}"
+                  >
+              </div>
+              <div class="col-auto">
+                  <a href="#" class="js-custom-qty-btn-up">
+                      +
+                  </a>
+              </div>
+          </div>
         <div>
-          <input
-            class="js-cart-line-product-quantity input-touchspin"
-            data-down-url="{$product.down_quantity_url}"
-            data-up-url="{$product.up_quantity_url}"
-            data-update-url="{$product.update_quantity_url}"
-            data-product-id="{$product.id_product}"
-            type="number"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            value="{$product.quantity}"
-            name="product-quantity-spin"
-            min="{$product.minimal_quantity}"
-            aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
-            />
         </div>
       {/if}
     </div>
@@ -150,10 +166,10 @@
 
     <div class="product-line-grid__block product-line-grid__block--delete">
       {if empty($product.is_gift)}
-        <a class="remove-from-cart text-danger" rel="nofollow" href="{$product.remove_from_cart_url}"
+        <a class="js-remove-from-cart remove-from-cart text-danger" rel="nofollow" href="{$product.remove_from_cart_url}"
           data-link-action="delete-from-cart" data-id-product="{$product.id_product|escape:'javascript'}"
           data-id-product-attribute="{$product.id_product_attribute|escape:'javascript'}"
-          data-id-customization="{$product.id_customization|default|escape:'javascript'}">
+          data-id-customization="{$product.id_customization|escape:'javascript'}">
           <span class="material-icons font-reset">delete</span>
         </a>
       {/if}

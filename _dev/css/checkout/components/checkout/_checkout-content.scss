@@ -31,6 +31,9 @@
       cursor: not-allowed;
       opacity: 0.5;
     }
+    .step-edit {
+      display: none;
+    }
   }
 
   &.-current {
@@ -41,6 +44,9 @@
     .content {
       display: block;
     }
+    .step-edit {
+      display: none;
+    }
   }
 
   &.-reachable.-complete {
@@ -50,6 +56,9 @@
 
     .content {
       display: none;
+    }
+    .step-edit {
+      display: block;
     }
   }
 

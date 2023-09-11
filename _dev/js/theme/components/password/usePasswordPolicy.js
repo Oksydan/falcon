@@ -1,6 +1,19 @@
 import { sprintf } from 'sprintf-js';
+import prestashop from 'prestashop';
 
-const { passwordPolicy: PasswordPolicyMap } = prestashop.themeSelectors;
+/**
+ * Verify password score.
+ * Estimate guesses needed to crack the password.
+ * @param {String} password
+ * @returns {Promise}
+ */
+window.prestashop.checkPasswordScore = async (password) => {
+  const zxcvbn = (await import('zxcvbn')).default;
+
+  return zxcvbn(password);
+};
+
+const { passwordPolicy: PasswordPolicyMap } = prestashop.selectors;
 
 const PASSWORD_POLICY_ERROR = 'The password policy elements are undefined.';
 
@@ -43,7 +56,6 @@ const watchPassword = async (
   feedbackContainer,
   hints,
 ) => {
-  const { prestashop } = window;
   const passwordValue = elementInput.value;
   const elementIcon = feedbackContainer.querySelector(PasswordPolicyMap.requirementScoreIcon);
   const result = await prestashop.checkPasswordScore(passwordValue);

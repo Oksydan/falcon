@@ -35,7 +35,11 @@
                   <div class="value d-inline-flex align-items-center">
                     <span>{$voucher.reduction_formatted}</span>
                       {if isset($voucher.code) && $voucher.code !== ''}
-                        <a href="{$voucher.delete_url}" data-link-action="remove-voucher" class="text-danger ml-1">
+                        <a
+                            href="{$voucher.delete_url}"
+                            data-link-action="remove-voucher"
+                            data-id-discount="{$voucher.id_cart_rule}"
+                            class="text-danger ml-1 js-voucher-delete">
                           <span class="material-icons font-reset btn-icon">delete</span>
                         </a>
                       {/if}
@@ -53,7 +57,7 @@
         <div id="promo-code">
           <div class="promo-code">
             {block name='cart_voucher_form'}
-              <form action="{$urls.pages.cart}" data-link-action="add-voucher" method="post">
+              <form class="js-voucher-form" action="{$urls.pages.cart}" data-link-action="add-voucher" method="post">
                 <input type="hidden" name="token" value="{$static_token}">
                 <input type="hidden" name="addDiscount" value="1">
 
@@ -69,8 +73,8 @@
             {/block}
 
             {block name='cart_voucher_notifications'}
-              <div class="alert alert-danger js-error mt-2" role="alert" style="display:none;">
-                <span class="js-error-text"></span>
+              <div class="alert alert-danger js-voucher-error mt-2 mb-0" role="alert" style="display:none;">
+                <span class="js-voucher-error-text"></span>
               </div>
             {/block}
           </div>
