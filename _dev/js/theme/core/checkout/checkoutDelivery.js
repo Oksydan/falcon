@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
 import selectDeliveryMethodRequest from '@js/theme/core/checkout/request/selectDeliveryMethodRequest';
 import useAlertToast from '@js/theme/components/useAlertToast';

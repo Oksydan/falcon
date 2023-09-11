@@ -5,6 +5,8 @@ import checkoutPayment from '@js/theme/core/checkout/checkoutPayment';
 import checkoutDelivery from '@js/theme/core/checkout/checkoutDelivery';
 import checkoutAddress from '@js/theme/core/checkout/checkoutAddress';
 
+import checkoutController from '@js/theme/core/checkout/checkoutController';
+
 prestashop.checkout = prestashop.checkout || {};
 
 prestashop.checkout.onCheckOrderableCartResponse = (resp, paymentObject) => {
@@ -62,6 +64,9 @@ const initCheckout = () => {
     return;
   }
 
+  const { init } = checkoutController();
+
+  init();
   handleSubmitButton();
   handleCheckoutStepChange();
   checkoutPayment();
