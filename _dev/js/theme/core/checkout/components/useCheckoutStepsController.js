@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 
-import { getAllSiblingsBeforeElement, getAllSiblingsAfterElement } from '@js/theme/utils/DOMSelectorsHelper';
+import { getAllSiblingsBeforeElement, getAllSiblingsAfterElement } from '../../../utils/DOMSelectorsHelper';
 
 const useCheckoutStepsController = (stepsSelector = prestashop.selectors.checkout.step) => {
   const DOMClasses = {
@@ -29,7 +29,7 @@ const useCheckoutStepsController = (stepsSelector = prestashop.selectors.checkou
 
     for (const nextStep of nextSteps) {
       nextStep.classList.add(DOMClasses.STEP_UNREACHABLE);
-      nextStep.classList.remove(DOMClasses.STEP_COMPLETE);
+      nextStep.classList.remove(DOMClasses.STEP_COMPLETE, DOMClasses.STEP_REACHABLE);
       nextStep.querySelector(prestashop.selectors.checkout.stepTitle).classList.add('not-allowed');
     }
   };
@@ -44,26 +44,25 @@ const useCheckoutStepsController = (stepsSelector = prestashop.selectors.checkou
     }
   };
 
-  const handleStepClick = (event) => {
-    const clickedStep = event.target.closest(stepsSelector);
-
-    if (!clickedStep) {
+  const changeStep = (step) => {
+    if (!step) {
       return;
     }
 
-    if (!isStepUnreachable(clickedStep) && !isStepCurrent(clickedStep)) {
-      setCurrentStep(clickedStep);
+    if (!isStepUnreachable(step) && !isStepCurrent(step)) {
+      setCurrentStep(step);
 
-      if (hasStepContinueButton(clickedStep)) {
-        disableAllAfter(clickedStep);
+      if (hasStepContinueButton(step)) {
+        disableAllAfter(step);
       } else {
-        enableAllBefore(clickedStep);
+        enableAllBefore(step);
       }
     }
   };
 
   return {
-    handleStepClick,
+    changeStep,
+    stepsSelector,
   };
 };
 

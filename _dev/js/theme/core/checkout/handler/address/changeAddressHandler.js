@@ -1,9 +1,10 @@
 import prestashop from 'prestashop';
-import { isElementVisible } from '@js/theme/utils/DOMHelpers';
-import useToggleDisplay from '@js/theme/components/display/useToggleDisplay';
-import switchEditAddressButtonColor from '@js/theme/core/checkout/utils/switchEditAddressButtonColor';
-import switchConfirmAddressesButtonState from '@js/theme/core/checkout/utils/switchConfirmAddressesButtonState';
-import getEditAddress from '@js/theme/core/checkout/utils/getEditAddress';
+import useToggleDisplay from '../../../../components/display/useToggleDisplay';
+import switchEditAddressButtonColor from '../../utils/switchEditAddressButtonColor';
+import getEditAddress from '../../utils/getEditAddress';
+import switchConfirmAddressesButtonState from '../../utils/switchConfirmAddressesButtonState';
+import { isElementVisible } from '../../../../utils/DOMHelpers';
+import { each } from '../../../../utils/DOMHelpers';
 
 const changeAddressHandler = (e) => {
   const {
@@ -13,12 +14,12 @@ const changeAddressHandler = (e) => {
     notValidAddresses,
   } = prestashop.selectors.checkout;
 
-  document.querySelectorAll(addressItem).forEach((element) => {
+  each(addressItem, (element) => {
     element.classList.remove('selected');
-  });
-  document.querySelectorAll(addressItemChecked).forEach((element) => {
+  })
+  each(addressItemChecked, (element) => {
     element.classList.add('selected');
-  });
+  })
 
   const eventTarget = e.currentTarget;
   const addressErrorElement = document.querySelector(addressError);
@@ -31,14 +32,14 @@ const changeAddressHandler = (e) => {
   switchEditAddressButtonColor(false, idFailureAddress, addressType);
 
   if (notValidAddressesVal !== '' && getEditAddress() === null && notValidAddressesVal.split(',').indexOf(eventTarget.value) >= 0) {
-    addressErrorElements.forEach(show);
+    each(addressErrorElements, show);
     switchEditAddressButtonColor(true, eventTarget.value, addressType);
 
     if (addressErrorElement) {
       addressErrorElement.id = `id-failure-address-${eventTarget.value}`;
     }
   } else {
-    addressErrorElements.forEach(hide);
+    each(addressErrorElements, hide);
   }
 
   const allAddressErrors = document.querySelectorAll(addressError);

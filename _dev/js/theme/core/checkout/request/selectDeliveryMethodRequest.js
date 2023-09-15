@@ -1,5 +1,11 @@
-import useHttpRequest from '@js/theme/components/http/useHttpRequest';
+import useHttpRequest from '../../../components/http/useHttpRequest';
 
+/**
+ * Select delivery method request
+ * @param url {string} - checkout url to send request
+ * @param payload {object} - request payload
+ * @returns {{getRequest: (function(): Promise<unknown>)}}
+ */
 const selectDeliveryMethodRequest = (url, payload) => {
   const { request } = useHttpRequest(url);
 

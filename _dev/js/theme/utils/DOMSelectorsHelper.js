@@ -1,3 +1,9 @@
+/**
+ * Get all siblings before element
+ * @param elem {HTMLElement} - element to get siblings
+ * @param includeCurrentElement {boolean} - include current element in siblings list
+ * @returns {HTMLElement[]} - siblings list
+ */
 export const getAllSiblingsBeforeElement = (elem, includeCurrentElement = false) => {
   const siblings = [];
   let sibling = elem.previousElementSibling;
@@ -16,6 +22,12 @@ export const getAllSiblingsBeforeElement = (elem, includeCurrentElement = false)
   return siblings;
 };
 
+/**
+ * Get all siblings after element
+ * @param elem {HTMLElement} - element to get siblings
+ * @param includeCurrentElement {boolean} - include current element in siblings list
+ * @returns {HTMLElement[]} - siblings list
+ */
 export const getAllSiblingsAfterElement = (elem, includeCurrentElement = false) => {
   const siblings = [];
   let sibling = elem.nextElementSibling;

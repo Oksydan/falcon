@@ -1,7 +1,7 @@
 /**
  * Check if element is visible
- * @param el
- * @returns {boolean}
+ * @param el {HTMLElement} - element to check
+ * @returns {boolean} - true if element is visible and false otherwise
  */
 export const isElementVisible = (el) => !!(
   el.offsetWidth
@@ -11,8 +11,8 @@ export const isElementVisible = (el) => !!(
 
 /**
  * Run a function on each element
- * @param elementsOrSelector
- * @param fnc
+ * @param elementsOrSelector {NodeList|HTMLCollection|string} - elements or selector
+ * @param fnc {function} - function to run on each element
  * @returns {void}
  */
 export const each = (elementsOrSelector, fnc) => {

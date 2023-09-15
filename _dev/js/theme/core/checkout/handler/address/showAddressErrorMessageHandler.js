@@ -1,11 +1,11 @@
 import prestashop from 'prestashop';
-import useToggleDisplay from '@js/theme/components/display/useToggleDisplay';
-import switchEditAddressButtonColor from '@js/theme/core/checkout/utils/switchEditAddressButtonColor';
-import switchConfirmAddressesButtonState from '@js/theme/core/checkout/utils/switchConfirmAddressesButtonState';
-import getEditAddress from '@js/theme/core/checkout/utils/getEditAddress';
-import { isElementVisible } from '@js/theme/utils/DOMHelpers';
+import useToggleDisplay from '../../../../components/display/useToggleDisplay';
+import switchConfirmAddressesButtonState from '../../utils/switchConfirmAddressesButtonState';
+import switchEditAddressButtonColor from '../../utils/switchEditAddressButtonColor';
+import { isElementVisible } from '../../../../utils/DOMHelpers';
+import getEditAddress from '../../utils/getEditAddress';
 
-const handleOnLoad = () => {
+const showAddressErrorMessageHandler = () => {
   const { addressForm, addressError } = prestashop.selectors.checkout;
   const getAllAddressErrors = () => document.querySelectorAll(addressError);
   const getVisibleAddressErrors = () => Array.from(getAllAddressErrors()).filter(isElementVisible);
@@ -36,8 +36,4 @@ const handleOnLoad = () => {
   switchConfirmAddressesButtonState(getVisibleAddressErrors().length <= 0);
 };
 
-const checkoutAddress = () => {
-  handleOnLoad();
-};
-
-export default checkoutAddress;
+export default showAddressErrorMessageHandler;

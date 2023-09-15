@@ -1,7 +1,7 @@
 /**
  * Serializes the form into an object
- * @param {HTMLFormElement} form
- * @returns {Object}
+ * @param form {HTMLFormElement} - form element to serialize
+ * @returns {Object} - serialized form data
  */
 export const fromSerializeObject = (form) => {
   const data = {};
@@ -16,15 +16,15 @@ export const fromSerializeObject = (form) => {
 
 /**
  * Substitutes the jQuery.serialize() method
- * @param {HTMLFormElement} form
- * @returns {string}
+ * @param form {HTMLFormElement} - form element to serialize
+ * @returns {string} - serialized form data in URLSearchParams format
  */
 export const fromSerialize = (form) => new URLSearchParams(new FormData(form)).toString();
 
 /**
  * Substitutes the jQuery.serializeArray() method
- * @param {HTMLFormElement} form
- * @returns {Array}
+ * @param form {HTMLFormElement} - form element to serialize
+ * @returns {Array} - serialized form data in array format [{name: 'name', value: 'value'}]
  */
 export const formSerializeArray = (form) => {
   const data = [];

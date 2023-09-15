@@ -1,5 +1,10 @@
-import useHttpRequest from '@js/theme/components/http/useHttpRequest';
+import useHttpRequest from '../../../components/http/useHttpRequest';
 
+/**
+ * Check cart still orderable request
+ * @param url {string} - checkout url to send request
+ * @returns {{getRequest: (function(): Promise<unknown>)}}
+ */
 const checkCartStillOrderableRequest = (url) => {
   const payload = {
     ajax: 1,

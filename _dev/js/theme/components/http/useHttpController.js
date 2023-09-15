@@ -1,5 +1,9 @@
 import getUniqueId from '@js/theme/utils/getUniqueId';
 
+/**
+ * @description This function is used to control HTTP requests.
+ * @returns {{dispatch: (function(*, *): function(*): Promise<void>), abortAll: abortAll}}
+ */
 const useHttpController = () => {
   let requestsStack = {};
 

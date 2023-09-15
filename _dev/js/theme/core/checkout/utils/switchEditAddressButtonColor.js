@@ -1,22 +1,23 @@
+import { each } from '../../../utils/DOMHelpers';
+
 /**
  * Change the color of the edit button for the wrong address
- * @param {Boolean} enabled
- * @param {Number} id
- * @param {String} type
+ * @param {Boolean} enabled - true if button should be dangered or false otherwise
+ * @param {Number} id - address id
+ * @param {String} type - address type (delivery or invoice)
  */
 const switchEditAddressButtonColor = (
   enabled,
   id,
   type,
 ) => {
-  const addressBtns = document.querySelectorAll(`#id_address_${type}-address-${id} .js-edit-address`);
   const classesToToggle = ['text-danger'];
 
-  document.querySelectorAll(`#${type}-addresses .js-edit-address`).forEach((button) => {
+  each(`#${type}-addresses .js-edit-address`, (button) => {
     button.classList.remove(...classesToToggle);
   });
 
-  addressBtns.forEach((addressBtn) => {
+  each(`#id_address_${type}-address-${id} .js-edit-address`, (addressBtn) => {
     if (enabled) {
       addressBtn.classList.add(...classesToToggle);
     } else {

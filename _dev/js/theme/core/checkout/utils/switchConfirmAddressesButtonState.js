@@ -1,8 +1,11 @@
+import { each } from '../../../utils/DOMHelpers';
+
 /**
- * Enable/disable the continue address button
+ * Switch confirm addresses button state
+ * @param enable {boolean} - false if button should be disabled
  */
 const switchConfirmAddressesButtonState = (enable) => {
-  document.querySelectorAll('button[name=confirm-addresses]').forEach((button) => {
+  each('button[name=confirm-addresses]', (button) => {
     button.disabled = !enable;
   });
 };
