@@ -3,8 +3,7 @@ import useToggleDisplay from '../../../../components/display/useToggleDisplay';
 import switchEditAddressButtonColor from '../../utils/switchEditAddressButtonColor';
 import getEditAddress from '../../utils/getEditAddress';
 import switchConfirmAddressesButtonState from '../../utils/switchConfirmAddressesButtonState';
-import { isElementVisible } from '../../../../utils/DOMHelpers';
-import { each } from '../../../../utils/DOMHelpers';
+import { isElementVisible, each } from '../../../../utils/DOMHelpers';
 
 const changeAddressHandler = (e) => {
   const {
@@ -16,10 +15,10 @@ const changeAddressHandler = (e) => {
 
   each(addressItem, (element) => {
     element.classList.remove('selected');
-  })
+  });
   each(addressItemChecked, (element) => {
     element.classList.add('selected');
-  })
+  });
 
   const eventTarget = e.currentTarget;
   const addressErrorElement = document.querySelector(addressError);

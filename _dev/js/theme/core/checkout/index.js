@@ -5,7 +5,7 @@ import checkoutController from './checkoutController';
 
 prestashop.checkout = prestashop.checkout || {};
 
-//GLOBAL
+// GLOBAL
 prestashop.checkout.onCheckOrderableCartResponse = (resp, paymentObject) => {
   if (resp.errors === true) {
     prestashop.emit('orderConfirmationErrors', {
