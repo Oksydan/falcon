@@ -17,10 +17,6 @@ const handleUpdateEvent = async (event) => {
   $(quickViewModal).modal('hide');
   document.querySelector('body').classList.add('cart-loading');
 
-  if (prestashop.page.page_name !== 'cart') {
-    return;
-  }
-
   try {
     const resp = await prestashop.frontAPI.refreshCartPage();
 
