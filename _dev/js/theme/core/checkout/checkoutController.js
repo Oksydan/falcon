@@ -14,6 +14,11 @@ import checkoutStepChangeHandler from './handler/misc/checkoutStepChangeHandler'
 
 const { on } = useEvent();
 
+/**
+ * Checkout controller
+ * @returns {object} return
+ * @returns {function} return.init initialize checkout controller
+ */
 const checkoutController = () => {
   const {
     editAddresses,

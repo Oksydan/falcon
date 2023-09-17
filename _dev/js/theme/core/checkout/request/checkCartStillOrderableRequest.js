@@ -1,17 +1,24 @@
+import prestashop from 'prestashop';
 import useHttpRequest from '../../../components/http/useHttpRequest';
 
 /**
- * Check cart still orderable request
- * @param url {string} - checkout url to send request
- * @returns {{getRequest: (function(): Promise<unknown>)}}
+ * @typedef ServerResponse
+ * @type {object}
+ * @property {string} cartUrl cart page url
+ * @property {boolean} errors errors flag (true if errors)
  */
-const checkCartStillOrderableRequest = (url) => {
+
+/**
+ * Check cart still orderable request
+ * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
+ */
+const checkCartStillOrderableRequest = () => {
   const payload = {
     ajax: 1,
     action: 'checkCartStillOrderable',
   };
 
-  const { request } = useHttpRequest(url);
+  const { request } = useHttpRequest(prestashop.urls.pages.order);
   const getRequest = () => new Promise((resolve, reject) => {
     request
       .query(payload)

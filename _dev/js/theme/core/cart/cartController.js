@@ -6,6 +6,11 @@ import deleteVoucherHandler from './handler/voucher/deleteVoucherHandler';
 
 const { on } = useEvent();
 
+/**
+ * Cart controller
+ * @returns {object} return
+ * @returns {function} return.init initialize cart controller
+ */
 const cartController = () => {
   const init = () => {
     const {

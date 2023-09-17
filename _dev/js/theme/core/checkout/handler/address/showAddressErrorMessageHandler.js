@@ -5,6 +5,10 @@ import switchEditAddressButtonColor from '../../utils/switchEditAddressButtonCol
 import { isElementVisible } from '../../../../utils/DOMHelpers';
 import getEditAddress from '../../utils/getEditAddress';
 
+/**
+ * Show address error message handler
+ * @returns {void}
+ */
 const showAddressErrorMessageHandler = () => {
   const { addressForm, addressError } = prestashop.selectors.checkout;
   const getAllAddressErrors = () => document.querySelectorAll(addressError);

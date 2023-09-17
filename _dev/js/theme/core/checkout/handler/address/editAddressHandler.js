@@ -1,5 +1,9 @@
 import prestashop from 'prestashop';
 
+/**
+ * Edit address handler
+ * @param event {object} - click event
+ */
 const editAddressHandler = (event) => {
   const {
     addressesStep,

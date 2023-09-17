@@ -1,6 +1,10 @@
 import prestashop from 'prestashop';
 import useCheckoutStepsController from '../../components/useCheckoutStepsController';
 
+/**
+ * Checkout step change handler
+ * @param event {object} - click event
+ */
 const checkoutStepChangeHandler = (event) => {
   event.preventDefault();
   const { changeStep, stepsSelector } = useCheckoutStepsController();

@@ -1,6 +1,10 @@
 import prestashop from 'prestashop';
 import { each } from '../../../../utils/DOMHelpers';
 
+/**
+ * Checkout form submit handler
+ * @param event {object} - submit event
+ */
 const checkoutFormSubmitHandler = (event) => {
   const submitButtons = event.target.querySelectorAll('button[type="submit"]');
 

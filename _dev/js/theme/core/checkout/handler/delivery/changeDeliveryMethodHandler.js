@@ -1,4 +1,3 @@
-import prestashop from 'prestashop';
 import { formSerializeArray, fromSerializeObject } from '../../../../utils/formSerialize';
 import selectDeliveryMethodRequest from '../../request/selectDeliveryMethodRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
@@ -8,6 +7,11 @@ import { each } from '../../../../utils/DOMHelpers';
 
 const { danger } = useAlertToast();
 
+/**
+ * Change delivery method handler
+ * @param event {object} - change event
+ * @returns {Promise<void>}
+ */
 const changeDeliveryMethodHandler = async (event) => {
   const {
     deliveryFormSelector, summarySelector, deliveryOption, cartPaymentStepRefresh,
@@ -19,11 +23,12 @@ const changeDeliveryMethodHandler = async (event) => {
     return;
   }
 
-  const requestData = fromSerializeObject(deliveryMethodForm);
+  const payload = fromSerializeObject(deliveryMethodForm);
   const checkedInput = event.target;
   const newDeliveryOption = checkedInput.closest(deliveryOption);
   const url = newDeliveryOption.dataset.urlUpdate;
-  const { getRequest } = selectDeliveryMethodRequest(url, requestData);
+
+  const { getRequest } = selectDeliveryMethodRequest(url, payload);
 
   try {
     const resp = await getRequest();

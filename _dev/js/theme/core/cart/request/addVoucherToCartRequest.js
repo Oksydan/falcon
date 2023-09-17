@@ -3,6 +3,7 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
 
 /**
  * @typedef ServerResponse
+ * @type {object}
  * @property {string|string[]} errors The errors returned by the server
  * @property {number} id_customization Always 0
  * @property {number} id_product Always 0

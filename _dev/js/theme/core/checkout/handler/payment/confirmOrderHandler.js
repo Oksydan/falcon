@@ -25,7 +25,7 @@ const confirmOrderHandler = async (e) => {
   }
 
   // We ask cart controller, if everything in the cart is still orderable
-  const { getRequest } = checkCartStillOrderableRequest(window.prestashop.urls.pages.order);
+  const { getRequest } = checkCartStillOrderableRequest();
 
   const resp = await getRequest();
 

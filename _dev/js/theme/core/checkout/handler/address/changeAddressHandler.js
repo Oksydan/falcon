@@ -5,7 +5,11 @@ import getEditAddress from '../../utils/getEditAddress';
 import switchConfirmAddressesButtonState from '../../utils/switchConfirmAddressesButtonState';
 import { isElementVisible, each } from '../../../../utils/DOMHelpers';
 
-const changeAddressHandler = (e) => {
+/**
+ * Change address handler
+ * @param event {object} - change event
+ */
+const changeAddressHandler = (event) => {
   const {
     addressItem,
     addressItemChecked,
@@ -20,7 +24,7 @@ const changeAddressHandler = (e) => {
     element.classList.add('selected');
   });
 
-  const eventTarget = e.currentTarget;
+  const eventTarget = event.currentTarget;
   const addressErrorElement = document.querySelector(addressError);
   const idFailureAddress = addressErrorElement ? addressErrorElement?.id.split('-').pop() : null;
   const notValidAddressesVal = document.querySelector(notValidAddresses)?.value;
