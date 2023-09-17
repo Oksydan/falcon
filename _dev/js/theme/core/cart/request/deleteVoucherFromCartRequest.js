@@ -9,7 +9,7 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
  * @property {number} id_product - always 0
  * @property {number} id_product_attribute - always 0
  * @property {number} quantity - always 0
- * @property {boolean} success - always 0
+ * @property {boolean} success - success flag
  * @property {object} cart - cart front object
  */
 

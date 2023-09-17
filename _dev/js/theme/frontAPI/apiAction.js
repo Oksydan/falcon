@@ -1,4 +1,3 @@
-import addToCartAction from '@js/theme/frontAPI/cart/addToCartAction';
 import refreshCartPageAction from '@js/theme/frontAPI/cart/refreshCartPageAction';
 import updateCartQuantityAction from '@js/theme/frontAPI/cart/updateCartQuantityAction';
 import deleteFromCartAction from '@js/theme/frontAPI/cart/deleteFromCartAction';
@@ -16,7 +15,6 @@ prestashop.addAction = (actionName, actionFunction) => {
   prestashop.frontAPI[actionName] = actionFunction;
 };
 
-prestashop.addAction('addToCart', addToCartAction);
 prestashop.addAction('refreshCartPage', refreshCartPageAction);
 prestashop.addAction('updateCartQuantity', updateCartQuantityAction);
 prestashop.addAction('deleteFromCart', deleteFromCartAction);
