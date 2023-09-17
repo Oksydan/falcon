@@ -4,8 +4,8 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
 /**
  * @typedef ServerResponse
  * @type {object}
- * @property {string} cartUrl cart page url
- * @property {boolean} errors errors flag (true if errors)
+ * @property {string} cartUrl - cart page url
+ * @property {boolean} errors - errors flag (true if errors)
  */
 
 /**

@@ -4,7 +4,7 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
 /**
  * @typedef ServerResponse
  * @type {object}
- * @property {string} preview checkout summary html content
+ * @property {string} preview - checkout summary html content
  */
 
 /**

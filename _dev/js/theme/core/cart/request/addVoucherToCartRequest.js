@@ -4,13 +4,13 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
 /**
  * @typedef ServerResponse
  * @type {object}
- * @property {string|string[]} errors The errors returned by the server
- * @property {number} id_customization Always 0
- * @property {number} id_product Always 0
- * @property {number} id_product_attribute Always 0
- * @property {number} quantity Always 0
- * @property {boolean} success Always 0
- * @property {object} cart cart front object
+ * @property {string|string[]} errors - the errors returned by the server
+ * @property {number} id_customization - always 0
+ * @property {number} id_product - always 0
+ * @property {number} id_product_attribute - always 0
+ * @property {number} quantity - always 0
+ * @property {boolean} success - always 0
+ * @property {object} cart - cart front object
  */
 
 /**
