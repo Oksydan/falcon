@@ -1,3 +1,7 @@
+/**
+ * Submit voucher code from link
+ * @param event {object} - click event
+ */
 const codeLinkSubmitHandler = (event) => {
   event.preventDefault();
 

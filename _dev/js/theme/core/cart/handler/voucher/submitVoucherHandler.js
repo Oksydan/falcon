@@ -1,10 +1,14 @@
-import prestashop from 'prestashop';
 import addVoucherToCartRequest from '../../request/addVoucherToCartRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
 import useAlertToast from '../../../../components/useAlertToast';
 
 const { danger } = useAlertToast();
 
+/**
+ * Submit voucher handler
+ * @param event {object} - submit event
+ * @returns {Promise<void>}
+ */
 const submitVoucherHandler = async (event) => {
   event.preventDefault();
 
@@ -14,14 +18,10 @@ const submitVoucherHandler = async (event) => {
   const voucherName = input?.value || '';
 
   const payload = {
-    addDiscount: 1,
     discount_name: voucherName,
-    action: 'update',
-    token: prestashop.static_token,
-    ajax: 1,
   };
 
-  const { getRequest } = addVoucherToCartRequest(prestashop.urls.pages.cart, payload);
+  const { getRequest } = addVoucherToCartRequest(payload);
 
   btn.disabled = true;
 
@@ -47,7 +47,6 @@ const submitVoucherHandler = async (event) => {
     }
   } catch (error) {
     danger(error.message);
-    console.error(error);
   }
 
   btn.disabled = false;

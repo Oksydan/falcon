@@ -1,24 +1,24 @@
-import prestashop from 'prestashop';
 import useAlertToast from '../../../../components/useAlertToast';
 import deleteVoucherFromCartRequest from '../../request/deleteVoucherFromCartRequest';
 
 const { danger } = useAlertToast();
 
+/**
+ * Delete voucher handler
+ * @param event {object} - click event
+ * @returns {Promise<void>}
+ */
 const deleteVoucherHandler = async (event) => {
   event.preventDefault();
 
   const btn = event.currentTarget;
   const { dataset } = btn;
   const { idDiscount } = dataset;
-  const url = prestashop.urls.pages.cart;
   const payload = {
     deleteDiscount: idDiscount,
-    action: 'update',
-    token: prestashop.static_token,
-    ajax: 1,
   };
 
-  const { getRequest } = deleteVoucherFromCartRequest(url, payload);
+  const { getRequest } = deleteVoucherFromCartRequest(payload);
 
   try {
     const resp = await getRequest();
