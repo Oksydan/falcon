@@ -1,5 +1,5 @@
-import prestashop from "prestashop";
-import useHttpRequest from "../../../components/http/useHttpRequest";
+import prestashop from 'prestashop';
+import useHttpRequest from '../../../components/http/useHttpRequest';
 
 /**
  * @typedef ServerResponse
@@ -42,31 +42,31 @@ import useHttpRequest from "../../../components/http/useHttpRequest";
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const addToCartRequest = (payload) => {
-    const { request } = useHttpRequest(prestashop.urls.pages.cart);
+  const { request } = useHttpRequest(prestashop.urls.pages.cart);
 
-    const payloadToSend = {
-        add: 1,
-        action: 'update',
-        ajax: 1,
-        token: prestashop.static_token,
-        ...payload,
-    };
+  const payloadToSend = {
+    add: 1,
+    action: 'update',
+    ajax: 1,
+    token: prestashop.static_token,
+    ...payload,
+  };
 
-    const getRequest = () => new Promise((resolve, reject) => {
-        request
-            .query(payloadToSend)
-            .post()
-            .json((resp) => {
-                resolve(resp);
-            })
-            .catch(() => {
-                reject(Error(prestashop.t.alert.genericHttpError));
-            });
-    });
+  const getRequest = () => new Promise((resolve, reject) => {
+    request
+      .query(payloadToSend)
+      .post()
+      .json((resp) => {
+        resolve(resp);
+      })
+      .catch(() => {
+        reject(Error(prestashop.t.alert.genericHttpError));
+      });
+  });
 
-    return {
-        getRequest,
-    };
+  return {
+    getRequest,
+  };
 };
 
 export default addToCartRequest;
