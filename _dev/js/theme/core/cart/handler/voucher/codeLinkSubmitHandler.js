@@ -4,14 +4,15 @@ const codeLinkSubmitHandler = (event) => {
   const link = event.currentTarget;
   const input = document.querySelector('[name="discount_name"]');
   const form = document.querySelector('.js-voucher-form');
+  const code = link.dataset?.code;
 
-  if (input && form) {
+  if (input && form && code) {
     const formEvent = new Event('submit', {
       bubbles: true,
       cancelable: true,
     });
 
-    input.value = link.textContent;
+    input.value = code;
     form.dispatchEvent(formEvent);
   }
 };
