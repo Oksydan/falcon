@@ -1,5 +1,4 @@
-import prestashop from 'prestashop';
-import useHttpRequest from '../../../components/http/useHttpRequest';
+import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
 
 /**
  * @typedef ServerResponse
@@ -30,8 +29,6 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const selectDeliveryMethodRequest = (url, payload) => {
-  const { request } = useHttpRequest(url);
-
   // payload not typed because delivery option parameter is dynamic
   const payloadToSend = {
     ajax: 1,
@@ -39,17 +36,7 @@ const selectDeliveryMethodRequest = (url, payload) => {
     ...payload,
   };
 
-  const getRequest = () => new Promise((resolve, reject) => {
-    request
-      .query(payloadToSend)
-      .post()
-      .json((resp) => {
-        resolve(resp);
-      })
-      .catch(() => {
-        reject(Error(prestashop.t.alert.genericHttpError));
-      });
-  });
+  const getRequest = () => useDefaultHttpRequest(url, payloadToSend);
 
   return {
     getRequest,

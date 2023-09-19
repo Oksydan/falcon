@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useHttpRequest from '../../../components/http/useHttpRequest';
+import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
 
 /**
  * @typedef ServerResponse
@@ -14,23 +14,12 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
  */
 const checkCartStillOrderableRequest = () => {
   // payload not typed because it isn't needed
-  const payload = {
+  const payloadToSend = {
     ajax: 1,
     action: 'checkCartStillOrderable',
   };
 
-  const { request } = useHttpRequest(prestashop.urls.pages.order);
-  const getRequest = () => new Promise((resolve, reject) => {
-    request
-      .query(payload)
-      .post()
-      .json((resp) => {
-        resolve(resp);
-      })
-      .catch(() => {
-        reject(Error(prestashop.t.alert.genericHttpError));
-      });
-  });
+  const getRequest = () => useDefaultHttpRequest(prestashop.urls.pages.order, payloadToSend);
 
   return {
     getRequest,

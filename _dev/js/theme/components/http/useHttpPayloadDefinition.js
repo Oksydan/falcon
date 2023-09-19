@@ -1,5 +1,4 @@
 const useHttpPayloadDefinition = (payload, definition) => {
-  const errors = [];
   const ERROR_MESSAGES = {
     REQUIRED: 'field is required',
     TYPE: 'field must be of type',
@@ -31,9 +30,9 @@ const useHttpPayloadDefinition = (payload, definition) => {
     throw new Error('Payload is required');
   }
 
-  const setDefaultDefinitionForField = (definition) => ({
+  const setDefaultDefinitionForField = (customDefinition) => ({
     ...defaultDefinitionForField,
-    ...definition,
+    ...customDefinition,
   });
 
   const payloadDefinition = {};
@@ -44,7 +43,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
     payloadDefinition[fieldName] = setDefaultDefinitionForField(definitionForField);
   });
 
-  const validate = (fieldName, value, definition) => {
+  const validate = (fieldName, value, fieldDefinition) => {
     const validateErrors = [];
     const {
       type,
@@ -54,7 +53,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
       minValue,
       maxValue,
       regex,
-    } = definition;
+    } = fieldDefinition;
 
     if (required && !value) {
       validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.REQUIRED}`);
@@ -118,9 +117,9 @@ const useHttpPayloadDefinition = (payload, definition) => {
     return validateErrors;
   };
 
-  const validateDefinitionForField = (fieldName, definition) => {
+  const validateDefinitionForField = (fieldName, fieldsDefinition) => {
     const definitionErrors = [];
-    const definitionKeys = Object.keys(definition);
+    const definitionKeys = Object.keys(fieldsDefinition);
 
     requiredDefinitionFields.forEach((requiredDefinitionField) => {
       if (!definitionKeys.includes(requiredDefinitionField)) {
@@ -131,13 +130,13 @@ const useHttpPayloadDefinition = (payload, definition) => {
     return definitionErrors;
   };
 
-  const validateDefinition = (definition) => {
+  const validateDefinition = (fieldsDefinition) => {
     const definitionErrors = [];
-    const definitionKeys = Object.keys(definition);
+    const definitionKeys = Object.keys(fieldsDefinition);
 
     definitionKeys.forEach((defName) => {
       const fieldName = defName;
-      const fieldDef = definition[defName];
+      const fieldDef = fieldsDefinition[defName];
       const definitionForFieldErrors = validateDefinitionForField(fieldName, fieldDef);
 
       definitionErrors.push(...definitionForFieldErrors);
