@@ -1,7 +1,7 @@
 /**
  * Debounce function
  * @param func {function} - function to debounce
- * @param timeout {number} - timeout in ms (default: 300)
+ * @param timeout {int} - timeout in ms (default: 300)
  * @returns {(function(...[*]): void)|*}
  */
 const debounce = (func, timeout = 300) => {

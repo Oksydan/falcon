@@ -4,8 +4,8 @@ import prestashop from 'prestashop';
 /**
  * Verify password score.
  * Estimate guesses needed to crack the password.
- * @param {String} password
- * @returns {Promise}
+ * @param {string} password
+ * @returns {promise}
  */
 window.prestashop.checkPasswordScore = async (password) => {
   const zxcvbn = (await import('zxcvbn')).default;

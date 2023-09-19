@@ -11,7 +11,7 @@ import useDefaultHttpRequest from '../../../components/http/useDefaultHttpReques
  * @param url {string} - checkout url to send request
  * @param payload {object} - request payload
  * @param payload.delivery_option[id] {string} - delivery option id with id_address_delivery
- * @param payload.ajax {number} - optional
+ * @param payload.ajax {int} - optional
  * @param payload.action {string} - optional
  * @example
  * const payload = {

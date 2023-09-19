@@ -6,10 +6,10 @@ import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDef
  * @typedef ServerResponse
  * @type {object}
  * @property {string|string[]} errors - the errors returned by the server
- * @property {number} id_customization - always 0
- * @property {number} id_product - always 0
- * @property {number} id_product_attribute - always 0
- * @property {number} quantity - always 0
+ * @property {int} id_customization - always 0
+ * @property {int} id_product - always 0
+ * @property {int} id_product_attribute - always 0
+ * @property {int} quantity - always 0
  * @property {boolean} success - success flag
  * @property {object} cart - cart front object
  */
@@ -17,10 +17,10 @@ import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDef
 /**
  * Add voucher to cart request
  * @param payload {Object} - payload object to send
- * @param payload.deleteDiscount {number} - discount code id - Required
+ * @param payload.deleteDiscount {int} - discount code id - Required
  * @param payload.action {string} - optional
  * @param payload.token {string} - optional
- * @param payload.ajax {number} - optional
+ * @param payload.ajax {int} - optional
  * @example
  *  const payload = {
  *    deleteDiscount: 2, // required

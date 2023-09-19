@@ -6,10 +6,10 @@ import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDef
  * @typedef ServerResponse
  * @type {object}
  * @property {string|string[]} errors - the errors returned by the server
- * @property {number} id_product - product id
- * @property {number} id_product_attribute - product attribute id
- * @property {number} id_customization - product customization id
- * @property {number} quantity - product quantity
+ * @property {int} id_product - product id
+ * @property {int} id_product_attribute - product attribute id
+ * @property {int} id_customization - product customization id
+ * @property {int} quantity - product quantity
  * @property {boolean} success - success flag
  * @property {object} cart - cart front object
  */
@@ -17,14 +17,14 @@ import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDef
 /**
  * Add voucher to cart request
  * @param payload {Object} - payload object to send
- * @param payload.id_product {number} - product id - Required
- * @param payload.qty {number} - product quantity - Required
- * @param payload.id_product_attribute {number} - product id attribute - optional pass 0 if not set
- * @param payload.id_customization {number} - customization id - optional pass 0 if not set
- * @param payload.add {number} - optional
+ * @param payload.id_product {int} - product id - Required
+ * @param payload.qty {int} - product quantity - Required
+ * @param payload.id_product_attribute {int} - product id attribute - optional pass 0 if not set
+ * @param payload.id_customization {int} - customization id - optional pass 0 if not set
+ * @param payload.add {int} - optional
  * @param payload.action {string} - optional
  * @param payload.token {string} - optional
- * @param payload.ajax {number} - optional
+ * @param payload.ajax {int} - optional
  * @example
  *  const payload = {
  *    id_product: 1, // Required

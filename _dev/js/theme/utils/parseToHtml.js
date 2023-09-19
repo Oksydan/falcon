@@ -1,6 +1,6 @@
 /**
  * Convert a template string into HTML DOM nodes
- * @param  str {String} - string representation of the HTML
+ * @param  str {string} - string representation of the HTML
  * @return {HTMLElement} - HTML element from the string
  */
 const parseToHtml = (str) => {

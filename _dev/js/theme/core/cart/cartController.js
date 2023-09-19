@@ -4,6 +4,7 @@ import submitVoucherHandler from './handler/voucher/submitVoucherHandler';
 import codeLinkSubmitHandler from './handler/voucher/codeLinkSubmitHandler';
 import deleteVoucherHandler from './handler/voucher/deleteVoucherHandler';
 import addToCartHandler from './handler/cart/addToCartHandler';
+import deleteFromCartHandler from './handler/cart/deleteFromCartHandler';
 
 const { on } = useEvent();
 
@@ -22,6 +23,7 @@ const cartController = () => {
     on(document, 'click', discountCode, codeLinkSubmitHandler);
     on(document, 'click', '.js-voucher-delete', deleteVoucherHandler);
     on(document, 'click', '[data-button-action="add-to-cart"]', addToCartHandler);
+    on(document, 'click', '.js-remove-from-cart', deleteFromCartHandler);
   };
 
   return {
