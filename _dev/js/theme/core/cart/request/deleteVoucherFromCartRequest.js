@@ -1,5 +1,7 @@
 import prestashop from 'prestashop';
 import useHttpRequest from '../../../components/http/useHttpRequest';
+import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
+import useHttpPayloadDefinition from "../../../components/http/useHttpPayloadDefinition";
 
 /**
  * @typedef ServerResponse
@@ -35,8 +37,6 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const deleteVoucherFromCartRequest = (payload) => {
-  const { request } = useHttpRequest(prestashop.urls.pages.cart);
-
   const payloadToSend = {
     action: 'update',
     token: prestashop.static_token,
@@ -44,17 +44,34 @@ const deleteVoucherFromCartRequest = (payload) => {
     ...payload,
   };
 
-  const getRequest = () => new Promise((resolve, reject) => {
-    request
-      .query(payloadToSend)
-      .post()
-      .json((resp) => {
-        resolve(resp);
-      })
-      .catch(() => {
-        reject(Error(prestashop.t.alert.genericHttpError));
-      });
-  });
+  const payloadDefinition = {
+    deleteDiscount: {
+      type: 'int',
+      required: true,
+    },
+    action: {
+      type: 'string',
+      required: true,
+    },
+    token: {
+      type: 'string',
+      required: true,
+    },
+    ajax: {
+      type: 'int',
+      required: true,
+    },
+  };
+
+  const { validatePayload } = useHttpPayloadDefinition(payloadToSend, payloadDefinition);
+
+  const validationErrors = validatePayload();
+
+  if (validationErrors.length) {
+    throw Error(validationErrors.join(',\n'));
+  }
+
+  const getRequest = () => useDefaultHttpRequest(prestashop.urls.pages.cart, payloadToSend);
 
   return {
     getRequest,

@@ -15,8 +15,6 @@ const addToCartHandler = async (event) => {
   const form = event.currentTarget?.form;
   const addToCartButton = event.currentTarget;
 
-  addToCartButton.setAttribute('disabled', true);
-
   const isQuantityInputValid = (input) => {
     let validInput = true;
 
@@ -29,9 +27,9 @@ const addToCartHandler = async (event) => {
     return validInput;
   };
 
-  const idProduct = form.querySelector('[name=id_product]').value;
+  const idProduct = Number.parseInt(form.querySelector('[name=id_product]').value, 10);
   const quantityInput = form.querySelector('[name=qty]');
-  const qty = quantityInput?.value || 0;
+  const qty = Number.parseInt(quantityInput?.value, 10) || 0;
   const idProductAttribute = form.querySelector('[name=id_product_attribute]')?.value || 0;
   const idCustomization = form.querySelector('[name=id_customization]')?.value || 0;
 
@@ -54,6 +52,8 @@ const addToCartHandler = async (event) => {
   };
 
   const { getRequest } = addToCartRequest(payload);
+
+  addToCartButton.setAttribute('disabled', true);
 
   try {
     const resp = await getRequest();

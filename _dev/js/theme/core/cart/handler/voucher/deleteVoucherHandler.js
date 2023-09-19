@@ -15,7 +15,7 @@ const deleteVoucherHandler = async (event) => {
   const { dataset } = btn;
   const { idDiscount } = dataset;
   const payload = {
-    deleteDiscount: idDiscount,
+    deleteDiscount: Number.parseInt(idDiscount, 10),
   };
 
   const { getRequest } = deleteVoucherFromCartRequest(payload);
