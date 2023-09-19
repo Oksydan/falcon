@@ -32,6 +32,7 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
 const selectDeliveryMethodRequest = (url, payload) => {
   const { request } = useHttpRequest(url);
 
+  // payload not typed because delivery option parameter is dynamic
   const payloadToSend = {
     ajax: 1,
     action: 'selectDeliveryOption',

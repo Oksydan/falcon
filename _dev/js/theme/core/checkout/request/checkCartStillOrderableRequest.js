@@ -13,6 +13,7 @@ import useHttpRequest from '../../../components/http/useHttpRequest';
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const checkCartStillOrderableRequest = () => {
+  // payload not typed because it isn't needed
   const payload = {
     ajax: 1,
     action: 'checkCartStillOrderable',
