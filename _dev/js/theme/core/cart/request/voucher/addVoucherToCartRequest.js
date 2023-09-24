@@ -1,15 +1,15 @@
 import prestashop from 'prestashop';
-import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
-import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDefinition';
+import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpRequest';
+import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
 
 /**
  * @typedef ServerResponse
  * @type {object}
  * @property {string|string[]} errors - the errors returned by the server
- * @property {int} id_product - product id
- * @property {int} id_product_attribute - product attribute id
- * @property {int} id_customization - product customization id
- * @property {int} quantity - product quantity
+ * @property {int} id_customization - always 0
+ * @property {int} id_product - always 0
+ * @property {int} id_product_attribute - always 0
+ * @property {int} quantity - always 0
  * @property {boolean} success - success flag
  * @property {object} cart - cart front object
  */
@@ -17,23 +17,17 @@ import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDef
 /**
  * Add voucher to cart request
  * @param payload {Object} - payload object to send
- * @param payload.id_product {int} - product id - Required
- * @param payload.qty {int} - product quantity - Required
- * @param payload.id_product_attribute {int} - product id attribute - optional pass 0 if not set
- * @param payload.id_customization {int} - customization id - optional pass 0 if not set
- * @param payload.add {int} - optional
+ * @param payload.discount_name {string} - discount code - Required
+ * @param payload.addDiscount {int} - optional
  * @param payload.action {string} - optional
  * @param payload.token {string} - optional
  * @param payload.ajax {int} - optional
  * @example
  *  const payload = {
- *    id_product: 1, // Required
- *    qty: 1, // Required
- *    id_product_attribute: 2, // optional
- *    id_customization: 3, // optional
+ *    discount_name: 'voucherName', // Required
  *  };
  *
- *  const { getRequest } = addToCartRequest(payload);
+ *  const { getRequest } = addVoucherToCartRequest(payload);
  *
  *  try {
  *    const resp = await getRequest();
@@ -42,33 +36,17 @@ import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDef
  *  }
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
-const addToCartRequest = (payload) => {
+const addVoucherToCartRequest = (payload) => {
   const payloadToSend = {
-    add: 1,
+    addDiscount: 1,
     action: 'update',
-    ajax: 1,
     token: prestashop.static_token,
+    ajax: 1,
     ...payload,
   };
 
   const payloadDefinition = {
-    id_product: {
-      type: 'int',
-      required: true,
-    },
-    qty: {
-      type: 'int',
-      required: true,
-    },
-    id_product_attribute: {
-      type: 'int',
-      required: false,
-    },
-    id_customization: {
-      type: 'int',
-      required: false,
-    },
-    add: {
+    addDiscount: {
       type: 'int',
       required: true,
     },
@@ -76,11 +54,15 @@ const addToCartRequest = (payload) => {
       type: 'string',
       required: true,
     },
+    token: {
+      type: 'string',
+      required: true,
+    },
     ajax: {
       type: 'int',
       required: true,
     },
-    token: {
+    discount_name: {
       type: 'string',
       required: true,
     },
@@ -101,4 +83,4 @@ const addToCartRequest = (payload) => {
   };
 };
 
-export default addToCartRequest;
+export default addVoucherToCartRequest;

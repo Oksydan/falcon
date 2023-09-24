@@ -1,3 +1,17 @@
+/**
+ * Custom quantity input
+ * @module useCustomQuantityInput
+ * @param {HTMLElement} spinnerElement - spinner element to initialize (required)
+ * @param {object} configuration - configuration object (optional)
+ * @param {string} configuration.spinnerInitializedClass - class to add when spinner is initialized (default: js-custom-qty-spinner-initialized)
+ * @param {string} configuration.spinnerInputClass - class of the input element (default: js-custom-qty-spinner-input)
+ * @param {string} configuration.spinnerBtnClassUp - class of the up button (default: js-custom-qty-btn-up)
+ * @param {string} configuration.spinnerBtnClassDown - class of the down button (default: js-custom-qty-btn-down)
+ * @param {int} configuration.defaultMinQty - default minimum quantity (default: 1)
+ * @param {int} configuration.defaultMaxQty - default maximum quantity (default: 1000000)
+ * @param {int} configuration.timeout - timeout in ms to wait before dispatching change event (default: 500)
+ * @param {function} configuration.onQuantityChange - callback function to call when quantity changes
+ */
 const useCustomQuantityInput = (spinnerElement, {
   spinnerInitializedClass = 'js-custom-qty-spinner-initialized',
   spinnerInputClass = 'js-custom-qty-spinner-input',
@@ -8,13 +22,52 @@ const useCustomQuantityInput = (spinnerElement, {
   timeout = 500,
   onQuantityChange = () => {},
 }) => {
+  /**
+   * Timeout id
+   * @private
+   * @type {int|null}
+   */
   let timeoutId = null;
+  /**
+   * Start value
+   * @private
+   * @type {int|null}
+   */
   let startValue = null;
+  /**
+   * Minimum quantity
+   * @private
+   * @type {int|null}
+   */
   let minQty = null;
+
+  /**
+   * Maximum quantity
+   * @private
+   * @type {int|null}
+   */
   let maxQty = null;
+
+  /**
+   * Current quantity
+   * @private
+   * @type {int|null}
+   */
   let currentQty = null;
+
+  /**
+   * DOM elements
+   * @private
+   * @type {Object|null}
+   */
   let DOMElements = null;
 
+  /**
+   * Set DOM elements
+   * @method setDOMElements
+   * @private
+   * @returns {{input: HTMLElement | undefined, btnUp: HTMLElement | undefined, btnDown: HTMLElement | undefined}}
+   */
   const setDOMElements = () => {
     const elements = {
       input: spinnerElement?.querySelector(`.${spinnerInputClass}`),
@@ -27,12 +80,30 @@ const useCustomQuantityInput = (spinnerElement, {
     return elements;
   };
 
+  /**
+   * Get DOM elements
+   * @method getDOMElements
+   * @public
+   * @returns {{input: (HTMLElement|undefined), btnUp: (HTMLElement|undefined), btnDown: (HTMLElement|undefined)}}
+   */
   const getDOMElements = () => (DOMElements || setDOMElements());
 
+  /**
+   * Reset DOM elements
+   * @method resetDomElements
+   * @private
+   * @returns {void}
+   */
   const resetDomElements = () => {
     DOMElements = null;
   };
 
+  /**
+   * Set initial value
+   * @method setInitialValue
+   * @private
+   * @returns {void}
+   */
   const setInitialValue = () => {
     const { input } = getDOMElements();
     startValue = input.value ? parseInt(input.value, 10) : defaultMinQty;
@@ -41,8 +112,20 @@ const useCustomQuantityInput = (spinnerElement, {
     maxQty = input.getAttribute('max') ? parseInt(input.getAttribute('max'), 10) : defaultMaxQty;
   };
 
+  /**
+   * Should dispatch change event
+   * @method shouldDispatchChange
+   * @private
+   * @returns {boolean}
+   */
   const shouldDispatchChange = () => currentQty !== startValue;
 
+  /**
+   * Get operation type
+   * @method getOperationType
+   * @private
+   * @returns {string} increase|decrease
+   */
   const getOperationType = () => {
     if (currentQty > startValue) {
       return 'increase';
@@ -51,8 +134,20 @@ const useCustomQuantityInput = (spinnerElement, {
     return 'decrease';
   };
 
+  /**
+   * Get quantity difference
+   * @method getQtyDifference
+   * @private
+   * @returns {int}
+   */
   const getQtyDifference = () => Math.abs(currentQty - startValue);
 
+  /**
+   * Dispatch change event
+   * @method dispatchChange
+   * @private
+   * @returns {void}
+   */
   const dispatchChange = () => {
     clearTimeout(timeoutId);
 
@@ -72,6 +167,13 @@ const useCustomQuantityInput = (spinnerElement, {
     }, timeout);
   };
 
+  /**
+   * Set quantity
+   * @param {int} qty - quantity to set
+   * @method setQty
+   * @private
+   * @returns {void}
+   */
   const setQty = (qty) => {
     const { input } = getDOMElements();
 
@@ -81,8 +183,15 @@ const useCustomQuantityInput = (spinnerElement, {
     dispatchChange();
   };
 
-  const handleClickUp = (e) => {
-    e.preventDefault();
+  /**
+   * Handle click up
+   * @param {Event} event - event object
+   * @method handleClickUp
+   * @private
+   * @returns {void}
+   */
+  const handleClickUp = (event) => {
+    event.preventDefault();
 
     let newQty = parseInt(currentQty, 10) + 1;
 
@@ -93,8 +202,15 @@ const useCustomQuantityInput = (spinnerElement, {
     setQty(newQty);
   };
 
-  const handleClickDown = (e) => {
-    e.preventDefault();
+  /**
+   * Handle click down
+   * @param {Event} event - event object
+   * @method handleClickDown
+   * @private
+   * @returns {void}
+   */
+  const handleClickDown = (event) => {
+    event.preventDefault();
 
     let newQty = parseInt(currentQty, 10) - 1;
 
@@ -105,6 +221,12 @@ const useCustomQuantityInput = (spinnerElement, {
     setQty(newQty);
   };
 
+  /**
+   * Handle input change
+   * @method handleInputChange
+   * @private
+   * @returns {void}
+   */
   const handleInputChange = () => {
     const { input } = getDOMElements();
     let newQty = parseInt(input.value, 10);
@@ -120,14 +242,32 @@ const useCustomQuantityInput = (spinnerElement, {
     setQty(newQty);
   };
 
+  /**
+   * Add initialized class
+   * @method setInitializedClass
+   * @private
+   * @returns {void}
+   */
   const setInitializedClass = () => {
     spinnerElement?.classList.add(spinnerInitializedClass);
   };
 
+  /**
+   * Remove initialized class
+   * @method removeInitializedClass
+   * @private
+   * @returns {void}
+   */
   const removeInitializedClass = () => {
     spinnerElement?.classList.remove(spinnerInitializedClass);
   };
 
+  /**
+   * Detach events from DOM elements
+   * @method detachEvents
+   * @private
+   * @returns {void}
+   */
   const detachEvents = () => {
     const { input, btnUp, btnDown } = getDOMElements();
 
@@ -139,6 +279,12 @@ const useCustomQuantityInput = (spinnerElement, {
     input?.removeEventListener('blur', handleInputChange);
   };
 
+  /**
+   * Attach events to DOM elements
+   * @method attachEvents
+   * @private
+   * @returns {void}
+   */
   const attachEvents = () => {
     const { input, btnUp, btnDown } = getDOMElements();
 
@@ -150,11 +296,23 @@ const useCustomQuantityInput = (spinnerElement, {
     input?.addEventListener('blur', handleInputChange);
   };
 
+  /**
+   * Destroy spinner instance and detach events
+   * @method destroy
+   * @static
+   * @returns {void}
+   */
   const destroy = () => {
     detachEvents();
     resetDomElements();
   };
 
+  /**
+   * Initialize spinner instance and attach events
+   * @method init
+   * @static
+   * @returns {void}
+   */
   const init = () => {
     destroy();
     setInitialValue();

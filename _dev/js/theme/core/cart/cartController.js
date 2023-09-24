@@ -5,6 +5,8 @@ import codeLinkSubmitHandler from './handler/voucher/codeLinkSubmitHandler';
 import deleteVoucherHandler from './handler/voucher/deleteVoucherHandler';
 import addToCartHandler from './handler/cart/addToCartHandler';
 import deleteFromCartHandler from './handler/cart/deleteFromCartHandler';
+import quantityChangeHandler from './handler/cart/quantityChangeHandler';
+import useCustomQuantityInput from '../../components/useCustomQuantityInput';
 
 const { on } = useEvent();
 
@@ -14,6 +16,22 @@ const { on } = useEvent();
  * @returns {function} return.init initialize cart controller
  */
 const cartController = () => {
+  const attachSpinnerEvents = () => {
+    const spinners = document.querySelectorAll('.js-custom-cart-qty-spinner');
+
+    spinners.forEach((spinner) => {
+      const { init, getDOMElements } = useCustomQuantityInput(spinner, {
+        onQuantityChange: ({ operation, qtyDifference }) => {
+          const { input } = getDOMElements();
+
+          quantityChangeHandler(operation, qtyDifference, input);
+        },
+      });
+
+      init();
+    });
+  };
+
   const init = () => {
     const {
       discountCode,
@@ -24,6 +42,12 @@ const cartController = () => {
     on(document, 'click', '.js-voucher-delete', deleteVoucherHandler);
     on(document, 'click', '[data-button-action="add-to-cart"]', addToCartHandler);
     on(document, 'click', '.js-remove-from-cart', deleteFromCartHandler);
+
+    attachSpinnerEvents();
+
+    prestashop.on('updatedCart', () => {
+      attachSpinnerEvents();
+    });
   };
 
   return {

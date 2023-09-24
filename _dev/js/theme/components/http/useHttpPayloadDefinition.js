@@ -43,6 +43,8 @@ const useHttpPayloadDefinition = (payload, definition) => {
     payloadDefinition[fieldName] = setDefaultDefinitionForField(definitionForField);
   });
 
+  const getValueType = (value) => typeof value;
+
   const validate = (fieldName, value, fieldDefinition) => {
     const validateErrors = [];
     const {
@@ -62,32 +64,32 @@ const useHttpPayloadDefinition = (payload, definition) => {
     switch (type) {
       case 'string':
         if (typeof value !== 'string') {
-          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} string`);
+          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} string, ${getValueType(value)} received`);
         }
         break;
       case 'float':
         if (typeof value !== 'number') {
-          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} float`);
+          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} float, ${getValueType(value)} received`);
         }
         break;
       case 'int':
         if (typeof value !== 'number') {
-          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} int`);
+          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} int, ${getValueType(value)} received`);
         }
         break;
       case 'boolean':
         if (typeof value !== 'boolean') {
-          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} boolean`);
+          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} boolean, ${getValueType(value)} received`);
         }
         break;
       case 'object':
         if (typeof value !== 'object') {
-          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} object`);
+          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} object, ${getValueType(value)} received`);
         }
         break;
       case 'array':
         if (!Array.isArray(value)) {
-          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} array`);
+          validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.TYPE} array, ${getValueType(value)} received`);
         }
         break;
       default:

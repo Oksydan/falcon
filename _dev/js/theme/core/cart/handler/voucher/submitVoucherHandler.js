@@ -1,4 +1,4 @@
-import addVoucherToCartRequest from '../../request/addVoucherToCartRequest';
+import addVoucherToCartRequest from '../../request/voucher/addVoucherToCartRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
 import useAlertToast from '../../../../components/useAlertToast';
 

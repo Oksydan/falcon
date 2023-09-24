@@ -1,5 +1,5 @@
 import useAlertToast from '../../../../components/useAlertToast';
-import deleteVoucherFromCartRequest from '../../request/deleteVoucherFromCartRequest';
+import deleteVoucherFromCartRequest from '../../request/voucher/deleteVoucherFromCartRequest';
 
 const { danger } = useAlertToast();
 
