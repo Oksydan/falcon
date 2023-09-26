@@ -6,6 +6,8 @@ import deleteVoucherHandler from './handler/voucher/deleteVoucherHandler';
 import addToCartHandler from './handler/cart/addToCartHandler';
 import deleteFromCartHandler from './handler/cart/deleteFromCartHandler';
 import quantityChangeHandler from './handler/cart/quantityChangeHandler';
+import updateCartHandler from './handler/cart/updateCartHandler';
+import updatedCartHandler from './handler/cart/updatedCartHandler';
 import useCustomQuantityInput from '../../components/useCustomQuantityInput';
 
 const { on } = useEvent();
@@ -45,8 +47,13 @@ const cartController = () => {
 
     attachSpinnerEvents();
 
-    prestashop.on('updatedCart', () => {
+    prestashop.on('updatedCart', (event) => {
       attachSpinnerEvents();
+      updatedCartHandler(event);
+    });
+
+    prestashop.on('updateCart', (event) => {
+      updateCartHandler(event);
     });
   };
 

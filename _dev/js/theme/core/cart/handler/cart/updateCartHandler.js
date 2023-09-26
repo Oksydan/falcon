@@ -1,20 +1,11 @@
-import useAlertToast from '@js/theme/components/useAlertToast';
-import parseToHtml from '@js/theme/utils/parseToHtml';
 import prestashop from 'prestashop';
+import parseToHtml from '../../../../utils/parseToHtml';
+import useAlertToast from '../../../../components/useAlertToast';
 
 const { danger } = useAlertToast();
 
-const handleUpdatedEvent = () => {
-  document.querySelector('body').classList.remove('cart-loading');
-};
-
-const handleUpdateEvent = async (event) => {
+const updateCartHandler = async (event) => {
   prestashop.cart = event.resp.cart;
-
-  const quickViewModal = document.querySelector(prestashop.selectors.cart.quickview);
-
-  // TO DO REMOVE JQUERY
-  $(quickViewModal).modal('hide');
   document.querySelector('body').classList.add('cart-loading');
 
   try {
@@ -45,9 +36,4 @@ const handleUpdateEvent = async (event) => {
   }
 };
 
-const updateCart = () => {
-  prestashop.on('updateCart', handleUpdateEvent);
-  prestashop.on('updatedCart', handleUpdatedEvent);
-};
-
-export default updateCart;
+export default updateCartHandler;
