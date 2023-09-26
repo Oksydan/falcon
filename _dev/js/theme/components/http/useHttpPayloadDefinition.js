@@ -69,7 +69,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
    * @param {string} fieldName - name of field
    * @param {any} value - value of field
    * @param {object} fieldDefinition - definition for field
-   * @returns {*[]}
+   * @returns {string[]}
    */
   const validate = (fieldName, value, fieldDefinition) => {
     const validateErrors = [];
@@ -150,7 +150,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
    * Validates definition for field and returns errors
    * @param fieldName
    * @param fieldsDefinition
-   * @returns {*[]}
+   * @returns {string[]}
    */
   const validateDefinitionForField = (fieldName, fieldsDefinition) => {
     const definitionErrors = [];
@@ -169,7 +169,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
    * @method
    * Validates definition and returns errors
    * @param fieldsDefinition
-   * @returns {*[]}
+   * @returns {string[]}
    */
   const validateDefinition = (fieldsDefinition) => {
     const definitionErrors = [];
@@ -189,7 +189,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
   /**
    * @method
    * Validates payload against definition and returns errors
-   * @returns {*[]}
+   * @returns {string[]}
    */
   const validatePayload = () => {
     const payloadErrors = [];

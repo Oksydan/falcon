@@ -14,7 +14,7 @@ const { dispatch, abortAll } = useHttpController();
  * @property {int} pagination.items_shown_from - pagination items shown from
  * @property {int} pagination.items_shown_to - pagination items shown to
  * @property {array} pagination.pages - pagination pages array
- * @property {array[object]} products - array of front representations of products
+ * @property {object[]} products - array of front representations of products
  * @property {string} rendered_active_filters - active filters html content
  * @property {string} rendered_facets - facets html content
  * @property {string} rendered_products - listing products html content
@@ -22,7 +22,7 @@ const { dispatch, abortAll } = useHttpController();
  * @property {string} rendered_products_header - listing products header html content
  * @property {string} rendered_products_top - listing products top html content
  * @property {object} result - result empty object
- * @property {array[object]} sort_orders - available sort orders
+ * @property {object[]} sort_orders - available sort orders
  * @property {string} sort_selected - selected sort order
  */
 
