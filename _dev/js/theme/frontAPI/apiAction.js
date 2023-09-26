@@ -1,5 +1,4 @@
 import updateProductAction from '@js/theme/frontAPI/product/updateProductAction';
-import updateAddressAction from '@js/theme/frontAPI/address/updateAddressAction';
 
 prestashop.frontAPI = {};
 
@@ -12,4 +11,3 @@ prestashop.addAction = (actionName, actionFunction) => {
 };
 
 prestashop.addAction('updateProduct', updateProductAction);
-prestashop.addAction('updateAddress', updateAddressAction);

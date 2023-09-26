@@ -1,12 +1,15 @@
 import prestashop from 'prestashop';
-import parseToHtml from '@js/theme/utils/parseToHtml';
-import useAlertToast from '@js/theme/components/useAlertToast';
-import useEvent from '@js/theme/components/event/useEvent';
+import useAlertToast from '../../../components/useAlertToast';
+import parseToHtml from '../../../utils/parseToHtml';
+import updateAddressRequest from '../request/updateAddressRequest';
 
 const { danger } = useAlertToast();
-const { on } = useEvent();
 
-const handleAddressChange = async () => {
+/**
+ * Change address country handler
+ * @returns {Promise<void>}
+ */
+const changeAddressCountryHandler = async () => {
   const DOMSelectors = {
     addressFormWrapperSelector: '.js-address-form',
     countrySelectSelector: '.js-country',
@@ -29,11 +32,18 @@ const handleAddressChange = async () => {
     formInputs,
   } = getDOMAddressElements();
   const url = addressForm.dataset?.refreshUrl;
-  const idCountry = countrySelect.value;
-  const idAddress = addressForm.dataset?.idAddress;
+  const idCountry = Number.parseInt(countrySelect.value, 10);
+  const idAddress = Number.parseInt(addressForm.dataset?.idAddress, 10);
+
+  const payload = {
+    id_address: idAddress,
+    id_country: idCountry,
+  };
+
+  const { getRequest } = updateAddressRequest(url, payload);
 
   try {
-    const data = await prestashop.frontAPI.updateAddress(url, idAddress, idCountry);
+    const data = await getRequest();
 
     const inputsValue = [];
 
@@ -70,8 +80,4 @@ const handleAddressChange = async () => {
   }
 };
 
-const countryAddressChange = () => {
-  on(document, 'change', '.js-country', handleAddressChange);
-};
-
-export default countryAddressChange;
+export default changeAddressCountryHandler;
