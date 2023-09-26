@@ -1,5 +1,5 @@
-import useDefaultHttpRequest from "../../../../components/http/useDefaultHttpRequest";
-import prestashop from "prestashop";
+import prestashop from 'prestashop';
+import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpRequest';
 /**
  * @typedef ServerResponse
  * @type {object}
@@ -27,16 +27,16 @@ import prestashop from "prestashop";
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const updateCartContentRequest = () => {
-    const payloadToSend = {
-        action: 'refresh',
-        ajax: 1,
-    };
+  const payloadToSend = {
+    action: 'refresh',
+    ajax: 1,
+  };
 
-    const getRequest = () => useDefaultHttpRequest(prestashop.urls.pages.cart, payloadToSend);
+  const getRequest = () => useDefaultHttpRequest(prestashop.urls.pages.cart, payloadToSend);
 
-    return {
-        getRequest,
-    }
-}
+  return {
+    getRequest,
+  };
+};
 
 export default updateCartContentRequest;
