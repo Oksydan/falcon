@@ -15,7 +15,7 @@ import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpReq
  */
 
 /**
- * Add voucher to cart request
+ * Update cart content request
  * @example
  *  const { getRequest } = updateCartContentRequest();
  *
