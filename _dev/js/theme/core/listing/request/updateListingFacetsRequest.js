@@ -10,9 +10,9 @@ const { dispatch, abortAll } = useHttpController();
  * @property {boolean} js_enabled - is js enabled
  * @property {string} label - listing label
  * @property {object} pagination - pagination object
- * @property {int} pagination.current_page - pagination current page
- * @property {int} pagination.items_shown_from - pagination items shown from
- * @property {int} pagination.items_shown_to - pagination items shown to
+ * @property {number} pagination.current_page - pagination current page
+ * @property {number} pagination.items_shown_from - pagination items shown from
+ * @property {number} pagination.items_shown_to - pagination items shown to
  * @property {array} pagination.pages - pagination pages array
  * @property {object[]} products - array of front representations of products
  * @property {string} rendered_active_filters - active filters html content

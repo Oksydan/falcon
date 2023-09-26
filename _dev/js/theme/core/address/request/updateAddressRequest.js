@@ -14,8 +14,8 @@ const { dispatch, abortAll } = useHttpController();
  * Update listing facets request
  * @param url {string} - new url with from-xhr param
  * @param payload {object} - payload for request
- * @param payload.id_country {int} - country id
- * @param payload.id_address {int} - address id
+ * @param payload.id_country {number} - country id
+ * @param payload.id_address {number} - address id
  * @example
  *  const url = 'address-form.com/url'; // url to update address form
  *  const payload = {

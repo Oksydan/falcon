@@ -7,9 +7,9 @@
  * @param {string} configuration.spinnerInputClass - class of the input element (default: js-custom-qty-spinner-input)
  * @param {string} configuration.spinnerBtnClassUp - class of the up button (default: js-custom-qty-btn-up)
  * @param {string} configuration.spinnerBtnClassDown - class of the down button (default: js-custom-qty-btn-down)
- * @param {int} configuration.defaultMinQty - default minimum quantity (default: 1)
- * @param {int} configuration.defaultMaxQty - default maximum quantity (default: 1000000)
- * @param {int} configuration.timeout - timeout in ms to wait before dispatching change event (default: 500)
+ * @param {number} configuration.defaultMinQty - default minimum quantity (default: 1)
+ * @param {number} configuration.defaultMaxQty - default maximum quantity (default: 1000000)
+ * @param {number} configuration.timeout - timeout in ms to wait before dispatching change event (default: 500)
  * @param {function} configuration.onQuantityChange - callback function to call when quantity changes
  */
 const useCustomQuantityInput = (spinnerElement, {
@@ -138,7 +138,7 @@ const useCustomQuantityInput = (spinnerElement, {
    * Get quantity difference
    * @method getQtyDifference
    * @private
-   * @returns {int}
+   * @returns {number}
    */
   const getQtyDifference = () => Math.abs(currentQty - startValue);
 
@@ -169,7 +169,7 @@ const useCustomQuantityInput = (spinnerElement, {
 
   /**
    * Set quantity
-   * @param {int} qty - quantity to set
+   * @param {number} qty - quantity to set
    * @method setQty
    * @private
    * @returns {void}

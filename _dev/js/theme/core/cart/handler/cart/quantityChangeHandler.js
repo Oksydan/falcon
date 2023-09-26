@@ -6,7 +6,7 @@ const { danger } = useAlertToast();
 
 /**
  * @param {string} operation - increase|decrease
- * @param {int} qtyDifference - quantity difference
+ * @param {number} qtyDifference - quantity difference
  * @param {HTMLElement} input - input element
  * @returns {Promise<void>}
  */

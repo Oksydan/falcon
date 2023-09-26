@@ -1,4 +1,4 @@
-import getUniqueId from '@js/theme/utils/getUniqueId';
+import getUniqueId from '../../utils/getUniqueId';
 
 /**
  * @module useHttpController
@@ -10,7 +10,7 @@ const useHttpController = () => {
   /**
    * @method
    * Adds request to request stack
-   * @param {int} id - unique id of request
+   * @param {number} id - unique id of request
    * @param {Promise} request - request promise
    * @param {AbortController} controller - AbortController object
    */
@@ -24,7 +24,7 @@ const useHttpController = () => {
   /**
    * @method
    * Removes request from request stack
-   * @param {int} id - unique id of request
+   * @param {number} id - unique id of request
    */
   const removeRequestFromRequestStack = (id) => {
     const { [id]: erasedId, ...newRequestStack } = requestsStack;

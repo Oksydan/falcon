@@ -6,7 +6,7 @@ const { danger } = useAlertToast();
 
 /**
  * Handle add to cart event on form submit
- * @param event {object} - submit event
+ * @param event {Event} - submit event
  * @returns {Promise<void>}
  */
 const addToCartHandler = async (event) => {

@@ -3,7 +3,7 @@ import { each } from '../../../utils/DOMHelpers';
 /**
  * Change the color of the edit button for the wrong address
  * @param {boolean} enabled - true if button should be dangered or false otherwise
- * @param {int} id - address id
+ * @param {number} id - address id
  * @param {string} type - address type (delivery or invoice)
  */
 const switchEditAddressButtonColor = (

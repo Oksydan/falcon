@@ -6,10 +6,10 @@ import useHttpPayloadDefinition from '../../../../components/http/useHttpPayload
  * @typedef ServerResponse
  * @type {object}
  * @property {string|string[]} errors - the errors returned by the server
- * @property {int} id_customization - always 0
- * @property {int} id_product - always 0
- * @property {int} id_product_attribute - always 0
- * @property {int} quantity - always 0
+ * @property {number} id_customization - always 0
+ * @property {number} id_product - always 0
+ * @property {number} id_product_attribute - always 0
+ * @property {number} quantity - always 0
  * @property {boolean} success - success flag
  * @property {object} cart - cart front object
  */
@@ -18,10 +18,10 @@ import useHttpPayloadDefinition from '../../../../components/http/useHttpPayload
  * Add voucher to cart request
  * @param payload {Object} - payload object to send
  * @param payload.discount_name {string} - discount code - Required
- * @param payload.addDiscount {int} - optional
+ * @param payload.addDiscount {number} - optional
  * @param payload.action {string} - optional
  * @param payload.token {string} - optional
- * @param payload.ajax {int} - optional
+ * @param payload.ajax {number} - optional
  * @example
  *  const payload = {
  *    discount_name: 'voucherName', // Required

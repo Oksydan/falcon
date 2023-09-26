@@ -5,7 +5,7 @@ const { danger } = useAlertToast();
 
 /**
  * Delete product from cart handler
- * @param event
+ * @param event {Event} - event object
  * @returns {Promise<void>}
  */
 const deleteFromCartHandler = async (event) => {
