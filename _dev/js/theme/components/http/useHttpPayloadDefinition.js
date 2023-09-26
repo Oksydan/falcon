@@ -1,3 +1,9 @@
+/**
+ * useHttpPayloadDefinition - validate payload against definition
+ * @module useHttpPayloadDefinition
+ * @param {object} payload - payload to validate
+ * @param {object} definition - definition to validate payload against
+ */
 const useHttpPayloadDefinition = (payload, definition) => {
   const ERROR_MESSAGES = {
     REQUIRED: 'field is required',
@@ -30,6 +36,12 @@ const useHttpPayloadDefinition = (payload, definition) => {
     throw new Error('Payload is required');
   }
 
+  /**
+   * @method
+   * Sets default definition for field
+   * @param customDefinition - custom definition for field
+   * @returns {object} - definition for field
+   */
   const setDefaultDefinitionForField = (customDefinition) => ({
     ...defaultDefinitionForField,
     ...customDefinition,
@@ -43,8 +55,22 @@ const useHttpPayloadDefinition = (payload, definition) => {
     payloadDefinition[fieldName] = setDefaultDefinitionForField(definitionForField);
   });
 
+  /**
+   * @method
+   * Gets value type
+   * @param value
+   * @returns {"undefined"|"object"|"boolean"|"number"|"string"|"function"|"symbol"|"bigint"}
+   */
   const getValueType = (value) => typeof value;
 
+  /**
+   * @method
+   * Validates field value against field definition and returns errors
+   * @param {string} fieldName - name of field
+   * @param {any} value - value of field
+   * @param {object} fieldDefinition - definition for field
+   * @returns {*[]}
+   */
   const validate = (fieldName, value, fieldDefinition) => {
     const validateErrors = [];
     const {
@@ -119,6 +145,13 @@ const useHttpPayloadDefinition = (payload, definition) => {
     return validateErrors;
   };
 
+  /**
+   * @method
+   * Validates definition for field and returns errors
+   * @param fieldName
+   * @param fieldsDefinition
+   * @returns {*[]}
+   */
   const validateDefinitionForField = (fieldName, fieldsDefinition) => {
     const definitionErrors = [];
     const definitionKeys = Object.keys(fieldsDefinition);
@@ -132,6 +165,12 @@ const useHttpPayloadDefinition = (payload, definition) => {
     return definitionErrors;
   };
 
+  /**
+   * @method
+   * Validates definition and returns errors
+   * @param fieldsDefinition
+   * @returns {*[]}
+   */
   const validateDefinition = (fieldsDefinition) => {
     const definitionErrors = [];
     const definitionKeys = Object.keys(fieldsDefinition);
@@ -147,6 +186,11 @@ const useHttpPayloadDefinition = (payload, definition) => {
     return definitionErrors;
   };
 
+  /**
+   * @method
+   * Validates payload against definition and returns errors
+   * @returns {*[]}
+   */
   const validatePayload = () => {
     const payloadErrors = [];
     const definitionErrors = validateDefinition(payloadDefinition);

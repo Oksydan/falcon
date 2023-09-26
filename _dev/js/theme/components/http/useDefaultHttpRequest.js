@@ -1,6 +1,12 @@
 import prestashop from 'prestashop';
 import useHttpRequest from './useHttpRequest';
 
+/**
+ * Default http request accepting payload as object and returning promise with response
+ * @param {string} url - url to send request
+ * @param {object} payload - payload to send
+ * @returns {Promise<unknown>}
+ */
 const useDefaultHttpRequest = (url, payload) => {
   const { request } = useHttpRequest(url);
 
