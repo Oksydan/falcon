@@ -1,15 +1,22 @@
 import prestashop from 'prestashop';
 import parseToHtml from '../../../../utils/parseToHtml';
 import useAlertToast from '../../../../components/useAlertToast';
+import updateCartContentRequest from '../../request/cart/updateCartContentRequest';
 
 const { danger } = useAlertToast();
 
+/**
+ * Update cart handler - update cart content and emit updatedCart event
+ * @param {object} event - update cart event object
+ * @returns {Promise<void>}
+ */
 const updateCartHandler = async (event) => {
   prestashop.cart = event.resp.cart;
   document.querySelector('body').classList.add('cart-loading');
+  const { getRequest } = updateCartContentRequest();
 
   try {
-    const resp = await prestashop.frontAPI.refreshCartPage();
+    const resp = await getRequest();
 
     document.querySelector(prestashop.selectors.cart.detailedTotals)
       ?.replaceWith(parseToHtml(resp.cart_detailed_totals));
