@@ -1,22 +1,42 @@
-import useHttpRequest from '@js/theme/components/http/useHttpRequest';
+import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
 
+/**
+ * @typedef ServerResponse
+ * @type {object}
+ * @property {string} preview - checkout summary html content
+ */
+
+/**
+ * Select delivery method request
+ * @param url {string} - checkout url to send request
+ * @param payload {object} - request payload
+ * @param payload.delivery_option[id] {string} - delivery option id with id_address_delivery
+ * @param payload.ajax {number} - optional
+ * @param payload.action {string} - optional
+ * @example
+ * const payload = {
+ *   'delivery_option[1]': '2,',
+ * };
+ *
+ * const { getRequest } = selectDeliveryMethodRequest(url, payload);
+ *
+ * try {
+ *   const resp = await getRequest();
+ * } catch (error) {
+ *   console.log(error);
+ * }
+ *
+ * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
+ */
 const selectDeliveryMethodRequest = (url, payload) => {
-  const { request } = useHttpRequest(url);
+  // payload not typed because delivery option parameter is dynamic
+  const payloadToSend = {
+    ajax: 1,
+    action: 'selectDeliveryOption',
+    ...payload,
+  };
 
-  payload.ajax = 1;
-  payload.action = 'selectDeliveryOption';
-
-  const getRequest = () => new Promise((resolve, reject) => {
-    request
-      .query(payload)
-      .post()
-      .json((resp) => {
-        resolve(resp);
-      })
-      .catch(() => {
-        reject(Error(prestashop.t.alert.genericHttpError));
-      });
-  });
+  const getRequest = () => useDefaultHttpRequest(url, payloadToSend);
 
   return {
     getRequest,

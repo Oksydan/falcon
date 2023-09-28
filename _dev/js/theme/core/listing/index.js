@@ -1,6 +1,8 @@
 import DOMReady from '@js/theme/utils/DOMReady';
-import updateFacets from '@js/theme/core/listing/updateFacets';
+import listingController from './listingController';
+
+const { init } = listingController();
 
 DOMReady(() => {
-  updateFacets();
+  init();
 });

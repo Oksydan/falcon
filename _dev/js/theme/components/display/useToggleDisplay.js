@@ -3,7 +3,7 @@ const useToggleDisplay = () => {
 
   /**
     * Show element
-    * @param element <HTMLElement> Element to show
+    * @param element {HTMLElement} Element to show
     * @returns {void}
     */
   const show = (element) => {
@@ -13,7 +13,7 @@ const useToggleDisplay = () => {
 
   /**
     * Hide element
-    * @param element <HTMLElement> Element to hide
+    * @param element {HTMLElement} Element to hide
     * @returns {void}
     */
   const hide = (element) => {
@@ -23,8 +23,8 @@ const useToggleDisplay = () => {
 
   /**
     * Toggle element
-    * @param element <HTMLElement> Element to toggle
-    * @param display <bool> Display or hide
+    * @param element {HTMLElement} Element to toggle
+    * @param display {boolean} Display or hide
     * @returns {void}
     */
   const toggle = (element, display) => {

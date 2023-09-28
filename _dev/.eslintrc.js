@@ -15,7 +15,10 @@ module.exports = {
   },
   extends: ['airbnb-base'],
   rules: {
-    'max-len': ['error', {code: 140}],
+    'max-len': ['error', {
+      code: 140,
+      ignoreComments: true,
+    }],
     'no-underscore-dangle': 'off',
     'no-restricted-syntax': 'off',
     'no-param-reassign': 'off'

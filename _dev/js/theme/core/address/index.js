@@ -1,6 +1,8 @@
-import $ from 'jquery';
-import countryAddressChange from '@js/theme/core/address/countryAddressChange';
+import addressController from './addressController';
+import DOMReady from '../../utils/DOMReady';
 
-$(() => {
-  countryAddressChange();
+const { init } = addressController();
+
+DOMReady(() => {
+  init();
 });
