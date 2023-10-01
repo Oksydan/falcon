@@ -2,16 +2,13 @@ import prestashop from 'prestashop';
 import { fromSerializeObject } from '@js/theme/utils/formSerialize';
 import parseToHtml from '@js/theme/utils/parseToHtml';
 import useAlertToast from '@js/theme/components/useAlertToast';
-import useEvent from '@js/theme/components/event/useEvent';
 import isQuickViewOpen from './utils/isQuickViewOpen';
 import isProductPreview from './utils/isProductPreview';
 import updateProductRequest from './request/product/updateProductRequest';
 import productFormDataPersister from './persister/productFormDataPersister';
 import productStateStore from './store/productStateStore';
 
-const { setFormChanged, getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();
-
-const { on } = useEvent();
+const { getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();
 
 const { danger } = useAlertToast();
 
@@ -233,20 +230,6 @@ const updateProductData = async (event, eventType) => {
   setCurrentRequestDelayedId(timeoutId);
 };
 
-const handleProductFormChange = (event) => {
-  setFormChanged(true);
-
-  prestashop.emit('updateProduct', {
-    eventType: 'updatedProductCombination',
-    event,
-    // Following variables are not used anymore, but kept for backward compatibility
-    resp: {},
-    reason: {
-      productUrl: prestashop.urls.pages.product || '',
-    },
-  });
-};
-
 const handleUpdateCart = (event) => {
   if (!event || !event.reason || event.reason.linkAction !== 'add-to-cart') {
     return;
@@ -265,8 +248,6 @@ const handleUpdateProduct = ({ event, eventType }) => {
 };
 
 const attachEventListeners = () => {
-  on(document, 'change', `${prestashop.selectors.product.variants} *[name]`, handleProductFormChange);
-
   prestashop.on('updateCart', handleUpdateCart);
   // Refresh all the product content
   prestashop.on('updateProduct', handleUpdateProduct);

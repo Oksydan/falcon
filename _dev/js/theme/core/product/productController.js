@@ -6,6 +6,7 @@ import productUpdateErrorHandler from './handler/product/productUpdateErrorHandl
 import productFormDataPersister from './persister/productFormDataPersister';
 import productPopStateHandler from './handler/product/productPopStateHandler';
 import updatedProductHandler from './handler/product/updatedProductHandler';
+import productFormChangeHandler from './handler/product/productFormChangeHandler';
 
 const { on } = useEvent();
 const { persist } = productFormDataPersister();
@@ -22,6 +23,7 @@ const productController = () => {
   const init = () => {
     persistFormDataOnInit();
     on(document, 'click', prestashop.selectors.listing.quickview, quickViewClickHandler);
+    on(document, 'change', `${prestashop.selectors.product.variants} *[name]`, productFormChangeHandler);
 
     window.addEventListener('popstate', productPopStateHandler);
     prestashop.on('updatedProduct', updatedProductHandler);
