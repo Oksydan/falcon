@@ -6,6 +6,11 @@ const { setOnPopState, isFormChanged } = productStateStore();
 
 const { get } = productFormDataPersister();
 
+/**
+ * Handle popstate event for product page
+ * Side effect: emits 'updateProduct' event, sets popState in productStateStore
+ * @param {Event} event
+ */
 const productPopStateHandler = (event) => {
   setOnPopState(true);
 

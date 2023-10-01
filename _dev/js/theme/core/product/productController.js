@@ -11,6 +11,11 @@ import productFormChangeHandler from './handler/product/productFormChangeHandler
 const { on } = useEvent();
 const { persist } = productFormDataPersister();
 
+/**
+ * Persists form data on init
+ * Side effect: set formData in productFormDataPersister
+ * @return {void}
+ */
 const persistFormDataOnInit = () => {
   const form = document.querySelector(`${prestashop.selectors.product.actions} form`);
 

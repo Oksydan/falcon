@@ -3,6 +3,12 @@ import productStateStore from '../../store/productStateStore';
 
 const { isOnPopState, setOnPopState } = productStateStore();
 
+/**
+ * Handle updated product on 'updatedProduct' event
+ * Side effect: changes the url and title, sets popState in productStateStore
+ * @param event - event object with response data
+ * @param formData - form data
+ */
 const updatedProductHandler = ({
   product_url: responseProductUrl = null,
   id_product_attribute: responseIdProductAttribute = null,

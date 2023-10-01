@@ -3,6 +3,11 @@ import productStateStore from '../../store/productStateStore';
 
 const { setFormChanged } = productStateStore();
 
+/**
+ * Sets the form changed state
+ * Side effect: emits 'updateProduct' event
+ * @param event {Event}
+ */
 const productFormChangeHandler = (event) => {
   setFormChanged(true);
 
