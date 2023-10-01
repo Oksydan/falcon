@@ -10,7 +10,7 @@ import quickViewRequest from '../request/quickViewRequest';
 const quickViewHandler = async (idProduct, idProductAttribute) => {
   const payload = {
     id_product: Number.parseInt(idProduct, 10),
-    id_product_attribute: Number.parseInt(idProductAttribute, 0),
+    id_product_attribute: Number.parseInt(idProductAttribute, 10),
   };
 
   const { getRequest } = quickViewRequest(payload);

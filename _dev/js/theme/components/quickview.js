@@ -22,7 +22,7 @@ const handleQuickViewOpen = ({
 
   productModal.on('hidden.bs.modal', () => {
     productModal.remove();
-    body.classList.remove('js-quickview-open')
+    body.classList.remove('js-quickview-open');
   });
 };
 
