@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
-import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
-import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDefinition';
+import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpRequest';
+import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
 
 /**
  * @typedef ServerResponse
@@ -42,6 +42,10 @@ const quickViewRequest = (payload) => {
   const payloadDefinition = {
     action: {
       type: 'string',
+      required: true,
+    },
+    ajax: {
+      type: 'int',
       required: true,
     },
     id_product: {

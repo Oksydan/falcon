@@ -3,24 +3,17 @@ import { fromSerializeObject } from '@js/theme/utils/formSerialize';
 import parseToHtml from '@js/theme/utils/parseToHtml';
 import useAlertToast from '@js/theme/components/useAlertToast';
 import useEvent from '@js/theme/components/event/useEvent';
+import isQuickViewOpen from './utils/isQuickViewOpen';
+import isProductPreview from './utils/isProductPreview';
+import updateProductRequest from './request/product/updateProductRequest';
+import productFormDataPersister from './persister/productFormDataPersister';
+import productStateStore from './store/productStateStore';
+
+const { setFormChanged, getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();
 
 const { on } = useEvent();
 
 const { danger } = useAlertToast();
-
-// Used to clearTimeout if user flood the product quantity input
-let currentRequestDelayedId = null;
-
-// Check for popState event
-let isOnPopStateEvent = false;
-
-// Register form of first update
-const firstFormData = [];
-
-// Detect if the form has changed one time
-let formChanged = false;
-
-const isQuickViewOpen = () => !!document.querySelector('.modal.quickview.in');
 
 const replaceDOMElements = ({
   /* eslint-disable */
@@ -57,12 +50,6 @@ const replaceDOMElements = ({
 
   document.querySelector(prestashop.selectors.product.flags)
     ?.replaceWith(parseToHtml(product_flags));
-};
-
-const isPreview = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-
-  return urlParams.has('preview');
 };
 
 /**
@@ -155,14 +142,7 @@ const updateProductData = async (event, eventType) => {
 
   const form = productActions.querySelector('form');
   const formSerialized = fromSerializeObject(form);
-  let updateRatingEvent;
-
-  if (typeof Event === 'function') {
-    updateRatingEvent = new Event('updateRating');
-  } else {
-    updateRatingEvent = document.createEvent('Event');
-    updateRatingEvent.initEvent('updateRating', true, true);
-  }
+  const updateRatingEvent = new Event('updateRating');
 
   // New request only if new value
   if (
@@ -175,8 +155,8 @@ const updateProductData = async (event, eventType) => {
 
   quantityWantedInput.dataset.oldValue = quantityWantedInput.value ? quantityWantedInput.value : 1;
 
-  if (currentRequestDelayedId) {
-    clearTimeout(currentRequestDelayedId);
+  if (getCurrentRequestDelayedId()) {
+    clearTimeout(getCurrentRequestDelayedId());
   }
 
   // Most update need to occur (almost) instantly, but in some cases (like keyboard actions)
@@ -187,9 +167,23 @@ const updateProductData = async (event, eventType) => {
     updateDelay = 750;
   }
 
-  currentRequestDelayedId = setTimeout(async () => {
+  const timeoutId = setTimeout(async () => {
+    const idProductAttribute = formSerialized?.id_product_attribute || 0;
+    const idCustomization = formSerialized?.id_customization || 0;
+
+    const payload = {
+      quantity_wanted: Number.parseInt(quantityWantedInput.value, 10),
+      preview: isProductPreview() ? 1 : 0,
+      quickview: isQuickViewOpen() ? 1 : 0,
+      ...formSerialized,
+      id_product: Number.parseInt(formSerialized.id_product, 10),
+      id_product_attribute: Number.parseInt(idProductAttribute, 10),
+      id_customization: Number.parseInt(idCustomization, 10),
+    };
+    const { getRequest } = updateProductRequest(payload);
+
     try {
-      const data = await prestashop.frontAPI.updateProduct(formSerialized, quantityWantedInput.value, isQuickViewOpen(), isPreview());
+      const data = await getRequest();
 
       // Used to avoid image blinking if same image = epileptic friendly
 
@@ -225,17 +219,22 @@ const updateProductData = async (event, eventType) => {
         quantityWantedInput.value = minimalProductQuantity;
       }
 
-      prestashop.emit('updatedProduct', data, formSerialized);
+      const { persist, get: getPersistedData } = productFormDataPersister();
+      persist(form);
+
+      prestashop.emit('updatedProduct', data, getPersistedData());
     } catch (e) {
       danger(prestashop.t.alert.genericHttpError);
     }
 
-    currentRequestDelayedId = null;
+    setCurrentRequestDelayedId(null);
   }, updateDelay);
+
+  setCurrentRequestDelayedId(timeoutId);
 };
 
 const handleProductFormChange = (event) => {
-  formChanged = true;
+  setFormChanged(true);
 
   prestashop.emit('updateProduct', {
     eventType: 'updatedProductCombination',
@@ -261,118 +260,20 @@ const handleUpdateCart = (event) => {
   }
 };
 
-const handleError = (event) => {
-  if (event?.errorMessage) {
-    danger(event.errorMessage);
-  }
-};
-
 const handleUpdateProduct = ({ event, eventType }) => {
   updateProductData(event, eventType);
-};
-
-const handleUpdatedProduct = (args, formData) => {
-  if (!args.product_url || !args.id_product_attribute) {
-    return;
-  }
-
-  /*
-     * If quickview modal is present we are not on product page, so
-     * we don't change the url nor title
-     */
-  if (isQuickViewOpen()) {
-    return;
-  }
-
-  let pageTitle = document.title;
-
-  if (args.product_title) {
-    pageTitle = args.product_title;
-    $(document).attr('title', pageTitle);
-  }
-
-  if (!isOnPopStateEvent) {
-    window.history.pushState(
-      {
-        id_product_attribute: args.id_product_attribute,
-        form: formData,
-      },
-      pageTitle,
-      args.product_url,
-    );
-  }
-
-  isOnPopStateEvent = false;
-};
-
-const handlePopState = (event) => {
-  isOnPopStateEvent = true;
-
-  if (
-    (!event.state
-            || (event.state && event.state.form && event.state.form.length === 0))
-        && !formChanged
-  ) {
-    return;
-  }
-
-  const form = document.querySelector(`${prestashop.selectors.product.actions} form`);
-  const handleState = (data) => {
-    const element = form.querySelector(`[name="${data.name}"]`);
-
-    if (element) {
-      element.value = data.value;
-    }
-  };
-
-  if (event.state && event.state.form) {
-    event.state.form.forEach(handleState);
-  } else {
-    firstFormData.forEach(handleState);
-  }
-
-  prestashop.emit('updateProduct', {
-    eventType: 'updatedProductCombination',
-    event,
-    // Following variables are not used anymore, but kept for backward compatibility
-    resp: {},
-    reason: {
-      productUrl: prestashop.urls.pages.product || '',
-    },
-  });
 };
 
 const attachEventListeners = () => {
   on(document, 'change', `${prestashop.selectors.product.variants} *[name]`, handleProductFormChange);
 
   prestashop.on('updateCart', handleUpdateCart);
-  prestashop.on('showErrorNextToAddtoCartButton', handleError);
   // Refresh all the product content
   prestashop.on('updateProduct', handleUpdateProduct);
-  prestashop.on('updatedProduct', handleUpdatedProduct);
-
-  window.addEventListener('popstate', handlePopState);
-};
-
-const initProductPage = () => {
-  const productActions = document.querySelector(prestashop.selectors.product.actions);
-  const formElement = productActions?.querySelector('form');
-  const formSerialized = formElement ? fromSerializeObject(formElement) : null;
-
-  if (!formSerialized) {
-    return;
-  }
-
-  for (const prop in formSerialized) {
-    if (Object.hasOwn(formSerialized, prop)) {
-      firstFormData.push({ name: prop, value: formSerialized[prop] });
-    }
-  }
 };
 
 const updateProduct = () => {
   attachEventListeners();
-  initProductPage();
 };
 
 export default updateProduct;

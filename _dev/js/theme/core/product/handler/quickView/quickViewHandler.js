@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import quickViewRequest from '../request/quickViewRequest';
+import quickViewRequest from '../../request/quickView/quickViewRequest';
 
 /**
  * Quick view handler
