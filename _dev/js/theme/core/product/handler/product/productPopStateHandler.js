@@ -20,7 +20,7 @@ const productPopStateHandler = (event) => {
     return;
   }
 
-  const form = document.querySelector(`${prestashop.selectors.product.actions} form`);
+  const form = document.querySelector(`${prestashop.selectors.product.actions} .js-product-form`);
 
   const handleFormElementState = (data) => {
     const element = form.querySelector(`[name="${data.name}"]`);

@@ -28,23 +28,41 @@
     {block name='product_quantity'}
       <div class="product-quantity row mb-1 mx-n1 mt-n2 align-items-center">
         <div class="qty col-12 col-sm-auto mx-auto mt-2 px-1">
-          <input
-            type="number"
-            name="qty"
-            id="quantity_wanted"
-            inputmode="numeric"
-            pattern="[0-9]*"
-            {if $product.quantity_wanted}
-              value="{$product.quantity_wanted}"
-              min="{$product.minimal_quantity}"
-            {else}
-              value="1"
-              min="1"
-            {/if}
-            class="input-group input-touchspin"
-            aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
-          >
+          <div class="js-product-qty-spinner row no-gutters">
+            <div class="col-auto">
+              <a href="#" class="js-custom-qty-btn-down">
+                -
+              </a>
+            </div>
+            <div class="col-auto">
+              <input
+                class="js-custom-qty-spinner-input"
+                type="number"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                name="qty"
+                id="quantity_wanted"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                {if $product.quantity_wanted}
+                  value="{$product.quantity_wanted}"
+                  min="{$product.minimal_quantity}"
+                {else}
+                  value="1"
+                  min="1"
+                {/if}
+                aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
+              >
+            </div>
+            <div class="col-auto">
+              <a href="#" class="js-custom-qty-btn-up">
+                +
+              </a>
+            </div>
+          </div>
         </div>
+
+
 
         <div class="add col mt-2 px-1 js-add-to-cart-btn-wrapper">
           <button

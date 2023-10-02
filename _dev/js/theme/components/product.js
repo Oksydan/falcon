@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import prestashop from 'prestashop';
+import useCustomQuantityInput from './useCustomQuantityInput';
+import { each } from '../utils/DOMHelpers';
 
 $(() => {
   const createInputFile = () => {
@@ -13,35 +15,24 @@ $(() => {
     });
   };
 
-  const createProductSpin = () => {
-    const $quantityInput = $('#quantity_wanted');
-
-    $quantityInput.TouchSpin({
-      verticalupclass: 'material-icons touchspin-up',
-      verticaldownclass: 'material-icons touchspin-down',
-      buttondown_class: 'btn btn-touchspin js-touchspin',
-      buttonup_class: 'btn btn-touchspin js-touchspin',
-      min: parseInt($quantityInput.attr('min'), 10),
-      max: 1000000,
-    });
-
-    $quantityInput.on('focusout', () => {
-      if ($quantityInput.val() === '' || $quantityInput.val() < $quantityInput.attr('min')) {
-        $quantityInput.val($quantityInput.attr('min'));
-        $quantityInput.trigger('change');
-      }
-    });
-
-    $('body').on('change keyup', '#quantity_wanted', (event) => {
-      $(event.currentTarget).trigger('touchspin.stopspin');
-      prestashop.emit('updateProduct', {
-        eventType: 'updatedProductQuantity',
-        event,
+  const initProductQuantityInput = () => {
+    const initQtySpinner = (spinner) => {
+      const { init } = useCustomQuantityInput(spinner, {
+        onQuantityChange: (event) => {
+          prestashop.emit('updateProduct', {
+            eventType: 'updatedProductQuantity',
+            event,
+          });
+        },
       });
-    });
+
+      init();
+    };
+
+    each('.js-product-qty-spinner', initQtySpinner);
   };
 
-  createProductSpin();
+  initProductQuantityInput();
   createInputFile();
   let updateEvenType = false;
 
@@ -66,17 +57,6 @@ $(() => {
   prestashop.on('updatedProduct', (event) => {
     createInputFile();
 
-    if (event && event.product_minimal_quantity) {
-      const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
-      const quantityInputSelector = '#quantity_wanted';
-      const quantityInput = $(quantityInputSelector);
-
-      // @see http://www.virtuosoft.eu/code/bootstrap-touchspin/ about Bootstrap TouchSpin
-      quantityInput.trigger('touchspin.updatesettings', {
-        min: minimalProductQuantity,
-      });
-    }
-
     if (updateEvenType === 'updatedProductCombination') {
       $('.js-product-images').replaceWith(event.product_cover_thumbnails);
       $('.js-product-images-modal').replaceWith(event.product_images_modal);
@@ -86,5 +66,6 @@ $(() => {
     updateEvenType = false;
 
     prestashop.pageLazyLoad.update();
+    initProductQuantityInput();
   });
 });

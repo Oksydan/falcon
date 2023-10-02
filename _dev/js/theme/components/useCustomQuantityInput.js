@@ -113,6 +113,40 @@ const useCustomQuantityInput = (spinnerElement, {
   };
 
   /**
+   * Update minimum quantity
+   * @method updateMinQty
+   * @public
+   * @param newMinQty
+   * @returns {void}
+   */
+  const updateMinQty = (newMinQty) => {
+    const qtyValue = Number.parseInt(newMinQty, 10);
+
+    if (Number.isNaN(qtyValue)) {
+      throw new Error('Invalid minimum quantity');
+    }
+
+    minQty = qtyValue;
+  };
+
+  /**
+   * Update maximum quantity
+   * @method updateMaxQty
+   * @public
+   * @param newMaxQty
+   * @returns {void}
+   */
+  const updateMaxQty = (newMaxQty) => {
+    const qtyValue = Number.parseInt(newMaxQty, 10);
+
+    if (Number.isNaN(qtyValue)) {
+      throw new Error('Invalid maximum quantity');
+    }
+
+    maxQty = qtyValue;
+  };
+
+  /**
    * Should dispatch change event
    * @method shouldDispatchChange
    * @private
@@ -299,7 +333,7 @@ const useCustomQuantityInput = (spinnerElement, {
   /**
    * Destroy spinner instance and detach events
    * @method destroy
-   * @static
+   * @public
    * @returns {void}
    */
   const destroy = () => {
@@ -310,7 +344,7 @@ const useCustomQuantityInput = (spinnerElement, {
   /**
    * Initialize spinner instance and attach events
    * @method init
-   * @static
+   * @public
    * @returns {void}
    */
   const init = () => {
@@ -324,6 +358,8 @@ const useCustomQuantityInput = (spinnerElement, {
     init,
     destroy,
     getDOMElements,
+    updateMinQty,
+    updateMaxQty,
   };
 };
 

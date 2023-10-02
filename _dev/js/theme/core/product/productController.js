@@ -6,6 +6,7 @@ import productUpdateErrorHandler from './handler/product/productUpdateErrorHandl
 import productFormDataPersister from './persister/productFormDataPersister';
 import productPopStateHandler from './handler/product/productPopStateHandler';
 import updatedProductHandler from './handler/product/updatedProductHandler';
+import updateProductHandler from './handler/product/updateProductHandler';
 import productFormChangeHandler from './handler/product/productFormChangeHandler';
 
 const { on } = useEvent();
@@ -17,7 +18,7 @@ const { persist } = productFormDataPersister();
  * @return {void}
  */
 const persistFormDataOnInit = () => {
-  const form = document.querySelector(`${prestashop.selectors.product.actions} form`);
+  const form = document.querySelector(`${prestashop.selectors.product.actions} .js-product-form`);
 
   if (form) {
     persist(form);
@@ -31,6 +32,7 @@ const productController = () => {
     on(document, 'change', `${prestashop.selectors.product.variants} *[name]`, productFormChangeHandler);
 
     window.addEventListener('popstate', productPopStateHandler);
+    prestashop.on('updateProduct', updateProductHandler);
     prestashop.on('updatedProduct', updatedProductHandler);
     prestashop.on('showErrorNextToAddtoCartButton', productUpdateErrorHandler);
     prestashop.on('clickQuickView', ({ idProduct, idProductAttribute }) => quickViewHandler(idProduct, idProductAttribute));
