@@ -83,7 +83,7 @@ const useHttpPayloadDefinition = (payload, definition) => {
       regex,
     } = fieldDefinition;
 
-    if (required && !value) {
+    if (required && typeof value === 'undefined') {
       validateErrors.push(`'${fieldName}' ${ERROR_MESSAGES.REQUIRED}`);
     }
 

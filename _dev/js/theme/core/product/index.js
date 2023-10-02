@@ -1,7 +1,8 @@
-import updateProduct from '@js/theme/core/product/updateProduct';
-import productQuickView from '@js/theme/core/product/productQuickView';
+import productController from './productController';
+import DOMReady from '../../utils/DOMReady';
 
-$(() => {
-  updateProduct();
-  productQuickView();
+const { init } = productController();
+
+DOMReady(() => {
+  init();
 });

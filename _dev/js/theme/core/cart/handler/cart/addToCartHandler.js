@@ -47,8 +47,8 @@ const addToCartHandler = async (event) => {
   const payload = {
     id_product: idProduct,
     qty,
-    id_product_attribute: idProductAttribute,
-    id_customization: idCustomization,
+    id_product_attribute: Number.parseInt(idProductAttribute, 10),
+    id_customization: Number.parseInt(idCustomization, 10),
   };
 
   const { getRequest } = addToCartRequest(payload);
