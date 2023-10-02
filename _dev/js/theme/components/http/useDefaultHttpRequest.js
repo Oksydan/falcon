@@ -16,13 +16,7 @@ const useDefaultHttpRequest = (url, payload, options = {}) => {
       .query(payload)
       .post()
       .json((resp) => {
-        if (resp.errors) {
-          const errors = Array.isArray(resp.errors) ? resp.errors : [resp.errors];
-
-          reject(Error(errors.join('\n')));
-        } else {
-          resolve(resp);
-        }
+        resolve(resp);
       })
       .catch(() => {
         reject(Error(prestashop.t.alert.genericHttpError));

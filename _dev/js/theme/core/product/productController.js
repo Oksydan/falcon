@@ -25,7 +25,19 @@ const persistFormDataOnInit = () => {
   }
 };
 
+/**
+ * Product controller
+ * @module productController
+ * @return {{init: init}}
+ */
 const productController = () => {
+
+  /**
+   * Init product controller
+   * @method init
+   * @public
+   * @return {void}
+   */
   const init = () => {
     persistFormDataOnInit();
     on(document, 'click', prestashop.selectors.listing.quickview, quickViewClickHandler);
