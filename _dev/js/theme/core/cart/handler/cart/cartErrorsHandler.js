@@ -56,6 +56,6 @@ const cartErrorsHandler = () => {
 
     checkoutBtn.classList.remove('disabled');
   }
-}
+};
 
 export default cartErrorsHandler;

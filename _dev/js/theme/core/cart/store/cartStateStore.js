@@ -10,7 +10,6 @@ const state = {
  * @returns {object}
  */
 const cartStateStore = () => {
-
   /**
    * Sets the error message
    * @method setErrorMsg
@@ -19,7 +18,7 @@ const cartStateStore = () => {
    */
   const setErrorMsg = (value) => {
     state.errorMsg = value;
-  }
+  };
 
   /**
    * Returns the error message
@@ -37,7 +36,7 @@ const cartStateStore = () => {
    */
   const setIsUpdateOperation = (value) => {
     state.isUpdateOperation = value;
-  }
+  };
 
   /**
    * Returns the isUpdateOperation value
@@ -55,7 +54,7 @@ const cartStateStore = () => {
    */
   const setHasError = (value) => {
     state.hasError = value;
-  }
+  };
 
   /**
    * Returns the hasError value
@@ -72,7 +71,7 @@ const cartStateStore = () => {
     getIsUpdateOperation,
     setHasError,
     getHasError,
-  }
-}
+  };
+};
 
 export default cartStateStore;

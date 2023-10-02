@@ -31,7 +31,6 @@ const persistFormDataOnInit = () => {
  * @return {{init: init}}
  */
 const productController = () => {
-
   /**
    * Init product controller
    * @method init
