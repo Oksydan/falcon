@@ -8,7 +8,23 @@ const { dispatch, abortAll } = useHttpController();
 /**
  * @typedef ServerResponse
  * @type {object}
- * @property {string} address_form - new address form html content
+ * @property {number} id_customization - saved customization id
+ * @property {number} id_product_attribute - saved product attribute id
+ * @property {number} product_minimal_quantity - product minimal quantity
+ * @property {boolean} is_quick_view - is quick view
+ * @property {boolean} product_has_combinations - product has combinations
+ * @property {string} product_url - product url address
+ * @property {string} product_title - product meta title
+ * @property {string} product_add_to_cart - product add to cart html content
+ * @property {string} product_additional_info - product additional info html content
+ * @property {string} product_cover_thumbnails - product cover thumbnails html content
+ * @property {string} product_customization - product customization html content
+ * @property {string} product_details - product details html content
+ * @property {string} product_discounts - product discounts html content
+ * @property {string} product_flags - product flags html content
+ * @property {string} product_prices - product prices html content
+ * @property {string} product_images_modal - product images modal html content
+ * @property {string} product_variants - product variants html content
  */
 
 /**
@@ -24,7 +40,6 @@ const { dispatch, abortAll } = useHttpController();
  * @param payload.action {string} - optional, default refresh
  * @param payload.group[] {array} - array of attributes groups - optional
  * @example
- *  const url = 'address-form.com/url'; // url to update address form
  *  const payload = {
  *      id_product: 1,
  *      id_product_attribute: 1,

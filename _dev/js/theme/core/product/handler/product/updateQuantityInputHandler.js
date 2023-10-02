@@ -1,5 +1,11 @@
 import prestashop from 'prestashop';
 
+/**
+ * Update quantity input value
+ * @param eventType {string} - event type
+ * @param event {object} - event data
+ * @param event.product_minimal_quantity {number} - product minimal quantity
+ */
 const updateQuantityInputHandler = (eventType, { product_minimal_quantity: productMinimalQuantity }) => {
   const minimalProductQuantity = parseInt(
     productMinimalQuantity,
