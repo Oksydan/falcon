@@ -15,7 +15,6 @@ import '@js/theme/components/customer';
 import '@js/theme/components/quickview';
 import '@js/theme/components/product';
 import '@js/theme/components/cart/block-cart';
-import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 /* eslint-enable */
 
 import prestashop from 'prestashop';
@@ -31,6 +30,7 @@ import TopMenu from '@js/theme/components/TopMenu';
 import PageLazyLoad from '@js/theme/components/Lazyload';
 import PageLoader from '@js/theme/components/PageLoader';
 import useStickyElement from '@js/theme/components/useStickyElement';
+import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 
 prestashop.pageLazyLoad = new PageLazyLoad({
   selector: '.lazyload',

@@ -1,5 +1,5 @@
 import useHttpRequest from './useHttpRequest';
-import GenericHttpRequestError from "./error/GenericHttpRequestError";
+import GenericHttpRequestError from './error/GenericHttpRequestError';
 
 /**
  * Default http request accepting payload as object and returning promise with response

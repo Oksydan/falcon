@@ -1,8 +1,5 @@
 import prestashop from 'prestashop';
 import updateListingFacetsRequest from '../request/updateListingFacetsRequest';
-import useAlertToast from '../../../components/useAlertToast';
-
-const { danger } = useAlertToast();
 
 /**
  * Build new facets url - add from-xhr param

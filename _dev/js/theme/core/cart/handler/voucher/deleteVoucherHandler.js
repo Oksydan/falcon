@@ -1,5 +1,5 @@
+import prestashop from 'prestashop';
 import deleteVoucherFromCartRequest from '../../request/voucher/deleteVoucherFromCartRequest';
-import prestashop from "prestashop";
 
 /**
  * Delete voucher handler

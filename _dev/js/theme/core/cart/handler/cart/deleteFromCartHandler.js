@@ -1,5 +1,5 @@
+import prestashop from 'prestashop';
 import deleteFromCartRequest from '../../request/cart/deleteFromCartRequest';
-import prestashop from "prestashop";
 
 /**
  * Delete product from cart handler

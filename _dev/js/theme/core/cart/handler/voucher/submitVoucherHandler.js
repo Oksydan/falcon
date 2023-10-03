@@ -1,6 +1,6 @@
+import prestashop from 'prestashop';
 import addVoucherToCartRequest from '../../request/voucher/addVoucherToCartRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
-import prestashop from "prestashop";
 
 /**
  * Submit voucher handler

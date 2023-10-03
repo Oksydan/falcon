@@ -1,9 +1,9 @@
+import prestashop from 'prestashop';
 import { formSerializeArray, fromSerializeObject } from '../../../../utils/formSerialize';
 import selectDeliveryMethodRequest from '../../request/selectDeliveryMethodRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
 import refreshCheckoutPage from '../../utils/refreshCheckoutPage';
 import { each } from '../../../../utils/DOMHelpers';
-import prestashop from "prestashop";
 
 /**
  * Change delivery method handler
