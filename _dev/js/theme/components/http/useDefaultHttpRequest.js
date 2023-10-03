@@ -1,5 +1,5 @@
-import prestashop from 'prestashop';
 import useHttpRequest from './useHttpRequest';
+import GenericHttpRequestError from "./error/GenericHttpRequestError";
 
 /**
  * Default http request accepting payload as object and returning promise with response
@@ -19,7 +19,7 @@ const useDefaultHttpRequest = (url, payload, options = {}) => {
         resolve(resp);
       })
       .catch(() => {
-        reject(Error(prestashop.t.alert.genericHttpError));
+        reject(new GenericHttpRequestError('Error while sending request'));
       });
   });
 };

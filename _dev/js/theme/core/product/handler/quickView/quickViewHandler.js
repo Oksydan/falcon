@@ -22,10 +22,11 @@ const quickViewHandler = async (idProduct, idProductAttribute) => {
       reason: 'openQuickView',
       resp,
     });
-  } catch (e) {
+  } catch (error) {
     prestashop.emit('handleError', {
       eventType: 'clickQuickView',
       resp: {},
+      error,
     });
   }
 };

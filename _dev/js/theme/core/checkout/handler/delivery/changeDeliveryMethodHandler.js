@@ -1,11 +1,9 @@
 import { formSerializeArray, fromSerializeObject } from '../../../../utils/formSerialize';
 import selectDeliveryMethodRequest from '../../request/selectDeliveryMethodRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
-import useAlertToast from '../../../../components/useAlertToast';
 import refreshCheckoutPage from '../../utils/refreshCheckoutPage';
 import { each } from '../../../../utils/DOMHelpers';
-
-const { danger } = useAlertToast();
+import prestashop from "prestashop";
 
 /**
  * Change delivery method handler
@@ -49,10 +47,10 @@ const changeDeliveryMethodHandler = async (event) => {
       resp,
     });
   } catch (error) {
-    danger(error.message);
     prestashop.emit('handleError', {
       eventType: 'updateDeliveryOptions',
       resp: {},
+      error,
     });
   }
 };

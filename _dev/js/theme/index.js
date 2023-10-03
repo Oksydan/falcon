@@ -15,6 +15,7 @@ import '@js/theme/components/customer';
 import '@js/theme/components/quickview';
 import '@js/theme/components/product';
 import '@js/theme/components/cart/block-cart';
+import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 /* eslint-enable */
 
 import prestashop from 'prestashop';
@@ -36,6 +37,8 @@ prestashop.pageLazyLoad = new PageLazyLoad({
 });
 
 prestashop.pageLoader = new PageLoader();
+
+prestashop.on('handleError', httpRequestErrorHandler);
 
 function accLinksTriggerActive() {
   const url = window.location.pathname;

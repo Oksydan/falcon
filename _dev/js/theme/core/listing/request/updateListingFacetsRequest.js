@@ -1,5 +1,6 @@
 import useHttpRequest from '../../../components/http/useHttpRequest';
 import useHttpController from '../../../components/http/useHttpController';
+import GenericHttpRequestError from "../../../components/http/error/GenericHttpRequestError";
 
 const { dispatch, abortAll } = useHttpController();
 
@@ -60,7 +61,7 @@ const updateListingFacetsRequest = (url) => {
           return;
         }
 
-        reject(e);
+        reject(new GenericHttpRequestError('Error while sending request'));
       }));
   });
 

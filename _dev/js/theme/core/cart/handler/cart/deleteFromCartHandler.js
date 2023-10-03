@@ -1,7 +1,5 @@
-import useAlertToast from '../../../../components/useAlertToast';
 import deleteFromCartRequest from '../../request/cart/deleteFromCartRequest';
-
-const { danger } = useAlertToast();
+import prestashop from "prestashop";
 
 /**
  * Delete product from cart handler
@@ -38,7 +36,11 @@ const deleteFromCartHandler = async (event) => {
       });
     }
   } catch (error) {
-    danger(error.message);
+    prestashop.emit('handleError', {
+      eventType: 'deleteFromCart',
+      resp: {},
+      error,
+    });
   }
 };
 

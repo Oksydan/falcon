@@ -8,9 +8,7 @@ import updateQuantityInputHandler from './updateQuantityInputHandler';
 import updateProductCustomizationHandler from './updateProductCustomizationHandler';
 import updateProductDOMElementsHandler from './updateProductDOMElementsHandler';
 import { fromSerializeObject } from '../../../../utils/formSerialize';
-import useAlertToast from '../../../../components/useAlertToast';
 
-const { danger } = useAlertToast();
 const { getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();
 
 /**
@@ -61,8 +59,12 @@ const updateProductHandler = async ({ eventType }) => {
       persist(form);
 
       prestashop.emit('updatedProduct', data, getPersistedData());
-    } catch (e) {
-      danger(prestashop.t.alert.genericHttpError);
+    } catch (error) {
+      prestashop.emit('handleError', {
+        eventType: 'updateProduct',
+        resp: {},
+        error,
+      });
     }
 
     setCurrentRequestDelayedId(null);

@@ -1,6 +1,7 @@
 import useAlertToast from '../../../../components/useAlertToast';
 import addToCartRequest from '../../request/cart/addToCartRequest';
 import sprintf from '../../../../utils/sprintf';
+import prestashop from "prestashop";
 
 const { danger } = useAlertToast();
 
@@ -27,11 +28,15 @@ const addToCartHandler = async (event) => {
     return validInput;
   };
 
-  const idProduct = Number.parseInt(form.querySelector('[name=id_product]').value, 10);
+  const idProductInput = form.querySelector('[name=id_product]');
   const quantityInput = form.querySelector('[name=qty]');
+  const idProductAttributeInput = form.querySelector('[name=id_product_attribute]');
+  const idCustomizationInout = form.querySelector('[name=id_product_attribute]');
+
+  const idProduct = Number.parseInt((idProductInput?.value || null), 10);
   const qty = Number.parseInt(quantityInput?.value, 10) || 0;
-  const idProductAttribute = form.querySelector('[name=id_product_attribute]')?.value || 0;
-  const idCustomization = form.querySelector('[name=id_customization]')?.value || 0;
+  const idProductAttribute = Number.parseInt((idProductAttributeInput?.value || null), 10);
+  const idCustomization = Number.parseInt(idCustomizationInout?.value, 10) || 0;
 
   const onInvalidQuantity = (input) => {
     danger(sprintf(prestashop.t.alert.minimalQuantity, input.getAttribute('min')));
@@ -74,14 +79,16 @@ const addToCartHandler = async (event) => {
         eventType: 'addProductToCart',
         resp,
       });
+      addToCartButton.removeAttribute('disabled');
     }
   } catch (error) {
-    danger(error.message);
-  }
-
-  setTimeout(() => {
+    prestashop.emit('handleError', {
+      eventType: 'addProductToCart',
+      resp: {},
+      error,
+    });
     addToCartButton.removeAttribute('disabled');
-  }, 1000);
+  }
 };
 
 export default addToCartHandler;

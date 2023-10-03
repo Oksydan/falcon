@@ -27,7 +27,11 @@ const updateFacetsHandler = async (url) => {
     prestashop.emit('updateProductList', data);
     window.history.pushState(data, document.title, data.current_url);
   } catch (error) {
-    danger(prestashop.t.alert.genericHttpError);
+    prestashop.emit('handleError', {
+      eventType: 'updateFacets',
+      resp: {},
+      error,
+    });
   }
 };
 

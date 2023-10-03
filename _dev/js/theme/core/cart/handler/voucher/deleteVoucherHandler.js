@@ -1,7 +1,5 @@
-import useAlertToast from '../../../../components/useAlertToast';
 import deleteVoucherFromCartRequest from '../../request/voucher/deleteVoucherFromCartRequest';
-
-const { danger } = useAlertToast();
+import prestashop from "prestashop";
 
 /**
  * Delete voucher handler
@@ -35,7 +33,11 @@ const deleteVoucherHandler = async (event) => {
       });
     }
   } catch (error) {
-    danger(error.message);
+    prestashop.emit('handleError', {
+      eventType: 'deleteVoucherFromCart',
+      resp: {},
+      error,
+    });
   }
 };
 
