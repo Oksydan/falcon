@@ -2,6 +2,7 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 import useCustomQuantityInput from './useCustomQuantityInput';
 import { each } from '../utils/DOMHelpers';
+import productEventContextSelector from '../core/product/utils/productEventContextSelector';
 
 $(() => {
   const createInputFile = () => {
@@ -29,7 +30,7 @@ $(() => {
       init();
     };
 
-    each('.js-product-qty-spinner', initQtySpinner);
+    each(`${productEventContextSelector()} .js-product-qty-spinner`, initQtySpinner);
   };
 
   initProductQuantityInput();
@@ -56,10 +57,11 @@ $(() => {
 
   prestashop.on('updatedProduct', (event) => {
     createInputFile();
+    const contextSelector = productEventContextSelector();
 
     if (updateEvenType === 'updatedProductCombination') {
-      $('.js-product-images').replaceWith(event.product_cover_thumbnails);
-      $('.js-product-images-modal').replaceWith(event.product_images_modal);
+      $(`${contextSelector} .js-product-images`).replaceWith(event.product_cover_thumbnails);
+      $(`${contextSelector} .js-product-images-modal`).replaceWith(event.product_images_modal);
       prestashop.emit('updatedProductCombination', event);
     }
 

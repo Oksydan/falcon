@@ -1,4 +1,5 @@
 import prestashop from 'prestashop';
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
  * Update quantity input value
@@ -11,9 +12,10 @@ const updateQuantityInputHandler = (eventType, { product_minimal_quantity: produ
     productMinimalQuantity,
     10,
   );
+  const contextElement = document.querySelector(productEventContextSelector());
 
   if (!Number.isNaN(minimalProductQuantity) && eventType !== 'updatedProductQuantity') {
-    const newQtyInput = document.querySelector(`${prestashop.selectors.product.actions} ${prestashop.selectors.quantityWanted}`);
+    const newQtyInput = contextElement.querySelector(`${prestashop.selectors.product.actions} ${prestashop.selectors.quantityWanted}`);
     newQtyInput.value = minimalProductQuantity;
   }
 };

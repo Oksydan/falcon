@@ -1,4 +1,5 @@
 import prestashop from 'prestashop';
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
  * Update product customization input value
@@ -9,7 +10,8 @@ import prestashop from 'prestashop';
  * @return {void}
  */
 const updateProductCustomizationHandler = (eventType, { id_customization: idCustomization }) => {
-  const customizationIdInput = document.querySelector(prestashop.selectors.cart.productCustomizationId);
+  const contextElement = document.querySelector(productEventContextSelector());
+  const customizationIdInput = contextElement.querySelector(prestashop.selectors.cart.productCustomizationId);
 
   // refill customizationId input value when updating quantity or combination
   if (

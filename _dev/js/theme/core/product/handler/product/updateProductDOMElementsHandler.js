@@ -1,6 +1,7 @@
 import prestashop from 'prestashop';
 import parseToHtml from '../../../../utils/parseToHtml';
 import { each } from '../../../../utils/DOMHelpers';
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
  * Replace element with new html string
@@ -41,15 +42,16 @@ const updateProductDOMElementsHandler = ({
                                            product_add_to_cart,
                                            /* eslint-enable */
 }) => {
-  each(prestashop.selectors.product.imageContainer, (el) => replaceElement(el, product_cover_thumbnails));
-  each(prestashop.selectors.product.prices, (el) => replaceElement(el, product_prices));
-  each(prestashop.selectors.product.customization, (el) => replaceElement(el, product_customization));
-  each(prestashop.selectors.product.variantsUpdate, (el) => replaceElement(el, product_variants));
-  each(prestashop.selectors.product.discounts, (el) => replaceElement(el, product_discounts));
-  each(prestashop.selectors.product.additionalInfos, (el) => replaceElement(el, product_additional_info));
-  each(prestashop.selectors.product.details, (el) => replaceElement(el, product_details));
-  each(prestashop.selectors.product.flags, (el) => replaceElement(el, product_flags));
-  each(prestashop.selectors.product.addToCart, (el) => replaceElement(el, product_add_to_cart));
+  const contextSelector = productEventContextSelector();
+
+  each(`${contextSelector} ${prestashop.selectors.product.prices}`, (el) => replaceElement(el, product_prices));
+  each(`${contextSelector} ${prestashop.selectors.product.customization}`, (el) => replaceElement(el, product_customization));
+  each(`${contextSelector} ${prestashop.selectors.product.variantsUpdate}`, (el) => replaceElement(el, product_variants));
+  each(`${contextSelector} ${prestashop.selectors.product.discounts}`, (el) => replaceElement(el, product_discounts));
+  each(`${contextSelector} ${prestashop.selectors.product.additionalInfos}`, (el) => replaceElement(el, product_additional_info));
+  each(`${contextSelector} ${prestashop.selectors.product.details}`, (el) => replaceElement(el, product_details));
+  each(`${contextSelector} ${prestashop.selectors.product.flags}`, (el) => replaceElement(el, product_flags));
+  each(`${contextSelector} ${prestashop.selectors.product.addToCart}`, (el) => replaceElement(el, product_add_to_cart));
 };
 
 export default updateProductDOMElementsHandler;

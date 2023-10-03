@@ -8,6 +8,7 @@ import updateQuantityInputHandler from './updateQuantityInputHandler';
 import updateProductCustomizationHandler from './updateProductCustomizationHandler';
 import updateProductDOMElementsHandler from './updateProductDOMElementsHandler';
 import { fromSerializeObject } from '../../../../utils/formSerialize';
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 const { getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();
 
@@ -18,7 +19,9 @@ const { getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateS
  * @return {Promise<void>}
  */
 const updateProductHandler = async ({ eventType }) => {
-  const productActions = document.querySelector(prestashop.selectors.product.actions);
+  const isQuickView = isQuickViewOpen();
+  const contextElement = document.querySelector(productEventContextSelector());
+  const productActions = contextElement.querySelector(prestashop.selectors.product.actions);
   const quantityWantedInput = productActions.querySelector(prestashop.selectors.quantityWanted);
 
   const form = productActions.querySelector('.js-product-form');
@@ -38,7 +41,7 @@ const updateProductHandler = async ({ eventType }) => {
     const payload = {
       quantity_wanted: Number.parseInt(quantityWantedInput.value, 10),
       preview: isProductPreview() ? 1 : 0,
-      quickview: isQuickViewOpen() ? 1 : 0,
+      quickview: isQuickView ? 1 : 0,
       ...formSerialized,
       id_product: Number.parseInt(formSerialized.id_product, 10),
       id_product_attribute: Number.parseInt(idProductAttribute, 10),
@@ -53,7 +56,9 @@ const updateProductHandler = async ({ eventType }) => {
       updateProductCustomizationHandler(eventType, data);
       updateQuantityInputHandler(eventType, data);
 
-      document.dispatchEvent(updateRatingEvent);
+      if (isQuickView) {
+        document.dispatchEvent(updateRatingEvent);
+      }
 
       const { persist, get: getPersistedData } = productFormDataPersister();
       persist(form);
