@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import $ from 'jquery';
+import DOMReady from "../utils/DOMReady";
 
 prestashop.selectors = {
   quantityWanted: '#quantity_wanted',
@@ -133,6 +133,6 @@ prestashop.selectors = {
   },
 };
 
-$(() => {
+DOMReady(() => {
   prestashop.emit('selectorsInit');
 });
