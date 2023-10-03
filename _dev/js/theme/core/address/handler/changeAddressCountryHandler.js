@@ -58,7 +58,7 @@ const changeAddressCountryHandler = async () => {
 
     // Restore fields values
     newFormInputs.forEach((input) => {
-      input.value = inputsValue[input.name];
+      input.value = typeof inputsValue[input.name] !== 'undefined' ? inputsValue[input.name] : '';
     });
 
     prestashop.emit('updatedAddressForm', {
