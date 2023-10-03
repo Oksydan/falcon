@@ -1,5 +1,5 @@
-import isQuickViewOpen from "./isQuickViewOpen";
-import prestashop from "prestashop";
+import prestashop from 'prestashop';
+import isQuickViewOpen from './isQuickViewOpen';
 
 const productEventContextSelector = () => {
   const {
@@ -8,6 +8,6 @@ const productEventContextSelector = () => {
   } = prestashop.selectors.product;
 
   return isQuickViewOpen() ? quickViewModal : container;
-}
+};
 
 export default productEventContextSelector;

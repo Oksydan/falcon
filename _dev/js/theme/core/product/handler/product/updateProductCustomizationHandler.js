@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import productEventContextSelector from "../../utils/productEventContextSelector";
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
  * Update product customization input value

@@ -1,7 +1,7 @@
 import prestashop from 'prestashop';
 import parseToHtml from '../../../../utils/parseToHtml';
 import { each } from '../../../../utils/DOMHelpers';
-import productEventContextSelector from "../../utils/productEventContextSelector";
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
  * Replace element with new html string

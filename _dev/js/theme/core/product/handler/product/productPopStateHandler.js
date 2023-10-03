@@ -1,7 +1,7 @@
 import prestashop from 'prestashop';
 import productFormDataPersister from '../../persister/productFormDataPersister';
 import productStateStore from '../../store/productStateStore';
-import productEventContextSelector from "../../utils/productEventContextSelector";
+import productEventContextSelector from '../../utils/productEventContextSelector';
 
 const { setOnPopState, isFormChanged } = productStateStore();
 

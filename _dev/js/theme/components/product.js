@@ -2,7 +2,7 @@ import $ from 'jquery';
 import prestashop from 'prestashop';
 import useCustomQuantityInput from './useCustomQuantityInput';
 import { each } from '../utils/DOMHelpers';
-import productEventContextSelector from "../core/product/utils/productEventContextSelector";
+import productEventContextSelector from '../core/product/utils/productEventContextSelector';
 
 $(() => {
   const createInputFile = () => {
