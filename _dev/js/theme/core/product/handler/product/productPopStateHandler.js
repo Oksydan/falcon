@@ -1,6 +1,7 @@
 import prestashop from 'prestashop';
 import productFormDataPersister from '../../persister/productFormDataPersister';
 import productStateStore from '../../store/productStateStore';
+import productEventContextSelector from "../../utils/productEventContextSelector";
 
 const { setOnPopState, isFormChanged } = productStateStore();
 
@@ -12,6 +13,7 @@ const { get } = productFormDataPersister();
  * @param {Event} event
  */
 const productPopStateHandler = (event) => {
+  const contextElement = document.querySelector(productEventContextSelector());
   setOnPopState(true);
 
   const formData = event?.state?.form || get();
@@ -20,7 +22,7 @@ const productPopStateHandler = (event) => {
     return;
   }
 
-  const form = document.querySelector(`${prestashop.selectors.product.actions} .js-product-form`);
+  const form = contextElement.querySelector(`${prestashop.selectors.product.actions} .js-product-form`);
 
   const handleFormElementState = (data) => {
     const element = form.querySelector(`[name="${data.name}"]`);
