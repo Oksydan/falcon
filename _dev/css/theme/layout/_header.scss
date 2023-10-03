@@ -29,7 +29,8 @@
       padding: map.get($spacers, 2);
     }
 
-    @include hover-focus() {
+    &:hover,
+    &:focus {
       color: $black;
       text-decoration: none;
       background: $gray-100;

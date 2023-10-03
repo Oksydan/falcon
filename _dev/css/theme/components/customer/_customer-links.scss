@@ -44,7 +44,8 @@
       white-space: normal;
     }
 
-    @include hover-focus() {
+    &:hover,
+    &:focus {
       color: $primary;
       text-decoration: none;
     }
