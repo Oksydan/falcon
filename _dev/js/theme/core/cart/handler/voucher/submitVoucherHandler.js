@@ -1,8 +1,6 @@
+import prestashop from 'prestashop';
 import addVoucherToCartRequest from '../../request/voucher/addVoucherToCartRequest';
 import parseToHtml from '../../../../utils/parseToHtml';
-import useAlertToast from '../../../../components/useAlertToast';
-
-const { danger } = useAlertToast();
 
 /**
  * Submit voucher handler
@@ -46,7 +44,11 @@ const submitVoucherHandler = async (event) => {
       }
     }
   } catch (error) {
-    danger(error.message);
+    prestashop.emit('handleError', {
+      eventType: 'submitVoucher',
+      resp: {},
+      error,
+    });
   }
 
   btn.disabled = false;

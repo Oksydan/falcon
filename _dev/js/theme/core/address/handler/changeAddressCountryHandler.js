@@ -1,9 +1,6 @@
 import prestashop from 'prestashop';
-import useAlertToast from '../../../components/useAlertToast';
 import parseToHtml from '../../../utils/parseToHtml';
 import updateAddressRequest from '../request/updateAddressRequest';
-
-const { danger } = useAlertToast();
 
 /**
  * Change address country handler
@@ -69,14 +66,10 @@ const changeAddressCountryHandler = async () => {
       data,
     });
   } catch (error) {
-    prestashop.emit(
-      'handleError',
-      {
-        eventType: 'updateAddressForm',
-        resp: {},
-      },
-    );
-    danger(prestashop.t.alert.genericHttpError);
+    prestashop.emit('httpRequestError', {
+      eventType: 'updateAddressForm',
+      error,
+    });
   }
 };
 

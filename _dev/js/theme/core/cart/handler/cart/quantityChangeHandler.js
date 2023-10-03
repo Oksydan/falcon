@@ -1,8 +1,8 @@
 import prestashop from 'prestashop';
 import quantityChangeRequest from '../../request/cart/quantityChangeRequest';
-import useAlertToast from '../../../../components/useAlertToast';
+import cartStateStore from '../../store/cartStateStore';
 
-const { danger } = useAlertToast();
+const { setIsUpdateOperation, setHasError, setErrorMsg } = cartStateStore();
 
 /**
  * @param {string} operation - increase|decrease
@@ -31,6 +31,15 @@ const quantityChangeHandler = async (operation, qtyDifference, input) => {
   try {
     const resp = await getRequest();
 
+    const {
+      errors = '',
+      hasError = false,
+    } = resp;
+
+    setIsUpdateOperation(true);
+    setHasError(hasError);
+    setErrorMsg(errors);
+
     if (!resp.hasError) {
       prestashop.emit('updateCart', {
         reason: dataset || resp,
@@ -43,7 +52,11 @@ const quantityChangeHandler = async (operation, qtyDifference, input) => {
       });
     }
   } catch (error) {
-    danger(error.message);
+    prestashop.emit('handleError', {
+      eventType: 'updateProductQuantityInCart',
+      resp: {},
+      error,
+    });
   }
 
   document.querySelector('body').classList.remove('cart-loading');

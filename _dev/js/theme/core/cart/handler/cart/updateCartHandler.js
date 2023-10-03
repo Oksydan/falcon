@@ -1,9 +1,6 @@
 import prestashop from 'prestashop';
 import parseToHtml from '../../../../utils/parseToHtml';
-import useAlertToast from '../../../../components/useAlertToast';
 import updateCartContentRequest from '../../request/cart/updateCartContentRequest';
-
-const { danger } = useAlertToast();
 
 /**
  * Update cart handler - update cart content and emit updatedCart event
@@ -39,7 +36,11 @@ const updateCartHandler = async (event) => {
 
     prestashop.emit('updatedCart', { eventType: 'updateCart', resp });
   } catch (error) {
-    danger(error.message);
+    prestashop.emit('handleError', {
+      eventType: 'updateCart',
+      resp: {},
+      error,
+    });
   }
 };
 

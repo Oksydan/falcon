@@ -8,6 +8,7 @@ import deleteFromCartHandler from './handler/cart/deleteFromCartHandler';
 import quantityChangeHandler from './handler/cart/quantityChangeHandler';
 import updateCartHandler from './handler/cart/updateCartHandler';
 import updatedCartHandler from './handler/cart/updatedCartHandler';
+import cartErrorsHandler from './handler/cart/cartErrorsHandler';
 import useCustomQuantityInput from '../../components/useCustomQuantityInput';
 
 const { on } = useEvent();
@@ -50,11 +51,14 @@ const cartController = () => {
     prestashop.on('updatedCart', (event) => {
       attachSpinnerEvents();
       updatedCartHandler(event);
+      cartErrorsHandler();
     });
 
     prestashop.on('updateCart', (event) => {
       updateCartHandler(event);
     });
+
+    cartErrorsHandler();
   };
 
   return {

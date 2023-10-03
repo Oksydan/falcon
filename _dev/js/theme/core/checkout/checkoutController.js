@@ -9,8 +9,8 @@ import orderConfirmationErrorsHandler from './handler/payment/orderConfirmationE
 import toggleOrderButtonStateHandler from './handler/payment/toggleOrderButtonStateHandler';
 import togglePaymentOptionsHandler from './handler/payment/togglePaymentOptionsHandler';
 import confirmOrderHandler from './handler/payment/confirmOrderHandler';
-import checkoutFormSubmitHandler from './handler/misc/checkoutFormSubmitHandler';
-import checkoutStepChangeHandler from './handler/misc/checkoutStepChangeHandler';
+import checkoutFormSubmitHandler from './handler/process/checkoutFormSubmitHandler';
+import checkoutStepChangeHandler from './handler/process/checkoutStepChangeHandler';
 
 const { on } = useEvent();
 

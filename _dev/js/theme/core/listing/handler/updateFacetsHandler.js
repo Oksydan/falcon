@@ -1,8 +1,5 @@
 import prestashop from 'prestashop';
 import updateListingFacetsRequest from '../request/updateListingFacetsRequest';
-import useAlertToast from '../../../components/useAlertToast';
-
-const { danger } = useAlertToast();
 
 /**
  * Build new facets url - add from-xhr param
@@ -27,7 +24,11 @@ const updateFacetsHandler = async (url) => {
     prestashop.emit('updateProductList', data);
     window.history.pushState(data, document.title, data.current_url);
   } catch (error) {
-    danger(prestashop.t.alert.genericHttpError);
+    prestashop.emit('handleError', {
+      eventType: 'updateFacets',
+      resp: {},
+      error,
+    });
   }
 };
 

@@ -30,12 +30,15 @@ import TopMenu from '@js/theme/components/TopMenu';
 import PageLazyLoad from '@js/theme/components/Lazyload';
 import PageLoader from '@js/theme/components/PageLoader';
 import useStickyElement from '@js/theme/components/useStickyElement';
+import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 
 prestashop.pageLazyLoad = new PageLazyLoad({
   selector: '.lazyload',
 });
 
 prestashop.pageLoader = new PageLoader();
+
+prestashop.on('handleError', httpRequestErrorHandler);
 
 function accLinksTriggerActive() {
   const url = window.location.pathname;

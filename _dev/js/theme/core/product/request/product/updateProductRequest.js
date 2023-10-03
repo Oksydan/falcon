@@ -2,6 +2,7 @@ import prestashop from 'prestashop';
 import useHttpRequest from '../../../../components/http/useHttpRequest';
 import useHttpController from '../../../../components/http/useHttpController';
 import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
+import GenericHttpRequestError from '../../../../components/http/error/GenericHttpRequestError';
 
 const { dispatch, abortAll } = useHttpController();
 
@@ -123,7 +124,7 @@ const updateProductRequest = (payload) => {
             return;
           }
 
-          reject();
+          reject(new GenericHttpRequestError('Error while sending request'));
         }));
     });
   };
