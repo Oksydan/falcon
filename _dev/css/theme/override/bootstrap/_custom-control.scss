@@ -1,13 +1,13 @@
 @use "sass:math";
 
+/* stylelint-disable */
+// KEEPING FOR MIGRATION REFERENCE
 //.custom-checkbox-color {
 //  @extend .custom-checkbox;
 //
 //  .custom-control-label {
 //    &::before {
-//      /* stylelint-disable */
 //      display: none !important;
-//      /* stylelint-enable */
 //    }
 //  }
 //
@@ -89,4 +89,4 @@
 //    }
 //  }
 //}
-//
+/* stylelint-enable */
