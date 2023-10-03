@@ -1,8 +1,10 @@
 @import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/mixins";
 
 @import "functions/index";
-@import "mixins/index";
 @import "variables/index";
+@import "mixins/index";
 
 @import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";

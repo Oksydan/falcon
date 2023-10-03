@@ -27,7 +27,8 @@
         border-right: 1px solid $card-border-color;
       }
 
-      @include hover-focus() {
+      &:hover,
+      &:focus {
         text-decoration: none;
         background: $gray-200;
       }

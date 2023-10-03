@@ -26,7 +26,7 @@
     &__cell {
       padding: map.get($spacers, 2);
       @include media-breakpoint-up(sm) {
-        padding: $table-cell-padding;
+        padding: $table-cell-padding-x $table-cell-padding-y;
         vertical-align: middle;
       }
     }

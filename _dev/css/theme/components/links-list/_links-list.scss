@@ -16,7 +16,8 @@
 
   &__link {
     color: $gray-600;
-    @include hover-focus() {
+    &:hover,
+    &:focus {
       color: $gray-900;
     }
   }

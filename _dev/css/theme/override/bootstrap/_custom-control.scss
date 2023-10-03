@@ -1,93 +1,92 @@
 @use "sass:math";
 
-.custom-checkbox-color {
-  @extend .custom-checkbox;
-
-  .custom-control-label {
-    &::before {
-      /* stylelint-disable */
-      display: none !important;
-      /* stylelint-enable */
-    }
-  }
-
-  .custom-control-input:checked ~ .custom-control-label-dark {
-    &::after {
-      background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
-    }
-  }
-}
-
-.custom-control-input-color {
-  position: absolute;
-  top: math.div(($font-size-base * $line-height-base - $custom-control-indicator-size), 2);
-  left: -($custom-control-gutter + $custom-control-indicator-size);
-  display: block;
-  width: $custom-control-indicator-size;
-  height: $custom-control-indicator-size;
-  pointer-events: none;
-  content: "";
-  background-color: $custom-control-indicator-bg;
-  border: $custom-control-indicator-border-color solid $custom-control-indicator-border-width;
-  @include box-shadow($custom-control-indicator-box-shadow);
-  @include border-radius($custom-checkbox-indicator-border-radius);
-}
-
-.custom-checkbox-block {
-  padding-left: $custom-control-indicator-size;
-  .custom-control-label::after,
-  .custom-control-label::before {
-    left: -#{$custom-control-indicator-size};
-  }
-}
-
-.custom-radio-color {
-  @extend .custom-radio;
-  position: relative;
-  width: $custom-color-control-indicator-size;
-  height: $custom-color-control-indicator-size;
-  padding-left: $custom-color-control-indicator-size;
-
-  .custom-control-input-color {
-    @extend .custom-control-input-color;
-    top: 0;
-    left: -#{$custom-color-control-indicator-size};
-    width: $custom-color-control-indicator-size;
-    height: $custom-color-control-indicator-size;
-    border-radius: $custom-radio-indicator-border-radius;
-  }
-
-  .custom-control-label {
-    &::before {
-      display: none;
-    }
-  }
-
-
-  .custom-control-input {
-    width: 100%;
-    height: 100%;
-
-    &:checked ~ .custom-control-label {
-      &::after {
-        top: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
-        right: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
-        left: auto;
-        width: $custom-color-control-indicator-icon-size;
-        height: $custom-color-control-indicator-icon-size;
-        background-image: escape-svg($custom-checkbox-indicator-icon-checked);
-      }
-
-      .custom-control-input-color {
-        border-color: $custom-color-control-indicator-size-checked-border-color;
-      }
-    }
-  }
-
-  .custom-control-input:checked ~ .custom-control-label-dark {
-    &::after {
-      background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
-    }
-  }
-}
-
+/* stylelint-disable */
+// KEEPING FOR MIGRATION REFERENCE
+//.custom-checkbox-color {
+//  @extend .custom-checkbox;
+//
+//  .custom-control-label {
+//    &::before {
+//      display: none !important;
+//    }
+//  }
+//
+//  .custom-control-input:checked ~ .custom-control-label-dark {
+//    &::after {
+//      background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
+//    }
+//  }
+//}
+//
+//.custom-control-input-color {
+//  position: absolute;
+//  top: math.div(($font-size-base * $line-height-base - $custom-control-indicator-size), 2);
+//  left: -($custom-control-gutter + $custom-control-indicator-size);
+//  display: block;
+//  width: $custom-control-indicator-size;
+//  height: $custom-control-indicator-size;
+//  pointer-events: none;
+//  content: "";
+//  background-color: $custom-control-indicator-bg;
+//  border: $custom-control-indicator-border-color solid $custom-control-indicator-border-width;
+//  @include border-radius($custom-checkbox-indicator-border-radius);
+//}
+//
+//.custom-checkbox-block {
+//  padding-left: $custom-control-indicator-size;
+//  .custom-control-label::after,
+//  .custom-control-label::before {
+//    left: -#{$custom-control-indicator-size};
+//  }
+//}
+//
+//.custom-radio-color {
+//  @extend .custom-radio;
+//  position: relative;
+//  width: $custom-color-control-indicator-size;
+//  height: $custom-color-control-indicator-size;
+//  padding-left: $custom-color-control-indicator-size;
+//
+//  .custom-control-input-color {
+//    @extend .custom-control-input-color;
+//    top: 0;
+//    left: -#{$custom-color-control-indicator-size};
+//    width: $custom-color-control-indicator-size;
+//    height: $custom-color-control-indicator-size;
+//    border-radius: $custom-radio-indicator-border-radius;
+//  }
+//
+//  .custom-control-label {
+//    &::before {
+//      display: none;
+//    }
+//  }
+//
+//
+//  .custom-control-input {
+//    width: 100%;
+//    height: 100%;
+//
+//    &:checked ~ .custom-control-label {
+//      &::after {
+//        top: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
+//        right: #{math.div(($custom-color-control-indicator-size - $custom-color-control-indicator-icon-size), 2)};
+//        left: auto;
+//        width: $custom-color-control-indicator-icon-size;
+//        height: $custom-color-control-indicator-icon-size;
+//        background-image: escape-svg($custom-checkbox-indicator-icon-checked);
+//      }
+//
+//      .custom-control-input-color {
+//        border-color: $custom-color-control-indicator-size-checked-border-color;
+//      }
+//    }
+//  }
+//
+//  .custom-control-input:checked ~ .custom-control-label-dark {
+//    &::after {
+//      background-image: escape-svg($custom-checkbox-indicator-icon-checked-dark);
+//    }
+//  }
+//}
+/* stylelint-enable */

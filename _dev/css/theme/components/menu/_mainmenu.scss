@@ -48,7 +48,8 @@
       font-weight: 700;
       color: $gray-900;
 
-      @include hover-focus() {
+      &:hover,
+      &:focus {
         text-decoration: none;
       }
 
@@ -69,21 +70,21 @@
     }
 
     &--2 {
-      padding-left: #{$modal-inner-padding + rem-calc(map.get($spacers, 2))};
+      padding-left: #{rem-calc($modal-inner-padding) + rem-calc(map.get($spacers, 2))};
       @include media-breakpoint-up(md) {
         padding: 0;
       }
     }
 
     &--3 {
-      padding-left: #{$modal-inner-padding + rem-calc(map.get($spacers, 3))};
+      padding-left: #{rem-calc($modal-inner-padding) + rem-calc(map.get($spacers, 3))};
       @include media-breakpoint-up(md) {
         padding-left: map.get($spacers, 2);
       }
     }
 
     &--4 {
-      padding-left: #{$modal-inner-padding + rem-calc(map.get($spacers, 4))};
+      padding-left: #{rem-calc($modal-inner-padding) + rem-calc(map.get($spacers, 4))};
       @include media-breakpoint-up(md) {
         padding-left: map.get($spacers, 2);
       }
