@@ -1,6 +1,8 @@
 <div class="product-miniature__actions">
     {if $product.add_to_cart_url && ($product.quantity > 0 || $product.allow_oosp) && !$configuration.is_catalog}
-        <form class="product-miniature__form" action="{$product.add_to_cart_url}" method="post">
+        <form class="product-miniature__form d-grid"
+              action="{$product.add_to_cart_url}"
+              method="post">
           <input type="hidden" name="id_product" value="{$product.id}">
           <input
             type="hidden"
