@@ -28,7 +28,7 @@
     {block name='product_quantity'}
       <div class="product-quantity row mb-1 mx-n1 mt-n2 align-items-center">
         <div class="qty col-12 col-sm-auto mx-auto mt-2 px-1">
-          <div class="js-product-qty-spinner row no-gutters">
+          <div class="js-product-qty-spinner row g-0">
             <div class="col-auto">
               <a href="#" class="js-custom-qty-btn-down">
                 -

@@ -56,9 +56,9 @@
     {if $product.grouped_features}
       <section class="product-features my-3">
         <p class="h6">{l s='Data sheet' d='Shop.Theme.Catalog'}</p>
-        <dl class="row no-gutters mb-0">
+        <dl class="row g-0 mb-0">
           {foreach from=$product.grouped_features item=feature}
-            <dt class="col-4 pr-3 {if !$feature@last}pb-2 mb-2 border-bottom{/if}">{$feature.name}</dt>
+            <dt class="col-4 pe-3 {if !$feature@last}pb-2 mb-2 border-bottom{/if}">{$feature.name}</dt>
             <dd class="col-8 {if !$feature@last}pb-2 mb-2 border-bottom{/if}">{$feature.value|escape:'htmlall'|nl2br nofilter}</dd>
           {/foreach}
         </dl>
@@ -73,7 +73,7 @@
         <p class="h6">{l s='Specific References' d='Shop.Theme.Catalog'}</p>
           <dl class="row">
             {foreach from=$product.specific_references item=reference key=key}
-              <dt class="col-4 pr-3 {if !$reference@last}pb-2 mb-2 border-bottom{/if}">{$key}</dt>
+              <dt class="col-4 pe-3 {if !$reference@last}pb-2 mb-2 border-bottom{/if}">{$key}</dt>
               <dd class="col-8 {if !$reference@last}pb-2 mb-2 border-bottom{/if}">{$reference}</dd>
             {/foreach}
           </dl>

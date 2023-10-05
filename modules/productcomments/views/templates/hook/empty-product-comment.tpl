@@ -27,7 +27,7 @@
   {if $post_allowed}
     <div class="text-center">
       <button class="btn btn-primary js-post-product-comment">
-        <i class="material-icons btn-icon mr-1">edit</i>
+        <i class="material-icons btn-icon me-1">edit</i>
         {l s='Be the first to write your review' d='Modules.Productcomments.Shop'}
       </button>
     </div>

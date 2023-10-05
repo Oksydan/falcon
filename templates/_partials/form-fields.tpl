@@ -48,7 +48,7 @@
   <div class="form-group js-input-column">
     {if $field.type == 'checkbox' || $field.type == 'radio-buttons'}
       {if $field.type == 'radio-buttons'}
-        <div class="form-label label mr-3">{$field.label}</div>
+        <div class="form-label label me-3">{$field.label}</div>
       {/if}
     {else}
       <label class="form-label {if $field.required}required{/if}" for="f-{$field.name}_{$uniqId}">

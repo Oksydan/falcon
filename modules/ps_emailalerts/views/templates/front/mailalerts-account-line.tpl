@@ -24,7 +24,7 @@
 *}
 
 <div class="card overflow-hidden">
-  <div class="row no-gutters flex-nowrap align-items-center">
+  <div class="row g-0 flex-nowrap align-items-center">
     <div class="col-auto">
       <a href="{$mailAlert.link}">
         <img src="{$mailAlert.cover_url}" alt=""/>

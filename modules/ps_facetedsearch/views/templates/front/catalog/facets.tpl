@@ -37,7 +37,7 @@
             <div class="clear-all-wrapper card-body">
               <button data-search-url="{$clear_all_link}"
                 class="btn btn-sm btn-block btn-outline-secondary btn-sm js-search-filters-clear-all">
-                <i class="material-icons font-reset mr-1 align-middle">&#xE14C;</i>
+                <i class="material-icons font-reset me-1 align-middle">&#xE14C;</i>
                 {l s='Clear all' d='Shop.Theme.Actions'}
               </button>
             </div>
@@ -143,7 +143,7 @@
                               data-action="range-from"
                               >
                           </div>
-                          <div class="px-2 ml-auto search-filters__input-group">
+                          <div class="px-2 ms-auto search-filters__input-group">
                             <input
                               class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
                               type="text"

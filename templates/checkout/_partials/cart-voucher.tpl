@@ -39,7 +39,7 @@
                             href="{$voucher.delete_url}"
                             data-link-action="remove-voucher"
                             data-id-discount="{$voucher.id_cart_rule}"
-                            class="text-danger ml-1 js-voucher-delete">
+                            class="text-danger ms-1 js-voucher-delete">
                           <span class="material-icons font-reset btn-icon">delete</span>
                         </a>
                       {/if}

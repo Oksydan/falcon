@@ -45,7 +45,7 @@
 {/block}
 
 {block "form_buttons"}
-  <div class="text-right">
+  <div class="text-end">
     <button
       class="continue btn btn-primary d-none d-md-inline-block"
       name="continue"

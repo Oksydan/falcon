@@ -35,7 +35,7 @@
     {/block}
   </div>
 
-  <div class="col-sm-auto col-12 mt-2 d-md-none ml-auto">
+  <div class="col-sm-auto col-12 mt-2 d-md-none ms-auto">
     {if !empty($listing.rendered_facets)}
       <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary d-sm-inline-block d-none">
         {l s='Filter' d='Shop.Theme.Actions'}
@@ -46,7 +46,7 @@
     {/if}
   </div>
 
-  <div class="col-auto d-none d-lg-block ml-auto mt-2">
+  <div class="col-auto d-none d-lg-block ms-auto mt-2">
     <ul class="display-toggle d-flex align-items-center mx-n1 m-0">
       <li class="display-toggle__elem px-1">
         <a href="#" data-toggle-listing data-display-type="grid" class="display-toggle__link d-inline-block {if $listingDisplayType == 'grid'}active{/if}">

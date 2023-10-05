@@ -57,7 +57,7 @@
             <td class="text-sm-center align-middle">
               {if $return.print_url}
                 <a href="{$return.print_url}" class="btn btn-primary btn-sm">
-                  <span class="material-icons btn-icon ml-1">file_download</span>
+                  <span class="material-icons btn-icon ms-1">file_download</span>
                   {l s='Print out' d='Shop.Theme.Actions'}
                 </a>
               {else}

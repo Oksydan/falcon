@@ -52,7 +52,7 @@
                 {$order.details.order_date}
               </span>
             </td>
-            <td class="text-xs-right align-middle">
+            <td class="text-end align-middle">
               <span class="text-primary font-weight-bold text-lowercase">
                 {$order.totals.total.value}
               </span>

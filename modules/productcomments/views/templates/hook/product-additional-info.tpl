@@ -36,7 +36,7 @@
       {include file='module:productcomments/views/templates/hook/average-grade-stars.tpl' grade=$average_grade}
       <div class="additional-links">
         {if $post_allowed}
-          <a class="btn btn-text js-post-product-comment ml-2" href="#product-comments-list-header">
+          <a class="btn btn-text js-post-product-comment ms-2" href="#product-comments-list-header">
             <i class="material-icons btn-icon">edit</i>
             {l s='Write your review' d='Modules.Productcomments.Shop'}
           </a>

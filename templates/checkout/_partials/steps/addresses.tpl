@@ -123,7 +123,7 @@
       {/if}
 
       {if !$form_has_continue_button}
-        <div class="text-right">
+        <div class="text-end">
           <button type="submit" class="btn btn-primary continue d-none d-md-inline-block" name="confirm-addresses" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>

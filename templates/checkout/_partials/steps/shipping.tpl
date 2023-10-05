@@ -66,7 +66,7 @@
 
                               </div>
                               <div class="col-sm-auto col-12 checkout-option__col checkout-option__col--price mt-sm-0 mt-1">
-                                <div class="checkout-option__price price text-right">
+                                <div class="checkout-option__price price text-end">
                                   {$carrier.price}
                                 </div>
                               </div>
@@ -112,7 +112,7 @@
 
           </div>
         </div>
-        <div class="text-right mt-3">
+        <div class="text-end mt-3">
           <button type="submit" class="continue btn btn-primary d-none d-md-inline-block" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>

@@ -55,7 +55,7 @@
       <div class="product-line-info product-price{if $product.has_discount} has-discount{/if}">
         <div class="current-price">
           {if $product.has_discount}
-            <span class="price price--regular mr-1">{$product.regular_price}</span>
+            <span class="price price--regular me-1">{$product.regular_price}</span>
           {/if}
           <span
             class="current-price-display price{if $product.has_discount} current-price-discount{/if}">{$product.price}</span>
@@ -117,7 +117,7 @@
       {if !empty($product.is_gift)}
         <span class="gift-quantity">{$product.quantity}</span>
       {else}
-          <div class="js-custom-cart-qty-spinner row no-gutters">
+          <div class="js-custom-cart-qty-spinner row g-0">
               <div class="col-auto">
                   <a href="#" class="js-custom-qty-btn-down">
                       -

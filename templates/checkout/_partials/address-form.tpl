@@ -31,14 +31,14 @@
 {block name='form_buttons'}
   {if !$form_has_continue_button}
     <div class="d-flex align-items-center justify-content-end">
-      <a class="js-cancel-address cancel-address btn btn-link mr-auto" href="{url entity='order' params=['cancelAddress' => {$type}]}">{l s='Cancel' d='Shop.Theme.Actions'}</a>
+      <a class="js-cancel-address cancel-address btn btn-link me-auto" href="{url entity='order' params=['cancelAddress' => {$type}]}">{l s='Cancel' d='Shop.Theme.Actions'}</a>
       <button type="submit" class="btn btn-primary">{l s='Save' d='Shop.Theme.Actions'}</button>
     </div>
 
   {else}
     <div class="d-flex align-items-center justify-content-end">
       {if $customer.addresses|count > 0}
-        <a class="js-cancel-address cancel-address btn btn-link mr-auto" href="{url entity='order' params=['cancelAddress' => {$type}]}">{l s='Cancel' d='Shop.Theme.Actions'}</a>
+        <a class="js-cancel-address cancel-address btn btn-link me-auto" href="{url entity='order' params=['cancelAddress' => {$type}]}">{l s='Cancel' d='Shop.Theme.Actions'}</a>
       {/if}
       <button type="submit" class="continue btn btn-primary" name="confirm-addresses" value="1">
           {l s='Continue' d='Shop.Theme.Actions'}

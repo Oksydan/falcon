@@ -49,7 +49,7 @@
             <td class="align-middle">{$slip.credit_slip_date}</td>
             <td class="align-middle text-sm-center">
               <a href="{$slip.url}" class="btn btn-primary btn-sm">
-                <span class="material-icons btn-icon ml-1">file_download</span>
+                <span class="material-icons btn-icon ms-1">file_download</span>
                 {l s='Download' d='Shop.Theme.Catalog'}
               </a>
             </td>
@@ -79,7 +79,7 @@
           </div>
           <div class="card-footer">
             <a href="{$slip.url}" class="btn btn-primary btn-sm btn-block">
-              <span class="material-icons btn-icon ml-1">file_download</span>
+              <span class="material-icons btn-icon ms-1">file_download</span>
               {l s='View credit slip' d='Shop.Theme.Customeraccount'}
             </a>
           </div>

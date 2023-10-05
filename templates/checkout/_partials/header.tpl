@@ -43,7 +43,7 @@
             {/images_block}
           </a>
         </div>
-        <div class="col d-none d-md-block text-right">
+        <div class="col d-none d-md-block text-end">
           {hook h='displayNav1'}
         </div>
       </div>

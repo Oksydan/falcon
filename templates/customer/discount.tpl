@@ -47,7 +47,7 @@
           <tr>
             <th scope="row" class="align-middle">{$cart_rule.code}</th>
             <td class="align-middle">{$cart_rule.name}</td>
-            <td class="text-xs-right">{$cart_rule.quantity_for_user}</td>
+            <td class="text-end">{$cart_rule.quantity_for_user}</td>
             <td class="align-middle">
               <span class="text-primary font-weight-bold text-lowercase align-middle">
                 {$cart_rule.value}

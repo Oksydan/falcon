@@ -114,7 +114,7 @@
             <ul class="card-block mb-0 row">
               {if $store.phone}
                 <li class="col-md-4 d-flex align-items-center mt-1">
-                  <span class="material-icons mr-2 font-reset">
+                  <span class="material-icons me-2 font-reset">
                     call
                   </span>
                   <a href="tel:{$store.phone}">{$store.phone}</a>
@@ -122,7 +122,7 @@
               {/if}
               {if $store.fax}
                 <li class="col-md-4 d-flex align-items-center mt-1">
-                  <span class="material-icons mr-2 font-reset">
+                  <span class="material-icons me-2 font-reset">
                     local_printshop
                   </span>
                   <span>{$store.fax}</span>
@@ -130,7 +130,7 @@
               {/if}
               {if $store.email}
                 <li class="col-md-4 d-flex align-items-center mt-1">
-                  <span class="material-icons mr-2 font-reset">
+                  <span class="material-icons me-2 font-reset">
                     mail
                   </span>
                   <a href="mailto:{$store.email}">

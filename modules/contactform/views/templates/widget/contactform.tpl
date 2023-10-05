@@ -113,7 +113,7 @@
 
         </section>
 
-        <footer class="form-footer text-right">
+        <footer class="form-footer text-end">
           <style>
             input[name=url] {
               display: none !important;

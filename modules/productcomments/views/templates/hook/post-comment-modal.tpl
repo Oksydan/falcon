@@ -43,7 +43,7 @@
               {foreach from=$criterions item='criterion'}
                 <li>
                   <div class="criterion-rating d-flex">
-                    <label class="mb-0 mr-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
+                    <label class="mb-0 me-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
                     <div
                       class="grade-stars"
                       data-grade="3"

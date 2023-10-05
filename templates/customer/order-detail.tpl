@@ -65,7 +65,7 @@
       </ul>
 
       {if $order.details.reorder_url}
-        <div class="mt-2 text-right">
+        <div class="mt-2 text-end">
           <a href="{$order.details.reorder_url}" class="btn btn-outline-primary">{l s='Reorder' d='Shop.Theme.Actions'}</a>
         </div>
       {/if}
