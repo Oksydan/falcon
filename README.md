@@ -29,7 +29,7 @@ Gold sponsors
 </p>
 <p align="center">
  <a href="https://msaustral.com/" target="_blank" style="display: block">
-     <img alt="Ms Austral logo" src="https://github.com/Oksydan/falcon/sponsors/logo/msaustral.png" width="200">
+     <img alt="Ms Austral logo" src="https://github.com/Oksydan/falcon/blob/master/sponsors/logo-msaustral.png" width="200">
  </a>
 </p>
 <br>
