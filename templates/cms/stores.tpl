@@ -96,7 +96,7 @@
             {if $store.note || $store.phone || $store.fax || $store.email}
               <div class="col-12">
                 <div class="pt-3 mt-4 border-top text-center">
-                  <a data-toggle="collapse" class="icon-collapse d-inline-flex" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}">
+                  <a data-bs-toggle="collapse" class="icon-collapse d-inline-flex" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}">
                     {l s='About and Contact' d='Shop.Theme.Global'}
                     <span class="material-icons"></span>
                   </a>

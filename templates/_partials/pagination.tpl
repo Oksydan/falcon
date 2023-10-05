@@ -46,10 +46,10 @@
               >
                 {if $page.type === 'previous'}
                   <span class="material-icons font-reset align-middle">keyboard_arrow_left</span>
-                  <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
+                  <span class="visually-hidden">{l s='Previous' d='Shop.Theme.Actions'}</span>
                 {elseif $page.type === 'next'}
                   <span class="material-icons font-reset align-middle">keyboard_arrow_right</span>
-                  <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
+                  <span class="visually-hidden">{l s='Next' d='Shop.Theme.Actions'}</span>
                 {else}
                   {$page.page}
                 {/if}

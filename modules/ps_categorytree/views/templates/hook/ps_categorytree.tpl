@@ -34,7 +34,7 @@
               <a href="{$node.link}" class="stretched-link text-reset list-group-item-action-dropdown-link">
                 {$node.name}
               </a>
-              <a href="#exCollapsingNavbar{$node.id}" class="icon-collapse list-group-item-collapse text-reset" data-toggle="collapse">
+              <a href="#exCollapsingNavbar{$node.id}" class="icon-collapse list-group-item-collapse text-reset" data-bs-toggle="collapse">
                 <i class="material-icons d-block">&#xE313;</i>
               </a>
             </div>

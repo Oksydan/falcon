@@ -37,7 +37,7 @@
               rel="noopener noreferrer"
               class="btn btn-light p-2 rounded-circle btn-lg">
               <span class="icon icon-{$social_share_link.class} d-block"></span>
-              <div class="sr-only">
+              <div class="visually-hidden">
                 {$social_share_link.label}
               </div>
             </a>

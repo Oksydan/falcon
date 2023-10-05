@@ -54,7 +54,7 @@
             <div class="search-filters__header d-flex justify-content-between align-items-center mb-0 h5 position-relative">
               <span class="search-filters__title mb-0">{$facet.label}</span>
               {if $facet.widgetType != 'slider'}
-                <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
+                <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block" data-bs-toggle="collapse"
                   {if !$_collapse} aria-expanded="true" {/if}>
                   <span class="material-icons">&#xE313;</span>
                 </a>

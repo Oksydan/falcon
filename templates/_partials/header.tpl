@@ -54,7 +54,7 @@
                                     class="header-top__link"
                                     rel="nofollow"
                                     href="#"
-                                    data-toggle="modal"
+                                    data-bs-toggle="modal"
                                     data-target="#mobile_top_menu_wrapper"
                             >
                                 <div class="header-top__icon-container">

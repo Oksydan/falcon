@@ -54,7 +54,7 @@
                       {/if}
                     >
                     </span>
-                    <span class="sr-only">
+                    <span class="visually-hidden">
                       {$group_attribute.name}
                     </span>
                 </label>

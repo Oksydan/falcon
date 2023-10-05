@@ -24,7 +24,7 @@
  *}
 {block name='cart_detailed_product'}
   <div class="cart-overview card-body js-cart position-relative" data-refresh-url="{url entity='cart' params=['ajax' => true, 'action' => 'refresh']}">
-  <div class="cart-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">{l s='Loading...' d='Shop.Theme.Global'}</span></div></div>
+  <div class="cart-loader"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">{l s='Loading...' d='Shop.Theme.Global'}</span></div></div>
     {if $cart.products}
       <div class="cart-items">
         {foreach from=$cart.products item=product}

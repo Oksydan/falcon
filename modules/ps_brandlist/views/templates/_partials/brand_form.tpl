@@ -27,7 +27,7 @@
   <button
     class="btn-unstyle select-title"
     rel="nofollow"
-    data-toggle="dropdown"
+    data-bs-toggle="dropdown"
     aria-haspopup="true"
     aria-expanded="false">
     {l s='All brands' d='Shop.Theme.Catalog'}

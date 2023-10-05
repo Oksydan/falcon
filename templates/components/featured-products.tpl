@@ -10,11 +10,11 @@
         {/block}
         <div class="featured-products__navigation d-flex flex-grow-0 flex-shrink-0 ms-auto">
           <div class="swiper-button-prev swiper-button-custom position-static">
-            <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
+            <span class="visually-hidden">{l s='Previous' d='Shop.Theme.Actions'}</span>
             <span class="material-icons">keyboard_arrow_left</span>
           </div>
           <div class="swiper-button-next swiper-button-custom position-static">
-            <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
+            <span class="visually-hidden">{l s='Next' d='Shop.Theme.Actions'}</span>
             <span class="material-icons">keyboard_arrow_right</span>
           </div>
         </div>

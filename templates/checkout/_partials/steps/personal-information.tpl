@@ -60,7 +60,7 @@
         <li class="nav-item">
           <a
             class="nav-link {if !$show_login_form}active{/if}"
-            data-toggle="tab"
+            data-bs-toggle="tab"
             href="#checkout-guest-form"
             role="tab"
             aria-controls="checkout-guest-form"
@@ -78,7 +78,7 @@
           <a
             class="nav-link {if $show_login_form}active{/if}"
             data-link-action="show-login-form"
-            data-toggle="tab"
+            data-bs-toggle="tab"
             href="#checkout-login-form"
             role="tab"
             aria-controls="checkout-login-form"
