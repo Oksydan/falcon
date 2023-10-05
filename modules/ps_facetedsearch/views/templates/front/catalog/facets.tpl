@@ -36,7 +36,7 @@
           {if $activeFilters|count}
             <div class="clear-all-wrapper card-body">
               <button data-search-url="{$clear_all_link}"
-                class="btn btn-sm btn-block btn-outline-secondary btn-sm js-search-filters-clear-all">
+                class="btn btn-sm d-block text-center w-100 btn-outline-secondary btn-sm js-search-filters-clear-all">
                 <i class="material-icons font-reset me-1 align-middle">&#xE14C;</i>
                 {l s='Clear all' d='Shop.Theme.Actions'}
               </button>

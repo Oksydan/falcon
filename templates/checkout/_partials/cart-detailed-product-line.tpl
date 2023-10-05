@@ -79,7 +79,7 @@
                   <div class="modal-content">
                     <div class="modal-header">
                       <h4 class="modal-title">{l s='Product customization' d='Shop.Theme.Catalog'}</h4>
-                      <button type="button" class="close" data-dismiss="modal"
+                      <button type="button" class="btn-close" data-dismiss="modal"
                         aria-label="{l s='Close' d='Shop.Theme.Global'}">
                         <span aria-hidden="true">&times;</span>
                       </button>

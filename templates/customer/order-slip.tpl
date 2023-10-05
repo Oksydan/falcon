@@ -78,7 +78,7 @@
             </ul>
           </div>
           <div class="card-footer">
-            <a href="{$slip.url}" class="btn btn-primary btn-sm btn-block">
+            <a href="{$slip.url}" class="btn btn-primary btn-sm d-block  text-center w-100">
               <span class="material-icons btn-icon ms-1">file_download</span>
               {l s='View credit slip' d='Shop.Theme.Customeraccount'}
             </a>

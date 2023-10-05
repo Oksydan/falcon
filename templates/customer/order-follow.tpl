@@ -98,13 +98,13 @@
           <div class="card-footer">
             <div class="row mt-n2">
               <div class="col-sm-6 mt-2">
-                <a class="btn btn-primary btn-block btn-sm" href="{$return.return_url}">
+                <a class="btn btn-primary d-block  text-center w-100 btn-sm" href="{$return.return_url}">
                   {l s='Details' d='Shop.Theme.Customeraccount'}
                 </a>
               </div>
               {if $return.print_url}
                 <div class="col-sm-6 mt-2">
-                  <a class="btn btn-light btn-block btn-sm" href="{$return.print_url}">
+                  <a class="btn btn-light d-block  text-center w-100 btn-sm" href="{$return.print_url}">
                   {l s='Print out' d='Shop.Theme.Actions'}
                   </a>
                 </div>

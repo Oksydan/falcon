@@ -112,7 +112,7 @@
         <button type="submit" class="btn btn-primary btn-lg d-none d-md-inline-block {if !$selected_payment_option} disabled {/if}">
           {l s='Place order' d='Shop.Theme.Checkout'}
         </button>
-        <button type="submit" class="btn btn-primary btn-lg btn-block d-block d-md-none {if !$selected_payment_option} disabled {/if}">
+        <button type="submit" class="btn btn-primary btn-lg text-center w-100 d-block d-md-none {if !$selected_payment_option} disabled {/if}">
           {l s='Place order' d='Shop.Theme.Checkout'}
         </button>
       </div>

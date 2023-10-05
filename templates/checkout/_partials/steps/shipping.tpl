@@ -116,7 +116,7 @@
           <button type="submit" class="continue btn btn-primary d-none d-md-inline-block" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
-          <button type="submit" class="continue btn btn-primary btn-block d-block d-md-none" name="confirmDeliveryOption" value="1">
+          <button type="submit" class="continue btn btn-primary text-center w-100 d-block d-md-none" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
         </div>

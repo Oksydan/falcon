@@ -64,7 +64,7 @@
         <button class="btn btn-primary d-none d-md-inline-block" type="submit" name="submit">
           {l s='Change Password' d='Shop.Theme.Actions'}
         </button>
-        <button class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submit">
+        <button class="btn btn-primary text-center w-100 d-block d-md-none" type="submit" name="submit">
           {l s='Change Password' d='Shop.Theme.Actions'}
         </button>
       </div>

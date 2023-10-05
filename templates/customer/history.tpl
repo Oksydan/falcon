@@ -105,13 +105,13 @@
           <div class="card-footer">
             <div class="row mt-n2">
               <div class="col-sm-6 mt-2">
-                <a class="view-order-details-link btn btn-primary btn-block btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
+                <a class="view-order-details-link btn btn-primary d-block  text-center w-100 btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
                   {l s='Details' d='Shop.Theme.Customeraccount'}
                 </a>
               </div>
               {if $order.details.reorder_url}
                 <div class="col-sm-6 mt-2">
-                  <a class="reorder-link btn btn-light btn-block btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
+                  <a class="reorder-link btn btn-light d-block  text-center w-100 btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
                     {l s='Reorder' d='Shop.Theme.Actions'}
                   </a>
                 </div>

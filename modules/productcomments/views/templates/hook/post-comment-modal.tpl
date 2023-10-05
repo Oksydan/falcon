@@ -32,7 +32,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h5">{l s='Write your review' d='Modules.Productcomments.Shop'}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -73,10 +73,10 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary btn-block">
+          <button type="submit" class="btn btn-primary d-block text-center w-100">
             {l s='Send' d='Modules.Productcomments.Shop'}
           </button>
-          <button type="button" class="btn btn-text btn-block" data-dismiss="modal" aria-label="{l s='Cancel' d='Modules.Productcomments.Shop'}">
+          <button type="button" class="btn btn-text d-block text-center w-100" data-dismiss="modal" aria-label="{l s='Cancel' d='Modules.Productcomments.Shop'}">
             {l s='Cancel' d='Modules.Productcomments.Shop'}
           </button>
         </div>

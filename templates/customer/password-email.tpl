@@ -53,7 +53,7 @@
           <button class="form-control-submit btn btn-primary d-none d-md-inline-block" name="submit" type="submit">
             {l s='Send reset link' d='Shop.Theme.Actions'}
           </button>
-          <button class="form-control-submit btn btn-primary btn-block d-block d-md-none" name="submit" type="submit">
+          <button class="form-control-submit btn btn-primary text-center w-100 d-block d-md-none" name="submit" type="submit">
             {l s='Send reset link' d='Shop.Theme.Actions'}
           </button>
         </div>

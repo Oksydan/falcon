@@ -29,7 +29,7 @@
             <button class="btn btn-primary d-none d-md-inline-block" type="submit">
               {l s='Create account' d='Shop.Theme.Actions'}
             </button>
-            <button class="btn btn-primary btn-block d-block d-md-none" type="submit">
+            <button class="btn btn-primary text-center w-100 d-block d-md-none" type="submit">
               {l s='Create account' d='Shop.Theme.Actions'}
             </button>
           </div>

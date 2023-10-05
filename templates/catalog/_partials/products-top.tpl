@@ -40,7 +40,7 @@
       <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary d-sm-inline-block d-none">
         {l s='Filter' d='Shop.Theme.Actions'}
       </button>
-      <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary btn-block d-sm-none">
+      <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary d-block text-center w-100 d-sm-none">
         {l s='Filter' d='Shop.Theme.Actions'}
       </button>
     {/if}

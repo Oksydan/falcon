@@ -52,7 +52,7 @@
           <button id="submit-login" class="btn btn-primary d-none d-md-inline-block" data-link-action="sign-in" type="submit" class="form-control-submit">
             {l s='Sign in' d='Shop.Theme.Actions'}
           </button>
-          <button id="submit-login" class="btn btn-primary btn-block d-block d-md-none" data-link-action="sign-in" type="submit" class="form-control-submit">
+          <button id="submit-login" class="btn btn-primary text-center w-100 d-block d-md-none" data-link-action="sign-in" type="submit" class="form-control-submit">
             {l s='Sign in' d='Shop.Theme.Actions'}
           </button>
         {/block}

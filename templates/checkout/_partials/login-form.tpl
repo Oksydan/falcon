@@ -36,7 +36,7 @@
       {l s='Continue' d='Shop.Theme.Actions'}
     </button>
     <button
-      class="continue btn btn-primary btn-block d-block d-md-none"
+      class="continue btn btn-primary text-center w-100 d-block d-md-none"
       name="continue"
       data-link-action="sign-in"
       type="submit"

@@ -1,6 +1,6 @@
 <div class="product-miniature__actions">
     {if $product.add_to_cart_url && ($product.quantity > 0 || $product.allow_oosp) && !$configuration.is_catalog}
-        <form class="product-miniature__form d-grid"
+        <form class="product-miniature__form"
               action="{$product.add_to_cart_url}"
               method="post">
           <input type="hidden" name="id_product" value="{$product.id}">
@@ -11,7 +11,7 @@
             class="form-control input-qty"
           >
           <button
-            class="btn btn-primary btn-block add-to-cart"
+            class="btn btn-primary d-block text-center w-100 add-to-cart"
             data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
@@ -23,7 +23,7 @@
       </form>
     {else}
         <a href="{$product.canonical_url}"
-           class="btn btn-secondary btn-block"
+           class="btn btn-secondary d-block text-center w-100"
         > {l s='View' d='Shop.Theme.Actions'}
         </a>
     {/if}
