@@ -54,10 +54,16 @@ exports.extractScss = ({mode = 'production'}) => ({
       test: /\.scss$/,
       use: [
         MiniCssExtractPlugin.loader,
-        'css-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: mode === 'development',
+          }
+        },
         {
           loader: 'postcss-loader',
           options: {
+            sourceMap: mode === 'development',
             postcssOptions: {
               config: path.resolve(__dirname, 'postcss.config.js'),
             },
@@ -66,7 +72,11 @@ exports.extractScss = ({mode = 'production'}) => ({
         {
           loader: 'sass-loader',
           options: {
+            sourceMap: mode === 'development',
             implementation: require('sass'),
+            sassOptions: {
+              outputStyle: 'expanded',
+            },
           },
         },
       ]
