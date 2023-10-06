@@ -35,7 +35,7 @@
       <article id="store-{$store.id}" class="store-item card mb-4">
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="col-auto store-picture hidden-sm-down">
+            <div class="col-auto store-picture d-none d-md-block">
               <img
                 src="{$store.image.bySize.stores_default.url}"
                 {if !empty($store.image.legend)}

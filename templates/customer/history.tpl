@@ -32,14 +32,14 @@
   <h6>{l s='Here are the orders you\'ve placed since your account was created.' d='Shop.Theme.Customeraccount'}</h6>
 
   {if $orders}
-    <table class="table table-striped table-bordered hidden-sm-down">
+    <table class="table table-striped table-bordered d-none d-md-block">
       <thead class="thead-default">
         <tr>
           <th>{l s='Order reference' d='Shop.Theme.Checkout'}</th>
           <th>{l s='Date' d='Shop.Theme.Checkout'}</th>
           <th>{l s='Total price' d='Shop.Theme.Checkout'}</th>
-          <th class="hidden-md-down">{l s='Payment' d='Shop.Theme.Checkout'}</th>
-          <th class="hidden-md-down">{l s='Status' d='Shop.Theme.Checkout'}</th>
+          <th>{l s='Payment' d='Shop.Theme.Checkout'}</th>
+          <th>{l s='Status' d='Shop.Theme.Checkout'}</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -57,7 +57,7 @@
                 {$order.totals.total.value}
               </span>
             </td>
-            <td class="hidden-md-down align-middle">{$order.details.payment}</td>
+            <td class="align-middle">{$order.details.payment}</td>
             <td class="align-middle">
               <span
                 class="label label-pill badge {if Tools::getBrightness($order.history.current.color) < 128}text-white{/if}"

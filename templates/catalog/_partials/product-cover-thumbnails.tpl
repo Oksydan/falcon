@@ -124,7 +124,7 @@
             {/images_block}
           {/if}
 
-          <a class="product-main-images__modal-trigger-layer btn btn-light shadow rounded-circle hidden-sm-down" data-bs-toggle="modal" data-target="#product-modal">
+          <a class="product-main-images__modal-trigger-layer btn btn-light shadow rounded-circle d-none d-md-block" data-bs-toggle="modal" data-target="#product-modal">
             <span class="material-icons font-reset line-height-reset">zoom_in</span>
           </a>
 

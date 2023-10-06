@@ -76,7 +76,7 @@
     <section id="order-history" class="my-4">
       <div class="d-none d-md-block">
         <h3 class="h4">{l s='Follow your order\'s status step-by-step' d='Shop.Theme.Customeraccount'}</h3>
-        <table class="table table-striped table-bordered hidden-xs-down">
+        <table class="table table-striped table-bordered">
           <thead class="thead-default">
             <tr>
               <th>{l s='Date' d='Shop.Theme.Global'}</th>
@@ -170,7 +170,7 @@
   {block name='order_carriers'}
     {if $order.shipping}
       <div class="mb-4">
-        <table class="table table-striped table-bordered hidden-sm-down">
+        <table class="table table-striped table-bordered d-none d-md-block">
           <thead class="thead-default">
             <tr>
               <th>{l s='Date' d='Shop.Theme.Global'}</th>
@@ -192,7 +192,7 @@
             {/foreach}
           </tbody>
         </table>
-        <div class="hidden-md-up shipping-lines">
+        <div class="d-md-none shipping-lines">
           <div class="card">
             <div class="card-header">
               <h4 class="h5 mb-0 card-title">
