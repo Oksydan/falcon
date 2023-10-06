@@ -49,7 +49,7 @@
             <td class="align-middle">{$cart_rule.name}</td>
             <td class="text-end">{$cart_rule.quantity_for_user}</td>
             <td class="align-middle">
-              <span class="text-primary font-weight-bold text-lowercase align-middle">
+              <span class="text-primary fw-bold text-lowercase align-middle">
                 {$cart_rule.value}
               </span>
             </td>

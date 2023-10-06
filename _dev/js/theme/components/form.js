@@ -19,18 +19,8 @@ const supportedValidity = () => {
 
 export default class Form {
   static init() {
-    Form.parentFocus();
     Form.togglePasswordVisibility();
     Form.formValidation();
-  }
-
-  static parentFocus() {
-    $('.js-child-focus').on('focus', ({ target }) => {
-      $(target).closest('.js-parent-focus').addClass('focus');
-    });
-    $('.js-child-focus').on('focusout', ({ target }) => {
-      $(target).closest('.js-parent-focus').removeClass('focus');
-    });
   }
 
   static togglePasswordVisibility() {
@@ -40,8 +30,8 @@ export default class Form {
 
       const $btn = $(e.currentTarget);
       const $input = $btn
-        .closest('.input-group')
-        .children('input.js-visible-password');
+        .closest('.js-parent-focus')
+        .find('.js-visible-password');
 
       if ($input.attr('type') === 'password') {
         $input.attr('type', 'text');

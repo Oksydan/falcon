@@ -16,7 +16,7 @@
         <li> - {l s='Easier merchandise return' d='Shop.Theme.Customeraccount'}</li>
       </ul>
       <form method="post" class="mb-0">
-        <div class="form-group">
+        <div class="mb-3">
           <label class="form-label required" for="field-email">
             {l s='Set your password:' d='Shop.Forms.Labels'}
           </label>

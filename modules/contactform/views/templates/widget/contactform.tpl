@@ -46,7 +46,7 @@
       {if !$notifications || $notifications.nw_error}
         <section class="form-fields">
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
             <select name="id_contact" class="custom-select">
               {foreach from=$contact.contacts item=contact_elt}
@@ -55,7 +55,7 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'}</label>
             <input
               class="form-control"
@@ -67,7 +67,7 @@
           </div>
 
           {if $contact.orders}
-            <div class="form-group">
+            <div class="mb-3">
               <label class="form-control-label">{l s='Order reference' d='Shop.Forms.Labels'}</label>
               <select name="id_order" class="custom-select">
                 <option value="">{l s='Select reference' d='Shop.Forms.Help'}</option>
@@ -82,7 +82,7 @@
           {/if}
 
           {if $contact.allow_file_upload}
-            <div class="form-group">
+            <div class="mb-3">
               <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
 
               <div class="custom-file">
@@ -95,7 +95,7 @@
             </div>
           {/if}
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Message' d='Shop.Forms.Labels'}</label>
             <textarea
               class="form-control"
@@ -106,7 +106,7 @@
           </div>
 
           {if isset($id_module)}
-            <div class="form-group">
+            <div class="mb-3">
               {hook h='displayGDPRConsent' id_module=$id_module}
             </div>
           {/if}

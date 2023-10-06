@@ -46,12 +46,12 @@
       <ul class="mb-2">
         <li class="text-muted small">
           <span>{l s='Quantity' d='Shop.Theme.Catalog'}:</span>
-          <span class="font-weight-bold">{$product.quantity}</span>
+          <span class="fw-bold">{$product.quantity}</span>
         </li>
         {foreach from=$product.attributes key="attribute" item="value"}
           <li class="text-muted small">
             <span>{$attribute}:</span>
-            <span class="font-weight-bold">{$value}</span>
+            <span class="fw-bold">{$value}</span>
           </li>
         {/foreach}
       </ul>

@@ -37,7 +37,7 @@
     <section class="form-fields">
       <input type="hidden" name="controller" value="guest-tracking" >
 
-      <div class="form-group row">
+      <div class="mb-3 row">
         <label class="col-md-3 form-control-label required">
           {l s='Order Reference:' d='Shop.Forms.Labels'}
         </label>
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="mb-3 row">
         <label class="col-md-3 form-control-label required">
           {l s='Email:' d='Shop.Forms.Labels'}
         </label>

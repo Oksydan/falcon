@@ -88,7 +88,7 @@
             {foreach from=$cart.discounts item=discount}
               <li class="cart-summary-line">
                 <span class="label">
-                  <a href="#" class="js-code font-weight-bold" data-code="{$discount.code}">
+                  <a href="#" class="js-code fw-bold" data-code="{$discount.code}">
                     {$discount.code}
                   </a>
                     - {$discount.name}

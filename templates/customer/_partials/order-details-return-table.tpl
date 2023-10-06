@@ -91,7 +91,7 @@
           <ul class="product-line__attributes mb-0">
             {foreach from=$product.attributes key="attribute" item="value"}
               <li class="product-line__attribute text-muted small">
-                <span>{$attribute}</span>: <span class="font-weight-bold">{$value}</span>
+                <span>{$attribute}</span>: <span class="fw-bold">{$value}</span>
               </li>
             {/foreach}
           </ul>

@@ -53,7 +53,7 @@
               </span>
             </td>
             <td class="text-end align-middle">
-              <span class="text-primary font-weight-bold text-lowercase">
+              <span class="text-primary fw-bold text-lowercase">
                 {$order.totals.total.value}
               </span>
             </td>

@@ -46,7 +46,7 @@
           {foreach from=$product.attributes key="attribute" item="value"}
             <li class="text-muted small">
               <span>{$attribute}:</span>
-              <span class="font-weight-bold">{$value}</span>
+              <span class="fw-bold">{$value}</span>
             </li>
           {/foreach}
         </ul>

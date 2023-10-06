@@ -25,7 +25,7 @@
 
 <div class="product-comment-list-item pb-4 mb-4 border-bottom" data-product-comment-id="@COMMENT_ID@" data-product-id="@PRODUCT_ID@">
   <div class="d-flex mb-2 align-items-center">
-    <div class="font-weight-bold">
+    <div class="fw-bold">
       @CUSTOMER_NAME@
     </div>
     {* <div class="text-muted font-sm ms-2">

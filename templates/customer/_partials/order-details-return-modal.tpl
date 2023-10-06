@@ -34,7 +34,7 @@
           <label for="returnText" class="form-control-label">
             {l s='Reason for the return' d='Shop.Theme.Customeraccount'}
           </label>
-          <div class="form-group">
+          <div class="mb-3">
             <textarea cols="67" rows="3" name="returnText" id="returnText" class="form-control"></textarea>
           </div>
         </section>

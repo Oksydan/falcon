@@ -22,7 +22,7 @@
         <p>
           {l s='Sign up and get notification when product will be available again.' d='Shop.Theme.Catalog'}
         </p>
-        <div class="form-group">
+        <div class="mb-3">
           <input
             class="form-control js-mailalert-email"
             type="email"
