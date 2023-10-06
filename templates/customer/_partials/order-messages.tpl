@@ -57,7 +57,7 @@
 
           <div class="mb-3">
             <label class="form-control-label">{l s='Product' d='Shop.Forms.Labels'}</label>
-            <select name="id_product" class="custom-select" data-role="product">
+            <select name="id_product" class="form-select" data-role="product">
               <option value="0">{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
               {foreach from=$order.products item=product}
                 <option value="{$product.id_product}">{$product.name}</option>

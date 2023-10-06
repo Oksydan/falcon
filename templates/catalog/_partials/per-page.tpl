@@ -38,7 +38,7 @@
       $defaultPerPage * 4
   ]}
 
-  <select data-action="search-select" class="custom-select">
+  <select data-action="search-select" class="form-select">
     {foreach $productPerPageArray as $perPage}
       <option
         {if $currentPerPage == $perPage}selected{/if}

@@ -99,7 +99,7 @@
               {block name='facet_item_dropdown'}
                 <div id="facet_{$_expand_id}" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
                   <div class="py-1 {if $filter@first}pt-2{/if}">
-                    <select class="custom-select" data-action="search-select">
+                    <select class="form-select" data-action="search-select">
                       {if $_collapse}
                         <option value="">---</option>
                       {/if}

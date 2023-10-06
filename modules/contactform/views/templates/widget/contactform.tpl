@@ -48,7 +48,7 @@
 
           <div class="mb-3">
             <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
-            <select name="id_contact" class="custom-select">
+            <select name="id_contact" class="form-select">
               {foreach from=$contact.contacts item=contact_elt}
                 <option value="{$contact_elt.id_contact}">{$contact_elt.name}</option>
               {/foreach}
@@ -69,7 +69,7 @@
           {if $contact.orders}
             <div class="mb-3">
               <label class="form-control-label">{l s='Order reference' d='Shop.Forms.Labels'}</label>
-              <select name="id_order" class="custom-select">
+              <select name="id_order" class="form-select">
                 <option value="">{l s='Select reference' d='Shop.Forms.Help'}</option>
                 {foreach from=$contact.orders item=order}
                   <option value="{$order.id_order}">{$order.reference}</option>
