@@ -118,34 +118,30 @@
         <span class="gift-quantity">{$product.quantity}</span>
       {else}
           <div class="js-custom-cart-qty-spinner row g-0">
-              <div class="col-auto">
-                  <a href="#" class="js-custom-qty-btn-down">
-                      -
-                  </a>
-              </div>
-              <div class="col-auto">
-                  <input
-                      type="number"
-                      inputmode="numeric"
-                      pattern="[0-9]*"
-                      value="{$product.quantity}"
-                      name="product-quantity-spin"
-                      min="{$product.minimal_quantity}"
-                      class="js-custom-qty-spinner-input js-cart-line-product-quantity"
-                      aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
-                      data-down-url="{$product.down_quantity_url}"
-                      data-up-url="{$product.up_quantity_url}"
-                      data-update-url="{$product.update_quantity_url}"
-                      data-product-id="{$product.id_product}"
-                      data-product-attribute-id="{$product.id_product_attribute}"
-                      data-customization-id="{$product.id_customization|intval}"
-                  >
-              </div>
-              <div class="col-auto">
-                  <a href="#" class="js-custom-qty-btn-up">
-                      +
-                  </a>
-              </div>
+            <div class="input-group flex-nowrap">
+              <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-down">
+                <span class="material-icons d-block">remove</span>
+              </a>
+              <input
+                type="number"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                value="{$product.quantity}"
+                name="product-quantity-spin"
+                min="{$product.minimal_quantity}"
+                class="form-control text-center px-1 border-primary js-custom-qty-spinner-input js-cart-line-product-quantity"
+                aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
+                data-down-url="{$product.down_quantity_url}"
+                data-up-url="{$product.up_quantity_url}"
+                data-update-url="{$product.update_quantity_url}"
+                data-product-id="{$product.id_product}"
+                data-product-attribute-id="{$product.id_product_attribute}"
+                data-customization-id="{$product.id_customization|intval}"
+              >
+              <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-up">
+                <span class="material-icons d-block">add</span>
+              </a>
+            </div>
           </div>
       {/if}
     </div>
