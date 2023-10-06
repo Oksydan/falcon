@@ -79,10 +79,10 @@
     </p>
 
     <div class="text-center">
-      <button class="btn btn-primary d-none d-md-inline-block" data-bs-toggle="modal" data-target="#order-return-modal">
+      <button class="btn btn-primary d-none d-md-inline-block" data-bs-toggle="modal" data-bs-target="#order-return-modal">
         {l s='Request a return' d='Shop.Theme.Customeraccount'}
       </button>
-      <button class="btn btn-primary text-center w-100 d-block d-md-none" data-bs-toggle="modal" data-target="#order-return-modal">
+      <button class="btn btn-primary text-center w-100 d-block d-md-none" data-bs-toggle="modal" data-bs-target="#order-return-modal">
         {l s='Request a return' d='Shop.Theme.Customeraccount'}
       </button>
     </div>

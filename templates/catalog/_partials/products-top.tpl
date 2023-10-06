@@ -37,10 +37,10 @@
 
   <div class="col-sm-auto col-12 mt-2 d-md-none ms-auto">
     {if !empty($listing.rendered_facets)}
-      <button data-target="#mobile_filters" data-bs-toggle="modal" class="btn btn-secondary d-sm-inline-block d-none">
+      <button data-bs-target="#mobile_filters" data-bs-toggle="modal" class="btn btn-secondary d-sm-inline-block d-none">
         {l s='Filter' d='Shop.Theme.Actions'}
       </button>
-      <button data-target="#mobile_filters" data-bs-toggle="modal" class="btn btn-secondary d-block text-center w-100 d-sm-none">
+      <button data-bs-target="#mobile_filters" data-bs-toggle="modal" class="btn btn-secondary d-block text-center w-100 d-sm-none">
         {l s='Filter' d='Shop.Theme.Actions'}
       </button>
     {/if}

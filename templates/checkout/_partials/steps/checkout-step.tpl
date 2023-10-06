@@ -52,7 +52,7 @@
           <a
             href="#"
             class="ms-auto checkout-step__edit-btn step-edit js-step-edit text-muted btn btn-sm btn-link py-0 stretched-link"
-            data-target="#content-{$identifier}">
+            data-bs-target="#content-{$identifier}">
             <span class="d-inline-flex align-items-center">
               <span class="material-icons font-sm me-1 btn-icon">mode_edit</span>
               {l s='Edit' d='Shop.Theme.Actions'}

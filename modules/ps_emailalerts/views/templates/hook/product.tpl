@@ -23,7 +23,7 @@
 * International Registered Trademark & Property of PrestaShop SA
 *}
 
-<a href="#" rel="nofollow" data-bs-toggle="modal" data-target="#email-alert-modal" class="btn btn-primary js-mailalert-modal-btn">
+<a href="#" rel="nofollow" data-bs-toggle="modal" data-bs-target="#email-alert-modal" class="btn btn-primary js-mailalert-modal-btn">
     {l s='Notify me when available' d='Modules.Emailalerts.Shop'}
 </a>
 

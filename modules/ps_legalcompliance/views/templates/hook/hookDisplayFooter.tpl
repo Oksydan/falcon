@@ -25,7 +25,7 @@
 
 <div class="col-md-2 links wrapper">
   <h3 class="d-none d-md-block">{l s='Information' d='Modules.Legalcompliance.Shop'}</h3>
-  <div class="title clearfix d-md-none" data-target="#footer_eu_about_us_list" data-bs-toggle="collapse">
+  <div class="title clearfix d-md-none" data-bs-target="#footer_eu_about_us_list" data-bs-toggle="collapse">
     <span class="h3">{l s='Information' d='Modules.Legalcompliance.Shop'}</span>
     <span class="float-end">
       <span class="navbar-toggler collapse-icons">

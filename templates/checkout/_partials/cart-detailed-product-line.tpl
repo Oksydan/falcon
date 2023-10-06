@@ -72,7 +72,7 @@
           <div class="mt-3">
             {foreach from=$product.customizations item="customization"}
               <a href="#" data-bs-toggle="modal"
-                data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
+                data-bs-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
               <div class="modal fade customization-modal js-customization-modal" id="product-customizations-modal-{$customization.id_customization}"
                 tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
