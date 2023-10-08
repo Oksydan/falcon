@@ -4,6 +4,7 @@
               action="{$product.add_to_cart_url}"
               method="post">
           <input type="hidden" name="id_product" value="{$product.id}">
+          <input type="hidden" name="id_product_attribute" value="{$product.id_product_attribute}">
           <input
             type="hidden"
             name="qty"

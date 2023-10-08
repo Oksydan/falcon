@@ -79,7 +79,6 @@ const addToCartHandler = async (event) => {
         eventType: 'addProductToCart',
         resp,
       });
-      addToCartButton.removeAttribute('disabled');
     }
   } catch (error) {
     prestashop.emit('handleError', {
@@ -87,8 +86,9 @@ const addToCartHandler = async (event) => {
       resp: {},
       error,
     });
-    addToCartButton.removeAttribute('disabled');
   }
+
+  addToCartButton.removeAttribute('disabled');
 };
 
 export default addToCartHandler;
