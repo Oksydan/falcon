@@ -7,7 +7,7 @@ $(() => {
   const importModal = new DynamicImportHandler({
     jqueryPluginCover: 'modal',
     DOMEvents: 'click',
-    DOMEventsSelector: '[data-toggle="modal"]',
+    DOMEventsSelector: '[data-bs-toggle="modal"]',
     DOMEventsPreventDefault: true,
     files: () => [
       import('bootstrap/js/src/modal'),
@@ -18,7 +18,7 @@ $(() => {
   const importDropdown = new DynamicImportHandler({
     jqueryPluginCover: 'dropdown',
     DOMEvents: 'click',
-    DOMEventsSelector: '[data-toggle="dropdown"]',
+    DOMEventsSelector: '[data-bs-toggle="dropdown"]',
     DOMEventsPreventDefault: true,
     files: () => [
       import('bootstrap/js/src/dropdown'),
@@ -29,7 +29,7 @@ $(() => {
   const importCollapse = new DynamicImportHandler({
     jqueryPluginCover: 'collapse',
     DOMEvents: 'click',
-    DOMEventsSelector: '[data-toggle="collapse"]',
+    DOMEventsSelector: '[data-bs-toggle="collapse"]',
     DOMEventsPreventDefault: true,
     files: () => [
       import('bootstrap/js/src/collapse'),
