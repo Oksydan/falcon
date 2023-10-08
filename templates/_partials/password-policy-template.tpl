@@ -17,11 +17,11 @@
     <div class="js-password-strength-text password-strength-text"></div>
     <div class="password-requirements">
       <p class="js-password-requirements-length password-requirements-length font-sm d-flex align-items-center my-2" data-translation="{l s='Enter a password between %s and %s characters' d='Shop.Theme.Customeraccount'}">
-        <i class="material-icons mr-1 font-size-lg">check_circle</i>
+        <i class="material-icons me-1 font-size-lg">check_circle</i>
         <span></span>
       </p>
       <p class="js-password-requirements-score password-requirements-score font-sm d-flex align-items-center my-2" data-translation="{l s='The minimum score must be: %s' d='Shop.Theme.Customeraccount'}">
-        <i class="material-icons mr-1 font-size-lg">check_circle</i>
+        <i class="material-icons me-1 font-size-lg">check_circle</i>
         <span></span>
       </p>
     </div>

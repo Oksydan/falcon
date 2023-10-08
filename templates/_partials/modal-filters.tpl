@@ -10,7 +10,7 @@
 {/block}
 
 {block name='modal_footer'}
-  <button type="button" class="btn btn-block btn-primary" data-dismiss="modal" aria-label="Close">
+  <button type="button" class="btn d-block text-center w-100 btn-primary" data-dismiss="modal" aria-label="Close">
     {l s='Show results' d='Shop.Istheme'}
   </button>
 {/block}

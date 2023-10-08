@@ -36,8 +36,8 @@
           {if $activeFilters|count}
             <div class="clear-all-wrapper card-body">
               <button data-search-url="{$clear_all_link}"
-                class="btn btn-sm btn-block btn-outline-secondary btn-sm js-search-filters-clear-all">
-                <i class="material-icons font-reset mr-1 align-middle">&#xE14C;</i>
+                class="btn btn-sm d-block text-center w-100 btn-outline-secondary btn-sm js-search-filters-clear-all">
+                <i class="material-icons font-reset me-1 align-middle">&#xE14C;</i>
                 {l s='Clear all' d='Shop.Theme.Actions'}
               </button>
             </div>
@@ -54,7 +54,11 @@
             <div class="search-filters__header d-flex justify-content-between align-items-center mb-0 h5 position-relative">
               <span class="search-filters__title mb-0">{$facet.label}</span>
               {if $facet.widgetType != 'slider'}
-                <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
+                <a href="#facet_{$_expand_id}"
+                   class="icon-collapse stretched-link text-reset d-block"
+                   data-bs-target="#facet_{$_expand_id}"
+                   role="button"
+                   data-bs-toggle="collapse"
                   {if !$_collapse} aria-expanded="true" {/if}>
                   <span class="material-icons">&#xE313;</span>
                 </a>
@@ -99,7 +103,7 @@
               {block name='facet_item_dropdown'}
                 <div id="facet_{$_expand_id}" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
                   <div class="py-1 {if $filter@first}pt-2{/if}">
-                    <select class="custom-select" data-action="search-select">
+                    <select class="form-select" data-action="search-select">
                       {if $_collapse}
                         <option value="">---</option>
                       {/if}
@@ -143,7 +147,7 @@
                               data-action="range-from"
                               >
                           </div>
-                          <div class="px-2 ml-auto search-filters__input-group">
+                          <div class="px-2 ms-auto search-filters__input-group">
                             <input
                               class="js-input-range-slider form-control form-control-sm text-center search-filters__input"
                               type="text"

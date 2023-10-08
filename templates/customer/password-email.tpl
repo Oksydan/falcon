@@ -45,7 +45,7 @@
     </header>
 
     <section class="form-fields">
-      <div class="form-group">
+      <div class="mb-3">
         <label class="form-control-label required">{l s='Email address' d='Shop.Forms.Labels'}</label>
         <input type="email" name="email" id="email" value="{if isset($smarty.post.email)}{$smarty.post.email|stripslashes}{/if}" class="form-control" required>
 
@@ -53,7 +53,7 @@
           <button class="form-control-submit btn btn-primary d-none d-md-inline-block" name="submit" type="submit">
             {l s='Send reset link' d='Shop.Theme.Actions'}
           </button>
-          <button class="form-control-submit btn btn-primary btn-block d-block d-md-none" name="submit" type="submit">
+          <button class="form-control-submit btn btn-primary text-center w-100 d-block d-md-none" name="submit" type="submit">
             {l s='Send reset link' d='Shop.Theme.Actions'}
           </button>
         </div>

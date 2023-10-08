@@ -45,59 +45,62 @@
 {else}
   {assign var=uniqId value=10|mt_rand:100000}
 
-  <div class="form-group js-input-column">
-    {if $field.type == 'checkbox' || $field.type == 'radio-buttons'}
-      {if $field.type == 'radio-buttons'}
-        <div class="form-label label mr-3">{$field.label}</div>
-      {/if}
-    {else}
-      <label class="form-label {if $field.required}required{/if}" for="f-{$field.name}_{$uniqId}">
-        {$field.label}
-        {block name='form_field_comment'}
-          {if (!$field.required && !in_array($field.type, ['radio-buttons', 'checkbox']))}
-            <small class="text-muted">({l s='Optional' d='Shop.Forms.Labels'})</small>
-          {/if}
-        {/block}
-      </label>
+  <div class="mb-3 js-input-column">
+    {if $field.type == 'radio-buttons'}
+      <div class="form-label fw-medium me-3">{$field.label}</div>
     {/if}
-
 
     {if $field.type === 'select'}
 
-      {block name='form_field_item_select'}
-        <select class="custom-select wide{if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
-          id="f-{$field.name}_{$uniqId}" {if $field.required} required{/if}>
-          <option value disabled selected>{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
-          {foreach from=$field.availableValues item="label" key="value"}
-            <option value="{$value}" {if $value eq $field.value} selected {/if}>{$label}</option>
-          {/foreach}
-        </select>
-      {/block}
+      <div class="form-floating">
+        {block name='form_field_item_select'}
+          <select class="form-select wide{if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
+            id="f-{$field.name}_{$uniqId}" {if $field.required} required{/if}>
+            <option value disabled selected>{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
+            {foreach from=$field.availableValues item="label" key="value"}
+              <option value="{$value}" {if $value eq $field.value} selected {/if}>{$label}</option>
+            {/foreach}
+          </select>
+        {/block}
+        <label for="f-{$field.name}_{$uniqId}">
+          {$form.label}
+        </label>
+      </div>
 
     {elseif $field.type === 'countrySelect'}
-
-      {block name='form_field_item_country'}
-        <select class="custom-select js-country wide{if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
-          id="f-{$field.name}_{$uniqId}" {if $field.required}required{/if}>
-          <option value disabled selected>{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
-          {foreach from=$field.availableValues item="label" key="value"}
-            <option value="{$value}" {if $value eq $field.value} selected {/if}>{$label}</option>
-          {/foreach}
-        </select>
-      {/block}
+      <div class="form-floating">
+        {block name='form_field_item_country'}
+          <select class="form-select js-country {if !empty($field.errors)} is-invalid{/if}" name="{$field.name}"
+            id="f-{$field.name}_{$uniqId}" {if $field.required}required{/if}>
+            <option value disabled selected>{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
+            {foreach from=$field.availableValues item="label" key="value"}
+              <option value="{$value}" {if $value eq $field.value} selected {/if}>{$label}</option>
+            {/foreach}
+          </select>
+        {/block}
+        <label for="f-{$field.name}_{$uniqId}">
+            {$field.label}
+        </label>
+      </div>
 
     {elseif $field.type === 'radio-buttons'}
 
       {block name='form_field_item_radio'}
         {foreach from=$field.availableValues item="label" key="value" name="radiolist"}
-          <div class="custom-control custom-radio custom-control-inline">
-            <input name="{$field.name}" type="radio" value="{$value}"
-              class="custom-control-input {if !empty($field.errors)} is-invalid{/if}"
-              id="f-{$field.name}_{$uniqId}-{$smarty.foreach.radiolist.iteration}" {if $field.required}required{/if}
-              {if $value eq $field.value} checked {/if}>
-
-            <label class="custom-control-label"
-              for="f-{$field.name}_{$uniqId}-{$smarty.foreach.radiolist.iteration}">{$label}</label>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              name="{$field.name}"
+              type="radio"
+              value="{$value}"
+              id="f-{$field.name}_{$uniqId}-{$smarty.foreach.radiolist.iteration}"
+              {if $field.required}required{/if}
+              {if $value eq $field.value} checked {/if}
+            >
+            <label class="form-check-label"
+                   for="f-{$field.name}_{$uniqId}-{$smarty.foreach.radiolist.iteration}">
+                {$label|unescape:'html' nofilter}
+            </label>
           </div>
         {/foreach}
 
@@ -106,30 +109,49 @@
     {elseif $field.type === 'checkbox'}
 
       {block name='form_field_item_checkbox'}
-        <div class="custom-control custom-checkbox">
-          <input name="{$field.name}" type="checkbox" value="1" id="f-{$field.name}_{$uniqId}"
-            class="custom-control-input{if !empty($field.errors)} is-invalid{/if}" {if $field.value} checked="checked"
-            {/if}{if $field.required} required{/if}>
-          <label class="custom-control-label" for="f-{$field.name}_{$uniqId}">{$field.label|unescape:'html' nofilter}</label>
+        <div class="form-check">
+          <input
+            class="form-check-input {if !empty($field.errors)} is-invalid{/if}"
+            name="{$field.name}"
+            type="checkbox"
+            value="1"
+            id="f-{$field.name}_{$uniqId}"
+            {if $field.value}
+              checked="checked"
+            {/if}
+            {if $field.required} required{/if}
+          >
+          <label class="form-check-label"
+                 for="f-{$field.name}_{$uniqId}">
+              {$field.label|unescape:'html' nofilter}
+          </label>
         </div>
       {/block}
 
     {elseif $field.type === 'date'}
 
       {block name='form_field_item_date'}
-        <input
-          name="{$field.name}"
-          class="form-control{if !empty($field.errors)} is-invalid{/if}"
-          type="date"
-          value="{$field.value|default}"
-          placeholder="{if isset($field.availableValues.placeholder)}{$field.availableValues.placeholder}{/if}"
-          id="f-{$field.name}_{$uniqId}" {if isset($autocomplete[$field.name])} autocomplete="{$autocomplete[$field.name]}"
-          {/if}>
-        {if isset($field.availableValues.comment)}
-          <span class="form-text text-muted">
+        <div class="form-floating">
+          <input
+            name="{$field.name}"
+            class="form-control {if !empty($field.errors)} is-invalid{/if}"
+            type="date"
+            value="{$field.value|default}"
+            placeholder="{if isset($field.availableValues.placeholder)}{$field.availableValues.placeholder}{/if}"
+            id="f-{$field.name}_{$uniqId}"
+            {if isset($autocomplete[$field.name])}
+              autocomplete="{$autocomplete[$field.name]}"
+            {/if}
+          >
+            <label for="f-{$field.name}_{$uniqId}">
+                {$field.label}{if $field.required}*{/if}
+            </label>
+            {if isset($field.availableValues.comment)}
+              <span class="form-text">
             {$field.availableValues.comment}
-          </span>
-        {/if}
+            </span>
+            {/if}
+        </div>
       {/block}
 
     {elseif $field.type === 'birthday'}
@@ -158,24 +180,43 @@
 
       {block name='form_field_item_password'}
         <div class="input-group js-parent-focus">
-          <input
-            class="form-control js-child-focus js-visible-password{if !empty($field.errors)} is-invalid{/if}"
-            name="{$field.name}"
-            id="f-{$field.name}_{$uniqId}"
-            type="password"
-            value=""
-            {if isset($configuration.password_policy.minimum_length)}data-minlength="{$configuration.password_policy.minimum_length}"{/if}
-            {if isset($configuration.password_policy.maximum_length)}data-maxlength="{$configuration.password_policy.maximum_length}"{/if}
-            {if isset($configuration.password_policy.minimum_score)}data-minscore="{$configuration.password_policy.minimum_score}"{/if}
-            pattern=".{literal}{{/literal}{$configuration.password_policy.minimum_length},{literal}}{/literal}"
-            {if isset($autocomplete[$field.name])}autocomplete="{$autocomplete[$field.name]}" {/if}
-            {if $field.required}required{/if}>
-          <span class="input-group-append">
-            <button class="btn btn-primary" type="button" data-action="show-password"
-              data-text-show="<span class='material-icons d-block'>visibility</span>" data-text-hide="<span class='material-icons d-block'>visibility_off</span>">
-              <span class="material-icons d-block">visibility</span>
-            </button>
-          </span>
+          <div class="form-floating">
+            <input
+              class="form-control js-child-focus js-visible-password{if !empty($field.errors)} is-invalid{/if}"
+              name="{$field.name}"
+              id="f-{$field.name}_{$uniqId}"
+              type="password"
+              value=""
+              pattern=".{literal}{{/literal}{$configuration.password_policy.minimum_length},{literal}}{/literal}"
+              {if isset($field.availableValues.placeholder)}
+                placeholder="{$field.availableValues.placeholder}"
+              {else}
+                placeholder="{$field.label}"
+              {/if}
+              {if isset($configuration.password_policy.minimum_length)}
+                data-minlength="{$configuration.password_policy.minimum_length}"
+              {/if}
+              {if isset($configuration.password_policy.maximum_length)}
+                data-maxlength="{$configuration.password_policy.maximum_length}"
+              {/if}
+              {if isset($configuration.password_policy.minimum_score)}
+                data-minscore="{$configuration.password_policy.minimum_score}"
+              {/if}
+              {if isset($autocomplete[$field.name])}
+                autocomplete="{$autocomplete[$field.name]}"
+              {/if}
+              {if $field.required}
+                required
+              {/if}
+            >
+            <label for="f-{$field.name}_{$uniqId}">
+                {$field.label}{if $field.required}*{/if}
+            </label>
+          </div>
+          <button class="btn btn-primary" type="button" data-action="show-password"
+            data-text-show="<span class='material-icons d-block'>visibility</span>" data-text-hide="<span class='material-icons d-block'>visibility_off</span>">
+            <span class="material-icons d-block">visibility</span>
+          </button>
         </div>
         {include file='_partials/form-errors.tpl' errors=$field.errors required=$field.required label=$field.label}
       {/block}
@@ -189,22 +230,31 @@
     {else}
 
       {block name='form_field_item_other'}
-        <input
-          class="form-control{if !empty($field.errors)} is-invalid{/if}"
-          name="{$field.name}"
-          type="{if $field.name === "phone"}tel{else}{$field.type}{/if}"
-          value="{$field.value|default}"
-          id="f-{$field.name}_{$uniqId}"
-          {if isset($field.availableValues.placeholder)}placeholder="{$field.availableValues.placeholder}" {/if}
-          {if $field.maxLength}maxlength="{$field.maxLength}" {/if}
-          {if $field.required}required{/if}
-          {if isset($autocomplete[$field.name])} autocomplete="{$autocomplete[$field.name]}" {/if}
-          pattern="^[^\s]+(\s+[^\s]+)*$">
-        {if isset($field.availableValues.comment)}
-          <small class="form-text text-muted">
-            {$field.availableValues.comment}
-          </small>
-        {/if}
+        <div class="form-floating">
+          <input
+            class="form-control{if !empty($field.errors)} is-invalid{/if}"
+            name="{$field.name}"
+            type="{if $field.name === "phone"}tel{else}{$field.type}{/if}"
+            value="{$field.value|default}"
+            id="f-{$field.name}_{$uniqId}"
+            {if isset($field.availableValues.placeholder)}
+              placeholder="{$field.availableValues.placeholder}"
+            {else}
+              placeholder="{$field.label}"
+            {/if}
+            {if $field.maxLength}maxlength="{$field.maxLength}" {/if}
+            {if $field.required}required{/if}
+            {if isset($autocomplete[$field.name])} autocomplete="{$autocomplete[$field.name]}" {/if}
+            pattern="^[^\s]+(\s+[^\s]+)*$">
+          <label for="f-{$field.name}_{$uniqId}">
+              {$field.label}{if $field.required}*{/if}
+          </label>
+          {if isset($field.availableValues.comment)}
+            <small class="form-text">
+                {$field.availableValues.comment}
+            </small>
+          {/if}
+        </div>
       {/block}
 
     {/if}

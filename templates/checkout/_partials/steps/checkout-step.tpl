@@ -51,10 +51,10 @@
         {if $step_is_reachable}
           <a
             href="#"
-            class="ml-auto checkout-step__edit-btn step-edit js-step-edit text-muted btn btn-sm btn-link py-0 stretched-link"
-            data-target="#content-{$identifier}">
+            class="ms-auto checkout-step__edit-btn step-edit js-step-edit text-muted btn btn-sm btn-link py-0 stretched-link"
+            data-bs-target="#content-{$identifier}">
             <span class="d-inline-flex align-items-center">
-              <span class="material-icons font-sm mr-1 btn-icon">mode_edit</span>
+              <span class="material-icons font-sm me-1 btn-icon">mode_edit</span>
               {l s='Edit' d='Shop.Theme.Actions'}
             </span>
           </a>

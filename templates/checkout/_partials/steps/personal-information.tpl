@@ -32,7 +32,7 @@
       <p><small>{l s='If you sign out now, your cart will be emptied.' d='Shop.Theme.Checkout'}</small></p>
     {/if}
 
-    <div class="text-right">
+    <div class="text-end">
       <form method="GET" action="{$urls.pages.order}">
         <button
           class="continue btn btn-primary d-none d-md-inline-block"
@@ -43,7 +43,7 @@
           {l s='Continue' d='Shop.Theme.Actions'}
         </button>
         <button
-          class="continue btn btn-primary btn-block d-block d-md-none"
+          class="continue btn btn-primary text-center w-100 d-block d-md-none"
           name="controller"
           type="submit"
           value="order"
@@ -60,7 +60,7 @@
         <li class="nav-item">
           <a
             class="nav-link {if !$show_login_form}active{/if}"
-            data-toggle="tab"
+            data-bs-toggle="tab"
             href="#checkout-guest-form"
             role="tab"
             aria-controls="checkout-guest-form"
@@ -78,7 +78,7 @@
           <a
             class="nav-link {if $show_login_form}active{/if}"
             data-link-action="show-login-form"
-            data-toggle="tab"
+            data-bs-toggle="tab"
             href="#checkout-login-form"
             role="tab"
             aria-controls="checkout-login-form"

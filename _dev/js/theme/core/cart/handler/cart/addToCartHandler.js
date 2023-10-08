@@ -31,7 +31,7 @@ const addToCartHandler = async (event) => {
   const idProductInput = form.querySelector('[name=id_product]');
   const quantityInput = form.querySelector('[name=qty]');
   const idProductAttributeInput = form.querySelector('[name=id_product_attribute]');
-  const idCustomizationInout = form.querySelector('[name=id_product_attribute]');
+  const idCustomizationInout = form.querySelector('[name=id_customization]');
 
   const idProduct = Number.parseInt((idProductInput?.value || null), 10);
   const qty = Number.parseInt(quantityInput?.value, 10) || 0;

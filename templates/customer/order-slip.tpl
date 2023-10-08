@@ -32,7 +32,7 @@
   <h6>{l s='Credit slips you have received after canceled orders.' d='Shop.Theme.Customeraccount'}</h6>
 
   {if $credit_slips}
-    <table class="table table-striped table-bordered hidden-sm-down">
+    <table class="table table-striped table-bordered d-none d-md-block">
       <thead class="thead-default">
         <tr>
           <th>{l s='Order' d='Shop.Theme.Customeraccount'}</th>
@@ -49,7 +49,7 @@
             <td class="align-middle">{$slip.credit_slip_date}</td>
             <td class="align-middle text-sm-center">
               <a href="{$slip.url}" class="btn btn-primary btn-sm">
-                <span class="material-icons btn-icon ml-1">file_download</span>
+                <span class="material-icons btn-icon ms-1">file_download</span>
                 {l s='Download' d='Shop.Theme.Catalog'}
               </a>
             </td>
@@ -57,7 +57,7 @@
         {/foreach}
       </tbody>
     </table>
-    <div class="credit-slips hidden-md-up">
+    <div class="credit-slips d-md-none">
       {foreach from=$credit_slips item=slip}
         <div class="card mb-5">
           <div class="card-header">
@@ -78,8 +78,8 @@
             </ul>
           </div>
           <div class="card-footer">
-            <a href="{$slip.url}" class="btn btn-primary btn-sm btn-block">
-              <span class="material-icons btn-icon ml-1">file_download</span>
+            <a href="{$slip.url}" class="btn btn-primary btn-sm d-block  text-center w-100">
+              <span class="material-icons btn-icon ms-1">file_download</span>
               {l s='View credit slip' d='Shop.Theme.Customeraccount'}
             </a>
           </div>

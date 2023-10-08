@@ -54,7 +54,7 @@
           <button class="btn btn-primary form-control-submit d-none d-md-inline-block" data-link-action="save-customer" type="submit">
             {l s='Save' d='Shop.Theme.Actions'}
           </button>
-          <button class="btn btn-primary form-control-submit btn-block d-block d-md-none" data-link-action="save-customer" type="submit">
+          <button class="btn btn-primary form-control-submit text-center w-100 d-block d-md-none" data-link-action="save-customer" type="submit">
             {l s='Save' d='Shop.Theme.Actions'}
           </button>
         {/block}

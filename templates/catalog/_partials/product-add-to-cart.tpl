@@ -26,17 +26,15 @@
   {if !$configuration.is_catalog}
 
     {block name='product_quantity'}
-      <div class="product-quantity row mb-1 mx-n1 mt-n2 align-items-center">
-        <div class="qty col-12 col-sm-auto mx-auto mt-2 px-1">
-          <div class="js-product-qty-spinner row no-gutters">
-            <div class="col-auto">
-              <a href="#" class="js-custom-qty-btn-down">
-                -
+      <div class="product-quantity row g-2 align-items-center">
+        <div class="qty col-12 col-lg-2 col-md-3 mx-auto px-1">
+          <div class="js-product-qty-spinner">
+            <div class="input-group flex-nowrap">
+              <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-down">
+                <span class="material-icons d-block">remove</span>
               </a>
-            </div>
-            <div class="col-auto">
               <input
-                class="js-custom-qty-spinner-input"
+                class="js-custom-qty-spinner-input px-1 text-center border-black form-control"
                 type="number"
                 inputmode="numeric"
                 pattern="[0-9]*"
@@ -44,19 +42,17 @@
                 id="quantity_wanted"
                 inputmode="numeric"
                 pattern="[0-9]*"
-                {if $product.quantity_wanted}
-                  value="{$product.quantity_wanted}"
-                  min="{$product.minimal_quantity}"
-                {else}
-                  value="1"
-                  min="1"
-                {/if}
+                      {if $product.quantity_wanted}
+                        value="{$product.quantity_wanted}"
+                        min="{$product.minimal_quantity}"
+                      {else}
+                        value="1"
+                        min="1"
+                      {/if}
                 aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
               >
-            </div>
-            <div class="col-auto">
-              <a href="#" class="js-custom-qty-btn-up">
-                +
+              <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-up">
+                <span class="material-icons d-block">add</span>
               </a>
             </div>
           </div>
@@ -64,9 +60,9 @@
 
 
 
-        <div class="add col mt-2 px-1 js-add-to-cart-btn-wrapper">
+        <div class="add col js-add-to-cart-btn-wrapper">
           <button
-            class="btn btn-primary add-to-cart btn-block"
+            class="btn btn-primary add-to-cart d-block text-center w-100"
             data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
@@ -77,9 +73,9 @@
           </button>
         </div>
 
-        <div class="col-auto mt-2 px-1">
+        <div class="col-auto">
           <div class="js-product-actions-buttons">
-            <div class="row mx-n1 mt-n2 align-items-center">
+            <div class="row g-2 align-items-center">
               {hook h='displayProductActions' product=$product}
             </div>
           </div>

@@ -123,11 +123,11 @@
       {/if}
 
       {if !$form_has_continue_button}
-        <div class="text-right">
+        <div class="text-end">
           <button type="submit" class="btn btn-primary continue d-none d-md-inline-block" name="confirm-addresses" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
-          <button type="submit" class="btn btn-primary continue btn-block d-block d-md-none" name="confirm-addresses" value="1">
+          <button type="submit" class="btn btn-primary continue text-center w-100 d-block d-md-none" name="confirm-addresses" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
           <input type="hidden" id="not-valid-addresses" class="js-not-valid-addresses" value="{$not_valid_addresses}">

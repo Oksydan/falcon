@@ -28,7 +28,7 @@
      <div class="modal-header">
       <h1 class="h3 modal-title">{$product.name}</h1>
 
-       <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
+       <button type="button" class="btn-close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
          <span aria-hidden="true">&times;</span>
        </button>
      </div>

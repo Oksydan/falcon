@@ -10,7 +10,7 @@
           <h5 class="modal-title">{l s='Notify me when available' d='Modules.Emailalerts.Shop'}</h5>
         {/block}
         {block name='modal_close'}
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         {/block}
@@ -22,7 +22,7 @@
         <p>
           {l s='Sign up and get notification when product will be available again.' d='Shop.Theme.Catalog'}
         </p>
-        <div class="form-group">
+        <div class="mb-3">
           <input
             class="form-control js-mailalert-email"
             type="email"
@@ -46,7 +46,7 @@
     {/block}
     {block name='modal_footer'}
       <div class="modal-footer {block name='modal_footer_extra_class'}{/block}">
-        <button class="btn btn-primary btn-block js-mailalert-submit" type="submit">
+        <button class="btn btn-primary d-block text-center w-100 js-mailalert-submit" type="submit">
           {l s='Send' d='Shop.Theme.Actions'}
         </button>
       </div>

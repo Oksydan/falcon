@@ -6,7 +6,7 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#description"
               role="tab"
               aria-controls="description"
@@ -16,7 +16,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            data-toggle="tab"
+            data-bs-toggle="tab"
             href="#product-details"
             role="tab"
             aria-controls="product-details"
@@ -26,7 +26,7 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#attachments"
               role="tab"
               aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
@@ -36,7 +36,7 @@
           <li class="nav-item">
             <a
               class="nav-link"
-              data-toggle="tab"
+              data-bs-toggle="tab"
               href="#extra-{$extraKey}"
               role="tab"
               aria-controls="extra-{$extraKey}">{$extra.title}</a>

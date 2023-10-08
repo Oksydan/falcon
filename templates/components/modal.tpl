@@ -13,7 +13,7 @@
                 <h5 class="modal-title">{$smarty.block.child}</h5>
               {/block}
               {block name='modal_close'}
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               {/block}

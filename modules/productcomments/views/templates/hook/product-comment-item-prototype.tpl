@@ -25,13 +25,13 @@
 
 <div class="product-comment-list-item pb-4 mb-4 border-bottom" data-product-comment-id="@COMMENT_ID@" data-product-id="@PRODUCT_ID@">
   <div class="d-flex mb-2 align-items-center">
-    <div class="font-weight-bold">
+    <div class="fw-bold">
       @CUSTOMER_NAME@
     </div>
-    {* <div class="text-muted font-sm ml-2">
+    {* <div class="text-muted font-sm ms-2">
       @COMMENT_DATE@
     </div> *}
-    <div class="grade-stars flex-shrink-0 flex-grow-0 ml-auto"></div>
+    <div class="grade-stars flex-shrink-0 flex-grow-0 ms-auto"></div>
   </div>
 
   <div class="comment-content">
@@ -39,19 +39,19 @@
     <p class="font-sm">@COMMENT_COMMENT@</p>
     <div class="d-flex">
       {if $usefulness_enabled}
-        <div class="mr-2">
+        <div class="me-2">
           <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-useful-review">
             <i class="material-icons text-reset font-reset thumb_up"></i>
-            <span class="js-useful-review-value font-sm ml-1">@COMMENT_USEFUL_ADVICES@</span>
+            <span class="js-useful-review-value font-sm ms-1">@COMMENT_USEFUL_ADVICES@</span>
           </a>
           <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-not-useful-review">
             <i class="material-icons text-reset font-reset thumb_down"></i>
-            <span class="js-not-useful-review-value font-sm ml-1">@COMMENT_NOT_USEFUL_ADVICES@</span>
+            <span class="js-not-useful-review-value font-sm ms-1">@COMMENT_NOT_USEFUL_ADVICES@</span>
           </a>
         </div>
       {/if}
 
-      <div class="ml-auto">
+      <div class="ms-auto">
         <a href="#" role="button" class="btn btn-text btn-sm d-inline-flex align-items-center font-lg js-report-abuse" title="{l s='Report abuse' d='Modules.Productcomments.Shop'}">
           <i class="material-icons text-reset font-reset outlined_flag"></i>
         </a>

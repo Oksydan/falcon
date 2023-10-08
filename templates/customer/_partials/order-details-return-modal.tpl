@@ -13,7 +13,7 @@
           <h5 class="modal-title">{l s='Merchandise return' d='Shop.Theme.Customeraccount'}</h5>
         {/block}
         {block name='modal_close'}
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         {/block}
@@ -34,7 +34,7 @@
           <label for="returnText" class="form-control-label">
             {l s='Reason for the return' d='Shop.Theme.Customeraccount'}
           </label>
-          <div class="form-group">
+          <div class="mb-3">
             <textarea cols="67" rows="3" name="returnText" id="returnText" class="form-control"></textarea>
           </div>
         </section>
@@ -47,7 +47,7 @@
         <button class="form-control-submit btn btn-primary d-none d-md-inline-block" type="submit" name="submitReturnMerchandise">
           {l s='Request a return' d='Shop.Theme.Customeraccount'}
         </button>
-        <button class="form-control-submit btn btn-primary btn-block d-block d-md-none" type="submit" name="submitReturnMerchandise">
+        <button class="form-control-submit btn btn-primary text-center w-100 d-block d-md-none" type="submit" name="submitReturnMerchandise">
           {l s='Request a return' d='Shop.Theme.Customeraccount'}
         </button>
       </div>

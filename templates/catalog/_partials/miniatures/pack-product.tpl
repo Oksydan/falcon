@@ -24,7 +24,7 @@
  *}
 {block name='pack_miniature_item'}
   <div class="card overflow-hidden">
-    <div class="row no-gutters flex-nowrap">
+    <div class="row g-0 flex-nowrap">
       <div class="col-4 col-md-3 col-xl-2">
         <a href="{$product.url}" title="{$product.name}">
           {images_block webpEnabled=$webpEnabled}

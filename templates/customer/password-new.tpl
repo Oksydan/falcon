@@ -46,12 +46,12 @@
           sprintf=['%email%' => $customer_email|stripslashes]}
       </p>
 
-      <div class="form-group">
+      <div class="mb-3">
         <label class="form-control-label">{l s='New password' d='Shop.Forms.Labels'}</label>
         <input class="form-control" type="password" data-validate="isPasswd" name="passwd" value="">
       </div>
 
-      <div class="form-group">
+      <div class="mb-3">
         <label class="form-control-label">{l s='Confirmation' d='Shop.Forms.Labels'}</label>
         <input class="form-control" type="password" data-validate="isPasswd" name="confirmation" value="">
       </div>
@@ -64,7 +64,7 @@
         <button class="btn btn-primary d-none d-md-inline-block" type="submit" name="submit">
           {l s='Change Password' d='Shop.Theme.Actions'}
         </button>
-        <button class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submit">
+        <button class="btn btn-primary text-center w-100 d-block d-md-none" type="submit" name="submit">
           {l s='Change Password' d='Shop.Theme.Actions'}
         </button>
       </div>

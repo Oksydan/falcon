@@ -91,7 +91,7 @@
           <ul class="product-line__attributes mb-0">
             {foreach from=$product.attributes key="attribute" item="value"}
               <li class="product-line__attribute text-muted small">
-                <span>{$attribute}</span>: <span class="font-weight-bold">{$value}</span>
+                <span>{$attribute}</span>: <span class="fw-bold">{$value}</span>
               </li>
             {/foreach}
           </ul>
@@ -107,14 +107,14 @@
         {if $product.customizations}
           {foreach from=$product.customizations item="customization"}
             <div class="customization">
-              <a href="#" data-toggle="modal" data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
             </div>
             <div id="_desktop_product_customization_modal_wrapper_{$customization.id_customization}">
               <div class="modal fade customization-modal" id="product-customizations-modal-{$customization.id_customization}" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
+                      <button type="button" class="btn-close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
                         <span aria-hidden="true">&times;</span>
                       </button>
                       <h4 class="modal-title">{l s='Product customization' d='Shop.Theme.Catalog'}</h4>
@@ -157,7 +157,7 @@
         {if !$product.customizations}
           {if $product.quantity > $product.qty_returned}
               <div class="select" id="_desktop_return_qty_{$product.id_order_detail}">
-                <select name="order_qte_input[{$product.id_order_detail}]" class="custom-select">
+                <select name="order_qte_input[{$product.id_order_detail}]" class="form-select">
                   {section name=quantity start=1 loop=$product.quantity+1-$product.qty_returned}
                     <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
                   {/section}
@@ -169,7 +169,7 @@
             <div class="select" id="_desktop_return_qty_{$product.id_order_detail}_{$customization.id_customization}">
               <select
                 name="customization_qty_input[{$customization.id_customization}]"
-                class="custom-select"
+                class="form-select"
               >
                 {section name=quantity start=1 loop=$customization.quantity+1}
                   <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>

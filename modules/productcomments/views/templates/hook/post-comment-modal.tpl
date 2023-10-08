@@ -32,7 +32,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h5">{l s='Write your review' d='Modules.Productcomments.Shop'}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -43,7 +43,7 @@
               {foreach from=$criterions item='criterion'}
                 <li>
                   <div class="criterion-rating d-flex">
-                    <label class="mb-0 mr-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
+                    <label class="mb-0 me-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
                     <div
                       class="grade-stars"
                       data-grade="3"
@@ -55,28 +55,28 @@
             </ul>
           {/if}
 
-          <div class="form-group">
+          <div class="mb-3">
             <label for="comment_title" class="form-label required">{l s='Title' d='Modules.Productcomments.Shop'}</label>
             <input class="form-control" id="comment_title" name="comment_title" type="text" value=""/>
           </div>
 
           {if !$logged}
-            <div class="form-group">
+            <div class="mb-3">
               <label class="form-label required" for="customer_name">{l s='Your name' d='Modules.Productcomments.Shop'}</label>
               <input class="form-control" id="customer_name" name="customer_name" type="text" value=""/>
             </div>
           {/if}
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-label required" for="comment_content">{l s='Review' d='Modules.Productcomments.Shop'}</label>
             <textarea class="form-control" rows="4" id="comment_content" name="comment_content"></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary btn-block">
+          <button type="submit" class="btn btn-primary d-block text-center w-100">
             {l s='Send' d='Modules.Productcomments.Shop'}
           </button>
-          <button type="button" class="btn btn-text btn-block" data-dismiss="modal" aria-label="{l s='Cancel' d='Modules.Productcomments.Shop'}">
+          <button type="button" class="btn btn-text d-block text-center w-100" data-dismiss="modal" aria-label="{l s='Cancel' d='Modules.Productcomments.Shop'}">
             {l s='Cancel' d='Modules.Productcomments.Shop'}
           </button>
         </div>

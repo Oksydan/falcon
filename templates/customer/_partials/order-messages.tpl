@@ -55,9 +55,9 @@
         <section class="form-fields">
           <p>{l s='If you would like to add a comment about your order, please write it in the field below.' d='Shop.Theme.Customeraccount'}</p>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Product' d='Shop.Forms.Labels'}</label>
-            <select name="id_product" class="custom-select" data-role="product">
+            <select name="id_product" class="form-select" data-role="product">
               <option value="0">{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
               {foreach from=$order.products item=product}
                 <option value="{$product.id_product}">{$product.name}</option>
@@ -65,7 +65,7 @@
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <textarea rows="4" name="msgText" class="form-control" data-role="msg-text"></textarea>
           </div>
 
@@ -73,7 +73,7 @@
 
         <footer class="form-footer text-center mt-3">
           <input type="hidden" name="id_order" value="{$order.details.id}">
-          <button type="submit" name="submitMessage" class="btn btn-primary d-block btn-block d-md-none form-control-submit">
+          <button type="submit" name="submitMessage" class="btn btn-primary d-block text-center w-100 d-md-none form-control-submit">
             {l s='Send' d='Shop.Theme.Actions'}
           </button>
           <button type="submit" name="submitMessage" class="btn btn-primary form-control-submit d-none d-md-inline-block">

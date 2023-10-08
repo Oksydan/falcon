@@ -29,7 +29,7 @@
       <p id="block-newsletter-label" class="col-12">{l s='Get our latest news and special sales' d='Shop.Theme.Global'}</p>
       <div class="col-12 mb-1">
         <input
-          class="btn btn-primary float-right"
+          class="btn btn-primary float-end"
           name="submitNewsletter"
           type="submit"
           value="{l s='OK' d='Shop.Theme.Actions'}"

@@ -30,7 +30,7 @@
         <li class="col flex-grow-0 flex-shrink-0 mb-2">
           <a href="{$social_link.url}" rel="noopener noreferrer" title="{$social_link.label}" target="_blank" class="btn btn-light p-2 rounded-circle btn-lg">
             <span class="icon icon-{$social_link.class} d-block"></span>
-            <div class="sr-only">
+            <div class="visually-hidden">
               {$social_link.label}
             </div>
           </a>

@@ -46,7 +46,7 @@
     {/block}
   </section>
 
-  <div class="row card-group no-gutters my-4">
+  <div class="row card-group g-0 my-4">
     {block name='order_details'}
       <div class="col-sm-6 col-12 card">
         <div class="card-header">

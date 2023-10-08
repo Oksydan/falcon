@@ -25,7 +25,7 @@
             {* Cannot use page identifier as we can have the same page several times *}
             {assign var=_expand_id value=10|mt_rand:100000}
             <span class="d-block d-md-none">
-                <span data-target="#top_sub_menu_{$_expand_id}" data-toggle="collapse"
+                <span data-bs-target="#top_sub_menu_{$_expand_id}" data-bs-toggle="collapse"
                       class="d-block navbar-toggler icon-collapse">
                   <i class="material-icons">&#xE313;</i>
                 </span>

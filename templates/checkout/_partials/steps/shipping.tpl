@@ -66,7 +66,7 @@
 
                               </div>
                               <div class="col-sm-auto col-12 checkout-option__col checkout-option__col--price mt-sm-0 mt-1">
-                                <div class="checkout-option__price price text-right">
+                                <div class="checkout-option__price price text-end">
                                   {$carrier.price}
                                 </div>
                               </div>
@@ -88,19 +88,43 @@
             </div>
 
             {if $recyclablePackAllowed}
-              <div class="form-group my-3">
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="input_recyclable" name="recyclable" value="1" {if $recyclable} checked {/if}>
-                  <label class="custom-control-label" for="input_recyclable">{l s='I would like to receive my order in recycled packaging.' d='Shop.Theme.Checkout'}</label>
+              <div class="mb-3 my-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    id="input_recyclable"
+                    name="recyclable"
+                    type="checkbox"
+                    value="1"
+                    {if $recyclable}
+                      checked
+                    {/if}
+                  >
+                  <label class="form-check-label"
+                         for="input_recyclable">
+                      {l s='I would like to receive my order in recycled packaging.' d='Shop.Theme.Checkout'}
+                  </label>
                 </div>
               </div>
             {/if}
 
             {if $gift.allowed}
-              <div class="form-group my-3">
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input js-gift-checkbox" type="checkbox" id="input_gift" name="gift" value="1" {if $gift.isGift} checked {/if}>
-                  <label class="custom-control-label" for="input_gift">{$gift.label}</label>
+              <div class="mb-3 my-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input js-gift-checkbox"
+                    id="input_gift"
+                    name="gift"
+                    type="checkbox"
+                    value="1"
+                    {if $gift.isGift}
+                      checked
+                    {/if}
+                  >
+                  <label class="form-check-label"
+                         for="input_gift">
+                      {$gift.label}
+                  </label>
                 </div>
               </div>
 
@@ -112,11 +136,11 @@
 
           </div>
         </div>
-        <div class="text-right mt-3">
+        <div class="text-end mt-3">
           <button type="submit" class="continue btn btn-primary d-none d-md-inline-block" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
-          <button type="submit" class="continue btn btn-primary btn-block d-block d-md-none" name="confirmDeliveryOption" value="1">
+          <button type="submit" class="continue btn btn-primary text-center w-100 d-block d-md-none" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
         </div>

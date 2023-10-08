@@ -46,7 +46,7 @@
           {foreach from=$product.attributes key="attribute" item="value"}
             <li class="text-muted small">
               <span>{$attribute}:</span>
-              <span class="font-weight-bold">{$value}</span>
+              <span class="fw-bold">{$value}</span>
             </li>
           {/foreach}
         </ul>
@@ -55,7 +55,7 @@
       <div class="product-line-info product-price{if $product.has_discount} has-discount{/if}">
         <div class="current-price">
           {if $product.has_discount}
-            <span class="price price--regular mr-1">{$product.regular_price}</span>
+            <span class="price price--regular me-1">{$product.regular_price}</span>
           {/if}
           <span
             class="current-price-display price{if $product.has_discount} current-price-discount{/if}">{$product.price}</span>
@@ -71,15 +71,15 @@
         {block name='cart_detailed_product_line_customization'}
           <div class="mt-3">
             {foreach from=$product.customizations item="customization"}
-              <a href="#" data-toggle="modal"
-                data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
+              <a href="#" data-bs-toggle="modal"
+                data-bs-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
               <div class="modal fade customization-modal js-customization-modal" id="product-customizations-modal-{$customization.id_customization}"
                 tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h4 class="modal-title">{l s='Product customization' d='Shop.Theme.Catalog'}</h4>
-                      <button type="button" class="close" data-dismiss="modal"
+                      <button type="button" class="btn-close" data-dismiss="modal"
                         aria-label="{l s='Close' d='Shop.Theme.Global'}">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -117,35 +117,31 @@
       {if !empty($product.is_gift)}
         <span class="gift-quantity">{$product.quantity}</span>
       {else}
-          <div class="js-custom-cart-qty-spinner row no-gutters">
-              <div class="col-auto">
-                  <a href="#" class="js-custom-qty-btn-down">
-                      -
-                  </a>
-              </div>
-              <div class="col-auto">
-                  <input
-                      type="number"
-                      inputmode="numeric"
-                      pattern="[0-9]*"
-                      value="{$product.quantity}"
-                      name="product-quantity-spin"
-                      min="{$product.minimal_quantity}"
-                      class="js-custom-qty-spinner-input js-cart-line-product-quantity"
-                      aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
-                      data-down-url="{$product.down_quantity_url}"
-                      data-up-url="{$product.up_quantity_url}"
-                      data-update-url="{$product.update_quantity_url}"
-                      data-product-id="{$product.id_product}"
-                      data-product-attribute-id="{$product.id_product_attribute}"
-                      data-customization-id="{$product.id_customization|intval}"
-                  >
-              </div>
-              <div class="col-auto">
-                  <a href="#" class="js-custom-qty-btn-up">
-                      +
-                  </a>
-              </div>
+          <div class="js-custom-cart-qty-spinner row g-0">
+            <div class="input-group flex-nowrap">
+              <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-down">
+                <span class="material-icons d-block">remove</span>
+              </a>
+              <input
+                type="number"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                value="{$product.quantity}"
+                name="product-quantity-spin"
+                min="{$product.minimal_quantity}"
+                class="form-control text-center px-1 border-primary js-custom-qty-spinner-input js-cart-line-product-quantity"
+                aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
+                data-down-url="{$product.down_quantity_url}"
+                data-up-url="{$product.up_quantity_url}"
+                data-update-url="{$product.update_quantity_url}"
+                data-product-id="{$product.id_product}"
+                data-product-attribute-id="{$product.id_product_attribute}"
+                data-customization-id="{$product.id_customization|intval}"
+              >
+              <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-up">
+                <span class="material-icons d-block">add</span>
+              </a>
+            </div>
           </div>
       {/if}
     </div>

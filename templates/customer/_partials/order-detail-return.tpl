@@ -28,7 +28,7 @@
     {include file="customer/_partials/product-table.tpl" products=$order.products}
   </div>
 
-  <div class="row card-group no-gutters my-4">
+  <div class="row card-group g-0 my-4">
     {block name='order_details'}
       <div class="col-sm-6 col-12 card  mb-sm-0 mb-4">
         <div class="card-header">
@@ -79,10 +79,10 @@
     </p>
 
     <div class="text-center">
-      <button class="btn btn-primary d-none d-md-inline-block" data-toggle="modal" data-target="#order-return-modal">
+      <button class="btn btn-primary d-none d-md-inline-block" data-bs-toggle="modal" data-bs-target="#order-return-modal">
         {l s='Request a return' d='Shop.Theme.Customeraccount'}
       </button>
-      <button class="btn btn-primary btn-block d-block d-md-none" data-toggle="modal" data-target="#order-return-modal">
+      <button class="btn btn-primary text-center w-100 d-block d-md-none" data-bs-toggle="modal" data-bs-target="#order-return-modal">
         {l s='Request a return' d='Shop.Theme.Customeraccount'}
       </button>
     </div>

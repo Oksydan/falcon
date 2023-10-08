@@ -29,7 +29,7 @@
       <p class="control-label h6 mb-2">{$group.name}</p>
       {if $group.group_type == 'select'}
         <select
-          class="custom-select"
+          class="form-select"
           id="group_{$id_attribute_group}"
           data-product-attribute="{$id_attribute_group}"
           name="group[{$id_attribute_group}]">
@@ -54,7 +54,7 @@
                       {/if}
                     >
                     </span>
-                    <span class="sr-only">
+                    <span class="visually-hidden">
                       {$group_attribute.name}
                     </span>
                 </label>

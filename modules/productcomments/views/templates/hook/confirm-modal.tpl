@@ -57,10 +57,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary confirm-button btn-block" data-dismiss="modal" aria-label="{l s='Yes' d='Modules.Productcomments.Shop'}">
+        <button type="button" class="btn btn-primary confirm-button d-block text-center w-100" data-dismiss="modal" aria-label="{l s='Yes' d='Modules.Productcomments.Shop'}">
           {l s='Yes' d='Modules.Productcomments.Shop'}
         </button>
-        <button type="button" class="btn btn-text refuse-button btn-block" data-dismiss="modal" aria-label="{l s='No' d='Modules.Productcomments.Shop'}">
+        <button type="button" class="btn btn-text refuse-button d-block text-center w-100" data-dismiss="modal" aria-label="{l s='No' d='Modules.Productcomments.Shop'}">
           {l s='No' d='Modules.Productcomments.Shop'}
         </button>
       </div>

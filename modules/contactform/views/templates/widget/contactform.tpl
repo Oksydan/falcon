@@ -46,16 +46,16 @@
       {if !$notifications || $notifications.nw_error}
         <section class="form-fields">
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
-            <select name="id_contact" class="custom-select">
+            <select name="id_contact" class="form-select">
               {foreach from=$contact.contacts item=contact_elt}
                 <option value="{$contact_elt.id_contact}">{$contact_elt.name}</option>
               {/foreach}
             </select>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'}</label>
             <input
               class="form-control"
@@ -67,9 +67,9 @@
           </div>
 
           {if $contact.orders}
-            <div class="form-group">
+            <div class="mb-3">
               <label class="form-control-label">{l s='Order reference' d='Shop.Forms.Labels'}</label>
-              <select name="id_order" class="custom-select">
+              <select name="id_order" class="form-select">
                 <option value="">{l s='Select reference' d='Shop.Forms.Help'}</option>
                 {foreach from=$contact.orders item=order}
                   <option value="{$order.id_order}">{$order.reference}</option>
@@ -82,7 +82,7 @@
           {/if}
 
           {if $contact.allow_file_upload}
-            <div class="form-group">
+            <div class="mb-3">
               <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
 
               <div class="custom-file">
@@ -95,7 +95,7 @@
             </div>
           {/if}
 
-          <div class="form-group">
+          <div class="mb-3">
             <label class="form-control-label">{l s='Message' d='Shop.Forms.Labels'}</label>
             <textarea
               class="form-control"
@@ -106,14 +106,14 @@
           </div>
 
           {if isset($id_module)}
-            <div class="form-group">
+            <div class="mb-3">
               {hook h='displayGDPRConsent' id_module=$id_module}
             </div>
           {/if}
 
         </section>
 
-        <footer class="form-footer text-right">
+        <footer class="form-footer text-end">
           <style>
             input[name=url] {
               display: none !important;
@@ -122,7 +122,7 @@
           <input type="text" name="url" value=""/>
           <input type="hidden" name="token" value="{$token}" />
           <input class="btn btn-primary d-none d-md-inline-block" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
-          <input class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
+          <input class="btn btn-primary d-block text-center w-100 d-block d-md-none" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
         </footer>
       {/if}
     </div>

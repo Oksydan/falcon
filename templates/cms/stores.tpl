@@ -35,7 +35,7 @@
       <article id="store-{$store.id}" class="store-item card mb-4">
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="col-auto store-picture hidden-sm-down">
+            <div class="col-auto store-picture d-none d-md-block">
               <img
                 src="{$store.image.bySize.stores_default.url}"
                 {if !empty($store.image.legend)}
@@ -96,7 +96,7 @@
             {if $store.note || $store.phone || $store.fax || $store.email}
               <div class="col-12">
                 <div class="pt-3 mt-4 border-top text-center">
-                  <a data-toggle="collapse" class="icon-collapse d-inline-flex" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}">
+                  <a data-bs-toggle="collapse" class="icon-collapse d-inline-flex" href="#about-{$store.id}" aria-expanded="false" aria-controls="about-{$store.id}">
                     {l s='About and Contact' d='Shop.Theme.Global'}
                     <span class="material-icons"></span>
                   </a>
@@ -114,7 +114,7 @@
             <ul class="card-block mb-0 row">
               {if $store.phone}
                 <li class="col-md-4 d-flex align-items-center mt-1">
-                  <span class="material-icons mr-2 font-reset">
+                  <span class="material-icons me-2 font-reset">
                     call
                   </span>
                   <a href="tel:{$store.phone}">{$store.phone}</a>
@@ -122,7 +122,7 @@
               {/if}
               {if $store.fax}
                 <li class="col-md-4 d-flex align-items-center mt-1">
-                  <span class="material-icons mr-2 font-reset">
+                  <span class="material-icons me-2 font-reset">
                     local_printshop
                   </span>
                   <span>{$store.fax}</span>
@@ -130,7 +130,7 @@
               {/if}
               {if $store.email}
                 <li class="col-md-4 d-flex align-items-center mt-1">
-                  <span class="material-icons mr-2 font-reset">
+                  <span class="material-icons me-2 font-reset">
                     mail
                   </span>
                   <a href="mailto:{$store.email}">

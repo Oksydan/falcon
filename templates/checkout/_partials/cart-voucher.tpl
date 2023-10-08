@@ -39,7 +39,7 @@
                             href="{$voucher.delete_url}"
                             data-link-action="remove-voucher"
                             data-id-discount="{$voucher.id_cart_rule}"
-                            class="text-danger ml-1 js-voucher-delete">
+                            class="text-danger ms-1 js-voucher-delete">
                           <span class="material-icons font-reset btn-icon">delete</span>
                         </a>
                       {/if}
@@ -88,7 +88,7 @@
             {foreach from=$cart.discounts item=discount}
               <li class="cart-summary-line">
                 <span class="label">
-                  <a href="#" class="js-code font-weight-bold" data-code="{$discount.code}">
+                  <a href="#" class="js-code fw-bold" data-code="{$discount.code}">
                     {$discount.code}
                   </a>
                     - {$discount.name}

@@ -32,14 +32,14 @@
   <h6>{l s='Here are the orders you\'ve placed since your account was created.' d='Shop.Theme.Customeraccount'}</h6>
 
   {if $orders}
-    <table class="table table-striped table-bordered hidden-sm-down">
+    <table class="table table-striped table-bordered d-none d-md-block">
       <thead class="thead-default">
         <tr>
           <th>{l s='Order reference' d='Shop.Theme.Checkout'}</th>
           <th>{l s='Date' d='Shop.Theme.Checkout'}</th>
           <th>{l s='Total price' d='Shop.Theme.Checkout'}</th>
-          <th class="hidden-md-down">{l s='Payment' d='Shop.Theme.Checkout'}</th>
-          <th class="hidden-md-down">{l s='Status' d='Shop.Theme.Checkout'}</th>
+          <th>{l s='Payment' d='Shop.Theme.Checkout'}</th>
+          <th>{l s='Status' d='Shop.Theme.Checkout'}</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -52,12 +52,12 @@
                 {$order.details.order_date}
               </span>
             </td>
-            <td class="text-xs-right align-middle">
-              <span class="text-primary font-weight-bold text-lowercase">
+            <td class="text-end align-middle">
+              <span class="text-primary fw-bold text-lowercase">
                 {$order.totals.total.value}
               </span>
             </td>
-            <td class="hidden-md-down align-middle">{$order.details.payment}</td>
+            <td class="align-middle">{$order.details.payment}</td>
             <td class="align-middle">
               <span
                 class="label label-pill badge {if Tools::getBrightness($order.history.current.color) < 128}text-white{/if}"
@@ -105,13 +105,13 @@
           <div class="card-footer">
             <div class="row mt-n2">
               <div class="col-sm-6 mt-2">
-                <a class="view-order-details-link btn btn-primary btn-block btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
+                <a class="view-order-details-link btn btn-primary d-block  text-center w-100 btn-sm" href="{$order.details.details_url}" data-link-action="view-order-details">
                   {l s='Details' d='Shop.Theme.Customeraccount'}
                 </a>
               </div>
               {if $order.details.reorder_url}
                 <div class="col-sm-6 mt-2">
-                  <a class="reorder-link btn btn-light btn-block btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
+                  <a class="reorder-link btn btn-light d-block  text-center w-100 btn-sm" href="{$order.details.reorder_url}" data-link-action="view-order-details">
                     {l s='Reorder' d='Shop.Theme.Actions'}
                   </a>
                 </div>

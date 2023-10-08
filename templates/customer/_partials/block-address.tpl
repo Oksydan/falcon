@@ -32,11 +32,11 @@
     {block name='address_block_item_actions'}
       <div class="address__footer small card-footer">
         <a class="d-flex align-items-center justify-content-center" href="{url entity=address id=$address.id}" data-link-action="edit-address">
-          <i class="material-icons mr-1 font-reset">&#xE254;</i>
+          <i class="material-icons me-1 font-reset">&#xE254;</i>
           <span>{l s='Update' d='Shop.Theme.Actions'}</span>
         </a>
         <a class="d-flex align-items-center justify-content-center" href="{url entity=address id=$address.id params=['delete' => 1, 'token' => $token]}" data-link-action="delete-address">
-          <i class="material-icons mr-1 font-reset">&#xE872;</i>
+          <i class="material-icons me-1 font-reset">&#xE872;</i>
           <span>{l s='Delete' d='Shop.Theme.Actions'}</span>
         </a>
       </div>

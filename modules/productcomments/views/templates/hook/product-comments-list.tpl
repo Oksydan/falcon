@@ -29,11 +29,11 @@
 
 <div class="mb-4">
   <div class="d-flex my-4" id="product-comments-list-header">
-    <div class="comments-nb h3 d-flex align-items-center mr-3 mb-0">
-      <i class="material-icons mr-2">chat</i>
+    <div class="comments-nb h3 d-flex align-items-center me-3 mb-0">
+      <i class="material-icons me-2">chat</i>
       {l s='Comments' d='Modules.Productcomments.Shop'} ({$nb_comments})
     </div>
-    <div class="ml-auto">
+    <div class="ms-auto">
       {include file='module:productcomments/views/templates/hook/average-grade-stars.tpl' grade=$average_grade}
     </div>
   </div>
@@ -51,11 +51,11 @@
   </div>
 
   <div class="flex-column flex-sm-row d-flex align-items-center" id="product-comments-list-footer">
-    <div id="product-comments-list-pagination" class="comments-pagination ml-sm-auto order-sm-1"></div>
+    <div id="product-comments-list-pagination" class="comments-pagination ms-sm-auto order-sm-1"></div>
     {if $post_allowed && $nb_comments != 0}
       <div class="my-sm-2 mt-3">
         <button class="btn btn-primary js-post-product-comment">
-          <i class="material-icons btn-icon mr-1">edit</i>
+          <i class="material-icons btn-icon me-1">edit</i>
           {l s='Write your review' d='Modules.Productcomments.Shop'}
         </button>
       </div>
