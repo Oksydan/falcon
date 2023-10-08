@@ -18,12 +18,19 @@
  *}
 
 <div id="gdpr_consent" class="gdpr_module_{$psgdpr_id_module|escape:'htmlall':'UTF-8'} mb-3">
-    <span class="custom-control custom-checkbox">
-        <input id="psgdpr_consent_checkbox_{$psgdpr_id_module|escape:'htmlall':'UTF-8'}" name="psgdpr_consent_checkbox" type="checkbox" value="1" class="custom-control-input psgdpr_consent_checkboxes_{$psgdpr_id_module|escape:'htmlall':'UTF-8'}">
-        <label class="custom-control-label" for="psgdpr_consent_checkbox_{$psgdpr_id_module|escape:'htmlall':'UTF-8'}">
-            {$psgdpr_consent_message nofilter}{* html data *}
-        </label>
-    </span>
+  <div class="form-check">
+    <input
+      id="psgdpr_consent_checkbox_{$psgdpr_id_module|escape:'htmlall':'UTF-8'}"
+      name="psgdpr_consent_checkbox"
+      type="checkbox"
+      value="1"
+      class="form-check-input psgdpr_consent_checkboxes_{$psgdpr_id_module|escape:'htmlall':'UTF-8'}"
+    >
+    <label class="form-check-label"
+           for="psgdpr_consent_checkbox_{$psgdpr_id_module|escape:'htmlall':'UTF-8'}">
+        {$psgdpr_consent_message nofilter}{* html data *}
+    </label>
+  </div>
 </div>
 {literal}
 <script type="text/javascript">

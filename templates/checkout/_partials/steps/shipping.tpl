@@ -89,18 +89,42 @@
 
             {if $recyclablePackAllowed}
               <div class="mb-3 my-3">
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="input_recyclable" name="recyclable" value="1" {if $recyclable} checked {/if}>
-                  <label class="custom-control-label" for="input_recyclable">{l s='I would like to receive my order in recycled packaging.' d='Shop.Theme.Checkout'}</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    id="input_recyclable"
+                    name="recyclable"
+                    type="checkbox"
+                    value="1"
+                    {if $recyclable}
+                      checked
+                    {/if}
+                  >
+                  <label class="form-check-label"
+                         for="input_recyclable">
+                      {l s='I would like to receive my order in recycled packaging.' d='Shop.Theme.Checkout'}
+                  </label>
                 </div>
               </div>
             {/if}
 
             {if $gift.allowed}
               <div class="mb-3 my-3">
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input js-gift-checkbox" type="checkbox" id="input_gift" name="gift" value="1" {if $gift.isGift} checked {/if}>
-                  <label class="custom-control-label" for="input_gift">{$gift.label}</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input js-gift-checkbox"
+                    id="input_gift"
+                    name="gift"
+                    type="checkbox"
+                    value="1"
+                    {if $gift.isGift}
+                      checked
+                    {/if}
+                  >
+                  <label class="form-check-label"
+                         for="input_gift">
+                      {$gift.label}
+                  </label>
                 </div>
               </div>
 

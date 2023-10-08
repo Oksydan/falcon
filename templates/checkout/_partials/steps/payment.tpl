@@ -87,14 +87,17 @@
     </p>
     <form id="conditions-to-approve" method="GET" class="mt-3 js-conditions-to-approve">
       {foreach from=$conditions_to_approve item="condition" key="condition_name"}
-        <div class="custom-control custom-checkbox">
+        <div class="form-check mb-23">
           <input
             id="conditions_to_approve[{$condition_name}]"
             name="conditions_to_approve[{$condition_name}]"
             required
-            type="checkbox" value="1" class="ps-shown-by-js custom-control-input">
-          <label class="custom-control-label js-terms"
-            for="conditions_to_approve[{$condition_name}]">{$condition nofilter}</label>
+            type="checkbox"
+            value="1"
+            class="form-check-input"
+          >
+          <label class="form-check-label js-terms"
+                 for="conditions_to_approve[{$condition_name}]">{$condition nofilter}</label>
         </div>
       {/foreach}
     </form>

@@ -19,11 +19,21 @@
 
 {block name='form_fields' append}
   <input type="hidden" name="saveAddress" value="{$type}">
+
   {if $type === "delivery"}
-    <div class="custom-control custom-checkbox">
-      <input name="use_same_address" type="checkbox" value="1" id="use_same_address"
-        class="custom-control-input" value="1" {if $use_same_address} checked {/if}>
-      <label class="custom-control-label" for="use_same_address">{l s='Use this address for invoice too' d='Shop.Theme.Checkout'}</label>
+    <div class="form-check">
+      <input
+        name="use_same_address"
+        type="checkbox"
+        value="1"
+        id="use_same_address"
+        class="form-check-input"
+              {if $use_same_address} checked {/if}
+      >
+      <label class="form-check-label"
+             for="use_same_address">
+          {l s='Use this address for invoice too' d='Shop.Theme.Checkout'}
+      </label>
     </div>
   {/if}
 {/block}
