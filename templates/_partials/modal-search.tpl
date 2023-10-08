@@ -1,11 +1,10 @@
-{extends file='components/modal.tpl'}
+{extends file='components/offcanvas.tpl'}
 
-{block name='modal_extra_attribues'}id="saerchModal" data-modal-hide-mobile{/block}
-{block name='modal_extra_class'}modal-fullscreen search-modal{/block}
-{block name='modal_header'}{/block}
-{block name='modal_body'}
-  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+{block name='offcanvas_extra_attribues'}id="search_dialog"{/block}
+{block name='offcanvas_extra_class'}search-modal offcanvas-start{/block}
+{block name='offcanvas_header'}{/block}
+{block name='offcanvas_body'}
+  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
   </button>
   <div id="_mobile_search_from">
   </div>

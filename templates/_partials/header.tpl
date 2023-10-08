@@ -54,7 +54,8 @@
                                     class="header-top__link"
                                     rel="nofollow"
                                     href="#"
-                                    data-bs-toggle="modal"
+                                    role="button"
+                                    data-bs-toggle="offcanvas"
                                     data-bs-target="#mobile_top_menu_wrapper"
                             >
                                 <div class="header-top__icon-container">

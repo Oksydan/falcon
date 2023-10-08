@@ -1,7 +1,12 @@
 
 {block name='modal'}
 
-<div class="modal fade {block name='modal_extra_class'}{/block}" {block name='modal_extra_attribues'}{/block} tabindex="-1" aria-hidden="true">
+<div
+  class="modal fade {block name='modal_extra_class'}{/block}"
+  {block name='modal_extra_attribues'}{/block}
+  tabindex="-1"
+  aria-hidden="true"
+>
 
   <div class="modal-dialog {block name='modal_dialog_extra_class'}{/block}">
     {block name='modal_content'}
@@ -13,8 +18,12 @@
                 <h5 class="modal-title">{$smarty.block.child}</h5>
               {/block}
               {block name='modal_close'}
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
                 </button>
               {/block}
             </div>
