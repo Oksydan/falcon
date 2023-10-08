@@ -34,7 +34,12 @@
               <a href="{$node.link}" class="stretched-link text-reset list-group-item-action-dropdown-link">
                 {$node.name}
               </a>
-              <a href="#exCollapsingNavbar{$node.id}" class="icon-collapse list-group-item-collapse text-reset" data-bs-toggle="collapse">
+              <a href="#catcol_{$node.id}"
+                 class="icon-collapse list-group-item-collapse text-reset"
+                 data-bs-toggle="collapse"
+                 role="button"
+                 data-bs-target="#catcol_{$node.id}"
+              >
                 <i class="material-icons d-block">&#xE313;</i>
               </a>
             </div>
@@ -44,7 +49,7 @@
             </a>
           {/if}
           {if $node.children}
-            <div class="collapse" id="exCollapsingNavbar{$node.id}">
+            <div class="collapse" id="catcol_{$node.id}">
               {categories nodes=$node.children depth=$depth+1}
             </div>
           {/if}
