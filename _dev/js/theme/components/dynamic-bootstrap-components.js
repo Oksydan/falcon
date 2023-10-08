@@ -15,6 +15,17 @@ $(() => {
     ],
   });
 
+  const importOffcanvas = new DynamicImportHandler({
+    jqueryPluginCover: 'offcanvas',
+    DOMEvents: 'click',
+    DOMEventsSelector: '[data-bs-toggle="offcanvas"]',
+    DOMEventsPreventDefault: true,
+    files: () => [
+      import('bootstrap/js/src/offcanvas'),
+      import('@css/dynamic/offcanvas/_index.scss'),
+    ],
+  });
+
   const importDropdown = new DynamicImportHandler({
     jqueryPluginCover: 'dropdown',
     DOMEvents: 'click',
