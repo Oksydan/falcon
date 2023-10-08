@@ -27,7 +27,7 @@
   <nav class="header-nav py-2">
     <div class="container">
       <div class="row">
-        <div class="col text-md-left text-center">
+        <div class="col text-md-start text-center">
           <a href="{$urls.base_url}">
             {images_block webpEnabled=$webpEnabled}
               <img
