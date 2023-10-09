@@ -1,5 +1,4 @@
 import { each } from '../utils/DOMHelpers';
-import $ from "jquery";
 
 const supportedValidity = () => {
   const input = document.createElement('input');
