@@ -24,14 +24,14 @@ for (const i in EventEmitter.prototype) {
 import usePasswordPolicy from './components/password/usePasswordPolicy';
 import Form from './components/form';
 import PageLazyLoad from './components/Lazyload';
-import PageLoader from './components/PageLoader';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
+import usePageLoader from "./components/usePageLoader";
 
 prestashop.pageLazyLoad = new PageLazyLoad({
   selector: '.lazyload',
 });
 
-prestashop.pageLoader = new PageLoader();
+prestashop.pageLoader = usePageLoader();
 
 prestashop.on('handleError', httpRequestErrorHandler);
 

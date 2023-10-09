@@ -1,5 +1,4 @@
 import DOMReady from "../../utils/DOMReady";
-import $ from "jquery";
 
 const initCustomerLinksTriggerActive = () => {
   const url = window.location.pathname;
