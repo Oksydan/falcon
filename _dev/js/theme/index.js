@@ -41,8 +41,4 @@ $(() => {
   initForm();
   bsCustomFileInput.init();
   usePasswordPolicy('.field-password-policy');
-
-  $('.js-select-link').on('change', ({ target }) => {
-    window.location.href = $(target).val();
-  });
 });

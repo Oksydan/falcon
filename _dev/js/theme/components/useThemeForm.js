@@ -1,4 +1,5 @@
 import { each } from '../utils/DOMHelpers';
+import $ from "jquery";
 
 const supportedValidity = () => {
   const input = document.createElement('input');
@@ -88,10 +89,24 @@ const useThemeForm = (
   validationFormSelector = '.js-needs-validation',
   passwordToggleSelector = '[data-action="show-password"]',
 ) => {
+  const DOM_SELECTORS = {
+    SELECT_LINK: '.js-select-link',
+  }
+
+  const handleSelectChange = (event) => {
+    const target = event.target;
+
+    if (target) {
+      window.location.href = target.value;
+    }
+  }
 
   const init = () => {
-    each(document.querySelectorAll(passwordToggleSelector), togglePasswordVisibility)
-    each(document.querySelectorAll(validationFormSelector), formValidation)
+    each(document.querySelectorAll(passwordToggleSelector), togglePasswordVisibility);
+    each(document.querySelectorAll(validationFormSelector), formValidation);
+    each(document.querySelectorAll(DOM_SELECTORS.SELECT_LINK), (select) => {
+      select.addEventListener('change', handleSelectChange);
+    });
   }
 
   return {
