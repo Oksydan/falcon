@@ -6,7 +6,7 @@ import parseToHtml from '../utils/parseToHtml';
  * Handle open quick view
  */
 const handleQuickViewOpen = ({ resp }) => {
-  const body = document.body;
+  const { body } = document;
 
   const quickviewHtml = parseToHtml(resp.quickview_html);
   body.appendChild(quickviewHtml);

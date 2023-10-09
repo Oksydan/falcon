@@ -1,29 +1,31 @@
-import DOMReady from "../utils/DOMReady";
 import prestashop from 'prestashop';
-
-prestashop.responsive = {};
-
-prestashop.responsive.current_width = window.innerWidth;
-prestashop.responsive.min_width = 768;
-prestashop.responsive.mobile = isMobile();
+import DOMReady from '../utils/DOMReady';
 
 function isMobile() {
   return prestashop.responsive.current_width < prestashop.responsive.min_width;
 }
 
+/* eslint-disable */
+prestashop.responsive = {};
+/* eslint-enable */
+
+prestashop.responsive.current_width = window.innerWidth;
+prestashop.responsive.min_width = 768;
+prestashop.responsive.mobile = isMobile();
+
 function swapChildren(obj1, obj2) {
-  const temp = Array.from(obj2.children).map(child => child.cloneNode(true));
+  const temp = Array.from(obj2.children).map((child) => child.cloneNode(true));
   obj2.innerHTML = '';
-  temp.forEach(child => obj2.appendChild(child));
+  temp.forEach((child) => obj2.appendChild(child));
 
   const childrenObj1 = Array.from(obj1.children);
-  childrenObj1.forEach(child => obj1.removeChild(child));
-  childrenObj1.forEach(child => obj2.appendChild(child));
+  childrenObj1.forEach((child) => obj1.removeChild(child));
+  childrenObj1.forEach((child) => obj2.appendChild(child));
 }
 
 function toggleMobileStyles() {
   if (prestashop.responsive.mobile) {
-    document.querySelectorAll('*[id^="_desktop_"]').forEach(el => {
+    document.querySelectorAll('*[id^="_desktop_"]').forEach((el) => {
       const target = document.getElementById(el.id.replace('_desktop_', '_mobile_'));
 
       if (target) {
@@ -31,9 +33,9 @@ function toggleMobileStyles() {
       }
     });
 
-    document.querySelectorAll('[data-collapse-hide-mobile]').forEach(el => el.classList.add('collapse'));
+    document.querySelectorAll('[data-collapse-hide-mobile]').forEach((el) => el.classList.add('collapse'));
   } else {
-    document.querySelectorAll('*[id^="_mobile_"]').forEach(el => {
+    document.querySelectorAll('*[id^="_mobile_"]').forEach((el) => {
       const target = document.getElementById(el.id.replace('_mobile_', '_desktop_'));
 
       if (target) {
@@ -41,8 +43,8 @@ function toggleMobileStyles() {
       }
     });
 
-    document.querySelectorAll('[data-collapse-hide-mobile]:not(.show)').forEach(el => el.classList.remove('collapse'));
-    document.querySelectorAll('[data-modal-hide-mobile].show').forEach(el => el.classList.remove('show'));
+    document.querySelectorAll('[data-collapse-hide-mobile]:not(.show)').forEach((el) => el.classList.remove('collapse'));
+    document.querySelectorAll('[data-modal-hide-mobile].show').forEach((el) => el.classList.remove('show'));
   }
   prestashop.emit('responsive update', {
     mobile: prestashop.responsive.mobile,
@@ -60,7 +62,7 @@ const handleResize = () => {
   if (toggle) {
     toggleMobileStyles();
   }
-}
+};
 
 window.addEventListener('resize', handleResize);
 

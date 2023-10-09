@@ -1,7 +1,7 @@
 import prestashop from 'prestashop';
 import useCustomQuantityInput from './useCustomQuantityInput';
 import { each } from '../utils/DOMHelpers';
-import DOMReady from "../utils/DOMReady";
+import DOMReady from '../utils/DOMReady';
 import productEventContextSelector from '../core/product/utils/productEventContextSelector';
 
 DOMReady(() => {

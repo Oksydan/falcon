@@ -42,7 +42,7 @@ const formValidation = (form) => {
 
   const divToScroll = { value: null };
 
-  Array.from(form.querySelectorAll('input, textarea')).forEach(field => {
+  Array.from(form.querySelectorAll('input, textarea')).forEach((field) => {
     field.addEventListener('blur', (e) => {
       const inputField = e.currentTarget;
       inputField.value = inputField.value.trim();
@@ -54,7 +54,7 @@ const formValidation = (form) => {
       event.preventDefault();
       event.stopPropagation();
 
-      Array.from(form.querySelectorAll('input:invalid, select:invalid, textarea:invalid')).forEach(field => {
+      Array.from(form.querySelectorAll('input:invalid, select:invalid, textarea:invalid')).forEach((field) => {
         const inputField = field;
         const parent = inputField.closest('.form-group');
         const invalidFeedback = parent.querySelector('.js-invalid-feedback-browser');
@@ -90,15 +90,15 @@ const useThemeForm = (
 ) => {
   const DOM_SELECTORS = {
     SELECT_LINK: '.js-select-link',
-  }
+  };
 
   const handleSelectChange = (event) => {
-    const target = event.target;
+    const { target } = event;
 
     if (target) {
       window.location.href = target.value;
     }
-  }
+  };
 
   const init = () => {
     each(document.querySelectorAll(passwordToggleSelector), togglePasswordVisibility);
@@ -106,11 +106,11 @@ const useThemeForm = (
     each(document.querySelectorAll(DOM_SELECTORS.SELECT_LINK), (select) => {
       select.addEventListener('change', handleSelectChange);
     });
-  }
+  };
 
   return {
     init,
-  }
+  };
 };
 
 export default useThemeForm;
