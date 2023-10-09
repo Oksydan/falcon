@@ -1,11 +1,11 @@
 import prestashop from 'prestashop';
-import $ from 'jquery';
-import PageSlider from '@js/theme/components/sliders/PageSlider';
-import SwiperSlider from '@js/theme/components/sliders/SwiperSlider';
+import DOMReady from "../utils/DOMReady";
+import PageSlider from './sliders/PageSlider';
+import SwiperSlider from './sliders/SwiperSlider';
 
 prestashop.pageSlider = new PageSlider();
 prestashop.SwiperSlider = SwiperSlider;
 
-$(() => {
+DOMReady(() => {
   prestashop.pageSlider.init();
 });

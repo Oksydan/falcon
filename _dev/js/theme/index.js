@@ -26,6 +26,7 @@ import useThemeForm from './components/useThemeForm';
 import PageLazyLoad from './components/Lazyload';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 import usePageLoader from "./components/usePageLoader";
+import DOMReady from "./utils/DOMReady";
 
 prestashop.pageLazyLoad = new PageLazyLoad({
   selector: '.lazyload',
@@ -36,7 +37,7 @@ prestashop.pageLoader = usePageLoader();
 prestashop.on('handleError', httpRequestErrorHandler);
 
 
-$(() => {
+DOMReady(() => {
   const { init: initForm } = useThemeForm();
   initForm();
   bsCustomFileInput.init();

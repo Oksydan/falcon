@@ -2,7 +2,7 @@ import Swiper, {
   Navigation, Pagination, Autoplay,
 } from 'swiper';
 
-import DynamicImportSwiperModule from '@js/theme/components/sliders/DynamicImportSwiperModule';
+import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 
 /* eslint-disable */
 const dynamicModulesMap = {
