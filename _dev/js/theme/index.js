@@ -5,8 +5,6 @@ import EventEmitter from 'events';
 import '@js/theme/core';
 
 import '@js/theme/vendors/bootstrap/bootstrap-imports';
-import 'bootstrap-touchspin';
-import 'jquery-hoverintent';
 import '@js/theme/components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';
 import '@js/theme/components/sliders';
@@ -14,7 +12,7 @@ import '@js/theme/components/responsive';
 import '@js/theme/components/customer';
 import '@js/theme/components/quickview';
 import '@js/theme/components/product';
-import '@js/theme/components/cart/block-cart';
+import useTopMenu from './components/useTopMenu';
 /* eslint-enable */
 
 import prestashop from 'prestashop';
@@ -26,7 +24,6 @@ for (const i in EventEmitter.prototype) {
 }
 import usePasswordPolicy from '@js/theme/components/password/usePasswordPolicy';
 import Form from '@js/theme/components/form';
-import TopMenu from '@js/theme/components/TopMenu';
 import PageLazyLoad from '@js/theme/components/Lazyload';
 import PageLoader from '@js/theme/components/PageLoader';
 import useStickyElement from '@js/theme/components/useStickyElement';
@@ -61,14 +58,14 @@ function initStickyHeader() {
 }
 
 $(() => {
+  const { init: initTopMenu } = useTopMenu('.js-main-menu');
+
   initStickyHeader();
   accLinksTriggerActive();
   Form.init();
   bsCustomFileInput.init();
-  const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
   usePasswordPolicy('.field-password-policy');
-
-  topMenu.init();
+  initTopMenu();
 
   $('.js-select-link').on('change', ({ target }) => {
     window.location.href = $(target).val();
