@@ -1,4 +1,4 @@
-import useEvent from './event/useEvent';
+import useEvent from '../event/useEvent';
 
 const useTopMenu = (selector) => {
   const { on, off } = useEvent();
