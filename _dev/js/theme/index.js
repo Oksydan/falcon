@@ -9,7 +9,7 @@ import './components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';
 import './components/header/index';
 import './components/customer/index';
-import './components/sliders';
+import './components/sliders/index';
 import './components/responsive';
 import './components/quickview';
 import './components/product';
