@@ -5,10 +5,7 @@ function isMobile() {
   return prestashop.responsive.current_width < prestashop.responsive.min_width;
 }
 
-/* eslint-disable */
 prestashop.responsive = {};
-/* eslint-enable */
-
 prestashop.responsive.current_width = window.innerWidth;
 prestashop.responsive.min_width = 768;
 prestashop.responsive.mobile = isMobile();
@@ -52,7 +49,6 @@ function toggleMobileStyles() {
 }
 
 const handleResize = () => {
-  const { responsive } = prestashop;
   const cw = prestashop.responsive.current_width;
   const mw = prestashop.responsive.min_width;
   const w = window.innerWidth;
