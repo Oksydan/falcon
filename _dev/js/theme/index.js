@@ -22,7 +22,7 @@ for (const i in EventEmitter.prototype) {
   prestashop[i] = EventEmitter.prototype[i];
 }
 import usePasswordPolicy from './components/password/usePasswordPolicy';
-import Form from './components/form';
+import useThemeForm from './components/useThemeForm';
 import PageLazyLoad from './components/Lazyload';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 import usePageLoader from "./components/usePageLoader";
@@ -37,7 +37,8 @@ prestashop.on('handleError', httpRequestErrorHandler);
 
 
 $(() => {
-  Form.init();
+  const { init: initForm } = useThemeForm();
+  initForm();
   bsCustomFileInput.init();
   usePasswordPolicy('.field-password-policy');
 

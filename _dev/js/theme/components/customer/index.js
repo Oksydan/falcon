@@ -1,4 +1,4 @@
-import DOMReady from "../../utils/DOMReady";
+import DOMReady from '../../utils/DOMReady';
 
 const initCustomerLinksTriggerActive = () => {
   const url = window.location.pathname;
@@ -9,7 +9,7 @@ const initCustomerLinksTriggerActive = () => {
       el.classList.add('active');
     }
   });
-}
+};
 
 const initRmaForm = () => {
   const returnForm = document.querySelector(prestashop.selectors.order.returnForm);
@@ -19,15 +19,14 @@ const initRmaForm = () => {
   }
 
   returnForm.querySelector('thead input[type=checkbox]').addEventListener('click', ({ currentTarget }) => {
-    const checked = currentTarget.checked;
+    const { checked } = currentTarget;
     returnForm.querySelectorAll('tbody input[type=checkbox]').forEach((checkbox) => {
       checkbox.checked = checked;
     });
   });
-}
-
+};
 
 DOMReady(() => {
   initCustomerLinksTriggerActive();
   initRmaForm();
-})
+});

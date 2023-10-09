@@ -8,7 +8,7 @@
  * pageLoader.hideLoader(); // Hide the page loader
  */
 const usePageLoader = () => {
-  const body = document.body;
+  const { body } = document;
   const ACTIVE_CLASS = 'page-loader-active';
 
   /**

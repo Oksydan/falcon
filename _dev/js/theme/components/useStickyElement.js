@@ -68,7 +68,7 @@ export default (element, stickyWrapper, options = {}) => {
   const init = () => {
     window.addEventListener('scroll', debounce(handleSticky, debounceTime));
     handleSticky();
-  }
+  };
 
   return {
     getExtraOffsetTop,

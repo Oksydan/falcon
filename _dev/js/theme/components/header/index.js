@@ -1,6 +1,6 @@
-import DOMReady from "../../utils/DOMReady";
+import DOMReady from '../../utils/DOMReady';
 import useTopMenu from './useTopMenu';
-import useStickyElement from "../useStickyElement";
+import useStickyElement from '../useStickyElement';
 
 const initStickyHeader = () => {
   const header = document.querySelector('.js-header-top');
@@ -11,7 +11,7 @@ const initStickyHeader = () => {
 
     init();
   }
-}
+};
 
 DOMReady(() => {
   const { init: initTopMenu } = useTopMenu('.js-main-menu');
