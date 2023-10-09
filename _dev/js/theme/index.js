@@ -4,29 +4,28 @@ import EventEmitter from 'events';
 
 import '@js/theme/core';
 
-import '@js/theme/vendors/bootstrap/bootstrap-imports';
-import '@js/theme/components/dynamic-bootstrap-components';
+import './vendors/bootstrap/bootstrap-imports';
+import './components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';
-import '@js/theme/components/sliders';
-import '@js/theme/components/responsive';
-import '@js/theme/components/customer';
-import '@js/theme/components/quickview';
-import '@js/theme/components/product';
+import './components/sliders';
+import './components/responsive';
+import './components/customer';
+import './components/quickview';
+import './components/product';
+import prestashop from 'prestashop';
 import useTopMenu from './components/useTopMenu';
 /* eslint-enable */
-
-import prestashop from 'prestashop';
 
 /* eslint-disable */
 // "inherit" EventEmitter
 for (const i in EventEmitter.prototype) {
   prestashop[i] = EventEmitter.prototype[i];
 }
-import usePasswordPolicy from '@js/theme/components/password/usePasswordPolicy';
-import Form from '@js/theme/components/form';
-import PageLazyLoad from '@js/theme/components/Lazyload';
-import PageLoader from '@js/theme/components/PageLoader';
-import useStickyElement from '@js/theme/components/useStickyElement';
+import usePasswordPolicy from './components/password/usePasswordPolicy';
+import Form from './components/form';
+import PageLazyLoad from './components/Lazyload';
+import PageLoader from './components/PageLoader';
+import useStickyElement from './components/useStickyElement';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 
 prestashop.pageLazyLoad = new PageLazyLoad({
