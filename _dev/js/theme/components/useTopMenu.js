@@ -9,7 +9,6 @@ const useTopMenu = (selector) => {
   };
   const ITEM_ACTIVE = 'main-menu__item--active';
 
-
   const toggleSubMenu = (e) => {
     const { currentTarget } = e;
     const { SUB_MENU } = DOM_SELECTORS;
@@ -24,23 +23,21 @@ const useTopMenu = (selector) => {
 
       subMenu.setAttribute('aria-hidden', isExpanded);
       subMenu.setAttribute('aria-expanded', !isExpanded);
-
     }
-  }
+  };
 
   const init = () => {
-    debugger
     const { SUB_ELEMENTS } = DOM_SELECTORS;
 
     off(menuElement, 'mouseenter', SUB_ELEMENTS, toggleSubMenu);
     off(menuElement, 'mouseleave', SUB_ELEMENTS, toggleSubMenu);
     on(menuElement, 'mouseenter', SUB_ELEMENTS, toggleSubMenu);
     on(menuElement, 'mouseleave', SUB_ELEMENTS, toggleSubMenu);
-  }
+  };
 
   return {
-    init
-  }
-}
+    init,
+  };
+};
 
 export default useTopMenu;
