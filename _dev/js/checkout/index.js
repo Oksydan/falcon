@@ -67,11 +67,6 @@ $(document).ready(() => {
     // and show the one related to the selected carrier
     params.deliveryOption.nextElementSibling.classList.remove('d-none');
   });
-  prestashop.on('changedCheckoutStep', (params) => {
-    if (typeof params.event.currentTarget !== 'undefined') {
-      $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
-    }
-  });
 });
 
 $(document).on('change', '.checkout-option input[type="radio"]', (event) => {
@@ -81,10 +76,4 @@ $(document).on('change', '.checkout-option input[type="radio"]', (event) => {
 
   $relatedBlocks.find('.checkout-option').removeClass('selected');
   $block.addClass('selected');
-});
-
-$(document).on('click', '.js-checkout-step-header', (event) => {
-  const stepIdentifier = $(event.currentTarget).data('identifier');
-  $(`#${stepIdentifier}`).addClass('-current');
-  $(`#content-${stepIdentifier}`).collapse('show').scrollTop();
 });
