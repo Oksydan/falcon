@@ -1,16 +1,18 @@
 import prestashop from 'prestashop';
-import $ from 'jquery';
-import FiltersRangeSliders from '@js/listing/components/filters/FiltersRangeSliders';
+import FiltersRangeSliders from './FiltersRangeSliders';
+import useEvent from '../../../theme/components/event/useEvent';
 
 class Filters {
   constructor() {
-    this.$body = $('body');
+    this.body = document.querySelector('body');
     this.setEvents();
     this.rangeSliders = FiltersRangeSliders;
     this.rangeSliders.init();
   }
 
   setEvents() {
+    const { on } = useEvent();
+
     prestashop.on('updatedProductList', () => {
       prestashop.pageLoader.hideLoader();
       this.rangeSliders.init();
@@ -20,34 +22,36 @@ class Filters {
       prestashop.pageLoader.showLoader();
     });
 
-    this.$body.on('click', '.js-search-link', (event) => {
+    on(this.body, 'click', '.js-search-link', (event) => {
       event.preventDefault();
-      prestashop.emit('updateFacets', $(event.target).closest('a').get(0).href);
+      prestashop.emit('updateFacets', event.target.closest('a').href);
     });
 
-    this.$body.on('change', '[data-action="search-select"]', ({ target }) => {
-      prestashop.emit('updateFacets', $(target).find('option:selected').data('href'));
+    on(this.body, 'change', '[data-action="search-select"]', ({ target }) => {
+      const selectedElement = target.options[target.selectedIndex];
+
+      prestashop.emit('updateFacets', selectedElement.dataset.href);
     });
 
-    this.$body.on('click', '.js-search-filters-clear-all', (event) => {
+    on(this.body, 'click', '.js-search-filters-clear-all', (event) => {
       prestashop.emit('updateFacets', this.constructor.parseSearchUrl(event));
     });
 
-    this.$body.on('change', '#search_filters input[data-search-url]', (event) => {
+    on(this.body, 'change', '#search_filters input[data-search-url]', (event) => {
       prestashop.emit('updateFacets', this.constructor.parseSearchUrl(event));
     });
   }
 
-  static parseSearchUrl(event) {
-    if (event.target.dataset.searchUrl !== undefined) {
-      return event.target.dataset.searchUrl;
+  static parseSearchUrl({ target }) {
+    if (target.dataset.searchUrl !== undefined) {
+      return target.dataset.searchUrl;
     }
 
-    if ($(event.target).parent()[0].dataset.searchUrl === undefined) {
+    if (target.parent.dataset.searchUrl === undefined) {
       throw new Error('Can not parse search URL');
     }
 
-    return $(event.target).parent()[0].dataset.searchUrl;
+    return target.parent.dataset.searchUrl;
   }
 }
 
