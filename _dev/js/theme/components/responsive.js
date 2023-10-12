@@ -39,9 +39,6 @@ function toggleMobileStyles() {
         swapChildren(el, target);
       }
     });
-
-    document.querySelectorAll('[data-collapse-hide-mobile]:not(.show)').forEach((el) => el.classList.remove('collapse'));
-    document.querySelectorAll('[data-modal-hide-mobile].show').forEach((el) => el.classList.remove('show'));
   }
   prestashop.emit('responsive update', {
     mobile: prestashop.responsive.mobile,
