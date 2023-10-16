@@ -10,6 +10,21 @@ const useBootstrapComponentDynamicImport = (importFiles, {
   let filesLoaded = false;
   const callStack = [];
   const jQueryCallStack = [];
+  const instancesMap = new Map();
+
+  const setInstanceInMap = (element, instance) => {
+    if (!instancesMap.has(element)) {
+      instancesMap.set(element, instance);
+    }
+  }
+
+  const getInstanceFromMap = (element) => {
+    if (!instancesMap.has(element)) {
+      return null;
+    }
+
+    return instancesMap.get(element);
+  }
 
   if (!componentName) {
     throw new Error('Component name is required');
@@ -40,17 +55,17 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     const pluginInstance = getComponentInstance(element);
 
     if (pluginInstance) {
-      return pluginInstance.instanceProxy;
+      return pluginInstance.proxyInstance;
     }
 
-    return new ComponentObjectConstructorFunction(element);
+    const proxyInstance = new ComponentObjectConstructorFunction(element);
+
+    setInstanceInMap(element, proxyInstance);
+
+    return proxyInstance;
   }
 
-  const getComponentInstance = (element) => {
-    const pluginInstance = callStack.find(({ element: instanceElement }) => instanceElement === element);
-
-    return pluginInstance ? pluginInstance.componentInstance : null;
-  }
+  const getComponentInstance = (element) => getInstanceFromMap(element);
 
   const proxyFactory = (pluginInstance) => {
     const pluginObject = {};
@@ -83,14 +98,13 @@ const useBootstrapComponentDynamicImport = (importFiles, {
       args,
       instanceMethodCall: [],
       componentInstance: null,
-      element: null,
     }
 
-    pluginInstance.instanceProxy = proxyFactory(pluginInstance);
+    pluginInstance.proxyInstance = proxyFactory(pluginInstance);
 
     callStack.push(pluginInstance);
 
-    return pluginInstance.instanceProxy;
+    return pluginInstance.proxyInstance;
   };
 
   ComponentObjectConstructorFunction.getOrCreateInstance = getOrCreateInstance;
@@ -110,7 +124,8 @@ const useBootstrapComponentDynamicImport = (importFiles, {
       componentInstance = new window.bootstrap[componentName](args);
 
       callStack[i].componentInstance = componentInstance;
-      callStack[i].element = componentInstance._element;
+
+      setInstanceInMap(componentInstance._element, componentInstance);
 
       instanceMethodCall.forEach(({ prop, args }) => {
         componentInstance[prop](...args);
