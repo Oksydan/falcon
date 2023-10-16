@@ -23,6 +23,9 @@
  * International Registered Trademark & Property of PrestaShop SA
  */
 import prestashop from 'prestashop';
+import useEvent from '../theme/components/event/useEvent';
+
+const { on } = useEvent();
 
 function setUpCheckout() {
   $(prestashop.selectors.checkout.termsLink).on('click', (event) => {
@@ -44,6 +47,13 @@ function setUpCheckout() {
     $(prestashop.selectors.modal).modal('show');
   });
 
+  on(prestashop.selectors.checkout.giftCheckbox, 'change', ({ target }) => {
+    const isChecked = target.checked;
+    const giftBlock = document.querySelector('#gift');
+    const collapseInstance = bootstrap.Collapse.getOrCreateInstance(giftBlock);
+
+    collapseInstance.toggle(isChecked);
+  });
   $(prestashop.selectors.checkout.giftCheckbox).on('click', () => {
     $('#gift').slideToggle();
   });
