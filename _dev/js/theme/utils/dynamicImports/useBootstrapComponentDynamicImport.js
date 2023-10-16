@@ -15,8 +15,6 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     throw new Error('Component name is required');
   }
 
-  const DATA_KEY = 'dynamic_import.' + componentName;
-
   const getJQueryComponentName = () => componentName.charAt(0).toLowerCase() + componentName.slice(1);
 
   const isJQueryEnabled = () => {
