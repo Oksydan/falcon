@@ -1,5 +1,4 @@
-import $ from 'jquery';
-import DOMReady from "../utils/DOMReady";
+import DOMReady from '../utils/DOMReady';
 import useBootstrapComponentDynamicImport from '../utils/dynamicImports/useBootstrapComponentDynamicImport';
 
 DOMReady(() => {

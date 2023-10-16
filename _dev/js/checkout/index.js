@@ -50,7 +50,7 @@ function setUpCheckout() {
   on(prestashop.selectors.checkout.giftCheckbox, 'change', ({ target }) => {
     const isChecked = target.checked;
     const giftBlock = document.querySelector('#gift');
-    const collapseInstance = bootstrap.Collapse.getOrCreateInstance(giftBlock);
+    const collapseInstance = window.bootstrap.Collapse.getOrCreateInstance(giftBlock);
 
     collapseInstance.toggle(isChecked);
   });

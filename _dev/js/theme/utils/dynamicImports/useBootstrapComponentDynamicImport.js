@@ -16,7 +16,7 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     if (!instancesMap.has(element)) {
       instancesMap.set(element, instance);
     }
-  }
+  };
 
   const getInstanceFromMap = (element) => {
     if (!instancesMap.has(element)) {
@@ -24,7 +24,7 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     }
 
     return instancesMap.get(element);
-  }
+  };
 
   if (!componentName) {
     throw new Error('Component name is required');
@@ -38,7 +38,88 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     } catch (e) {
       return false;
     }
-  }
+  };
+
+  const loadFiles = () => {
+    filesLoaded = true;
+
+    return Promise.all(importFiles()).then((files) => {
+      files.forEach((file) => {
+        if (file.default) {
+          window.bootstrap[componentName] = file.default;
+        }
+      });
+    });
+  };
+
+  const executeCallStack = () => {
+    callStack.forEach(({ args, instanceMethodCall, componentInstance }, i) => {
+      componentInstance = new window.bootstrap[componentName](args);
+
+      callStack[i].componentInstance = componentInstance;
+
+      setInstanceInMap(componentInstance._element, componentInstance);
+
+      instanceMethodCall.forEach(({ prop, methodArgs }) => {
+        componentInstance[prop](...methodArgs);
+      });
+    });
+
+    if (isJQueryEnabled()) {
+      jQueryCallStack.forEach(({ elem, args }) => {
+        window.jQuery(elem)[getJQueryComponentName()](args);
+      });
+    }
+  };
+
+  const handleEvent = async (e) => {
+    e.preventDefault();
+
+    // DISABLE FOR NOW BEFORE REFACTORING
+    /* eslint-disable */
+    await handleComponentLoad();
+    /* eslint-enable */
+
+    const { currentTarget, type } = e;
+
+    currentTarget.dispatchEvent(new Event(type));
+  };
+
+  const unbindEvents = () => {
+    events.forEach(({
+      name = '',
+      selector = '',
+    }) => {
+      if (!name || !selector) {
+        throw new Error('Event name and selector are required');
+      }
+
+      off(
+        document,
+        name,
+        selector,
+        handleEvent,
+      );
+    });
+  };
+
+  const bindEvents = () => {
+    events.forEach(({
+      name = '',
+      selector = '',
+    }) => {
+      if (!name || !selector) {
+        throw new Error('Event name and selector are required');
+      }
+
+      on(
+        document,
+        name,
+        selector,
+        handleEvent,
+      );
+    });
+  };
 
   const handleComponentLoad = async () => {
     if (filesLoaded) {
@@ -50,22 +131,6 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     onLoad();
     executeCallStack();
   };
-
-  const getOrCreateInstance = (element) => {
-    const pluginInstance = getComponentInstance(element);
-
-    if (pluginInstance) {
-      return pluginInstance.proxyInstance;
-    }
-
-    const proxyInstance = new ComponentObjectConstructorFunction(element);
-
-    setInstanceInMap(element, proxyInstance);
-
-    return proxyInstance;
-  }
-
-  const getComponentInstance = (element) => getInstanceFromMap(element);
 
   const proxyFactory = (pluginInstance) => {
     const pluginObject = {};
@@ -87,56 +152,52 @@ const useBootstrapComponentDynamicImport = (importFiles, {
 
           return receiver;
         };
-      }
-    }
+      },
+    };
 
-    return new Proxy(pluginObject, proxyHandler)
-  }
+    return new Proxy(pluginObject, proxyHandler);
+  };
 
-  const ComponentObjectConstructorFunction = function(args) {
+  const getComponentInstance = (element) => getInstanceFromMap(element);
+
+  function ComponentObjectConstructorFunction(args) {
     const pluginInstance = {
       args,
       instanceMethodCall: [],
       componentInstance: null,
-    }
+    };
 
     pluginInstance.proxyInstance = proxyFactory(pluginInstance);
 
     callStack.push(pluginInstance);
 
     return pluginInstance.proxyInstance;
+  }
+
+  const getOrCreateInstance = (element) => {
+    const pluginInstance = getComponentInstance(element);
+
+    if (pluginInstance) {
+      return pluginInstance.proxyInstance;
+    }
+
+    const proxyInstance = new ComponentObjectConstructorFunction(element);
+
+    setInstanceInMap(element, proxyInstance);
+
+    return proxyInstance;
   };
 
   ComponentObjectConstructorFunction.getOrCreateInstance = getOrCreateInstance;
   ComponentObjectConstructorFunction.getInstance = getComponentInstance;
 
-  const handleJQueryPluginCall = function(args) {
+  const handleJQueryPluginCall = (args) => {
     jQueryCallStack.push({
       elem: this,
       args,
     });
 
     handleComponentLoad();
-  }
-
-  const executeCallStack = () => {
-    callStack.forEach(({ args, instanceMethodCall, componentInstance }, i) => {
-      componentInstance = new window.bootstrap[componentName](args);
-
-      callStack[i].componentInstance = componentInstance;
-
-      setInstanceInMap(componentInstance._element, componentInstance);
-
-      instanceMethodCall.forEach(({ prop, args }) => {
-        componentInstance[prop](...args);
-      });
-    });
-
-    if (isJQueryEnabled()) {
-      jQueryCallStack.forEach(({ elem, args }) => {
-        window.jQuery(elem)[getJQueryComponentName()](args);
-      });
-    }
   };
 
   window.bootstrap = window.bootstrap || {};
@@ -145,63 +206,6 @@ const useBootstrapComponentDynamicImport = (importFiles, {
   if (isJQueryEnabled()) {
     window.jQuery.fn[getJQueryComponentName()] = handleJQueryPluginCall;
   }
-
-  const handleEvent = async (e) => {
-    e.preventDefault();
-    await handleComponentLoad();
-
-    const { currentTarget, type } = e;
-
-    currentTarget.dispatchEvent(new Event(type));
-  }
-
-  const loadFiles = () => {
-    filesLoaded = true;
-
-    return Promise.all(importFiles()).then((files) => {
-      files.forEach((file) => {
-        if (file.default) {
-          window.bootstrap[componentName] = file.default;
-        }
-      });
-    });
-  };
-
-  const unbindEvents = () => {
-    events.forEach(({
-      name = '',
-      selector = '',
-    }) => {
-      if (!name || !selector) {
-        throw new Error('Event name and selector are required');
-      }
-
-      off(
-        document,
-        name,
-        selector,
-        handleEvent
-      );
-    });
-  };
-
-  const bindEvents = () => {
-    events.forEach(({
-      name = '',
-      selector = '',
-    }) => {
-      if (!name || !selector) {
-        throw new Error('Event name and selector are required');
-      }
-
-      on(
-        document,
-        name,
-        selector,
-        handleEvent
-      );
-    });
-  };
 
   const init = () => {
     bindEvents();
