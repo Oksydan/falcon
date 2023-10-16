@@ -1,80 +1,138 @@
 import $ from 'jquery';
-import DynamicImportHandler from '@js/theme/utils/DynamicImportHandler';
+import DOMReady from "../utils/DOMReady";
+import useBootstrapComponentDynamicImport from '../utils/dynamicImports/useBootstrapComponentDynamicImport';
 
-$(() => {
+DOMReady(() => {
   /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "import" }] */
 
-  const importModal = new DynamicImportHandler({
-    jqueryPluginCover: 'modal',
-    DOMEvents: 'click',
-    DOMEventsSelector: '[data-bs-toggle="modal"]',
-    DOMEventsPreventDefault: true,
-    files: () => [
+  const { init: initDynamicImportForModal } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/modal'),
       import('@css/dynamic/modal/_index.scss'),
     ],
-  });
+    {
+      events: [
+        {
+          name: 'click',
+          selector: '[data-bs-toggle="modal"]',
+        },
+      ],
+      componentName: 'Modal',
+    },
+  );
 
-  const importOffcanvas = new DynamicImportHandler({
-    jqueryPluginCover: 'offcanvas',
-    DOMEvents: 'click',
-    DOMEventsSelector: '[data-bs-toggle="offcanvas"]',
-    DOMEventsPreventDefault: true,
-    files: () => [
+  initDynamicImportForModal();
+
+  // const modal = new bootstrap.Modal('#testModal', {
+  //   keyboard: false,
+  // });
+  //
+  // const handleTestModal = () => {
+  //   modal.toggle();
+  //   console.log('toggle');
+  //   setTimeout(handleTestModal, 4000);
+  // }
+  //
+  // handleTestModal();
+
+  const { init: initDynamicImportForOffcanvas } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/offcanvas'),
       import('@css/dynamic/offcanvas/_index.scss'),
     ],
-  });
+    {
+      events: [
+        {
+          name: 'click',
+          selector: '[data-bs-toggle="offcanvas"]',
+        },
+      ],
+      componentName: 'Offcanvas',
+    },
+  );
 
-  const importDropdown = new DynamicImportHandler({
-    jqueryPluginCover: 'dropdown',
-    DOMEvents: 'click',
-    DOMEventsSelector: '[data-bs-toggle="dropdown"]',
-    DOMEventsPreventDefault: true,
-    files: () => [
+  initDynamicImportForOffcanvas();
+
+  const { init: initDynamicImportForDropdown } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/dropdown'),
       import('@css/dynamic/dropdown/_index.scss'),
     ],
-  });
+    {
+      events: [
+        {
+          name: 'click',
+          selector: '[data-bs-toggle="dropdown"]',
+        },
+      ],
+      componentName: 'Dropdown',
+    },
+  );
 
-  const importCollapse = new DynamicImportHandler({
-    jqueryPluginCover: 'collapse',
-    DOMEvents: 'click',
-    DOMEventsSelector: '[data-bs-toggle="collapse"]',
-    DOMEventsPreventDefault: true,
-    files: () => [
+  initDynamicImportForDropdown();
+
+  const { init: initDynamicImportForCollapse } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/collapse'),
     ],
-  });
+    {
+      events: [
+        {
+          name: 'click',
+          selector: '[data-bs-toggle="collapse"]',
+        },
+      ],
+      componentName: 'Collapse',
+    },
+  );
 
-  const importPopover = new DynamicImportHandler({
-    jqueryPluginCover: 'popover',
-    files: () => [
+  initDynamicImportForCollapse();
+
+  const { init: initDynamicImportForPopover } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/popover'),
       import('@css/dynamic/popover/_index.scss'),
     ],
-  });
+    {
+      componentName: 'Popover',
+      events: [
+        {
+          name: 'click',
+          selector: '[data-bs-toggle="popover"]',
+        },
+      ],
+    },
+  );
 
-  const importScrollspy = new DynamicImportHandler({
-    jqueryPluginCover: 'scrollspy',
-    files: () => [
-      import('bootstrap/js/src/scrollspy'),
-    ],
-  });
+  initDynamicImportForPopover();
 
-  const importToast = new DynamicImportHandler({
-    jqueryPluginCover: 'toast',
-    files: () => [
+  const { init: initDynamicImportForToast } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/toast'),
       import('@css/dynamic/toast/_index.scss'),
     ],
-  });
+    {
+      componentName: 'Toast',
+    },
+  );
 
-  const importTooltip = new DynamicImportHandler({
-    jqueryPluginCover: 'tooltip',
-    files: () => [
+  initDynamicImportForToast();
+
+  const { init: initDynamicImportForTooltip } = useBootstrapComponentDynamicImport(
+    () => [
       import('bootstrap/js/src/tooltip'),
       import('@css/dynamic/tooltip/_index.scss'),
     ],
-  });
+    {
+      componentName: 'Tooltip',
+      events: [
+        {
+          name: 'mouseenter',
+          selector: '[data-bs-toggle="tooltip"]',
+        },
+      ],
+    },
+  );
+
+  initDynamicImportForTooltip();
 });
