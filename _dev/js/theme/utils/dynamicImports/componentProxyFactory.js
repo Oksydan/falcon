@@ -1,3 +1,9 @@
+/**
+ * @method handleProxyGet
+ * @param element
+ * @param proxyMethodHandler
+ * @return {(function(*, *, *): (*))|*}
+ */
 const handleProxyGet = (element, proxyMethodHandler) => (target, prop, receiver) => {
   if (target[prop] !== undefined) {
     return target[prop];
@@ -6,6 +12,13 @@ const handleProxyGet = (element, proxyMethodHandler) => (target, prop, receiver)
   return (...args) => proxyMethodHandler(target, prop, receiver, element, args);
 };
 
+/**
+ * @method componentProxyFactory
+ * @param element {HTMLElement} - component element
+ * @param options {object} - component options
+ * @param proxyMethodHandler {function} - proxy method handler
+ * @return {{_options, _element}} - component proxy
+ */
 const componentProxyFactory = (
   element,
   options,
