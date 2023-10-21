@@ -62,8 +62,9 @@ const watchPassword = async (
   const feedback = getPasswordStrengthFeedback(result.score);
   const passwordLength = passwordValue.length;
   const popoverContent = [];
+  const oldPopoverInstance = window.bootstrap.Popover.getInstance(elementInput);
 
-  $(elementInput).popover('dispose');
+  oldPopoverInstance?.dispose();
 
   feedbackContainer.style.display = passwordValue === '' ? 'none' : 'block';
 
@@ -79,11 +80,12 @@ const watchPassword = async (
     }
   });
 
-  $(elementInput).popover({
+  const newPopoverInstance = window.bootstrap.Popover.getOrCreateInstance(elementInput, {
     html: true,
     placement: 'top',
     content: popoverContent.join('<br/>'),
-  }).popover('show');
+  });
+  newPopoverInstance.show();
 
   const passwordLengthValid = passwordLength >= parseInt(elementInput.dataset.minlength, 10)
     && passwordLength <= parseInt(elementInput.dataset.maxlength, 10);
@@ -164,7 +166,9 @@ const usePasswordPolicy = (selector) => {
           // eslint-disable-next-line max-len
           elementInput.addEventListener('keyup', () => watchPassword(elementInput, feedbackContainer, hints));
           elementInput.addEventListener('blur', () => {
-            $(elementInput).popover('dispose');
+            const oldPopoverInstance = window.bootstrap.Popover.getInstance(elementInput);
+
+            oldPopoverInstance?.dispose();
           });
         }
       }
