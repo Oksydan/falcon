@@ -2,8 +2,6 @@ import DOMReady from '../utils/DOMReady';
 import useBootstrapComponentDynamicImport from '../utils/dynamicImports/useBootstrapComponentDynamicImport';
 
 DOMReady(() => {
-  /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "import" }] */
-
   const { init: initDynamicImportForModal } = useBootstrapComponentDynamicImport(
     () => [
       import('bootstrap/js/src/modal'),
@@ -21,18 +19,6 @@ DOMReady(() => {
   );
 
   initDynamicImportForModal();
-
-  // const modal = new bootstrap.Modal('#testModal', {
-  //   keyboard: false,
-  // });
-  //
-  // const handleTestModal = () => {
-  //   modal.toggle();
-  //   console.log('toggle');
-  //   setTimeout(handleTestModal, 4000);
-  // }
-  //
-  // handleTestModal();
 
   const { init: initDynamicImportForOffcanvas } = useBootstrapComponentDynamicImport(
     () => [
