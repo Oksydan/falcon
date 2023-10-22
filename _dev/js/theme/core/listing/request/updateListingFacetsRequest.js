@@ -5,62 +5,69 @@ import GenericHttpRequestError from '../../../components/http/error/GenericHttpR
 const { dispatch, abortAll } = useHttpController();
 
 /**
- * @typedef ServerResponse
- * @type {object}
- * @property {string} current_url - new url
- * @property {boolean} js_enabled - is js enabled
- * @property {string} label - listing label
- * @property {object} pagination - pagination object
- * @property {number} pagination.current_page - pagination current page
- * @property {number} pagination.items_shown_from - pagination items shown from
- * @property {number} pagination.items_shown_to - pagination items shown to
- * @property {array} pagination.pages - pagination pages array
- * @property {object[]} products - array of front representations of products
- * @property {string} rendered_active_filters - active filters html content
- * @property {string} rendered_facets - facets html content
- * @property {string} rendered_products - listing products html content
- * @property {string} rendered_products_bottom - listing products bottom html content
- * @property {string} rendered_products_header - listing products header html content
- * @property {string} rendered_products_top - listing products top html content
- * @property {object} result - result empty object
- * @property {object[]} sort_orders - available sort orders
- * @property {string} sort_selected - selected sort order
+ * @typedef {Object} ServerResponse
+ * @property {string} current_url - The new URL.
+ * @property {boolean} js_enabled - Indicates whether JavaScript is enabled.
+ * @property {string} label - The listing label.
+ * @property {Object} pagination - Pagination information.
+ * @property {number} pagination.current_page - The current page in pagination.
+ * @property {number} pagination.items_shown_from - The number of items shown from.
+ * @property {number} pagination.items_shown_to - The number of items shown to.
+ * @property {number[]} pagination.pages - Array of pagination pages.
+ * @property {Object[]} products - Array of front representations of products.
+ * @property {string} rendered_active_filters - HTML content for active filters.
+ * @property {string} rendered_facets - HTML content for facets.
+ * @property {string} rendered_products - HTML content for listing products.
+ * @property {string} rendered_products_bottom - HTML content for listing products bottom.
+ * @property {string} rendered_products_header - HTML content for listing products header.
+ * @property {string} rendered_products_top - HTML content for listing products top.
+ * @property {Object} result - Empty result object.
+ * @property {Object[]} sort_orders - Available sort orders.
+ * @property {string} sort_selected - The selected sort order.
  */
 
 /**
- * Update listing facets request
- * @param url {string} - new url with from-xhr param
+ * Generates an update listing facets request.
+ * @param {string} url - The new URL with the 'from-xhr' parameter.
  * @example
- *  const { getRequest } = updateListingFacetsRequest(url);
+ * const { getRequest } = updateListingFacetsRequest(url);
  *
- *  try {
- *    const resp = await getRequest();
- *  } catch (error) {
- *    console.error(error);
- *  }
+ * try {
+ *   const resp = await getRequest();
+ * } catch (error) {
+ *   console.error(error);
+ * }
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const updateListingFacetsRequest = (url) => {
+  // Create an HTTP request with the specified URL and headers
   const { request, controller } = useHttpRequest(url, {
     headers: {
       accept: 'application/json',
     },
   });
 
+  /**
+   * Sends an asynchronous GET request to update listing facets.
+   * @returns {Promise<ServerResponse>} - A promise resolving to the server response.
+   */
   const getRequest = () => new Promise((resolve, reject) => {
+    // Abort all previous requests
     abortAll();
 
+    // Dispatch the request and use the controller
     dispatch(request, controller)(() => request
       .get()
       .json((resp) => {
         resolve(resp);
       })
       .catch((e) => {
-        // IF ABORTED
+        // Handle abort (DOMException)
         if (e instanceof DOMException) {
           return;
         }
 
+        // Reject with a generic HTTP request error
         reject(new GenericHttpRequestError('Error while sending request'));
       }));
   });
