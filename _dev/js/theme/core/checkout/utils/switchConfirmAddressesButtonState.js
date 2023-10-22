@@ -1,3 +1,5 @@
+import { each } from '../../../utils/DOMHelpers';
+
 /**
  * Switches the state of the confirm addresses button.
  *

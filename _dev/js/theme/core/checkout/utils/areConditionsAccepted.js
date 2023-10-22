@@ -48,4 +48,3 @@ const areConditionsAccepted = () => {
 };
 
 export default areConditionsAccepted;
-

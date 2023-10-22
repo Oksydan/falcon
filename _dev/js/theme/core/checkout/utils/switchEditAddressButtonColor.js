@@ -1,3 +1,5 @@
+import { each } from '../../../utils/DOMHelpers';
+
 /**
  * Changes the color of the edit button for the wrong address.
  *
