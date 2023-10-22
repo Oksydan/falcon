@@ -27,4 +27,3 @@ const useDefaultHttpRequest = (url, payload, options = {}) => {
 };
 
 export default useDefaultHttpRequest;
-
