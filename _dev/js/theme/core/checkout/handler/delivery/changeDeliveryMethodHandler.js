@@ -6,8 +6,10 @@ import refreshCheckoutPage from '../../utils/refreshCheckoutPage';
 import { each } from '../../../../utils/DOMHelpers';
 
 /**
- * Change delivery method handler
- * @param event {object} - change event
+ * Handles the change of delivery method in the Prestashop checkout process.
+ *
+ * @function
+ * @param {object} event - The change event.
  * @returns {Promise<void>}
  */
 const changeDeliveryMethodHandler = async (event) => {

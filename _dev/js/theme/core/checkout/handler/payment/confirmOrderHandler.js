@@ -13,6 +13,14 @@ const showNativeFormErrors = () => {
   });
 };
 
+/**
+ * Handles the click event to confirm the order in the Prestashop checkout process.
+ *
+ * @async
+ * @function
+ * @param {object} e - The click event.
+ * @returns {Promise<void>}
+ */
 const confirmOrderHandler = async (e) => {
   e.preventDefault();
 

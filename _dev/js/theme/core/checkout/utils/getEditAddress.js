@@ -1,6 +1,8 @@
 /**
- * Check if browser url contains editAddress parameter
- * @returns {string | null} editAddress parameter value or null if not found
+ * Checks if the browser URL contains the 'editAddress' parameter.
+ *
+ * @function
+ * @returns {string | null} The value of the 'editAddress' parameter, or null if not found.
  */
 const getEditAddress = () => {
   const urlParams = new URLSearchParams(window.location.search);

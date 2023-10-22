@@ -1,18 +1,20 @@
 import useDefaultHttpRequest from '../../../components/http/useDefaultHttpRequest';
 
 /**
- * @typedef ServerResponse
- * @type {object}
- * @property {string} preview - checkout summary html content
+ * Represents the server response from a select delivery method request.
+ * @typedef {object} ServerResponse
+ * @property {string} preview - The HTML content of the checkout summary.
  */
 
 /**
- * Select delivery method request
- * @param url {string} - checkout url to send request
- * @param payload {object} - request payload
- * @param payload.delivery_option[id] {string} - delivery option id with id_address_delivery
- * @param payload.ajax {number} - optional
- * @param payload.action {string} - optional
+ * Provides a select delivery method request with a method to get the request promise.
+ *
+ * @function
+ * @param {string} url - The checkout URL to send the request.
+ * @param {object} payload - The request payload.
+ * @param {object} payload.delivery_option[id] - The delivery option ID with id_address_delivery.
+ * @param {number} payload.ajax - An optional parameter.
+ * @param {string} payload.action - An optional parameter.
  * @example
  * const payload = {
  *   'delivery_option[1]': '2,',
@@ -29,7 +31,10 @@ import useDefaultHttpRequest from '../../../components/http/useDefaultHttpReques
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const selectDeliveryMethodRequest = (url, payload) => {
-  // payload not typed because delivery option parameter is dynamic
+  /**
+   * Payload not typed because the delivery option parameter is dynamic.
+   * @type {object}
+   */
   const payloadToSend = {
     ajax: 1,
     action: 'selectDeliveryOption',

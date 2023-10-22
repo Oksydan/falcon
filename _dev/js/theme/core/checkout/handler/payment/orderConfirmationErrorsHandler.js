@@ -1,6 +1,10 @@
 /**
- * Redirect to cart page if there are errors on order confirmation
- * @param event {object} - event object
+ * Handles errors on order confirmation by redirecting to the cart page if needed.
+ *
+ * @function
+ * @param {object} event - The event object containing the response information.
+ * @param {object} event.resp - The response object.
+ * @returns {void}
  */
 const orderConfirmationErrorsHandler = ({ resp }) => {
   if (resp?.cartUrl !== '') {
