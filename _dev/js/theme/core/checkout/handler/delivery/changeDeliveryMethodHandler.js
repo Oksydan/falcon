@@ -28,6 +28,11 @@ const changeDeliveryMethodHandler = async (event) => {
 
   const { getRequest } = selectDeliveryMethodRequest(url, payload);
 
+  prestashop.emit('updateDeliveryForm', {
+    dataForm: formSerializeArray(deliveryMethodForm),
+    deliveryOption: newDeliveryOption,
+  });
+
   try {
     const resp = await getRequest();
 
