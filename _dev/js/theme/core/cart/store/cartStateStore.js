@@ -1,3 +1,10 @@
+/**
+ * Represents the state of the cart.
+ * @typedef {Object} state
+ * @property {string} errorMsg - The error message related to the cart state.
+ * @property {boolean} isUpdateOperation - Indicates whether the cart is in an update operation.
+ * @property {boolean} hasError - Indicates whether an error has occurred in the cart.
+ */
 const state = {
   errorMsg: '',
   isUpdateOperation: false,
@@ -5,62 +12,65 @@ const state = {
 };
 
 /**
- * Store for cart state
+ * Store for managing the state of the cart.
  * @module
- * @returns {object}
+ * @returns {object} Object with methods to interact with the cart state.
  */
 const cartStateStore = () => {
   /**
-   * Sets the error message
+   * Sets the error message in the cart state.
    * @method setErrorMsg
    * @public
-   * @param {string} value
+   * @param {string} value - The error message to set.
+   * @returns {void}
    */
   const setErrorMsg = (value) => {
     state.errorMsg = value;
   };
 
   /**
-   * Returns the error message
+   * Gets the current error message from the cart state.
    * @method getErrorMsg
    * @public
-   * @return {string}
+   * @returns {string} The current error message.
    */
   const getErrorMsg = () => state.errorMsg;
 
   /**
-   * Sets the isUpdateOperation value
+   * Sets the isUpdateOperation value in the cart state.
    * @method setIsUpdateOperation
    * @public
-   * @param {boolean} value
+   * @param {boolean} value - The value to set for isUpdateOperation.
+   * @returns {void}
    */
   const setIsUpdateOperation = (value) => {
     state.isUpdateOperation = value;
   };
 
   /**
-   * Returns the isUpdateOperation value
+   * Gets the current value of isUpdateOperation from the cart state.
    * @method getIsUpdateOperation
    * @public
-   * @return {boolean}
+   * @returns {boolean} The current value of isUpdateOperation.
    */
   const getIsUpdateOperation = () => state.isUpdateOperation;
 
   /**
-   * Sets the hasError value
+   * Sets the hasError value in the cart state.
    * @method setHasError
    * @public
-   * @param {boolean} value
+   * @param {boolean} value - The value to set for hasError.
+   * @returns {void}
    */
   const setHasError = (value) => {
     state.hasError = value;
   };
 
   /**
-   * Returns the hasError value
+   * Gets the current value of hasError from the cart state.
    * @method getHasError
    * @public
-   * @return {boolean}
+   * @returns {boolean} The current value of hasError.
    */
   const getHasError = () => state.hasError;
 

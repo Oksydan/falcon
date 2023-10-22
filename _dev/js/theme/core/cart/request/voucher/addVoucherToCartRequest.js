@@ -66,7 +66,7 @@ const addVoucherToCartRequest = (payload) => {
       required: true,
     },
   };
-  
+
   /**
    * Validates the payload against the payload definition.
    * @throws {Error} Throws an error if the payload is invalid.

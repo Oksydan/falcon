@@ -14,11 +14,18 @@ import useCustomQuantityInput from '../../components/useCustomQuantityInput';
 const { on } = useEvent();
 
 /**
- * Cart controller
- * @returns {object} return
- * @returns {function} return.init initialize cart controller
+ * The Cart Controller manages interactions and events related to the shopping cart.
+ * @namespace cartController
+ * @returns {object} Returns an object with an `init` function to initialize the cart controller.
+ * @property {function} init - Initializes the cart controller by attaching event handlers to relevant DOM elements.
+ * @public
  */
 const cartController = () => {
+  /**
+   * Attaches spinner events to custom cart quantity spinners.
+   * @private
+   * @function
+   */
   const attachSpinnerEvents = () => {
     const spinners = document.querySelectorAll('.js-custom-cart-qty-spinner');
 
@@ -35,6 +42,12 @@ const cartController = () => {
     });
   };
 
+  /**
+   * Initializes the cart controller by attaching event handlers to relevant DOM elements.
+   * @public
+   * @function
+   * @memberof cartController
+   */
   const init = () => {
     const {
       discountCode,
