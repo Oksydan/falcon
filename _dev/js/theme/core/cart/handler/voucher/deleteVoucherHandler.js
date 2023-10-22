@@ -9,7 +9,7 @@ import deleteVoucherFromCartRequest from '../../request/voucher/deleteVoucherFro
 const deleteVoucherHandler = async (event) => {
   event.preventDefault();
 
-  const btn = event.currentTarget;
+  const btn = event.delegateTarget;
   const { dataset } = btn;
   const { idDiscount } = dataset;
   const payload = {

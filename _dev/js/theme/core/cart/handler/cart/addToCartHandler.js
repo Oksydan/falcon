@@ -13,8 +13,8 @@ const { danger } = useAlertToast();
 const addToCartHandler = async (event) => {
   event.preventDefault();
 
-  const form = event.currentTarget?.form;
-  const addToCartButton = event.currentTarget;
+  const form = event.delegateTarget?.form;
+  const addToCartButton = event.delegateTarget;
 
   const isQuantityInputValid = (input) => {
     let validInput = true;

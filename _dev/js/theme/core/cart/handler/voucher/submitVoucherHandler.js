@@ -10,7 +10,7 @@ import parseToHtml from '../../../../utils/parseToHtml';
 const submitVoucherHandler = async (event) => {
   event.preventDefault();
 
-  const addVoucherForm = event.currentTarget;
+  const addVoucherForm = event.delegateTarget;
   const btn = addVoucherForm.querySelector('[type="submit"]');
   const input = addVoucherForm.querySelector('[name="discount_name"]');
   const voucherName = input?.value || '';

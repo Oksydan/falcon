@@ -9,7 +9,7 @@ import deleteFromCartRequest from '../../request/cart/deleteFromCartRequest';
 const deleteFromCartHandler = async (event) => {
   event.preventDefault();
 
-  const button = event.currentTarget;
+  const button = event.delegateTarget;
   const { dataset } = button;
   const { idProduct, idProductAttribute, idCustomization = 0 } = dataset;
 

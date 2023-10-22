@@ -24,7 +24,7 @@ const changeAddressHandler = (event) => {
     element.classList.add('selected');
   });
 
-  const eventTarget = event.currentTarget;
+  const eventTarget = event.delegateTarget;
   const addressErrorElement = document.querySelector(addressError);
   const idFailureAddress = addressErrorElement ? addressErrorElement?.id.split('-').pop() : null;
   const notValidAddressesVal = document.querySelector(notValidAddresses)?.value;

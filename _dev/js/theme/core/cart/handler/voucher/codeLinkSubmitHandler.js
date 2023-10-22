@@ -5,7 +5,7 @@
 const codeLinkSubmitHandler = (event) => {
   event.preventDefault();
 
-  const link = event.currentTarget;
+  const link = event.delegateTarget;
   const input = document.querySelector('[name="discount_name"]');
   const form = document.querySelector('.js-voucher-form');
   const code = link.dataset?.code;

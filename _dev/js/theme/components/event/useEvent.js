@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import EventHandler from "bootstrap/js/src/dom/event-handler";
 
 /**
  * Function that will help you to add/remove/trigger events
@@ -13,11 +14,7 @@ const useEvent = () => {
      * @param handler {function}
      */
   const on = (element, eventName, handlerOrDelegation, handler) => {
-    if (typeof handlerOrDelegation === 'function') {
-      $(element).on(eventName, handlerOrDelegation);
-    } else {
-      $(element).on(eventName, handlerOrDelegation, handler);
-    }
+    EventHandler.on(element, eventName, handlerOrDelegation, handler);
   };
 
   /**
@@ -28,11 +25,7 @@ const useEvent = () => {
      * @param handler {function}
      */
   const one = (element, eventName, handlerOrDelegation, handler) => {
-    if (typeof handlerOrDelegation === 'function') {
-      $(element).one(eventName, handlerOrDelegation);
-    } else {
-      $(element).one(eventName, handlerOrDelegation, handler);
-    }
+    EventHandler.one(element, eventName, handlerOrDelegation, handler);
   };
 
   /**
@@ -43,11 +36,7 @@ const useEvent = () => {
      * @param handler {function}
      */
   const off = (element, eventName, handlerOrDelegation, handler) => {
-    if (typeof handlerOrDelegation === 'function') {
-      $(element).off(eventName, handlerOrDelegation);
-    } else {
-      $(element).off(eventName, handlerOrDelegation, handler);
-    }
+    EventHandler.off(element, eventName, handlerOrDelegation, handler);
   };
 
   /**
@@ -57,7 +46,7 @@ const useEvent = () => {
      * @param args {object}
      */
   const trigger = (element, eventName, args = {}) => {
-    $(element).trigger(eventName, args);
+    EventHandler.trigger(element, eventName, args);
   };
 
   return {

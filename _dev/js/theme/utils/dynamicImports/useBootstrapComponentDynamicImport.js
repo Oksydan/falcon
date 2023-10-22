@@ -123,9 +123,9 @@ const useBootstrapComponentDynamicImport = (importFiles, {
 
     await handleComponentLoad();
 
-    const { currentTarget, type } = e;
+    const { delegateTarget, type } = e;
 
-    currentTarget.dispatchEvent(new Event(type));
+    delegateTarget.dispatchEvent(new Event(type));
   };
 
   const { bindEvents, unbindEvents } = useDynamicImportEventsHandler(events, handleEvent);

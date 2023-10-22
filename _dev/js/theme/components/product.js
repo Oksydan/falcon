@@ -8,7 +8,7 @@ DOMReady(() => {
   const createInputFile = () => {
     each('.js-file-input', (input) => {
       input.addEventListener('change', (event) => {
-        const target = event.currentTarget;
+        const target = event.delegateTarget;
         const file = (target) ? target.files[0] : null;
 
         if (target && file) {
