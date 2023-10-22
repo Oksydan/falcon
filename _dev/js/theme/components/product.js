@@ -1,6 +1,7 @@
 import prestashop from 'prestashop';
 import useCustomQuantityInput from './useCustomQuantityInput';
 import { each } from '../utils/DOMHelpers';
+import parseToHtml from "../utils/parseToHtml";
 import DOMReady from '../utils/DOMReady';
 import productEventContextSelector from '../core/product/utils/productEventContextSelector';
 
@@ -67,11 +68,11 @@ DOMReady(() => {
       const productImagesModal = document.querySelector(`${contextSelector} .js-product-images-modal`);
 
       if (productImages) {
-        productImages.replaceWith(event.product_cover_thumbnails);
+        productImages.replaceWith(parseToHtml(event.product_cover_thumbnails));
       }
 
       if (productImagesModal) {
-        productImagesModal.replaceWith(event.product_images_modal);
+        productImagesModal.replaceWith(parseToHtml(event.product_images_modal));
       }
 
       prestashop.emit('updatedProductCombination', event);
