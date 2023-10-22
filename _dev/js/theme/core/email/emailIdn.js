@@ -34,4 +34,3 @@ const initEmailIdn = (selector) => {
 };
 
 export default initEmailIdn;
-
