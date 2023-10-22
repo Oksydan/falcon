@@ -3,6 +3,13 @@ import useDynamicImportEventsHandler from './useDynamicImportEventsHandler';
 import useFunctionCallstackMap from './useFunctionCallstackMap';
 import componentProxyFactory from './componentProxyFactory';
 
+/**
+ * Checks if jQuery is enabled.
+ *
+ * @function
+ * @name isJQueryEnabled
+ * @returns {boolean} - Whether jQuery is enabled or not.
+ */
 const isJQueryEnabled = () => {
   try {
     return !!window.jQuery;
@@ -11,6 +18,16 @@ const isJQueryEnabled = () => {
   }
 };
 
+/**
+ * Dynamically loads and initializes Bootstrap components with optional jQuery support.
+ *
+ * @param {Function[]} importFiles - Array of functions that import the necessary files for the component.
+ * @param {Object} options - Configuration options.
+ * @param {string} options.componentName - Name of the Bootstrap component.
+ * @param {string[]} [options.events=[]] - List of events to bind for dynamic loading.
+ * @returns {Object} - Object with an `init` function for initializing the dynamic loading.
+ * @throws {Error} - Throws an error if the component name is not provided.
+ */
 const useBootstrapComponentDynamicImport = (importFiles, {
   componentName,
   events = [],
@@ -42,6 +59,10 @@ const useBootstrapComponentDynamicImport = (importFiles, {
 
   const getJQueryComponentName = () => componentName.toLowerCase();
 
+  /**
+   * Handles the loading of component files.
+   * @returns {Promise<void>} - A Promise that resolves when files are loaded.
+   */
   const loadFiles = () => Promise.all(importFiles()).then((files) => {
     for (let i = 0; i < files.length; i += 1) {
       const file = files[i];
@@ -56,6 +77,10 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     filesLoading = false;
   });
 
+  /**
+   * Executes component initialization and callback calls.
+   * @returns {void}
+   */
   const executeComponentInitializationAndCallbackCalls = () => {
     const instances = getAllInstancesForComponent();
 
@@ -105,6 +130,10 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     }
   };
 
+  /**
+   * Handles the loading of the component.
+   * @returns {Promise<void>} - A Promise that resolves when the component is loaded.
+   */
   const handleComponentLoad = async () => {
     if (filesLoaded || filesLoading) {
       return;
@@ -118,6 +147,11 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     executeComponentInitializationAndCallbackCalls();
   };
 
+  /**
+   * Handles events triggered during dynamic loading.
+   * @param {Event} e - The event object.
+   * @returns {Promise<void>} - A Promise that resolves when the event is handled.
+   */
   const handleEvent = async (e) => {
     e.preventDefault();
 
@@ -128,10 +162,30 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     delegateTarget.dispatchEvent(new Event(type));
   };
 
+  /**
+   * Binds events for dynamic loading.
+   * @type {Object}
+   * @property {Function} bindEvents - Binds events.
+   * @property {Function} unbindEvents - Unbinds events.
+   */
   const { bindEvents, unbindEvents } = useDynamicImportEventsHandler(events, handleEvent);
 
+  /**
+   * Gets the component instance associated with an element.
+   * @param {HTMLElement} element - The HTML element.
+   * @returns {Object|null} - The component instance or null if not found.
+   */
   const getComponentInstance = (element) => getInstanceFromMap(element);
 
+  /**
+   * Handles proxy method calls for the component.
+   * @param {Object} target - The target object.
+   * @param {string} prop - The property being accessed.
+   * @param {Object} receiver - The receiver object.
+   * @param {HTMLElement} element - The HTML element associated with the component.
+   * @param {Array} args - The arguments passed to the method.
+   * @returns {Object} - The receiver object.
+   */
   const proxyMethodCallHandler = (target, prop, receiver, element, args) => {
     const instance = getInstanceFromMap(element);
 
@@ -152,6 +206,12 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     return receiver;
   };
 
+  /**
+   * Constructor function for creating Bootstrap component instances.
+   * @param {string|HTMLElement} selectorOrElement - Selector or HTML element.
+   * @param {Object} [options={}] - Component options.
+   * @returns {Object} - The component instance proxy.
+   */
   function ComponentObjectConstructorFunction(selectorOrElement, options = {}) {
     const element = selectorOrElement instanceof Element ? selectorOrElement : document.querySelector(selectorOrElement);
     const componentInstanceProxy = componentProxyFactory(element, options, proxyMethodCallHandler);
@@ -161,6 +221,12 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     return componentInstanceProxy;
   }
 
+  /**
+   * Gets or creates a component instance for a given element.
+   * @param {HTMLElement} element - The HTML element.
+   * @param {Object} options - Component options.
+   * @returns {Object} - The component instance.
+   */
   ComponentObjectConstructorFunction.getOrCreateInstance = (element, options) => {
     const componentInstance = getComponentInstance(element);
 
@@ -171,6 +237,11 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     return new ComponentObjectConstructorFunction(element, options);
   };
 
+  /**
+   * Gets an existing component instance for a given element.
+   * @param {HTMLElement} element - The HTML element.
+   * @returns {Object|null} - The existing component instance or null if not found.
+   */
   ComponentObjectConstructorFunction.getInstance = getComponentInstance;
 
   window.bootstrap = window.bootstrap || {};
@@ -185,6 +256,10 @@ const useBootstrapComponentDynamicImport = (importFiles, {
     };
   }
 
+  /**
+   * Initializes the dynamic loading of the Bootstrap component.
+   * @returns {void}
+   */
   const init = () => {
     bindEvents();
   };

@@ -2,8 +2,10 @@ import prestashop from 'prestashop';
 import useCheckoutStepsController from '../../components/useCheckoutStepsController';
 
 /**
- * Edit delivery step handler
- * @param event {object} - click event
+ * Handles the click event to edit the delivery step in the Prestashop checkout process.
+ *
+ * @function
+ * @param {object} event - The click event.
  */
 const editDeliveryStepHandler = (event) => {
   event.preventDefault();

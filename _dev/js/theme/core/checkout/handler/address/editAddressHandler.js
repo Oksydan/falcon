@@ -1,8 +1,10 @@
 import prestashop from 'prestashop';
 
 /**
- * Edit address handler
- * @param event {object} - click event
+ * Handles the click event for editing an address in the Prestashop checkout process.
+ *
+ * @function
+ * @param {object} event - The click event object.
  */
 const editAddressHandler = (event) => {
   const {

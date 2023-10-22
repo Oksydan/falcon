@@ -6,6 +6,12 @@ import { each } from '../../../../utils/DOMHelpers';
 
 const { toggle } = useToggleDisplay();
 
+/**
+ * Handles toggling the order button state based on the conditions and emits an event with the updated terms status.
+ *
+ * @function
+ * @returns {void}
+ */
 const toggleOrderButtonStateHandler = () => {
   const { conditionAlertSelector } = prestashop.selectors.checkout;
 

@@ -18,10 +18,10 @@ const getId = (prefix = 'alert_toast_') => {
  * @param {number} [params.duration=4000] - Duration in milliseconds for which the toast is displayed.
  * @returns {Object} - An object containing methods for showing different types of toasts.
  */
-const useAlertToast = (params) => {
+const useAlertToast = (params = {}) => {
   const {
     duration = 4000,
-  } = params || {};
+  } = params;
 
   const stackTemplateId = 'alert-toast-stack';
   const bodyElement = document.querySelector('body');

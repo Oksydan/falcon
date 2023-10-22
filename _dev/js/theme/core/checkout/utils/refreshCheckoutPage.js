@@ -1,12 +1,14 @@
 /**
- * Refresh checkout page with updated transaction parameter
+ * Refreshes the checkout page with an updated transaction parameter.
+ *
+ * @function
+ * @returns {void}
  */
 const refreshCheckoutPage = () => {
   const urlParams = new URLSearchParams(window.location.search);
 
   if (urlParams.has('updatedTransaction')) {
     window.location.reload();
-
     return;
   }
 

@@ -6,7 +6,9 @@ import { isElementVisible } from '../../../../utils/DOMHelpers';
 import getEditAddress from '../../utils/getEditAddress';
 
 /**
- * Show address error message handler
+ * Handles the display of address error messages in the Prestashop checkout process.
+ *
+ * @function
  * @returns {void}
  */
 const showAddressErrorMessageHandler = () => {

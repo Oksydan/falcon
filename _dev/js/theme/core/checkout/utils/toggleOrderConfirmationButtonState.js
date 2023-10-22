@@ -1,8 +1,9 @@
-import prestashop from 'prestashop';
-
 /**
- * Toggle order confirmation button state
- * @param active {boolean} - false if button should be disabled
+ * Toggles the order confirmation button state.
+ *
+ * @function
+ * @param {boolean} active - `false` if the button should be disabled, `true` otherwise.
+ * @returns {void}
  */
 const toggleOrderConfirmationButtonState = (active = false) => {
   const { confirmationSelector } = prestashop.selectors.checkout;

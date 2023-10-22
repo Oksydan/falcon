@@ -3,8 +3,11 @@ import useAlertToast from '../../../../components/useAlertToast';
 const { danger } = useAlertToast();
 
 /**
- * Handle product update error
- * @param event
+ * Handles product update errors by displaying a danger toast with the error message.
+ *
+ * @param {object} event - The event object containing the error message.
+ * @returns {void}
+ * @sidEffect Displays a danger toast with the error message.
  */
 const productUpdateErrorHandler = (event) => {
   if (event?.errorMessage) {

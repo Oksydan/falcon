@@ -7,54 +7,56 @@ import GenericHttpRequestError from '../../../../components/http/error/GenericHt
 const { dispatch, abortAll } = useHttpController();
 
 /**
- * @typedef ServerResponse
- * @type {object}
- * @property {number} id_customization - saved customization id
- * @property {number} id_product_attribute - saved product attribute id
- * @property {number} product_minimal_quantity - product minimal quantity
- * @property {boolean} is_quick_view - is quick view
- * @property {boolean} product_has_combinations - product has combinations
- * @property {string} product_url - product url address
- * @property {string} product_title - product meta title
- * @property {string} product_add_to_cart - product add to cart html content
- * @property {string} product_additional_info - product additional info html content
- * @property {string} product_cover_thumbnails - product cover thumbnails html content
- * @property {string} product_customization - product customization html content
- * @property {string} product_details - product details html content
- * @property {string} product_discounts - product discounts html content
- * @property {string} product_flags - product flags html content
- * @property {string} product_prices - product prices html content
- * @property {string} product_images_modal - product images modal html content
- * @property {string} product_variants - product variants html content
+ * Server response object for the update product request.
+ *
+ * @typedef {object} ServerResponse
+ * @property {number} id_customization - Saved customization id.
+ * @property {number} id_product_attribute - Saved product attribute id.
+ * @property {number} product_minimal_quantity - Product minimal quantity.
+ * @property {boolean} is_quick_view - Indicates if it's a quick view.
+ * @property {boolean} product_has_combinations - Indicates if the product has combinations.
+ * @property {string} product_url - Product URL address.
+ * @property {string} product_title - Product meta title.
+ * @property {string} product_add_to_cart - Product "Add to Cart" HTML content.
+ * @property {string} product_additional_info - Product additional info HTML content.
+ * @property {string} product_cover_thumbnails - Product cover thumbnails HTML content.
+ * @property {string} product_customization - Product customization HTML content.
+ * @property {string} product_details - Product details HTML content.
+ * @property {string} product_discounts - Product discounts HTML content.
+ * @property {string} product_flags - Product flags HTML content.
+ * @property {string} product_prices - Product prices HTML content.
+ * @property {string} product_images_modal - Product images modal HTML content.
+ * @property {string} product_variants - Product variants HTML content.
  */
 
 /**
- * Update listing facets request
- * @param payload {object} - payload for request
- * @param payload.preview {number} - is preview 1 or 0
- * @param payload.quickview {number} - is quick view 1 or 0
- * @param payload.quantity_wanted {number} - quantity wanted
- * @param payload.id_product {number} - product id
- * @param payload.id_product_attribute {number} - product attribute id
- * @param payload.id_customization {number} - customization id - optional, default 0
- * @param payload.ajax {number} - optional, default 1
- * @param payload.action {string} - optional, default refresh
- * @param payload.group[] {array} - array of attributes groups - optional
- * @example
- *  const payload = {
- *      id_product: 1,
- *      id_product_attribute: 1,
- *      quantity_wanted: 1,
- *      preview: 0,
- *      quickview: 0,
- *  }
- *  const { getRequest } = updateProductRequest(payload);
+ * Update listing facets request.
  *
- *  try {
+ * @param {object} payload - Payload for the request.
+ * @param {number} payload.preview - Is preview (1 or 0).
+ * @param {number} payload.quickview - Is quick view (1 or 0).
+ * @param {number} payload.quantity_wanted - Quantity wanted.
+ * @param {number} payload.id_product - Product ID.
+ * @param {number} payload.id_product_attribute - Product attribute ID.
+ * @param {number} [payload.id_customization=0] - Customization ID (optional, default 0).
+ * @param {number} [payload.ajax=1] - AJAX flag (optional, default 1).
+ * @param {string} [payload.action='refresh'] - Action (optional, default 'refresh').
+ * @param {Array} [payload.group] - Array of attributes groups (optional).
+ * @example
+ * const payload = {
+ *    id_product: 1,
+ *    id_product_attribute: 1,
+ *    quantity_wanted: 1,
+ *    preview: 0,
+ *    quickview: 0,
+ * };
+ * const { getRequest } = updateProductRequest(payload);
+ *
+ * try {
  *    const resp = await getRequest();
- *  } catch (error) {
+ * } catch (error) {
  *    console.error(error);
- *  }
+ * }
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const updateProductRequest = (payload) => {
@@ -108,6 +110,12 @@ const updateProductRequest = (payload) => {
     throw Error(validationErrors.join(',\n'));
   }
 
+  /**
+   * Get the request function for the update product request.
+   *
+   * @function
+   * @returns {Promise<ServerResponse>} - Promise that resolves to the server response.
+   */
   const getRequest = () => {
     abortAll();
 

@@ -15,9 +15,10 @@ import checkoutStepChangeHandler from './handler/process/checkoutStepChangeHandl
 const { on } = useEvent();
 
 /**
- * Checkout controller
- * @returns {object} return
- * @returns {function} return.init initialize checkout controller
+ * Checkout controller.
+ *
+ * @returns {object} The checkout controller object.
+ * @property {function} init - Initializes the checkout controller.
  */
 const checkoutController = () => {
   const {
@@ -29,6 +30,12 @@ const checkoutController = () => {
     confirmationSelector,
   } = prestashop.selectors.checkout;
 
+  /**
+   * Initializes the checkout controller by attaching event handlers.
+   *
+   * @function
+   * @returns {void}
+   */
   const init = () => {
     on(document, 'click', editAddresses, editAddressHandler);
     on(document, 'click', deliveryAddressRadios, changeAddressHandler);

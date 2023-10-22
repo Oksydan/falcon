@@ -1,13 +1,16 @@
 const componentsInstancesMap = new Map();
 
 /**
+ * Manages a map for component instances associated with specific elements or keys.
+ *
  * @module useInstanceMap
- * @description create instance map
- * @param {string} key - map key
+ * @description Creates and manages an instance map for component instances.
+ * @param {string} key - The key for the component instances map.
  * @return {{
- * getInstanceFromMap: (function(HTMLElement): (null|object)),
- * setInstanceInMap: (function(HTMLElement, object): (void)),
- * removeInstanceFromMap: (function(HTMLElement): (void))
+ *   getInstanceFromMap: function(HTMLElement): (object|null),
+ *   setInstanceInMap: function(HTMLElement, object): void,
+ *   removeInstanceFromMap: function(HTMLElement): void,
+ *   getAllInstancesForComponent: function(): (object|null)
  * }}
  */
 const useInstanceMap = (key) => {
@@ -16,11 +19,13 @@ const useInstanceMap = (key) => {
   }
 
   /**
+   * Retrieves the component instance from the map for a specific element.
+   *
    * @method getInstanceFromMap
-   * @description get component instance from map
+   * @description Gets the component instance from the map for a specified element.
    * @public
-   * @param {HTMLElement} element - component element
-   * @return {object|null} - component instance or null
+   * @param {HTMLElement} element - The component element.
+   * @return {object|null} - The component instance or null if not found.
    */
   const getInstanceFromMap = (element) => {
     if (!componentsInstancesMap.has(key)) {
@@ -37,11 +42,13 @@ const useInstanceMap = (key) => {
   };
 
   /**
+   * Sets the component instance in the map for a specific element.
+   *
    * @method setInstanceInMap
-   * @description set component instance in map
+   * @description Sets the component instance in the map for a specified element.
    * @public
-   * @param {HTMLElement} element - component element
-   * @param {object} instance - component instance
+   * @param {HTMLElement} element - The component element.
+   * @param {object} instance - The component instance.
    * @return {void}
    */
   const setInstanceInMap = (element, instance) => {
@@ -55,10 +62,13 @@ const useInstanceMap = (key) => {
   };
 
   /**
+   * Removes the component instance from the map for a specific element.
+   *
    * @method removeInstanceFromMap
-   * @description remove component instance from map
+   * @description Removes the component instance from the map for a specified element.
    * @public
-   * @param {HTMLElement} element - component element
+   * @param {HTMLElement} element - The component element.
+   * @return {void}
    */
   const removeInstanceFromMap = (element) => {
     if (!componentsInstancesMap.has(key)) {
@@ -78,6 +88,14 @@ const useInstanceMap = (key) => {
     }
   };
 
+  /**
+   * Retrieves all component instances for the component.
+   *
+   * @method getAllInstancesForComponent
+   * @description Gets all component instances associated with the component.
+   * @public
+   * @return {object|null} - All component instances for the component or null if none.
+   */
   const getAllInstancesForComponent = () => {
     if (!componentsInstancesMap.has(key)) {
       return null;

@@ -14,8 +14,11 @@ const { persist } = productFormDataPersister();
 
 /**
  * Persists form data on init
- * Side effect: set formData in productFormDataPersister
- * @return {void}
+ *
+ * @function
+ * @name persistFormDataOnInit
+ * @memberof module:productController
+ * @returns {void}
  */
 const persistFormDataOnInit = () => {
   const form = document.querySelector(`${prestashop.selectors.product.actions} .js-product-form`);
@@ -26,16 +29,19 @@ const persistFormDataOnInit = () => {
 };
 
 /**
- * Product controller
+ * Product controller module.
+ *
  * @module productController
- * @return {{init: init}}
+ * @returns {{init: Function}}
  */
 const productController = () => {
   /**
-   * Init product controller
-   * @method init
-   * @public
-   * @return {void}
+   * Initializes the product controller.
+   *
+   * @function
+   * @name init
+   * @memberof module:productController
+   * @returns {void}
    */
   const init = () => {
     persistFormDataOnInit();

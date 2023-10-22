@@ -7,6 +7,12 @@ import { each } from '../../../../utils/DOMHelpers';
 
 const { show } = useToggleDisplay();
 
+/**
+ * Handles toggling the visibility of payment options based on the selected payment method, and updates the order button state accordingly.
+ *
+ * @function
+ * @returns {void}
+ */
 const togglePaymentOptionsHandler = () => {
   const paymentBtnEnabled = canProceedOrder();
 

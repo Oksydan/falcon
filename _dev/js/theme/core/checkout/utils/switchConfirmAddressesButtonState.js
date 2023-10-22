@@ -1,8 +1,11 @@
 import { each } from '../../../utils/DOMHelpers';
 
 /**
- * Switch confirm addresses button state
- * @param enable {boolean} - false if button should be disabled
+ * Switches the state of the confirm addresses button.
+ *
+ * @function
+ * @param {boolean} enable - `false` if the button should be disabled.
+ * @returns {void}
  */
 const switchConfirmAddressesButtonState = (enable) => {
   each('button[name=confirm-addresses]', (button) => {

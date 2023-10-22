@@ -2,18 +2,19 @@ import prestashop from 'prestashop';
 import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
- * Update product customization input value
- * Side effect: update product customization input value
- * @param eventType {string} - event type
- * @param eventData {object} - event data
- * @param eventData.id_customization {number} - customization id
- * @return {void}
+ * Handles the update of the product customization input value based on the provided event type and data.
+ *
+ * @param {string} eventType - Type of the event.
+ * @param {object} eventData - Data associated with the event.
+ * @param {number} eventData.id_customization - Customization ID.
+ * @returns {void}
+ * @sideEffect Updates the product customization input value.
  */
 const updateProductCustomizationHandler = (eventType, { id_customization: idCustomization }) => {
   const contextElement = document.querySelector(productEventContextSelector());
   const customizationIdInput = contextElement.querySelector(prestashop.selectors.cart.productCustomizationId);
 
-  // refill customizationId input value when updating quantity or combination
+  // Refill customizationId input value when updating quantity or combination
   if (
     (eventType === 'updatedProductQuantity' || eventType === 'updatedProductCombination')
     && idCustomization

@@ -1,15 +1,17 @@
 const callbackMap = new Map();
 
 /**
+ * Manages a map for function callbacks associated with specific elements or keys.
+ *
  * @module useFunctionCallstackMap
- * @description create instance map
- * @param {string} key - map key
+ * @description Creates and manages a callback map for function callstacks.
+ * @param {string} key - The key for the function callbacks map.
  * @return {{
- * getCallbacksForElement: (function(any): (null|array)),
- * setCallbackForElement: (function(any, object): (void)),
- * removeCallbacksForElement: (function(any): (void)),
- * getAllCallbacksForComponent: (function(): (any|null)),
- * createCallbackObject: (function(string, ...args): (CallbackObject))
+ *   getCallbacksForElement: function(any): (array|null),
+ *   setCallbackForElement: function(any, object): void,
+ *   removeCallbacksForElement: function(any): void,
+ *   getAllCallbacksForComponent: function(): (any|null),
+ *   createCallbackObject: function(string, ...args): CallbackObject
  * }}
  */
 const useFunctionCallstackMap = (key) => {
@@ -18,9 +20,11 @@ const useFunctionCallstackMap = (key) => {
   }
 
   /**
+   * Represents a callback object containing a property and arguments.
+   *
    * @class CallbackObject
-   * @param prop
-   * @param args
+   * @param {string} prop - The callback function property.
+   * @param {...any} args - The callback function arguments.
    * @constructor
    */
   function CallbackObject(prop, args) {
@@ -29,11 +33,13 @@ const useFunctionCallstackMap = (key) => {
   }
 
   /**
+   * Retrieves the functions callback map for a specific element or key.
+   *
    * @method getCallbacksForElement
-   * @description get functions callback map for elementKey
-   * @param {any} elementKey - map elementKey
+   * @description Gets the functions callback map for a specified element key.
+   * @param {any} elementKey - The element or key to retrieve callbacks for.
    * @public
-   * @return {array|null} - functions callback map for key or null
+   * @return {array|null} - An array of callbacks or null if not found.
    */
   const getCallbacksForElement = (elementKey) => {
     if (!callbackMap.has(key)) {
@@ -50,12 +56,14 @@ const useFunctionCallstackMap = (key) => {
   };
 
   /**
+   * Sets a callback for a specific element or key.
+   *
    * @method setCallbackForElement
-   * @description set callback for elementKey
+   * @description Sets a callback for a specified element key.
    * @public
-   * @param {any} elementKey - component elementKey
-   * @param {CallbackObject} callback - callback object
-   * @throws {Error} - if callback is not instance of CallbackObject
+   * @param {any} elementKey - The element or key to set the callback for.
+   * @param {CallbackObject} callback - The callback object to set.
+   * @throws {Error} - If the callback is not an instance of CallbackObject.
    * @return {void}
    */
   const setCallbackForElement = (elementKey, callback) => {
@@ -77,10 +85,13 @@ const useFunctionCallstackMap = (key) => {
   };
 
   /**
+   * Removes callbacks associated with a specific element or key.
+   *
    * @method removeCallbacksForElement
-   * @description remove component instance from map
+   * @description Removes callbacks associated with a specified element key.
    * @public
-   * @param {any} elementKey - component elementKey
+   * @param {any} elementKey - The element or key to remove callbacks for.
+   * @return {void}
    */
   const removeCallbacksForElement = (elementKey) => {
     if (!callbackMap.has(key)) {
@@ -101,10 +112,12 @@ const useFunctionCallstackMap = (key) => {
   };
 
   /**
+   * Retrieves all callbacks for the component.
+   *
    * @method getAllCallbacksForComponent
-   * @description get all callbacks for component
+   * @description Gets all callbacks associated with the component.
    * @public
-   * @return {any|null}
+   * @return {any|null} - All callbacks for the component or null if none.
    */
   const getAllCallbacksForComponent = () => {
     if (!callbackMap.has(key)) {
@@ -115,12 +128,14 @@ const useFunctionCallstackMap = (key) => {
   };
 
   /**
+   * Creates a callback object with a property and arguments.
+   *
    * @method createCallbackObject
-   * @description create callback object
+   * @description Creates a callback object with a specified property and arguments.
    * @public
-   * @param prop {string} - callback function
-   * @param args {...args} - callback arguments
-   * @return {CallbackObject} - callback object
+   * @param {string} prop - The callback function property.
+   * @param {...any} args - The callback function arguments.
+   * @return {CallbackObject} - The created callback object.
    */
   const createCallbackObject = (prop, args) => new CallbackObject(prop, args);
 

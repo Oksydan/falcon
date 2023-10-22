@@ -1,34 +1,35 @@
 import prestashop from 'prestashop';
 import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpRequest';
 import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
-
 /**
- * @typedef ServerResponse
- * @type {object}
- * @property {string} quickview_html - html content of quick view
- * @property {object} product - product front object
+ * Server response object for the quick view request.
+ *
+ * @typedef {object} ServerResponse
+ * @property {string} quickview_html - HTML content of quick view.
+ * @property {object} product - Product front object.
  */
 
 /**
- * Add voucher to cart request
- * @param payload {Object} - payload object to send
- * @param payload.id_product {number} - id_product to show - Required
- * @param payload.id_product_attribute {number} - id_product to show - optional, default 0
- * @param payload.ajax {number} - optional, default 1
- * @param payload.action {string} - optional
+ * Add voucher to cart request.
+ *
+ * @param {Object} payload - Payload object to send.
+ * @param {number} payload.id_product - ID of the product to show (Required).
+ * @param {number} [payload.id_product_attribute=0] - ID of the product attribute (optional, default 0).
+ * @param {number} [payload.ajax=1] - AJAX flag (optional, default 1).
+ * @param {string} [payload.action] - Action (optional).
  * @example
- *  const payload = {
- *    id_product: 1, // Required
- *    id_product_attribute: 1, // Optional - default 0
- *  };
+ * const payload = {
+ *   id_product: 1, // Required
+ *   id_product_attribute: 1, // Optional - default 0
+ * };
  *
- *  const { getRequest } = quickViewRequest(payload);
+ * const { getRequest } = quickViewRequest(payload);
  *
- *  try {
- *    const resp = await getRequest();
- *  } catch (error) {
- *    console.error(error);
- *  }
+ * try {
+ *   const resp = await getRequest();
+ * } catch (error) {
+ *   console.error(error);
+ * }
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const quickViewRequest = (payload) => {
@@ -66,6 +67,12 @@ const quickViewRequest = (payload) => {
     throw Error(validationErrors.join(',\n'));
   }
 
+  /**
+   * Get the request function for the quick view request.
+   *
+   * @function
+   * @returns {Promise<ServerResponse>} - Promise that resolves to the server response.
+   */
   const getRequest = () => useDefaultHttpRequest(prestashop.urls.pages.product, payloadToSend);
 
   return {

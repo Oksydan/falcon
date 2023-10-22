@@ -3,15 +3,17 @@ import { formSerializeArray } from '../../../utils/formSerialize';
 let formData = [];
 
 /**
- * Persists product form data
+ * Persists product form data.
  * @module
+ * @returns {object} - Object with methods for persisting and retrieving form data.
  */
 const productFormDataPersister = () => {
   /**
-   * Persists form data from the form element
+   * Persists form data from the form element.
+   *
    * @method
-   * @param {HTMLFormElement} formElement - form element to persist
-   * @throws {Error} - if formElement is not a form element
+   * @param {HTMLFormElement} formElement - Form element to persist.
+   * @throws {Error} - If formElement is not a form element.
    * @return {void}
    */
   const persist = (formElement) => {
@@ -23,9 +25,10 @@ const productFormDataPersister = () => {
   };
 
   /**
-   * Returns persisted data
+   * Returns persisted data.
+   *
    * @method
-   * @return {*[]}
+   * @return {Array} - Persisted form data.
    */
   const get = () => formData;
 
