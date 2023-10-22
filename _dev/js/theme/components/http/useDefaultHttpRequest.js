@@ -2,11 +2,13 @@ import useHttpRequest from './useHttpRequest';
 import GenericHttpRequestError from './error/GenericHttpRequestError';
 
 /**
- * Default http request accepting payload as object and returning promise with response
- * @param {string} url - url to send request
- * @param {object} payload - payload to send
- * @param {object} options - request options for example different headers
- * @returns {Promise<unknown>}
+ * Sends a default HTTP request with payload as an object and returns a promise with the response.
+ *
+ * @module useDefaultHttpRequest
+ * @param {string} url - The URL to send the request.
+ * @param {object} payload - The payload to send.
+ * @param {object} options - Request options, such as different headers.
+ * @returns {Promise<unknown>} - A promise with the response.
  */
 const useDefaultHttpRequest = (url, payload, options = {}) => {
   const { request } = useHttpRequest(url, options);
@@ -25,3 +27,4 @@ const useDefaultHttpRequest = (url, payload, options = {}) => {
 };
 
 export default useDefaultHttpRequest;
+

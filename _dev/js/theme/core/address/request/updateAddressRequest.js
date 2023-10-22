@@ -61,27 +61,24 @@ const updateAddressRequest = (url, payload) => {
    * @returns {Promise<ServerResponse>} A Promise that resolves with the server response.
    * @throws {GenericHttpRequestError} Throws an error if there is an issue with the HTTP request.
    */
-  const getRequest = () =>
-    new Promise((resolve, reject) => {
-      useHttpController.abortAll();
+  const getRequest = () => new Promise((resolve, reject) => {
+    useHttpController.abortAll();
 
-      useHttpController.dispatch(request, controller)(() =>
-        request
-          .query(payload)
-          .post()
-          .json((resp) => {
-            resolve(resp);
-          })
-          .catch((e) => {
-            // If ABORTED
-            if (e instanceof DOMException) {
-              return;
-            }
+    useHttpController.dispatch(request, controller)(() => request
+      .query(payload)
+      .post()
+      .json((resp) => {
+        resolve(resp);
+      })
+      .catch((e) => {
+        // If ABORTED
+        if (e instanceof DOMException) {
+          return;
+        }
 
-            reject(new GenericHttpRequestError('Error while sending request'));
-          })
-      );
-    });
+        reject(new GenericHttpRequestError('Error while sending request'));
+      }));
+  });
 
   return {
     getRequest,
