@@ -16,6 +16,9 @@ const handleQuickViewOpen = ({ resp }) => {
 
   body.classList.add('js-quickview-open');
 
+  const modalInstance = new window.bootstrap.Modal(productModal);
+  modalInstance.show();
+
   productModal.addEventListener('hidden.bs.modal', () => {
     productModal.remove();
     body.classList.remove('js-quickview-open');
