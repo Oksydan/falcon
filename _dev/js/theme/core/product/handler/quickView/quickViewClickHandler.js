@@ -1,9 +1,10 @@
 import prestashop from 'prestashop';
 
 /**
- * Quick view btn click handler
- * SideEffect: emit event on prestashop object clickViewOpen
- * @param event {Event} - click event
+ * Click handler for the quick view button.
+ * Side effect: Emits 'clickQuickView' event on the prestashop object.
+ *
+ * @param {Event} event - The click event.
  */
 const quickViewClickHandler = async (event) => {
   event.preventDefault();

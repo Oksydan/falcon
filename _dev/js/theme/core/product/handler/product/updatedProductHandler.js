@@ -4,10 +4,15 @@ import productStateStore from '../../store/productStateStore';
 const { isOnPopState, setOnPopState } = productStateStore();
 
 /**
- * Handle updated product on 'updatedProduct' event
- * Side effect: changes the url and title, sets popState in productStateStore
- * @param event - event object with response data
- * @param formData - form data
+ * Handles the 'updatedProduct' event by updating the URL, title, and popState.
+ *
+ * @param {object} eventData - Event object with response data.
+ * @param {string|null} eventData.product_url - Updated product URL.
+ * @param {string|null} eventData.id_product_attribute - Updated product attribute ID.
+ * @param {string} eventData.product_title - Updated product title.
+ * @param {object} formData - Form data.
+ * @returns {void}
+ * @sideEffect Modifies the document title, updates the URL, and sets popState in productStateStore.
  */
 const updatedProductHandler = ({
   product_url: responseProductUrl = null,
@@ -19,9 +24,9 @@ const updatedProductHandler = ({
   }
 
   /*
-     * If quickview modal is present we are not on product page, so
-     * we don't change the url nor title
-     */
+   * If the quickview modal is present, we are not on the product page, so
+   * we don't change the URL or title.
+   */
   if (isQuickViewOpen()) {
     return;
   }

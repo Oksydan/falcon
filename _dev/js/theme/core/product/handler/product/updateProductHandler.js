@@ -13,10 +13,11 @@ import productEventContextSelector from '../../utils/productEventContextSelector
 const { getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();
 
 /**
- * Handle 'updateProduct' event
- * @param params - event object
- * @param params.eventType {string} - event type
- * @return {Promise<void>}
+ * Handles the 'updateProduct' event.
+ *
+ * @param {object} params - Event object.
+ * @param {string} params.eventType - Event type.
+ * @return {Promise<void>} - A Promise that resolves when the update is completed.
  */
 const updateProductHandler = async ({ eventType }) => {
   const isQuickView = isQuickViewOpen();

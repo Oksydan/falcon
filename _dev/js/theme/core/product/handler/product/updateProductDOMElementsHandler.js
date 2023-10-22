@@ -4,43 +4,44 @@ import { each } from '../../../../utils/DOMHelpers';
 import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**
- * Replace element with new html string
- * @param element {HTMLElement} - element to replace
- * @param htmlString {string} - html string to replace with
+ * Replaces an HTML element with a new HTML string.
+ *
+ * @param {HTMLElement} element - The element to replace.
+ * @param {string} htmlString - The HTML string to replace the element with.
+ * @returns {void}
+ * @sideeffect Replaces the specified element with the new HTML string.
  */
 const replaceElement = (element, htmlString) => {
   const newElement = parseToHtml(htmlString);
-
   element.replaceWith(newElement);
 };
 
 /**
- * Update DOM elements of the product page
- * Side effect: update DOM elements of the product page
- * @param eventData {object} - event data
- * @param eventData.product_cover_thumbnails {string} - product cover thumbnails html string
- * @param eventData.product_prices {string}  - product prices html string
- * @param eventData.product_customization {string} - product customization html string
- * @param eventData.product_variants {string} - product variants html string
- * @param eventData.product_discounts {string} - product discounts html string
- * @param eventData.product_additional_info {string} - product additional info html string
- * @param eventData.product_details {string} - product details html string
- * @param eventData.product_flags {string} - product flags html string
- * @param eventData.product_add_to_cart {string} - product add to cart html string
- * @return {void}
+ * Updates DOM elements of the product page based on the provided event data.
+ *
+ * @param {object} eventData - Event data containing various HTML strings for different parts of the product page.
+ * @param {string} eventData.product_prices - HTML string for product prices.
+ * @param {string} eventData.product_customization - HTML string for product customization.
+ * @param {string} eventData.product_variants - HTML string for product variants.
+ * @param {string} eventData.product_discounts - HTML string for product discounts.
+ * @param {string} eventData.product_additional_info - HTML string for product additional info.
+ * @param {string} eventData.product_details - HTML string for product details.
+ * @param {string} eventData.product_flags - HTML string for product flags.
+ * @param {string} eventData.product_add_to_cart - HTML string for product add to cart.
+ * @returns {void}
+ * @sideeffect Updates DOM elements of the product page with the provided HTML strings.
  */
 const updateProductDOMElementsHandler = ({
   /* eslint-disable */
-                                           product_cover_thumbnails,
-                                           product_prices,
-                                           product_customization,
-                                           product_variants,
-                                           product_discounts,
-                                           product_additional_info,
-                                           product_details,
-                                           product_flags,
-                                           product_add_to_cart,
-                                           /* eslint-enable */
+  product_prices,
+  product_customization,
+  product_variants,
+  product_discounts,
+  product_additional_info,
+  product_details,
+  product_flags,
+  product_add_to_cart,
+  /* eslint-enable */
 }) => {
   const contextSelector = productEventContextSelector();
 

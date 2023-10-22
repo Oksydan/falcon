@@ -2,10 +2,11 @@ import prestashop from 'prestashop';
 import quickViewRequest from '../../request/quickView/quickViewRequest';
 
 /**
- * Quick view handler
- * SideEffect: emit event on prestashop object clickViewOpen
- * @param idProduct
- * @param idProductAttribute
+ * Quick view handler.
+ * Side effect: Emits 'clickViewOpen' event on the prestashop object.
+ *
+ * @param {string} idProduct - The product ID.
+ * @param {string} idProductAttribute - The product attribute ID.
  */
 const quickViewHandler = async (idProduct, idProductAttribute) => {
   const payload = {
