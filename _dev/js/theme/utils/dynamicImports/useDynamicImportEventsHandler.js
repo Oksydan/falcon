@@ -3,56 +3,40 @@ import useEvent from '../../components/event/useEvent';
 const { on, off } = useEvent();
 
 /**
- * Use dynamic import events handler
- * @param {array} events - Array of events
- * @param {function} handler - Event handler
- * @return {{
- * bindEvents: function(): (void),
- * unbindEvents: (function(): (void)),
+ * Handles dynamic import events by binding and unbinding specified events on the document.
+ * @param {Array} events - An array of event configurations, each containing a name and selector.
+ * @param {Function} handler - The event handler function.
+ * @returns {{
+ *   bindEvents: Function,
+ *   unbindEvents: Function,
  * }}
  */
 const useDynamicImportEventsHandler = (events, handler) => {
   /**
-   * Bind events
-   * @return {void}
+   * Binds the specified events on the document.
+   * @returns {void}
    */
   const bindEvents = () => {
-    events.forEach(({
-      name = '',
-      selector = '',
-    }) => {
+    events.forEach(({ name = '', selector = '' }) => {
       if (!name || !selector) {
         throw new Error('Event name and selector are required');
       }
 
-      on(
-        document,
-        name,
-        selector,
-        handler,
-      );
+      on(document, name, selector, handler);
     });
   };
 
   /**
-   * Unbind events
-   * @return {void}
+   * Unbinds the specified events on the document.
+   * @returns {void}
    */
   const unbindEvents = () => {
-    events.forEach(({
-      name = '',
-      selector = '',
-    }) => {
+    events.forEach(({ name = '', selector = '' }) => {
       if (!name || !selector) {
         throw new Error('Event name and selector are required');
       }
 
-      off(
-        document,
-        name,
-        selector,
-        handler,
-      );
+      off(document, name, selector, handler);
     });
   };
 
