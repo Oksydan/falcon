@@ -3,9 +3,11 @@ import addVoucherToCartRequest from '../../request/voucher/addVoucherToCartReque
 import parseToHtml from '../../../../utils/parseToHtml';
 
 /**
- * Submit voucher handler
- * @param event {object} - submit event
- * @returns {Promise<void>}
+ * Handles the submission of a voucher form and updates the cart accordingly.
+ * @param {Event} event - The submit event that triggered the voucher submission.
+ * @param {HTMLElement} event.delegateTarget - The form element that was submitted.
+ * @throws {Error} Will throw an error if required data is missing or if an error occurs during the submission process.
+ * @returns {Promise<void>} - A Promise that resolves once the submission process is complete.
  */
 const submitVoucherHandler = async (event) => {
   event.preventDefault();

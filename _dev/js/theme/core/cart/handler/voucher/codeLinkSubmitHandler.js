@@ -1,6 +1,9 @@
 /**
- * Submit voucher code from link
- * @param event {object} - click event
+ * Handles the submission of a voucher code from a link.
+ * @param {Event} event - The click event that triggered the submission.
+ * @param {HTMLElement} event.delegateTarget - The target element that was clicked.
+ * @throws {Error} Will throw an error if the required elements are not found.
+ * @returns {void}
  */
 const codeLinkSubmitHandler = (event) => {
   event.preventDefault();
