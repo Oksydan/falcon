@@ -3,43 +3,43 @@ import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpReq
 import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
 
 /**
- * @typedef ServerResponse
- * @type {object}
- * @property {string|string[]} errors - the errors returned by the server
- * @property {number} id_product - product id
- * @property {number} id_product_attribute - product attribute id
- * @property {number} id_customization - product customization id
- * @property {number} quantity - product quantity
- * @property {boolean} success - success flag
- * @property {object} cart - cart front object
+ * @typedef {object} ServerResponse
+ * @property {(string|string[])} errors - The errors returned by the server.
+ * @property {number} id_product - The product id.
+ * @property {number} id_product_attribute - The product attribute id.
+ * @property {number} id_customization - The product customization id.
+ * @property {number} quantity - The product quantity.
+ * @property {boolean} success - The success flag.
+ * @property {object} cart - The cart front object.
  */
 
 /**
- * Add voucher to cart request
- * @param payload {Object} - payload object to send
- * @param payload.id_product {number} - product id - Required
- * @param payload.qty {number} - product quantity - Required
- * @param payload.id_product_attribute {number} - product id attribute - optional pass 0 if not set
- * @param payload.id_customization {number} - customization id - optional pass 0 if not set
- * @param payload.add {number} - optional
- * @param payload.action {string} - optional
- * @param payload.token {string} - optional
- * @param payload.ajax {number} - optional
+ * Creates a request object for adding a product to the cart.
+ * @param {object} payload - The payload object to send.
+ * @param {number} payload.id_product - The product id (Required).
+ * @param {number} payload.qty - The product quantity (Required).
+ * @param {number} [payload.id_product_attribute] - The product id attribute (Optional, pass 0 if not set).
+ * @param {number} [payload.id_customization] - The customization id (Optional, pass 0 if not set).
+ * @param {number} payload.add - Optional.
+ * @param {string} payload.action - Optional.
+ * @param {string} payload.token - Optional.
+ * @param {number} payload.ajax - Optional.
  * @example
- *  const payload = {
- *    id_product: 1, // Required
- *    qty: 1, // Required
- *    id_product_attribute: 2, // optional
- *    id_customization: 3, // optional
- *  };
+ * const payload = {
+ *   id_product: 1, // Required
+ *   qty: 1, // Required
+ *   id_product_attribute: 2, // Optional
+ *   id_customization: 3, // Optional
+ * };
  *
- *  const { getRequest } = addToCartRequest(payload);
+ * const { getRequest } = addToCartRequest(payload);
  *
- *  try {
- *    const resp = await getRequest();
- *  } catch (error) {
- *    console.error(error);
- *  }
+ * try {
+ *   const resp = await getRequest();
+ * } catch (error) {
+ *   console.error(error);
+ * }
+ * @throws {Error} Throws an error if there are validation errors in the payload.
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const addToCartRequest = (payload) => {
