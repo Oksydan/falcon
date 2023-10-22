@@ -9,7 +9,7 @@
 {/if}
 
 {$tabsList[] = [
-  'id' => 'product-details',
+  'id' => 'product-details-tabs',
   'title' => {l s='Product Details' d='Shop.Theme.Catalog'},
   'content' => {include file='catalog/_partials/product-details.tpl'}
 ]}
