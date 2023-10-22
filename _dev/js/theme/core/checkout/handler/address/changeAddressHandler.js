@@ -6,8 +6,10 @@ import switchConfirmAddressesButtonState from '../../utils/switchConfirmAddresse
 import { isElementVisible, each } from '../../../../utils/DOMHelpers';
 
 /**
- * Change address handler
- * @param event {object} - change event
+ * Handles the change event for address selection in the Prestashop checkout process.
+ *
+ * @function
+ * @param {object} event - The change event object.
  */
 const changeAddressHandler = (event) => {
   const {
@@ -24,7 +26,7 @@ const changeAddressHandler = (event) => {
     element.classList.add('selected');
   });
 
-  const eventTarget = event.currentTarget;
+  const eventTarget = event.delegateTarget;
   const addressErrorElement = document.querySelector(addressError);
   const idFailureAddress = addressErrorElement ? addressErrorElement?.id.split('-').pop() : null;
   const notValidAddressesVal = document.querySelector(notValidAddresses)?.value;

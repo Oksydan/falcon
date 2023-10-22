@@ -1,12 +1,19 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
-import FiltersUrlHandler from '@js/listing/components/filters/FiltersUrlHandler';
+import FiltersUrlHandler from './FiltersUrlHandler';
+import useEvent from '../../../theme/components/event/useEvent';
 
 class RangeSlider {
   constructor(element) {
-    this.$slider = $(element);
+    this.slider = element;
+  }
+
+  init() {
+    // If slider already initialized, do nothing
+    if (typeof this.slider.noUiSlider !== 'undefined') {
+      return;
+    }
 
     this.setConfig();
     this.setFormat();
@@ -17,14 +24,17 @@ class RangeSlider {
   }
 
   getSliderType() {
-    this.sliderType = this.$slider.data('slider-specifications') ? 'price' : 'weight';
+    this.sliderType = this.slider.dataset.sliderSpecifications ? 'price' : 'weight';
   }
 
   setConfig() {
-    this.min = this.$slider.data('slider-min');
-    this.max = this.$slider.data('slider-max');
-    this.$parentContainer = this.$slider.closest('.js-input-range-slider-container');
-    this.$inputs = [this.$parentContainer.find('[data-action="range-from"]'), this.$parentContainer.find('[data-action="range-to"]')];
+    this.min = Number.parseFloat(this.slider.dataset.sliderMin);
+    this.max = Number.parseFloat(this.slider.dataset.sliderMax);
+    this.parentContainer = this.slider.closest('.js-input-range-slider-container');
+    this.inputs = [
+      this.parentContainer.querySelector('[data-action="range-from"]'),
+      this.parentContainer.querySelector('[data-action="range-to"]'),
+    ];
 
     this.getSliderType();
 
@@ -32,17 +42,15 @@ class RangeSlider {
       const {
         currencySymbol,
         positivePattern,
-      } = this.$slider.data('slider-specifications');
+      } = JSON.parse(this.slider.dataset.sliderSpecifications);
 
       this.sign = currencySymbol;
       this.positivePattern = positivePattern;
-      this.values = this.$slider.data('slider-values');
+      this.values = JSON.parse(this.slider.dataset.sliderValues);
       this.signPosition = this.positivePattern.indexOf('¤') === 0 ? 'prefix' : 'suffix';
     } else if (this.sliderType === 'weight') {
-      const unit = this.$slider.data('slider-unit');
-
-      this.sign = unit;
-      this.values = this.$slider.data('slider-values');
+      this.sign = this.slider.dataset.sliderUnit;
+      this.values = JSON.parse(this.slider.dataset.sliderValues);
       this.signPosition = 'suffix';
     }
 
@@ -62,7 +70,7 @@ class RangeSlider {
   }
 
   initFilersSlider() {
-    this.sliderHandler = noUiSlider.create(this.$slider.get(0), {
+    this.sliderHandler = noUiSlider.create(this.slider, {
       start: this.values,
       connect: [false, true, false],
       range: {
@@ -78,49 +86,50 @@ class RangeSlider {
   }
 
   setInputValues(values, formatValue = false) {
-    this.$inputs.forEach((input, i) => {
-      const val = formatValue ? this.format.from(values[i]) : values[i];
-      $(input).val(val);
+    this.inputs.forEach((input, i) => {
+      input.value = formatValue ? this.format.from(values[i]) : values[i];
     });
   }
 
   setEvents() {
+    const { on, off } = useEvent();
     this.sliderHandler.off('set', this.constructor.handlerSliderSet);
     this.sliderHandler.on('set', this.constructor.handlerSliderSet);
     this.sliderHandler.off('update', this.handlerSliderUpdate);
     this.sliderHandler.on('update', this.handlerSliderUpdate);
 
-    this.$inputs.forEach(($input) => {
-      $input.off('focus', this.handleInputFocus);
-      $input.on('focus', this.handleInputFocus);
-      $input.off('blur', this.handleInputBlur);
-      $input.on('blur', this.handleInputBlur);
-      $input.on('keyup', this.handleInputKeyup);
+    this.inputs.forEach((input) => {
+      off(input, 'keyup', this.handleInputKeyup);
+      on(input, 'keyup', this.handleInputKeyup);
+
+      off(input, 'focus', this.handleInputFocus);
+      on(input, 'focus', this.handleInputFocus);
+
+      off(input, 'blur', this.handleInputBlur);
+      on(input, 'blur', this.handleInputBlur);
     });
   }
 
-  static getInputAction($input) {
-    return $input.data('action');
+  static getInputAction(input) {
+    return input.dataset.action;
   }
 
-  getInputPositionInValue($input) {
+  getInputPositionInValue(input) {
     const actionPosition = {
       'range-from': 0,
       'range-to': 1,
     };
 
-    return actionPosition[this.constructor.getInputAction($input)];
+    return actionPosition[this.constructor.getInputAction(input)];
   }
 
-  handleInputFocus = ({ target }) => {
-    const $input = $(target);
-    $input.val(this.format.from($input.val()));
+  handleInputFocus = ({ target: input }) => {
+    input.value = this.format.from(input.value);
   };
 
-  handleInputBlur = ({ target }) => {
-    const $input = $(target);
-    const value = $input.val();
-    const position = this.getInputPositionInValue($input);
+  handleInputBlur = ({ target: input }) => {
+    const { value } = input;
+    const position = this.getInputPositionInValue(input);
     const oldValues = this.values;
     const newValues = [...oldValues];
     newValues[position] = value;
@@ -128,17 +137,17 @@ class RangeSlider {
     if (value !== oldValues[position]) {
       this.sliderHandler.set(newValues);
     } else {
-      $input.val(this.format.to(parseFloat($input.val(), 10)));
+      input.value = this.format.to(Number.parseFloat(input.value));
     }
   };
 
-  handleInputKeyup = ({ target, keyCode }) => {
+  handleInputKeyup = ({ target: input, keyCode }) => {
     if (keyCode !== 13) {
       return;
     }
-    const $input = $(target);
-    const value = $input.val();
-    const position = this.getInputPositionInValue($input);
+
+    const { value } = input;
+    const position = this.getInputPositionInValue(input);
     const oldValues = this.values;
     const newValues = [...oldValues];
     newValues[position] = value;
@@ -146,7 +155,7 @@ class RangeSlider {
     if (value !== oldValues[position]) {
       this.sliderHandler.set(newValues);
     } else {
-      $input.val(this.format.to(parseFloat($input.val(), 10)));
+      input.value = this.format.to(Number.parseFloat(input.value));
     }
   };
 
@@ -165,9 +174,9 @@ class RangeSlider {
     noUiSliderInstance,
   ) {
     const formatFunction = noUiSliderInstance.options.format;
-    const $target = $(noUiSliderInstance.target);
-    const group = $target.data('slider-label');
-    const unit = $target.data('slider-unit');
+    const { target } = noUiSliderInstance;
+    const group = target.dataset.sliderLabel;
+    const unit = target.dataset.sliderUnit;
     const [from, to] = values.map((val) => formatFunction.from(val));
 
     const filtersHandler = new FiltersUrlHandler();

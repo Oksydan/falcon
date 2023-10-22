@@ -6,15 +6,17 @@ import sprintf from '../../../../utils/sprintf';
 const { danger } = useAlertToast();
 
 /**
- * Handle add to cart event on form submit
- * @param event {Event} - submit event
- * @returns {Promise<void>}
+ * Handles the "add to cart" event on form submission, updating the cart accordingly.
+ * @param {Event} event - The submit event that triggered the "add to cart" action.
+ * @param {HTMLElement} event.delegateTarget - The form element that was submitted.
+ * @throws {Error} Will throw an error if required data is missing or if an error occurs during the process.
+ * @returns {Promise<void>} - A Promise that resolves once the "add to cart" process is complete.
  */
 const addToCartHandler = async (event) => {
   event.preventDefault();
 
-  const form = event.currentTarget?.form;
-  const addToCartButton = event.currentTarget;
+  const form = event.delegateTarget?.form;
+  const addToCartButton = event.delegateTarget;
 
   const isQuantityInputValid = (input) => {
     let validInput = true;

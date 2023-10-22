@@ -9,6 +9,8 @@
 }
 
 //FIX TO TOAST, opacity by default
-.toast {
+.toast:not(.show),
+.fade:not(.show):not(.active) {
   opacity: 0;
+  display: none;
 }

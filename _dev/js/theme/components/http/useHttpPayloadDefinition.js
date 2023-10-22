@@ -1,8 +1,9 @@
 /**
- * useHttpPayloadDefinition - validate payload against definition
+ * Validates payload against the provided definition.
+ *
  * @module useHttpPayloadDefinition
- * @param {object} payload - payload to validate
- * @param {object} definition - definition to validate payload against
+ * @param {object} payload - The payload to validate.
+ * @param {object} definition - The definition to validate the payload against.
  */
 const useHttpPayloadDefinition = (payload, definition) => {
   const ERROR_MESSAGES = {

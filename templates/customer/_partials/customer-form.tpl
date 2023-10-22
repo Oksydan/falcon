@@ -28,7 +28,7 @@
     {include file='_partials/form-errors.tpl' errors=$errors['']}
   {/block}
 
-  <form action="{block name='customer_form_actionurl'}{$action}{/block}" id="customer-form" class="js-customer-form needs-validation user-form user-form--sm"
+  <form action="{block name='customer_form_actionurl'}{$action}{/block}" id="customer-form" class="js-customer-form js-needs-validation user-form user-form--sm"
     method="post">
     <div>
       {block "form_fields"}

@@ -1,4 +1,4 @@
-import debounce from '@js/theme/utils/debounce';
+import debounce from '../utils/debounce';
 
 /**
  * Returns sticky element data
@@ -65,11 +65,14 @@ export default (element, stickyWrapper, options = {}) => {
     }
   };
 
-  window.addEventListener('scroll', debounce(handleSticky, debounceTime));
-  handleSticky();
+  const init = () => {
+    window.addEventListener('scroll', debounce(handleSticky, debounceTime));
+    handleSticky();
+  };
 
   return {
     getExtraOffsetTop,
     getIsSticky,
+    init,
   };
 };

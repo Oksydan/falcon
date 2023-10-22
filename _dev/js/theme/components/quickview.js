@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
 import DOMReady from '../utils/DOMReady';
 import parseToHtml from '../utils/parseToHtml';
@@ -6,21 +5,21 @@ import parseToHtml from '../utils/parseToHtml';
 /**
  * Handle open quick view
  */
-const handleQuickViewOpen = ({
-  resp,
-}) => {
-  const body = document.querySelector('body');
-  body.append(parseToHtml(resp.quickview_html));
+const handleQuickViewOpen = ({ resp }) => {
+  const { body } = document;
 
-  // TO DO REMOVE JQUERY
-  const productModal = $(
-    `#quickview-modal-${resp.product.id}-${resp.product.id_product_attribute}`,
-  );
-  productModal.modal('show');
+  const quickviewHtml = parseToHtml(resp.quickview_html);
+  body.appendChild(quickviewHtml);
+
+  const productModal = document.getElementById(`quickview-modal-${resp.product.id}-${resp.product.id_product_attribute}`);
+  productModal.classList.add('show');
 
   body.classList.add('js-quickview-open');
 
-  productModal.on('hidden.bs.modal', () => {
+  const modalInstance = new window.bootstrap.Modal(productModal);
+  modalInstance.show();
+
+  productModal.addEventListener('hidden.bs.modal', () => {
     productModal.remove();
     body.classList.remove('js-quickview-open');
   });

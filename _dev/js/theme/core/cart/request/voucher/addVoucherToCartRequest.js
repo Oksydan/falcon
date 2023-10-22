@@ -3,37 +3,36 @@ import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpReq
 import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
 
 /**
- * @typedef ServerResponse
- * @type {object}
- * @property {string|string[]} errors - the errors returned by the server
- * @property {number} id_customization - always 0
- * @property {number} id_product - always 0
- * @property {number} id_product_attribute - always 0
- * @property {number} quantity - always 0
- * @property {boolean} success - success flag
- * @property {object} cart - cart front object
+ * @typedef {object} ServerResponse
+ * @property {string|string[]} errors - The errors returned by the server.
+ * @property {number} id_customization - Always 0.
+ * @property {number} id_product - Always 0.
+ * @property {number} id_product_attribute - Always 0.
+ * @property {number} quantity - Always 0.
+ * @property {boolean} success - Success flag.
+ * @property {object} cart - Cart front object.
  */
 
 /**
- * Add voucher to cart request
- * @param payload {Object} - payload object to send
- * @param payload.discount_name {string} - discount code - Required
- * @param payload.addDiscount {number} - optional
- * @param payload.action {string} - optional
- * @param payload.token {string} - optional
- * @param payload.ajax {number} - optional
+ * Add voucher to cart request.
+ * @param {Object} payload - Payload object to send.
+ * @param {string} payload.discount_name - Discount code. Required.
+ * @param {number} [payload.addDiscount] - Optional.
+ * @param {string} [payload.action] - Optional.
+ * @param {string} [payload.token] - Optional.
+ * @param {number} [payload.ajax] - Optional.
  * @example
- *  const payload = {
- *    discount_name: 'voucherName', // Required
- *  };
+ * const payload = {
+ *   discount_name: 'voucherName', // Required
+ * };
  *
- *  const { getRequest } = addVoucherToCartRequest(payload);
+ * const { getRequest } = addVoucherToCartRequest(payload);
  *
- *  try {
- *    const resp = await getRequest();
- *  } catch (error) {
- *    console.error(error);
- *  }
+ * try {
+ *   const resp = await getRequest();
+ * } catch (error) {
+ *   console.error(error);
+ * }
  * @returns {{getRequest: (function(): Promise<ServerResponse>)}}
  */
 const addVoucherToCartRequest = (payload) => {
@@ -68,6 +67,11 @@ const addVoucherToCartRequest = (payload) => {
     },
   };
 
+  /**
+   * Validates the payload against the payload definition.
+   * @throws {Error} Throws an error if the payload is invalid.
+   * @returns {Array} An array of validation errors, empty if valid.
+   */
   const { validatePayload } = useHttpPayloadDefinition(payloadToSend, payloadDefinition);
 
   const validationErrors = validatePayload();

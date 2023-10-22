@@ -2,14 +2,16 @@ import prestashop from 'prestashop';
 import deleteFromCartRequest from '../../request/cart/deleteFromCartRequest';
 
 /**
- * Delete product from cart handler
- * @param event {Event} - event object
- * @returns {Promise<void>}
+ * Handles the deletion of a product from the cart.
+ * @param {Event} event - The event object that triggered the product deletion.
+ * @param {HTMLElement} event.delegateTarget - The target element that was clicked.
+ * @throws {Error} Will throw an error if required data is missing or if an error occurs during the deletion process.
+ * @returns {Promise<void>} - A Promise that resolves once the deletion process is complete.
  */
 const deleteFromCartHandler = async (event) => {
   event.preventDefault();
 
-  const button = event.currentTarget;
+  const button = event.delegateTarget;
   const { dataset } = button;
   const { idProduct, idProductAttribute, idCustomization = 0 } = dataset;
 

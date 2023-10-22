@@ -93,8 +93,7 @@ class ProductGallery {
       }
     };
 
-    // TO REFACTO LATER WITH BS5 REMOVE JQUERY!
-    $(this.galleryModalSelector).on('show.bs.modal', handleModalOpen);
+    document.querySelector(this.galleryModalSelector).addEventListener('show.bs.modal', handleModalOpen);
   }
 }
 

@@ -2,41 +2,42 @@ import getUniqueId from '../../utils/getUniqueId';
 
 /**
  * @module useHttpController
- * This function is used to control HTTP requests.
+ * This module provides functions for controlling HTTP requests.
  */
 const useHttpController = () => {
   let requestsStack = {};
 
   /**
+   * Adds a request to the request stack.
+   *
    * @method
-   * Adds request to request stack
-   * @param {number} id - unique id of request
-   * @param {Promise} request - request promise
-   * @param {AbortController} controller - AbortController object
+   * @param {number} id - Unique id of the request.
+   * @param {Promise} request - The request promise.
+   * @param {AbortController} controller - The AbortController object.
    */
   const addRequestToRequestStack = (id, request, controller) => {
     const newRequestStack = { ...requestsStack };
     newRequestStack[id] = { request, controller };
-
     requestsStack = newRequestStack;
   };
 
   /**
+   * Removes a request from the request stack.
+   *
    * @method
-   * Removes request from request stack
-   * @param {number} id - unique id of request
+   * @param {number} id - Unique id of the request.
    */
   const removeRequestFromRequestStack = (id) => {
     const { [id]: erasedId, ...newRequestStack } = requestsStack;
-
     requestsStack = newRequestStack;
   };
 
   /**
+   * Dispatches a request and adds it to the request stack.
+   *
    * @method
-   * Dispatches request and adds it to request stack
-   * @param {object} request - request object
-   * @param {AbortController} controller - AbortController object
+   * @param {object} request - The request object.
+   * @param {AbortController} controller - The AbortController object.
    * @returns {(function(*): Promise<void>)|*}
    */
   const dispatch = (request, controller) => {
@@ -50,8 +51,9 @@ const useHttpController = () => {
   };
 
   /**
+   * Aborts all requests in the request stack.
+   *
    * @method
-   * Aborts all requests in request stack
    * @returns {void}
    */
   const abortAll = () => {
@@ -59,7 +61,6 @@ const useHttpController = () => {
       if (Object.hasOwn(requestsStack, id)) {
         const { controller } = requestsStack[id];
         controller.abort();
-
         removeRequestFromRequestStack(id);
       }
     }

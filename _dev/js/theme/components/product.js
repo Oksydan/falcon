@@ -1,18 +1,21 @@
-import $ from 'jquery';
 import prestashop from 'prestashop';
 import useCustomQuantityInput from './useCustomQuantityInput';
 import { each } from '../utils/DOMHelpers';
+import parseToHtml from '../utils/parseToHtml';
+import DOMReady from '../utils/DOMReady';
 import productEventContextSelector from '../core/product/utils/productEventContextSelector';
 
-$(() => {
+DOMReady(() => {
   const createInputFile = () => {
-    $('.js-file-input').on('change', (event) => {
-      const target = $(event.currentTarget)[0];
-      const file = (target) ? target.files[0] : null;
+    each('.js-file-input', (input) => {
+      input.addEventListener('change', (event) => {
+        const target = event.delegateTarget;
+        const file = (target) ? target.files[0] : null;
 
-      if (target && file) {
-        $(target).prev().text(file.name);
-      }
+        if (target && file) {
+          target.previousElementSibling.textContent = file.name;
+        }
+      });
     });
   };
 
@@ -42,9 +45,10 @@ $(() => {
   });
 
   prestashop.on('updateCart', (event) => {
-    if (
-      prestashop.page.page_name === 'product'
-      && parseInt(event.reason.idProduct, 10) === parseInt($('#add-to-cart-or-refresh').find('[name="id_product"]').val(), 10)) {
+    const productForm = document.getElementById('add-to-cart-or-refresh');
+    const idProduct = productForm ? parseInt(productForm.querySelector('[name="id_product"]').value, 10) : null;
+
+    if (prestashop.page.page_name === 'product' && parseInt(event.reason.idProduct, 10) === idProduct) {
       prestashop.emit('updateProduct', {
         event,
         resp: {},
@@ -60,8 +64,17 @@ $(() => {
     const contextSelector = productEventContextSelector();
 
     if (updateEvenType === 'updatedProductCombination') {
-      $(`${contextSelector} .js-product-images`).replaceWith(event.product_cover_thumbnails);
-      $(`${contextSelector} .js-product-images-modal`).replaceWith(event.product_images_modal);
+      const productImages = document.querySelector(`${contextSelector} .js-product-images`);
+      const productImagesModal = document.querySelector(`${contextSelector} .js-product-images-modal`);
+
+      if (productImages) {
+        productImages.replaceWith(parseToHtml(event.product_cover_thumbnails));
+      }
+
+      if (productImagesModal) {
+        productImagesModal.replaceWith(parseToHtml(event.product_images_modal));
+      }
+
       prestashop.emit('updatedProductCombination', event);
     }
 

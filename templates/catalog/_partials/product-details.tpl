@@ -1,7 +1,7 @@
-<div class="js-product-details tab-pane fade"
-     id="product-details"
-     data-product="{$product.embedded_attributes|json_encode}"
-     role="tabpanel"
+<div
+  class="js-product-details"
+  id="product-details"
+  data-product="{$product.embedded_attributes|json_encode}"
   >
   {block name='product_reference'}
     {if isset($product_manufacturer->id)}

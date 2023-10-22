@@ -5,10 +5,12 @@ import cartStateStore from '../../store/cartStateStore';
 const { setIsUpdateOperation, setHasError, setErrorMsg } = cartStateStore();
 
 /**
- * @param {string} operation - increase|decrease
- * @param {number} qtyDifference - quantity difference
- * @param {HTMLElement} input - input element
- * @returns {Promise<void>}
+ * Handles the change in quantity for a product in the cart.
+ * @param {string} operation - The type of quantity change ('increase' or 'decrease').
+ * @param {number} qtyDifference - The quantity difference.
+ * @param {HTMLElement} input - The input element triggering the quantity change.
+ * @throws {Error} Will throw an error if required data is missing or if an error occurs during the quantity change process.
+ * @returns {Promise<void>} - A Promise that resolves once the quantity change process is complete.
  */
 const quantityChangeHandler = async (operation, qtyDifference, input) => {
   const { dataset } = input;

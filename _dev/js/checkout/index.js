@@ -1,90 +1,83 @@
-/**
- * 2007-2017 PrestaShop
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to http://www.prestashop.com for more information.
- *
- * @author    PrestaShop SA <contact@prestashop.com>
- * @copyright 2007-2017 PrestaShop SA
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
- * International Registered Trademark & Property of PrestaShop SA
- */
 import prestashop from 'prestashop';
+import useEvent from '../theme/components/event/useEvent';
+import parseToHtml from '../theme/utils/parseToHtml';
+import useHttpRequest from '../theme/components/http/useHttpRequest';
+import { each } from '../theme/utils/DOMHelpers';
+import DOMReady from '../theme/utils/DOMReady';
+
+const { on } = useEvent();
 
 function setUpCheckout() {
-  $(prestashop.selectors.checkout.termsLink).on('click', (event) => {
+  const clickTermLinkHandler = async (event) => {
     event.preventDefault();
-    let url = $(event.target).attr('href');
+    const url = event.target.getAttribute('href');
 
     if (url) {
-      // TODO: Handle request if no pretty URL
-      url += '?content_only=1';
-      $.get(url, (content) => {
-        $(prestashop.selectors.modal)
-          .find(prestashop.selectors.modalContent)
-          .html($(content).find('.page-cms').contents());
-      }).fail((resp) => {
-        prestashop.emit('handleError', { eventType: 'clickTerms', resp });
-      });
+      const modal = document.querySelector(prestashop.selectors.modal);
+      const urlObject = new URL(url);
+      const searchParams = new URLSearchParams(urlObject.searchParams);
+      searchParams.set('content_only', '1');
+      urlObject.search = searchParams.toString();
+
+      const { request } = useHttpRequest(urlObject.toString());
+
+      try {
+        const res = await request.get().res();
+        const content = await res.text();
+
+        const modalContent = modal.querySelector(prestashop.selectors.modalContent);
+        const contentElement = parseToHtml(content);
+        modalContent.innerHTML = contentElement.querySelector('.page-cms')?.innerHTML || '';
+
+        const modalInstance = window.bootstrap.Modal.getOrCreateInstance(modal);
+        modalInstance.show();
+      } catch (error) {
+        prestashop.emit('handleError', { eventType: 'changeAddresses', error });
+      }
     }
+  };
 
-    $(prestashop.selectors.modal).modal('show');
-  });
+  each(prestashop.selectors.checkout.termsLink, (link) => on(link, 'click', clickTermLinkHandler));
 
-  $(prestashop.selectors.checkout.giftCheckbox).on('click', () => {
-    $('#gift').slideToggle();
-  });
+  const giftCheckbox = document.querySelector(prestashop.selectors.checkout.giftCheckbox);
+
+  if (giftCheckbox) {
+    on(giftCheckbox, 'change', ({ target }) => {
+      const isChecked = target.checked;
+      const giftBlock = document.querySelector('#gift');
+      const collapseInstance = window.bootstrap.Collapse.getOrCreateInstance(giftBlock);
+
+      collapseInstance.toggle(isChecked);
+    });
+  }
 }
 
-$(document).ready(() => {
-  if ($('body#checkout').length === 1) {
+DOMReady(() => {
+  if (prestashop.page.page_name === 'checkout') {
     setUpCheckout();
   }
 
-  prestashop.on('updatedDeliveryForm', (params) => {
-    if (typeof params.deliveryOption === 'undefined' || params.deliveryOption === null) {
+  prestashop.on('updateDeliveryForm', (event) => {
+    if (typeof event.deliveryOption === 'undefined' || event.deliveryOption === null) {
       return;
     }
 
-    // Hide all carrier extra content ...
-    document.querySelectorAll(prestashop.selectors.checkout.carrierExtraContent).forEach((element) => {
+    each(prestashop.selectors.checkout.deliveryOption, (element) => {
+      element.classList.remove('selected');
+    });
+
+    event.deliveryOption.classList.add('selected');
+  });
+
+  prestashop.on('updatedDeliveryForm', (event) => {
+    if (typeof event.deliveryOption === 'undefined' || event.deliveryOption === null) {
+      return;
+    }
+
+    each(prestashop.selectors.checkout.carrierExtraContent, (element) => {
       element.classList.add('d-none');
     });
 
-    // and show the one related to the selected carrier
-    params.deliveryOption.nextElementSibling.classList.remove('d-none');
+    event.deliveryOption.nextElementSibling.classList.remove('d-none');
   });
-  prestashop.on('changedCheckoutStep', (params) => {
-    if (typeof params.event.currentTarget !== 'undefined') {
-      $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
-    }
-  });
-});
-
-$(document).on('change', '.checkout-option input[type="radio"]', (event) => {
-  const $target = $(event.currentTarget);
-  const $block = $target.closest('.checkout-option');
-  const $relatedBlocks = $block.parent();
-
-  $relatedBlocks.find('.checkout-option').removeClass('selected');
-  $block.addClass('selected');
-});
-
-$(document).on('click', '.js-checkout-step-header', (event) => {
-  const stepIdentifier = $(event.currentTarget).data('identifier');
-  $(`#${stepIdentifier}`).addClass('-current');
-  $(`#content-${stepIdentifier}`).collapse('show').scrollTop();
 });

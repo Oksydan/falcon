@@ -1,13 +1,12 @@
-import $ from 'jquery';
-import RangeSlider from '@js/listing/components/filters/RangeSlider';
+import RangeSlider from './RangeSlider';
+import { each } from '../../../theme/utils/DOMHelpers';
 
 class FiltersRangeSliders {
   static init() {
-    const $rangeSliders = $('.js-range-slider');
+    each('.js-range-slider', (slider) => {
+      const rangeSlider = new RangeSlider(slider);
 
-    $rangeSliders.each((i, el) => {
-      /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "slider" }] */
-      const slider = new RangeSlider(el);
+      rangeSlider.init();
     });
   }
 }
