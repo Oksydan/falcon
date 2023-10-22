@@ -3,15 +3,33 @@ import parseToHtml from '../../../utils/parseToHtml';
 import updateAddressRequest from '../request/updateAddressRequest';
 
 /**
- * Change address country handler
- * @returns {Promise<void>}
+ * Handles the change of the address country in the address form.
+ *
+ * @function
+ * @returns {Promise<void>} A Promise that resolves after the address is updated.
+ * @throws {Error} Throws an error if there is an issue with the HTTP request.
  */
 const changeAddressCountryHandler = async () => {
-  const DOMSelectors = {
-    addressFormWrapperSelector: '.js-address-form',
-    countrySelectSelector: '.js-country',
-  };
+  /**
+   * DOM selectors for the address form.
+   *
+   * @typedef {Object} DOMSelectors
+   * @property {string} addressFormWrapperSelector - Selector for the address form wrapper.
+   * @property {string} countrySelectSelector - Selector for the country select input.
+   */
+
+  /**
+   * Retrieves DOM elements related to the address form.
+   *
+   * @function
+   * @returns {Object} Object containing DOM elements.
+   */
   const getDOMAddressElements = () => {
+    const DOMSelectors = {
+      addressFormWrapperSelector: '.js-address-form',
+      countrySelectSelector: '.js-country',
+    };
+
     const { addressFormWrapperSelector, countrySelectSelector } = DOMSelectors;
     const addressFormWrapper = document.querySelector(addressFormWrapperSelector);
 
@@ -22,12 +40,14 @@ const changeAddressCountryHandler = async () => {
       formInputs: addressFormWrapper.querySelectorAll('input'),
     };
   };
+
   const {
     addressFormWrapper,
     addressForm,
     countrySelect,
     formInputs,
   } = getDOMAddressElements();
+
   const url = addressForm.dataset?.refreshUrl;
   const idCountry = Number.parseInt(countrySelect.value, 10);
   const idAddress = Number.parseInt(addressForm.dataset?.idAddress, 10);
