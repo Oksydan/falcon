@@ -1,5 +1,4 @@
-import $ from 'jquery';
-import EventHandler from "bootstrap/js/src/dom/event-handler";
+import EventHandler from 'bootstrap/js/src/dom/event-handler';
 
 /**
  * Function that will help you to add/remove/trigger events
