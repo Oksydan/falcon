@@ -3,9 +3,11 @@ import parseToHtml from '../../../../utils/parseToHtml';
 import updateCartContentRequest from '../../request/cart/updateCartContentRequest';
 
 /**
- * Update cart handler - update cart content and emit updatedCart event
- * @param {object} event - update cart event object
- * @returns {Promise<void>}
+ * Handles the update of the cart content and emits the 'updatedCart' event.
+ * @param {object} event - The update cart event object.
+ * @param {object} event.resp - The response object containing updated cart data.
+ * @throws {Error} Will throw an error if an error occurs during the cart update process.
+ * @returns {Promise<void>} - A Promise that resolves once the cart update process is complete.
  */
 const updateCartHandler = async (event) => {
   prestashop.cart = event.resp.cart;
