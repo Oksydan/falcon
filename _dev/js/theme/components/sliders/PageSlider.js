@@ -1,4 +1,5 @@
 import SwiperSlider from './SwiperSlider';
+
 class PageSlider {
   constructor() {
     this.observeElementClass = 'js-slider-observed';
