@@ -27,7 +27,7 @@
     <div class="product-line-grid__block product-line-grid__block--image">
       {images_block webpEnabled=$webpEnabled}
         <img
-          {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+          {generateImagesSources image=$product.default_image size='cart_default'}
           alt="{$product.name|escape:'quotes'}"
           class="img-fluid rounded"
           width="{$product.default_image.bySize.cart_default.width}"

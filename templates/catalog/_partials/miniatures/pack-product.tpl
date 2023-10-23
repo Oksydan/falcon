@@ -29,8 +29,9 @@
         <a href="{$product.url}" title="{$product.name}">
           {images_block webpEnabled=$webpEnabled}
             <img
-              class="img-fluid lazyload"
-              {generateImagesSources image=$product.default_image size='cart_default' lazyload=true}
+              class="img-fluid"
+              loading="lazy"
+              {generateImagesSources image=$product.default_image size='cart_default'}
               width="{$product.default_image.bySize.cart_default.width}"
               height="{$product.default_image.bySize.cart_default.height}"
               {if !empty($product.default_image.legend)}

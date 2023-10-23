@@ -2,7 +2,7 @@
   {images_block webpEnabled=$webpEnabled}
     {if $product.default_image}
       <img
-        {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+        {generateImagesSources image=$product.default_image size='cart_default'}
         alt="{$product.name|escape:'quotes'}"
         class="product-line__img rounded img-fluid"
         width="{$product.default_image.bySize.cart_default.width}"

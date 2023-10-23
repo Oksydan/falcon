@@ -19,14 +19,9 @@ for (const i in EventEmitter.prototype) {
 }
 import usePasswordPolicy from './components/password/usePasswordPolicy';
 import useThemeForm from './components/useThemeForm';
-import PageLazyLoad from './components/Lazyload';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 import usePageLoader from "./components/usePageLoader";
 import { DOMReady } from "../utils/DOM/DOMHelpers";
-
-prestashop.pageLazyLoad = new PageLazyLoad({
-  selector: '.lazyload',
-});
 
 prestashop.pageLoader = usePageLoader();
 

@@ -28,7 +28,7 @@
       {images_block webpEnabled=$webpEnabled}
         <img
           {if $product.default_image}
-            {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+            {generateImagesSources image=$product.default_image size='cart_default'}
           {else}
             src="{$urls.no_picture_image.bySize.cart_default.url}"
           {/if}

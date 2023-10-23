@@ -5,7 +5,7 @@
         <img
           {if $product.default_image}
             data-full-size-image-url="{$product.default_image.large.url}"
-            {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
+            {generateImagesSources image=$product.default_image size='home_default'}
             alt="{if !empty($product.default_image.legend)}{$product.default_image.legend}{else}{$product.name|truncate:30:'...'}{/if}"
             width="{$product.default_image.bySize.home_default.width}"
             height="{$product.default_image.bySize.home_default.height}"
@@ -15,7 +15,8 @@
             width="{$urls.no_picture_image.bySize.home_default.width}"
             height="{$urls.no_picture_image.bySize.home_default.height}"
           {/if}
-          class="img-fluid rounded lazyload"
+          class="img-fluid rounded"
+          loading="lazy"
           />
       {/images_block}
 
