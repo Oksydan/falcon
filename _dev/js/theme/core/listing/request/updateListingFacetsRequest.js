@@ -1,6 +1,6 @@
-import useHttpRequest from '../../../components/http/useHttpRequest';
-import useHttpController from '../../../components/http/useHttpController';
-import GenericHttpRequestError from '../../../components/http/error/GenericHttpRequestError';
+import useHttpRequest from '../../../../utils/http/useHttpRequest';
+import useHttpController from '../../../../utils/http/useHttpController';
+import GenericHttpRequestError from '../../../../utils/http/error/GenericHttpRequestError';
 
 const { dispatch, abortAll } = useHttpController();
 

@@ -1,8 +1,6 @@
 import prestashop from 'prestashop';
-import Filters from '@js/listing/components/filters/Filters';
-import parseToHtml from '../theme/utils/parseToHtml';
-import { each } from '../theme/utils/DOMHelpers';
-import DOMReady from '../theme/utils/DOMReady';
+import Filters from './components/filters/Filters';
+import { each, parseToHtml, DOMReady } from '../utils/DOM/DOMHelpers';
 
 function updateProductListDOM(data) {
   each(prestashop.selectors.listing.searchFilters, (el) => {

@@ -1,8 +1,12 @@
 /**
  * A utility module for managing the page loader state.
  *
- * @return {showLoader, hideLoader}
+ * @module usePageLoader
+ * @returns {Object} An object with methods to show and hide the page loader.
+ * @property {Function} showLoader - Displays the page loader.
+ * @property {Function} hideLoader - Hides the page loader.
  * @example
+ * // Usage example:
  * const pageLoader = usePageLoader();
  * pageLoader.showLoader(); // Display the page loader
  * pageLoader.hideLoader(); // Hide the page loader
@@ -14,7 +18,8 @@ const usePageLoader = () => {
   /**
    * Show the page loader.
    *
-   * @method showLoader
+   * @function
+   * @name showLoader
    * @returns {void}
    */
   const showLoader = () => {
@@ -24,7 +29,8 @@ const usePageLoader = () => {
   /**
    * Hide the page loader.
    *
-   * @method hideLoader
+   * @function
+   * @name hideLoader
    * @returns {void}
    */
   const hideLoader = () => {

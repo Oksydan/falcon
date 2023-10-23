@@ -1,4 +1,4 @@
-import DOMReady from '@js/theme/utils/DOMReady';
+import { DOMReady } from '../../../utils/DOM/DOMHelpers';
 import listingController from './listingController';
 
 const { init } = listingController();

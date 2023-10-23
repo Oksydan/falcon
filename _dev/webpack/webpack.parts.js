@@ -169,6 +169,11 @@ exports.extractVendorsChunks = () => ({
           filename: 'js/jquery.js',
           chunks: 'initial',
         },
+        shared: {
+          name: 'shared',
+          chunks: 'initial',
+          minChunks: 2,
+        },
       },
     },
   },

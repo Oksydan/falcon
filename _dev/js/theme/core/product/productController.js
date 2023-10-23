@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useEvent from '../../components/event/useEvent';
+import useEvent from '../../../utils/event/useEvent';
 import quickViewClickHandler from './handler/quickView/quickViewClickHandler';
 import quickViewHandler from './handler/quickView/quickViewHandler';
 import productUpdateErrorHandler from './handler/product/productUpdateErrorHandler';

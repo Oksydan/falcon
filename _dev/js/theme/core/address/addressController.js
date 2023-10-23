@@ -1,4 +1,4 @@
-import useEvent from '../../components/event/useEvent';
+import useEvent from '../../../utils/event/useEvent';
 import changeAddressCountryHandler from './handler/changeAddressCountryHandler';
 
 /**

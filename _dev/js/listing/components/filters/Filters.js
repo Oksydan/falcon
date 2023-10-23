@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import FiltersRangeSliders from './FiltersRangeSliders';
-import useEvent from '../../../theme/components/event/useEvent';
+import useEvent from '../../../utils/event/useEvent';
 
 class Filters {
   constructor() {

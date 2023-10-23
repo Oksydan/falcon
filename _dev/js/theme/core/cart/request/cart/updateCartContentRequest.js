@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpRequest';
+import useDefaultHttpRequest from '../../../../../utils/http/useDefaultHttpRequest';
 
 /**
  * @typedef {object} ServerResponse

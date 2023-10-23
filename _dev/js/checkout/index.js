@@ -1,9 +1,8 @@
 import prestashop from 'prestashop';
-import useEvent from '../theme/components/event/useEvent';
-import parseToHtml from '../theme/utils/parseToHtml';
-import useHttpRequest from '../theme/components/http/useHttpRequest';
-import { each } from '../theme/utils/DOMHelpers';
-import DOMReady from '../theme/utils/DOMReady';
+import useEvent from '../utils/event/useEvent';
+import { parseToHtml, each, DOMReady } from '../utils/DOM/DOMHelpers';
+import useHttpRequest from '../utils/http/useHttpRequest';
+import './core/checkout/index';
 
 const { on } = useEvent();
 

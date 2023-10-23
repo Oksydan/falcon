@@ -1,4 +1,4 @@
-import { each } from '../utils/DOMHelpers';
+import { each } from '../../utils/DOM/DOMHelpers';
 
 const supportedValidity = () => {
   const input = document.createElement('input');

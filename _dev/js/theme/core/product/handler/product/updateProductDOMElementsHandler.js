@@ -1,6 +1,5 @@
 import prestashop from 'prestashop';
-import parseToHtml from '../../../../utils/parseToHtml';
-import { each } from '../../../../utils/DOMHelpers';
+import { each, parseToHtml } from '../../../../../utils/DOM/DOMHelpers';
 import productEventContextSelector from '../../utils/productEventContextSelector';
 
 /**

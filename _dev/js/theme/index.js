@@ -1,7 +1,5 @@
 import EventEmitter from 'events';
 
-import './core/index';
-
 import './vendors/bootstrap/bootstrap-imports';
 import './components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';
@@ -24,7 +22,7 @@ import useThemeForm from './components/useThemeForm';
 import PageLazyLoad from './components/Lazyload';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 import usePageLoader from "./components/usePageLoader";
-import DOMReady from "./utils/DOMReady";
+import { DOMReady } from "../utils/DOM/DOMHelpers";
 
 prestashop.pageLazyLoad = new PageLazyLoad({
   selector: '.lazyload',

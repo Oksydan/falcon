@@ -1,5 +1,5 @@
 import productController from './productController';
-import DOMReady from '../../utils/DOMReady';
+import { DOMReady } from '../../../utils/DOM/DOMHelpers';
 
 const { init } = productController();
 

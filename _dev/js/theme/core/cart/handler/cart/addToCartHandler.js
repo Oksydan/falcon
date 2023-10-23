@@ -1,7 +1,7 @@
 import prestashop from 'prestashop';
 import useAlertToast from '../../../../components/useAlertToast';
 import addToCartRequest from '../../request/cart/addToCartRequest';
-import sprintf from '../../../../utils/sprintf';
+import sprintf from '../../../../../utils/sprintf';
 
 const { danger } = useAlertToast();
 

@@ -1,6 +1,5 @@
 import prestashop from 'prestashop';
-import DOMReady from '../utils/DOMReady';
-import parseToHtml from '../utils/parseToHtml';
+import { DOMReady, parseToHtml } from '../../utils/DOM/DOMHelpers';
 
 /**
  * Handle open quick view

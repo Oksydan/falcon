@@ -2,7 +2,7 @@ import prestashop from 'prestashop';
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
 import FiltersUrlHandler from './FiltersUrlHandler';
-import useEvent from '../../../theme/components/event/useEvent';
+import useEvent from '../../../utils/event/useEvent';
 
 class RangeSlider {
   constructor(element) {

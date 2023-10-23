@@ -1,5 +1,5 @@
 import RangeSlider from './RangeSlider';
-import { each } from '../../../theme/utils/DOMHelpers';
+import { each } from '../../../utils/DOM/DOMHelpers';
 
 class FiltersRangeSliders {
   static init() {

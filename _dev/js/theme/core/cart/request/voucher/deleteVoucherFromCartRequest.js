@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
-import useDefaultHttpRequest from '../../../../components/http/useDefaultHttpRequest';
-import useHttpPayloadDefinition from '../../../../components/http/useHttpPayloadDefinition';
+import useDefaultHttpRequest from '../../../../../utils/http/useDefaultHttpRequest';
+import useHttpPayloadDefinition from '../../../../../utils/http/useHttpPayloadDefinition';
 
 /**
  * @typedef {object} ServerResponse

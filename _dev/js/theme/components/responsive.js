@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import DOMReady from '../utils/DOMReady';
+import { DOMReady } from '../../utils/DOM/DOMHelpers';
 
 function isMobile() {
   return prestashop.responsive.current_width < prestashop.responsive.min_width;

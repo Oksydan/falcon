@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import DOMReady from '../../utils/DOMReady';
+import { DOMReady } from '../../../utils/DOM/DOMHelpers';
 import cartController from './cartController';
 
 prestashop.cart = prestashop.cart || {};

@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import GenericHttpRequestError from '../../components/http/error/GenericHttpRequestError';
+import GenericHttpRequestError from '../../../utils/http/error/GenericHttpRequestError';
 import useAlertToast from '../../components/useAlertToast';
 
 const { danger } = useAlertToast();

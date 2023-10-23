@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useEvent from '../../components/event/useEvent';
+import useEvent from '../../../utils/event/useEvent';
 import submitVoucherHandler from './handler/voucher/submitVoucherHandler';
 import codeLinkSubmitHandler from './handler/voucher/codeLinkSubmitHandler';
 import deleteVoucherHandler from './handler/voucher/deleteVoucherHandler';

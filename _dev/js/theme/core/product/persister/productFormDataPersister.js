@@ -1,4 +1,4 @@
-import { formSerializeArray } from '../../../utils/formSerialize';
+import { formSerializeArray } from '../../../../utils/formSerialize';
 
 let formData = [];
 
