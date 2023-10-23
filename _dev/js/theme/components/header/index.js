@@ -1,4 +1,4 @@
-import DOMReady from '../../utils/DOMReady';
+import { DOMReady } from '../../../utils/DOM/DOMHelpers';
 import useTopMenu from './useTopMenu';
 import useStickyElement from '../useStickyElement';
 

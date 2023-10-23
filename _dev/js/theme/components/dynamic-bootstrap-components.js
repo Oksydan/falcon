@@ -1,5 +1,5 @@
-import DOMReady from '../utils/DOMReady';
-import useBootstrapComponentDynamicImport from '../utils/dynamicImports/useBootstrapComponentDynamicImport';
+import { DOMReady } from '../../utils/DOM/DOMHelpers';
+import useBootstrapComponentDynamicImport from '../../utils/dynamicImports/useBootstrapComponentDynamicImport';
 
 DOMReady(() => {
   const { init: initDynamicImportForModal } = useBootstrapComponentDynamicImport(

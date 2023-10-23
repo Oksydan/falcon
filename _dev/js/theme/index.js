@@ -1,7 +1,7 @@
 import EventEmitter from 'events';
 
+import './windowExpose';
 import './core/index';
-
 import './vendors/bootstrap/bootstrap-imports';
 import './components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';
@@ -21,14 +21,9 @@ for (const i in EventEmitter.prototype) {
 }
 import usePasswordPolicy from './components/password/usePasswordPolicy';
 import useThemeForm from './components/useThemeForm';
-import PageLazyLoad from './components/Lazyload';
 import httpRequestErrorHandler from './handler/error/httpRequestErrorHandler';
 import usePageLoader from "./components/usePageLoader";
-import DOMReady from "./utils/DOMReady";
-
-prestashop.pageLazyLoad = new PageLazyLoad({
-  selector: '.lazyload',
-});
+import { DOMReady } from "../utils/DOM/DOMHelpers";
 
 prestashop.pageLoader = usePageLoader();
 

@@ -1,4 +1,4 @@
-import debounce from '../utils/debounce';
+import debounce from '../../utils/misc/debounce';
 
 /**
  * Returns sticky element data

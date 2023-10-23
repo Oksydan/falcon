@@ -1,5 +1,5 @@
 import ProductGallery from './components/ProductGallery';
-import DOMReady from '../theme/utils/DOMReady';
+import { DOMReady } from '../utils/DOM/DOMHelpers';
 
 DOMReady(() => {
   const gallery = new ProductGallery();

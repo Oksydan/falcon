@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import parseToHtml from '../../../../utils/parseToHtml';
+import { parseToHtml } from '../../../../../utils/DOM/DOMHelpers';
 import updateCartContentRequest from '../../request/cart/updateCartContentRequest';
 
 /**

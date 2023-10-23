@@ -1,7 +1,7 @@
-import useHttpRequest from '../../../components/http/useHttpRequest';
-import useHttpController from '../../../components/http/useHttpController';
-import useHttpPayloadDefinition from '../../../components/http/useHttpPayloadDefinition';
-import GenericHttpRequestError from '../../../components/http/error/GenericHttpRequestError';
+import useHttpRequest from '../../../../utils/http/useHttpRequest';
+import useHttpController from '../../../../utils/http/useHttpController';
+import useHttpPayloadDefinition from '../../../../utils/http/useHttpPayloadDefinition';
+import GenericHttpRequestError from '../../../../utils/http/error/GenericHttpRequestError';
 
 /**
  * @typedef {Object} ServerResponse

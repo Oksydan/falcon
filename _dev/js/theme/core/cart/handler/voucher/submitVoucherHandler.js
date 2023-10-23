@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import addVoucherToCartRequest from '../../request/voucher/addVoucherToCartRequest';
-import parseToHtml from '../../../../utils/parseToHtml';
+import { parseToHtml } from '../../../../../utils/DOM/DOMHelpers';
 
 /**
  * Handles the submission of a voucher form and updates the cart accordingly.

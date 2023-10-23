@@ -31,7 +31,7 @@
           {if $product.default_image}
             <img
               class="rounded img-fluid"
-              {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+              {generateImagesSources image=$product.default_image size='large_default'}
               width="{$product.default_image.bySize.large_default.width}"
               height="{$product.default_image.bySize.large_default.height}"
               {if !empty($product.default_image.legend)}
@@ -63,7 +63,7 @@
                   <div class="swiper-slide">
                     <img
                       class="rounded img-fluid"
-                      {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+                      {generateImagesSources image=$product.default_image size='large_default'}
                       width="{$product.default_image.bySize.large_default.width}"
                       height="{$product.default_image.bySize.large_default.height}"
                       {if !empty($product.default_image.legend)}
@@ -83,8 +83,9 @@
 
                       <div class="swiper-slide" data-index="{$index}">
                         <img
-                          class="rounded img-fluid lazyload"
-                          {generateImagesSources image=$image size='large_default' lazyload=true}
+                          class="rounded img-fluid"
+                          loading="lazy"
+                          {generateImagesSources image=$image size='large_default' }
                           width="{$image.bySize.large_default.width}"
                           height="{$image.bySize.large_default.height}"
                           {if !empty($product.default_image.legend)}
@@ -112,7 +113,7 @@
             {images_block webpEnabled=$webpEnabled}
               <img
                 class="rounded img-fluid"
-                {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
+                {generateImagesSources image=$product.default_image size='large_default'}
                 width="{$product.default_image.bySize.large_default.width}"
                 height="{$product.default_image.bySize.large_default.height}"
                 {if !empty($product.default_image.legend)}
@@ -141,8 +142,9 @@
             <div class="product-thumbs__list swiper-wrapper">
               <div class="product-thumbs__elem swiper-slide">
                 <img
-                  class="rounded img-fluid lazyload"
-                  {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
+                  class="rounded img-fluid"
+                  loading="lazy"
+                  {generateImagesSources image=$product.default_image size='home_default'}
                   width="{$product.default_image.bySize.home_default.width}"
                   height="{$product.default_image.bySize.home_default.height}"
                   {if !empty($product.default_image.legend)}
@@ -160,8 +162,9 @@
                   {/if}
                   <div class="product-thumbs__elem swiper-slide">
                     <img
-                      class="rounded img-fluid lazyload"
-                      {generateImagesSources image=$image size='home_default' lazyload=true}
+                      class="rounded img-fluid"
+                      loading="lazy"
+                      {generateImagesSources image=$image size='home_default'}
                       width="{$image.bySize.home_default.width}"
                       height="{$image.bySize.home_default.height}"
                       {if !empty($product.default_image.legend)}

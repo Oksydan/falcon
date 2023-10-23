@@ -27,12 +27,12 @@
     <div class="card h-100">
       {$sizes = Image::getSize('home_default')}
       <img
-        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='{$sizes.width}' height='{$sizes.height}' viewBox='0 0 1 1'%3E%3C/svg%3E"
-        data-src="{$brand.image|replace:'small_default':'home_default'}"
+        src="{$brand.image|replace:'small_default':'home_default'}"
         alt="{$brand.name}"
-        class="card-img-top lazyload"
+        class="card-img-top"
         width="{$sizes.width}"
         height="{$sizes.height}"
+        loading="lazy"
         >
       <div class="card-body">
         <p class="h6 mb-0">

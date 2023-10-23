@@ -1,6 +1,6 @@
 import prestashop from 'prestashop';
 import FiltersRangeSliders from './FiltersRangeSliders';
-import useEvent from '../../../theme/components/event/useEvent';
+import { on } from '../../../utils/event/eventHandler';
 
 class Filters {
   constructor() {
@@ -11,8 +11,6 @@ class Filters {
   }
 
   setEvents() {
-    const { on } = useEvent();
-
     prestashop.on('updatedProductList', () => {
       prestashop.pageLoader.hideLoader();
       this.rangeSliders.init();

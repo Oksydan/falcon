@@ -1,4 +1,4 @@
-import parseToHtml from '@js/theme/utils/parseToHtml';
+import { parseToHtml } from '../../utils/DOM/DOMHelpers';
 
 let id = 0;
 

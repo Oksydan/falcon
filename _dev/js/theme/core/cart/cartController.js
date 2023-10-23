@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useEvent from '../../components/event/useEvent';
+import { on } from '../../../utils/event/eventHandler';
 import submitVoucherHandler from './handler/voucher/submitVoucherHandler';
 import codeLinkSubmitHandler from './handler/voucher/codeLinkSubmitHandler';
 import deleteVoucherHandler from './handler/voucher/deleteVoucherHandler';
@@ -10,8 +10,6 @@ import updateCartHandler from './handler/cart/updateCartHandler';
 import updatedCartHandler from './handler/cart/updatedCartHandler';
 import cartErrorsHandler from './handler/cart/cartErrorsHandler';
 import useCustomQuantityInput from '../../components/useCustomQuantityInput';
-
-const { on } = useEvent();
 
 /**
  * The Cart Controller manages interactions and events related to the shopping cart.

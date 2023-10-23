@@ -7,7 +7,7 @@ import productStateStore from '../../store/productStateStore';
 import updateQuantityInputHandler from './updateQuantityInputHandler';
 import updateProductCustomizationHandler from './updateProductCustomizationHandler';
 import updateProductDOMElementsHandler from './updateProductDOMElementsHandler';
-import { fromSerializeObject } from '../../../../utils/formSerialize';
+import { fromSerializeObject } from '../../../../../utils/form/formSerialize';
 import productEventContextSelector from '../../utils/productEventContextSelector';
 
 const { getCurrentRequestDelayedId, setCurrentRequestDelayedId } = productStateStore();

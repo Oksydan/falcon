@@ -1,4 +1,4 @@
-import useToggleDisplay from '@js/theme/components/display/useToggleDisplay';
+import useToggleDisplay from '../../../utils/display/useToggleDisplay';
 
 /**
  * Toggle the display of elements with the 'ps-shown-by-js' and 'ps-hidden-by-js' classes.

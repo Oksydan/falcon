@@ -1,1 +1,1 @@
-import '@js/product/index';
+import './product/index';
