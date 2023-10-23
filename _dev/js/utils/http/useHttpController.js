@@ -1,4 +1,4 @@
-import getUniqueId from '../getUniqueId';
+import getUniqueId from '../misc/getUniqueId';
 
 /**
  * @module useHttpController

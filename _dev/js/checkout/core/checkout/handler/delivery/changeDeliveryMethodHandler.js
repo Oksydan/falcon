@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import { formSerializeArray, fromSerializeObject } from '../../../../../utils/formSerialize';
+import { formSerializeArray, fromSerializeObject } from '../../../../../utils/form/formSerialize';
 import selectDeliveryMethodRequest from '../../request/selectDeliveryMethodRequest';
 import refreshCheckoutPage from '../../utils/refreshCheckoutPage';
 import { each, parseToHtml } from '../../../../../utils/DOM/DOMHelpers';
