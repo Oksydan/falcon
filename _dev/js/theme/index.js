@@ -1,5 +1,6 @@
 import EventEmitter from 'events';
 
+import './core/index';
 import './vendors/bootstrap/bootstrap-imports';
 import './components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';

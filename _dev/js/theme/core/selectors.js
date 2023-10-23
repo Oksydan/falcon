@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import DOMReady from '../../utils/DOM/DOMHelpers';
+import { DOMReady } from '../../utils/DOM/DOMHelpers';
 
 prestashop.selectors = {
   quantityWanted: '#quantity_wanted',
