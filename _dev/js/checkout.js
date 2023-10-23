@@ -1,1 +1,1 @@
-import '@js/checkout/index';
+import './checkout/index';

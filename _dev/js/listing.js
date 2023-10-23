@@ -1,1 +1,1 @@
-import '@js/listing/index';
+import './listing/index';
