@@ -1,7 +1,6 @@
-import useEvent from '../../../utils/event/useEvent';
+import { on, off } from '../../../utils/event/eventHandler';
 
 const useTopMenu = (selector) => {
-  const { on, off } = useEvent();
   const menuElement = document.querySelector(selector);
   const DOM_SELECTORS = {
     SUB_ELEMENTS: '.main-menu__item--top',

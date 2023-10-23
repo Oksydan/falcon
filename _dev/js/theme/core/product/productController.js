@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useEvent from '../../../utils/event/useEvent';
+import { on } from '../../../utils/event/eventHandler';
 import quickViewClickHandler from './handler/quickView/quickViewClickHandler';
 import quickViewHandler from './handler/quickView/quickViewHandler';
 import productUpdateErrorHandler from './handler/product/productUpdateErrorHandler';
@@ -9,7 +9,6 @@ import updatedProductHandler from './handler/product/updatedProductHandler';
 import updateProductHandler from './handler/product/updateProductHandler';
 import productFormChangeHandler from './handler/product/productFormChangeHandler';
 
-const { on } = useEvent();
 const { persist } = productFormDataPersister();
 
 /**

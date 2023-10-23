@@ -2,7 +2,7 @@ import prestashop from 'prestashop';
 import noUiSlider from 'nouislider';
 import wNumb from 'wnumb';
 import FiltersUrlHandler from './FiltersUrlHandler';
-import useEvent from '../../../utils/event/useEvent';
+import { on, off } from '../../../utils/event/eventHandler';
 
 class RangeSlider {
   constructor(element) {
@@ -92,7 +92,6 @@ class RangeSlider {
   }
 
   setEvents() {
-    const { on, off } = useEvent();
     this.sliderHandler.off('set', this.constructor.handlerSliderSet);
     this.sliderHandler.on('set', this.constructor.handlerSliderSet);
     this.sliderHandler.off('update', this.handlerSliderUpdate);

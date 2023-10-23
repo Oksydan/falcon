@@ -1,6 +1,4 @@
-import useEvent from '../event/useEvent';
-
-const { on, off } = useEvent();
+import { on, off } from '../event/eventHandler';
 
 /**
  * Handles dynamic import events by binding and unbinding specified events on the document.

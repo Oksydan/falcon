@@ -1,12 +1,10 @@
-import useEvent from '../../../utils/event/useEvent';
+import { on } from '../../../utils/event/eventHandler';
 import changeAddressCountryHandler from './handler/changeAddressCountryHandler';
 
 /**
  * @typedef {Object} AddressController
  * @property {function} init - Initializes the address controller.
  */
-
-const { on } = useEvent();
 
 /**
  * Creates an address controller.

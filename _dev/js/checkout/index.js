@@ -1,10 +1,8 @@
 import prestashop from 'prestashop';
-import useEvent from '../utils/event/useEvent';
+import { on } from '../utils/event/eventHandler';
 import { parseToHtml, each, DOMReady } from '../utils/DOM/DOMHelpers';
 import useHttpRequest from '../utils/http/useHttpRequest';
 import './core/checkout/index';
-
-const { on } = useEvent();
 
 function setUpCheckout() {
   const clickTermLinkHandler = async (event) => {

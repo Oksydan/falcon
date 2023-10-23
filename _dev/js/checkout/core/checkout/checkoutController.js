@@ -1,5 +1,5 @@
 import prestashop from 'prestashop';
-import useEvent from '../../../utils/event/useEvent';
+import { on } from '../../../utils/event/eventHandler';
 import editAddressHandler from './handler/address/editAddressHandler';
 import changeAddressHandler from './handler/address/changeAddressHandler';
 import changeDeliveryMethodHandler from './handler/delivery/changeDeliveryMethodHandler';
@@ -11,8 +11,6 @@ import togglePaymentOptionsHandler from './handler/payment/togglePaymentOptionsH
 import confirmOrderHandler from './handler/payment/confirmOrderHandler';
 import checkoutFormSubmitHandler from './handler/process/checkoutFormSubmitHandler';
 import checkoutStepChangeHandler from './handler/process/checkoutStepChangeHandler';
-
-const { on } = useEvent();
 
 /**
  * Checkout controller.
