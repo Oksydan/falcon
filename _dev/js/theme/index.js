@@ -1,5 +1,6 @@
 import EventEmitter from 'events';
 
+import './windowExpose';
 import './core/index';
 import './vendors/bootstrap/bootstrap-imports';
 import './components/dynamic-bootstrap-components';
