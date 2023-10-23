@@ -1,6 +1,4 @@
-const useToggleDisplay = () => {
-  const D_NONE_CLASS = 'd-none';
-
+const useToggleDisplay = (hideClass = 'd-none') => {
   /**
     * Show element
     * @param element {HTMLElement} Element to show
@@ -8,7 +6,7 @@ const useToggleDisplay = () => {
     */
   const show = (element) => {
     element.style.display = '';
-    element.classList.remove(D_NONE_CLASS);
+    element.classList.remove(hideClass);
   };
 
   /**
@@ -18,7 +16,7 @@ const useToggleDisplay = () => {
     */
   const hide = (element) => {
     element.style.display = '';
-    element.classList.add(D_NONE_CLASS);
+    element.classList.add(hideClass);
   };
 
   /**

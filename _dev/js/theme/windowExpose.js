@@ -7,6 +7,7 @@ import useHttpPayloadDefinition from "../utils/http/useHttpPayloadDefinition";
 import { isElementVisible, each, DOMReady, parseToHtml } from '../utils/DOM/DOMHelpers';
 import { getAllSiblingsBeforeElement, getAllSiblingsAfterElement } from '../utils/DOM/DOMSelectorsHelper';
 import { fromSerializeObject, fromSerialize, formSerializeArray } from '../utils/form/formSerialize';
+import useToggleDisplay from "../utils/display/useToggleDisplay";
 
 exposeToWindow('eventHandlerOn', on);
 exposeToWindow('eventHandlerOne', one);
@@ -25,4 +26,4 @@ exposeToWindow('getAllSiblingsAfterElement', getAllSiblingsAfterElement);
 exposeToWindow('fromSerializeObject', fromSerializeObject);
 exposeToWindow('fromSerialize', fromSerialize);
 exposeToWindow('formSerializeArray', formSerializeArray);
-
+exposeToWindow('useToggleDisplay', useToggleDisplay);
