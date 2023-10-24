@@ -1,4 +1,4 @@
-const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const { EsbuildPlugin } = require('esbuild-loader')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const safeList = require('./purge-safelist');
@@ -8,6 +8,10 @@ const { cleanDistFolders } = require('./webpack.parts');
 const { merge } = require("webpack-merge");
 
 const plugins = (purge, analyze) => ([
+  new EsbuildPlugin({
+    target: 'es2016',
+    format: 'iife',
+  }),
   analyze ? new BundleAnalyzerPlugin() : false,
   purge ? new PurgeCSSPlugin({
     paths: glob.sync([
@@ -30,10 +34,6 @@ exports.productionConfig = ({ purge, analyze }) => (
       optimization: {
         minimize: true,
         minimizer: [
-          new ESBuildMinifyPlugin({
-            target: 'es2016',
-            format: 'iife',
-          }),
           new CssMinimizerPlugin()
         ],
       },

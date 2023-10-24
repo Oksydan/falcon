@@ -121,8 +121,8 @@ exports.extractImages = ({ publicPath }) => ({
             loader: 'file-loader',
             options: {
               outputPath: 'img-dist/',
-              publicPath: publicPath + '/img-dist/',
               name: '[contenthash].[ext]',
+              esModule: false,
             },
           },
         ],
@@ -142,8 +142,8 @@ exports.extractFonts = ({ publicPath }) => ({
             loader: 'file-loader',
             options: {
               outputPath: 'fonts/',
-              publicPath: publicPath + '/fonts/',
               name: '[name]-[contenthash].[ext]',
+              esModule: false,
             },
           },
         ],
