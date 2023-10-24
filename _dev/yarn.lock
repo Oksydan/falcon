@@ -6028,11 +6028,6 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vanilla-lazyload@^17.8.5:
-  version "17.8.5"
-  resolved "https://registry.npmjs.org/vanilla-lazyload/-/vanilla-lazyload-17.8.5.tgz"
-  integrity sha512-SQdQztlVUJqCbyU15zobpAcoTucCzdJiDIEfqinZDdwifhZxQ5H2j0BJfHlrFxi0lrVAdFBRsICH51YdPv18DQ==
-
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
