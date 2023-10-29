@@ -24,7 +24,10 @@
  *}
 
 <div class="block_newsletter" id="blockEmailSubscription_{$hookName}">
-  <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
+  <form
+    class="js-newsletter-form"
+    action="{$urls.current_url}#blockEmailSubscription_{$hookName}"
+    method="post">
     <div class="row">
       <p id="block-newsletter-label" class="col-12">{l s='Get our latest news and special sales' d='Shop.Theme.Global'}</p>
       <div class="col-12 mb-1">

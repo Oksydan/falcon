@@ -22,6 +22,11 @@ const useHttpRequest = (url, options = {}, addons = []) => {
     options.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   }
 
+  // Set default accept header
+  if (!(options.headers?.['accept'])) {
+    options.headers['accept'] = 'application/json, text/javascript, */*;';
+  }
+
   // Set default X-Requested-With header
   if (!(options.headers?.['X-Requested-With'])) {
     options.headers['X-Requested-With'] = 'XMLHttpRequest';
