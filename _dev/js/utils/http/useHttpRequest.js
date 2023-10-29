@@ -23,8 +23,8 @@ const useHttpRequest = (url, options = {}, addons = []) => {
   }
 
   // Set default accept header
-  if (!(options.headers?.['accept'])) {
-    options.headers['accept'] = 'application/json, text/javascript, */*;';
+  if (!(options.headers?.accept)) {
+    options.headers.accept = 'application/json, text/javascript, */*;';
   }
 
   // Set default X-Requested-With header
