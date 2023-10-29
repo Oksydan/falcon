@@ -1,4 +1,3 @@
-const chokidar = require('chokidar');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -94,10 +93,6 @@ exports.extractJs = () => ({
   module: {
     rules: [
       {
-        test: /swiper\.esm\.js/,
-        sideEffects: false
-      },
-      {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
@@ -121,8 +116,8 @@ exports.extractImages = ({ publicPath }) => ({
             loader: 'file-loader',
             options: {
               outputPath: 'img-dist/',
-              publicPath: publicPath + '/img-dist/',
               name: '[contenthash].[ext]',
+              esModule: false,
             },
           },
         ],
@@ -142,8 +137,8 @@ exports.extractFonts = ({ publicPath }) => ({
             loader: 'file-loader',
             options: {
               outputPath: 'fonts/',
-              publicPath: publicPath + '/fonts/',
               name: '[name]-[contenthash].[ext]',
+              esModule: false,
             },
           },
         ],

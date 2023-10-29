@@ -1,6 +1,9 @@
-import Swiper, {
-  Navigation, Pagination, Autoplay,
-} from 'swiper';
+import Swiper from 'swiper/core';
+
+// WE HAVE TO IMPORT IT LIKE THIS, BECOUSE OF NOT WOKRING TREESHAKING
+import Navigation from '@node_modules/swiper/modules/navigation.mjs';
+import Pagination from '@node_modules/swiper/modules/pagination.mjs';
+import Autoplay from '@node_modules/swiper/modules/autoplay.mjs';
 
 import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 
@@ -8,52 +11,52 @@ import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 const dynamicModulesMap = {
   thumbs: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/thumbs/thumbs.js'),
+      import('@node_modules/swiper/modules/thumbs.mjs'),
     ],
   ),
   virtual: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/virtual/virtual.js'),
-      import('@node_modules/swiper/modules/virtual/virtual.scss'),
+      import('@node_modules/swiper/modules/virtual.mjs'),
+      import('@node_modules/swiper/modules/virtual.scss'),
     ],
   ),
   keyboard: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/keyboard/keyboard.js'),
+      import('@node_modules/swiper/modules/keyboard.mjs'),
     ],
   ),
   mousewheel: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/mousewheel/mousewheel.js'),
+      import('@node_modules/swiper/modules/mousewheel.mjs'),
     ],
   ),
   scrollbar: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/scrollbar/scrollbar.js'),
-      import('@node_modules/swiper/modules/scrollbar/scrollbar.scss'),
+      import('@node_modules/swiper/modules/scrollbar.mjs'),
+      import('@node_modules/swiper/modules/scrollbar.scss'),
     ],
   ),
   parallax: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/parallax/parallax.js'),
+      import('@node_modules/swiper/modules/parallax.mjs'),
     ],
   ),
   zoom: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/zoom/zoom.js'),
-      import('@node_modules/swiper/modules/zoom/zoom.scss'),
+      import('@node_modules/swiper/modules/zoom.mjs'),
+      import('@node_modules/swiper/modules/zoom.scss'),
     ],
   ),
   freeMode: new DynamicImportSwiperModule(
     () => [
-      import('@node_modules/swiper/modules/free-mode/free-mode.js'),
-      import('@node_modules/swiper/modules/free-mode/free-mode.scss'),
+      import('@node_modules/swiper/modules/free-mode.mjs'),
+      import('@node_modules/swiper/modules/free-mode.scss'),
     ],
   ),
   controller: new DynamicImportSwiperModule(
       () => [
-        import('@node_modules/swiper/modules/controller/controller.js'),
-        import('@node_modules/swiper/modules/controller/controller.scss'),
+        import('@node_modules/swiper/modules/controller.mjs'),
+        import('@node_modules/swiper/modules/controller.scss'),
       ],
   ),
 };
