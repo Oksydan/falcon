@@ -1,5 +1,9 @@
-import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Swiper from 'swiper/core';
+
+// WE HAVE TO IMPORT IT LIKE THIS, BECOUSE OF NOT WOKRING TREESHAKING
+import Navigation from '@node_modules/swiper/modules/navigation.mjs';
+import Pagination from '@node_modules/swiper/modules/pagination.mjs';
+import Autoplay from '@node_modules/swiper/modules/autoplay.mjs';
 
 import DynamicImportSwiperModule from './DynamicImportSwiperModule';
 
