@@ -37,11 +37,14 @@
       <span class="font-size-sm">{$mailAlert.attributes_small}</span>
     </div>
     <div class="col-auto">
-      <a href="#"
-        title="{l s='Remove mail alert' d='Modules.Mailalerts.Shop'}"
-        class="js-remove-email-alert btn btn-link"
-        rel="js-id-emailalerts-{$mailAlert.id_product|intval}-{$mailAlert.id_product_attribute|intval}"
-        data-url="{url entity='module' name='ps_emailalerts' controller='actions' params=['process' => 'remove']}">
+      <a  href="#"
+          role="button"
+          title="{l s='Remove mail alert' d='Modules.Mailalerts.Shop'}"
+          class="js-remove-email-alert btn btn-link"
+          data-id-product="{$mailAlert.id_product|intval}"
+          data-id-product-attribute="{$mailAlert.id_product_attribute|intval}"
+          rel="js-id-emailalerts-{$mailAlert.id_product|intval}-{$mailAlert.id_product_attribute|intval}"
+          data-url="{url entity='module' name='ps_emailalerts' controller='actions' params=['process' => 'remove']}">
         <i class="material-icons">delete</i>
       </a>
     </div>

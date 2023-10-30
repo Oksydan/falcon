@@ -11,7 +11,7 @@
         {/block}
         {block name='modal_close'}
           <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"></span>
           </button>
         {/block}
       </div>
@@ -40,8 +40,8 @@
         {if isset($id_module)}
           {hook h='displayGDPRConsent' id_module=$id_module}
         {/if}
-        <input class="js-mailalert-id-input" type="hidden" value="{$id_product}"/>
-        <input class="js-mailalert-id-input" type="hidden" value="{$id_product_attribute}"/>
+        <input class="js-mailalert-id-product" type="hidden" value="{$id_product}"/>
+        <input class="js-mailalert-id-product-attribute" type="hidden" value="{$id_product_attribute}"/>
       </div>
     {/block}
     {block name='modal_footer'}
