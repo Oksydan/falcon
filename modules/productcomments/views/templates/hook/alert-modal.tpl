@@ -49,7 +49,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-text" data-dismiss="modal" aria-label="{l s='OK' d='Modules.Productcomments.Shop'}">
+        <button type="button"
+                class="btn d-block w-100 btn-primary btn-text"
+                data-bs-dismiss="modal"
+                aria-label="{l s='OK' d='Modules.Productcomments.Shop'}">
           {l s='OK' d='Modules.Productcomments.Shop'}
         </button>
       </div>
