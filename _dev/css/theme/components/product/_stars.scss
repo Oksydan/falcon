@@ -5,17 +5,27 @@
   top: 0;
   left: 0;
   display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+
+  &.star-content-empty {
+    position: static;
+  }
 
   .star,
   .star-on,
   .star-hover {
+    flex: 0 0 auto;
     display: block;
-    flex: auto;
     width: 20px;
     height: 20px;
     margin-left: 3px;
     background: url("../img/icons/star_gray.svg") no-repeat 0 0 transparent;
     background-size: 20px;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   .star-on,
@@ -35,6 +45,10 @@
       height: 16px;
       margin-left: 2px;
       background-size: 16px;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -42,11 +56,9 @@
 .grade-stars {
   position: relative;
   display: inline-block;
-  min-width: 120px;
   height: 20px;
 
   &.small-stars {
-    min-width: 70px;
     height: 16px;
   }
 }
@@ -61,6 +73,6 @@
   background: rgba($white, 0.4);
 
   .grade-stars {
-    display: block;
+    display: inline-block;
   }
 }

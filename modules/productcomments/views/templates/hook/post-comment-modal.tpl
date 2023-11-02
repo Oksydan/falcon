@@ -44,15 +44,18 @@
                 <li>
                   <div class="criterion-rating d-flex">
                     <label class="mb-0 me-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
-                    <div class="grade-stars">
-                      {for $i=1 to 5}
-                        <input
-                          type="radio"
-                          value="{$i}"
-                          {if $i == 5}checked="checked"{/if}
-                          name="criterion[{$criterion.id_product_comment_criterion}]"
-                        >
-                      {/for}
+                    <div
+                      class="grade-stars js-grade-stars-input"
+                      data-grade="5"
+                      data-input-name="criterion[{$criterion.id_product_comment_criterion}]">
+{*                      {for $i=1 to 5}*}
+{*                        <input*}
+{*                          type="radio"*}
+{*                          value="{$i}"*}
+{*                          {if $i == 5}checked="checked"{/if}*}
+{*                          name="criterion[{$criterion.id_product_comment_criterion}]"*}
+{*                        >*}
+{*                      {/for}*}
                     </div>
                   </div>
                 </li>

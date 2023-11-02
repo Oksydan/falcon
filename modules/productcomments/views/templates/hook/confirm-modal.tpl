@@ -26,20 +26,31 @@
 {assign var='icon' value=$icon|default:'check_circle'}
 {assign var='modal_message' value=$modal_message|default:''}
 
+
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
-    const confirmModal = $('#{$modal_id}');
-    confirmModal.on('hidden.bs.modal', function () {
-      confirmModal.modal('hide');
-      confirmModal.trigger('modal:confirm', false);
+    const confirmModal = document.querySelector('#{$modal_id}');
+
+    eventHandlerOn(confirmModal, 'hidden.bs.modal', () => {
+      eventHandlerTrigger(confirmModal, 'modal:confirm', { confirm: false });
     });
 
-    $('.confirm-button', confirmModal).click(function() {
-      confirmModal.trigger('modal:confirm', true);
-    });
-    $('.refuse-button', confirmModal).click(function() {
-      confirmModal.trigger('modal:confirm', false);
-    });
+    const confirmBtn = document.querySelector('#{$modal_id} .js-confirm-button');
+    const refuseBtn = document.querySelector('#{$modal_id} .js-refuse-button');
+
+    if (confirmBtn) {
+      eventHandlerOn(confirmBtn, 'click', () => {
+        eventHandlerTrigger(confirmModal, 'modal:confirm', { confirm: true });
+        bootstrap.Modal.getOrCreateInstance(confirmModal).hide();
+      });
+    }
+
+    if (refuseBtn) {
+      eventHandlerOn(refuseBtn, 'click', () => {
+        eventHandlerTrigger(confirmModal, 'modal:confirm', { confirm: false });
+        bootstrap.Modal.getOrCreateInstance(confirmModal).hide();
+      });
+    }
   });
 </script>
 
@@ -57,10 +68,14 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary confirm-button d-block text-center w-100" data-dismiss="modal" aria-label="{l s='Yes' d='Modules.Productcomments.Shop'}">
+        <button type="button"
+                class="btn btn-primary js-confirm-button d-block text-center w-100"
+                aria-label="{l s='Yes' d='Modules.Productcomments.Shop'}">
           {l s='Yes' d='Modules.Productcomments.Shop'}
         </button>
-        <button type="button" class="btn btn-text refuse-button d-block text-center w-100" data-dismiss="modal" aria-label="{l s='No' d='Modules.Productcomments.Shop'}">
+        <button type="button"
+                class="btn btn-text js-refuse-button d-block text-center w-100"
+                aria-label="{l s='No' d='Modules.Productcomments.Shop'}">
           {l s='No' d='Modules.Productcomments.Shop'}
         </button>
       </div>

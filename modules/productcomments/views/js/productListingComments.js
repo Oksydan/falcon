@@ -116,7 +116,7 @@ var productListingComments = (function () {
                         var $self = $(this);
 
                         if (productData.comments_nb > 0) {
-                            $self.find(DOMStrings.productListReviewsStarsContainer).rating({ grade: productData.average_grade, starWidth: 16 });
+                            starRating($self.find(DOMStrings.productListReviewsStarsContainer)[0], productData.average_grade);
                             $self.find(DOMStrings.productListReviewsNumberOfComments).text('(' + productData.comments_nb + ')');
                             $self.closest(DOMStrings.productContainer).addClass(DOMClasses.hasReviews);
                             $self.css('visibility', 'visible');

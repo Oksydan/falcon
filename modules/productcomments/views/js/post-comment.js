@@ -8,27 +8,33 @@ DOMReady(() => {
     POST_COMMENT_FORM: '#post-product-comment-form',
     POST_COMMENT_FORM_INPUTS: '#post-product-comment-form input[type="text"]',
     POST_COMMENT_FORM_TEXTAREA: '#post-product-comment-form textarea',
-    POST_COMMENT_FORM_CRITERION_RATING: '#post-product-comment-form .criterion-rating input',
+    POST_COMMENT_FORM_CRITERION_RATING: '#post-product-comment-form .js-grade-stars-input input',
+    POST_COMMENT_FORM_CRITERION_RATING_GRADE: '#post-product-comment-form .js-grade-stars-input',
   };
   const postCommentModal = document.querySelector(DOM_SELECTORS.POST_COMMENT_MODAL);
   const commentPostedModal = document.querySelector(DOM_SELECTORS.COMMENT_POSTED_MODAL);
   const commentPostErrorModal = document.querySelector(DOM_SELECTORS.COMMENT_POST_ERROR_MODAL);
   const commentForm = document.querySelector(DOM_SELECTORS.POST_COMMENT_FORM);
+  const criterionRatingGrades = document.querySelectorAll(DOM_SELECTORS.POST_COMMENT_FORM_CRITERION_RATING_GRADE);
   const getCommentPostModalInstance = () => bootstrap.Modal.getOrCreateInstance(postCommentModal);
   const getCommentPostedModalInstance = () => bootstrap.Modal.getOrCreateInstance(commentPostedModal);
   const getCommentPostErrorModalInstance = () => bootstrap.Modal.getOrCreateInstance(commentPostErrorModal);
+
+  const initCriterionRating = () => {
+    each(criterionRatingGrades, (criterionRatingGrade) => {
+      const inputName = criterionRatingGrade.dataset?.inputName;
+
+      starRatingInput(criterionRatingGrade, inputName, 5);
+    });
+  }
 
   const clearPostCommentForm = () => {
     each(`${DOM_SELECTORS.POST_COMMENT_FORM_INPUTS}, ${DOM_SELECTORS.POST_COMMENT_FORM_TEXTAREA}`, (formElement) => {
       formElement.value = '';
       formElement.classList.remove('is-invalid');
     });
-    each(DOM_SELECTORS.POST_COMMENT_FORM_CRITERION_RATING, (formElement) => {
-      formElement.value = 5;
 
-      const event = new Event('change');
-      formElement.dispatchEvent(event);
-    });
+    initCriterionRating();
   }
 
   const showPostErrorModal = (errorMessage) => {
@@ -86,22 +92,22 @@ DOMReady(() => {
             if (jsonData.errors) {
               const { errors } = jsonData;
               const errorList = `
-                <ul>
+                <ul class="alert alert-danger mb-0">
                   ${errors.map((error) => `<li>${error}</li>`).join('')}
                 </ul>
               `;
 
               showPostErrorModal(errorList);
             } else if (jsonData.error) {
-              showPostErrorModal(jsonData.error);
+              showPostErrorModal(`<p class="alert alert-danger mb-0">${jsonData.error}</p>`);
             }
           }
         } else {
-          showPostErrorModal(`<p>${productCommentPostErrorMessage}</p>`);
+          showPostErrorModal(`<p class="alert alert-danger mb-0">${productCommentPostErrorMessage}</p>`);
         }
       })
       .catch(() => {
-        showPostErrorModal(`<p>${productCommentPostErrorMessage}</p>`);
+        showPostErrorModal(`<p class="alert alert-danger mb-0">${productCommentPostErrorMessage}</p>`);
       });
   }
 
@@ -136,6 +142,8 @@ DOMReady(() => {
 
     return isValid;
   }
+
+  initCriterionRating();
 
   eventHandlerOn(document, 'click', DOM_SELECTORS.BTN_POST_MODAL_BTN, handleClickPostModalBtn);
   eventHandlerOn(postCommentModal, 'hidden.bs.modal', handlePostCommentModalHidden);
