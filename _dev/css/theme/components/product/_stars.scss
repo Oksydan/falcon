@@ -26,15 +26,10 @@
     &:first-child {
       margin-left: 0;
     }
-  }
 
-  .star-on,
-  .star-hover {
-    background-image: url("../img/icons/star_active.svg");
-  }
-
-  .star-hover {
-    cursor: pointer;
+    &.star-on {
+      background-image: url("../img/icons/star_active.svg");
+    }
   }
 
   .small-stars & {
