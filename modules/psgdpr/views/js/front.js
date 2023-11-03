@@ -1,5 +1,5 @@
 
-DOMREady(() => {
+DOMReady(() => {
     psgdpr_front_controller = psgdpr_front_controller.replace(/\amp;/g,'');
 
     eventHandlerOn(document, 'click', '#exportPersonalData', (e) => {
