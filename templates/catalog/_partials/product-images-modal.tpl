@@ -59,8 +59,9 @@
                       width="{$image.bySize.large_default.width}"
                       height="{$image.bySize.large_default.height}"
                       loading="lazy"
-                      {if !empty($product.default_image.legend)}
-                        alt="{$image.legend}" title="{$image.legend}"
+                      {if !empty($image.legend)}
+                        alt="{$image.legend}"
+                        title="{$image.legend}"
                       {else}
                         alt="{$product.name}"
                       {/if}
