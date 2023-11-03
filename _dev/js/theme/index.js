@@ -2,7 +2,7 @@ import EventEmitter from 'events';
 
 import './windowExpose';
 import './core/index';
-import './vendors/bootstrap/bootstrap-imports';
+import './vendors/index';
 import './components/dynamic-bootstrap-components';
 import bsCustomFileInput from 'bs-custom-file-input';
 import './components/header/index';

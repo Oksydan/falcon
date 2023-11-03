@@ -11,6 +11,7 @@ const plugins = (purge, analyze) => ([
   new EsbuildPlugin({
     target: 'es2016',
     format: 'iife',
+    minify: true,
   }),
   analyze ? new BundleAnalyzerPlugin() : false,
   purge ? new PurgeCSSPlugin({

@@ -67,6 +67,8 @@ exports.webpackVars = {
       ]
     }
 
+    resultEntries.jquery = path.resolve(themeDev, `./js/jquery.js`);
+
     return resultEntries;
   },
   getOutput: ({ mode, publicPath, siteURL, port, devServer }) => ({
