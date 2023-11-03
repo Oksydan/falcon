@@ -94,6 +94,10 @@ global_settings:
         - ps_sharebuttons
       displayOrderConfirmation2:
         - ps_featuredproducts
+      displayContactRightColumn:
+        - ps_contactinfo
+      displayContactLeftColumn:
+        - ps_contactinfo
 
   image_types:
     cart_default:
