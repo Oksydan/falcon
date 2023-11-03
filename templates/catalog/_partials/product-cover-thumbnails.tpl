@@ -88,8 +88,9 @@
                           {generateImagesSources image=$image size='large_default' }
                           width="{$image.bySize.large_default.width}"
                           height="{$image.bySize.large_default.height}"
-                          {if !empty($product.default_image.legend)}
-                            alt="{$image.legend}" title="{$image.legend}"
+                          {if !empty($image.legend)}
+                            alt="{$image.legend}"
+                            title="{$image.legend}"
                           {else}
                             alt="{$product.name}"
                           {/if}
@@ -167,8 +168,9 @@
                       {generateImagesSources image=$image size='home_default'}
                       width="{$image.bySize.home_default.width}"
                       height="{$image.bySize.home_default.height}"
-                      {if !empty($product.default_image.legend)}
-                        alt="{$image.legend}" title="{$image.legend}"
+                      {if !empty($image.legend)}
+                        alt="{$image.legend}"
+                        title="{$image.legend}"
                       {else}
                         alt="{$product.name}"
                       {/if}
