@@ -69,7 +69,7 @@
           <a href="{$order.details.reorder_url}" class="btn btn-outline-primary">{l s='Reorder' d='Shop.Theme.Actions'}</a>
         </div>
       {/if}
-
+    </div>
   {/block}
 
   {block name='order_history'}
