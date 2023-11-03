@@ -37,7 +37,7 @@ const productListingComments = (() => {
         if (data.ajaxUrl !== '')
             return;
 
-        data.ajaxUrl = document.querySelector(DOMStrings.productListReviewsContainer).dataset.url;
+        data.ajaxUrl = document.querySelector(DOMStrings.productListReviewsContainer)?.dataset?.url;
     }
 
     const getNewProductsReviewsElements = () => {
