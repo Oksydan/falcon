@@ -48,14 +48,6 @@
                       class="grade-stars js-grade-stars-input"
                       data-grade="5"
                       data-input-name="criterion[{$criterion.id_product_comment_criterion}]">
-{*                      {for $i=1 to 5}*}
-{*                        <input*}
-{*                          type="radio"*}
-{*                          value="{$i}"*}
-{*                          {if $i == 5}checked="checked"{/if}*}
-{*                          name="criterion[{$criterion.id_product_comment_criterion}]"*}
-{*                        >*}
-{*                      {/for}*}
                     </div>
                   </div>
                 </li>
@@ -79,6 +71,8 @@
             <label class="form-label required" for="comment_content">{l s='Review' d='Modules.Productcomments.Shop'}</label>
             <textarea class="form-control" rows="4" id="comment_content" name="comment_content"></textarea>
           </div>
+
+          {hook h='displayGDPRConsent' mod='psgdpr' id_module=$id_module}
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary d-block text-center w-100">
