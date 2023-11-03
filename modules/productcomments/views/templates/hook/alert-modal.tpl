@@ -26,15 +26,6 @@
 {assign var='icon' value=$icon|default:'check_circle'}
 {assign var='modal_message' value=$modal_message|default:''}
 
-<script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-    const alertModal = $('#{$modal_id}');
-    alertModal.on('hidden.bs.modal', function () {
-      alertModal.modal('hide');
-    });
-  });
-</script>
-
 <div id="{$modal_id}" class="modal fade product-comment-modal" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -49,7 +40,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-text" data-dismiss="modal" aria-label="{l s='OK' d='Modules.Productcomments.Shop'}">
+        <button type="button"
+                class="btn d-block w-100 btn-primary btn-text"
+                data-bs-dismiss="modal"
+                aria-label="{l s='OK' d='Modules.Productcomments.Shop'}">
           {l s='OK' d='Modules.Productcomments.Shop'}
         </button>
       </div>

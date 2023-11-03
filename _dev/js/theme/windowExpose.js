@@ -13,6 +13,8 @@ import { getAllSiblingsBeforeElement, getAllSiblingsAfterElement } from '../util
 import { fromSerializeObject, fromSerialize, formSerializeArray } from '../utils/form/formSerialize';
 import useToggleDisplay from '../utils/display/useToggleDisplay';
 
+const { hide, show, toggle } = useToggleDisplay();
+
 exposeToWindow('eventHandlerOn', on);
 exposeToWindow('eventHandlerOne', one);
 exposeToWindow('eventHandlerOff', off);
@@ -31,3 +33,6 @@ exposeToWindow('fromSerializeObject', fromSerializeObject);
 exposeToWindow('fromSerialize', fromSerialize);
 exposeToWindow('formSerializeArray', formSerializeArray);
 exposeToWindow('useToggleDisplay', useToggleDisplay);
+exposeToWindow('hide', hide);
+exposeToWindow('show', show);
+exposeToWindow('toggle', toggle);

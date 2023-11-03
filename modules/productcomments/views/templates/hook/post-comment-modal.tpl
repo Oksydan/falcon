@@ -33,7 +33,7 @@
       <div class="modal-header">
         <h5 class="modal-title h5">{l s='Write your review' d='Modules.Productcomments.Shop'}</h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
       <form id="post-product-comment-form" action="{$post_comment_url nofilter}" method="POST">
@@ -45,9 +45,17 @@
                   <div class="criterion-rating d-flex">
                     <label class="mb-0 me-1">{$criterion.name|escape:'html':'UTF-8'}:</label>
                     <div
-                      class="grade-stars"
-                      data-grade="3"
-                      data-input="criterion[{$criterion.id_product_comment_criterion}]">
+                      class="grade-stars js-grade-stars-input"
+                      data-grade="5"
+                      data-input-name="criterion[{$criterion.id_product_comment_criterion}]">
+{*                      {for $i=1 to 5}*}
+{*                        <input*}
+{*                          type="radio"*}
+{*                          value="{$i}"*}
+{*                          {if $i == 5}checked="checked"{/if}*}
+{*                          name="criterion[{$criterion.id_product_comment_criterion}]"*}
+{*                        >*}
+{*                      {/for}*}
                     </div>
                   </div>
                 </li>

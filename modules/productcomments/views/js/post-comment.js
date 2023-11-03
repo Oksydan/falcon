@@ -1,129 +1,151 @@
-/**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
- */
+DOMReady(() => {
+  const DOM_SELECTORS = {
+    BTN_POST_MODAL_BTN: '.js-post-product-comment',
+    POST_COMMENT_MODAL: '#post-product-comment-modal',
+    COMMENT_POSTED_MODAL: '#product-comment-posted-modal',
+    COMMENT_POST_ERROR_MODAL: '#product-comment-post-error',
+    COMMENT_POST_ERROR_MESSAGE: '#product-comment-post-error-message',
+    POST_COMMENT_FORM: '#post-product-comment-form',
+    POST_COMMENT_FORM_INPUTS: '#post-product-comment-form input[type="text"]',
+    POST_COMMENT_FORM_TEXTAREA: '#post-product-comment-form textarea',
+    POST_COMMENT_FORM_CRITERION_RATING: '#post-product-comment-form .js-grade-stars-input input',
+    POST_COMMENT_FORM_CRITERION_RATING_GRADE: '#post-product-comment-form .js-grade-stars-input',
+  };
+  const postCommentModal = document.querySelector(DOM_SELECTORS.POST_COMMENT_MODAL);
+  const commentPostedModal = document.querySelector(DOM_SELECTORS.COMMENT_POSTED_MODAL);
+  const commentPostErrorModal = document.querySelector(DOM_SELECTORS.COMMENT_POST_ERROR_MODAL);
+  const commentForm = document.querySelector(DOM_SELECTORS.POST_COMMENT_FORM);
+  const criterionRatingGrades = document.querySelectorAll(DOM_SELECTORS.POST_COMMENT_FORM_CRITERION_RATING_GRADE);
+  const getCommentPostModalInstance = () => bootstrap.Modal.getOrCreateInstance(postCommentModal);
+  const getCommentPostedModalInstance = () => bootstrap.Modal.getOrCreateInstance(commentPostedModal);
+  const getCommentPostErrorModalInstance = () => bootstrap.Modal.getOrCreateInstance(commentPostErrorModal);
 
-jQuery(document).ready(function () {
-  const $ = jQuery;
-  $('body').on('click', '.js-post-product-comment', function (event) {
-    event.preventDefault();
-    showPostCommentModal();
-  });
+  const initCriterionRating = () => {
+    each(criterionRatingGrades, (criterionRatingGrade) => {
+      const inputName = criterionRatingGrade.dataset?.inputName;
 
-  const postCommentModal = $('#post-product-comment-modal');
-  postCommentModal.on('hidden.bs.modal', function () {
-    postCommentModal.modal('hide');
-    clearPostCommentForm();
-  });
-
-  const commentPostedModal = $('#product-comment-posted-modal');
-  const commentPostErrorModal = $('#product-comment-post-error');
-
-  function showPostCommentModal() {
-    commentPostedModal.modal('hide');
-    commentPostErrorModal.modal('hide');
-    postCommentModal.modal('show');
+      starRatingInput(criterionRatingGrade, inputName, 5);
+    });
   }
 
-  function showCommentPostedModal() {
-    postCommentModal.modal('hide');
-    commentPostErrorModal.modal('hide');
-    clearPostCommentForm();
-    commentPostedModal.modal('show');
-  }
-
-  function showPostErrorModal(errorMessage) {
-    postCommentModal.modal('hide');
-    commentPostedModal.modal('hide');
-    clearPostCommentForm();
-    $('#product-comment-post-error-message').html(errorMessage);
-    commentPostErrorModal.modal('show');
-  }
-
-  function clearPostCommentForm() {
-    $('#post-product-comment-form input[type="text"]').val('');
-    $('#post-product-comment-form input[type="text"]').removeClass('vis-invalid');
-    $('#post-product-comment-form textarea').val('');
-    $('#post-product-comment-form textarea').removeClass('is-invalid');
-    $('#post-product-comment-form .criterion-rating input').val(3).change();
-  }
-
-  function initCommentModal() {
-    $('#post-product-comment-modal .grade-stars').rating();
-    $('body').on('click', '.js-post-product-comment', function (event) {
-      event.preventDefault();
-      showPostCommentModal();
+  const clearPostCommentForm = () => {
+    each(`${DOM_SELECTORS.POST_COMMENT_FORM_INPUTS}, ${DOM_SELECTORS.POST_COMMENT_FORM_TEXTAREA}`, (formElement) => {
+      formElement.value = '';
+      formElement.classList.remove('is-invalid');
     });
 
-    $('#post-product-comment-form').submit(submitCommentForm);
+    initCriterionRating();
   }
 
-  function submitCommentForm(event) {
+  const showPostErrorModal = (errorMessage) => {
+    getCommentPostedModalInstance()?.hide();
+    getCommentPostModalInstance()?.hide();
+    clearPostCommentForm();
+
+    const errorMessageElement = document.querySelector(DOM_SELECTORS.COMMENT_POST_ERROR_MESSAGE);
+
+    if (errorMessageElement) {
+      errorMessageElement.innerHTML = errorMessage;
+    }
+
+    getCommentPostErrorModalInstance()?.show();
+  }
+
+  const showCommentPostedModal = () => {
+    getCommentPostErrorModalInstance()?.hide();
+    getCommentPostModalInstance()?.hide();
+    getCommentPostedModalInstance()?.show();
+
+    clearPostCommentForm();
+  }
+
+  const showPostCommentModal = () => {
+    getCommentPostErrorModalInstance()?.hide();
+    getCommentPostedModalInstance()?.hide();
+    getCommentPostModalInstance()?.show();
+  }
+
+  const handleClickPostModalBtn = (e) => {
+    e.preventDefault();
+    showPostCommentModal();
+  }
+
+  const handlePostCommentModalHidden = () => {
+    clearPostCommentForm();
+  }
+
+  const handlePostCommentModal = (url, formData) => {
+    const { request } = useHttpRequest(url, {
+      headers: {
+        accept: '*/*',
+      }
+    });
+
+    request
+      .post(formData)
+      .json((jsonData) => {
+        if (jsonData) {
+          if (jsonData.success) {
+            clearPostCommentForm();
+            showCommentPostedModal();
+          } else if (jsonData.errors || jsonData.error) {
+            if (jsonData.errors) {
+              const { errors } = jsonData;
+              const errorList = `
+                <ul class="alert alert-danger mb-0">
+                  ${errors.map((error) => `<li>${error}</li>`).join('')}
+                </ul>
+              `;
+
+              showPostErrorModal(errorList);
+            } else if (jsonData.error) {
+              showPostErrorModal(`<p class="alert alert-danger mb-0">${jsonData.error}</p>`);
+            }
+          }
+        } else {
+          showPostErrorModal(`<p class="alert alert-danger mb-0">${productCommentPostErrorMessage}</p>`);
+        }
+      })
+      .catch(() => {
+        showPostErrorModal(`<p class="alert alert-danger mb-0">${productCommentPostErrorMessage}</p>`);
+      });
+  }
+
+  const handleSubmitCommentForm = (event) => {
     event.preventDefault();
-    var formData = $(this).serializeArray();
-    if (!validateFormData(formData)) {
+    const form = event.target;
+    const formDataArray = formSerializeArray(form);
+    const formData = fromSerialize(form);
+    const url = form.action;
+
+    if (!validateFormData(formDataArray)) {
       return;
     }
-    $.post($(this).attr('action'), $(this).serialize(), function(jsonData) {
-      if (jsonData) {
-        if (jsonData.success) {
-          clearPostCommentForm();
-          showCommentPostedModal();
-        } else {
-          if (jsonData.errors) {
-            var errorList = '<ul>';
-            for (var i = 0; i < jsonData.errors.length; ++i) {
-              errorList += '<li>' + jsonData.errors[i] + '</li>';
-            }
-            errorList += '</ul>';
-            showPostErrorModal(errorList);
-          } else {
-            const decodedErrorMessage = $("<div/>").html(jsonData.error).text();
-            showPostErrorModal(decodedErrorMessage);
-          }
-        }
-      } else {
-        showPostErrorModal(productCommentPostErrorMessage);
-      }
-    }).fail(function() {
-      showPostErrorModal(productCommentPostErrorMessage);
-    });
+
+    handlePostCommentModal(url, formData);
   }
 
-  function validateFormData(formData) {
-    var isValid = true;
-    formData.forEach(function(formField) {
-      const fieldSelector = '#post-product-comment-form [name="'+formField.name+'"]';
+  const validateFormData = (formData) => {
+    let isValid = true;
+
+    formData.forEach((formField) => {
+      const fieldSelector = '[name="'+formField.name+'"]';
+      const fieldElement = commentForm.querySelector(fieldSelector);
+
       if (!formField.value) {
-        $(fieldSelector).addClass('is-invalid');
+        fieldElement.classList.add('is-invalid');
         isValid = false;
       } else {
-        $(fieldSelector).removeClass('is-invalid');
+        fieldElement.classList.remove('is-invalid');
       }
     });
 
     return isValid;
   }
 
-  initCommentModal();
+  initCriterionRating();
+
+  eventHandlerOn(document, 'click', DOM_SELECTORS.BTN_POST_MODAL_BTN, handleClickPostModalBtn);
+  eventHandlerOn(postCommentModal, 'hidden.bs.modal', handlePostCommentModalHidden);
+  eventHandlerOn(commentForm, 'submit', handleSubmitCommentForm);
 });

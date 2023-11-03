@@ -158,12 +158,6 @@ exports.extractVendorsChunks = () => ({
           filename: 'js/swipervendor.js',
           chunks: 'initial',
         },
-        jquery: {
-          test: /[\\/]node_modules[\\/](jquery)[\\/]/,
-          name: 'jquery',
-          filename: 'js/jquery.js',
-          chunks: 'initial',
-        },
         shared: {
           name: 'shared',
           chunks: 'initial',

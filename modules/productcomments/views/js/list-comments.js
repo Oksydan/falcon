@@ -1,102 +1,214 @@
-/**
- * Copyright since 2007 PrestaShop SA and Contributors
- * PrestaShop is an International Registered Trademark & Property of PrestaShop SA
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License 3.0 (AFL-3.0)
- * that is bundled with this package in the file LICENSE.md.
- * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/AFL-3.0
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
- * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to https://devdocs.prestashop.com/ for more information.
- *
- * @author    PrestaShop SA and Contributors <contact@prestashop.com>
- * @copyright Since 2007 PrestaShop SA and Contributors
- * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
- */
 
-jQuery(document).ready(function () {
-  const $ = jQuery;
-  const commentsList = $('#product-comments-list');
-  const emptyProductComment = $('#empty-product-comment');
-  const commentsListUrl = commentsList.data('list-comments-url');
-  const updateCommentUsefulnessUrl = commentsList.data('update-comment-usefulness-url');
-  const reportCommentUrl = commentsList.data('report-comment-url');
-  const commentPrototype = commentsList.data('comment-item-prototype');
+DOMReady(() => {
+  const DOM_SELECTORS = {
+    PRODUCT_COMMENTS_LIST: '#product-comments-list',
+    EMPTY_PRODUCT_COMMENT: '#empty-product-comment',
+    PRODUCT_COMMENTS_LIST_PAGINATION: '#product-comments-list-pagination',
+    UPDATE_COMMENT_POST_ERROR_MODAL: '#update-comment-usefulness-post-error',
+    UPDATE_COMMENT_POST_ERROR_MESSAGE: '#update-comment-usefulness-post-error-message',
+    REPORT_COMMENT_POST_ERROR_MODAL: '#report-comment-post-error',
+    REPORT_COMMENT_POST_ERROR_MESSAGE: '#report-comment-post-error-message',
+    REPORT_COMMENT_POSTED_MODAL: '#report-comment-posted',
+    REPORT_COMMENT_CONFIRMATION_MODAL: '#report-comment-confirmation',
 
-  emptyProductComment.hide();
-  $('.comments-note .grade-stars').rating();
+  };
+  const commentsList = document.querySelector(DOM_SELECTORS.PRODUCT_COMMENTS_LIST);
+  const emptyProductComment = document.querySelector(DOM_SELECTORS.EMPTY_PRODUCT_COMMENT);
+  const updateCommentPostErrorModal = document.querySelector(DOM_SELECTORS.UPDATE_COMMENT_POST_ERROR_MODAL);
+  const reportCommentPostedModal = document.querySelector(DOM_SELECTORS.REPORT_COMMENT_POSTED_MODAL);
+  const reportCommentPostErrorModal = document.querySelector(DOM_SELECTORS.REPORT_COMMENT_POST_ERROR_MODAL);
+  const confirmAbuseModal = document.querySelector(DOM_SELECTORS.REPORT_COMMENT_CONFIRMATION_MODAL);
+  const productCommentUpdatePostErrorMessage = document.querySelector(DOM_SELECTORS.UPDATE_COMMENT_POST_ERROR_MESSAGE);
+  const productCommentAbuseReportErrorMessage = document.querySelector(DOM_SELECTORS.REPORT_COMMENT_POST_ERROR_MESSAGE);
+  const productCommentPagination = document.querySelector(DOM_SELECTORS.PRODUCT_COMMENTS_LIST_PAGINATION);
+  const commentsListUrl = commentsList.dataset?.listCommentsUrl;
+  const updateCommentUsefulnessUrl = commentsList.dataset?.updateCommentUsefulnessUrl;
+  const reportCommentUrl = commentsList.dataset?.reportCommentUrl;
+  const commentPrototype = commentsList.dataset?.commentItemPrototype;
+
+  hide(emptyProductComment);
+
+  each('.comments-note .grade-stars', starRating);
 
   prestashop.on('updatedProduct', function() {
-    $('.product-comments-additional-info .grade-stars').rating();
+    each('.product-comments-additional-info .grade-stars', starRating);
   })
 
   document.addEventListener('updateRating', function() {
-    $('.comments-note .grade-stars').rating();
+    each('.comments-note .grade-stars', starRating);
   });
 
-  const updateCommentPostErrorModal = $('#update-comment-usefulness-post-error');
+  const buildPagination = (paginationElement, {
+    onePageClick = () => {},
+    currentPage = null,
+    items = null,
+    itemsOnPage = null,
+  }) => {
+    if (!paginationElement || !items || !itemsOnPage || !currentPage) {
+      throw new Error('Invalid pagination configuration');
+    }
 
-  const confirmAbuseModal = $('#report-comment-confirmation');
-  const reportCommentPostErrorModal = $('#report-comment-post-error');
-  const reportCommentPostedModal = $('#report-comment-posted');
+    const prevText = '<span class="material-icons font-reset align-middle">chevron_left</span>';
+    const nextText = '<span class="material-icons font-reset align-middle">chevron_right</span>';
 
-  function showUpdatePostCommentErrorModal(errorMessage) {
-    $('#update-comment-usefulness-post-error-message').html(errorMessage);
-    updateCommentPostErrorModal.modal('show');
-  }
+    const calculateNumberOfPages = () => Math.ceil(items / itemsOnPage);
+    const shouldShowPagination = () => calculateNumberOfPages() > 1;
+    const shouldPrevBeActive = () => currentPage > 1;
+    const shouldNextBeActive = () => currentPage < calculateNumberOfPages();
 
-  function showReportCommentErrorModal(errorMessage) {
-    $('#report-comment-post-error-message').html(errorMessage);
-    reportCommentPostErrorModal.modal('show');
-  }
+    const buildPaginationList = () => {
+      const paginationList = document.createElement('ul');
+      paginationList.classList.add('pagination', 'mb-0');
+      let paginationItems = '';
+      paginationItems += buildPaginationPrev();
 
-  function paginateComments(page) {
-    $.get(commentsListUrl, {page: page}, function(jsonResponse) {
-      if (jsonResponse.comments && jsonResponse.comments.length > 0) {
-        populateComments(jsonResponse.comments);
-        if (jsonResponse.comments_nb > jsonResponse.comments_per_page) {
-          $('#product-comments-list-pagination').pagination({
-            currentPage: page,
-            items: jsonResponse.comments_nb,
-            itemsOnPage: jsonResponse.comments_per_page,
-            cssStyle: '',
-            prevText: '<i class="material-icons font-reset align-middle">chevron_left</i>',
-            nextText: '<i class="material-icons font-reset align-middle">chevron_right</i>',
-            useAnchors: false,
-            displayedPages: 2,
-            onPageClick: paginateComments
-          });
-        } else {
-          $('#product-comments-list-pagination').hide();
-        }
-      } else {
-        commentsList.html('');
-        emptyProductComment.show();
-        commentsList.append(emptyProductComment);
+      for (let i = 1; i <= calculateNumberOfPages(); i++) {
+        paginationItems += buildPaginationItem(i);
       }
+
+      paginationItems += buildPaginationNext();
+
+      paginationList.innerHTML = paginationItems;
+
+      return paginationList;
+    }
+
+    const buildPaginationItem = (page) => `
+      <li class="page-item ${page === currentPage ? 'active' : ''}">
+        <a class="page-link js-page" href="#" role="button" data-page="${page}">${page}</a>
+      </li>
+    `;
+
+    const buildPaginationPrev = () => `
+      <li class="page-item ${shouldPrevBeActive() ? '' : 'disabled'}">
+        <a class="page-link js-prev" href="#" role="button"  data-page="${currentPage - 1}">${prevText}</a>
+      </li>
+    `;
+
+    const buildPaginationNext = () => `
+      <li class="page-item ${shouldNextBeActive() ? '' : 'disabled'}">
+        <a class="page-link js-next" href="#" role="button" data-page="${currentPage + 1}" >${nextText}</a>
+      </li>
+    `;
+
+    const attachPaginationEvents = () => {
+      const pageElements = paginationElement.querySelectorAll('.js-page, .js-prev, .js-next');
+
+      each(pageElements, (pageElement) => {
+        eventHandlerOn(pageElement, 'click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onePageClick(parseInt(pageElement.dataset.page));
+        });
+      });
+    }
+
+    const init = () => {
+      if (shouldShowPagination()) {
+        const paginationList = buildPaginationList();
+        paginationElement.innerHTML = '';
+        paginationElement.append(paginationList);
+
+        attachPaginationEvents();
+      }
+    }
+
+    init();
+  }
+
+  const showUpdatePostCommentErrorModal = (errorMessage) => {
+    productCommentUpdatePostErrorMessage.innerHTML = errorMessage;
+    bootstrap.Modal.getOrCreateInstance(updateCommentPostErrorModal).show();
+  }
+
+  const showReportCommentErrorModal = (errorMessage) => {
+    productCommentAbuseReportErrorMessage.innerHTML = errorMessage;
+    bootstrap.Modal.getOrCreateInstance(reportCommentPostErrorModal).show();
+  }
+
+
+  const updateCommentUsefulness = (comment, commentId, usefulness) => {
+    const { request } = useHttpRequest(updateCommentUsefulnessUrl, {
+      headers: {
+        accept: '*/*',
+      }
+    });
+
+    request
+      .query({
+        id_product_comment: commentId,
+        usefulness: usefulness
+      })
+      .post()
+      .json((jsonData) => {
+        if (jsonData) {
+          if (jsonData.success) {
+            const useFulValue = comment.querySelector('.js-useful-review-value');
+            const notUseFulValue = comment.querySelector('.js-not-useful-review-value');
+
+            if (useFulValue) {
+              useFulValue.innerText = jsonData.usefulness;
+            }
+
+            if (notUseFulValue) {
+              notUseFulValue.innerText = jsonData.total_usefulness - jsonData.usefulness;
+            }
+          } else {
+            showUpdatePostCommentErrorModal(`<div class="alert alert-danger">${jsonData.error}</div>`);
+          }
+        } else {
+          showUpdatePostCommentErrorModal(`<div class="alert alert-danger">${productCommentUpdatePostErrorMessage}</div>`);
+        }
+      })
+      .catch(() => {
+        showUpdatePostCommentErrorModal(`<div class="alert alert-danger">${productCommentUpdatePostErrorMessage}</div>`);
+      });
+  }
+
+  const confirmCommentAbuse = (commentId) => {
+    bootstrap.Modal.getOrCreateInstance(confirmAbuseModal).show();
+
+    eventHandlerOne(confirmAbuseModal, 'modal:confirm', (event) => {
+      const { confirm = false } = event;
+
+      if (!confirm) {
+        return;
+      }
+
+      const { request } = useHttpRequest(reportCommentUrl, {
+        headers: {
+          accept: '*/*',
+        }
+      });
+
+      request
+        .query({
+          id_product_comment: commentId,
+        })
+        .post()
+        .json((jsonData) => {
+          if (jsonData) {
+            if (jsonData.success) {
+              bootstrap.Modal.getOrCreateInstance(reportCommentPostedModal).show();
+            } else {
+              showReportCommentErrorModal(jsonData.error);
+            }
+          } else {
+            showReportCommentErrorModal(productCommentAbuseReportErrorMessage);
+          }
+        });
+
     });
   }
 
-  function populateComments(comments) {
-    commentsList.html('');
-    comments.forEach(addComment);
-  }
+  const addComment = (comment) => {
+    let commentTemplate = commentPrototype;
+    let customerName = comment.customer_name;
 
-  function addComment(comment) {
-    var commentTemplate = commentPrototype;
-    var customerName = comment.customer_name;
     if (!customerName) {
       customerName = comment.firstname+' '+comment.lastname;
     }
+
     commentTemplate = commentTemplate.replace(/@COMMENT_ID@/, comment.id_product_comment);
     commentTemplate = commentTemplate.replace(/@PRODUCT_ID@/, comment.id_product);
     commentTemplate = commentTemplate.replace(/@CUSTOMER_NAME@/, customerName);
@@ -107,64 +219,73 @@ jQuery(document).ready(function () {
     commentTemplate = commentTemplate.replace(/@COMMENT_NOT_USEFUL_ADVICES@/, (comment.total_usefulness - comment.usefulness));
     commentTemplate = commentTemplate.replace(/@COMMENT_TOTAL_ADVICES@/, comment.total_usefulness);
 
-    const $comment = $(commentTemplate);
-    $('.grade-stars', $comment).rating({
-      grade: comment.grade
-    });
-    $('.js-useful-review', $comment).click(function(e) {
-      e.preventDefault();
-      updateCommentUsefulness($comment, comment.id_product_comment, 1);
-    });
-    $('.js-not-useful-review', $comment).click(function(e) {
-      e.preventDefault();
-      updateCommentUsefulness($comment, comment.id_product_comment, 0);
-    });
-    $('.js-report-abuse', $comment).click(function(e) {
-      e.preventDefault();
-      confirmCommentAbuse(comment.id_product_comment);
-    });
+    const commentElement = parseToHtml(commentTemplate);
+    const commentStars = commentElement.querySelector('.grade-stars');
 
-    commentsList.append($comment);
+    starRating(commentStars, comment.grade);
+
+    const btnUsefulReview = commentElement.querySelector('.js-useful-review');
+    const btnNotUsefulReview = commentElement.querySelector('.js-not-useful-review');
+    const btnReportAbuse = commentElement.querySelector('.js-report-abuse');
+
+    if (btnUsefulReview) {
+      eventHandlerOn(btnUsefulReview, 'click', (e) => {
+        e.preventDefault();
+        updateCommentUsefulness(commentElement, comment.id_product_comment, 1);
+      });
+    }
+
+    if (btnNotUsefulReview) {
+      eventHandlerOn(btnNotUsefulReview, 'click', (e) => {
+        e.preventDefault();
+        updateCommentUsefulness(commentElement, comment.id_product_comment, 0);
+      });
+    }
+
+    if (btnReportAbuse) {
+      eventHandlerOn(btnReportAbuse, 'click', (e) => {
+        e.preventDefault();
+        confirmCommentAbuse(comment.id_product_comment);
+      });
+    }
+
+    commentsList.append(commentElement);
   }
 
-  function updateCommentUsefulness($comment, commentId, usefulness) {
-    $.post(updateCommentUsefulnessUrl, {id_product_comment: commentId, usefulness: usefulness}, function(jsonData){
-      if (jsonData) {
-        if (jsonData.success) {
-          $('.js-useful-review-value', $comment).html(jsonData.usefulness);
-          $('.js-not-useful-review-value', $comment).html(jsonData.total_usefulness - jsonData.usefulness);
-        } else {
-          const decodedErrorMessage = $("<div/>").html(jsonData.error).text();
-          showUpdatePostCommentErrorModal(decodedErrorMessage);
-        }
-      } else {
-        showUpdatePostCommentErrorModal(productCommentUpdatePostErrorMessage);
-      }
-    }).fail(function() {
-      showUpdatePostCommentErrorModal(productCommentUpdatePostErrorMessage);
-    });
+  const populateComments = (comments) => {
+    commentsList.innerHTML = '';
+    comments.forEach(addComment);
   }
 
-  function confirmCommentAbuse(commentId) {
-    confirmAbuseModal.modal('show');
-    confirmAbuseModal.one('modal:confirm', function(event, confirm) {
-      if (!confirm) {
-        return;
+  const paginateComments = (page) => {
+    const { request } = useHttpRequest(commentsListUrl, {
+      headers: {
+        accept: '*/*',
       }
-      $.post(reportCommentUrl, {id_product_comment: commentId}, function(jsonData){
-        if (jsonData) {
-          if (jsonData.success) {
-            reportCommentPostedModal.modal('show');
+    });
+
+    request
+      .query({ page })
+      .get()
+      .json((jsonResponse) => {
+        if (jsonResponse.comments && jsonResponse.comments.length > 0) {
+          populateComments(jsonResponse.comments);
+          if (jsonResponse.comments_nb > jsonResponse.comments_per_page) {
+            buildPagination(productCommentPagination, {
+              onePageClick: paginateComments,
+              currentPage: page,
+              items: jsonResponse.comments_nb,
+              itemsOnPage: jsonResponse.comments_per_page,
+            });
           } else {
-            showReportCommentErrorModal(jsonData.error);
+            hide(productCommentPagination);
           }
         } else {
-          showReportCommentErrorModal(productCommentAbuseReportErrorMessage);
+          commentsList.innerHTML = '';
+          show(emptyProductComment);
+          commentsList.append(emptyProductComment);
         }
-      }).fail(function() {
-        showReportCommentErrorModal(productCommentAbuseReportErrorMessage);
-      });
-    })
+      })
   }
 
   paginateComments(1);
