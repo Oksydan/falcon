@@ -42,19 +42,44 @@
 
           {foreach from=$group.attributes key=id_attribute item=group_attribute}
             <li class="col flex-grow-0 px-1 pb-2">
-              <div class="custom-control custom-radio-color">
-                  <input class="custom-control-input" type="radio" data-product-attribute="{$id_attribute_group}" id="{$id_attribute_group}_{$id_attribute}"  name="group[{$id_attribute_group}]" value="{$id_attribute}" title="{$group_attribute.name}"{if $group_attribute.selected} checked="checked"{/if}>
-
-                  <label class="custom-control-label {if $group_attribute.html_color_code}custom-control-label-{if Tools::getBrightness($group_attribute.html_color_code) > 128}dark{else}bright{/if}{/if}" for="{$id_attribute_group}_{$id_attribute}" aria-label="{$group_attribute.name}">
-                    <span
-                      {if $group_attribute.texture}
-                        class="custom-control-input-color" style="background-image: url({$group_attribute.texture})"
-                      {elseif $group_attribute.html_color_code}
-                        class="custom-control-input-color" style="background-color: {$group_attribute.html_color_code}"
+              <div class="form-check form-check-color">
+                <input  class="form-check-input form-check-input-color"
+                        type="radio"
+                        data-product-attribute="{$id_attribute_group}"
+                        id="{$id_attribute_group}_{$id_attribute}"
+                        name="group[{$id_attribute_group}]"
+                        value="{$id_attribute}"
+                        title="{$group_attribute.name}"
+                        {if $group_attribute.selected}
+                          checked="checked"
+                        {/if}
+                >
+                <label
+                  class="form-check-label form-check-label-color"
+                  for="{$id_attribute_group}_{$id_attribute}"
+                  aria-label="{$group_attribute.name}"
+                >
+                  <span class="form-check-color-content"
+                    {if $group_attribute.texture}
+                       style="background-image: url({$group_attribute.texture})"
+                    {elseif $group_attribute.html_color_code}
+                      style="background-color: {$group_attribute.html_color_code}"
+                    {/if}
+                  >
+                    <span class="
+                      form-check-checked-color material-icons
+                      {if $group_attribute.html_color_code}
+                        {if Tools::getBrightness($group_attribute.html_color_code) > 128}
+                          form-check-checked-color-dark
+                        {else}
+                          form-check-checked-color-bright
+                        {/if}
                       {/if}
-                    >
+                    ">
+                      check
                     </span>
-                    <span class="visually-hidden">
+                  </span>
+                  <span class="visually-hidden">
                       {$group_attribute.name}
                     </span>
                 </label>
