@@ -2,13 +2,6 @@
   display: block;
 }
 
-.form-check-color {
-  position: relative;
-  margin: 0;
-  min-height: auto;
-  padding-left: 0;
-}
-
 .form-check-label-color {
   display: flex;
   cursor: pointer;
@@ -40,6 +33,11 @@
 }
 
 .form-check-color {
+  position: relative;
+  margin: 0;
+  min-height: auto;
+  padding-left: 0;
+
   .form-check-input-color {
     position: absolute;
     inset: 0;
