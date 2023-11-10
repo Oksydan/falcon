@@ -26,7 +26,16 @@
   {foreach from=$groups key=id_attribute_group item=group}
     {if !empty($group.attributes)}
     <div class="product-variants-item mb-3">
-      <p class="control-label h6 mb-2">{$group.name}</p>
+      {if $group.group_type == 'select'}
+        <label
+          class="control-label h6 mb-2"
+          for="group_{$id_attribute_group}"
+        >{$group.name}</label>
+      {else}
+        <p class="control-label h6 mb-2">{$group.name}</p>
+      {/if}
+
+
       {if $group.group_type == 'select'}
         <select
           class="form-select"
@@ -91,7 +100,10 @@
         <ul id="group_{$id_attribute_group}" class="row mx-n1">
           {foreach from=$group.attributes key=id_attribute item=group_attribute}
             <li class="input-container attribute-radio col-auto px-1 mb-2">
-              <label class="attribute-radio__label">
+              <label
+                class="attribute-radio__label"
+                for="{$id_attribute_group}_{$id_attribute}"
+              >
                 <input
                   class="input-radio attribute-radio__input"
                   type="radio"
@@ -99,6 +111,7 @@
                   name="group[{$id_attribute_group}]"
                   value="{$id_attribute}"
                   title="{$group_attribute.name}"
+                  id="{$id_attribute_group}_{$id_attribute}"
                   {if $group_attribute.selected}checked="checked"{/if}>
                 <span class="attribute-radio__text">{$group_attribute.name}</span>
               </label>
