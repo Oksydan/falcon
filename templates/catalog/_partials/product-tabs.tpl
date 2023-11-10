@@ -37,7 +37,7 @@
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs" role="tablist">
         {foreach $tabsList as $tab}
-          <li class="nav-item">
+          <li class="nav-item" role="presentation">
             <a
               class="nav-link {if $tab@first}active{/if}"
               data-bs-toggle="tab"
