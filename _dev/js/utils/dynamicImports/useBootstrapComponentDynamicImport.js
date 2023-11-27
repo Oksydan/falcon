@@ -257,6 +257,8 @@ const useBootstrapComponentDynamicImport = (importFiles, {
       jQuerySetCallbackForElement(this, jQueryCreateCallbackObject(getJQueryComponentName(), args));
 
       handleComponentLoad();
+
+      return this;
     };
   }
 
