@@ -1,5 +1,4 @@
 import { DOMReady } from '../../../utils/DOM/DOMHelpers';
-import useTopMenu from './useTopMenu';
 import useStickyElement from '../useStickyElement';
 
 const initStickyHeader = () => {
@@ -14,8 +13,5 @@ const initStickyHeader = () => {
 };
 
 DOMReady(() => {
-  const { init: initTopMenu } = useTopMenu('.js-main-menu');
-
-  initTopMenu();
   initStickyHeader();
 });
