@@ -57,12 +57,14 @@ global_settings:
      - is_shoppingcart
      - is_imageslider
      - is_searchbar
+     - is_mainmenu
    to_disable:
      - blockreassurance
      - ps_searchbar
      - ps_shoppingcart
      - ps_imageslider
      - blockwishlist
+     - ps_mainmenu
   hooks:
     modules_to_hook:
       displayNav1:

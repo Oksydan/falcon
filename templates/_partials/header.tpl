@@ -56,7 +56,7 @@
                                     href="#"
                                     role="button"
                                     data-bs-toggle="offcanvas"
-                                    data-bs-target="#mobile_top_menu_wrapper"
+                                    data-bs-target="#mobile_menu_offcanvas"
                             >
                                 <div class="header-top__icon-container">
                                     <span class="header-top__icon material-icons">menu</span>

@@ -120,6 +120,8 @@
       {include file="_partials/page-loader.tpl"}
     {/block}
 
+    {hook h='displayMobileMenu'}
+
   </body>
 
 </html>
