@@ -155,6 +155,10 @@ const useBootstrapComponentDynamicImport = (importFiles, {
   const handleEvent = async (e) => {
     e.preventDefault();
 
+    if (filesLoaded || filesLoading) {
+      return;
+    }
+
     await handleComponentLoad();
 
     const { delegateTarget, type } = e;
@@ -253,6 +257,8 @@ const useBootstrapComponentDynamicImport = (importFiles, {
       jQuerySetCallbackForElement(this, jQueryCreateCallbackObject(getJQueryComponentName(), args));
 
       handleComponentLoad();
+
+      return this;
     };
   }
 
