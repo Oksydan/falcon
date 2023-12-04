@@ -2,10 +2,9 @@
 
 .cart-products {
   display: flex;
-  padding-bottom: map.get($spacers, 3);
+  padding: map.get($spacers, 2) 0;
 
   &:not(:first-child) {
-    padding-top: map.get($spacers, 3);
     border-top: 1px solid $border-color;
   }
 
