@@ -1,1 +1,6 @@
 // Styles override for the offcanvas component
+
+
+.offcanvas-footer {
+  padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);
+}

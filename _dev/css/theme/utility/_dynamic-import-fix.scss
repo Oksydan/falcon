@@ -3,7 +3,12 @@
   display: none;
 }
 
-// FIX TO MODAL, hidden by default
+// FIX TO OFFCANVAS, hidden by default
+.offcanvas {
+  display: none;
+}
+
+// FIX TO DROPDOWN, hidden by default
 .dropdown-menu {
   display: none;
 }
