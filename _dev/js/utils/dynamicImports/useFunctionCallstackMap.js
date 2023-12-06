@@ -75,8 +75,6 @@ const useFunctionCallstackMap = (key) => {
       callbackMap.set(key, new Map());
     }
 
-    callbackMap.set(key, new Map());
-
     const functionsCallMap = callbackMap.get(key);
     const currentCallbacks = functionsCallMap.get(elementKey) || [];
     const callbacks = [...currentCallbacks, callback];
