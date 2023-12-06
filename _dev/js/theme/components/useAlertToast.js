@@ -1,4 +1,5 @@
 import { parseToHtml } from '../../utils/DOM/DOMHelpers';
+import { one } from '../../utils/event/eventHandler';
 
 let id = 0;
 
@@ -29,14 +30,18 @@ const useAlertToast = (params = {}) => {
   /**
    * Builds the template for an individual toast.
    * @param {string} text - The text content of the toast.
-   * @param {string} type - The type of toast ('info', 'success', 'danger', 'warning').
+   * @param {string|null} type - The type of toast ('info', 'success', 'danger', 'warning').
    * @param {string} toastId - The unique ID for the toast element.
    * @returns {HTMLElement} - The constructed toast element.
    */
   const buildToastTemplate = (text, type, toastId) => parseToHtml(`
-    <div class="alert-toast alert-toast--${type} d-none" id=${toastId}>
-      <div class="alert-toast__content">
-        ${text}
+    <div class="toast ${type ? `text-bg-${type}` : ''}" id=${toastId}>
+      <div class="d-flex">
+        <div class="toast-body">
+          ${text}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close">
+        </button>
       </div>
     </div>
   `);
@@ -46,7 +51,7 @@ const useAlertToast = (params = {}) => {
    * @returns {HTMLElement} - The constructed toast stack container element.
    */
   const buildToastStackTemplate = () => parseToHtml(`
-    <div id="${stackTemplateId}" class="alert-toast-stack">
+    <div id="${stackTemplateId}" class="toast-container p-3 top-0 end-0 position-fixed">
     </div>
   `);
 
@@ -65,26 +70,12 @@ const useAlertToast = (params = {}) => {
   };
 
   /**
-   * Hides a toast element.
-   * @param {HTMLElement} toast - The toast element to hide.
-   */
-  const hideToast = (toast) => {
-    toast.classList.remove('show');
-
-    const hideDuration = (parseFloat(window.getComputedStyle(toast).transitionDuration)) * 1000;
-
-    setTimeout(() => {
-      toast.remove();
-    }, hideDuration);
-  };
-
-  /**
    * Displays a toast with the given text, type, and optional timeout duration.
    * @param {string} text - The text content of the toast.
-   * @param {string} type - The type of toast ('info', 'success', 'danger', 'warning').
+   * @param {string|null} type - The type of toast ('info', 'success', 'danger', 'warning').
    * @param {number|boolean} [timeOut=false] - Optional timeout duration for the toast.
    */
-  const showToast = (text, type, timeOut = false) => {
+  const showToast = (text, type = null, timeOut = false) => {
     const toastId = getId();
     const toast = buildToastTemplate(text, type, toastId);
     const toastStack = getToastStackTemplate();
@@ -94,15 +85,17 @@ const useAlertToast = (params = {}) => {
 
     const toastInDOM = document.querySelector(`#${toastId}`);
 
-    toastInDOM.classList.remove('d-none');
+    const instance = window.bootstrap.Toast.getOrCreateInstance(toastInDOM, {
+      autohide: true,
+      animation: true,
+      delay: timeOut,
+    });
 
-    setTimeout(() => {
-      toastInDOM.classList.add('show');
-    }, 10);
+    instance.show();
 
-    toastInDOM.dataset.timeoutId = setTimeout(() => {
-      hideToast(toastInDOM);
-    }, timeOut);
+    one(toastInDOM, 'hidden.bs.toast', () => {
+      toastInDOM.remove();
+    });
   };
 
   /**
