@@ -35,7 +35,7 @@ const useAlertToast = (params = {}) => {
    * @returns {HTMLElement} - The constructed toast element.
    */
   const buildToastTemplate = (text, type, toastId) => parseToHtml(`
-    <div class="toast ${type ? `text-bg-${type}`: ''}" id=${toastId}>
+    <div class="toast ${type ? `text-bg-${type}` : ''}" id=${toastId}>
       <div class="d-flex">
         <div class="toast-body">
           ${text}
