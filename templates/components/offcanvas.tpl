@@ -7,7 +7,7 @@
   >
     {block name='offcanvas_content'}
       {block name='offcanvas_header'}
-        <div class="offcanvas-header {block name='offcanvas_header_extra_class'}{/block}">
+        <div class="offcanvas-header {block name='offcanvas_header_extra_class'}border-bottom{/block}">
           {block name='offcanvas_title' hide}
             <h5 class="offcanvas-title">{$smarty.block.child}</h5>
           {/block}
