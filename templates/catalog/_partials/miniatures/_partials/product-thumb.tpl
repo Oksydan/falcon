@@ -29,6 +29,9 @@
       </a>
     {/block}
 
+    {block name='product_favorite_button'}
+      {hook h='displayProductFavoriteButton' product=$product}
+    {/block}
 
     {block name='product_reviews'}
       {hook h='displayProductListReviews' product=$product}
