@@ -49,7 +49,9 @@ Bronze sponsors
 </h3>
 
 <p align="center">
-  This could be your logo <a href="https://github.com/sponsors/Oksydan" target="_blank">become a sponsor</a>
+  <a href="https://www.maofree-developer.com/" target="_blank" style="display: block">
+    MaoDev
+  </a>
 </p>
 
 <br>
