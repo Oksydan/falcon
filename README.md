@@ -28,8 +28,8 @@ Gold sponsors
   </a>
 </p>
 <p align="center">
- <a href="https://msaustral.com/" target="_blank" style="display: block">
-     <img alt="Ms Austral logo" src="https://github.com/Oksydan/falcon/blob/master/sponsors/logo-msaustral.png" width="200">
+ <a href="https://dilios.fr" rel="dofollow" target="_blank" style="display: block">
+     <img alt="Dilios Interactive" src="https://github.com/Oksydan/falcon/blob/master/sponsors/logo-dilios.png" width="200">
  </a>
 </p>
 <br>
@@ -39,7 +39,9 @@ Silver sponsors
 </h3>
 
 <p align="center">
-  This could be your logo <a href="https://github.com/sponsors/Oksydan" target="_blank">become a sponsor</a>
+ <a href="https://msaustral.com/" target="_blank" style="display: block">
+     <img alt="Ms Austral logo" src="https://github.com/Oksydan/falcon/blob/master/sponsors/logo-msaustral.png" width="200">
+ </a>
 </p>
 
 <br>
