@@ -47,6 +47,7 @@
         {/images_block}
       </div>
     </div>
+    {hook h='displayAfterProductThumbs' product=$product}
   </div>
 {else}
   <div class="js-product-images">
@@ -183,6 +184,6 @@
         </div>
       {/if}
     {/block}
+    {hook h='displayAfterProductThumbs' product=$product}
   </div>
-  {hook h='displayAfterProductThumbs' product=$product}
 {/if}
