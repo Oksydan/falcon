@@ -52,7 +52,7 @@
       </td>
 
       <td class="product-line__cell product-line__cell--img">
-        {images_block webpEnabled=$webpEnabled}
+        {images_block}
           {if $product.default_image}
             <img
               {generateImagesSources image=$product.cover size='cart_default'}

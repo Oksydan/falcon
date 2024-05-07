@@ -25,7 +25,7 @@
 <div class="product-line-grid">
   <div class="product-line-grid__row">
     <div class="product-line-grid__block product-line-grid__block--image">
-      {images_block webpEnabled=$webpEnabled}
+      {images_block}
         <img
           {generateImagesSources image=$product.default_image size='cart_default'}
           alt="{$product.name|escape:'quotes'}"

@@ -1,7 +1,7 @@
 {block name='product_thumbnail'}
   <div class="product-miniature__thumb position-relative {$thumbExtraClass|default:''}">
     <a href="{$product.url}" class="product-miniature__thumb-link">
-      {images_block webpEnabled=$webpEnabled}
+      {images_block}
         <img
           {if $product.default_image}
             data-full-size-image-url="{$product.default_image.large.url}"

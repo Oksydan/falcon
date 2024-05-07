@@ -24,7 +24,7 @@
  *}
 <a class="banner" href="{$banner_link}" title="{$banner_desc}">
   {if isset($banner_img)}
-    {images_block webpEnabled=$webpEnabled}
+    {images_block}
       <img src="{$banner_img}" alt="{$banner_desc}" title="{$banner_desc}" class="img-fluid">
     {/images_block}
   {else}

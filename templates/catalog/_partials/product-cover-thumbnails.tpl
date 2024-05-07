@@ -27,7 +27,7 @@
   <div class="js-product-images">
     <div class="card">
       <div class="card-body">
-        {images_block webpEnabled=$webpEnabled}
+        {images_block}
           {if $product.default_image}
             <img
               class="rounded img-fluid"
@@ -56,7 +56,7 @@
         <div class="product-main-images">
           {if $product.images|count > 1}
             {$index = 0}
-            {images_block webpEnabled=$webpEnabled}
+            {images_block}
 
               <div class="js-product-main-images swiper swiper-custom" data-index="{$index}">
                 <div class="product-main-images__list swiper-wrapper">
@@ -111,7 +111,7 @@
               </div>
             {/images_block}
           {else}
-            {images_block webpEnabled=$webpEnabled}
+            {images_block}
               <img
                 class="rounded img-fluid"
                 {generateImagesSources image=$product.default_image size='large_default'}
@@ -139,7 +139,7 @@
     {block name='product_images'}
       {if $product.images|count > 1}
         <div class="js-product-thumbs product-thumbs swiper mt-2 swiper-custom">
-          {images_block webpEnabled=$webpEnabled}
+          {images_block}
             <div class="product-thumbs__list swiper-wrapper">
               <div class="product-thumbs__elem swiper-slide">
                 <img

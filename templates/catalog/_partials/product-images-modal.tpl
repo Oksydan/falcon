@@ -28,7 +28,7 @@
       <div class="modal-body">
         <div class="js-modal-gallery modal-gallery swiper swiper-custom">
         {if $product.default_image}
-          {images_block webpEnabled=$webpEnabled}
+          {images_block}
             <div class="modal-gallery__list swiper-wrapper">
               <div class="swiper-slide modal-gallery__elem">
                 <img
@@ -74,7 +74,7 @@
               </div>
             {/images_block}
           {else}
-            {images_block webpEnabled=$webpEnabled}
+            {images_block}
               <img
                 class="rounded img-fluid"
                 {generateImagesSources image=$product.default_image size='large_default'}

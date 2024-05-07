@@ -25,7 +25,7 @@
 {block name='cart_summary_product_line'}
   <div class="cart-products">
     <div class="cart-products__thumb">
-      {images_block webpEnabled=$webpEnabled}
+      {images_block}
         <img
           {if $product.default_image}
             {generateImagesSources image=$product.default_image size='cart_default'}
