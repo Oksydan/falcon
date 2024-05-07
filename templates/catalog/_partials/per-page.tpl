@@ -38,7 +38,11 @@
       $defaultPerPage * 4
   ]}
 
-  <select data-action="search-select" class="form-select">
+  <select
+    data-action="search-select"
+    class="form-select"
+    aria-label="{l s='Results per page' d='Shop.Falcon.Global'}"
+  >
     {foreach $productPerPageArray as $perPage}
       <option
         {if $currentPerPage == $perPage}selected{/if}
@@ -47,7 +51,7 @@
         {else}
           data-href="{$currentUrlFormatted}{if $otherParamsExists}&{else}?{/if}resultsPerPage={$perPage}"
         {/if}>
-         {l s='Per page:' d='Shop.Theme.Catalog'} {$perPage}
+         {l s='Per page:' d='Shop.Falcon.Global'} {$perPage}
       </option>
     {/foreach}
   </select>
