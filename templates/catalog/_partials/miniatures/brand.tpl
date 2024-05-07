@@ -26,16 +26,18 @@
   <li class="col-lg-3 col-sm-4 col-6 mb-3">
     <div class="card h-100">
       {$sizes = Image::getSize('home_default')}
-      <img
-        src="{$brand.image|replace:'small_default':'home_default'}"
-        alt="{$brand.name}"
-        class="card-img-top"
-        width="{$sizes.width}"
-        height="{$sizes.height}"
-        loading="lazy"
+      {images_block}
+        <img
+          src="{$brand.image|replace:'small_default':'home_default'}"
+          alt="{$brand.name}"
+          class="card-img-top img-fluid"
+          width="{$sizes.width}"
+          height="{$sizes.height}"
+          loading="lazy"
         >
+      {/images_block}
       <div class="card-body">
-        <p class="h6 mb-0">
+        <p class="h6 mb-0 text-center">
           <a class="text-reset stretched-link" href="{$brand.url}">{$brand.name}</a>
         </p>
       </div>
