@@ -25,7 +25,7 @@
 {extends file='page.tpl'}
 
 {block name='page_title'}
-  {l s='Login and registration' d='Shop.Istheme'}
+  {l s='Login and registration' d='Shop.Falcon.Customeraccount'}
 {/block}
 
 {block name='page_content'}
@@ -36,7 +36,7 @@
         <section class="col-md-6 col-12 user-form__block">
           <div class="user-form__content card-body h-100 bg-light d-flex flex-column">
             <h4 class="text-center h3 mb-3">
-              {l s='Login' d='Shop.Istheme'}
+              {l s='Login' d='Shop.Falcon.Customeraccount'}
             </h4>
             {render file='customer/_partials/login-form.tpl' ui=$login_form}
             {block name='display_after_login_form'}
@@ -50,19 +50,19 @@
       <div class="user-form__block  col-md-6 col-12">
         <div class="user-form__content card-body h-100 d-flex flex-column">
           <h4 class="text-center h3 mb-3">
-            {l s='Registration' d='Shop.Istheme'}
+            {l s='Registration' d='Shop.Falcon.Customeraccount'}
           </h4>
 
           <p class="mb-4 text-muted">
-            {l s='Creating an account is simple, and thanks to this you will complete the order faster! Additionally, you have the option of tracking your order and viewing purchase history.' d='Shop.Istheme'}
+            {l s='Creating an account is simple, and thanks to this you will complete the order faster! Additionally, you have the option of tracking your order and viewing purchase history.' d='Shop.Falcon.Customeraccount'}
           </p>
 
           <div class="mt-auto text-center">
             <a href="{$urls.pages.register}" class="btn btn-primary d-none d-md-inline-block">
-              {l s='I want to create an account' d='Shop.Istheme'}
+              {l s='I want to create an account' d='Shop.Falcon.Customeraccount'}
             </a>
             <a href="{$urls.pages.register}" class="btn btn-primary text-center w-100 d-block d-md-none">
-              {l s='I want to create an account' d='Shop.Istheme'}
+              {l s='I want to create an account' d='Shop.Falcon.Customeraccount'}
             </a>
           </div>
 

@@ -83,7 +83,7 @@
 
     <div class="col-sm-6 col-12 card">
       <div class="card-header">
-        <h3 class="h5 mb-0 card-title">{l s='Order subtotals' d='Shop.Istheme'}</h3>
+        <h3 class="h5 mb-0 card-title">{l s='Order subtotals' d='Shop.Falcon.Checkout'}</h3>
       </div>
 
       <div class="card-body">

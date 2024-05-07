@@ -11,7 +11,7 @@
     data-bs-dismiss="offcanvas"
     aria-label="Close"
   >
-      {l s='Show results' d='Shop.Istheme'}
+      {l s='Show results' d='Shop.Falcon.Global'}
   </button>
 {/block}
 
