@@ -7,7 +7,7 @@
     {if isset($product_manufacturer->id)}
       <div class="product-manufacturer">
         {if isset($manufacturer_image_url)}
-          {images_block webpEnabled=$webpEnabled}
+          {images_block}
             <a href="{$product_brand_url}">
               <img src="{$manufacturer_image_url}" class="img img-thumbnail manufacturer-logo" alt="{$product_manufacturer->name}" loading="lazy">
             </a>

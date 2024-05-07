@@ -66,7 +66,7 @@
 
                         <div class="col-md-4 col header-top__block header-top__block--logo">
                             <a href="{$urls.pages.index}">
-                                {images_block webpEnabled=$webpEnabled}
+                                {images_block}
                                     <img
                                             {if !empty($shop.logo_details)}
                                                 src="{$shop.logo_details.src}"

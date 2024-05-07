@@ -29,7 +29,7 @@
       <div class="row">
         <div class="col text-md-start text-center">
           <a href="{$urls.base_url}">
-            {images_block webpEnabled=$webpEnabled}
+            {images_block}
               <img
                 {if !empty($shop.logo_details)}
                   src="{$shop.logo_details.src}"
