@@ -23,7 +23,11 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<select data-action="search-select" class="form-select">
+<select
+  data-action="search-select"
+  class="form-select"
+  aria-label="{l s='Sort order' d='Shop.Falcon.Global'}"
+>
   {foreach from=$listing.sort_orders item=sort_order}
     <option
       data-href="{$sort_order.url}"
