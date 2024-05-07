@@ -24,7 +24,9 @@
  *}
 
 <div id="_desktop_currency_selector" class="col-auto flex-grow-0 flex-shrink-0">
-  <select class="js-select-link form-select" aria-labelledby="currency-selector-label">
+  <select class="js-select-link form-select"
+          aria-label="{l s='Select currency' d='Shop.Falcon.Global'}"
+  >
     {foreach from=$currencies item=currency}
       <option value="{$currency.url}"{if $currency.current} selected{/if}>{$currency.iso_code}{if $currency.sign !== $currency.iso_code} {$currency.sign}{/if}</option>
     {/foreach}
