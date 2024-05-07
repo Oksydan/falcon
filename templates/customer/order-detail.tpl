@@ -196,7 +196,7 @@
           <div class="card">
             <div class="card-header">
               <h4 class="h5 mb-0 card-title">
-                {l s='Shipping infromations' d='Shop.Theme.Customeraccount'}
+                {l s='Shipping informations' d='Shop.Theme.Customeraccount'}
               </h4>
             </div>
             <div class="card-body">
