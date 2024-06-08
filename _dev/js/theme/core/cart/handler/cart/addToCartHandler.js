@@ -17,6 +17,7 @@ const addToCartHandler = async (event) => {
 
   const form = event.delegateTarget?.form;
   const addToCartButton = event.delegateTarget;
+  const loadingClass = 'add-to-cart-btn--loading';
 
   const isQuantityInputValid = (input) => {
     let validInput = true;
@@ -61,6 +62,7 @@ const addToCartHandler = async (event) => {
   const { getRequest } = addToCartRequest(payload);
 
   addToCartButton.setAttribute('disabled', true);
+  addToCartButton.classList.add(loadingClass);
 
   try {
     const resp = await getRequest();
@@ -91,6 +93,7 @@ const addToCartHandler = async (event) => {
   }
 
   addToCartButton.removeAttribute('disabled');
+  addToCartButton.classList.remove(loadingClass);
 };
 
 export default addToCartHandler;
