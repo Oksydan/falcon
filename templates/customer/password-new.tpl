@@ -39,6 +39,24 @@
         </div>
       {/if}
 
+      {$fields = []}
+
+      {$fields[] = [
+        'name' => 'passwd',
+        'type' => 'password',
+        'errors' => [],
+        'required' => true,
+        'label' => {l s='New password' d='Shop.Forms.Labels'}
+      ]}
+
+      {$fields[] = [
+        'name' => 'confirmation',
+        'type' => 'password',
+        'errors' => [],
+        'required' => true,
+        'label' => {l s='Confirmation' d='Shop.Forms.Labels'}
+      ]}
+
       <p>
         {l
           s='Email address: %email%'
@@ -46,15 +64,11 @@
           sprintf=['%email%' => $customer_email|stripslashes]}
       </p>
 
-      <div class="mb-3">
-        <label class="form-control-label">{l s='New password' d='Shop.Forms.Labels'}</label>
-        <input class="form-control" type="password" data-validate="isPasswd" name="passwd" value="">
-      </div>
-
-      <div class="mb-3">
-        <label class="form-control-label">{l s='Confirmation' d='Shop.Forms.Labels'}</label>
-        <input class="form-control" type="password" data-validate="isPasswd" name="confirmation" value="">
-      </div>
+      {foreach $fields as $field}
+        <div class="field-password-policy">
+          {form_field field=$field}
+        </div>
+      {/foreach}
 
       <input type="hidden" name="token" id="token" value="{$customer_token}">
       <input type="hidden" name="id_customer" id="id_customer" value="{$id_customer}">
