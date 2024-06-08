@@ -181,6 +181,15 @@
               {/if}
             </div>
           {/images_block}
+
+          <div class="swiper-button-prev swiper-button-custom">
+            <span class="visually-hidden">{l s='Previous' d='Shop.Theme.Actions'}</span>
+            <span class="material-icons">keyboard_arrow_left</span>
+          </div>
+          <div class="swiper-button-next swiper-button-custom">
+            <span class="visually-hidden">{l s='Next' d='Shop.Theme.Actions'}</span>
+            <span class="material-icons">keyboard_arrow_right</span>
+          </div>
         </div>
       {/if}
     {/block}

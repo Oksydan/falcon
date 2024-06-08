@@ -3,9 +3,9 @@
   height: auto;
   margin: 0;
   color: $primary;
+  transform: translateY(-50%);
 
   &::after {
     display: none;
   }
-
 }

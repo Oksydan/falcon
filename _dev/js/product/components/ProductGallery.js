@@ -37,6 +37,10 @@ class ProductGallery {
           slidesPerView: 4,
         },
       },
+      navigation: {
+        nextEl: thumbsElem.querySelector('.swiper-button-next'),
+        prevEl: thumbsElem.querySelector('.swiper-button-prev'),
+      },
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
     });
