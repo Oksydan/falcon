@@ -42,13 +42,13 @@
                 id="quantity_wanted"
                 inputmode="numeric"
                 pattern="[0-9]*"
-                      {if $product.quantity_wanted}
-                        value="{$product.quantity_wanted}"
-                        min="{$product.minimal_quantity}"
-                      {else}
-                        value="1"
-                        min="1"
-                      {/if}
+                {if $product.quantity_wanted}
+                  value="{$product.quantity_wanted}"
+                  min="{$product.minimal_quantity}"
+                {else}
+                  value="1"
+                  min="1"
+                {/if}
                 aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
               >
               <a href="#" class="btn btn-outline-dark px-1 js-custom-qty-btn-up">
@@ -59,17 +59,20 @@
         </div>
 
 
-
         <div class="add col js-add-to-cart-btn-wrapper">
           <button
-            class="btn btn-primary add-to-cart d-block text-center w-100"
+            class="btn btn-primary add-to-cart add-to-cart-btn d-block text-center w-100"
             data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
               disabled
             {/if}
           >
-            {l s='Add to cart' d='Shop.Theme.Actions'}
+            <span class="add-to-cart-btn__loader spinner-border spinner-border-sm" aria-hidden="true">
+            </span>
+            <span class="add-to-cart-btn__text">
+              {l s='Add to cart' d='Shop.Theme.Actions'}
+            </span>
           </button>
         </div>
 

@@ -12,14 +12,18 @@
             class="form-control input-qty"
           >
           <button
-            class="btn btn-primary d-block text-center w-100 add-to-cart"
+            class="btn btn-primary d-block text-center w-100 add-to-cart add-to-cart-btn"
             data-button-action="add-to-cart"
             type="submit"
             {if !$product.add_to_cart_url}
                 disabled
             {/if}
           >
-            {l s='Add to cart' d='Shop.Theme.Actions'}
+            <span class="add-to-cart-btn__loader spinner-border spinner-border-sm" aria-hidden="true">
+            </span>
+            <span class="add-to-cart-btn__text">
+              {l s='Add to cart' d='Shop.Theme.Actions'}
+            </span>
           </button>
       </form>
     {else}

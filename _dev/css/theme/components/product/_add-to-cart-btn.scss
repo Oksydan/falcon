@@ -1,0 +1,27 @@
+.add-to-cart-btn {
+  $self: &;
+
+  position: relative;
+
+  &__loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -0.5em;
+    margin-left: -0.5em;
+    display: none;
+  }
+
+  &--loading {
+    #{$self} {
+      &__loader {
+        display: block;
+      }
+
+      &__text {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
